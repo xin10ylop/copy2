@@ -131,6 +131,28 @@ working as built (`backtests.md` §9: a tighter or looser premium limit loses ou
 in its slot is not enough on its own: the copiers that got in ahead of us inside the slot are what the position fight
 is about (`07-rework-2026-10-28/README.md` §5).
 
+**The first evening, Oct 28 18:34-21:32 UTC (20:34-23:32 Beirut), every trade checked on chain** (`getTransaction`,
+`getBlock` with `transactionDetails: accounts`, from the Triton endpoint):
+
+| # | coin | route | its buy (slot, position) | our buy | coin trades between | paid vs its price | exit | net SOL |
+|---|---|---|---|---|---|---|---|---|
+| 1 | FUN1RZrj | WBTC | 462579900, 545 | +1 slot, position 24 | 3 | +6.6% | take profit 2.05x, 3 s | +0.0927 |
+| 2 | E3hauBDZ | SOL | 462592485, 142 | same slot, 402 | 7 | 1.36x: refused (6004) | | −0.0004 |
+| 3 | EMJs7igZ | SOL | 462594566, 33 | same slot, 172 | 6 | +9.2% | take profit 2.05x, 32 s | +0.1028 |
+| 4 | GUcG2eK2 | WBTC | 462606663, 271 | same slot, 364 | 5 | +19.2% | take profit 2.20x, 240 s | +0.0818 |
+| 5 | 6TrDECwR | SOL | 462618422, 442 | +1 slot, position 51 | 3 | +17.9% | stop 0.78x, 205 s (peak 1.63x) | −0.0334 |
+| 6 | JAckzYTT | SOL | 462623753, 287 | same slot, 455 | 5 | +1.5% | take profit 2.06x, 588 s | +0.1074 |
+
+Six sends, all `sent in 3-6 ms; seen at its slot +0`; four landed in its slot, two in the next (both times its buy sat
+near the end of its block); every sell landed on the first try; no `sell-failed`, `WARNING` or `CRITICAL`. The journal's
+net per trade equals the chain's SOL and WBTC deltas (the WBTC trips valued at the float's price). **Real: 5 closed,
+4 won, +0.3513 SOL on 0.1 SOL stakes** (+0.14 without the best 2); the wallet went from 0.7 to **1.046 SOL** (0.7139 SOL
++ 41,658 WBTC units; the 0.006 gap is the float swap's costs). Skips in the same hours: 19 buys paid in unpriced tokens
+(part B) and 2 in xStocks quotes (`no anchor reaches NVDAVuiB` / `XsoCS1Tf`), all as the rule says. Copyable buys came
+at about 2 an hour. Not yet seen: a coin that graduates while we hold it (the pool sell is simulated only). The stop and
+the take profit are multiples of **its** price, so #5 bought 17.9% above it and sold at 0.78x of it: −33% of the stake.
+An empty cbBTC token account (a hop of #4's route) holds 0.002 SOL of rent.
+
 The paper run on this box ended there (one box runs one bot). What the test must show, over 5-10 trades: buys landing
 at its slot +1 or better (`long buy ... seen at its slot +N`, then `long fill ... paid X (vs its price +N%)`: that
 percentage is where in its slot we landed, `07-rework-2026-10-28/README.md` §5), every sell landing (a pool sell after
