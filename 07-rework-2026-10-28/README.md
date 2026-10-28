@@ -134,6 +134,12 @@ quote's pool hop in paper, a `positions.json.bak`, a `check --config` command, T
   European leader (74% of slots): half on the feed, half on the send. That is about **0.27 slot on average, 0.5 on
   European leaders**, worth 0.5-1.5 SOL a month at the backtest's pace. If Ohio is really 1-2 slots behind, as
   `going-live.md` expected, it is 2-8 SOL a month. Only the journal's `seen at its slot +N` on both boxes settles it.
+- **Landing in its own slot is worth more than any setting** (`fresh/land_pos.py`, Oct 28 evening; `fresh/README.md`
+  §6): with our buy 100-130 block positions behind its buy in the same slot instead of the next slot, P1 goes from
+  +5.19 to +10.1-10.8 and P2 from +12.27 to +14.2-14.5 (cap 4, 1.45 floor): about **+1 SOL a day** over the 8 days.
+  Right behind its buy (the ceiling nobody gets) would be +17.3 / +18.6. A shred-level trigger 30 positions earlier
+  adds about +0.2 SOL a day on top, and needs a paid shred feed (Jito ShredStream is shut down; DoubleZero and Triton
+  charge $1,500 a month). First measure where we land: the 0.1 SOL test's `long fill ... (vs its price +N%)`.
 - **Cherry Servers Frankfurt VDS `G2-4-16gb-100nv-ded`** (EPYC 9354P, 4 vCPU, 16 GB): **€59 a month or €0.101 an
   hour**, 10 in stock on Oct 28, 0.37-0.61 ms from the TeraSwitch building that holds Jito, Helius, Nozomi and Triton.
   Nothing faster matters for this bot (in-building bare metal gains 0.3-0.5 ms, about 0.002 slot). Cherry's terms

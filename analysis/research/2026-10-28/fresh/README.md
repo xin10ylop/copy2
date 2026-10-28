@@ -262,6 +262,41 @@ The entry agrees exactly: the model's slot + 1 entry is 1.518x and 1.321x its pr
 
 9ENc9LwF was the only routable one, and paper entered it.
 
+## 6. Where our buy lands inside its slot (`land_pos.py`, `out/land_pos.txt`; Oct 28 evening)
+
+`grid.py land` moves our fill by whole slots (slot +1 is what paper and every backtest assume). `land_pos.py` moves it
+by **block position inside wallet 4's own slot**: our buy fills on the state after the last trade at block index
+≤ its index + K (`("pos", K)`; the path rows carry the index, `r[1]`), so K = 0 is the trade right behind its buy and
+K = 600 is the end of its slot (= `land` 0). Same model, costs and cap as §3 (q + lift, CAP=4, 1.45-9 SOL, routable).
+
+| our buy fills | P1 (Oct 19-22) | P2 (Oct 23-27) | P3 (Oct 27-28) | bot's set P3 |
+|---|---|---|---|---|
+| right behind its buy (K = 0; the ceiling) | +17.28 (+15.05) | +18.57 (+16.14) | −0.47 (−2.36) | +2.44 (+0.27) |
+| 30 positions behind | +14.17 (+11.94) | +16.21 (+13.33) | −0.78 | +2.12 |
+| 60 positions behind | +12.70 (+10.47) | +15.01 (+12.19) | −0.94 | +1.96 |
+| 100 positions behind | +10.82 (+8.59) | +14.51 (+11.70) | −1.03 | +1.87 |
+| 130 positions behind | +10.13 (+7.96) | +14.20 (+11.38) | −1.10 | +1.80 |
+| 300 positions behind | +7.96 (+5.98) | +13.94 (+11.13) | −1.37 | +1.54 |
+| end of its slot (K = 600 = `land` 0) | +7.70 (+5.72) | +13.92 (+11.10) | −1.41 | +1.36 |
+| **next slot (`land` 1: paper and the backtests)** | **+5.19 (+3.22)** | **+12.27 (+9.62)** | **−2.98 (−4.70)** | **−0.51 (−2.39)** |
+| 2 slots after | +4.94 | +11.51 | −3.09 | −0.56 |
+
+(+x) = without the period's best 2. The bot's set = `NOT=AvcwGFaF,2FSWwQwj GRAD=1` (its P1 is the same, its P2
++13.49 → +15.73 at 100 positions → +19.81 at K = 0).
+
+- **The slot matters more than any setting in §3.** From the next slot to 100-130 positions behind it in its own slot,
+  P1 about doubles and P2 gains 2 SOL; over the 8 days that is about **+1 SOL a day at 4 open** (+17.5 → +24.5-25.3).
+  The trades in those positions are the frenzy that follows its buy; filling before them is the whole gain.
+- **The ceiling (right behind its buy) is +36 over the 8 days against +17.5**, but nobody fills there: the other
+  copiers race for the same positions.
+- **What a pre-execution (shred) trigger adds**, if it moves us from about 100-130 positions behind to 60-100 (the
+  figure claimed for another bot's Deshred feed, about 6 ms or 30 positions earlier): about +0.5-1.9 on P1 and
+  +0.3-0.5 on P2 per period, roughly **+0.2 SOL a day**. Worth having once the same-slot landing exists, not before.
+- P3 stays negative in every row but the ceiling (the bot's set is positive from 300 positions in): a better landing
+  does not undo its early sales.
+- Where we really land is measured by the journal's `long fill ... paid X (vs its price +N%)` and the fill slot in
+  the 0.1 SOL test (plan §6 step 2); paper only shows `seen at its slot +N`.
+
 ## Notes
 
 - `behave.py` (the original too) prints its first-buy SOL with a minus sign, so its size buckets put every coin under
