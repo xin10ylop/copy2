@@ -1,0 +1,463 @@
+#!/bin/bash
+# rugsnipe-check: one screen with everything needed to judge the live bot (box helper; copy to ~/check.sh).
+# Times are Beirut time (CHECK_TZ: another zone); the bot's own journal lines are UTC.
+#   bash ~/check.sh          the current bot since the start (by default Oct 26 15:00 Beirut time, 13:00 UTC): trading
+#                            or not, the wallet, the results, then per copied wallet: our copies, what it made
+#                            itself (on the coins we copied, skipped, did not see), and every launch buy of it, one row
+#                            each, with what the bot did and what our copy made (rugsnipe-trades: the wallets' own
+#                            trades come from the chain once and are kept, so a run reads only the new ones)
+#   bash ~/check.sh him      him against us since the start, coin by coin (his trades from the chain: rugsnipe-vs-him)
+#   bash ~/check.sh him W    another copied wallet (entry.copy_more; W = its address or its first characters) against
+#                            our copies of it, coin by coin
+#   bash ~/check.sh full     everything (bid A/B, routes, tiers, and the rule's tweet, feed, dumper and follow tables)
+#   bash ~/check.sh start [HH:MM]   another start: now, or HH:MM today (Beirut time), kept in ~/.rugsnipe-start
+# Reads only: the hot unit's journal (status line, operator/tier lines), /etc/rugsnipe/rugsnipe.toml and
+# /var/lib/rugsnipe/state.db (read-only). Needs sudo for the journal and the config.
+# Test hooks: CHECK_STATUS (a status line instead of the journal's), CHECK_TIERS (operator lines), CHECK_TWEETS (tweet lines),
+# CHECK_FEED (tweetfeed lines), CHECK_DUMPERS (dumper lines), CHECK_FOLLOW (follow lines), CHECK_COPY (copy lines),
+# CHECK_COPYW (copyw lines), CHECK_LATCH (the kill latch's text instead of state.db's), CHECK_TT0 (the tip test's start),
+# CHECK_RULE_T0 (the tweet rule's start, unix s; empty = none), CHECK_AB_T0 (the bid A/B's start, unix s),
+# CHECK_ERA_T0 (the start, unix s, instead of ~/.rugsnipe-start or the default),
+# CHECK_JOURNAL (the copy/copyw lines with their unix time, as journalctl -o short-unix prints them),
+# CHECK_TRADES (rugsnipe-trades' options instead of the box's), CHECK_DB (another state.db),
+# CHECK_PRINT_SQL=1 (print the SQL and stop), CHECK_ERASED (the erased copy wallets instead of ERASED's; empty = none).
+LT=${CHECK_TZ:-Asia/Beirut}; LZ=$(sed 's#.*/##; s#_# #g' <<<"$LT")
+lt() { TZ=$LT date "$@"; }
+SHORT=1; HIM=0
+case "${1:-}" in
+  full|long|all) SHORT=0 ;;
+  him) HIM=1; HIMW=${2:-} ;;
+  start)
+    if [ -n "${2:-}" ]; then
+      t=$(lt -d "today $2" +%s 2>/dev/null) || { echo "not a time: $2 (e.g. bash ~/check.sh start 15:00, $LZ time)"; exit 1; }
+      [ "$t" -le "$(date -u +%s)" ] || { echo "$2 $LZ time is still ahead today: give a time that has passed"; exit 1; }
+    else t=$(date -u +%s); fi
+    echo "$t" > "$HOME/.rugsnipe-start"
+    echo "start recorded: $(lt -d "@$t" '+%b %d %H:%M:%S') $LZ time ($(date -u -d "@$t" '+%H:%M') UTC). bash ~/check.sh counts from it."
+    exit 0 ;;
+esac
+DB=${CHECK_DB:-/var/lib/rugsnipe/state.db}
+CFG=/etc/rugsnipe/rugsnipe.toml
+# ---- copy wallets erased from every table, our copies of them too (first 8 characters; Oct 27: 3 JBokzLFR, 5 CxyKYmQo).
+# The money lines (wallet, results by scope, the daily stop) still count every trade: they are the wallet's own.
+ERASED=${CHECK_ERASED-JBokzLFR CxyKYmQo}
+now=$(date -u +%s)
+D0=$(date -u -d "$(date -u +%Y-%m-%d) 00:00:00" +%s)
+# ---- the start: every "since" section counts from it across days (journal lines included). By default Oct 26 15:00
+# Beirut time (13:00 UTC, 1793019600: the six copied wallets and the tip test running); `start` keeps another in
+# ~/.rugsnipe-start (the older ~/.rugsnipe-era is no longer read)
+if [ -n "${CHECK_ERA_T0+x}" ]; then ERA=$CHECK_ERA_T0; else
+  ERA=$(grep -m1 -oE '^[0-9]{9,11}' "$HOME/.rugsnipe-start" 2>/dev/null)
+  ERA=${ERA:-1793019600}
+fi
+E0=${ERA:-$D0}
+if [ -n "$ERA" ]; then SINCE="since the start ($(lt -d "@$ERA" '+%b %d %H:%M') $LZ)"; RN=era; else SINCE=today; RN='new rule'; fi
+if [ -n "${CHECK_STATUS:-}" ]; then
+  ST=$CHECK_STATUS; T0=${CHECK_T0:-$D0}; PID=0
+else
+  PID=$(systemctl show -p MainPID --value rugsnipe-hot)
+  T0=$(date -d "$(systemctl show -p ActiveEnterTimestamp --value rugsnipe-hot)" +%s 2>/dev/null || echo "$D0")
+  ST=$(sudo journalctl -u rugsnipe-hot -o cat _PID="$PID" --since "@$T0" 2>/dev/null | grep -E '^\[ *[0-9]+s\]' | tail -1)
+fi
+g() { grep -oE "$1" <<<"$ST" | head -1; }
+num() { grep -oE '[0-9]+' <<<"$1" | head -1; }
+sol() { awk -v l="${1:-0}" 'BEGIN { printf "%.4f", l / 1e9 }'; }
+cfgv() { sudo grep -m1 -E "^$1 = " "$CFG" 2>/dev/null | sed -E "s/^$1 = //; s/[[:space:]]*#.*$//"; }
+list_sol() { tr -d '[]_ ' <<<"$1" | awk -F, '{ for (i = 1; i <= NF; i++) printf "%s%g", (i > 1 ? "/" : ""), $i / 1e9 }'; }
+list_m() { tr -d '[]_ ' <<<"$1" | awk -F, '{ for (i = 1; i <= NF; i++) printf "%s%g", (i > 1 ? "/" : ""), $i / 1e6 }'; }
+
+# ---- the operator lines (tier per mint) of today, every process
+if [ -n "${CHECK_TIERS+x}" ]; then OPL=$CHECK_TIERS; else
+  OPL=$(sudo journalctl -u rugsnipe-hot -o cat --since "@$E0" 2>/dev/null | grep -E '^operator [1-9A-HJ-NP-Za-km-z]{8} hold_to create\+[0-9]+ .*tier [0-9]\)')
+fi
+TIERS=$(awk 'NF >= 2 { t = $NF; gsub(/[^0-9]/, "", t); if (t != "") printf "%s(\x27%s\x27,%s)", (n++ ? "," : ""), $2, t }' <<<"$OPL")
+[ -n "$TIERS" ] || TIERS="('',-1)"
+# ---- the tweet rule's start (docs/13): the first "tweet check:" start line of today, so its trades are counted apart
+# from the bot's earlier rules ("rule" scope); empty when the check is off
+if [ -n "${CHECK_RULE_T0+x}" ]; then TR=$CHECK_RULE_T0; elif [ -n "$ERA" ]; then TR=$ERA; else
+  TR=$(sudo journalctl -u rugsnipe-hot -o short-unix --since "@$D0" 2>/dev/null | grep -m1 -E 'tweet check: (log|on|exit)' | awk '{ printf "%d", $1 }')
+fi
+# ---- the bid A/B's start (bid.ab_by_tier): the first "bid ab:" start line of today (the split before 2026-10-25 sent
+# every pump.fun mint to the second arm, so earlier races are left out); else the rule's start
+if [ -n "${CHECK_AB_T0+x}" ]; then AB=$CHECK_AB_T0; else
+  AB=$(sudo journalctl -u rugsnipe-hot -o short-unix --since "@$E0" 2>/dev/null | grep -m1 -E 'bid ab: ' | awk '{ printf "%d", $1 }')
+fi
+AB=${AB:-${TR:-$D0}}
+# ---- the tip test (2026-10-26): bid.ab_by_tier on the copies, half of them (by mint) at the second arm's tier-0 bid.
+# Its start: the first "bid ab:" start line since the start that carries the configured arm; empty when it is off
+TT_ARM=$(cfgv ab_by_tier | tr -d '[]_ ' | cut -d, -f1)
+if [ -n "${CHECK_TT0+x}" ]; then TT=$CHECK_TT0; elif [ -n "$TT_ARM" ]; then
+  TT=$(sudo journalctl -u rugsnipe-hot -o short-unix --since "@$E0" 2>/dev/null | grep -m1 -E "bid ab: \[$TT_ARM," | awk '{ printf "%d", $1 }')
+fi
+# ---- the tweet check's verdict lines (entry.tweet_gate, docs/13) of today: mint8 -> verdict, delay, slot offset
+if [ -n "${CHECK_TWEETS+x}" ]; then TWL=$CHECK_TWEETS; else
+  TWL=$(sudo journalctl -u rugsnipe-hot -o cat --since "@$E0" 2>/dev/null | grep -E '^tweet [1-9A-HJ-NP-Za-km-z]{8} [a-z_]+ rank ')
+fi
+TWEETS=$(awk '{ ms = $13; gsub(/[^0-9]/, "", ms); so = $14; gsub(/[^0-9]/, "", so); if (ms != "") printf "%s(\x27%s\x27,\x27%s\x27,%s,%s)", (n++ ? "," : ""), $2, $3, ms, (so == "" ? 0 : so) }' <<<"$TWL")
+[ -n "$TWEETS" ] || TWEETS="('','',0,0)"
+# ---- the tweet feed's calls (entry.tweet_feed, docs/14 section 7) of today: mint8 -> first / copy / none
+if [ -n "${CHECK_FEED+x}" ]; then FDL=$CHECK_FEED; else
+  FDL=$(sudo journalctl -u rugsnipe-hot -o cat --since "@$E0" 2>/dev/null | grep -E '^tweetfeed [1-9A-HJ-NP-Za-km-z]{8} [a-z]+ posts ')
+fi
+FEEDS=$(awk '{ printf "%s(\x27%s\x27,\x27%s\x27)", (n++ ? "," : ""), $2, $3 }' <<<"$FDL")
+[ -n "$FEEDS" ] || FEEDS="('','')"
+# ---- the dumper list's hits (entry.dumper_skip, docs/15) of today: mint8 -> skipped / logged, uri host ('-': none or
+# a line from before the host was journaled)
+if [ -n "${CHECK_DUMPERS+x}" ]; then DML=$CHECK_DUMPERS; else
+  DML=$(sudo journalctl -u rugsnipe-hot -o cat --since "@$E0" 2>/dev/null | grep -E '^dumper [1-9A-HJ-NP-Za-km-z]{8} (skipped|logged)')
+fi
+DUMPS=$(awk 'NF >= 3 { h = ($(NF-1) == "host") ? $NF : "-"; gsub(/\x27/, "", h); printf "%s(\x27%s\x27,\x27%s\x27,\x27%s\x27)", (n++ ? "," : ""), $2, $3, h }' <<<"$DML")
+[ -n "$DUMPS" ] || DUMPS="('','','')"
+# ---- the follow verdicts (entry.follow, docs/16): mint8 -> yes / no, rule (a rule coin) or the rule's skip label,
+# uri host, what happened (fire / skip / log: followed, not bought in log mode), the fee routing (dev / third), hot / cold
+# (the record's last coins at create + 10, docs/16 section 10), the coin's mode (plain / holder[+bps<n>], section 11)
+if [ -n "${CHECK_FOLLOW+x}" ]; then FLL=$CHECK_FOLLOW; else
+  FLL=$(sudo journalctl -u rugsnipe-hot -o cat --since "@$E0" 2>/dev/null | grep -E '^follow [1-9A-HJ-NP-Za-km-z]{8} (yes|no) ')
+fi
+FOLLOWS=$(awk 'NF >= 9 { gsub(/\x27/, "", $6); f = ($9 == "fees") ? $10 : "-"; h = ($9 == "fees" && NF >= 13) ? $11 : "-"; md = ($12 == "mode") ? $13 : "-"; printf "%s(\x27%s\x27,\x27%s\x27,\x27%s\x27,\x27%s\x27,\x27%s\x27,\x27%s\x27,\x27%s\x27,\x27%s\x27)", (n++ ? "," : ""), $2, $3, $4, $6, $NF, f, h, md }' <<<"$FLL")
+[ -n "$FOLLOWS" ] || FOLLOWS="('','','','','','','','')"
+# ---- the copies (entry.copy, docs/17 section 9): mint8 -> his SOL, his tip (M; -1 on lines from before the tip was
+# journaled), create + k, buy / log
+# (the trades tables leave out what the bot bought after this read: its copy lines are not in JL)
+JCUT=$(date -u +%s)
+if [ -n "${CHECK_JOURNAL+x}" ]; then JL=$CHECK_JOURNAL; else
+  JL=$(sudo journalctl -u rugsnipe-hot -o short-unix --since "@$E0" 2>/dev/null | grep -E ': copyw? [1-9A-HJ-NP-Za-km-z]{8} (his|by) |systemd\[[0-9]+\]: Started rugsnipe-hot')
+fi
+if [ -n "${CHECK_COPY+x}" ]; then CPL=$CHECK_COPY; else
+  CPL=$(sed -E 's/^[0-9.]+ [^ ]+ [^ ]+: //' <<<"$JL" | grep -E '^copy [1-9A-HJ-NP-Za-km-z]{8} his ')
+fi
+# (his landing slot and block index: lines from 2026-10-25 22:30 on; 0 before)
+COPIES=$(awk 'NF >= 7 { tip = -1; at = $6; if ($5 == "tip") { tip = $6; gsub(/M/, "", tip); at = $8 } gsub(/[^0-9]/, "", at); sl = 0; ix = 0; for (i = 1; i < NF; i++) { if ($i == "slot") sl = $(i + 1); if ($i == "idx") ix = $(i + 1) } printf "%s(\x27%s\x27,%s,%s,%s,\x27%s\x27,%s,%s)", (n++ ? "," : ""), $2, $4, tip, (at == "" ? 0 : at), $NF, sl + 0, ix + 0 }' <<<"$CPL")
+[ -n "$COPIES" ] || COPIES="('',0,0,0,'',0,0)"
+# ---- the other copied wallets (entry.copy_more, docs/19 section 5): mint8 -> wallet8, its SOL, create + k, our sell at
+# create + hold, buy / log / skip_small, its landing slot and block index
+if [ -n "${CHECK_COPYW+x}" ]; then CWL=$CHECK_COPYW; else
+  CWL=$(sed -E 's/^[0-9.]+ [^ ]+ [^ ]+: //' <<<"$JL" | grep -E '^copyw [1-9A-HJ-NP-Za-km-z]{8} by ')
+fi
+# the erased wallets' copied coins (their buy lines), then their lines out
+ERM=$(awk -v e=" $ERASED " 'index(e, " " $4 " ") && $NF == "buy" { printf "%s(\x27%s\x27)", (n++ ? "," : ""), $2 }' <<<"$CWL")
+[ -n "$ERM" ] || ERM="('')"
+CWL=$(awk -v e=" $ERASED " '!index(e, " " $4 " ")' <<<"$CWL")
+COPYW=$(awk 'NF >= 15 { at = $7; gsub(/[^0-9]/, "", at); h = $13; gsub(/[^0-9]/, "", h); printf "%s(\x27%s\x27,\x27%s\x27,%s,%s,%s,\x27%s\x27,%s,%s)", (n++ ? "," : ""), $2, $4, $5 + 0, (at == "" ? 0 : at), (h == "" ? 0 : h), $NF, $9 + 0, $11 + 0 }' <<<"$CWL")
+[ -n "$COPYW" ] || COPYW="('','',0,0,0,'',0,0)"
+
+if [ "$SHORT" = 1 ]; then SCOPES="('since start', $E0 * 1000)"
+else SCOPES="('process', $T0 * 1000)${TR:+, ('$RN', $TR * 1000)}, ('today', $D0 * 1000)"; fi
+SQL="
+create temp table tiers(m8 text, tier int);
+insert into tiers values $TIERS;
+create temp table tweets(m8 text, kind text, ms int, slot_off int);
+insert into tweets values $TWEETS;
+create temp table feeds(m8 text, call text);
+insert into feeds values $FEEDS;
+create temp table dumps(m8 text, act text, host text);
+insert into dumps values $DUMPS;
+create temp table follows(m8 text, yes text, kind text, host text, act text, fees text, heat text, mode text);
+insert into follows values $FOLLOWS;
+create temp table copies(m8 text, his_sol real, tip_m real, at int, act text, slot int, idx int);
+insert into copies values $COPIES;
+create temp table copyw(m8 text, w8 text, sol real, at int, hold int, act text, slot int, idx int);
+insert into copyw values $COPYW;
+create temp table erased(m8 text);
+insert into erased values $ERM;
+create temp view pos0 as
+  select p.mint, p.cost, p.state, p.opened_slot, p.closed_slot, min(s.sent_unix_ms) t_ms, max(s.bid) bid,
+         coalesce((select sum(e.sol_delta) from exits e where e.mint = p.mint), 0) ex,
+         (select group_concat(distinct e.reason) from exits e where e.mint = p.mint) reason,
+         coalesce((select max(t.tier) from tiers t where t.m8 = substr(p.mint, 1, 8)), 0) tier,
+         -- the execution the position's P&L leaves out: the filled buy's fee + tip, each filled sell's priority + tip + base fee
+         coalesce((select sum(coalesce(f.fee, 0) + coalesce(f.tip, 0)) from fills f
+                   where f.intent_id = p.intent_id and f.fail_reason is null), 0)
+         + coalesce((select sum(coalesce(x.prio, 0) + coalesce(x.tip, 0) + 5000) from exits e join sends x on x.sig = e.sig
+                     where e.mint = p.mint), 0)
+         -- a buy the bot adopted after calling it dropped has no landed fill: its bid + the base fee
+         + case when exists (select 1 from fills f where f.intent_id = p.intent_id and f.fail_reason is null) then 0
+                else coalesce((select max(x.bid) from sends x where x.intent_id = p.intent_id and x.kind = 'buy'), 0) + 5000 end txc
+  from positions p join sends s on s.intent_id = p.intent_id
+  group by p.mint;
+create temp view pos as select *, ex - cost - txc net from pos0;
+create temp view races as
+  select f.sig, f.fail_reason, coalesce(f.fail_cost, f.fee, 0) fail_cost, s.sent_unix_ms t_ms
+  from fills f join sends s on s.sig = f.sig;
+with scopes(scope, ms) as (values $SCOPES)
+select sc.scope,
+  (select count(*) from races r where r.t_ms >= sc.ms) races,
+  (select coalesce(sum(r.fail_reason is null), 0) from races r where r.t_ms >= sc.ms) landed,
+  (select round(100.0 * coalesce(sum(r.fail_reason is null), 0) / max(count(*), 1), 0) from races r where r.t_ms >= sc.ms) land_pct,
+  (select count(*) from pos where state = 'closed' and t_ms >= sc.ms) closed,
+  (select coalesce(sum(net > 0), 0) from pos where state = 'closed' and t_ms >= sc.ms) wins,
+  (select round(100.0 * avg(net * 1.0 / cost), 1) from pos where state = 'closed' and cost > 0 and t_ms >= sc.ms) mean_pct,
+  (select round(coalesce(sum(ex - cost), 0) / 1e9, 4) from pos where state = 'closed' and t_ms >= sc.ms) curve_sol,
+  (select round(-coalesce(sum(txc), 0) / 1e9, 4) from pos where state = 'closed' and t_ms >= sc.ms) tips_fees,
+  (select round(-coalesce(sum(r.fail_cost), 0) / 1e9, 4) from races r where r.fail_reason is not null and r.t_ms >= sc.ms) failed_sol,
+  (select round((coalesce((select sum(net) from pos where state = 'closed' and t_ms >= sc.ms), 0)
+                - coalesce((select sum(r.fail_cost) from races r where r.fail_reason is not null and r.t_ms >= sc.ms), 0)) / 1e9, 4)) net_sol
+from scopes sc;
+.print
+"
+SQL_LONG="
+.print == buy bid since the A/B started (bid.ab_by_tier: the mints whose first byte is odd bid the second arm, the rest bid.by_tier)
+select round(b.bid / 1e6, 2) bid_m, b.attempts, coalesce(l.landed, 0) landed,
+       round(100.0 * coalesce(l.landed, 0) / max(b.attempts, 1), 0) land_pct, coalesce(l.closed, 0) closed,
+       coalesce(l.mean_pct, '-') mean_pct, coalesce(l.net_sol, 0.0) net_sol
+from (select s.bid, count(distinct s.intent_id) attempts from sends s
+      where s.kind = 'buy' and s.sent_unix_ms >= $AB * 1000 group by s.bid) b
+left join (select bid, count(*) landed, sum(state = 'closed') closed,
+                  round(100.0 * avg(case when state = 'closed' and cost > 0 then net * 1.0 / cost end), 1) mean_pct,
+                  round(sum(case when state = 'closed' then net else 0 end) / 1e9, 4) net_sol
+           from pos where t_ms >= $AB * 1000 group by bid) l on l.bid = b.bid
+order by b.bid;
+.print
+.print == buy routes today (won = our buy landed through it, lost = it landed and failed; a bundle never lands failed)
+select s.sender route, count(*) sent, coalesce(sum(s.result = 'accepted'), 0) accepted,
+       coalesce(sum(f.sig is not null and f.fail_reason is null), 0) won,
+       coalesce(sum(f.sig is not null and f.fail_reason is not null), 0) lost,
+       round(coalesce(sum(case when f.sig is null then 0 when f.fail_reason is null then coalesce(f.fee, 0) + coalesce(f.tip, 0)
+                               else coalesce(f.fail_cost, f.fee, 0) end), 0) / 1e9, 4) paid_sol,
+       coalesce(group_concat(distinct nullif(s.err, '')), '-') errors
+from sends s left join fills f on f.sig = s.sig
+where s.kind = 'buy' and s.sent_unix_ms >= $D0 * 1000
+group by s.sender order by won desc, sent desc;
+.print
+.print == by tier $SINCE (closed trades, after tips and fees)
+select tier, count(*) trades, sum(net > 0) wins, round(100.0 * avg(net * 1.0 / cost), 1) mean_pct,
+       round(sum(net) / 1e9, 4) net_sol, round(avg(cost) / 1e9, 3) avg_stake
+from pos where state = 'closed' and cost > 0 and t_ms >= $E0 * 1000 group by tier order by tier;
+.print
+.print == tweet check $SINCE (entry.tweet_gate, the rule's buys only): verdicts by kind (reused_tweet = the coin's tweet link was
+.print    used by an earlier coin; nothing to do with copying his trades), how fast they came, and our closed trades by verdict
+with k as (select kind, ms, slot_off, row_number() over (partition by kind order by ms) rn,
+                  count(*) over (partition by kind) n from tweets where m8 <> '')
+select case kind when 'copy' then 'reused_tweet' else kind end verdict, max(n) creates, sum(slot_off = 0) in_create_slot, sum(slot_off = 1) next_slot, sum(slot_off >= 2) later,
+       max(case when rn = (n + 1) / 2 then ms end) median_ms
+from k group by kind order by creates desc;
+select coalesce((select case t.kind when 'copy' then 'reused_tweet' else t.kind end from tweets t where t.m8 = substr(p.mint, 1, 8) limit 1), 'not fetched') verdict,
+       count(*) trades, sum(net > 0) wins, round(100.0 * avg(net * 1.0 / cost), 1) mean_pct, round(sum(net) / 1e9, 4) net_sol
+from pos p where state = 'closed' and cost > 0 and t_ms >= ${TR:-$D0} * 1000 group by verdict order by trades desc;
+.print
+.print == tweet feed $SINCE (entry.tweet_feed): its calls against the tweet check's verdict on the same coin, and our closed trades by call
+select case f.call when 'copy' then 'reused_tweet' else f.call end call, count(*) creates, coalesce(sum(t.kind = 'first'), 0) first, coalesce(sum(t.kind = 'copy'), 0) reused_tweet,
+       coalesce(sum(t.kind = 'stale'), 0) stale, coalesce(sum(t.kind = 'no_tweet'), 0) no_tweet,
+       coalesce(sum(t.kind = 'error'), 0) error, sum(t.kind is null) no_verdict
+from feeds f left join tweets t on t.m8 = f.m8 where f.m8 <> '' group by f.call order by creates desc;
+select coalesce((select f.call from feeds f where f.m8 = substr(p.mint, 1, 8) limit 1), 'not called') call,
+       count(*) trades, sum(net > 0) wins, round(100.0 * avg(net * 1.0 / cost), 1) mean_pct, round(sum(net) / 1e9, 4) net_sol
+from pos p where state = 'closed' and cost > 0 and t_ms >= ${TR:-$D0} * 1000 group by call order by trades desc;
+.print
+.print == dumper list $SINCE (entry.dumper_skip): hits by uri host, and our closed trades since the rule started by the hit's host (big = -30% or worse)
+select host, count(*) hits, sum(act = 'skipped') skipped, sum(act = 'logged') fired_anyway
+from dumps where m8 <> '' group by host order by hits desc;
+select coalesce((select d.host from dumps d where d.m8 = substr(p.mint, 1, 8) limit 1), 'no hit') dumper_host,
+       count(*) trades, sum(net > 0) wins, sum(net <= -0.3 * cost) big, round(100.0 * avg(net * 1.0 / cost), 1) mean_pct,
+       round(sum(net) / 1e9, 4) net_sol
+from pos p where state = 'closed' and cost > 0 and t_ms >= ${TR:-$D0} * 1000 group by dumper_host order by trades desc;
+.print
+.print == follow $SINCE (entry.follow, docs/16): verdicts at the fire (rule = our rule's coin; skip_* = a coin our rule skips,
+.print    parked for its verdict: log = followed but not bought in log mode), and our closed trades by the verdict
+select kind, fees, heat, mode, yes followed, count(*) coins, sum(act = 'fire') fired, sum(act = 'skip') skipped, sum(act = 'log') logged
+from follows where m8 <> '' group by kind, fees, heat, mode, yes order by kind = 'rule' desc, coins desc;
+select coalesce((select f.yes || ' ' || f.kind || ' ' || f.heat || ' ' || f.mode from follows f where f.m8 = substr(p.mint, 1, 8) limit 1), 'no verdict') follow,
+       count(*) trades, sum(net > 0) wins, sum(net <= -0.3 * cost) big, round(100.0 * avg(net * 1.0 / cost), 1) mean_pct,
+       round(sum(net) / 1e9, 4) net_sol
+from pos p where state = 'closed' and cost > 0 and t_ms >= ${ERA:-$D0} * 1000 group by follow order by trades desc;
+.print
+"
+SQL_TAIL="
+.print == copy $SINCE (entry.copy, docs/17 section 9): his launch buys the bot saw, by what it did (buy = copied; skip_small:
+.print    his tip under the floor; skip_unlisted: operator not in the table; skip_few: operator he bought < 2 times in 24 h),
+.print    and our closed trades by source (copy = his copies, copyw <wallet> = another wallet's, rule = the rule's own fires)
+select act, count(*) copies, sum(at = 0) at_create, sum(at = 1) next_slot, round(avg(his_sol), 2) his_avg_sol,
+       round(avg(case when tip_m >= 0 then tip_m end), 1) his_avg_tip_m
+from copies where m8 <> '' group by act;
+select coalesce((select 'copyw ' || w.w8 from copyw w where w.m8 = substr(p.mint, 1, 8) and w.act = 'buy' limit 1),
+                case when exists (select 1 from copies c where c.m8 = substr(p.mint, 1, 8) and c.act = 'buy') then 'copy' else 'rule' end) source,
+       count(*) trades, sum(net > 0) wins, sum(net <= -0.3 * cost) big, round(100.0 * avg(net * 1.0 / cost), 1) mean_pct,
+       round(sum(net) / 1e9, 4) net_sol
+from pos p where state = 'closed' and cost > 0 and t_ms >= ${ERA:-$D0} * 1000
+  and substr(p.mint, 1, 8) not in (select m8 from erased) group by source order by source;
+.print
+.print == the other copied wallets $SINCE (entry.copy_more, docs/19 section 5): their launch buys the bot saw, by wallet and
+.print    what it did (buy = copied, sold at create + sell_at; skip_small: under the wallet's min_sol; log = journaled only),
+.print    and how many of the copies landed (filled) or landed and failed (none while killed: the line still says buy)
+select w.w8 wallet, w.act, count(*) buys, sum(w.at = 0) at_create, sum(w.at = 1) next_slot, round(avg(w.sol), 2) its_avg_sol,
+       max(w.hold) sell_at, coalesce(sum(exists (select 1 from fills f where substr(f.mint, 1, 8) = w.m8 and f.fail_reason is null)), 0) filled,
+       coalesce(sum(exists (select 1 from fills f where substr(f.mint, 1, 8) = w.m8 and f.fail_reason is not null)), 0) failed
+from copyw w where w.m8 <> '' group by w.w8, w.act order by w.w8, w.act;
+.print
+.print == where our copies landed behind the copied buy, newest first (who: him, or the other wallet; d = block positions after
+.print    its buy, in its slot; failed = landed and refused by the price limit, which costs the fee only; our bid as sent)
+with c as (select m8, 'him' who, tip_m, slot, idx, act from copies union all select m8, w8, null, slot, idx, act from copyw)
+select strftime('%H:%M:%S', min(s.sent_unix_ms) / 1000, 'unixepoch', 'localtime') time, c.m8 mint, c.who, c.tip_m his_tip_m,
+       round(max(s.bid) / 1e6, 1) our_bid_m,
+       case when c.slot = 0 then '?' when f.slot = c.slot then 'his slot' else '+' || (f.slot - c.slot) || ' slot' end landed,
+       case when c.slot > 0 and f.slot = c.slot then f.tx_index - c.idx end d,
+       case when f.fail_reason is null then 'filled' else 'failed' end result,
+       (select round(100.0 * p.net / max(p.cost, 1), 1) from pos p where substr(p.mint, 1, 8) = c.m8 and p.state = 'closed') pct
+from c join fills f on substr(f.mint, 1, 8) = c.m8 join sends s on s.sig = f.sig
+where c.act = 'buy' and s.sent_unix_ms >= $E0 * 1000
+group by c.m8, f.sig order by time desc limit 15;
+.print
+.print == last 10 trades, newest first (pct and net_sol after tips and fees)
+select strftime('%H:%M:%S', t_ms / 1000, 'unixepoch', 'localtime') time, substr(mint, 1, 8) mint, tier, round(cost / 1e9, 3) stake,
+       case when state = 'closed' then round(100.0 * net / max(cost, 1), 1) end pct,
+       case when state = 'closed' then round(net / 1e9, 4) end net_sol, round(txc / 1e9, 4) tips_fees, state,
+       coalesce(reason, '-') exit, case when closed_slot is not null then closed_slot - opened_slot end held_slots
+from pos where t_ms >= ${ERA:-0} * 1000 and substr(mint, 1, 8) not in (select m8 from erased) order by t_ms desc limit 10;
+.print
+.print == open now
+select count(*) open_now, coalesce(group_concat(substr(p.mint, 1, 8) || ' tier '
+         || coalesce((select max(t.tier) from tiers t where t.m8 = substr(p.mint, 1, 8)), 0), ', '), '-') positions
+from positions p where p.state <> 'closed';
+.print
+"
+SQL_TT="
+.print == TIP TEST since $( [ -n "${TT:-}" ] && lt -d "@${TT:-0}" '+%b %d %H:%M' ) $LZ, by our bid: keep the higher bid only if it lands closer (d_avg) AND nets more per copy
+with c as (select m8, 'him' who, slot, idx from copies where act = 'buy' and m8 <> ''
+           union all select m8, w8, slot, idx from copyw where act = 'buy' and m8 <> ''),
+a as (select i.intent_id, i.mint, max(s.bid) bid from intents i join sends s on s.intent_id = i.intent_id
+      where s.kind = 'buy' and s.sent_unix_ms >= ${TT:-0} * 1000 group by i.intent_id),
+x as (select a.*, c.who, c.slot cslot, c.idx cidx,
+        (select f.slot from fills f where f.intent_id = a.intent_id order by f.fail_reason is not null limit 1) fslot,
+        (select f.tx_index from fills f where f.intent_id = a.intent_id order by f.fail_reason is not null limit 1) fidx,
+        exists (select 1 from fills f where f.intent_id = a.intent_id and f.fail_reason is null) ok,
+        exists (select 1 from fills f where f.intent_id = a.intent_id and f.fail_reason is not null) bad,
+        (select p.net from pos p where p.mint = a.mint and p.state = 'closed') net,
+        (select p.cost from pos p where p.mint = a.mint and p.state = 'closed') cost
+      from a join c on c.m8 = substr(a.mint, 1, 8))
+select round(bid / 1e6, 1) our_bid_m, who, count(*) copies, sum(ok) filled, sum(bad and not ok) failed, sum(not ok and not bad) not_landed,
+       sum(c_slot) in_its_slot, round(avg(case when c_slot then fidx - cidx end), 0) d_avg,
+       sum(c_slot and fidx - cidx <= 15) within_15,
+       round(100.0 * avg(case when cost > 0 then net * 1.0 / cost end), 1) mean_pct, round(coalesce(sum(net), 0) / 1e9, 4) net_sol,
+       round(coalesce(sum(net), 0) / 1e9 / max(count(*), 1), 4) net_per_copy
+from (select *, (cslot > 0 and fslot = cslot) c_slot from x) group by bid, who order by who, bid;
+.print
+"
+SQL_RISK="
+.print == risk ledger today
+select day, round(realized / 1e9, 4) realized_sol, buys, killed, coalesce(kill_reason, '-') kill_reason
+from risk where day = date('now');
+"
+SQL_STOP="
+.print == the daily stop counts the UTC day (since $(lt -d "@$D0" +%H:%M) $LZ), not the start: that day's realized against the stop
+select round(coalesce((select realized from risk where day = date('now')), 0) / 1e9, 4) today_realized_sol,
+       round($(tr -d '_' <<<"$(cfgv max_daily_loss_lamports)" | grep -oE '^[0-9]+' || echo 0) / 1e9, 4) daily_stop_sol;
+"
+SQL_OPEN="
+.print == open now
+select count(*) open_now, coalesce(group_concat(substr(mint, 1, 8), ', '), '-') positions from positions where state <> 'closed';
+.print
+"
+[ -n "${TT:-}" ] || SQL_TT=""
+# the short view: the results and the tip test, then rugsnipe-trades' tables (every copy), then the open positions and
+# the daily stop (SQL2)
+if [ "$SHORT" = 1 ]; then SQL="$SQL$SQL_TT"; SQL2="$SQL_OPEN$SQL_STOP"; else SQL="$SQL$SQL_LONG$SQL_TT$SQL_TAIL$SQL_RISK"; fi
+if [ "${CHECK_PRINT_SQL:-}" = 1 ]; then printf '%s\n' "$SQL${SQL2:-}"; exit 0; fi
+# sqlite3 reads state.db as the service user, its times in local time
+sq() { sudo -u rugsnipe env TZ="$LT" sqlite3 -readonly "$@"; }
+# the newest copy of a helper: beside this script, the box's checkout, then the installed one
+tool() { local t; for t in "$(dirname "$(readlink -f "$0")")/$1" "$HOME/rugsnipe/deploy/bin/$1" "/opt/rugsnipe/src/deploy/bin/$1"; do
+  [ -f "$t" ] && { echo "$t"; return; }; done; echo "$1"; }
+
+if [ "$HIM" = 1 ]; then
+  [ -n "$ERA" ] || { echo "no start recorded: bash ~/check.sh start"; exit 1; }
+  VS=$(tool rugsnipe-vs-him)
+  WA=()
+  if [ -n "${HIMW:-}" ]; then
+    # a prefix: the copy_more wallet of the config that starts with it
+    w=$HIMW; [ ${#w} -ge 32 ] || w=$(sudo grep -oE "\"$HIMW[1-9A-HJ-NP-Za-km-z]+\"" "$CFG" 2>/dev/null | head -1 | tr -d '"')
+    [ -n "$w" ] || { echo "no wallet starting with $HIMW in $CFG (entry.copy_more): give its full address"; exit 1; }
+    WA=(--wallet "$w")
+  fi
+  who=his; [ -z "${HIMW:-}" ] || who="the trades of $HIMW"
+  [ "$who" = his ] && who="his trades"
+  echo "(reading $who since the start from the chain: about a call per 100 transactions)"
+  printf '%s\n%s\n' "$CPL" "$CWL" | sudo python3 -I "$VS" --since "$ERA" --state "$DB" "${WA[@]}"
+  exit $?
+fi
+
+# ---- header: health, wallet, config, feeds, gates
+svc() { systemctl is-active "$1" 2>/dev/null || true; }
+q() { echo "${1:-?}"; }
+up=$(num "$(g '^\[ *[0-9]+s\]')"); wallet=$(num "$(g 'wallet [0-9]+')"); open=$(num "$(g 'positions [0-9]+')")
+nonces=$(num "$(g 'sell_nonces [0-9]+')"); failc=$(num "$(g 'fail_cost [0-9]+')")
+grpc_rc=$(g 'grpc: creates [0-9]+ miss [0-9]+ reconnects [0-9]+' | grep -oE '[0-9]+$')
+grpc_age=$(g 'grpc: creates [0-9]+ miss [0-9]+ reconnects [0-9]+ since_frame [0-9]+' | grep -oE '[0-9]+$')
+desh_rc=$(g 'shreds: creates [0-9]+ miss [0-9]+ reconnects [0-9]+' | grep -oE '[0-9]+$')
+table=$(num "$(sudo journalctl -u rugsnipe-hot -o cat _PID="$PID" 2>/dev/null | grep -m1 -oE 'operators: [0-9]+ signers')")
+next=$(systemctl list-timers rugsnipe-operators.timer --no-legend 2>/dev/null | awk '{ print $2, $3, $4 }')
+next=$( [ -n "$next" ] && lt -d "$next" +%H:%M 2>/dev/null)
+if [ "$SHORT" = 1 ]; then
+  killed=$(g 'killed [a-z_]+' | awk '{ print $2 }')
+  paused=$(g 'BUYS PAUSED \([a-z_]+\)|FEED STALE')
+  if [ "$(svc rugsnipe-hot)" != active ]; then state="NO: the hot service is $(svc rugsnipe-hot)"
+  elif [ -z "$killed" ]; then state="unknown yet (no status line from this process: the hot loop prints one every minute)"
+  elif [ "$killed" != no ]; then state="NO: stopped by the $killed kill (its trigger and the unkill steps below)"
+  elif [ -n "$paused" ]; then state="NO: $paused"
+  else state="yes"; fi
+  echo "== $(lt +%H:%M:%S) $LZ  TRADING: $state"
+  if [ -n "$killed" ] && [ "$killed" != no ]; then
+    if [ -n "${CHECK_LATCH+x}" ]; then latch=$CHECK_LATCH; else
+      latch=$(sq "$DB" "select json_extract(v, '\$.reason') || ' at ' || strftime('%m-%d %H:%M:%S', json_extract(v, '\$.unix'), 'unixepoch', 'localtime') || ' $LZ: ' || json_extract(v, '\$.detail') from kv where k = 'kill_latch'" 2>/dev/null)
+    fi
+    kf=$(cfgv kill_file | tr -d '"'); kf=${kf:-/run/rugsnipe/KILL}
+    echo "   the kill: $(q "$latch")"
+    echo "   it holds across restarts; once the cause is gone, unkill (docs/07 section 6):"
+    echo "     sudo systemctl stop rugsnipe-hot && sudo rm -f $kf && sudo -u rugsnipe /opt/rugsnipe/bin/rugsnipe-ctl unkill --state $DB && sudo systemctl start rugsnipe-hot"
+  fi
+  if [ -n "$ERA" ]; then
+    m=$(( (now - ERA) / 60 ))
+    echo "   started $(lt -d "@$ERA" '+%b %d %H:%M:%S') $LZ ($((m / 60))h$(printf '%02d' $((m % 60)))m ago)"
+  else echo "   no start recorded: bash ~/check.sh start"; fi
+  w_start=$(num "$(sudo journalctl -u rugsnipe-hot -o cat --since "@$E0" 2>/dev/null | grep -E '^\[ *[0-9]+s\]' | grep -m1 -oE 'wallet [0-9]+')")
+  echo "   wallet $( [ -n "$wallet" ] && sol "$wallet" || echo '?') SOL (at the start $( [ -n "$w_start" ] && sol "$w_start" || echo '?'), change $(awk -v a="${w_start:-}" -v b="${wallet:-}" 'BEGIN { if (a == "" || b == "") print "?"; else printf "%+.4f", (b - a) / 1e9 }') SOL)  open positions $(q "$open")  daily stop $(sol "$(tr -d '_' <<<"$(cfgv max_daily_loss_lamports)")") SOL"
+  cp_=$(g 'copy (log|on)( his [0-9]+ small [0-9]+ unlisted [0-9]+ few [0-9]+)? seen [0-9]+ buy [0-9]+ log [0-9]+ passed [0-9]+')
+  cv() { grep -oE "(^| )$1 [0-9]+" <<<"$cp_" | grep -oE '[0-9]+$'; }
+  rb=$(cfgv rule_buys)
+  if [ "$rb" = false ]; then echo "   buys: copies of his buys only (entry.rule_buys = false)"
+  else echo "   buys: the rule's own AND copies of his buys (entry.rule_buys = $(q "$rb"); false = copies only)"; fi
+  if [ -z "$cp_" ]; then echo "   copy (this process): $(q "")"
+  elif [ -n "$(cv his)" ]; then
+    echo "   copy $(awk '{ print $2 }' <<<"$cp_") (this process): his launch buys $(cv his)  not copied: tip under $(q "$(list_m "$(cfgv copy_min_tip_lamports)")")M $(cv small), operator not listed $(cv unlisted), operator he bought < $(k=$(cfgv copy_signer_min_buys); echo "${k:-2}") times in $(k=$(cfgv copy_signer_window_h); echo "${k:-24}") h $(cv few)  ->  copied $(cv buy) (journaled only $(cv log), coin already ours $(cv passed))"
+  else echo "   copy (this process): $cp_"; fi
+  cw_=$(g 'copyw wallets [0-9]+ seen [0-9]+ small [0-9]+ buy [0-9]+ log [0-9]+ passed [0-9]+')
+  wv() { grep -oE "(^| )$1 [0-9]+" <<<"$cw_" | grep -oE '[0-9]+$'; }
+  [ -n "$cw_" ] && echo "   copyw (this process): $(wv wallets) other wallet(s) (entry.copy_more): their launch buys $(wv seen)  not copied: under min_sol $(wv small)  ->  copied $(wv buy) (journaled only $(wv log), coin already ours $(wv passed))"
+  echo "   sends (this process): $(q "$(g 'probe attempts [0-9]+ landed [0-9]+ failed [0-9]+ dropped [0-9]+' | sed 's/probe //')")"
+  echo "== results since the start (after tips and fees; failed = our buys that landed failed)"
+  printf '%s\n' "$SQL" | sq -header -column "$DB"
+  # every launch buy of the copied wallets since the start, one row each (their own trades read from the chain once)
+  if [ -n "$ERA" ]; then
+    if [ -n "${CHECK_TRADES+x}" ]; then TA=($CHECK_TRADES); else TA=(--state "$DB" --tz "$LT"); fi
+    printf '%s\n' "$JL" | sudo python3 -I "$(tool rugsnipe-trades)" --since "$ERA" --until "$JCUT" \
+      --erase "$(tr -s ' ' ',' <<<"$ERASED")" "${TA[@]}"
+    echo
+  fi
+  printf '%s\n' "$SQL2" | sq -header -column "$DB"
+  # the long copy (rugsnipe-long, docs/20): its own wallet and book
+  if [ -x /opt/rugsnipe/bin/rugsnipe-long ] && sudo test -f /etc/rugsnipe/long.toml; then
+    echo
+    echo "   long copy service: $(systemctl is-active rugsnipe-long 2>/dev/null)"
+    sudo /opt/rugsnipe/bin/rugsnipe-long status --config /etc/rugsnipe/long.toml --tz "$(TZ=$LT date +%z)" --last 15 --chain 2>&1
+  fi
+  exit 0
+fi
+echo "== $(lt +%H:%M:%S) $LZ  hot $(svc rugsnipe-hot)  guard $(svc rugsnipe-guard)  up $(q "$up")s  $(q "$(g 'killed [a-z_]+')")  $(g 'BUYS PAUSED \([a-z_]+\)|FEED STALE')"
+[ -n "$up" ] || echo "   (no status line from this process yet: the hot loop prints one every minute)"
+echo "   wallet $( [ -n "$wallet" ] && sol "$wallet" || echo '?') SOL  open $(q "$open")  free sell nonces $(q "$nonces")  table $(q "$table") signers  next refresh $(q "$next") $LZ"
+# the wallet as the bot last read it (lags a minute or two): the only number that holds every cost
+w_day=$(num "$(sudo journalctl -u rugsnipe-hot -o cat --since "@$D0" 2>/dev/null | grep -E '^\[ *[0-9]+s\]' | grep -m1 -oE 'wallet [0-9]+')")
+w_proc=$(num "$(sudo journalctl -u rugsnipe-hot -o cat _PID="$PID" --since "@$T0" 2>/dev/null | grep -E '^\[ *[0-9]+s\]' | grep -m1 -oE 'wallet [0-9]+')")
+dsol() { [ -n "$1" ] && [ -n "$2" ] && awk -v a="$1" -v b="$2" 'BEGIN { printf "%+.4f", (b - a) / 1e9 }' || echo '?'; }
+echo "   wallet change: today $(dsol "$w_day" "$wallet") SOL (from $( [ -n "$w_day" ] && sol "$w_day" || echo '?'))  this process $(dsol "$w_proc" "$wallet") SOL (from $( [ -n "$w_proc" ] && sol "$w_proc" || echo '?'))"
+echo "   config: min tier $(q "$(cfgv min_stake_tier)")  stake by tier $(q "$(list_sol "$(cfgv stake_by_tier)")") SOL  bid by tier $(q "$(list_m "$(cfgv by_tier)")")M  picks $(q "$(cfgv presend_mode | tr -d '"')") (cut $(q "$(cfgv presend_cut | tr -d '"')"))  daily stop $(sol "$(tr -d '_' <<<"$(cfgv max_daily_loss_lamports)")") SOL  sell bid: hold_to + dump $(q "$(list_m "$(cfgv dump_tip_lamports)")")M, other $(q "$(list_m "$(cfgv sell_tip_lamports)")")M"
+echo "   feeds: grpc reconnects $(q "$grpc_rc") last frame $(q "$grpc_age") ms  deshred reconnects $(q "$desh_rc")"
+echo "   gates: $(q "$(g 'gate parked [0-9]+ fired [0-9]+')")  $(g 'presend skip t[12] scored [0-9]+ skipped [0-9]+' | sed 's/presend skip /picks /')  $(g 'template too_big [0-9]+ bundle_sol [0-9]+ dev_buy [0-9]+ uri_host [0-9]+')"
+tw=$(g 'tweet (log|on|exit) asked [0-9]+ .* fired [0-9]+( cut [0-9]+)?( ring_full [0-9]+)?')
+[ -n "$tw" ] && echo "   $tw"
+cp_=$(g 'copy (log|on)( his [0-9]+ small [0-9]+ unlisted [0-9]+ few [0-9]+)? seen [0-9]+ buy [0-9]+ log [0-9]+ passed [0-9]+')
+[ -n "$cp_" ] && echo "   $cp_  (copy_min_tip $(q "$(list_m "$(cfgv copy_min_tip_lamports)")")M, bound $(q "$(cfgv copy_max_premium)"))"
+cw_=$(g 'copyw wallets [0-9]+ seen [0-9]+ small [0-9]+ buy [0-9]+ log [0-9]+ passed [0-9]+')
+[ -n "$cw_" ] && echo "   $cw_  (entry.copy_more)"
+echo "   sends: $(q "$(g 'probe attempts [0-9]+ landed [0-9]+ failed [0-9]+ dropped [0-9]+' | sed 's/probe //')")  failed cost $( [ -n "$failc" ] && sol "$failc" || echo '?') SOL"
+echo "== this process (since $(lt -d "@$T0" +%H:%M) $LZ) and today (the UTC day, since $(lt -d "@$D0" +%H:%M) $LZ)"
+printf '%s\n' "$SQL" | sq -header -column "$DB"

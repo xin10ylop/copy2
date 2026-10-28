@@ -1,0 +1,180 @@
+# rugsnipe example configuration (docs/06-architecture.md section 6).
+#
+# Copy to /etc/rugsnipe/rugsnipe.toml (root:rugsnipe 0640); deploy/install.sh does this once
+# and never overwrites an existing file. Real configs are gitignored (config/*.toml except
+# *.example.toml). This file holds NO secrets: [secrets] lists systemd credential NAMES that
+# the units load with LoadCredential= from /etc/rugsnipe/keys/ (root 0700, files 0400/0600).
+#
+# Validation refuses probe or live if any cap is 0 or missing, cu_limit = 0, a key credential
+# is group- or world-readable, clock offset > 5 ms, no healthy post-exec feed, the ArmSet is
+# unsigned, stale or from the wrong regime, or the [rpc_budget] role sum is > 32. Probe also
+# needs the signed ArmSet to carry probe_allowed = true (NOT gate_passed: probes measure what
+# the gate needs); live needs gate_passed = true, the --live flag and a `ctl arm-live` token.
+#
+# One file serves Rust and Python: [rpc_budget] per_method / per_host / methods and the
+# [collector] table are read by analysis/rugsnipe_analysis/{rpcbudget,collector}.py; the Rust
+# side parses and validates them too (unknown keys are refused everywhere).
+[box]
+id = "fra1"
+role = "hot"
+singleton = true
+[mode]
+mode = "paper"                                     # paper | probe | live
+regime_freeze_slots = [[459_640_000, 459_869_000]] # Alpenglow: buys forced to paper
+max_age_slots = 2
+[secrets]                                          # systemd credential NAMES, never key material
+hot_keypair = "hot-keypair"
+probe_keypair = "probe-keypair"
+api_keys = "api-keys"
+armset_pubkey = "<base58>"
+cold_wallet = "<base58>"
+[risk]
+max_snipe_lamports = 250_000_000
+max_probe_lamports = 250_000_000                  # ceiling: [probe] stage a (0.02 SOL) or b (0.25 SOL) narrows it
+max_probes_per_day = 300                           # ceiling, attempts; stage a 50, b 300
+max_open_positions = 4
+max_daily_loss_lamports = 1_000_000_000            # chain-derived, marked to the sell quote
+max_consec_losses_per_op = 5
+max_buys_per_op_per_day = 300   # ceiling; the class arm counts as one operator, so this must not bind below the probe stage caps (50/day A, 300/day B)
+max_buys_per_hour = 40    # ceiling; probe-B averages 12.5/h with bursts
+max_bid_lamports = 25_000_000
+max_sell_spend_lamports = 20_000_000
+max_entry_vsol_lamports = 40_000_000_000
+max_hot_balance_lamports = 5_000_000_000
+min_hot_balance_lamports = 1_000_000_000
+kill_file = "/run/rugsnipe/KILL"
+armset_max_age_s = 21_600
+decode_miss_kill_ratio = 0.01
+send_error_kill_ratio = 0.20
+max_clock_offset_ms = 5                            # start refusal
+send_error_window = 50                             # kill triggers (probe/live; docs/06 section 13): error ratio over the last N sends,
+unexplained_drop_lamports = 50_000_000             #   wallet drop beyond known spends, state disk use, running clock offset,
+max_disk_used_pct = 90                             #   gRPC slot behind getSlot
+kill_clock_offset_ms = 50
+max_slot_drift = 8
+[feeds]
+logsws = { enabled = true, url = "wss://api.mainnet-beta.solana.com", stale_ms = 10_000 }
+relay = { enabled = false, socket = "/run/rugsnipe/pp.sock" }    # collector's PumpPortal frames
+grpc = { enabled = false, url = "https://api.rpcpool.com", x_token = "GRPC_TOKEN", stale_ms = 2_000, bundle_run = true }   # Yellowstone (Triton PAYG / Alchemy): docs/08 section 9; x_token = a NAME in api-keys
+shreds = { enabled = false, bind = "0.0.0.0:7733", sources = ["dz_edge", "helius"] }
+probe_live_require = "post_exec"
+[senders]                                          # probe: one variant per sender on the intent's single durable nonce
+quarantine_min = 10                                # a sender above risk.send_error_kill_ratio over its own last N sends is skipped this long
+# `key` is a NAME inside the api-keys credential (/etc/rugsnipe/keys/api-keys.toml, root 0400), never the key:
+#   HELIUS_KEY = "..."   NOZOMI_KEY = "..."   ASTRALANE_KEY = "..."   BLOCKRAZOR_KEY = "..."   NEXTBLOCK_KEY = "..." (optional)
+# Each sender's tip goes to its own tip accounts and is raised to its minimum (a tip reverts with a failed buy);
+# min_tip can only raise the provider floor (Nozomi silently drops tips below 0.001 SOL).
+paper = { enabled = true }
+rpcsend = { enabled = true, url = "https://api.mainnet-beta.solana.com", sells_only = true }
+helius = { enabled = false, url = "http://fra-sender.helius-rpc.com/fast", key = "HELIUS_KEY" }        # 0.001 SOL; 50 req/s with a key (1/s keyless)
+helius_swqos = { enabled = false, url = "http://fra-sender.helius-rpc.com/fast" }                      # &swqos_only=true, 5,000 lamports; uses helius.key
+nozomi = { enabled = false, url = "http://fra2.nozomi.temporal.xyz", key = "NOZOMI_KEY", min_tip = 1_000_000 }   # batch send, 5/s
+# Nozomi Send Bundle: the buy copy of a class with a bid.bundle_priority share, alone in a bundle to the block
+# builders (Harmonic, Jito), which drop it if it would fail: the bid rides as the priority fee and is paid only when
+# the buy lands (plus the 0.001 SOL tip). Buys only. Uses nozomi.key; the key must be allowed to send bundles (403).
+nozomi_bundle = { enabled = false, url = "http://fra2.nozomi.temporal.xyz" }
+astralane = { enabled = false, url = "http://fr.gateway.astralane.io/irisb", key = "ASTRALANE_KEY", min_tip = 1_000_000 }
+blockrazor = { enabled = false, url = "http://frankfurt.solana.blockrazor.xyz:443/sendTransaction", key = "BLOCKRAZOR_KEY" }  # mode fast, 0.0001 SOL, 3 TPS
+jito = { enabled = false, regions = ["frankfurt", "amsterdam"], max_rps = 1 }                       # bundleOnly; 1 req/s per IP per region; the pay-on-success primary only
+nextblock = { enabled = false, key = "NEXTBLOCK_KEY" }
+tpu = { enabled = false, leaders_ahead = 2 }
+[rpc_budget]                                       # req/s per public-RPC egress IP; roles sum <= 32
+hot = 4
+guard = 4
+keeper = 8
+collector = 12
+backfill = 4
+per_method = 4                                     # Python buckets: cap per (endpoint host, method)
+per_host = 10                                      # Python buckets: cap per endpoint host, all methods
+# methods = { getBlock = 2 }                       # per-method overrides of per_method (Python)
+[tx]
+format = "legacy"
+cu_limit = 0                                       # FLOOR of the per-mint CU limit: the hot path patches 65,000 + 1,500*S per mint
+                                                   # (S = sum of 255 - bump over bc, curve base ATA, curve wSOL ATA, our ATA;
+                                                   # research/gap-5), clamped to [cu_limit, 1,400,000]; sells: max(it, 88,000).
+                                                   # 65_000 recommended; 0 = probe/live refused until `rugsnipe-ctl sim`
+                                                   # confirms the fit (paper falls back to 65,000)
+lads_bytes = 0
+nonce_pool = 32
+sell_nonce_pool = 8
+burn_after_slots = 3
+partial_fill = false
+[bid]                                              # docs/03 section 6 "Pay on success"
+quantile = 0.75
+# [priority, tip] per leader class. The tip is a transfer AFTER the buy in the same transaction: a failed
+# (slippage-capped) buy reverts it, while the base fee and the priority fee are charged on failure too.
+# Jito-Agave (tip-ordered through the block engine) bids with the tip and keeps the priority fee at the floor.
+# BAM, Harmonic and other clients order by priority fee (BAM: the earlier tx in a round had the higher CU price
+# 86-89% of the time, docs/03 section 6), so there the bid is the priority fee, at risk and capped below.
+# BAM stays priority-ordered until the probe measures which variant lands per leader class.
+split = { jito_agave = [0.0, 1.0], bam = [1.0, 0.0], harmonic = [1.0, 0.0], other = [1.0, 0.0] }
+# the same for sells (unset = split): a sell has no price bound, so its priority fee is never wasted; with the buys
+# on the tip only, this keeps sells on the priority fee where the leader orders by it
+# sell_split = { jito_agave = [0.0, 1.0], bam = [1.0, 0.0], harmonic = [1.0, 0.0], other = [1.0, 0.0] }
+min_priority_lamports = 10_000                     # header priority fee floor (gap-2: winners p10 1k, p25 45k lamports)
+failed_attempt_lamports_max = 1_000_000            # most a failed attempt may cost (base + priority); priority is clamped to it
+failed_attempt_max_by_class = { jito_agave = 0, bam = 0, harmonic = 0, other = 0 }   # per-class cap override; 0 = the global cap (probe-A arms, docs/06 section 6)
+# The share of the bid the bundle copy (senders.nozomi_bundle) pays as its priority fee, per leader class (0 = no
+# bundle copy): Harmonic orders by priority fee, and a bundle that would fail is dropped, so there the whole bid can
+# be the priority fee at no cost on a lost race. With the bundle on, give the plain copies of that class the tip only
+# (split.harmonic = [0.0, 1.0]): a plain copy that lands and fails still pays its priority fee.
+bundle_priority = { jito_agave = 0.0, bam = 0.0, harmonic = 1.0, other = 0.0 }
+[probe]                                            # docs/04 section 7, docs/08 section 9; read in mode = "probe" only
+stage = "a"                                        # a | b; a signed ArmSet that names probe_stage must name the same one (b: must name b)
+# each cap narrows the [risk] cap of the same name (the smaller non-zero value binds)
+a = { max_probe_lamports = 20_000_000, max_probes_per_day = 50, max_open_positions = 1, max_daily_loss_lamports = 200_000_000 }     # measurement: 300 attempts or 3 days
+b = { max_probe_lamports = 250_000_000, max_probes_per_day = 300, max_open_positions = 2, max_daily_loss_lamports = 1_000_000_000 } # ~200 landed trades
+# kill: EV per attempt (failures included) 90% upper bound < 0 after min_landed landed or min_attempts attempts,
+# median realised premium > max_median_premium, or landing below break-even over landing_attempts (shadow_gate.py --probe)
+kill = { min_landed = 100, min_attempts = 400, max_median_premium = 0.03, landing_attempts = 200 }
+[exit.default]
+tp = [[2.0, 0.5], [3.0, 1.0]]
+tp_slip_bps = 1500
+trail = { activate = 1.5, retrace_bps = 2500 }
+phantom_sl = { after_ms = 10_000, bps = 4000 }
+no_activity_ms = 150_000
+max_hold_ms = 1_800_000
+bundle_sell_min_lamports = 100_000_000
+consolidation_pct = 20
+big_buy_lamports = [0, 0]
+sell_retry = { every_slots = 2, max_tries = 15, tip_mult = 2.0 }
+[guard]
+takeover_after_ms = 5_000
+drop_from_peak_bps = 3000
+grace_s = 60
+[watch]
+default_ttl_s = 1800
+remove_if_no_launch_s = 3600
+last_transfer_min_frac = 0.9
+[obs]
+metrics_listen = ["127.0.0.1:9464", "10.77.0.2:9464"]
+rslog_dir = "/var/lib/rugsnipe/rslog"
+alert = { telegram = "TG_TOKEN", chat = "TG_CHAT", deadman = "HC_URL", hourly = true, commands = false }   # credential names (api-keys lines); Telegram optional
+[ab]                                               # probe/live only
+skip_p = 0.2
+small_arm = [0.2, 0.35]
+small_lamports = 50_000_000
+size_jitter = 0.10
+[collector]                                        # Python collector overrides (collector.py CollectorConfig); all optional
+# db_path = "data/analytics.db"                    # (default: repo data/analytics.db)
+# box = "ohio1"
+# relay_socket = "/run/rugsnipe/pp.sock"           # also set by [feeds] relay.enabled
+# pp_url = "wss://pumpportal.fun/api/data"
+# logs_url = "wss://api.mainnet-beta.solana.com"
+# rpc_endpoints = ["https://api.mainnet-beta.solana.com"]
+# budget_role = "collector"                        # an [rpc_budget] role
+# duration_s = 3600                                # unset = run forever
+# pp_stale_s = 60.0
+# logs_stale_s = 30.0
+# decode_delay_s = 8.0
+# funding_delay_s = 45.0
+# rivals_delay_s = 90.0
+# tape_delay_s = 2100.0                            # tapes at T+35 min
+# tape_early_s = 300
+# tape_early_pages = 10
+# funding_hops = 1                                 # 0 = signer's own funding only
+# funding_scan = 4
+# cache_tx = false
+# workers = 10
+# api_rps = 3.0                                    # pump.fun frontend API
+# stats_every_s = 60.0

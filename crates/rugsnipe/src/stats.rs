@@ -1,0 +1,574 @@
+//! Metrics (docs/06 section 13): `prometheus-client` counters and gauges,
+//! every labelled child created at startup so the hot thread only does
+//! atomic adds (no allocation, no lock).
+
+use prometheus_client::metrics::counter::Counter;
+use prometheus_client::metrics::family::Family;
+use prometheus_client::metrics::gauge::Gauge;
+use prometheus_client::registry::Registry;
+use rugsnipe_feed::event::SRC_COUNT;
+use rugsnipe_feed::health::{MissKind, MISS_KIND_COUNT};
+use rugsnipe_feed::FeedSrc;
+use rugsnipe_tx::senders::SenderId;
+
+type Labels = Vec<(String, String)>;
+
+/// Pipeline decision codes recorded in rslog `Decision.code` next to the
+/// RiskGate codes (0 fire, 0x10 | paper reason, 0x20 | skip reason).
+pub mod code {
+    /// A real buy handed to the fire ring (probe/live only; paper records
+    /// its paper code instead), so `rugsnipe_decisions{outcome="fire"}`
+    /// counts real buys sent.
+    pub const FIRE: u8 = 0x00;
+    pub const CLASS: u8 = 0x41;
+    pub const NO_MATCH: u8 = 0x42;
+    pub const SHADOW: u8 = 0x43;
+    pub const STALE: u8 = 0x44;
+    pub const TOO_HIGH: u8 = 0x45;
+    pub const NO_NONCE: u8 = 0x46;
+    pub const SKIP_AB: u8 = 0x47;
+    pub const ALREADY_FIRED: u8 = 0x48;
+    pub const BAD_OP: u8 = 0x49;
+    pub const NO_POSITION_SLOT: u8 = 0x4a;
+    /// A per-mint key is not the canonical PDA of its seeds (no bump
+    /// matches), so the buy would fail on chain and no CU limit exists.
+    pub const BAD_KEYS: u8 = 0x4b;
+    /// A real mode with the post-execution feed running: a free feed's copy
+    /// of a create is recorded only (the gRPC copy decides, so a late-feed
+    /// paper intent can never hold the mint's slot).
+    pub const FREE_FEED_DEFERS: u8 = 0x4c;
+    /// A real decision that runs after the create slot (the lane's slot is
+    /// already past it): the buy could not land in the creation slot, so it
+    /// is not sent (docs/04 section 2: fire only in the create slot).
+    pub const LATE_SLOT: u8 = 0x4d;
+    /// `entry.require_bundle`: the create slot moved on with no other
+    /// wallet's buy of the mint (the launch was not bundled): not sent, no
+    /// risk or nonce taken.
+    pub const NO_BUNDLE: u8 = 0x4e;
+    /// `entry.require_bundle`: a trade of the mint beyond the bundle run
+    /// executed in the create slot before the parked create fired, or a
+    /// buy inside the run by a wallet outside the creator set and the
+    /// contiguous bundle (`hot::derive_run`), so the first buy behind the
+    /// bundle is someone else's: not sent (docs/04 section 2 scores rank 1
+    /// only), no risk or nonce taken. Also a run too long for the park to
+    /// check (`RunTrades::full`).
+    pub const NOT_FIRST: u8 = 0x4f;
+    /// The create's own dev buy is not one of `entry.dev_buy_sol` (operator
+    /// template filter); nothing parked, nothing sent.
+    pub const DEV_BUY: u8 = 0x50;
+    /// The create slot's leader is outside `entry.leader_regions` (the box
+    /// would land a slot late); nothing parked, nothing sent.
+    pub const FAR_LEADER: u8 = 0x51;
+    /// The create's dev, creator or a bundle wallet dumped an earlier
+    /// launch (`entry.dumper_skip = "skip"`).
+    pub const DUMPER: u8 = 0x52;
+    /// The pre-send entry gate scored the create below `entry.presend_cut`
+    /// (`entry.presend_mode = "skip"`): nothing sent, risk and nonce released.
+    pub const PRESEND: u8 = 0x53;
+    /// `entry.operators_only`: the create's signer (the fee payer, the
+    /// first signer of the create transaction) is not in the operator table
+    /// (`entry.operators_file`); with `entry.operators_exclude` (the
+    /// paper-wide instance) it is in it; nothing parked, nothing sent.
+    pub const NOT_OPERATOR: u8 = 0x54;
+    /// `entry.bundle_wallets`: the parked bundle run's distinct buyers
+    /// outside the creator set are not one of the listed counts; nothing
+    /// sent, no risk or nonce taken.
+    pub const BUNDLE_SHAPE: u8 = 0x55;
+    /// Real modes: no fresh blockhash for more than
+    /// `risk.max_blockhash_age_ms` and no free sell nonce, so a position
+    /// bought now could not be sold: nothing sent, risk released (transient,
+    /// clears on the next fresh blockhash; never latched).
+    pub const NO_BLOCKHASH: u8 = 0x56;
+    /// `entry.max_post_bundle_sol` (the pick template's price bound): the
+    /// post-bundle virtual SOL reserve the buy would be bound at (the
+    /// parked run's anchor, else V0) is above the cap; nothing sent, no risk
+    /// or nonce taken.
+    pub const TOO_BIG: u8 = 0x57;
+    /// `entry.max_bundle_sol`: the dev buy plus the parked run's
+    /// creator-set and bundle buys exceed the cap; nothing sent.
+    pub const BUNDLE_SOL: u8 = 0x58;
+    /// `entry.uri_hosts` / `entry.uri_hosts_deny`: the create's uri host is
+    /// not an allowed one, or a denied one; nothing parked, nothing sent.
+    pub const URI_HOST: u8 = 0x59;
+    /// `entry.min_stake_tier`: the create's signer is below the tier floor
+    /// (its table `stake_tier`; an unlisted signer is tier 0); nothing
+    /// parked, nothing sent.
+    pub const LOW_TIER: u8 = 0x5a;
+    /// `entry.tweet_gate = "on"` (docs/13): an earlier coin links the same
+    /// tweet; nothing sent, no risk or nonce taken.
+    pub const TWEET_COPY: u8 = 0x5b;
+    /// The tweet is older than `entry.tweet_max_age_s`.
+    pub const TWEET_STALE: u8 = 0x5c;
+    /// The metadata names no tweet, or the create was not fetched (its uri
+    /// host is not a tweet host, its dev buy is below
+    /// `entry.tweet_min_dev_sol`, its uri was too long to keep, or the
+    /// lane's ring was full).
+    pub const TWEET_NONE: u8 = 0x5d;
+    /// The metadata fetch failed (network, timeout, HTTP status, not JSON).
+    pub const TWEET_ERROR: u8 = 0x5e;
+    /// No verdict before the slot moved past the create slot +
+    /// `entry.tweet_late_slots` (or the park's 1 s).
+    pub const TWEET_LATE: u8 = 0x5f;
+    /// The tweet feed (`entry.tweet_feed = "on"`) called the coin a copy: its
+    /// ticker or name matched only posts an earlier coin had taken.
+    pub const TWEETFEED_COPY: u8 = 0x60;
+    /// `entry.follow = "gate" | "on"` (docs/16): none of the coin's bundle
+    /// wallets is one the copied wallet follows.
+    pub const NOT_FOLLOWED: u8 = 0x61;
+    /// `entry.rule_buys = false`: the bot buys only the copies of
+    /// `entry.copy`; the create is kept for one.
+    pub const RULE_OFF: u8 = 0x62;
+    /// Real modes: buys paused while the post-execution feed is stale or
+    /// drifting (the cold thread's feed pause; it lifts on its own).
+    pub const FEED_PAUSED: u8 = 0x63;
+    /// Metrics only: a paper decision that a real mode would have skipped
+    /// (rslog keeps the RiskGate code and the `would_skip` reason).
+    pub const PAPER_WOULD_SKIP: u8 = 0x1f;
+}
+
+/// `(code, label)` of every decision outcome.
+pub const DECISIONS: &[(u8, &str)] = &[
+    (code::FIRE, "fire"),
+    (0x11, "paper"),
+    (0x12, "paper_regime_frozen"),
+    (0x13, "paper_op_not_armed"),
+    (0x14, "paper_armset_gate"),
+    (code::PAPER_WOULD_SKIP, "paper_would_skip"),
+    (0x21, "skip_killed"),
+    (0x22, "skip_spend_cap"),
+    (0x23, "skip_bid_cap"),
+    (0x24, "skip_entry_too_high"),
+    (0x25, "skip_balance_low"),
+    (0x26, "skip_daily_loss"),
+    (0x27, "skip_op_latched"),
+    (0x28, "skip_max_open_positions"),
+    (0x29, "skip_max_buys_per_hour"),
+    (0x2a, "skip_max_buys_per_op_per_day"),
+    (0x2b, "skip_max_probes_per_day"),
+    (0x2c, "skip_bad_op_slot"),
+    (code::CLASS, "skip_class"),
+    (code::NO_MATCH, "no_match"),
+    (code::SHADOW, "shadow"),
+    (code::STALE, "stale"),
+    (code::TOO_HIGH, "too_high"),
+    (code::NO_NONCE, "no_nonce"),
+    (code::SKIP_AB, "skip_ab"),
+    (code::ALREADY_FIRED, "already_fired"),
+    (code::BAD_OP, "bad_op"),
+    (code::NO_POSITION_SLOT, "no_position_slot"),
+    (code::BAD_KEYS, "bad_keys"),
+    (code::FREE_FEED_DEFERS, "free_feed_defers"),
+    (code::LATE_SLOT, "late_slot"),
+    (code::NO_BUNDLE, "skip_no_bundle"),
+    (code::NOT_FIRST, "skip_not_first"),
+    (code::DEV_BUY, "skip_dev_buy"),
+    (code::FAR_LEADER, "skip_far_leader"),
+    (code::DUMPER, "skip_dumper"),
+    (code::PRESEND, "skip_presend"),
+    (code::NOT_OPERATOR, "skip_not_operator"),
+    (code::BUNDLE_SHAPE, "skip_bundle_shape"),
+    (code::NO_BLOCKHASH, "skip_no_blockhash"),
+    (code::TOO_BIG, "skip_bundle_too_big"),
+    (code::BUNDLE_SOL, "skip_bundle_sol"),
+    (code::URI_HOST, "skip_uri_host"),
+    (code::LOW_TIER, "skip_low_tier"),
+    (code::TWEET_COPY, "skip_tweet_copy"),
+    (code::TWEET_STALE, "skip_tweet_stale"),
+    (code::TWEET_NONE, "skip_tweet_none"),
+    (code::TWEET_ERROR, "skip_tweet_error"),
+    (code::TWEET_LATE, "skip_tweet_late"),
+    (code::TWEETFEED_COPY, "skip_tweetfeed_copy"),
+    (code::NOT_FOLLOWED, "skip_not_followed"),
+    (code::RULE_OFF, "skip_rule_off"),
+    (code::FEED_PAUSED, "skip_feed_stale"),
+];
+
+/// Label of a decision code.
+pub fn decision_label(c: u8) -> &'static str {
+    DECISIONS
+        .iter()
+        .find(|(k, _)| *k == c)
+        .map(|(_, n)| *n)
+        .unwrap_or("other")
+}
+
+/// Exit reason labels (index = [`crate::msgs::reason_index`]).
+pub const EXIT_REASONS: [&str; 9] = [
+    "bundle_sell",
+    "consolidation",
+    "big_buy",
+    "take_profit",
+    "trailing",
+    "phantom_sl",
+    "no_activity",
+    "max_hold",
+    "hold_to",
+];
+
+/// Every metric of the hot box.
+#[derive(Debug, Clone)]
+pub struct HotStats {
+    pub feed_events: [Counter; SRC_COUNT],
+    pub creates: [Counter; SRC_COUNT],
+    pub dups: Counter,
+    pub wire_misses: Counter,
+    /// `rugsnipe_feed_decode_miss_kind{src="hot",kind}`: the hot thread's
+    /// own decode of the wire copy, by [`MissKind`] (index = `kind as usize`).
+    pub wire_miss_kind: [Gauge; MISS_KIND_COUNT],
+    decisions: [Option<Counter>; 256],
+    decisions_other: Counter,
+    pub intents: Counter,
+    pub sends: [Counter; SenderId::COUNT],
+    pub fills: Counter,
+    pub fills_late: Counter,
+    pub unfilled: Counter,
+    pub positions_open: Gauge,
+    pub exits: [Counter; 9],
+    pub sells: Counter,
+    pub sell_fills: Counter,
+    pub sells_not_owner: Counter,
+    pub alerts: Counter,
+    pub dump_signals: Counter,
+    pub realized_lamports: Gauge,
+    pub trades_seen: Counter,
+    pub trades_unmatched: Counter,
+    pub trade_buffer_drops: Counter,
+    pub ring_full: Counter,
+    pub nonces_free: Gauge,
+    pub rslog_dropped: Gauge,
+    pub decision_p50_ns: Gauge,
+    pub decision_p99_ns: Gauge,
+    pub event_p99_ns: Gauge,
+    pub killed: Gauge,
+    /// Unix time of the last real buy this run (0: none since start; a
+    /// restart with a persisted latch shows 0).
+    pub last_fire_unix: Gauge,
+    /// Minutes since the last real buy, or since start when none this run
+    /// (set every minute by the cold thread's dead-man tick).
+    pub minutes_since_fire: Gauge,
+    pub mode: Gauge,
+    pub armset_ver: Gauge,
+    pub armset_age_s: Gauge,
+    pub lease_owned: Gauge,
+    pub funding_events: Counter,
+    pub watch_dynamic: Gauge,
+    pub feed_connected: [Gauge; SRC_COUNT],
+    pub feed_decode_miss: [Gauge; SRC_COUNT],
+    /// `rugsnipe_feed_decode_miss_kind{src,kind}` set from the feed health
+    /// snapshots (`[src as usize][kind as usize]`).
+    pub feed_decode_miss_kind: [[Gauge; MISS_KIND_COUNT]; SRC_COUNT],
+    pub feed_since_frame_ms: [Gauge; SRC_COUNT],
+    pub feed_reconnects: [Gauge; SRC_COUNT],
+    pub state_written: Gauge,
+    pub state_errors: Gauge,
+}
+
+fn child<M: Clone + Default>(f: &Family<Labels, M>, k: &str, v: &str) -> M {
+    f.get_or_create(&vec![(k.to_string(), v.to_string())])
+        .clone()
+}
+
+fn child2<M: Clone + Default>(f: &Family<Labels, M>, a: (&str, &str), b: (&str, &str)) -> M {
+    f.get_or_create(&vec![
+        (a.0.to_string(), a.1.to_string()),
+        (b.0.to_string(), b.1.to_string()),
+    ])
+    .clone()
+}
+
+impl HotStats {
+    /// Create and register every metric.
+    pub fn new(reg: &mut Registry) -> Self {
+        let fam_c = |reg: &mut Registry, name: &str, help: &str| {
+            let f = Family::<Labels, Counter>::default();
+            reg.register(name, help, f.clone());
+            f
+        };
+        let fam_g = |reg: &mut Registry, name: &str, help: &str| {
+            let f = Family::<Labels, Gauge>::default();
+            reg.register(name, help, f.clone());
+            f
+        };
+        let c = |reg: &mut Registry, name: &str, help: &str| {
+            let m = Counter::default();
+            reg.register(name, help, m.clone());
+            m
+        };
+        let g = |reg: &mut Registry, name: &str, help: &str| {
+            let m = Gauge::default();
+            reg.register(name, help, m.clone());
+            m
+        };
+        let fe = fam_c(reg, "rugsnipe_feed_events", "Feed events by source");
+        let cr = fam_c(
+            reg,
+            "rugsnipe_creates",
+            "Creates seen (first copy) by source",
+        );
+        let fc = fam_g(reg, "rugsnipe_feed_connected", "Feed connected");
+        let fm = fam_g(
+            reg,
+            "rugsnipe_feed_decode_miss",
+            "Creates without a decodable CreateEvent",
+        );
+        let fk = fam_g(
+            reg,
+            "rugsnipe_feed_decode_miss_kind",
+            "Creates without a decodable CreateEvent by failure kind (src=hot: the hot thread's decode of the wire copy)",
+        );
+        let fs = fam_g(
+            reg,
+            "rugsnipe_feed_since_frame_ms",
+            "Milliseconds since the feed's last frame",
+        );
+        let fr = fam_g(reg, "rugsnipe_feed_reconnects", "Feed reconnects");
+        let dec = fam_c(reg, "rugsnipe_decisions", "Create decisions by outcome");
+        let snd = fam_c(reg, "rugsnipe_sends", "Variants handed to senders");
+        let ex = fam_c(reg, "rugsnipe_exits", "Sell fills by exit reason");
+        let src = |f: &Family<Labels, Counter>| -> [Counter; SRC_COUNT] {
+            std::array::from_fn(|i| child(f, "src", FeedSrc::ALL[i].name()))
+        };
+        let srcg = |f: &Family<Labels, Gauge>| -> [Gauge; SRC_COUNT] {
+            std::array::from_fn(|i| child(f, "src", FeedSrc::ALL[i].name()))
+        };
+        let mut decisions: [Option<Counter>; 256] = std::array::from_fn(|_| None);
+        for (k, n) in DECISIONS {
+            decisions[*k as usize] = Some(child(&dec, "outcome", n));
+        }
+        let senders = SenderId::ALL;
+        Self {
+            feed_events: src(&fe),
+            creates: src(&cr),
+            dups: c(reg, "rugsnipe_dups", "Duplicate events (cross-feed)"),
+            wire_misses: c(
+                reg,
+                "rugsnipe_wire_decode_errors",
+                "Wire payloads that failed to decode",
+            ),
+            wire_miss_kind: std::array::from_fn(|k| {
+                child2(&fk, ("src", "hot"), ("kind", MissKind::ALL[k].name()))
+            }),
+            decisions,
+            decisions_other: child(&dec, "outcome", "other"),
+            intents: c(reg, "rugsnipe_intents", "Intents (paper or real)"),
+            sends: std::array::from_fn(|i| child(&snd, "sender", senders[i].name())),
+            fills: c(reg, "rugsnipe_paper_fills", "Paper buys filled (E2)"),
+            fills_late: c(
+                reg,
+                "rugsnipe_paper_fills_late",
+                "Paper fills from the first trade seen after slot+1",
+            ),
+            unfilled: c(
+                reg,
+                "rugsnipe_paper_unfilled",
+                "Paper buys unfilled (E2 above v_max)",
+            ),
+            positions_open: g(reg, "rugsnipe_positions_open", "Open positions"),
+            exits: std::array::from_fn(|i| child(&ex, "reason", EXIT_REASONS[i])),
+            sells: c(reg, "rugsnipe_sell_attempts", "Sell attempts built"),
+            sell_fills: c(reg, "rugsnipe_sell_fills", "Sell fills (paper simulated)"),
+            sells_not_owner: c(
+                reg,
+                "rugsnipe_sells_not_owner",
+                "Sells suppressed: exits lease not held",
+            ),
+            alerts: c(reg, "rugsnipe_alerts", "Critical exit alerts"),
+            dump_signals: c(reg, "rugsnipe_dump_signals", "Dump signals"),
+            realized_lamports: g(
+                reg,
+                "rugsnipe_realized_lamports",
+                "Realized P&L of closed positions (lamports)",
+            ),
+            trades_seen: c(reg, "rugsnipe_trades", "Trade events on watched mints"),
+            trades_unmatched: c(reg, "rugsnipe_trades_unmatched", "Trades with no position"),
+            trade_buffer_drops: c(
+                reg,
+                "rugsnipe_trade_buffer_drops",
+                "Trades dropped from a pending position's buffer",
+            ),
+            ring_full: c(
+                reg,
+                "rugsnipe_ring_full",
+                "Messages dropped on a full inter-thread ring",
+            ),
+            nonces_free: g(reg, "rugsnipe_nonces_free", "Free buy nonces"),
+            rslog_dropped: g(
+                reg,
+                "rugsnipe_rslog_dropped",
+                "rslog records dropped (ring full)",
+            ),
+            decision_p50_ns: g(
+                reg,
+                "rugsnipe_decision_p50_ns",
+                "Create event -> primary send, p50 (ns)",
+            ),
+            decision_p99_ns: g(
+                reg,
+                "rugsnipe_decision_p99_ns",
+                "Create event -> primary send, p99 (ns)",
+            ),
+            event_p99_ns: g(
+                reg,
+                "rugsnipe_event_p99_ns",
+                "Per-event hot loop time, p99 (ns)",
+            ),
+            killed: g(reg, "rugsnipe_killed", "Kill latch set"),
+            last_fire_unix: g(
+                reg,
+                "rugsnipe_last_fire_unix",
+                "Unix time of the last real buy sent (0: none this run)",
+            ),
+            minutes_since_fire: g(
+                reg,
+                "rugsnipe_minutes_since_fire",
+                "Minutes since the last real buy, or since start when none this run",
+            ),
+            mode: g(reg, "rugsnipe_mode", "0 paper, 1 probe, 2 live"),
+            armset_ver: g(reg, "rugsnipe_armset_ver", "Loaded ArmSet version"),
+            armset_age_s: g(reg, "rugsnipe_armset_age_s", "ArmSet age"),
+            lease_owned: g(
+                reg,
+                "rugsnipe_exits_lease_owned",
+                "This process holds the exits lease",
+            ),
+            funding_events: c(
+                reg,
+                "rugsnipe_funding_events",
+                "Funding transfers from watched funders",
+            ),
+            watch_dynamic: g(reg, "rugsnipe_watch_dynamic", "Dynamic watchlist entries"),
+            feed_connected: srcg(&fc),
+            feed_decode_miss: srcg(&fm),
+            feed_decode_miss_kind: std::array::from_fn(|i| {
+                std::array::from_fn(|k| {
+                    child2(
+                        &fk,
+                        ("src", FeedSrc::ALL[i].name()),
+                        ("kind", MissKind::ALL[k].name()),
+                    )
+                })
+            }),
+            feed_since_frame_ms: srcg(&fs),
+            feed_reconnects: srcg(&fr),
+            state_written: g(reg, "rugsnipe_state_written", "state.db statements written"),
+            state_errors: g(reg, "rugsnipe_state_errors", "state.db write errors"),
+        }
+    }
+
+    /// Count one decision outcome.
+    #[inline]
+    pub fn decision(&self, code: u8) {
+        match &self.decisions[code as usize] {
+            Some(c) => {
+                c.inc();
+            }
+            None => {
+                self.decisions_other.inc();
+            }
+        }
+    }
+
+    /// Current count of a decision outcome.
+    pub fn decision_count(&self, code: u8) -> u64 {
+        self.decisions[code as usize]
+            .as_ref()
+            .map(|c| c.get())
+            .unwrap_or(0)
+    }
+
+    /// Distinct creates seen (first copies, summed over the feed sources).
+    pub fn creates_total(&self) -> u64 {
+        self.creates.iter().map(|c| c.get()).sum()
+    }
+
+    /// `(label, count)` of every non-zero decision outcome.
+    pub fn decision_counts(&self) -> Vec<(&'static str, u64)> {
+        let mut v: Vec<(&'static str, u64)> = DECISIONS
+            .iter()
+            .map(|(k, n)| (*n, self.decision_count(*k)))
+            .filter(|(_, n)| *n > 0)
+            .collect();
+        if self.decisions_other.get() > 0 {
+            v.push(("other", self.decisions_other.get()));
+        }
+        v
+    }
+}
+
+/// Text exposition of a registry (OpenMetrics).
+pub fn encode(reg: &Registry) -> String {
+    let mut s = String::new();
+    let _ = prometheus_client::encoding::text::encode(&mut s, reg);
+    s
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn decode_miss_kind_children_exist_for_every_kind_and_source() {
+        let mut reg = Registry::default();
+        let st = HotStats::new(&mut reg);
+        let text = encode(&reg);
+        assert!(text.contains("rugsnipe_feed_decode_miss_kind{"), "{text}");
+        for k in MissKind::ALL {
+            let kind = format!("kind=\"{}\"", k.name());
+            assert!(text.contains(&kind), "{kind} in the exposition");
+            for src in FeedSrc::ALL {
+                let want = format!(
+                    "rugsnipe_feed_decode_miss_kind{{src=\"{}\",kind=\"{}\"}} 0",
+                    src.name(),
+                    k.name()
+                );
+                assert!(text.contains(&want), "{want}");
+            }
+            let hot = format!(
+                "rugsnipe_feed_decode_miss_kind{{src=\"hot\",kind=\"{}\"}} 0",
+                k.name()
+            );
+            assert!(text.contains(&hot), "{hot}");
+        }
+        st.wire_miss_kind[MissKind::Eof as usize].inc();
+        st.feed_decode_miss_kind[FeedSrc::Grpc as usize][MissKind::InvalidBool as usize].set(3);
+        let text = encode(&reg);
+        assert!(text.contains("rugsnipe_feed_decode_miss_kind{src=\"hot\",kind=\"eof\"} 1"));
+        assert!(
+            text.contains("rugsnipe_feed_decode_miss_kind{src=\"grpc\",kind=\"invalid_bool\"} 3")
+        );
+        assert_eq!(st.wire_miss_kind[MissKind::Eof as usize].get(), 1);
+    }
+
+    #[test]
+    fn dead_man_gauges_and_fire_count_are_registered() {
+        let mut reg = Registry::default();
+        let st = HotStats::new(&mut reg);
+        let text = encode(&reg);
+        assert!(text.contains("rugsnipe_last_fire_unix 0"), "{text}");
+        assert!(text.contains("rugsnipe_minutes_since_fire 0"), "{text}");
+        st.last_fire_unix.set(1_761_100_000);
+        st.minutes_since_fire.set(17);
+        st.creates[FeedSrc::Grpc as usize].inc();
+        st.creates[FeedSrc::Grpc as usize].inc();
+        st.creates[0].inc();
+        st.decision(code::FIRE);
+        st.decision(code::LATE_SLOT);
+        let text = encode(&reg);
+        assert!(
+            text.contains("rugsnipe_last_fire_unix 1761100000"),
+            "{text}"
+        );
+        assert!(text.contains("rugsnipe_minutes_since_fire 17"), "{text}");
+        assert_eq!(st.creates_total(), 3);
+        assert_eq!(st.decision_count(code::FIRE), 1);
+        assert!(
+            text.contains("rugsnipe_decisions_total{outcome=\"fire\"} 1"),
+            "{text}"
+        );
+        assert_eq!(
+            st.decision_counts(),
+            vec![("fire", 1), ("late_slot", 1)],
+            "DECISIONS order, non-zero only"
+        );
+    }
+}

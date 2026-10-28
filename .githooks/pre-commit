@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+# rugsnipe pre-commit hook (docs/06 section 13): refuse commits that stage key material.
+#
+#   * any file under a keys/ directory (keys/ is gitignored; `git add -f` would bypass that);
+#   * a Solana keypair: an array of exactly 64 integers 0-255 (whitespace and newlines
+#     ignored) anywhere in the file: a `solana-keygen` / `rugsnipe-ctl armset keygen` file,
+#     `"kp": [...]`, `const K: [u8; 64] = [...]`, `bytes([...])`, `Uint8Array.from([...])`.
+#     The one exception is an instruction's account-index list (`"accounts": [...]`, as in
+#     the tx fixtures), which is removed before the scan;
+#   * a PEM private key (`-----BEGIN ... PRIVATE KEY-----`, incl. RSA/EC/OPENSSH/ENCRYPTED);
+#   * an API key or token with a literal value: `api-key=<value>` (an RPC URL's query string),
+#     `x-token: <value>` / `x_token = "<value>"` (gRPC); a value is 20+ characters of
+#     [A-Za-z0-9_-]; an upper-case credential NAME (`x_token = "GRPC_TOKEN"`) is fine;
+#   * a Telegram bot token (`<8-10 digits>:<35 characters>`).
+#   URLs with keys go into /etc/rugsnipe/keys/api-keys.toml and are passed as `cred:NAME`.
+#
+# Enable once per clone:   git config core.hooksPath .githooks
+# (deploy/install.sh does this). Scan the staged tree by hand: .githooks/pre-commit --all
+# A genuine false positive can be committed with `git commit --no-verify` after review.
+set -uo pipefail
+
+BYTE='(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])'
+KEYPAIR="\[($BYTE,){63}$BYTE\]"
+# instruction account-index lists of tx fixtures (`"accounts":[0,0,28,...]`)
+ACCOUNTS='"?accounts"?[:=]\[[0-9,]*\]'
+PEM='-----BEGIN ([A-Z0-9]+ )*PRIVATE KEY-----'
+VAL='[A-Za-z0-9_-]{20,}'
+APIKEY="api[-_]key=$VAL"
+XTOKEN="x[-_]token[\"']?[[:space:]]*[:=][[:space:]]*[\"']?$VAL"
+# an upper-case credential name is a reference, not a secret
+NAME_ONLY='[:=][[:space:]]*["'"'"']?[A-Z0-9_]+$'
+TGBOT='(^|[^0-9])[0-9]{8,10}:[A-Za-z0-9_-]{35}([^A-Za-z0-9_-]|$)'
+
+if [ "${1:-}" = "--all" ]; then
+    list() { git ls-files -z; }
+    show() { cat -- "$1" 2>/dev/null; }
+else
+    list() { git diff --cached --name-only -z --diff-filter=ACMR; }
+    show() { git show ":$1" 2>/dev/null; }
+fi
+
+bad=0
+while IFS= read -r -d '' f; do
+    case "/$f" in
+        */keys/*)
+            echo "pre-commit: REFUSED $f: files under keys/ never go into git" >&2
+            bad=1
+            continue
+            ;;
+    esac
+    # PEM private keys (text search, binary-safe)
+    if show "$f" | LC_ALL=C grep -aEq -- "$PEM"; then
+        echo "pre-commit: REFUSED $f: contains a PEM private key" >&2
+        bad=1
+    # 64-byte keypair arrays, whitespace/newlines removed so pretty-printed JSON matches too
+    elif show "$f" | LC_ALL=C tr -d ' \t\r\n' | LC_ALL=C sed -E "s/$ACCOUNTS//g" \
+        | LC_ALL=C grep -aEq -- "$KEYPAIR"; then
+        echo "pre-commit: REFUSED $f: contains a 64-byte keypair array (Solana keypair JSON)" >&2
+        bad=1
+    elif show "$f" | LC_ALL=C grep -aoiE -- "$APIKEY|$XTOKEN" | LC_ALL=C grep -avEq -- "$NAME_ONLY"; then
+        echo "pre-commit: REFUSED $f: contains an API key or x-token value (use cred:NAME and the api-keys credential)" >&2
+        bad=1
+    elif show "$f" | LC_ALL=C grep -aEq -- "$TGBOT"; then
+        echo "pre-commit: REFUSED $f: contains a Telegram bot token" >&2
+        bad=1
+    fi
+done < <(list)
+
+if [ "$bad" -ne 0 ]; then
+    echo "pre-commit: key material must never be committed (docs/06 section 13)." >&2
+    echo "pre-commit: unstage it (git restore --staged <file>); if this is a reviewed false positive, git commit --no-verify." >&2
+    exit 1
+fi
+exit 0
