@@ -3,10 +3,10 @@
 ## What this repo is
 
 The wallet-4 half of the rugsnipe project. Wallet 4 = `H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg`.
-- **Strategy A, the long copy:** `crates/rugsnipe-long`. It runs **with real money at 0.1 SOL** (the mechanics test:
-  `stake_sol = 0.1`, `max_open = 1`, `daily_stop_sol = 0.3`, wallet `E7KX1hcM...`) on the owner's Frankfurt box
-  (`fra-long`, Cherry Cloud VDS 2, user `ops`) since Oct 28 18:34 UTC, after paper there from 17:58. Ohio and fra1
-  are terminated.
+- **Strategy A, the long copy:** `crates/rugsnipe-long`. It runs **with real money: 0.5 SOL a copy, 3 open, daily
+  stop 1.0 SOL** (wallet `E7KX1hcM...`, 2.5 SOL in it) on the owner's Frankfurt box (`fra-long`, Cherry Cloud VDS 2,
+  user `ops`) since Oct 28 22:04 UTC, after 0.1 SOL from 18:34 (6 closed, 4 won, +0.3146) and paper from 17:58.
+  Ohio and fra1 are terminated.
 - **Strategy D, the launch copy:** the hot copy bot `crates/rugsnipe`, with a `copy_more` entry. It is stopped.
 
 Read `README.md` (status, A-Z index), then `02-decomposition/` (why A and not the rest), then the strategy folder you work
@@ -102,14 +102,14 @@ bash data/datasets/unpack.sh h9long     # one archive
    records both exit policies) on the Triton gRPC feed since 17:58 UTC. **Ohio was terminated the same evening** (the
    owner's decision): no comparison box, and fra1's backup is gone. The box's lag is read from its own journal
    (`long paper-buy ... seen at its slot +N`).
-2. **The 0.1 SOL mechanics test: running since Oct 28 18:34 UTC** (wallet made by `keygen`, 0.7 SOL in, 0.15 of it
-   swapped to WBTC, both simulations passed from the box; `03-strategy-A-long-copy/deploy-frankfurt.md` §6). Pass:
-   buys land at its slot +1 or better, every sell lands (a pool sell after a graduation included), the chain equals
-   the journal, `long fill ... (vs its price +N%)` says where in its slot we land (`07-rework-2026-10-28/README.md`
-   §5: same slot is worth about +1 SOL a day at 4 open).
-3. **Then the deciding days at 0.1 SOL × 4 open** (replaces the paper days, since one box runs one bot): positive
-   without the best 2 at the backtest's costs, wallet 4 at 25+ copyable buys a day, its early-sale rate. Then
-   1 SOL × 3-4 only if both pass.
+2. **The 0.1 SOL mechanics test passed on Oct 28 evening** (7 sends: 5 in its own slot, 2 in the next, every sell
+   landed first try, one buy refused by the premium floor, journal = chain on every trade;
+   `03-strategy-A-long-copy/deploy-frankfurt.md` §6). Still unseen: a coin that graduates while we hold it (the pool
+   sell is simulated only). **Since 22:04 UTC: 0.5 SOL × 3, daily stop 1.0** (the owner's call; the plan said 0.3 × 3).
+3. **The deciding days run at 0.5 SOL × 3** (one box runs one bot, so no paper beside it): positive without the best 2
+   over 40 closed copies, wallet 4 at 25+ copyable buys a day (about 2 an hour on Oct 28 evening), its early-sale
+   rate. Then 1 SOL × 3 only if that holds. Check every trade on chain as `deploy-frankfurt.md` §6 does; the
+   backtest under the live conditions is `analysis/research/2026-10-28/fresh/land_cond.py`.
 4. Not built: an alarm when wallet 4 goes quiet or sends SOL out (its predecessor was emptied in one evening); a
    successor scan by its fingerprint (`07-rework-2026-10-28/wallet-check.md` §7); 3-hop routes via a v0 transaction
    (about +0.1 SOL a day); the "can wait" list of the code review.

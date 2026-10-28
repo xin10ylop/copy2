@@ -39,7 +39,8 @@ remaining SOL returned to the owner's Phantom wallet.
 | Oct 28 18:34 UTC | the long copy goes **real at 0.1 SOL** on the Frankfurt box (wallet `E7KX1hcM...`, 1 open, daily stop 0.3); paper there ends |
 | Oct 28 18:35:51 UTC | **the first real trade**: FUN1RZrj, our buy one slot behind its buy at the top of the block (3 coin trades between), take profit 3 s later, **+0.0927 SOL** on 0.1; the chain equals the journal (`03-strategy-A-long-copy/deploy-frankfurt.md` §6) |
 | Oct 28 19:20:43 UTC | the second real buy, E3hauBDZ, **refused by the 25% premium floor** on chain (`ExceededSlippage`): same slot as its buy, 7 coin trades ahead of us had moved the price to 1.36x; cost 0.0004 SOL |
-| Oct 28 19:28-21:22 UTC | four more real trades (EMJs7igZ +0.1028, GUcG2eK2 +0.0818, 6TrDECwR −0.0334 on the stop, JAckzYTT +0.1074), all checked on chain; **the evening: 5 closed, 4 won, +0.3513 SOL on 0.1 SOL stakes**, wallet 0.7 → 1.046 SOL (`03-strategy-A-long-copy/deploy-frankfurt.md` §6) |
+| Oct 28 19:28-21:22 UTC | four more real trades (EMJs7igZ +0.1028, GUcG2eK2 +0.0818, 6TrDECwR −0.0334 on the stop, JAckzYTT +0.1074), all checked on chain; then E61exR62 −0.0366 on a 4-second stop; **the evening at 0.1 SOL: 6 closed, 4 won, +0.3146 SOL** (`03-strategy-A-long-copy/deploy-frankfurt.md` §6) |
+| Oct 28 22:04 UTC | **the stake raised to 0.5 SOL × 3 open, daily stop 1.0** (the owner's decision); 1.5 SOL more from Phantom, 0.5 more into the WBTC float; the wallet holds 2.508 SOL in all |
 
 ## Money
 
@@ -52,7 +53,8 @@ remaining SOL returned to the owner's Phantom wallet.
   wallets are at 0. One empty token account for 2RR6sfbi keeps about 0.0015 SOL of rent.
 - **The long copy's old wallet** (`24neU6qr...`) was never funded; its key was on fra1 only. **Its new wallet**
   `E7KX1hcMCXg9qUpGE5hXaotRTxv8itSbdo4b8LHmYbyc` (made on the Frankfurt box Oct 28) received 0.7 SOL from the owner's Phantom
-  on Oct 28; 0.15 of it was swapped into WBTC (18,841 units). The 0.1 SOL test trades from it since 18:34 UTC.
+  on Oct 28 and 1.5 more at 22:03 UTC; 0.65 of it is in WBTC (104,811 units). Trading at 0.1 SOL from 18:34 UTC
+  (+0.3146 on 6 closed) and at 0.5 SOL × 3 from 22:04 UTC.
 
 ## Reading check.sh (`check-sh-2026-10-27.txt`)
 

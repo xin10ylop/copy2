@@ -142,16 +142,27 @@ is about (`07-rework-2026-10-28/README.md` §5).
 | 4 | GUcG2eK2 | WBTC | 462606663, 271 | same slot, 364 | 5 | +19.2% | take profit 2.20x, 240 s | +0.0818 |
 | 5 | 6TrDECwR | SOL | 462618422, 442 | +1 slot, position 51 | 3 | +17.9% | stop 0.78x, 205 s (peak 1.63x) | −0.0334 |
 | 6 | JAckzYTT | SOL | 462623753, 287 | same slot, 455 | 5 | +1.5% | take profit 2.06x, 588 s | +0.1074 |
+| 7 | E61exR62 | SOL | 462633652, 34 | same slot, 141 | 13 | (under 25%) | stop, 4 s (18 slots) | −0.0366 |
 
 Six sends, all `sent in 3-6 ms; seen at its slot +0`; four landed in its slot, two in the next (both times its buy sat
 near the end of its block); every sell landed on the first try; no `sell-failed`, `WARNING` or `CRITICAL`. The journal's
-net per trade equals the chain's SOL and WBTC deltas (the WBTC trips valued at the float's price). **Real: 5 closed,
-4 won, +0.3513 SOL on 0.1 SOL stakes** (+0.14 without the best 2); the wallet went from 0.7 to **1.046 SOL** (0.7139 SOL
-+ 41,658 WBTC units; the 0.006 gap is the float swap's costs). Skips in the same hours: 19 buys paid in unpriced tokens
+net per trade equals the chain's SOL and WBTC deltas (the WBTC trips valued at the float's price). **Real at 0.1 SOL: 6 closed,
+4 won, +0.3146 SOL** (+0.10 without the best 2; trade 7, a stop 4 s after a buy that sat behind 13 trades of the coin in
+its slot, came after the owner's paste); the wallet went from 0.7 to **1.010 SOL** (0.6773 SOL + 41,658 WBTC units;
+the 0.006 gap is the float swap's costs). Skips in the same hours: 19 buys paid in unpriced tokens
 (part B) and 2 in xStocks quotes (`no anchor reaches NVDAVuiB` / `XsoCS1Tf`), all as the rule says. Copyable buys came
 at about 2 an hour. Not yet seen: a coin that graduates while we hold it (the pool sell is simulated only). The stop and
 the take profit are multiples of **its** price, so #5 bought 17.9% above it and sold at 0.78x of it: −33% of the stake.
 An empty cbBTC token account (a hop of #4's route) holds 0.002 SOL of rent.
+
+**Oct 28 22:04 UTC (Oct 29 00:04 Beirut): the stake raised to 0.5 SOL, three at once, daily stop 1.0 SOL** (the owner's
+decision after the evening above; the plan's step was 0.3 × 3). 1.5 SOL more from Phantom (the wallet's money is now
+2.2 SOL), `float buy 3NZ9... 0.5` (63,154 units, landed in slot 462638281; the float 104,811 units = 0.832 SOL),
+`stake_sol = 0.5`, `max_open = 3`, `daily_stop_sol = 1.0`; the restart's journal: `long start: mode On ... stake 0.5
+SOL ... max_open 3`, `long wallet ... SOL 1.6765 floats [3NZ9JMVB 104811 (0.832 SOL)]`, `long feed connected`. The
+wallet then held 2.508 SOL in all, every lamport accounted for on chain (`getSignaturesForAddress` over its 21
+transactions: 2.2 in, 0.6567 into the two float swaps and their costs, +0.3143 from the seven trades, three dust
+transfers from a stranger).
 
 The paper run on this box ended there (one box runs one bot). What the test must show, over 5-10 trades: buys landing
 at its slot +1 or better (`long buy ... seen at its slot +N`, then `long fill ... paid X (vs its price +N%)`: that
