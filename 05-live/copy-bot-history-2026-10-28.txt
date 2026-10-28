@@ -1,0 +1,59 @@
+ubuntu@ip-172-31-17-131:~$ git -C ~/rugsnipe fetch -q origin claude/eloquent-mayer-264bxk && git -C ~/rugsnipe show FETCH_HEAD:deploy/bin/rugsnipe-history > ~/history.py
+ubuntu@ip-172-31-17-131:~$ sudo python3 -I ~/history.py --root /root/fra1
+== the copy bot (rugsnipe-hot): /root/fra1/var/lib/rugsnipe/state.db
+  all time (Oct 22 02:21 -> Oct 27 09:47): 989 trades, 988 closed, 281 won; on the curve +2.4081, tips and fees -6.5287, 757 refused buys -1.00866: NET -5.1292 SOL
+  since the start (Oct 26 15:00): 417 trades, 416 closed, 150 won; on the curve +2.1457, tips and fees -2.9074, 90 refused buys -0.00114: NET -0.7628 SOL
+  (which wallet each trade copied was only in the bot's journal on fra1, not in the backup)
+  1 not closed in the bot's records (sold by hand, or still held when it stopped): 2RR6sfbi
+
+== by day (net after tips and fees; refused = buys that landed and were refused, their fees)
+         day  trades  won   mean  trades_sol  refused  refused_sol  net_sol  running
+  Thu Oct 22     167   29  -9.2%     -0.2928      101     -0.16898  -0.4618  -0.4618
+  Fri Oct 23     156   23  -5.6%     -1.2881      176     -0.59137  -1.8794  -2.3413
+  Sat Oct 24     154   52  -1.6%     -1.2328      226     -0.24488  -1.4777  -3.8189
+  Sun Oct 25      92   26  -1.2%     -0.5351      160     -0.00222  -0.5373  -4.3562
+  Mon Oct 26     234   84  +0.9%     +1.0737       69     -0.00089  +1.0728  -3.2835
+  Tue Oct 27     186   67  -2.0%     -1.8455       25     -0.00032  -1.8458  -5.1292
+
+== last 10 trades, newest first (curve = sold minus paid; tips_fees = the buy's fee and tip and each sell's; held in slots, ~0.4 s each)
+           bought  stake    bid     exit  venue  held    curve  tips_fees  net_sol     pct   state  coin
+  Oct 27 09:47:48  0.247  8.00M  hold_to  curve    12  -0.0416    -0.0095  -0.0511  -20.7%  closed  HPhAKU2PBgPzvKiveb2NwTjzifNsjLg2FFQxKLZ9pump
+  Oct 27 09:34:39  0.215  3.00M  hold_to  curve    28  +0.0421    -0.0055  +0.0366  +17.0%  closed  47JNcB62c2v5ym6NDcSGZXvnwbwDj2daFZisA4tKpump
+  Oct 27 09:33:24  0.225  3.00M  hold_to  curve     3  -0.0056    -0.0045  -0.0101   -4.5%  closed  28kvwz6rFTVCmTVRRWvv3Hy7PABdzgEsHeqMaTnBpump
+  Oct 27 09:32:56  0.358  3.00M  hold_to  curve    31  -0.1014    -0.0035  -0.1050  -29.4%  closed  B8jMNvzMpiN68ivCDZpbHUq3hHuYi6iMUg5jt4fApump
+  Oct 27 09:16:32  0.356  8.00M  hold_to  curve     9  +0.0061    -0.0090  -0.0030   -0.8%  closed  3ndMDGDDYfedp5UnkG7LVCFuBPasoyvkDanuEXRcpump
+  Oct 27 08:59:13  0.284  8.00M  hold_to  curve    28  +0.0817    -0.0105  +0.0712  +25.0%  closed  46PBFhaRHLhNDszfpsmR1NbHSzmPPn8UyVkh151mpump
+  Oct 27 08:56:00  0.392  8.00M  hold_to  curve    10  -0.0977    -0.0095  -0.1072  -27.4%  closed  2jzzVpSdLG7qQ9xcCY7eQUnEZ31exANMe3u2ywLBHM9U
+  Oct 27 08:55:42  0.430  8.00M  hold_to  curve     9  -0.0285    -0.0095  -0.0380   -8.9%  closed  F4sw1HnJXA2UPE2LbGUBqpjCsVEETecVBnmBJKDtpump
+  Oct 27 08:51:57  0.434  8.00M  hold_to  curve    11  +0.0058    -0.0025  +0.0033   +0.8%  closed  6uV2dmmSwuDcPrxwYFvSWRWkNqxseM6GSb8jjzz5pump
+  Oct 27 08:03:58  0.443  8.00M  hold_to  curve     5  +0.0006    -0.0095  -0.0089   -2.0%  closed  FMo3m6CemGpEVJoJPat3JLBSCED75NwiBZopK9RPpump
+
+== refused buys by reason (landed but refused, mostly the price limit: the fee is the cost)
+             reason  buys  cost_sol
+           slippage   705  -1.00659
+            dropped    43  +0.00000
+  instruction_error     4  -0.00006
+              class     3  +0.00000
+       not_in_slot0     2  -0.00200
+
+== daily risk ledger (UTC days: what the daily stop counted; killed = the stop latched)
+         day  start_sol  realized_sol  buys  killed  why
+  2026-10-21     5.0000       -0.0018     6       -  -
+  2026-10-22     5.0000       -0.5437   315     yes  KillFile
+  2026-10-23     5.0000       -2.1640   289       -  -
+  2026-10-24     5.0000       -0.6175   306       -  -
+  2026-10-25     5.0000       -0.5238   251       -  -
+  2026-10-26     5.0000       -0.0390   367       -  -
+  2026-10-27     5.0000       -0.7085   140     yes  DailyLoss
+ubuntu@ip-172-31-17-131:~$ bash ~/check.sh 
+bash: /home/ubuntu/check.sh: No such file or directory
+ubuntu@ip-172-31-17-131:~$ sudo python3 -I ~/history.py paper --root /root/fra1
+== the long copy (rugsnipe-long): /root/fra1/var/lib/rugsnipe-long
+  PAPER (no money: what it would have made): 1 positions Oct 27 12:29 -> Oct 27 12:29, 1 closed, 0 won, NET -0.0230 SOL; buys that did not land 0; still open when it stopped 0
+   by day (closed):
+         day  closed  won  net_sol  running
+  Tue Oct 27       1    0  -0.0230  -0.0230
+   every position, oldest first (its_sol = the copied wallet's buy; peak = the best price it saw, x its entry):
+  #           bought  its_sol   route  stake   state  exit   peak   held  net_sol    pct  coin
+  0  Oct 27 12:29:41    1.500  copied  1.000  closed  time  1.04x  1790s  -0.0230  -2.3%  PePEwjLDedJ4xjiDEQuXieYfrd9czdHKfZ3PZzMuBhu
+ubuntu@ip-172-31-17-131:~$ 

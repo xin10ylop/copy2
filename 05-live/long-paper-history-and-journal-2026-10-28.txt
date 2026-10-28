@@ -1,0 +1,143 @@
+ubuntu@ip-172-31-17-131:~$ sudo python3 -I ~/history.py paper
+== the long copy (rugsnipe-long): /var/lib/rugsnipe-long
+  PAPER (no money: what it would have made): 22 positions Oct 27 12:29 -> Oct 28 10:40, 20 closed, 9 won, NET +2.6541 SOL; buys that did not land 2; still open when it stopped 0
+   by day (closed):
+         day  closed  won  net_sol  running
+  Tue Oct 27      10    3  +1.3361  +1.3361
+  Wed Oct 28      10    6  +1.3179  +2.6541
+   every position, oldest first (its_sol = the copied wallet's buy; peak = the best price it saw, x its entry):
+   #           bought  its_sol   route  stake   state      exit   peak   held  net_sol     pct  coin
+   0  Oct 27 12:29:41    1.500  copied  1.000  closed      time  1.04x  1790s  -0.0230   -2.3%  PePEwjLDedJ4xjiDEQuXieYfrd9czdHKfZ3PZzMuBhu
+   1  Oct 27 18:14:35    1.500  copied  1.000  closed      time  1.56x  1790s  -0.1843  -18.4%  CkFH2smc23KmEwqtFnwVcvtYcf6ACyZzSzazoqg4cAke
+   2  Oct 27 20:25:35    1.500  copied  1.000  closed      time  1.05x  1790s  -0.1277  -12.8%  6qUyTWv4MyfPsPW27kExcmXcet79boiwQ8obk9YBpump
+   3  Oct 27 21:07:16    1.502  copied  1.000  closed        tp  2.04x     1s  +0.8377  +83.8%  6y9aDagFD9RXVpJidYqmDozC3Qn2uRdtwPeoxT8pump
+   4  Oct 27 21:49:24    1.500  copied  1.000  closed  its_sell  1.24x   197s  -0.2958  -29.6%  BPhav4G4JBCRHqViJSFsAQEvZwb2iDUxmXXa7Hw3pump
+   5  Oct 27 22:09:03    1.493  copied  1.000  closed  its_sell  1.73x     7s  -0.1756  -17.6%  ChonQdJ8HVNNuVVCgYwLKs7tXX3FAPYSZ92i8igGgUS8
+   6  Oct 27 23:02:24    1.500  copied  1.000  closed  its_sell  1.25x   475s  -0.2468  -24.7%  FUCKKmZZ3m1fW1eG1w24YNUZky4BucUNmWYoux5cpUmP
+   7  Oct 27 23:31:01    1.500  copied  1.000  closed        tp  2.05x   124s  +0.9869  +98.7%  69iQjjf8ay1SM32gnSHLE5zC3s4qqgMquStiAwkTpump
+   8  Oct 27 23:39:24    1.500  copied  1.000  closed      stop  1.27x    23s  -0.3124  -31.2%  rAPE9kiTRocjtSmiuFGHv3AYvxvDF9nwMijAarthRoT
+   9  Oct 27 23:46:28    1.502  copied  1.000  closed        tp  2.01x     4s  +0.8769  +87.7%  9UinFHHjEjdS3TfmVWLk2MUThGdRPoUPU1RgMKv2pump
+  10  Oct 28 01:10:20    1.500  copied  1.000  closed      time  1.21x  1790s  -0.0973   -9.7%  CogafBTpuapbMEo2RmhnkRcWkoNTG1G76G7dbBZopump
+  11  Oct 28 02:24:51    1.457   curve  1.000  closed  its_sell  1.60x   286s  +0.1038  +10.4%  HytpiyuR3sVXGB5UqoqrnThCPH2X1tWVm5neep3Dpump
+  12  Oct 28 03:04:23    1.500  copied  1.000  closed  its_sell  1.06x   141s  -0.3031  -30.3%  6DS5ErwHfSfqKL8UakJmkxfb1SU5DHndbUEHy8nqpump
+  13  Oct 28 03:10:37    1.500  copied  1.000  closed        tp  2.01x    10s  +0.7511  +75.1%  3xwpPXRJ7zMDutnxiBPxcbYdJ1u9yZtVj8WjN6Nspump
+  14  Oct 28 03:15:19    1.500  copied  1.000  closed      time  1.04x  1790s  -0.2238  -22.4%  4BvM3fKHbiQqaCiFuDjmB5eDSj6NUCg2n55j4r7cpump
+  15  Oct 28 03:27:36    1.500  copied  1.000  closed        tp  2.02x     2s  +0.8557  +85.6%  5f45YWuVRC77Zh9mTtjGzhheL15P67X3cx1VXjsrpump
+  16  Oct 28 03:31:36    1.500  copied  1.000  closed  its_sell  1.99x     3s  -0.0623   -6.2%  DJXThGNtYLYyx5wVkQE6GuL4nyGGTimcEeitka8apump
+  17  Oct 28 04:23:47    1.500  copied  1.000  failed         -      -      -        -       -  5a7nDZcRLmeyb92ayCN7NHxkoLo2wQH9YdC8pA6gpump
+  18  Oct 28 04:27:39    1.501  copied  1.000  closed      time  1.07x  1790s  +0.0087   +0.9%  w9XZuzKehm3K7KY8ENM8wWWcDBtQgFG8bJ97UUYpump
+  19  Oct 28 04:41:16    1.500  copied  1.000  closed  its_sell  1.55x   907s  +0.1424  +14.2%  9hhXcHT9r7vgqDoe17JrnL5Z5on1meoYXP5NYTeWpump
+  20  Oct 28 08:49:59    1.502  copied  1.000  closed  its_sell  1.46x  1360s  +0.1429  +14.3%  3j9ex53kQkZFYR8dWvJfKm5CSHT7mf3GALCGZwFkpump
+  21  Oct 28 10:40:06    1.500  copied  1.000  failed         -      -      -        -       -  EwsKTHxBLL8xgDXgfXbAaf3BZMLtkbtqMmbE9b44pump
+ubuntu@ip-172-31-17-131:~$ Read from remote host <ohio>: Connection reset by peer
+Connection to <ohio> closed.
+client_loop: send disconnect: Broken pipe
+[ssh reconnect to the Ohio box: login banner removed]
+ubuntu@ip-172-31-17-131:~$ sudo journalctl -u rugsnipe-long --since "2026-10-27 16:00" --no-pager | grep -E 'long (skip|paper-buy|paper-refused)|feed'
+Oct 27 16:11:36 ip-172-31-17-131 rugsnipe-long[319879]: long start: mode Log wallet 11111111111111111111111111111111 copy H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg min_sol 1.45 stake 1 SOL tp 2x stop 0.8x hold 1790s max_open 3 floats ["3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh"] buy senders [] sell senders [] feed https://solana-mainnet.g.alchemy.com/...
+Oct 27 16:11:36 ip-172-31-17-131 rugsnipe-long[319879]: long feed connected
+Oct 27 16:14:35 ip-172-31-17-131 rugsnipe-long[319879]: long paper-buy #1 CkFH2smc its 1.500 SOL route copied (2 hops) stake 1.000 SOL
+Oct 27 17:30:40 ip-172-31-17-131 rugsnipe-long[319879]: long skip 98kZPL37 its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 27 17:57:33 ip-172-31-17-131 rugsnipe-long[319879]: long skip 5w3xTt6Z its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 27 18:02:28 ip-172-31-17-131 rugsnipe-long[319879]: long skip 9zhapEve its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 27 18:03:51 ip-172-31-17-131 rugsnipe-long[319879]: long skip EVcoZp3P its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 27 18:04:14 ip-172-31-17-131 rugsnipe-long[319879]: long skip C1dJH4om its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 27 18:08:18 ip-172-31-17-131 rugsnipe-long[319879]: long skip 5Xt32mzc its 1.503 SOL (direct): route: no anchor reaches A7bdiYdS
+Oct 27 18:08:47 ip-172-31-17-131 rugsnipe-long[321696]: long start: mode Log wallet 11111111111111111111111111111111 copy H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg min_sol 1.45 stake 1 SOL tp 2x stop 0.8x hold 1790s max_open 3 floats ["3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh"] buy senders [] sell senders [] feed https://solana-mainnet.g.alchemy.com/...
+Oct 27 18:08:47 ip-172-31-17-131 rugsnipe-long[321696]: long feed connected
+Oct 27 18:11:37 ip-172-31-17-131 rugsnipe-long[321696]: long skip FuLsLwHM its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 27 18:12:42 ip-172-31-17-131 rugsnipe-long[321696]: long skip AvcwGFaF its 1.500 SOL (multihop): route: route of 3 hops
+Oct 27 18:23:05 ip-172-31-17-131 rugsnipe-long[321696]: long skip 2CZNxTwM its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 27 18:25:35 ip-172-31-17-131 rugsnipe-long[321696]: long paper-buy #2 6qUyTWv4 its 1.500 SOL route copied (2 hops) stake 1.000 SOL
+Oct 27 18:29:29 ip-172-31-17-131 rugsnipe-long[321696]: long skip 8V2wVhG8 its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 27 18:35:21 ip-172-31-17-131 rugsnipe-long[321696]: long skip D8t2WrsX its ? SOL (multihop): its buy has no SOL value (paid in an unpriced token)
+Oct 27 18:35:26 ip-172-31-17-131 rugsnipe-long[321696]: long skip Cmt8qAHZ its ? SOL (multihop): its buy has no SOL value (paid in an unpriced token)
+Oct 27 18:35:31 ip-172-31-17-131 rugsnipe-long[321696]: long skip CJho8jxZ its ? SOL (multihop): its buy has no SOL value (paid in an unpriced token)
+Oct 27 19:07:16 ip-172-31-17-131 rugsnipe-long[321696]: long paper-buy #3 6y9aDagF its 1.502 SOL route copied (2 hops) stake 1.000 SOL
+Oct 27 19:22:25 ip-172-31-17-131 rugsnipe-long[321696]: long skip FU5DhFTr its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 27 19:27:58 ip-172-31-17-131 rugsnipe-long[321696]: long skip StNKXNQR its 1.506 SOL (direct): route: no anchor reaches 6GmAFSYs
+Oct 27 19:31:43 ip-172-31-17-131 rugsnipe-long[321696]: long skip He9cH4D3 its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 27 19:43:06 ip-172-31-17-131 rugsnipe-long[321696]: long skip 7Bs3BEwn its ? SOL (multihop): its buy has no SOL value (paid in an unpriced token)
+Oct 27 19:46:54 ip-172-31-17-131 rugsnipe-long[321696]: long skip CmJE9JLB its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 27 19:49:24 ip-172-31-17-131 rugsnipe-long[321696]: long paper-buy #4 BPhav4G4 its 1.500 SOL route copied (2 hops) stake 1.000 SOL
+Oct 27 20:09:03 ip-172-31-17-131 rugsnipe-long[321696]: long paper-buy #5 ChonQdJ8 its 1.493 SOL route copied (2 hops) stake 1.000 SOL
+Oct 27 20:43:12 ip-172-31-17-131 rugsnipe-long[321696]: long skip GZKbcKvB its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 27 21:02:24 ip-172-31-17-131 rugsnipe-long[321696]: long paper-buy #6 FUCKKmZZ its 1.500 SOL route copied (2 hops) stake 1.000 SOL
+Oct 27 21:31:01 ip-172-31-17-131 rugsnipe-long[321696]: long paper-buy #7 69iQjjf8 its 1.500 SOL route copied (2 hops) stake 1.000 SOL
+Oct 27 21:39:10 ip-172-31-17-131 rugsnipe-long[321696]: long skip D7HAC2qk its ? SOL (multihop): its buy has no SOL value (paid in an unpriced token)
+Oct 27 21:39:24 ip-172-31-17-131 rugsnipe-long[321696]: long paper-buy #8 rAPE9kiT its 1.500 SOL route copied (2 hops) stake 1.000 SOL
+Oct 27 21:39:55 ip-172-31-17-131 rugsnipe-long[321696]: long skip DncKJoXv its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 27 21:46:28 ip-172-31-17-131 rugsnipe-long[321696]: long paper-buy #9 9UinFHHj its 1.502 SOL route copied (2 hops) stake 1.000 SOL
+Oct 27 21:57:24 ip-172-31-17-131 rugsnipe-long[321696]: long skip E7HBHUxf its 1.498 SOL (direct): route: no anchor reaches WXMRyRZh
+Oct 27 22:08:19 ip-172-31-17-131 rugsnipe-long[321696]: long skip HEWL5mJ1 its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 27 22:21:48 ip-172-31-17-131 rugsnipe-long[321696]: long skip BEoXegB9 its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 27 23:10:20 ip-172-31-17-131 rugsnipe-long[321696]: long paper-buy #10 CogafBTp its 1.500 SOL route copied (2 hops) stake 1.000 SOL
+Oct 27 23:27:09 ip-172-31-17-131 rugsnipe-long[321696]: long skip 5vd46GQz its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 27 23:39:42 ip-172-31-17-131 rugsnipe-long[321696]: long skip 5USdqF2U its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 00:15:44 ip-172-31-17-131 rugsnipe-long[321696]: long skip 2HcvsX12 its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 00:24:51 ip-172-31-17-131 rugsnipe-long[321696]: long paper-buy #11 HytpiyuR its 1.457 SOL route curve (1 hops) stake 1.000 SOL
+Oct 28 00:26:48 ip-172-31-17-131 rugsnipe-long[325115]: long start: mode Log wallet 11111111111111111111111111111111 copy H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg min_sol 1.45 stake 1 SOL tp 2x stop 0.8x hold 1790s max_open 3 floats ["3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh"] buy senders [] sell senders [] feed https://solana-mainnet.g.alchemy.com/...
+Oct 28 00:26:48 ip-172-31-17-131 rugsnipe-long[325115]: long feed connected
+Oct 28 00:35:59 ip-172-31-17-131 rugsnipe-long[325211]: long start: mode Log wallet 11111111111111111111111111111111 copy H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg min_sol 1.45 stake 1 SOL tp 2x stop 0.8x hold 1790s max_open 4 floats ["3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh"] buy senders [] sell senders [] feed https://solana-mainnet.g.alchemy.com/...
+Oct 28 00:35:59 ip-172-31-17-131 rugsnipe-long[325211]: long feed connected
+Oct 28 00:57:08 ip-172-31-17-131 rugsnipe-long[325211]: long skip 79V7cxBu its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 01:03:24 ip-172-31-17-131 rugsnipe-long[325211]: long skip 3uwZqnQo its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 01:04:23 ip-172-31-17-131 rugsnipe-long[325211]: long paper-buy #12 6DS5ErwH its 1.500 SOL route copied (2 hops) stake 1.000 SOL
+Oct 28 01:04:57 ip-172-31-17-131 rugsnipe-long[325211]: long skip 4VJ91u42 its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 01:05:48 ip-172-31-17-131 rugsnipe-long[325211]: long skip 7XdcLDJY its ? SOL (multihop): its buy has no SOL value (paid in an unpriced token)
+Oct 28 01:10:37 ip-172-31-17-131 rugsnipe-long[325211]: long paper-buy #13 3xwpPXRJ its 1.500 SOL route copied (2 hops) stake 1.000 SOL
+Oct 28 01:13:53 ip-172-31-17-131 rugsnipe-long[325211]: long skip 6z8sP7Li its ? SOL (multihop): its buy has no SOL value (paid in an unpriced token)
+Oct 28 01:15:19 ip-172-31-17-131 rugsnipe-long[325211]: long paper-buy #14 4BvM3fKH its 1.500 SOL route copied (2 hops) stake 1.000 SOL
+Oct 28 01:18:11 ip-172-31-17-131 rugsnipe-long[325211]: long skip AsY6oq86 its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 01:27:36 ip-172-31-17-131 rugsnipe-long[325211]: long paper-buy #15 5f45YWuV its 1.500 SOL route copied (2 hops) stake 1.000 SOL
+Oct 28 01:31:36 ip-172-31-17-131 rugsnipe-long[325211]: long paper-buy #16 DJXThGNt its 1.500 SOL route copied (2 hops) stake 1.000 SOL
+Oct 28 01:33:12 ip-172-31-17-131 rugsnipe-long[325211]: long skip 2ocjhyHM its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 01:48:09 ip-172-31-17-131 rugsnipe-long[325211]: long skip 14R28MCM its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 01:54:00 ip-172-31-17-131 rugsnipe-long[325211]: long skip 2FSWwQwj its 1.500 SOL (multihop): route: route of 3 hops
+Oct 28 02:15:22 ip-172-31-17-131 rugsnipe-long[325211]: long skip DuAi4Tb3 its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 02:23:47 ip-172-31-17-131 rugsnipe-long[325211]: long paper-buy #17 5a7nDZcR its 1.500 SOL route copied (2 hops) stake 1.000 SOL
+Oct 28 02:23:48 ip-172-31-17-131 rugsnipe-long[325211]: long paper-refused #17 5a7nDZcR: at 1.518x its price, 14471213836329 tokens under min_out 19207966449122 (max_premium 0.25)
+Oct 28 02:27:39 ip-172-31-17-131 rugsnipe-long[325211]: long paper-buy #18 w9XZuzKe its 1.501 SOL route copied (2 hops) stake 1.000 SOL
+Oct 28 02:31:09 ip-172-31-17-131 rugsnipe-long[325211]: long skip DzHX1CwX its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 02:38:48 ip-172-31-17-131 rugsnipe-long[325211]: long skip Cj5gSbak its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 02:41:16 ip-172-31-17-131 rugsnipe-long[325211]: long paper-buy #19 9hhXcHT9 its 1.500 SOL route copied (2 hops) stake 1.000 SOL
+Oct 28 02:50:42 ip-172-31-17-131 rugsnipe-long[325211]: long skip 8Swyz8Xp its ? SOL (multihop): its buy has no SOL value (paid in an unpriced token)
+Oct 28 03:22:40 ip-172-31-17-131 rugsnipe-long[325211]: long skip 4sMMk38s its ? SOL (multihop): its buy has no SOL value (paid in an unpriced token)
+Oct 28 03:27:54 ip-172-31-17-131 rugsnipe-long[325211]: long skip 9PjsQ4vN its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 03:27:56 ip-172-31-17-131 rugsnipe-long[325211]: long skip 4gxCSf7M its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 03:31:58 ip-172-31-17-131 rugsnipe-long[325211]: long skip GLBU4qtd its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 03:45:25 ip-172-31-17-131 rugsnipe-long[325211]: long skip GYE2fUng its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 03:49:52 ip-172-31-17-131 rugsnipe-long[325211]: long skip 4zRN29dX its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 04:01:27 ip-172-31-17-131 rugsnipe-long[325211]: long skip 7XsP8MMr its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 04:03:44 ip-172-31-17-131 rugsnipe-long[325211]: long skip Eo2FTJRQ its ? SOL (multihop): its buy has no SOL value (paid in an unpriced token)
+Oct 28 04:05:13 ip-172-31-17-131 rugsnipe-long[325211]: long skip DEbdiRbg its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 04:06:50 ip-172-31-17-131 rugsnipe-long[325211]: long skip 5D3Ej1DJ its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 04:08:07 ip-172-31-17-131 rugsnipe-long[325211]: long skip FjxhmwHc its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 04:20:05 ip-172-31-17-131 rugsnipe-long[325211]: long skip 9nbmPDEm its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 04:23:40 ip-172-31-17-131 rugsnipe-long[325211]: long skip 6i8PSSNi its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 04:25:34 ip-172-31-17-131 rugsnipe-long[325211]: long skip 6EinUdxW its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 04:27:36 ip-172-31-17-131 rugsnipe-long[325211]: long skip 21oJXXNP its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 04:28:49 ip-172-31-17-131 rugsnipe-long[325211]: long skip Ctm9bum2 its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 04:43:16 ip-172-31-17-131 rugsnipe-long[325211]: long skip HQx5aBmq its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 05:32:44 ip-172-31-17-131 rugsnipe-long[325211]: long skip 4sMMk38s its ? SOL (multihop): its buy has no SOL value (paid in an unpriced token)
+Oct 28 05:32:44 ip-172-31-17-131 rugsnipe-long[325211]: long skip GgAbWLrv its ? SOL (multihop): its buy has no SOL value (paid in an unpriced token)
+Oct 28 05:58:43 ip-172-31-17-131 rugsnipe-long[325211]: long skip 8ZgiLRMs its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 06:11:52 ip-172-31-17-131 rugsnipe-long[325211]: long skip DeYxieR3 its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 06:49:59 ip-172-31-17-131 rugsnipe-long[325211]: long paper-buy #20 3j9ex53k its 1.502 SOL route copied (2 hops) stake 1.000 SOL
+Oct 28 07:02:37 ip-172-31-17-131 rugsnipe-long[325211]: long skip Cbwc6Vry its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 07:25:23 ip-172-31-17-131 rugsnipe-long[325211]: long skip DjissLYt its ? SOL (multihop): its buy has no SOL value (paid in an unpriced token)
+Oct 28 07:25:27 ip-172-31-17-131 rugsnipe-long[325211]: long skip 8vZRcwr6 its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 07:33:45 ip-172-31-17-131 rugsnipe-long[325211]: long skip AhwNAerL its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 07:45:48 ip-172-31-17-131 rugsnipe-long[325211]: long skip HwkneetV its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 08:40:06 ip-172-31-17-131 rugsnipe-long[325211]: long paper-buy #21 EwsKTHxB its 1.500 SOL route copied (2 hops) stake 1.000 SOL
+Oct 28 08:40:07 ip-172-31-17-131 rugsnipe-long[325211]: long paper-refused #21 EwsKTHxB: at 1.321x its price, 16640198708036 tokens under min_out 19186006554956 (max_premium 0.25)
+Oct 28 09:02:44 ip-172-31-17-131 rugsnipe-long[325211]: long skip 2qTNgFuF its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 09:53:04 ip-172-31-17-131 rugsnipe-long[325211]: long skip AXnBSiCG its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 10:21:20 ip-172-31-17-131 rugsnipe-long[325211]: long skip 6MQGJHuA its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 10:34:23 ip-172-31-17-131 rugsnipe-long[325211]: long skip 4NoGZu8G its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 10:58:18 ip-172-31-17-131 rugsnipe-long[325211]: long skip HfaxJmdJ its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 11:50:20 ip-172-31-17-131 rugsnipe-long[325211]: long skip 12NARFVq its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+Oct 28 12:53:21 ip-172-31-17-131 rugsnipe-long[325211]: long feed: session ended: long feed disconnected
+Oct 28 12:53:22 ip-172-31-17-131 rugsnipe-long[325211]: long feed connected
+Oct 28 13:12:49 ip-172-31-17-131 rugsnipe-long[325211]: long skip G4Zb27rs its ? SOL (direct): its buy has no SOL value (paid in an unpriced token)
+ubuntu@ip-172-31-17-131:~$

@@ -1,0 +1,853 @@
+ops@fra1:~/rugsnipe$ sudo cp /etc/rugsnipe/rugsnipe.toml /etc/rugsnipe/rugsnipe.toml.bak
+sudo sed -i -E 's/\{[^{}]*CxyKYmQo[^{}]*\}[[:space:]]*,?[[:space:]]*//' /etc/rugsnipe/rugsnipe.toml
+grep -c CxyKYmQo /etc/rugsnipe/rugsnipe.toml
+grep -n copy_more /etc/rugsnipe/rugsnipe.toml
+grep: /etc/rugsnipe/rugsnipe.toml: Permission denied
+grep: /etc/rugsnipe/rugsnipe.toml: Permission denied
+ops@fra1:~/rugsnipe$ sudo cp /etc/rugsnipe/rugsnipe.toml /etc/rugsnipe/rugsnipe.toml.bak
+sudo sed -i -E 's/\{[^{}]*CxyKYmQo[^{}]*\}[[:space:]]*,?[[:space:]]*//' /etc/rugsnipe/rugsnipe.toml
+grep -c CxyKYmQo /etc/rugsnipe/rugsnipe.toml
+grep -n copy_more /etc/rugsnipe/rugsnipe.toml
+grep: /etc/rugsnipe/rugsnipe.toml: Permission denied
+grep: /etc/rugsnipe/rugsnipe.toml: Permission denied
+ops@fra1:~/rugsnipe$ sudo grep -c CxyKYmQo /etc/rugsnipe/rugsnipe.toml
+sudo grep -n copy_more /etc/rugsnipe/rugsnipe.toml
+sudo python3 -c 'import tomllib;tomllib.load(open("/etc/rugsnipe/rugsnipe.toml","rb"));print("config ok")'
+0
+190:copy_more = [{ wallet = "3yrJE1A8dgSuy5NLimG5GSYxA6wMkvnAYLD9Y4xR2fjJ", min_sol = 1.5, hold_to_create_slots = 29 }, { wallet = "JBokzLFRg8CEcThrjweWa9WoZoZPYitRSVffXuxdHHVu", mode = "log", hold_to_create_slots = 5 }, { wallet = "H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg", max_premium = 0.2, hold_to_create_slots = 12 }, { wallet = "D5BDDkBtjjva35nwu45WfmZgytsog9GST2tHQaZUYuFX", hold_to_create_slots = 9 }]
+config ok
+ops@fra1:~/rugsnipe$ cd ~/rugsnipe && git pull && cp deploy/bin/rugsnipe-check ~/check.sh
+sudo cp /etc/rugsnipe/rugsnipe.toml /etc/rugsnipe/rugsnipe.toml.bak2
+sudo sed -i -E 's/\{[^{}]*JBokzLFR[^{}]*\}[[:space:]]*,?[[:space:]]*//' /etc/rugsnipe/rugsnipe.toml
+sudo grep -cE 'CxyKYmQo|JBokzLFR' /etc/rugsnipe/rugsnipe.toml
+sudo python3 -c 'import tomllib;tomllib.load(open("/etc/rugsnipe/rugsnipe.toml","rb"));print("config ok")'
+remote: Enumerating objects: 11, done.
+remote: Counting objects: 100% (11/11), done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 6 (delta 5), reused 6 (delta 5), pack-reused 0 (from 0)
+Unpacking objects: 100% (6/6), 1.94 KiB | 1.94 MiB/s, done.
+From https://github.com/xin10ylop/rugsnipe
+   ec2463c..6c7a9a4  claude/eloquent-mayer-264bxk -> origin/claude/eloquent-mayer-264bxk
+Updating ec2463c..6c7a9a4
+Fast-forward
+ deploy/bin/rugsnipe-check  | 19 +++++++++++++++----
+ deploy/bin/rugsnipe-trades | 19 +++++++++++++------
+ 2 files changed, 28 insertions(+), 10 deletions(-)
+0
+config ok
+ops@fra1:~/rugsnipe$ bash ~/check.sh
+== 11:45:34 Beirut  TRADING: NO: stopped by the daily_loss kill (its trigger and the unkill steps below)
+   the kill: daily_loss at 10-27 09:50:35 Beirut: daily_loss: daily P&L marked to market -1207492396 lamports <= -1000000000
+   it holds across restarts; once the cause is gone, unkill (docs/07 section 6):
+     sudo systemctl stop rugsnipe-hot && sudo rm -f /run/rugsnipe/KILL && sudo -u rugsnipe /opt/rugsnipe/bin/rugsnipe-ctl unkill --state /var/lib/rugsnipe/state.db && sudo systemctl start rugsnipe-hot
+   started Oct 26 15:00:00 Beirut (20h45m ago)
+   wallet 0.3081 SOL (at the start 1.7192, change -1.4110 SOL)  open positions 1  daily stop 1.0000 SOL
+   buys: copies of his buys only (entry.rule_buys = false)
+   copy on (this process): his launch buys 5  not copied: tip under 2M 2, operator not listed 0, operator he bought < 0 times in 24 h 0  ->  copied 3 (journaled only 0, coin already ours 0)
+   copyw (this process): 5 other wallet(s) (entry.copy_more): their launch buys 22  not copied: under min_sol 5  ->  copied 8 (journaled only 9, coin already ours 0)
+   sends (this process): attempts 0 landed 0 failed 0 dropped 0
+== results since the start (after tips and fees; failed = our buys that landed failed)
+scope        races  landed  land_pct  closed  wins  mean_pct  curve_sol  tips_fees  failed_sol  net_sol
+-----------  -----  ------  --------  ------  ----  --------  ---------  ---------  ----------  -------
+since start  500    410     82.0      416     150   -0.4      2.1457     -2.9074    -0.0011     -0.7628
+
+== TIP TEST since Oct 26 18:20 Beirut, by our bid: keep the higher bid only if it lands closer (d_avg) AND nets more per copy
+our_bid_m  who       copies  filled  failed  not_landed  in_its_slot  d_avg  within_15  mean_pct  net_sol  net_per_copy
+---------  --------  ------  ------  ------  ----------  -----------  -----  ---------  --------  -------  ------------
+3.0        3yrJE1A8  30      25      5       0           19           125.0  0          -3.9      -0.4964  -0.0165
+8.0        3yrJE1A8  15      14      1       0           12           142.0  0          6.5       0.4021   0.0268
+3.0        D5BDDkBt  3       2       1       0           1            35.0   0          14.6      0.1465   0.0488
+8.0        D5BDDkBt  5       3       2       0           4            339.0  0          -2.1      -0.0607  -0.0121
+3.0        H9kuqGKN  37      27      10      0           21           136.0  0          -1.0      -0.1416  -0.0038
+8.0        H9kuqGKN  56      49      7       0           31           156.0  0          1.0       0.2874   0.0051
+3.0        him       56      41      14      1           36           156.0  0          -0.1      -0.0169  -0.0003
+8.0        him       79      59      20      0           52           149.0  0          -1.5      -0.4863  -0.0062
+
+(reading 110 new transactions of 3yrJE1A8: once, then only the newer ones)
+== LAST 10 TRADES, newest first (Beirut time)
+   time      coin      who  ITS NET  OUR NET    our %   result   landed    behind  held  our bid  fees      exit
+   --------  --------  ---  -------  ---------  ------  -------  --------  ------  ----  -------  --------  -------
+   09:47:48  HPhAKU2P  4    -0.0804  -0.0511    -20.7%  filled   +1 slot           12    8.0M     0.0095    hold_to
+   09:34:39  47JNcB62  2    +0.0701  +0.0366    +17.0%  filled   +1 slot           28    3.0M     0.0055    hold_to
+   09:33:24  28kvwz6r  1    -0.0194  -0.0101    -4.5%   filled   +1 slot           3     3.0M     0.0045    hold_to
+   09:32:56  B8jMNvzM  2    +0.3499  -0.1050    -29.4%  filled   its slot  91      31    3.0M     0.0035    hold_to
+   09:16:32  3ndMDGDD  1    +0.2482  -0.0030    -0.8%   filled   its slot  35      9     8.0M     0.0090    hold_to
+   08:59:13  46PBFhaR  2    +0.3718  +0.0712    +25.0%  filled   its slot  221     28    8.0M     0.0105    hold_to
+   08:55:42  F4sw1HnJ  1    -0.0158  -0.0380    -8.9%   filled   its slot  50      9     8.0M     0.0095    hold_to
+   08:51:57  6uV2dmmS  4    -0.0376  +0.0033    +0.8%   filled   its slot  69      11    8.0M     0.0025    hold_to
+   08:32:21  75eW9uvC  2    -0.2564  -0.000015          refused  +1 slot                 3.0M     0.000015
+   08:03:58  FMo3m6Ce  1    +0.0015  -0.0089    -2.0%   filled   its slot  35      5     8.0M     0.0095    hold_to
+
+== BY WALLET since Oct 26 15:00 (Beirut time), SOL: ITS NET = the wallet's own result, OUR NET = our copies of it
+   who         ITS NET   OUR NET  sent  filled  refused  won      its coins  its net: we copied  we skipped     bot did not see  before watched  its failed tx
+   ----------  --------  -------  ----  ------  -------  -------  ---------  ------------------  -------------  ---------------  --------------  --------------
+   1 him       +8.9099   -0.0479  162   125     33       44/125   377        +7.7826 (166)       +1.4461 (206)  -0.3071 (5)                      -0.0116 (1075)
+   2 3yrJE1A8  +2.2099   -0.0135  61    51      10       22/51    113        +5.5703 (68)        -2.5037 (42)   -0.3904 (3)                      -0.4662 (1665)
+   4 H9kuqGKN  +36.9199  +0.1456  93    77      14       32/76    212        +2.7742 (96)        +0.3268 (5)    +10.5774 (66)    +23.3643 (45)   -0.1229 (43)
+   6 D5BDDkBt  +2.0455   +0.0857  8     6       2        4/6      31         +0.6788 (8)         +0.2176 (1)    -0.0524 (1)      +1.2518 (21)    -0.0502 (4)
+   TOTAL                 +0.1699  324   259     59       102/258
+
+== 1 him (AHwJSnFNUiAU9FfT5ewW2osqMo938WtL7KhfsJyfpaN2): ITS NET +8.9099   OUR NET -0.0479   we copied 162 of its 377 launch buys, sold at his sell - 1
+   time      coin      ITS NET  OUR NET    our %    the bot             its SOL  its tip  its buy  result      landed    behind  held  our bid  fees      exit
+   --------  --------  -------  ---------  -------  ------------------  -------  -------  -------  ----------  --------  ------  ----  -------  --------  -------
+   11:23:35  CYXJRfwW  +0.0580                      skip: tip/size low  0.593    1.0M     +0
+   10:41:06  GJWq6mT8  +0.0693                      copied, not sent    0.593    4.8M     +1
+   10:33:26  7kbPaAyJ  +0.0766                      copied, not sent    0.593    3.6M     +1
+   10:32:42  Hs9KZGpk  +0.0112                      skip: tip/size low  0.593    1.8M     +0
+   10:23:49  EKRxxsfB  +0.3050                      copied, not sent    0.889    15.0M    +1
+   09:44:43  47qkYaqh  -0.0129                      skip: tip/size low  0.395    1.0M     +1
+   09:38:12  CV7YQobc  +0.0668                      skip: tip/size low  0.395    1.0M     +0
+   09:33:24  28kvwz6r  -0.0194  -0.0101    -4.5%    COPIED              0.593    2.4M     +1       filled      +1 slot           3     3.0M     0.0045    hold_to
+   09:16:32  3ndMDGDD  +0.2482  -0.0030    -0.8%    COPIED              1.185    18.0M    +0       filled      its slot  35      9     8.0M     0.0090    hold_to
+   08:58:04  iDRi3EGH  +0.0022                      skip: tip/size low  0.395    1.0M     +0
+   08:55:42  F4sw1HnJ  -0.0158  -0.0380    -8.9%    COPIED              1.185    4.8M     +0       filled      its slot  50      9     8.0M     0.0095    hold_to
+   08:45:16  8RWmnoqN  +0.0024                      skip: tip/size low  1.185    1.0M     +0
+   08:28:44  3LCxcXon  -0.0135                      skip: tip/size low  0.395    1.5M     +0
+   08:03:58  FMo3m6Ce  +0.0015  -0.0089    -2.0%    COPIED              0.889    3.6M     +0       filled      its slot  35      5     8.0M     0.0095    hold_to
+   07:52:06  UgL8HdtM  +0.0882                      skip: tip/size low  0.593    1.0M     +1
+   07:42:29  7SUvxhGJ  +0.1904  +0.0493    +9.9%    COPIED              0.889    7.2M     +0       filled      its slot  48      5     8.0M     0.0095    hold_to
+   07:38:41  FfDrX1UM  +0.0168                      skip: tip/size low  0.395    1.5M     +0
+   07:18:05  6ix58rbk  +0.0488                      skip: tip/size low  0.593    1.0M     +1
+   07:02:26  GSfFtdAD  -0.0287  -0.0257    -5.1%    COPIED              0.889    7.2M     +0       filled      +1 slot           8     8.0M     0.0095    hold_to
+   06:49:28  Bu65Yn2b  -0.0061  -0.0296    -5.9%    COPIED              0.395    2.4M     +1       filled      +1 slot           7     8.0M     0.0095    hold_to
+   06:34:07  CK64Cyii  +0.0255  +0.0366    +7.3%    COPIED              0.395    4.8M     +0       filled      +1 slot           8     3.0M     0.0050    hold_to
+   06:23:26  EJKhmYRG  -0.0101                      skip: tip/size low  0.593    1.0M     +0
+   06:19:34  3SUaNzVH  -0.0451  -0.000015           COPIED              0.889    15.0M    +0       refused     its slot  45            3.0M     0.000015
+   06:03:43  6S59ZBZV  -0.2002                      skip: tip/size low  0.790    1.0M     +1
+   06:03:02  8BMgZt3q  +0.1232  +0.0094    +1.9%    COPIED              3.556    30.0M    +1       filled      its slot  398     4     8.0M     0.0095    hold_to
+   06:02:46  FeDpKGFS  +1.5656  -0.000015           COPIED              2.370    1.0M     +1       refused     +1 slot                 8.0M     0.000015
+   06:02:38  A7xVi4VD  -0.0173                      skip: tip/size low  0.593    1.0M     +1
+   06:02:32  8928uGVF  +0.0035  -0.000015           COPIED              0.593    6.4M     +0       refused     its slot  147           3.0M     0.000015
+   06:02:19  65SA2kUs  -0.0268  -0.0219    -4.4%    COPIED              0.889    2.4M     +1       filled      its slot  209     4     8.0M     0.0095    hold_to
+   05:56:46  7Bc1r5aX  +0.0479                      skip: tip/size low  0.395    1.0M     +0
+   05:52:44  6cb5aTzx  +0.0144  +0.0146    +2.9%    COPIED              0.395    3.2M     +1       filled      +1 slot           7     8.0M     0.0095    hold_to
+   05:48:55  5Vxioi7q  -0.0101                      skip: tip/size low  0.593    1.0M     +0
+   05:48:02  BWv2uh9M  +0.0400                      skip: tip/size low  0.395    1.0M     +0
+   05:45:16  H29cQYZw  -0.2420                      skip: tip/size low  0.593    1.6M     +0
+   05:41:28  GzXtZu7a  -0.0828                      skip: tip/size low  0.593    1.0M     +0
+   05:40:43  EVQADABu  +0.0837  +0.0969    +19.4%   COPIED              0.395    2.4M     +1       filled      +1 slot           8     3.0M     0.0045    hold_to
+   05:40:07  DWVuJMy1  -0.0132                      skip: tip/size low  0.593    1.0M     +0
+   05:39:45  E68cmaEz  +0.1266  +0.0969    +19.4%   COPIED              0.593    3.6M     +0       filled      its slot  38      9     3.0M     0.0055    hold_to
+   05:39:32  5G73NLzB  +0.2507  +0.1739    +34.8%   COPIED              0.593    3.6M     +0       filled      +1 slot           8     8.0M     0.0090    hold_to
+   05:33:15  8P6GkdCc  -0.0156  -0.0245    -4.9%    COPIED              0.593    4.8M     +1       filled      +1 slot           7     8.0M     0.0095    hold_to
+   05:31:27  27a9cQfb  -0.0153  -0.0190    -3.8%    COPIED              0.593    4.8M     +0       filled      +1 slot           8     3.0M     0.0040    hold_to
+   05:30:10  2tQ7NagW  +0.2833                      skip: tip/size low  1.185    1.0M     +1
+   05:26:49  Ea4JUj4Q  -0.0615                      skip: tip/size low  0.889    1.0M     +0
+   05:14:11  Ds89Dyva  +0.0394                      skip: tip/size low  0.889    1.0M     +0
+   05:07:25  Cj3hFjNX  -0.0020  +0.0009    +0.2%    COPIED              0.593    4.8M     +0       filled      +1 slot           4     3.0M     0.0055    hold_to
+   04:59:01  7ZSuEJLU  +0.2416  -0.000015           COPIED              1.185    20.0M    +1       refused     its slot  276           8.0M     0.000015
+   04:31:38  DgB8uZCA  +0.0716                      skip: tip/size low  0.593    1.0M     +0
+   04:28:22  G1SEReAq  +0.2259  +0.0063    +1.3%    COPIED              0.889    2.4M     +1       filled      its slot  100     8     3.0M     0.0045    hold_to
+   04:19:30  3rNmp5DB  +0.0907                      skip: tip/size low  0.593    1.8M     +1
+   04:18:25  Hw2LxUH3  +0.0643                      skip: tip/size low  0.593    1.8M     +0
+   04:17:16  5HbhJS9X  -0.0173  -0.0207    -4.1%    COPIED              0.593    4.8M     +0       filled      its slot  112     9     8.0M     0.0095    hold_to
+   04:14:37  9tn3Fwq8  +0.0478                      skip: tip/size low  0.395    1.0M     +1
+   04:13:15  HA2h9Mjc  -0.0031  -0.0349    -7.0%    COPIED              0.593    7.2M     +0       filled      its slot  118     9     3.0M     0.0045    hold_to
+   04:11:24  DTnLwBG1  -0.0381                      skip: tip/size low  0.593    1.0M     +1
+   04:01:05  J8wtq8Mx  +0.2667                      skip: tip/size low  0.889    1.0M     +0
+   04:01:01  39wmVFXQ  +0.3697                      skip: tip/size low  0.889    1.0M     +0
+   04:00:50  CXpM2vcd  +0.0708                      skip: tip/size low  0.395    1.6M     +0
+   04:00:44  7cwK1QF2  -0.0363                      skip: tip/size low  0.889    1.0M     +0
+   04:00:34  8qQXjmGz  -1.0848                      skip: tip/size low  1.778    1.0M     +0
+   04:00:33  41ms4K15  +0.1517                      skip: tip/size low  0.395    1.5M     +0
+   04:00:28  G4QGBGWs  +0.0677                      COPIED              1.778    15.0M    +0       not landed                          8.0M
+   04:00:13  EvqfBZiE  -0.2420                      skip: tip/size low  1.185    1.0M     +0
+   03:59:40  HQT8xbhA  +0.9916  +0.7061    +141.2%  COPIED              0.593    10.0M    +0       filled      +1 slot           6     8.0M     0.0100    hold_to
+   03:59:34  BTRwpBmx  +0.1665  +0.0112    +7.4%    COPIED              0.889    2.4M     +1       filled      its slot  240     8     8.0M     0.0096    hold_to
+   03:59:32  HixiA8fo  -0.0168                      skip: tip/size low  0.593    1.0M     +0
+   03:59:30  42yXFNbn  -0.0546  +0.0134    +2.7%    COPIED              1.185    24.0M    +0       filled      its slot  45      9     8.0M     0.0095    hold_to
+   03:59:30  9u6M1xww  -1.4580  +0.0352    +7.0%    COPIED              2.370    32.0M    +0       filled      its slot  115     5     3.0M     0.0040    hold_to
+   03:59:22  42vNRFso  +0.0149                      skip: tip/size low  1.185    1.8M     +0
+   03:58:16  gtT6Fnwj  +0.0657  +0.0908    +18.2%   COPIED              0.889    3.6M     +0       filled      its slot  56      9     3.0M     0.0050    hold_to
+   03:57:35  4q3ser1u  -0.2913  -0.1670    -33.4%   COPIED              0.889    3.6M     +1       filled      +1 slot           7     3.0M     0.0045    hold_to
+   03:54:35  52773SMW  -0.0185  -0.0120    -2.4%    COPIED              1.185    12.0M    +1       filled      its slot  214     4     8.0M     0.0095    hold_to
+   03:53:27  3Ye1Wgff  -0.6445  -0.2780    -55.6%   COPIED              1.185    7.2M     +0       filled      +1 slot           8     8.0M     0.0105    hold_to
+   03:52:23  DR8or4ud  -0.4829  -0.2835    -56.7%   COPIED              0.889    4.8M     +1       filled      its slot  64      8     3.0M     0.0045    hold_to
+   03:50:35  4s85HKoM  -0.5753  -0.2350    -47.0%   COPIED              1.185    7.2M     +0       filled      +1 slot           8     8.0M     0.0095    hold_to
+   03:49:41  9gzmLcRa  +0.0246  -0.000015           COPIED              0.889    12.0M    +0       refused     +1 slot                 8.0M     0.000015
+   03:49:24  HvjYQ3VW  +0.0725  -0.2978    -59.6%   COPIED              0.889    3.6M     +0       filled      its slot  63      9     8.0M     0.0095    hold_to
+   03:47:46  DvtdhaA8  -0.0146  -0.0140    -2.8%    COPIED              0.593    4.8M     +1       filled      +1 slot           7     3.0M     0.0055    hold_to
+   03:44:27  DVN4di9L  +0.2698                      skip: tip/size low  0.790    1.0M     +1
+   03:36:09  Ci75KJzx  -0.0119  -0.0345    -6.9%    COPIED              0.593    8.0M     +0       filled      its slot  100     6     8.0M     0.0090    hold_to
+   03:35:28  94ivtuAT  -0.0176  -0.0219    -4.4%    COPIED              0.593    4.8M     +0       filled      +1 slot           4     8.0M     0.0095    hold_to
+   03:35:22  42oZqT3i  -0.0112                      skip: tip/size low  0.593    1.0M     +1
+   03:35:02  BYdb8TDm  -0.0460  -0.0158    -3.2%    COPIED              1.185    18.0M    +0       filled      its slot  116     5     3.0M     0.0045    hold_to
+   03:34:43  42ef7CuX  +0.0138                      skip: tip/size low  0.790    1.0M     +0
+   03:28:43  224SsSi3  -0.0119  -0.0052    -1.0%    COPIED              0.395    3.2M     +0       filled      its slot  143     9     8.0M     0.0105    hold_to
+   03:15:44  J8EHvGoW  +0.0223  -0.0211    -4.2%    COPIED              0.889    9.6M     +1       filled      its slot  205     8     3.0M     0.0045    hold_to
+   03:09:12  3Npgysvz  +0.0467  +0.0049    +1.0%    COPIED              0.593    3.2M     +0       filled      +1 slot           8     8.0M     0.0095    hold_to
+   03:06:14  BjmFK4Fi  +0.0064  -0.0917    -18.3%   COPIED              1.185    4.8M     +0       filled      +1 slot           8     8.0M     0.0090    hold_to
+   02:38:23  651ckqGb  -0.2411  -0.1359    -27.2%   COPIED              0.889    15.0M    +0       filled      +1 slot           8     8.0M     0.0095    hold_to
+   02:33:32  7VrGQ8VM  -0.0187                      skip: tip/size low  0.593    1.8M     +1
+   02:27:53  BXN2fgh5  -0.0188                      skip: tip/size low  0.593    1.0M     +1
+   02:25:55  BVPPhs8t  -0.0182                      skip: tip/size low  1.185    1.0M     +1
+   02:25:48  Cagh14V6  -0.1894                      skip: tip/size low  0.790    1.0M     +0
+   02:22:56  DgqKGvit  +0.1128  +0.0832    +16.6%   COPIED              0.593    3.6M     +0       filled      +1 slot           4     3.0M     0.0050    hold_to
+   02:22:43  CNirx35x  +0.2059                      skip: tip/size low  0.593    1.8M     +0
+   02:16:54  BDAdDNWJ  +0.0845                      skip: tip/size low  0.889    1.0M     +0
+   02:09:41  H2hwKFJG  -0.0014                      skip: tip/size low  0.593    1.0M     +0
+   02:08:17  HiUSFLQj  -0.0021                      skip: tip/size low  1.185    1.0M     +0
+   02:01:47  GVmVJPrr  -0.0067                      skip: tip/size low  1.185    1.0M     +0
+   01:54:17  8EaYTcbF  +0.0239  -0.000015           COPIED              1.185    15.0M    +1       refused     +1 slot                 8.0M     0.000015
+   01:54:11  2h6MwKPq  +0.0240  -0.000015           COPIED              1.185    15.0M    +1       refused     +1 slot                 8.0M     0.000015
+   01:54:08  9Pcdn4Kh  -0.0090                      skip: tip/size low  0.593    1.5M     +1
+   01:53:59  qhWEw3Mu  -0.0173                      skip: tip/size low  0.593    1.0M     +0
+   01:53:58  FZfyuyB9  +0.6757  -0.000015           COPIED              0.889    12.0M    +0       refused     its slot  152           3.0M     0.000015
+   01:53:56  DbY3Sqew  -0.2810                      skip: tip/size low  0.593    1.5M     +0
+   01:53:52  EvhasZE4  -0.0182                      skip: tip/size low  0.593    1.5M     +1
+   01:50:54  DmQh5SCU  -0.7176                      skip: tip/size low  1.185    1.0M     +1
+   01:50:53  BqCrgck7  +0.1036                      skip: tip/size low  1.185    1.0M     +0
+   01:48:35  2Ew1GAyF  +0.2860  -0.000015           COPIED              0.593    4.8M     +0       refused     its slot  105           3.0M     0.000015
+   01:43:37  CPGBiZBE  -0.0422                      skip: tip/size low  0.395    1.5M     +1
+   01:40:58  6r2yeRMd  -0.2059                      skip: tip/size low  0.790    1.0M     +1
+   01:38:56  EySRBycR  -0.0059                      skip: tip/size low  0.593    1.0M     +0
+   01:32:44  E3Vqdeif  -0.0432  -0.0199    -4.0%    COPIED              1.185    16.0M    +0       filled      its slot          5     8.0M     0.0095    hold_to
+   01:31:19  5y1pKG9a  -0.0441                      skip: tip/size low  1.778    1.0M     +0
+   01:25:08  7QsUeqFq  -0.6149  -0.2698    -54.0%   COPIED              1.185    18.0M    +1       filled      its slot  78      4     8.0M     0.0090    hold_to
+   01:24:54  CSMc5K1u  -2.1390  -0.3047    -60.9%   COPIED              3.556    1.0M     +0       filled      its slot  42      6     8.0M     0.0090    hold_to
+   01:20:31  38WU2H57  -0.9204                      skip: tip/size low  1.778    1.0M     +0
+   01:15:36  GehW5X1o  -0.0329                      skip: tip/size low  1.185    1.8M     +0
+   01:15:21  33UxZQ7k  -0.0011                      skip: tip/size low  0.889    1.0M     +0
+   01:15:11  EmFUL5Mv  -0.0095  -0.0046    -0.9%    COPIED              1.185    7.2M     +0       filled      its slot  178     5     3.0M     0.0045    hold_to
+   01:14:53  GmjuE3EE  -0.0313  -0.0166    -3.3%    COPIED              1.185    2.4M     +0       filled      its slot  255     5     3.0M     0.0055    hold_to
+   01:14:34  HwVNw2Y8  +0.0237  +0.0059    +1.2%    COPIED              0.889    7.2M     +1       filled      its slot  375     8     8.0M     0.0100    hold_to
+   01:13:40  85Yu4w2z  +0.0093                      skip: tip/size low  0.593    1.8M     +0
+   01:12:13  BkS6xR4Y  +0.6257                      skip: tip/size low  0.593    1.0M     +1
+   01:11:53  VF55JiAE  +0.0298                      skip: tip/size low  0.395    1.0M     +1
+   01:11:44  GcP31yEM  +0.0595  -0.0019    -0.4%    COPIED              0.593    7.2M     +1       filled      +2 slot           7     8.0M     0.0105    hold_to
+   01:09:47  7WeFGomk  -0.0061  -0.000015           COPIED              0.593    4.8M     +1       refused     its slot  151           3.0M     0.000015
+   01:08:48  8bCfmAKe  -0.0316  -0.0169    -3.4%    COPIED              0.889    7.2M     +1       filled      its slot  104     4     3.0M     0.0045    hold_to
+   01:08:16  3VYCC5NV  +0.0110  -0.0228    -4.6%    COPIED              0.593    4.8M     +0       filled      its slot  56      9     8.0M     0.0090    hold_to
+   01:08:02  6KEe6ojB  +0.0036  -0.0189    -3.8%    COPIED              0.593    3.6M     +0       filled      its slot  70      9     3.0M     0.0055    hold_to
+   01:05:08  9m5ry1Qw  -0.0064                      skip: tip/size low  0.593    1.0M     +0
+   00:41:55  Gr8ZsgnZ  -0.0030  -0.0389    -7.8%    COPIED              0.593    10.0M    +1       filled      its slot  81      8     8.0M     0.0095    hold_to
+   00:37:18  f5mWbenC  -0.0126                      skip: tip/size low  0.593    1.6M     +0
+   00:34:59  A48ZT1Qa  -0.0053                      skip: tip/size low  1.185    1.0M     +0
+   00:34:41  7Km95Nck  +0.0385  -0.000015           COPIED              0.889    7.2M     +0       refused     its slot  102           8.0M     0.000015
+   00:33:45  EUPc9gck  -0.0173                      skip: tip/size low  0.593    1.0M     +0
+   00:33:32  FXrt1Pgs  +0.0204  +0.0099    +2.0%    COPIED              0.593    3.6M     +0       filled      +1 slot           10    8.0M     0.0105    hold_to
+   00:31:24  GsDovPVp  +0.0199                      skip: tip/size low  0.395    1.0M     +0
+   00:28:30  BMqCgezH  +0.0171                      skip: tip/size low  0.790    1.0M     +1
+   00:23:47  9vKAj3cs  -0.0025                      skip: tip/size low  0.593    0.0M     +0
+   00:22:43  5ER66Qyk  +0.0543                      skip: tip/size low  0.889    1.0M     +0
+   00:22:05  E4hJsLTu  +0.2298                      skip: tip/size low  0.889    1.0M     +1
+   00:19:56  3z6dbGC8  +0.3334                      COPIED              1.580    56.0M    +1       not landed                          3.0M
+   00:18:46  Dt9BibY4  +0.1259                      skip: tip/size low  0.889    1.0M     +0
+   00:18:29  DTvgdquc  +0.0214                      skip: tip/size low  0.395    1.5M     +1
+   00:18:06  48H3agU6  +0.2581                      skip: tip/size low  0.790    1.0M     +1
+   00:15:40  55guqup8  +0.0070                      skip: tip/size low  1.185    1.0M     +0
+   00:14:53  6BT7W2my  +0.0104                      skip: tip/size low  0.593    1.0M     +1
+   00:14:26  CxJCN4Q6  -0.0848                      skip: tip/size low  0.790    1.0M     +1
+   00:14:21  9vkKheBa  -0.0026  -0.0037    -0.7%    COPIED              0.790    12.0M    +1       filled      +1 slot           3     3.0M     0.0045    hold_to
+   00:12:59  AiLwKyhB  +0.0507                      skip: tip/size low  0.593    1.0M     +1
+   00:11:29  3x22HiNG  -0.1290                      skip: tip/size low  0.593    1.8M     +0
+   00:08:19  9BbnfjSR  +0.0112                      skip: tip/size low  0.790    1.0M     +1
+   00:06:26  GGEj3CW1  +0.2532  -0.0953    -19.1%   COPIED              3.556    1.0M     +1       filled      its slot  433     8     3.0M     0.0055    hold_to
+   00:04:18  4gijCxD6  +0.2629  +0.1184    +23.7%   COPIED              0.790    12.0M    +0       filled      its slot  128     9     3.0M     0.0040    hold_to
+   00:02:44  7fWfPPjd  -0.0033                      skip: tip/size low  0.889    1.0M     +0
+   00:00:44  ApFrGgTr  -0.0185                      skip: tip/size low  0.593    1.8M     +0
+   23:58:39  EpzqwiJA  +0.1484  +0.0768    +15.4%   COPIED              0.889    7.2M     +0       filled      its slot  151     9     8.0M     0.0095    hold_to
+   23:42:56  3sRCwUX1  +0.1018                      skip: tip/size low  1.185    1.0M     +0
+   23:39:44  4LEMNbLu  -0.0041                      skip: tip/size low  0.593    1.5M     +0
+   23:31:41  31XwTCk6  +0.0614                      skip: tip/size low  0.395    1.0M     +0
+   23:26:57  5vox7aXm  +0.2504                      skip: tip/size low  0.889    1.0M     +0
+   23:16:44  FcLmH85A  -0.0188  -0.0212    -4.2%    COPIED              0.593    4.8M     +0       filled      its slot  187     9     8.0M     0.0095    hold_to
+   23:14:45  Ha64AdZ4  -0.0169                      skip: tip/size low  0.593    1.0M     +1
+   23:09:32  3MvjRauX  -0.0218  -0.0250    -5.0%    COPIED              0.593    4.8M     +1       filled      its slot  698     4     8.0M     0.0090    hold_to
+   23:08:35  GfWtLGSF  -0.1784                      skip: tip/size low  0.395    1.6M     +0
+   23:08:30  2rNUZcb1  -0.0320  -0.0229    -4.6%    COPIED              0.889    12.0M    +0       filled      its slot  75      5     8.0M     0.0095    hold_to
+   23:04:57  LXwyeJWk  +0.0520  -0.000015           COPIED              0.889    15.0M    +0       refused     its slot  147           8.0M     0.000015
+   22:52:49  HNRWnZ3T  -0.0116  -0.0216    -4.3%    COPIED              0.889    7.2M     +1       filled      its slot  182     8     8.0M     0.0095    hold_to
+   22:52:13  2cbVHt5P  +0.0230  -0.0365    -7.3%    COPIED              0.593    6.4M     +0       filled      its slot  65      9     8.0M     0.0090    hold_to
+   22:51:33  FnDKjCxj  -0.0263                      skip: tip/size low  0.593    1.0M     +1
+   22:50:18  DbbGZgzB  -0.0263                      skip: tip/size low  0.593    1.0M     +1
+   22:50:10  ByZ7skeP  -0.0204                      skip: tip/size low  0.395    1.0M     +1
+   22:47:15  4ajGy62G  +0.0171  -0.0010    -0.2%    COPIED              0.790    8.0M     +1       filled      its slot  233     8     8.0M     0.0105    hold_to
+   22:46:19  F5LubTh3  -0.0094                      skip: tip/size low  0.593    1.0M     +0
+   22:45:40  4QbLJCD1  -0.0058  -0.0249    -5.0%    COPIED              0.395    2.4M     +1       filled      its slot  104     8     3.0M     0.0045    hold_to
+   22:42:16  7FGx3SvR  +0.7548                      skip: tip/size low  1.185    1.0M     +1
+   22:39:54  2TMGQv4z  -0.0394  -0.000015           COPIED              1.185    12.0M    +1       refused     its slot  261           8.0M     0.000015
+   22:37:55  3qzRPaCx  +0.0645                      skip: tip/size low  1.185    1.0M     +1
+   22:33:46  GNozZRzY  +0.1957  +0.0638    +12.8%   COPIED              1.185    16.0M    +0       filled      +1 slot           8     3.0M     0.0045    hold_to
+   22:33:14  2vELitGF  -0.0151  -0.0053    -1.1%    COPIED              1.185    16.0M    +1       filled      its slot  271     4     3.0M     0.0040    hold_to
+   22:30:24  GrQyPkgx  +0.5190  -0.0231    -4.6%    COPIED              1.185    20.0M    +0       filled      its slot  99      5     8.0M     0.0105    hold_to
+   22:30:07  XJX6M1rJ  +0.0192  +0.0223    +4.5%    COPIED              0.889    12.0M    +0       filled      its slot  65      5     8.0M     0.0095    hold_to
+   22:29:18  6HutRVrg  +1.0359  +0.3025    +60.5%   COPIED              1.778    30.0M    +1       filled      +1 slot           3     3.0M     0.0045    hold_to
+   22:29:14  5UvvkgDZ  -1.0687                      skip: tip/size low  1.778    1.0M     +1
+   22:23:48  DSM731VQ  -0.0087  -0.0366    -7.3%    COPIED              0.593    4.8M     +1       filled      +1 slot           7     8.0M     0.0090    hold_to
+   22:21:44  GQrHLyj9  -0.0046                      skip: tip/size low  0.593    1.0M     +0
+   22:20:49  5JdCiqJY  +0.4874  +0.2658    +53.2%   COPIED              1.185    18.0M    +1       filled      its slot  256     9     8.0M     0.0105    hold_to
+   22:17:24  66XbKi1r  +0.1011  +0.0712    +14.2%   COPIED              0.593    3.6M     +0       filled      its slot  112     9     8.0M     0.0090    hold_to
+   22:16:54  G8Mqc8kz  -0.0135                      skip: tip/size low  0.395    1.5M     +1
+   22:15:41  3huUUXsX  -0.0114                      skip: tip/size low  0.395    1.6M     +0
+   22:06:58  GWsYUQMd  -0.0204  -0.000015           COPIED              0.593    4.8M     +1       refused     +1 slot                 3.0M     0.000015
+   22:03:26  DngmHjrE  +0.0847                      skip: tip/size low  0.593    1.0M     +0
+   21:53:27  9pMMeDnb  -0.0309  -0.0169    -3.4%    COPIED              0.889    7.2M     +0       filled      its slot  24      5     3.0M     0.0045    hold_to
+   21:51:06  72WqPGVs  +0.0204  +0.0013    +0.3%    COPIED              0.593    8.0M     +1       filled      its slot  128     4     8.0M     0.0105    hold_to
+   21:50:17  6khPLurL  -0.0117  -0.000015           COPIED              0.395    4.8M     +0       refused     its slot  102           8.0M     0.000015
+   21:47:38  EVQCNPrR  -0.0363  -0.000015           COPIED              0.889    12.0M    +0       refused     its slot  53            3.0M     0.000015
+   21:46:30  9s3fHzLS  -0.0260  -0.0219    -4.4%    COPIED              3.556    1.0M     +0       filled      its slot  170     5     8.0M     0.0095    hold_to
+   21:42:48  8urPNax4  +0.1915  -0.000015           COPIED              3.556    30.0M    +0       refused     its slot  255           8.0M     0.000015
+   21:42:48  4ekFq6gx  -0.0117                      skip: tip/size low  0.593    0.0M     +1
+   21:42:45  86mYff4U  +0.2296  -0.000015           COPIED              0.889    7.2M     +0       refused     +1 slot                 8.0M     0.000015
+   21:42:28  GYuUvGLg  +0.0599                      skip: tip/size low  0.593    1.8M     +0
+   21:41:51  5MNWgPhV  +0.7135  -0.0164    -3.3%    COPIED              3.556    1.0M     +0       filled      +1 slot           4     3.0M     0.0040    hold_to
+   21:37:30  Gpj9Rw3v  +0.2689  -0.000015           COPIED              0.790    6.4M     +0       refused     +1 slot                 8.0M     0.000015
+   21:32:39  9EjVKpcd  -0.0249                      skip: tip/size low  0.889    1.0M     +1
+   21:31:39  nJRZofWL  +0.0017  -0.0342    -6.8%    COPIED              0.593    4.8M     +1       filled      its slot  80      8     8.0M     0.0095    hold_to
+   21:29:54  He7QSQVa  +0.0014                      skip: tip/size low  1.185    1.0M     +0
+   21:29:24  3D8gyPyn  +0.0020  +0.0019    +0.4%    COPIED              1.185    16.0M    +1       filled      +1 slot           3     3.0M     0.0045    hold_to
+   21:25:36  33angnKM  -0.0412                      skip: tip/size low  1.185    1.0M     +0
+   21:20:13  ENVRpJeF  -0.0137  -0.0324    -6.5%    COPIED              0.790    12.0M    +0       filled      +1 slot           8     3.0M     0.0050    hold_to
+   21:19:55  CiP1o9ZU  -0.0094                      skip: tip/size low  0.593    1.8M     +0
+   21:19:03  C7HtMDaU  +0.1259                      skip: tip/size low  0.889    1.0M     +0
+   21:18:07  Cy8FJnUA  +0.0702  -0.000015           COPIED              1.778    24.0M    +0       refused     +1 slot                 8.0M     0.000015
+   21:15:16  Hg2ct5B8  +0.0169                      skip: tip/size low  1.185    1.0M     +1
+   21:12:32  2gDbZhSG  -0.0146                      skip: tip/size low  0.593    1.0M     +0
+   21:10:22  XCWL623L  -0.0620  -0.0139    -2.8%    COPIED              3.556    1.0M     +1       filled      +1 slot           3     8.0M     0.0100    hold_to
+   20:59:25  3nQLNTbE  +0.0057  -0.0254    -5.1%    COPIED              1.185    16.0M    +0       filled      its slot  158     5     8.0M     0.0095    hold_to
+   20:58:58  HeVx3DxJ  -0.0614                      skip: tip/size low  0.395    1.5M     +0
+   20:53:07  BGaxAS3L  +0.1013  +0.0453    +9.1%    COPIED              1.185    12.0M    +1       filled      its slot  267     4     3.0M     0.0040    hold_to
+   20:41:12  3mSwJgUS  -0.0089                      skip: tip/size low  0.889    1.0M     +1
+   20:40:47  3qQDETwa  -0.4187                      skip: tip/size low  1.185    1.0M     +1
+   20:39:36  EmDgoPBd  +0.2312  +0.0116    +2.3%    COPIED              0.790    10.0M    +0       filled      its slot  63      5     3.0M     0.0045    hold_to
+   20:39:04  C17uk6XA  +0.0144                      skip: tip/size low  0.593    1.0M     +1
+   20:38:46  3mSR9YKs  -0.0224                      skip: tip/size low  0.593    1.0M     +1
+   20:38:42  EeRnxWKP  +0.0575  -0.0179    -3.6%    COPIED              2.370    1.0M     +0       filled      its slot  228     5     3.0M     0.0055    hold_to
+   20:38:17  GLqXZxJB  +0.0326                      skip: tip/size low  0.790    1.0M     +1
+   20:37:13  8agA3YaF  -0.0147                      skip: tip/size low  0.593    1.8M     +0
+   20:36:43  BuHhjep5  +0.2534  +0.1317    +26.3%   COPIED              0.889    2.4M     +0       filled      its slot  123     5     8.0M     0.0095    hold_to
+   20:36:18  HRUKkhnb  -0.0965  -0.0278    -5.6%    COPIED              0.889    3.6M     +0       filled      its slot  86      9     8.0M     0.0095    hold_to
+   20:34:19  6c1w81oW  -0.0325                      skip: tip/size low  0.593    1.0M     +0
+   20:29:02  3mmVY8Qk  +0.0599                      skip: tip/size low  0.790    1.0M     +0
+   20:28:48  9kjygPQs  -0.0129                      skip: tip/size low  0.395    1.5M     +0
+   20:25:05  279gq88S  -0.0249  -0.1573    -31.5%   COPIED              1.185    16.0M    +1       filled      its slot  126     8     3.0M     0.0045    hold_to
+   20:22:58  EbeoZxAp  -0.0463  -0.0838    -16.8%   COPIED              3.556    30.0M    +1       filled      its slot  192     7     3.0M     0.0060    hold_to
+   20:22:12  7rV5WkQu  +0.0560  -0.0299    -6.0%    COPIED              0.889    7.2M     +0       filled      its slot  111     9     8.0M     0.0095    hold_to
+   20:18:16  DCstdK2G  +0.0054                      skip: tip/size low  0.593    1.8M     +0
+   20:13:26  Eyv5DEos  +0.0981  -0.000015           COPIED              0.395    2.4M     +1       refused     its slot  133           8.0M     0.000015
+   20:12:16  9uxVKP35  +0.0628  +0.0241    +4.8%    COPIED              1.185    15.0M    +1       filled      its slot          4     3.0M     0.0045    hold_to
+   20:10:00  AgCZa8YS  +0.1506                      skip: tip/size low  1.185    1.0M     +0
+   20:09:01  7Sf7oTjK  -0.1388  -0.0783    -15.7%   COPIED              0.889    15.0M    +0       filled      its slot  48      9     8.0M     0.0095    hold_to
+   20:03:35  68bPpJZo  +0.1407  +0.0801    +16.0%   COPIED              0.889    12.0M    +1       filled      its slot  104     8     3.0M     0.0055    hold_to
+   20:02:18  5KKgZFaR  +0.0652  -0.000015           COPIED              1.185    16.0M    +0       refused     +1 slot                 3.0M     0.000015
+   19:59:59  EabQjF9z  +0.1262  -0.000015           COPIED              0.889    15.0M    +1       refused     its slot  182           8.0M     0.000015
+   19:58:39  9zqUEp5H  +0.0211  -0.0180    -3.6%    COPIED              0.593    7.2M     +1       filled      its slot  97      4     8.0M     0.0105    hold_to
+   19:56:25  B5g7ppDT  -0.0070                      skip: tip/size low  0.593    1.0M     +1
+   19:54:31  64eNnjjF  +0.0313                      skip: tip/size low  0.593    1.0M     +0
+   19:51:19  8YZxwJPR  +0.0419  +0.0279    +5.6%    COPIED              0.395    2.4M     +0       filled      its slot  103     5     3.0M     0.0045    hold_to
+   19:48:28  3kCCufyg  -0.0089  -0.0166    -3.3%    COPIED              0.593    4.8M     +0       filled      its slot  84      6     3.0M     0.0045    hold_to
+   19:47:58  7WVvEGp5  -0.0485  -0.000015           COPIED              1.185    20.0M    +0       refused     +1 slot                 3.0M     0.000015
+   19:47:00  FszBq8NJ  +0.0367                      skip: tip/size low  0.889    1.0M     +0
+   19:46:53  2pUk13Ub  +0.1456  +0.0543    +10.9%   COPIED              1.185    3.6M     +0       filled      +1 slot           8     8.0M     0.0105    hold_to
+   19:46:26  7XX2TNns  +0.0363  -0.000015           COPIED              0.593    7.2M     +0       refused     its slot  311           3.0M     0.000015
+   19:46:04  CGyKUsYG  +0.1478  -0.0097    -1.9%    COPIED              0.593    10.0M    +1       filled      +1 slot           3     8.0M     0.0086    hold_to
+   19:46:02  BQGdUd7j  +0.1173  -0.000015           COPIED              0.593    3.6M     +0       refused     its slot  409           3.0M     0.000015
+   19:46:01  9Cpvx9AX  +0.3725                      skip: tip/size low  0.593    1.0M     +0
+   19:45:51  2LhRmFph  +0.1128                      skip: tip/size low  0.395    1.5M     +0
+   19:45:21  8zvZNVKy  +0.0351                      skip: tip/size low  0.593    1.0M     +0
+   19:42:59  EA5qjv2g  +0.0886                      skip: tip/size low  0.593    1.0M     +0
+   19:42:28  GecpF4Sw  +0.0080                      skip: tip/size low  0.889    1.0M     +0
+   19:41:24  5QQC6Q4B  -0.0174                      skip: tip/size low  0.593    1.8M     +1
+   19:40:14  7hUv6K5X  -0.0275  -0.0405    -8.1%    COPIED              0.593    4.8M     +1       filled      its slot          8     8.0M     0.0095    hold_to
+   19:37:17  3ettdrvU  +0.0045                      skip: tip/size low  0.395    1.6M     +0
+   19:35:57  ETR1tJhv  -0.0187                      skip: tip/size low  0.593    1.0M     +0
+   19:35:57  3ytHwpX1  -0.0149                      skip: tip/size low  0.593    1.0M     +0
+   19:35:57  6ZnpS4kd  -0.0149                      skip: tip/size low  0.593    1.0M     +0
+   19:35:57  BvbhHR9X  -0.0164                      skip: tip/size low  0.889    1.0M     +0
+   19:35:57  CwJV82ds  -0.0212                      skip: tip/size low  0.889    1.0M     +0
+   19:30:33  4amMHenv  +0.0178                      skip: tip/size low  0.889    1.0M     +0
+   19:29:57  EVVmQZW8  -0.0218  -0.0179    -3.6%    COPIED              0.593    4.8M     +0       filled      +1 slot           4     3.0M     0.0055    hold_to
+   19:28:31  2M2pK9K4  -0.0268                      skip: tip/size low  0.889    1.0M     +1
+   19:23:57  BLZfLJyZ  -0.2109                      skip: tip/size low  0.395    1.5M     +0
+   19:19:43  FKftNHEy  -0.0192  -0.0169    -3.4%    COPIED              1.778    18.0M    +0       filled      its slot          5     3.0M     0.0045    hold_to
+   19:16:07  AS6HMNr9  -0.0217                      skip: tip/size low  0.790    1.6M     +1
+   19:09:02  8odUbAsM  -0.0195                      skip: tip/size low  0.593    1.8M     +1
+   19:09:00  2C2MT5DR  -0.1225                      skip: tip/size low  0.593    1.0M     +1
+   19:07:32  CraQQtcg  -0.0055                      skip: tip/size low  1.185    1.0M     +1
+   19:05:37  FJLBS3Cf  +0.0122                      skip: tip/size low  0.593    1.0M     +1
+   19:04:54  2kBCsvRx  -0.0226  -0.000015           COPIED              0.593    4.8M     +0       refused     +1 slot                 8.0M     0.000015
+   19:03:44  2YYGXwsT  -0.0072                      skip: tip/size low  0.395    1.0M     +0
+   19:03:28  BBPbWhZu  +0.0205  -0.0214    -4.3%    COPIED              0.395    2.4M     +0       filled      its slot  207     9     8.0M     0.0095    hold_to
+   19:01:27  4h2ndFxY  -0.0124                      skip: tip/size low  0.395    1.0M     +0
+   19:00:51  49M2ygzx  -0.0110                      skip: tip/size low  0.593    1.0M     +0
+   18:59:16  E2HrHE7F  +0.0520                      skip: tip/size low  1.185    1.0M     +1
+   18:58:28  8aXVQicA  -0.0466                      skip: tip/size low  1.185    1.0M     +1
+   18:58:15  HGJXxb61  -0.0556                      skip: tip/size low  0.395    1.0M     +0
+   18:57:05  8GF4ydeo  +0.1226                      skip: tip/size low  0.593    1.0M     +0
+   18:56:49  83ABv3pg  -0.0117                      skip: tip/size low  0.395    1.0M     +1
+   18:56:30  3ocaPQbu  -0.0210                      skip: tip/size low  0.889    1.0M     +0
+   18:55:39  5AsPjJjF  +0.0077                      skip: tip/size low  0.395    1.6M     +0
+   18:53:07  8JPMBoZS  +0.1724                      skip: tip/size low  0.395    1.5M     +0
+   18:47:39  DEdRt21m  +0.0385                      COPIED              0.790    16.0M    +0       not landed                          8.0M
+   18:40:47  Fm8yjn3W  +0.0077                      skip: tip/size low  0.593    1.0M     +0
+   18:32:10  CKX4a9i5  +0.5713                      skip: tip/size low  0.593    1.0M     +1
+   18:31:32  68L35ZtH  -0.0227  -0.0119    -2.4%    COPIED              0.889    7.2M     +0       filled      its slot  136     5     3.0M     0.0045    hold_to
+   18:30:46  3qbgkdki  -0.0309                      skip: tip/size low  0.889    1.0M     +1
+   18:30:33  559cJmPG  +0.0901  -0.000015           COPIED              0.889    18.0M    +1       refused     its slot  396           3.0M     0.000015
+   18:30:29  92DC8yg1  +0.1149                      skip: tip/size low  0.593    1.0M     +0
+   18:30:16  7REosG6Q  +0.5160  +0.3329    +66.6%   COPIED              0.790    10.0M    +0       filled      its slot  125     5     8.0M     0.0095    hold_to
+   18:29:56  2XcbfcHG  -0.2615                      not seen            0.604    2.4M
+   18:24:26  BqyBbGvx  +0.0103  +0.0101    +2.0%    COPIED              0.395    3.2M     +1       filled      its slot  65      8     8.0M     0.0090    hold_to
+   18:20:11  B1uGYZgh  -0.0018                      skip: tip/size low  0.395    1.0M     +0
+   18:19:45  61oKnB9W  +0.0042                      skip: tip/size low  1.185    1.0M     +0
+   18:14:04  63TGuPbb  -0.0135                      skip: tip/size low  0.395    1.5M     +1
+   18:10:09  Eo3VTQ5n  +0.2215                      skip: tip/size low  0.593    1.0M     +0
+   18:07:10  FoPsUm4Q  -0.0038                      skip: tip/size low  0.889    1.0M     +1
+   18:04:54  7hw3uEeH  +0.1035  +0.0333    +6.7%    COPIED              0.395    2.4M     +1       filled      its slot  148     9     3.0M     0.0045    hold_to
+   18:00:53  FpPNDtZM  -0.0309  -0.0179    -3.6%    COPIED              0.889    7.2M     +1       filled      its slot  214     4     3.0M     0.0055    hold_to
+   17:59:29  AYUYZixP  +0.1788  +0.2278    +45.6%   COPIED              0.395    2.4M     +0       filled      its slot  123     5     3.0M     0.0045    hold_to
+   17:58:28  GQqS2R5Z  -0.0225                      skip: tip/size low  0.889    1.0M     +1
+   17:58:12  5gmuKYD6  -0.2078                      skip: tip/size low  0.889    1.0M     +1
+   17:48:38  WKxsoDNr  -0.0087                      skip: tip/size low  0.593    1.0M     +1
+   17:46:40  6PnzN12J  -0.0217  -0.0164    -3.3%    COPIED              0.593    4.8M     +0       filled      its slot  48      9     3.0M     0.0040    hold_to
+   17:43:20  AFn5wKoD  +0.0718                      skip: tip/size low  0.889    1.0M     +1
+   17:39:21  2RmdQABc  -0.0264  -0.0169    -3.4%    COPIED              0.889    7.2M     +0       filled      +1 slot           4     3.0M     0.0045    hold_to
+   17:39:10  37q7Eh1r  -0.1982                      skip: tip/size low  0.593    1.0M     +0
+   17:38:14  ApaNpEjV  -0.0259                      skip: tip/size low  0.790    1.0M     +0
+   17:37:19  9Nv4aEyF  -0.0130                      not seen            0.403    1.6M
+   17:37:07  6LPHjPig  +0.0667                      skip: tip/size low  0.395    1.0M     +0
+   17:36:19  GzVcYCPW  -0.0025                      not seen            0.403    1.6M
+   17:35:24  D3izRQqJ  -0.0210                      not seen            0.606    1.0M
+   17:33:45  3snWXyMF  -0.0180  -0.0164    -3.3%    COPIED              0.593    4.8M     +0       filled      its slot  118     5     3.0M     0.0045    hold_to
+   17:33:39  8BC5cB57  -0.0135  -0.0164    -3.3%    COPIED              0.889    7.2M     +1       filled      its slot  446     4     3.0M     0.0040    hold_to
+   17:31:37  DZjTqNk5  +0.2243                      skip: tip/size low  0.593    1.8M     +1
+   17:31:18  EQC2Gw8h  +0.0192                      skip: tip/size low  0.593    1.0M     +0
+   17:18:42  GXoVdhFf  -0.0623                      skip: tip/size low  0.593    1.8M     +0
+   17:18:12  6mQNS17e  -0.0092                      not seen            0.402    1.0M
+   17:18:09  3fmunZbG  +0.1467  -0.0246    -4.9%    COPIED              1.778    18.0M    +0       filled      its slot  150     9     3.0M     0.0045    hold_to
+   17:16:49  GUjeXnaQ  +0.0443  -0.000015           COPIED              0.395    2.4M     +0       refused     +1 slot                 3.0M     0.000015
+   17:10:46  93StaKMP  +0.3644                      skip: tip/size low  0.593    1.0M     +0
+   17:10:41  DfCpS17h  +0.2812  +0.1647    +32.9%   COPIED              0.790    10.0M    +1       filled      +1 slot           3     3.0M     0.0055    hold_to
+   17:10:30  nFFeuUZh  +0.5163                      skip: tip/size low  1.778    1.0M     +1
+   17:09:08  FTRuanqV  -0.0192  -0.0181    -3.6%    COPIED              0.593    4.8M     +0       filled      +1 slot           8     3.0M     0.0045    hold_to
+   17:01:53  3f99Aucr  +0.0493                      skip: tip/size low  1.185    1.0M     +0
+   16:58:53  7soqpji3  +0.0173                      skip: tip/size low  0.395    0.0M     +1
+   16:54:41  zEpQuFmw  +0.0345                      skip: tip/size low  0.395    1.5M     +0
+   16:53:37  FU1YopYw  +0.0278                      skip: tip/size low  0.593    1.0M     +1
+   16:52:06  Bz7DyRA2  -0.0094                      skip: tip/size low  0.395    1.0M     +1
+   16:51:57  C2LTB4Tj  -0.0403  -0.0651    -13.0%   COPIED              0.593    2.4M     +1       filled      its slot  299     8     3.0M     0.0045    hold_to
+   16:48:21  BSyce3zf  +0.0376                      skip: tip/size low  0.395    1.6M     +0
+   16:47:51  FqYzBE7z  -0.0188                      skip: tip/size low  0.593    1.0M     +0
+   16:46:30  DwReMnfu  -0.0192                      skip: tip/size low  0.889    1.0M     +1
+   16:38:32  DAkZMwi3  +0.1752  -0.000015           COPIED              1.185    24.0M    +0       refused     +1 slot                 3.0M     0.000015
+   16:37:04  JE5WAKoi  -0.0216  -0.0144    -2.9%    COPIED              0.889    12.0M    +0       filled      its slot  117     5     3.0M     0.0045    hold_to
+   16:37:03  3brocany  +0.0067  -0.0054    -1.1%    COPIED              0.889    15.0M    +0       filled      its slot  189     5     3.0M     0.0045    hold_to
+   16:36:53  98pa1vUY  -0.0876  -0.0446    -8.9%    COPIED              0.889    7.2M     +0       filled      +1 slot           9     3.0M     0.0040    hold_to
+   16:33:43  CuLtmtLL  +0.0921                      skip: tip/size low  0.395    0.0M     +1
+   16:33:10  7hiK1hYH  +0.0168  +0.0011    +0.2%    COPIED              0.889    12.0M    +0       filled      +1 slot           4     3.0M     0.0045    hold_to
+   16:33:05  BUAZeNMA  +0.0464  +0.0408    +8.2%    COPIED              0.593    3.6M     +0       filled      its slot  71      9     3.0M     0.0035    hold_to
+   16:30:07  5H9XU85z  -0.0006  +0.0017    +0.3%    COPIED              0.593    8.0M     +0       filled      its slot  65      5     3.0M     0.0045    hold_to
+   16:30:02  Bh2YLS61  +0.0774                      skip: tip/size low  0.593    1.8M     +0
+   16:28:22  JDq7Nair  -0.0083                      skip: tip/size low  0.395    1.0M     +0
+   16:21:31  9387oQyF  +0.2098                      COPIED              0.790    10.0M    +0       not landed                          3.0M
+   16:21:02  52NHyrqb  -0.0083                      skip: tip/size low  0.395    1.0M     +1
+   16:17:33  6Lv787sf  -0.0071                      skip: tip/size low  0.395    1.0M     +0
+   16:01:53  jAs4M8kL  -0.0029                      skip: tip/size low  0.395    1.5M     +1
+   16:00:59  ACmzuJRH  +0.0034                      skip: tip/size low  0.395    1.0M     +0
+   15:58:39  UyRwsKC8  -0.0613                      skip: tip/size low  0.593    1.8M     +0
+   15:57:44  FNHRpj8P  +0.1835  -0.000015           COPIED              0.889    7.2M     +0       refused     its slot  164           3.0M     0.000015
+   15:57:43  8qmvGnU6  -0.0009                      skip: tip/size low  0.889    0.0M     +0
+   15:56:20  78qm1a2M  +0.4835                      skip: tip/size low  0.593    1.8M     +0
+   15:54:02  97NhoAsk  -0.0092  -0.000015           COPIED              0.593    8.0M     +0       refused     +1 slot                 3.0M     0.000015
+   15:53:54  2k3SNKA7  -0.0097  +0.2008    +40.2%   COPIED              0.790    10.0M    +1       filled      its slot  95      9     3.0M     0.0045    hold_to
+   15:49:15  qk95JKe8  -0.0115                      skip: tip/size low  0.395    1.0M     +0
+   15:47:29  8P7KCNFz  -0.0135                      skip: tip/size low  0.395    1.5M     +0
+   15:45:46  3cEYBUp4  +0.2392  -0.000015           COPIED              1.185    12.0M    +0       refused     +1 slot                 3.0M     0.000015
+   15:45:30  3Cim1Apy  -0.0069  -0.0426    -8.5%    COPIED              0.889    12.0M    +1       filled      +1 slot           7     3.0M     0.0055    hold_to
+   15:45:11  Du7adDLL  +0.5891  +0.0973    +19.5%   COPIED              1.185    12.0M    +0       filled      its slot  181     10    3.0M     0.0045    hold_to
+   15:40:55  3TcoY5r1  +0.0481                      skip: tip/size low  0.593    1.0M     +1
+   15:37:25  8s24wr7w  +0.0334                      skip: tip/size low  0.395    1.0M     +0
+   15:36:15  BvQ5Te2A  +0.0039  -0.0128    -2.6%    COPIED              0.593    2.4M     +0       filled      its slot  63      9     3.0M     0.0040    hold_to
+   15:35:58  5oEh2FHx  -0.0104                      skip: tip/size low  0.395    1.0M     +1
+   15:35:45  2paqfzDR  +0.0659                      skip: tip/size low  0.593    1.0M     +1
+   15:35:21  8rzaSjSH  -0.0041                      skip: tip/size low  0.395    1.0M     +0
+   15:32:07  39ot7ctU  -0.0161                      skip: tip/size low  0.889    1.0M     +0
+   15:28:58  FnHz214c  +0.1297                      skip: tip/size low  0.889    1.0M     +0
+   15:24:10  6xteoBRS  -0.2526                      skip: tip/size low  0.593    1.0M     +1
+   15:18:02  DCZHN6qp  +0.0155                      copied, not sent    0.889    9.6M     +0
+   15:13:51  BGQ1yrf5  -0.0173                      skip: tip/size low  0.593    1.0M     +0
+
+== 2 3yrJE1A8 (3yrJE1A8dgSuy5NLimG5GSYxA6wMkvnAYLD9Y4xR2fjJ): ITS NET +2.2099   OUR NET -0.0135   we copied 61 of its 113 launch buys, sold at create+29
+   time      coin      ITS NET    OUR NET    our %    the bot           its SOL  its tip  its buy  result                    landed    behind  held  our bid  fees      exit
+   --------  --------  ---------  ---------  -------  ----------------  -------  -------  -------  ------------------------  --------  ------  ----  -------  --------  -------
+   11:42:07  48Z4RYnx  +0.0673                        skip: < min_sol   0.494    1.0M     +1
+   11:38:40  48UvTdSd  +0.0816                        copied, not sent  1.975    1.0M     +1
+   11:30:37  AJZ7X7JP  -0.0640                        skip: < min_sol   0.494    1.0M     +0
+   11:16:52  5UhvHC3P  -0.0533                        copied, not sent  1.975    1.0M     +0
+   11:15:38  3v5QcFzx  -0.0654                        skip: < min_sol   0.494    1.0M     +0
+   11:05:10  48RDeZ9L  +0.0214                        copied, not sent  1.975    1.0M     +0
+   10:42:59  48Kw6c7j  +0.7389                        copied, not sent  1.975    1.0M     +0
+   10:19:00  9BhtVwuV  -0.0700                        skip: < min_sol   0.494    1.0M     +1
+   10:08:30  DRNi9AB4  -0.0557                        skip: < min_sol   0.494    1.0M     +1
+   09:47:58  3E53Api3  +0.0913                        skip: < min_sol   0.494    1.0M     +0
+   09:44:42  HqpH5R5F  -0.0179                        skip: < min_sol   0.494    1.0M     +0
+   09:34:39  47JNcB62  +0.0701    +0.0366    +17.0%   COPIED            1.975    1.0M     +0       filled                    +1 slot           28    3.0M     0.0055    hold_to
+   09:32:56  B8jMNvzM  +0.3499    -0.1050    -29.4%   COPIED            1.975    1.0M     +0       filled                    its slot  91      31    3.0M     0.0035    hold_to
+   09:30:56  6BGs79zT  -0.0359                        skip: < min_sol   0.494    1.0M     +0
+   09:20:35  4njKYMph  +0.0475                        skip: < min_sol   0.494    1.0M     +0
+   08:59:13  46PBFhaR  +0.3718    +0.0712    +25.0%   COPIED            1.975    1.0M     +1       filled                    its slot  221     28    8.0M     0.0105    hold_to
+   08:49:00  AahFjycv  +0.0136                        skip: < min_sol   0.494    1.0M     +0
+   08:32:21  75eW9uvC  -0.2564    -0.000015           COPIED            1.975    1.0M     +0       refused                   +1 slot                 3.0M     0.000015
+   08:18:17  7pPNBr5L  +0.0033                        skip: < min_sol   0.494    1.0M     +1
+   08:02:01  DApgp5Dh  -0.0394                        skip: < min_sol   0.494    1.0M     +1
+   07:50:31  45njmErf  -0.1735                        skip: < min_sol   0.494    1.0M     +1
+   07:38:38  BHrcp3b7  -0.2498                        not seen          2.022    1.0M
+   07:27:21  GZUuvLuz  +0.1083                        skip: < min_sol   0.494    1.0M     +0
+   07:02:49  WpGAQSPE  -0.0102    -0.0800    -16.0%   COPIED            1.975    1.0M     +1       filled                    its slot  174     28    8.0M     0.0095    hold_to
+   05:58:28  58tpqyDB  -0.1540                        skip: < min_sol   0.494    1.0M     +0
+   05:03:35  9FCLUCso  -0.000067                      skip: < min_sol   0.494    1.0M     +1
+   04:33:45  4XEtQJNt  +0.6086    +0.0757    +15.1%   COPIED            1.975    1.0M     +1       filled                    +1 slot           27    3.0M     0.0055    hold_to
+   03:25:07  Gf9VxAuz  -0.2349    -0.0244    -4.9%    COPIED            1.975    1.0M     +0       filled                    +1 slot           28    3.0M     0.0045    hold_to
+   03:20:32  2DWZ76Yq  -0.3777    -0.1237    -24.7%   COPIED            1.975    1.0M     +1       filled                    its slot  104     28    3.0M     0.0045    hold_to
+   03:15:21  EP4RUiAZ  +0.0355                        skip: < min_sol   0.494    1.0M     +1
+   02:25:26  DqhcRT7v  -0.1951                        skip: < min_sol   0.494    1.0M     +0
+   02:08:17  HiUSFLQj  -0.1172                        skip: < min_sol   0.494    1.0M     +0
+   02:00:01  FSA6huw8  -0.0895                        skip: < min_sol   0.494    1.0M     +1
+   01:47:14  J82qfzjE  +0.9216    +0.0453    +9.1%    COPIED            1.975    1.0M     +0       filled                    +1 slot           28    3.0M     0.0045    hold_to
+   01:20:11  2wxhkMr2  +0.2618    +0.0613    +12.3%   COPIED            1.975    1.0M     +1       filled                    its slot  133     28    3.0M     0.0045    hold_to
+   00:32:17  7zFGZbU3  -0.0088                        skip: < min_sol   0.494    1.0M     +0
+   00:30:03  3tMXAQi9  -0.3038                        skip: coin ours   2.003    1.0M
+   00:25:09  5AgGq8te  -0.3031    -0.0786    -15.7%   COPIED            1.975    1.0M     +0       filled                    its slot  103     30    8.0M     0.0095    hold_to
+   00:23:00  Ddi6h2CR  +0.0685                        skip: < min_sol   0.494    1.0M     +0
+   00:16:43  6deY9E13  +0.2207                        skip: < min_sol   0.494    1.0M     +0
+   00:15:19  B1ieuNAD  -0.4808    -0.1246    -24.9%   COPIED            1.975    1.0M     +0       filled                    its slot  107     29    3.0M     0.0045    hold_to
+   00:12:14  2ftbJo8K  -0.0190    -0.000015           COPIED            1.975    1.0M     +0       failed instruction_error  its slot  41            3.0M     0.000015
+   23:57:06  8XNQZ3df  +0.4146    -0.0228    -4.6%    COPIED            1.975    1.0M     +1       filled                    +1 slot           28    8.0M     0.0105    hold_to
+   23:54:46  BqLHqAtV  -0.2061                        skip: < min_sol   0.494    1.0M     +0
+   23:53:55  GTRQfowq  +0.0930    +0.0175    +3.5%    COPIED            1.975    1.0M     +0       filled                    its slot  83      29    8.0M     0.0090    hold_to
+   23:52:37  P2VrYY9q  -0.1738                        skip: < min_sol   0.494    1.0M     +0
+   23:39:38  GoZEeLHY  -0.3273    -0.1425    -28.5%   COPIED            1.975    1.0M     +0       filled                    +1 slot           28    3.0M     0.0045    hold_to
+   23:32:51  3iWZMxis  +0.6983    +0.1579    +31.6%   COPIED            1.975    1.0M     +1       filled                    its slot  89      28    3.0M     0.0050    hold_to
+   23:18:27  5bSzjYix  +0.1303    +0.0306    +6.1%    COPIED            1.975    1.0M     +0       filled                    its slot  69      29    3.0M     0.0045    hold_to
+   22:58:18  B7XgchDe  -0.0005                        skip: < min_sol   0.494    1.0M     +0
+   22:41:15  2AHAfWTX  -0.2743    -0.0633    -12.7%   COPIED            1.975    1.0M     +0       filled                    +1 slot           29    8.0M     0.0095    hold_to
+   22:39:00  EdCUGdHE  +0.0539    +0.2360    +47.2%   COPIED            1.975    1.0M     +1       filled                    its slot  172     28    3.0M     0.0055    hold_to
+   22:09:17  3q79FggB  -0.5247    -0.1162    -23.2%   COPIED            1.975    1.0M     +1       filled                    its slot  333     28    3.0M     0.0040    hold_to
+   22:08:12  HWeX6eyz  +0.0933    +0.0160    +3.2%    COPIED            1.975    1.0M     +0       filled                    its slot  94      29    8.0M     0.0095    hold_to
+   22:00:37  CkBXL7fj  -0.2480                        skip: < min_sol   0.494    1.0M     +1
+   22:00:21  7rjMKr1b  +0.3325    +0.0786    +15.7%   COPIED            1.975    1.0M     +0       filled                    its slot  98      30    8.0M     0.0090    hold_to
+   21:59:16  2GuCzrsb  +0.0370    +0.0431    +8.6%    COPIED            1.975    1.0M     +0       filled                    its slot  98      29    3.0M     0.0050    hold_to
+   21:50:45  3pjnVmDM  -0.4534    -0.1169    -23.4%   COPIED            1.975    1.0M     +0       filled                    its slot  170     30    8.0M     0.0090    hold_to
+   21:47:03  CTTs8Mmj  +0.0946    -0.0265    -5.3%    COPIED            1.975    1.0M     +0       filled                    its slot  66      29    3.0M     0.0035    hold_to
+   21:42:48  8urPNax4  -1.3347                        skip: coin ours   2.003    1.0M
+   21:36:35  2nh3hYzM  -0.1364                        not seen          0.503    1.0M
+   21:19:11  BWXL6aru  -1.1341    -0.000015           COPIED            1.975    1.0M     +0       refused                   +1 slot                 3.0M     0.000015
+   21:08:13  2BzgiyPY  -0.3813    -0.0161    -3.2%    COPIED            1.975    1.0M     +1       filled                    its slot  223     29    8.0M     0.0095    hold_to
+   21:06:01  Eu3wDXFL  -0.3311    -0.1065    -21.3%   COPIED            1.975    1.0M     +0       filled                    +1 slot           28    3.0M     0.0036    hold_to
+   20:51:38  BLazw1SS  -0.1718                        skip: < min_sol   0.494    1.0M     +0
+   20:40:19  77KYGDkr  -0.6087    -0.1589    -31.8%   COPIED            1.975    1.0M     +0       filled                    its slot  111     29    3.0M     0.0045    hold_to
+   20:21:56  EvxBe8Dc  -0.3963    -0.1370    -27.4%   COPIED            1.975    1.0M     +1       filled                    its slot  91      28    3.0M     0.0045    hold_to
+   20:19:09  H458uKs3  -0.5151    -0.0079    -1.6%    COPIED            1.975    1.0M     +1       filled                    its slot  239     28    3.0M     0.0055    hold_to
+   20:07:30  9BTGt8zW  +0.1077    -0.000015           COPIED            1.975    1.0M     +0       refused                   its slot  65            8.0M     0.000015
+   20:03:44  6YBJzFpr  -0.0088                        skip: < min_sol   0.494    1.0M     +0
+   20:02:27  BHihja2U  -0.3184    -0.0776    -15.5%   COPIED            1.975    1.0M     +0       filled                    its slot  81      29    3.0M     0.0045    hold_to
+   20:01:27  9WHj54AQ  -0.0483                        skip: < min_sol   0.494    1.0M     +1
+   19:49:33  6yAT5LGA  -0.0687                        skip: < min_sol   0.494    1.0M     +0
+   19:47:18  7nWrbn23  +0.7234    -0.0010    -0.2%    COPIED            1.975    1.0M     +1       filled                    its slot  210     29    3.0M     0.0025    hold_to
+   19:40:54  26bgPaua  -0.5858    -0.1619    -32.4%   COPIED            1.975    1.0M     +0       filled                    its slot  86      30    3.0M     0.0050    hold_to
+   19:28:51  J6AjcgCp  +0.9392    +0.5128    +102.6%  COPIED            1.975    1.0M     +1       filled                    its slot  62      28    8.0M     0.0095    hold_to
+   19:25:35  8jfyFFt9  -0.2208    -0.0997    -19.9%   COPIED            1.975    1.0M     +0       filled                    +1 slot           28    3.0M     0.0040    hold_to
+   19:25:26  G4mqZdSe  -0.2681    -0.0635    -12.7%   COPIED            1.975    1.0M     +0       filled                    its slot  196     29    8.0M     0.0090    hold_to
+   19:15:24  3j2EcveF  +0.7103    -0.000015           COPIED            1.975    1.0M     +0       refused                   its slot  176           3.0M     0.000015
+   19:04:00  GKVKxe48  +0.4058    +0.0053    +1.1%    COPIED            1.975    1.0M     +0       filled                    +1 slot           28    8.0M     0.0095    hold_to
+   19:01:02  7XQa6SuP  -0.0755    -0.0420    -8.4%    COPIED            1.975    1.0M     +1       filled                    +1 slot           27    3.0M     0.0040    hold_to
+   18:45:40  Gx1Cmn6z  +0.7224    +0.2725    +54.5%   COPIED            1.975    1.0M     +0       filled                    its slot  72      29    3.0M     0.0040    hold_to
+   18:44:06  6qe9zXix  -0.6387    -0.000015           COPIED            1.975    1.0M     +0       refused                   +1 slot                 3.0M     0.000015
+   18:25:19  H6r8yWY8  -0.0339    +0.1418    +28.4%   COPIED            1.975    1.0M     +0       filled                    its slot  213     29    8.0M     0.0095    hold_to
+   18:17:58  5JeRMtTB  -0.0041                        not seen          0.505    1.0M
+   18:10:09  Eo3VTQ5n  +0.7982    +0.2861    +57.2%   COPIED            1.975    1.0M     +0       filled                    its slot  60      29    3.0M     0.0055    hold_to
+   18:09:38  3h4y4S4H  -0.3447    -0.0939    -18.8%   COPIED            1.975    1.0M     +0       filled                    +1 slot           28    3.0M     0.0045    hold_to
+   17:57:40  3guVh3My  -0.0973    -0.1016    -20.3%   COPIED            1.975    1.0M     +0       filled                    its slot  72      29    3.0M     0.0045    hold_to
+   17:57:38  F44gSe82  +0.4583    +0.1834    +36.7%   COPIED            1.975    1.0M     +1       filled                    its slot  207     28    3.0M     0.0045    hold_to
+   17:50:11  8ApzTdQf  -0.0449                        skip: < min_sol   0.494    1.0M     +0
+   17:44:22  BSpweZQU  +0.6402    -0.0412    -8.2%    COPIED            1.975    1.0M     +0       filled                    its slot  84      29    3.0M     0.0045    hold_to
+   17:37:25  7NUK2Fuz  +0.8359                        skip: < min_sol   0.494    1.0M     +0
+   17:35:34  DTVqZ346  +0.0774                        skip: < min_sol   0.494    1.0M     +0
+   17:22:21  3g1MdujY  -0.0845    -0.000015           COPIED            1.975    1.0M     +0       refused                   +1 slot                 3.0M     0.000015
+   17:16:21  3fe3ppjS  +0.8781    -0.000015           COPIED            1.975    1.0M     +1       refused                   its slot  259           3.0M     0.000015
+   17:14:56  MHU1Kkre  -0.1348                        skip: < min_sol   0.494    1.0M     +0
+   17:11:11  5sCE8tvd  -0.0733                        skip: < min_sol   0.494    1.0M     +0
+   17:09:31  443WifMs  -0.0073                        skip: < min_sol   0.494    1.0M     +0
+   17:03:37  3fDeTh3o  +0.7572    -0.0922    -18.4%   COPIED            1.975    1.0M     +0       filled                    its slot  106     29    3.0M     0.0045    hold_to
+   17:02:52  87iacyFP  +0.0759                        skip: < min_sol   0.494    1.0M     +0
+   16:59:43  pu5Q3GD2  +0.4559    -0.000015           COPIED            1.975    1.0M     +0       refused                   +1 slot                 3.0M     0.000015
+   16:56:23  3f5UT4Na  +0.7754    +0.0946    +18.9%   COPIED            1.975    1.0M     +1       filled                    its slot  195     28    3.0M     0.0040    hold_to
+   16:32:06  6A512wwp  +0.4476    +0.1028    +20.6%   COPIED            1.975    1.0M     +0       filled                    its slot  180     29    3.0M     0.0045    hold_to
+   16:29:25  2DkuBnM6  +0.4110    -0.000015           COPIED            1.975    1.0M     +1       refused                   its slot  493           3.0M     0.000015
+   16:25:31  3dwKCmUC  +0.6376    +0.0144    +2.9%    COPIED            1.975    1.0M     +0       filled                    +1 slot           28    3.0M     0.0045    hold_to
+   15:48:17  3CJHkdLm  -0.1158                        skip: < min_sol   0.494    1.0M     +0
+   15:33:12  5Ft4d3Yb  -0.3472    -0.1115    -22.3%   COPIED            1.975    1.0M     +0       filled                    its slot  146     29    3.0M     0.0045    hold_to
+   15:30:39  5h2NDYvH  -0.1217                        skip: < min_sol   0.494    1.0M     +1
+   15:30:13  Dpz92YYp  +0.5285    +0.0626    +12.5%   COPIED            1.975    1.0M     +0       filled                    its slot  115     29    3.0M     0.0045    hold_to
+   15:22:09  3c3WaGz7  -0.2178    -0.2224    -44.5%   COPIED            0.494    1.0M     +0       filled                    +1 slot           29    3.0M     0.0055    hold_to
+   15:14:10  BFnsFRnx  -0.1373                        copied, not sent  0.494    1.0M     +0
+   15:01:48  EN2dKTbE  -0.0939                        copied, not sent  0.494    1.0M     +1
+   15:00:21  2BUHHLXg  -0.0542                        copied, not sent  1.975    1.0M     +1
+
+== 4 H9kuqGKN (H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg): ITS NET +36.9199   OUR NET +0.1456   we copied 93 of its 212 launch buys, sold at create+12
+   time      coin      ITS NET  OUR NET    our %   the bot           its SOL  its tip  its buy  result      landed    behind  held  our bid  fees      exit
+   --------  --------  -------  ---------  ------  ----------------  -------  -------  -------  ----------  --------  ------  ----  -------  --------  -------
+   11:41:25  CWXCHt2s  -0.1976                     not seen          0.541    1.1M
+   11:38:41  2CJmMJWK  holding                     not seen          0.958    1.1M
+   11:31:16  AVh9591K  +1.0315                     not seen          1.256    1.1M
+   11:23:49  2WtXnvZN  -0.4143                     not seen          1.433    1.1M
+   11:21:01  7jZi9VH2  -0.7737                     copied, not sent  0.938    1.1M     +0
+   11:13:02  rEDSAEPW  +0.0098                     not seen          1.436    1.1M
+   11:09:43  PiNKP8p7  -0.0180                     not seen          1.437    1.1M
+   11:07:34  7EqTnbCs  -0.1999                     not seen          0.566    1.1M
+   11:02:01  F4iD3h1g  -0.1193                     copied, not sent  0.470    1.1M     +0
+   11:01:25  8U9o6SvH  -0.8464                     not seen          0.958    1.1M
+   10:49:54  jeWL79AN  -0.3114                     not seen          1.511    1.1M
+   10:28:10  BLaC3hJX  -0.2898                     not seen          1.510    1.1M
+   10:21:58  GrEeNia4  +0.7709                     not seen          1.444    1.1M
+   10:12:45  7hGMJeAN  -0.1416                     copied, not sent  0.944    1.1M     +1
+   09:47:48  HPhAKU2P  -0.0804  -0.0511    -20.7%  COPIED            0.471    1.1M     +0       filled      +1 slot           12    8.0M     0.0095    hold_to
+   09:25:41  LUckDrEa  -0.0683                     not seen          1.026    1.1M
+   09:25:05  4ED2eJ9n  +0.0587                     not seen          0.485    1.1M
+   09:17:26  A1eQTeUF  -0.0423                     not seen          0.819    1.1M
+   08:54:06  ALonMyHc  +0.2012                     not seen          1.444    1.1M
+   08:51:57  6uV2dmmS  -0.0376  +0.0033    +0.8%   COPIED            0.472    1.1M     +1       filled      its slot  69      11    8.0M     0.0025    hold_to
+   08:03:24  GHcSu7dr  -0.2914                     not seen          0.485    1.1M
+   07:55:45  DiCkupz5  -0.1214                     not seen          1.026    1.1M
+   07:46:56  4KSx1MAy  -0.0220  -0.0146    -2.9%   COPIED            0.948    1.1M     +0       filled      its slot  87      12    8.0M     0.0105    hold_to
+   07:30:38  FDcdsKzP  -0.1090  -0.0245    -4.9%   COPIED            0.374    0.0M     +0       filled      +1 slot           11    8.0M     0.0095    hold_to
+   07:29:11  2mmY4y9b  -0.3312  -0.0070    -1.4%   COPIED            0.498    1.1M     +0       filled      its slot  33      12    3.0M     0.0055    hold_to
+   07:13:40  2MrvkX9j  -0.4247                     not seen          0.489    1.1M
+   07:03:18  CeD7qZ7T  -0.1155  -0.0517    -10.3%  COPIED            0.696    1.1M     +1       filled      +1 slot           10    3.0M     0.0040    hold_to
+   06:55:32  2RR6sfbi  -0.1524  OPEN               COPIED            0.160    1.1M     +0       filled      +1 slot                 8.0M     0.0080
+   06:54:34  FNcuHSSA  -0.1887  -0.0991    -19.8%  COPIED            0.480    1.1M     +0       filled      its slot  49      13    8.0M     0.0095    hold_to
+   06:22:07  G7tXCpZN  -0.2127                     not seen          1.181    1.1M
+   06:18:37  DiHAnJFd  +0.2543                     not seen          1.488    1.1M
+   06:15:01  5wzh9JzK  +0.0572                     not seen          1.478    1.1M
+   06:13:47  6KWF1w5r  +0.1811  +0.0069    +1.4%   COPIED            0.483    1.1M     +0       filled      its slot  104     12    8.0M     0.0105    hold_to
+   06:01:59  Bxj8c7JV  +0.2025                     not seen          1.482    1.1M
+   05:47:35  GooN5xZb  -0.4967                     not seen          1.489    1.1M
+   05:42:14  3PcVmLs7  -0.1337  +0.0446    +8.9%   COPIED            0.488    1.1M     +0       filled      its slot  153     12    8.0M     0.0100    hold_to
+   05:41:08  FaQSVc4a  -0.4524  -0.1089    -21.8%  COPIED            1.221    1.1M     +0       filled      +1 slot           12    3.0M     0.0050    hold_to
+   05:30:03  BQ538qub  -0.1570  -0.1285    -25.7%  COPIED            0.613    1.1M     +1       filled      its slot  161     11    3.0M     0.0046    hold_to
+   05:26:19  HuPunmU5  -0.0625  -0.0535    -10.7%  COPIED            0.613    1.1M     +0       filled      its slot  58      12    8.0M     0.0095    hold_to
+   05:25:26  FApVADa2  -0.5129  -0.0084    -1.7%   COPIED            0.580    1.1M     +0       filled      its slot  27      12    3.0M     0.0045    hold_to
+   05:09:10  NRUQXSXD  +0.1387                     not seen          0.961    1.1M
+   05:05:33  F6oqJdzA  -0.0652  -0.0400    -8.0%   COPIED            0.615    1.1M     +0       filled      its slot  158     12    8.0M     0.0095    hold_to
+   05:01:46  GrLZAMXj  +1.1358  -0.0166    -3.3%   COPIED            0.476    1.1M     +1       filled      its slot  287     11    8.0M     0.0090    hold_to
+   04:52:14  EyQ6JNsx  -0.0633                     not seen          1.452    1.1M
+   04:48:48  E3BUTGeQ  +0.0698                     not seen          0.945    1.1M
+   04:48:21  DLnJWcnU  -0.0628  -0.0415    -8.3%   COPIED            0.616    1.1M     +1       filled      its slot  215     11    8.0M     0.0105    hold_to
+   04:42:21  2cJdq48N  -0.1131  -0.0555    -11.1%  COPIED            0.613    1.1M     +1       filled      +1 slot           10    8.0M     0.0090    hold_to
+   04:29:23  3qxeRLN3  +0.2117  +0.0668    +13.4%  COPIED            1.210    1.1M     +1       filled      its slot  299     11    3.0M     0.0050    hold_to
+   04:25:01  214wZQKY  +0.6756  -0.0104    -2.1%   COPIED            0.357    1.1M     +0       filled      its slot  104     13    3.0M     0.0045    hold_to
+   04:19:43  9pM8LsYr  -0.2255  -0.0078    -1.6%   COPIED            0.406    1.1M     +1       filled      +1 slot           10    3.0M     0.0040    hold_to
+   04:04:54  BwgfXJzC  -0.2652                     not seen          0.624    1.1M
+   03:56:07  8bc1tpjy  -0.7383                     not seen          0.803    1.1M
+   03:51:25  7eTNKwQd  -0.3902  -0.0081    -1.6%   COPIED            1.224    1.1M     +0       filled      +1 slot           11    3.0M     0.0040    hold_to
+   03:45:33  AnimExxP  +0.3440                     not seen          1.448    0.0M
+   03:43:36  91fBfFGR  -0.0098  +0.0987    +19.7%  COPIED            1.222    1.1M     +0       filled      +1 slot           11    8.0M     0.0090    hold_to
+   03:42:15  91RBVuoC  +0.4098  +0.0985    +19.7%  COPIED            0.609    10.0M    +0       filled      its slot  66      12    3.0M     0.0040    hold_to
+   03:36:57  B4GrvawY  +0.1715  +0.4357    +87.1%  COPIED            1.222    1.1M     +1       filled      its slot  264     11    8.0M     0.0100    hold_to
+   03:35:43  8WBEeTKU  -0.1461  -0.0291    -5.8%   COPIED            0.542    1.1M     +0       filled      +1 slot           11    8.0M     0.0095    hold_to
+   03:32:13  E9uVs4qo  +0.9188                     not seen          1.161    10.0M
+   03:27:40  6Lpv1TPZ  +0.0602  +0.2666    +53.3%  COPIED            1.224    1.1M     +0       filled      +1 slot           11    8.0M     0.0105    hold_to
+   03:24:10  7Zo4WenJ  +0.8469  +0.0853    +17.1%  COPIED            0.974    10.0M    +1       filled      its slot  162     12    8.0M     0.0095    hold_to
+   03:23:40  F1yDfiEx  -0.0243                     not seen          0.184    10.0M
+   03:22:41  7rXR1Sog  +0.3267                     not seen          0.257    1.1M
+   03:22:18  6EsTwV3g  +0.7344  -0.0316    -6.3%   COPIED            0.487    3.3M     +0       filled      +1 slot           11    8.0M     0.0105    hold_to
+   03:20:06  6DRC5Bcq  -0.0301  +0.0053    +1.1%   COPIED            0.976    1.1M     +0       filled      +1 slot           11    8.0M     0.0095    hold_to
+   03:16:56  3sgvsKqD  -0.0303  +0.0534    +10.7%  COPIED            0.977    1.1M     +0       filled      +1 slot           11    3.0M     0.0045    hold_to
+   03:12:38  A1qJNcPT  +0.0126  +0.0400    +8.0%   COPIED            0.490    10.0M    +0       filled      +1 slot           11    8.0M     0.0095    hold_to
+   03:12:37  DhHKumjj  -0.2096  -0.1472    -29.4%  COPIED            0.490    1.1M     +0       filled      its slot  58      12    3.0M     0.0045    hold_to
+   03:08:40  42NmWiZV  -0.2336  +0.1027    +20.5%  COPIED            0.816    10.0M    +0       filled      its slot  95      12    3.0M     0.0045    hold_to
+   02:50:00  HipJR79p  -0.0185  +0.0935    +18.7%  COPIED            0.493    1.1M     +0       filled      +1 slot           11    3.0M     0.0040    hold_to
+   02:43:18  H5bhNH6T  +0.1530  -0.000015          COPIED            0.692    1.1M     +0       refused     its slot  179           3.0M     0.000015
+   02:10:03  CHjt26hn  -0.1284  -0.0988    -19.8%  COPIED            0.461    1.1M     +0       filled      its slot  357     13    8.0M     0.0095    hold_to
+   02:02:51  EgD63Jq9  -0.1041  +0.0502    +10.0%  COPIED            0.388    1.1M     +1       filled      its slot  114     14    8.0M     0.0105    hold_to
+   01:57:13  rLmt8bBq  +0.6596                     not seen          0.508    1.1M
+   01:52:12  5bMrkCWk  +0.3329  -0.000015          COPIED            0.496    1.1M     +1       refused     its slot  92            3.0M     0.000015
+   01:51:15  3YJUcQSd  +0.0144  +0.0384    +7.7%   COPIED            0.496    1.1M     +1       filled      its slot  91      11    8.0M     0.0096    hold_to
+   01:49:21  3zXt7sGv  -0.3075                     not seen          1.011    0.0M
+   01:43:12  3f9qEUTJ  -0.1611  -0.0170    -3.4%   COPIED            0.519    10.0M    +0       filled      +1 slot           8     8.0M     0.0086    hold_to
+   01:42:11  64mCWpdM  -0.1741  +0.0051    +1.0%   COPIED            0.626    1.1M     +1       filled      its slot  248     8     8.0M     0.0095    hold_to
+   01:41:56  6WLexnrF  -0.2539  -0.000015          COPIED            0.626    10.0M    +1       refused     its slot  442           8.0M     0.000015
+   01:34:00  3yRBueZr  -0.1557  -0.0123    -2.5%   COPIED            0.630    0.0M     +1       filled      +3 slot           6     3.0M     0.0045    hold_to
+   01:31:55  FSTybnc1  -1.1156                     not seen          1.282    1.1M
+   01:24:40  6mU1B9dg  -0.2938                     not seen          0.329    1.1M
+   01:15:36  CCci2Fr6  +6.0904                     not seen          1.511    1.1M
+   01:13:40  J13cucmN  -0.1405                     not seen          1.510    1.1M
+   01:12:26  LL6on2Z2  -0.2161                     not seen          0.643    1.1M
+   01:09:43  67swHeky  +0.5757                     not seen          1.523    1.1M
+   01:07:10  B5YhNtFk  -0.0899  -0.0127    -2.5%   COPIED            0.755    1.1M     +1       filled      its slot  147     8     8.0M     0.0095    hold_to
+   01:03:10  5qW5yNnZ  +3.7868  -0.0210    -4.2%   COPIED            1.249    1.1M     +1       filled      its slot  359     8     8.0M     0.0095    hold_to
+   00:43:12  C3N7Jj7K  -0.4383  +0.1162    +23.2%  COPIED            1.258    1.1M     +1       filled      +1 slot           7     3.0M     0.0055    hold_to
+   00:30:03  3tMXAQi9  +0.0573                     COPIED            1.256    1.1M     +1       refused     +1 slot                 3.0M
+   00:28:53  E2757ksn  +2.6615  -0.0126    -2.5%   COPIED            1.249    1.1M     +0       filled      its slot  79      9     8.0M     0.0095    hold_to
+   00:28:43  6EtM79rY  -0.1377  -0.0875    -17.5%  COPIED            0.625    1.1M     +0       filled      +1 slot           9     8.0M     0.0105    hold_to
+   00:20:35  DVHXkjXu  -0.2365  -0.000015          COPIED            0.628    1.1M     +0       refused     +1 slot                 8.0M     0.000015
+   00:19:49  6kaJu9hc  -0.1511  +0.0369    +7.4%   COPIED            0.570    1.1M     +0       filled      +1 slot           8     8.0M     0.0105    hold_to
+   00:17:35  PZe4JrNC  +0.4319  -0.0700    -14.0%  COPIED            0.625    1.1M     +0       filled      its slot  43      9     8.0M     0.0095    hold_to
+   00:14:20  DanuoEmw  -0.0844                     not seen          0.825    1.1M
+   00:12:09  HHLATwXP  -0.3086                     not seen          0.325    1.1M
+   00:03:27  3z27a53a  -0.0645                     not seen          0.324    0.0M
+   00:03:11  HoeuTwd1  -0.0608                     not seen          0.325    1.1M
+   00:02:33  DUF9VBSk  -0.0781                     not seen          0.325    1.1M
+   00:02:07  DGkLNB5h  -0.0493                     not seen          0.325    1.1M
+   00:01:41  CFVKRTAs  -0.0836                     not seen          0.325    1.1M
+   23:58:30  72QjntBQ  -0.0561                     not seen          0.325    1.1M
+   23:54:48  Jmy7SAPy  +2.1014                     not seen          1.266    10.0M
+   23:54:30  mzbU988L  +0.1794                     COPIED            1.233    1.1M     +1       not landed                          8.0M
+   23:51:25  GT3rMZd2  +0.0908                     not seen          0.422    0.0M
+   23:48:06  2qwNcHXD  -0.0826  -0.000015          COPIED            0.619    1.1M     +0       refused     its slot  107           8.0M     0.000015
+   23:44:57  E5yHHhRr  -0.2684  -0.000015          COPIED            0.618    0.0M     +1       refused     its slot  250           3.0M     0.000015
+   23:36:08  BMCbXfAk  -0.3880  -0.0848    -17.0%  COPIED            1.241    1.1M     +0       filled      its slot  71      10    8.0M     0.0085    hold_to
+   23:33:17  548dfGeB  +0.0154                     COPIED            1.243    1.6M     +1       refused     its slot  167           3.0M
+   23:20:37  2ph8Z9FB  -0.0162  -0.000015          COPIED            0.622    1.1M     +0       refused     its slot  161           8.0M     0.000015
+   23:12:25  GQjzDwDA  +1.0172                     not seen          0.983    1.1M
+   23:07:57  9YvXzqN6  -0.2196  -0.0470    -9.4%   COPIED            0.623    1.1M     +0       filled      its slot  49      10    8.0M     0.0095    hold_to
+   23:06:34  8h5QXFk4  +0.7724  -0.000015          COPIED            1.240    0.0M     +1       refused     its slot  260           3.0M     0.000015
+   23:02:24  ArVehmW8  +0.3124  -0.0883    -17.7%  COPIED            1.241    1.1M     +0       filled      its slot  221     9     3.0M     0.0035    hold_to
+   22:56:03  8siskgtc  -0.4034  +0.0170    +3.4%   COPIED            0.788    10.0M    +1       filled      +1 slot           7     8.0M     0.0105    hold_to
+   22:44:44  283NQD1z  holding                     not seen          1.383    1.1M
+   22:44:25  EfDvy3iR  +1.0322  -0.1512    -30.2%  COPIED            0.620    1.2M     +0       filled      its slot  51      9     3.0M     0.0045    hold_to
+   22:32:53  FiCZToGL  +0.4302  -0.000015          COPIED            1.242    1.1M     +0       refused     its slot  115           3.0M     0.000015
+   22:32:25  kqKmmUjS  -0.1813  -0.0032    -0.6%   COPIED            0.994    1.1M     +0       filled      +1 slot           8     8.0M     0.0095    hold_to
+   22:32:14  A8SDqfn4  -0.1163                     COPIED            0.497    1.1M     +0       not landed                          8.0M
+   22:29:20  3PJcGpKV  holding                     not seen          1.113    1.1M
+   22:28:40  Aw55TiFn  +0.0555  +0.0041    +0.8%   COPIED            0.495    1.1M     +0       filled      its slot  59      10    8.0M     0.0086    hold_to
+   22:27:42  6WaPUsjJ  -0.5749  +0.0085    +1.7%   COPIED            0.916    1.1M     +0       filled      its slot  309     9     8.0M     0.0095    hold_to
+   22:25:47  71aS9awB  holding                     not seen          1.113    1.1M
+   22:17:18  FHSqzn75  -0.2213                     not seen          1.116    1.1M
+   22:13:24  A7rdA88x  -0.0969  -0.0036    -0.7%   COPIED            0.494    1.1M     +0       filled      +1 slot           8     8.0M     0.0086    hold_to
+   22:10:17  notAk7Y2  -0.0649                     not seen          0.621    10.0M
+   22:06:44  NodPNCQH  -0.2267  -0.0521    -10.4%  COPIED            0.495    10.0M    +0       filled      +1 slot           8     8.0M     0.0095    hold_to
+   22:05:58  72wRVuDj  -0.0181  +0.0114    +2.3%   COPIED            0.495    1.1M     +0       filled      +1 slot           8     8.0M     0.0095    hold_to
+   22:02:56  3q1rQqzE  -0.2645  -0.0195    -3.9%   COPIED            0.891    0.0M     +0       filled      +1 slot           8     3.0M     0.0040    hold_to
+   21:56:56  9BVBhGpx  -0.6359  +0.0573    +11.5%  COPIED            1.005    10.0M    +0       filled      +1 slot           8     8.0M     0.0095    hold_to
+   21:45:13  6ZYcGimg  +0.2503  +0.0067    +1.3%   COPIED            0.165    10.0M    +1       filled      its slot  185     8     3.0M     0.0050    hold_to
+   21:45:09  yxC5Yswu  -0.0819                     not seen          0.611    1.1M
+   21:42:14  XsqE9cRR  +1.7837                     not seen          3.815    0.0M
+   21:41:08  8C6WM8CZ  +0.2071                     skip: coin ours   1.020    1.4M
+   21:40:37  BALL9nV7  +0.5252                     not seen          1.510    1.1M
+   21:39:53  EtUJM6Cf  -0.6884  -0.000098  -0.0%   COPIED            1.100    1.1M     +0       filled      its slot  54      9     3.0M     0.0045    hold_to
+   21:33:23  Ca38R2Qc  -0.1631  -0.0582    -11.6%  COPIED            0.497    1.1M     +0       filled      +1 slot           8     8.0M     0.0100    hold_to
+   21:31:22  H41qjE1R  -0.8122  +0.0241    +4.8%   COPIED            1.481    3.3M     +0       filled      +1 slot           8     3.0M     0.0040    hold_to
+   21:30:43  8MynHwGv  -0.2917  -0.0407    -8.1%   COPIED            0.623    1.1M     +1       filled      its slot  142     8     8.0M     0.0100    hold_to
+   21:23:22  7Mxv83dk  -0.5382                     not seen          1.510    1.1M
+   21:22:08  6zE86tkK  -0.3163  -0.0405    -8.1%   COPIED            1.237    1.1M     +0       filled      +1 slot           8     3.0M     0.0045    hold_to
+   21:10:37  CAghyrZH  +0.3414  -0.0205    -4.1%   COPIED            0.617    0.0M     +1       filled      +2 slot           6     8.0M     0.0095    hold_to
+   21:01:36  Dr8rxrfT  -0.1432  +0.0531    +10.6%  COPIED            0.616    10.0M    +0       filled      its slot  103     9     3.0M     0.0040    hold_to
+   20:58:38  AxhPMUdB  -0.0408  +0.0650    +13.0%  COPIED            1.406    1.1M     +0       filled      its slot  85      9     8.0M     0.0095    hold_to
+   20:56:50  3sWYzyS2  +0.5917  +0.0286    +5.7%   COPIED            1.481    10.0M    +0       filled      +1 slot           8     3.0M     0.0045    hold_to
+   20:54:02  ECg1pJPa  -0.1386  +0.0157    +3.1%   COPIED            1.214    1.1M     +0       filled      +1 slot           8     3.0M     0.0050    hold_to
+   20:51:19  2FT3tnvQ  +1.7315  -0.000015          COPIED            1.208    10.0M    +0       refused     its slot  198           3.0M     0.000015
+   20:34:12  REtaGvoE  +2.6920                     not seen          1.389    10.0M
+   20:30:17  9aC3daRK  -0.4312  -0.0130    -2.6%   COPIED            0.532    1.1M     +0       filled      +1 slot           8     8.0M     0.0105    hold_to
+   20:21:46  Ea3RvyBr  -0.1189  +0.1266    +25.3%  COPIED            0.609    3.3M     +0       filled      its slot  53      9     8.0M     0.0095    hold_to
+   20:12:29  2TU8KK1d  -0.6939  -0.0203    -4.1%   COPIED            1.165    1.1M     +1       filled      +1 slot           7     8.0M     0.0095    hold_to
+   20:10:45  81TjAryY  -0.2520  -0.000015          COPIED            0.611    10.0M    +0       refused     +1 slot                 3.0M     0.000015
+   20:10:09  DZUFGxQZ  -0.2573  -0.0108    -2.2%   COPIED            1.222    1.1M     +0       filled      +1 slot           8     3.0M     0.0050    hold_to
+   20:09:26  3Arw3S6q  -0.0803                     not seen          0.810    1.1M
+   20:08:58  DBAaY3qu  -0.0489                     not seen          0.932    0.0M
+   19:58:42  CATWnq78  +0.0689                     not seen          0.329    1.1M
+   19:55:26  7i1LUpid  -0.2266                     not seen          1.012    1.1M
+   19:45:57  3k9cwhV1  -0.2918  -0.000015          COPIED            1.179    1.1M     +1       refused     its slot  144           3.0M     0.000015
+   19:45:00  94FdBypo  +0.2724  +0.0010    +0.2%   COPIED            0.605    0.0M     +0       filled      +1 slot           8     8.0M     0.0085    hold_to
+   19:44:32  pumPK29D  -0.2649                     not seen          1.520    10.0M
+   19:30:38  93V9oUvK  +0.7195                     not watched yet   0.472    1.1M
+   19:23:58  BULLRudj  +0.3728                     not watched yet   1.393    1.1M
+   19:15:36  omg2CHai  +0.7430                     not watched yet   1.510    1.1M
+   19:15:24  3j2EcveF  -0.1111                     skip: coin ours   0.658    10.0M
+   19:15:19  7FT4ftgW  +0.2189                     not watched yet   0.987    1.1M
+   18:50:39  BEGt58EL  +0.0135                     not watched yet   0.916    1.1M
+   18:42:06  C41ZoSGp  -0.1056                     not watched yet   0.919    1.1M
+   18:30:33  559cJmPG  -0.0297                     skip: coin ours   0.613    1.1M
+   18:19:28  48HkZ7XF  +3.1240                     not watched yet   0.925    1.1M
+   18:17:38  HaHAvueS  -0.1210                     not watched yet   1.510    1.1M
+   18:17:09  HN4pznhT  -0.0859                     not watched yet   0.921    1.1M
+   18:11:26  2RzNdRYV  +0.0554                     not watched yet   0.915    0.0M
+   18:11:20  HjkHEADH  +1.5370                     not watched yet   0.908    1.1M
+   18:08:32  5XQcx1th  +0.4260                     not watched yet   1.207    1.1M
+   17:51:36  A1pXL7uC  -0.1393                     not watched yet   1.532    10.0M
+   17:51:23  GN4s6TbS  -0.0324                     not watched yet   0.604    1.1M
+   17:40:29  3gcqGuGg  -0.2401                     not watched yet   0.717    1.1M
+   17:38:04  FKXVRyAz  -0.2186                     not watched yet   0.604    1.1M
+   17:30:12  EEF4au54  +0.3723                     not watched yet   0.234    1.1M
+   17:29:51  DJTu7vi8  +8.9663                     not watched yet   3.526    0.0M
+   17:28:30  EnVSD3QE  +1.1962                     not watched yet   0.821    1.1M
+   17:17:55  AVuQJLWY  -0.1298                     not watched yet   0.495    1.1M
+   17:16:22  3fe3ppjS  +0.2421                     skip: coin ours   0.376    1.1M
+   17:07:55  J3dntQ7p  -0.1941                     not watched yet   0.956    10.0M
+   17:06:30  HALLo4kc  +0.1227                     not watched yet   0.875    0.0M
+   16:57:59  9uegVQB9  -0.0574                     not watched yet   0.477    1.1M
+   16:56:57  6eBpMgty  -0.1465                     not watched yet   1.511    1.1M
+   16:53:50  Aq8K3iks  -0.0157                     not watched yet   0.181    1.1M
+   16:41:19  DhuKTxAx  -0.0237                     not watched yet   0.480    1.1M
+   16:39:01  GryJ3dG2  -0.0136                     not watched yet   0.174    10.0M
+   16:37:42  GTgjxaVm  -0.0442                     not watched yet   0.174    10.0M
+   16:35:36  96LpeqEq  -0.0268                     not watched yet   0.492    10.0M
+   16:27:14  SPCXxcqX  holding                     not watched yet   10.184   0.0M
+   16:25:31  3dwKCmUC  +0.0184                     skip: coin ours   0.436    1.1M
+   16:23:36  DBdYsaTa  -0.0383                     not watched yet   0.486    1.1M
+   16:16:17  4ZQYziVB  -0.4802                     not watched yet   1.214    1.1M
+   16:14:55  ETFpgjkR  -0.0944                     not watched yet   0.269    1.1M
+   16:12:12  7pey4mtX  -0.2823                     not watched yet   0.610    1.1M
+   15:58:54  3cbWpGqC  -0.5719                     not watched yet   1.218    10.0M
+   15:56:00  57zV2ubz  +0.3993                     not watched yet   0.605    1.1M
+   15:52:03  FGvwseyh  -0.0717                     not watched yet   0.623    1.1M
+   15:48:41  pumpCmXq  +7.2388                     not watched yet   11.902   0.0M
+   15:32:13  9djTdh3W  -0.2004                     not watched yet   0.206    1.1M
+   15:31:34  53EbJ1ie  -0.0002                     not watched yet   0.495    1.1M
+   15:30:19  6dw91Xvo  -0.4779                     not watched yet   0.608    1.1M
+   15:27:40  7TxKXegR  -0.3061                     not watched yet   0.503    1.1M
+   15:18:14  DoGEV7LA  +2.1750                     not watched yet   2.795    0.0M
+   15:10:57  J3dcS61q  -0.1407                     not watched yet   0.629    10.0M
+   15:09:31  8xs79RYY  -0.0576                     not watched yet   1.042    1.1M
+
+== 6 D5BDDkBt (D5BDDkBtjjva35nwu45WfmZgytsog9GST2tHQaZUYuFX): ITS NET +2.0455   OUR NET +0.0857   we copied 8 of its 31 launch buys, sold at create+9
+   time      coin      ITS NET  OUR NET    our %   the bot          its SOL  its tip  its buy  result   landed    behind  held  our bid  fees      exit
+   --------  --------  -------  ---------  ------  ---------------  -------  -------  -------  -------  --------  ------  ----  -------  --------  -------
+   05:37:49  ANj2r2WY  -0.0524                     not seen         0.669    2.0M
+   03:59:43  5ndVPhYH  +0.0020  +0.0130    +6.4%   COPIED           0.642    2.0M     +0       filled   its slot  141     9     8.0M     0.0095    hold_to
+   03:34:27  H4QXgYMp  +0.0579  +0.0987    +19.7%  COPIED           0.642    2.0M     +0       filled   +1 slot           8     3.0M     0.0040    hold_to
+   02:37:33  BKdEAs4h  +0.3708  +0.0142    +2.8%   COPIED           0.642    2.0M     +0       filled   +1 slot           8     8.0M     0.0100    hold_to
+   02:21:51  AGihrEVf  -0.5569  -0.000015          COPIED           0.988    2.0M     +1       refused  its slot  625           8.0M     0.000015
+   01:53:59  FZfyuyB9  +0.2176                     skip: coin ours  0.669    2.0M
+   21:41:07  8C6WM8CZ  +0.6270  -0.000015          COPIED           0.642    2.0M     +0       refused  +1 slot                 3.0M     0.000015
+   21:09:00  12Z6uxgY  -0.0542  +0.0478    +9.6%   COPIED           0.642    2.0M     +1       filled   its slot  35      8     3.0M     0.0045    hold_to
+   20:38:34  AFW8utbw  +0.3337  -0.0798    -16.0%  COPIED           0.642    2.0M     +1       filled   its slot  250     8     8.0M     0.0105    hold_to
+   19:47:00  FszBq8NJ  -0.1017  -0.0081    -1.6%   COPIED           0.642    2.0M     +0       filled   +1 slot           9     8.0M     0.0090    hold_to
+   19:36:07  GP19bQk6  -0.0403                     not watched yet  0.669    2.0M
+   19:33:23  HGhCaADV  -0.1193                     not watched yet  0.669    2.0M
+   19:33:13  GoXN6Y9Y  -0.1783                     not watched yet  0.669    2.0M
+   19:33:07  4mYCHiEA  +0.4680                     not watched yet  1.019    2.0M
+   18:58:44  6D9AjanJ  -0.2909                     not watched yet  1.019    2.0M
+   18:58:36  CphQksgN  +0.0862                     not watched yet  0.669    2.0M
+   18:36:30  6p7vmm3U  -0.1008                     not watched yet  0.669    2.0M
+   18:27:15  5a72d8tJ  +0.5762                     not watched yet  0.669    2.0M
+   18:08:32  5XQcx1th  +0.4379                     not watched yet  0.669    2.0M
+   17:38:23  Hvcj5G6p  -0.0472                     not watched yet  0.669    2.0M
+   17:18:45  8p6ZQ2rY  -0.2784                     not watched yet  0.669    2.0M
+   16:56:27  5zowYLW5  -0.0897                     not watched yet  0.669    2.0M
+   16:56:07  2naPsqi9  +0.0554                     not watched yet  0.669    2.0M
+   16:56:00  GpZMBGkr  -0.0875                     not watched yet  0.669    2.0M
+   16:29:47  CumnMC2J  -0.1598                     not watched yet  0.669    2.0M
+   15:56:00  57zV2ubz  -0.0581                     not watched yet  0.669    2.0M
+   15:47:34  3cJm88rq  +0.1802                     not watched yet  0.669    2.0M
+   15:46:27  36goyoY3  +0.3290                     not watched yet  1.019    2.0M
+   15:46:17  AXbyCe3k  -0.0491                     not watched yet  0.669    2.0M
+   15:45:28  J9ADQAK2  +0.5720                     not watched yet  0.669    2.0M
+   15:27:58  3c5KPG4o  +0.0460                     not watched yet  0.669    2.0M
+
+   how to read: ITS NET = the wallet's own result on the coin (its size, exits, tips, fees), not what a copy
+   makes; OUR NET / our % = our copy after tips and fees. the bot: COPIED, skip: why, not sent (open-position
+   cap, feed pause or kill), not seen (its first buy after create + 1, or a coin priced in another token),
+   not watched yet (before the wallet was added). result: filled, refused (its price limit: fee only),
+   not landed. landed: in its slot or after; behind: block positions after its buy. held: slots held.
+
+== open now
+open_now  positions
+--------  ---------
+1         2RR6sfbi
+
+== the daily stop counts the UTC day (since 02:00 Beirut), not the start: that day's realized against the stop
+today_realized_sol  daily_stop_sol
+------------------  --------------
+-0.708              1.0
