@@ -3,8 +3,10 @@
 ## What this repo is
 
 The wallet-4 half of the rugsnipe project. Wallet 4 = `H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg`.
-- **Strategy A, the long copy:** `crates/rugsnipe-long`. It runs in paper mode on the owner's Frankfurt box
-  (`fra-long`, Cherry Cloud VDS 2, user `ops`) since Oct 28 17:58 UTC. Ohio and fra1 are terminated.
+- **Strategy A, the long copy:** `crates/rugsnipe-long`. It runs **with real money at 0.1 SOL** (the mechanics test:
+  `stake_sol = 0.1`, `max_open = 1`, `daily_stop_sol = 0.3`, wallet `E7KX1hcM...`) on the owner's Frankfurt box
+  (`fra-long`, Cherry Cloud VDS 2, user `ops`) since Oct 28 18:34 UTC, after paper there from 17:58. Ohio and fra1
+  are terminated.
 - **Strategy D, the launch copy:** the hot copy bot `crates/rugsnipe`, with a `copy_more` entry. It is stopped.
 
 Read `README.md` (status, A-Z index), then `02-decomposition/` (why A and not the rest), then the strategy folder you work
@@ -100,10 +102,14 @@ bash data/datasets/unpack.sh h9long     # one archive
    records both exit policies) on the Triton gRPC feed since 17:58 UTC. **Ohio was terminated the same evening** (the
    owner's decision): no comparison box, and fra1's backup is gone. The box's lag is read from its own journal
    (`long paper-buy ... seen at its slot +N`).
-2. **2-3 days of paper that decide** (the plan's conditions): positive without the best 2 at the backtest's costs,
-   wallet 4 at 25+ copyable buys a day, its early-sale rate, buys seen at its slot +1 or better on most copies.
-3. **The 0.1 SOL mechanics test** on Frankfurt (≥ 0.16 SOL in the wallet, a small WBTC float, the two simulations in
-   docs/20 §4 first), then 1 SOL × 3-4 only if both pass.
+2. **The 0.1 SOL mechanics test: running since Oct 28 18:34 UTC** (wallet made by `keygen`, 0.7 SOL in, 0.15 of it
+   swapped to WBTC, both simulations passed from the box; `03-strategy-A-long-copy/deploy-frankfurt.md` §6). Pass:
+   buys land at its slot +1 or better, every sell lands (a pool sell after a graduation included), the chain equals
+   the journal, `long fill ... (vs its price +N%)` says where in its slot we land (`07-rework-2026-10-28/README.md`
+   §5: same slot is worth about +1 SOL a day at 4 open).
+3. **Then the deciding days at 0.1 SOL × 4 open** (replaces the paper days, since one box runs one bot): positive
+   without the best 2 at the backtest's costs, wallet 4 at 25+ copyable buys a day, its early-sale rate. Then
+   1 SOL × 3-4 only if both pass.
 4. Not built: an alarm when wallet 4 goes quiet or sends SOL out (its predecessor was emptied in one evening); a
    successor scan by its fingerprint (`07-rework-2026-10-28/wallet-check.md` §7); 3-hop routes via a v0 transaction
    (about +0.1 SOL a day); the "can wait" list of the code review.

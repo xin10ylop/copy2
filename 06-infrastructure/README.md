@@ -84,7 +84,8 @@ credentials.
 | Wallet | Address | State |
 |---|---|---|
 | the copy bot (hot, "probe") | `4g49xGbgHZk3QYR1o6QSfDUbHmJZFwN6iDp6Vco1skff` | emptied Oct 27 |
-| the long copy | `24neU6qrWGQyvtVxiziJed6egUyTqe1QLM3K8JYNe93Y` | never funded; its key was on fra1 only (gone). The Frankfurt box gets a new wallet (`rugsnipe-long keygen`) for the 0.1 SOL test |
+| the long copy, old | `24neU6qrWGQyvtVxiziJed6egUyTqe1QLM3K8JYNe93Y` | never funded; its key was on fra1 only (gone) |
+| **the long copy** (the Frankfurt box) | `E7KX1hcMCXg9qUpGE5hXaotRTxv8itSbdo4b8LHmYbyc` | made Oct 28 by `keygen`; 0.7 SOL in, 0.15 of it as WBTC; trading at 0.1 SOL since Oct 28 18:34 UTC |
 | the owner's Phantom | `4ZLrCvjc9X739dWrt2pvQ35rNcFDGU46YPFc4DQCkcVK` | 3.8498 SOL on Oct 28 |
 
 ## Sources

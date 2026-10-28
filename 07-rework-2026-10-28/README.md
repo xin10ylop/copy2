@@ -173,7 +173,10 @@ from its own journal instead.
 4. the box sees its buys at its slot +1 or better on most copies (the backtest's fill assumption; was "0.3 slot ahead
    of Ohio" while Ohio existed), or lands at +1 in step 2.
 
-**Step 2 (1-2 days): the 0.1 SOL mechanics test, on the Frankfurt box.** A new wallet from `rugsnipe-long keygen`,
+**Step 2 (1-2 days): the 0.1 SOL mechanics test, on the Frankfurt box. Started Oct 28 18:34 UTC** (the wallet, the
+float, both simulations from the box and the switch: `03-strategy-A-long-copy/deploy-frankfurt.md` §6; it replaces
+the paper of step 1 on that box, so step 1's conditions are read from the real 0.1 SOL book at `max_open = 4` after
+the first clean trades). A new wallet from `rugsnipe-long keygen`,
 funded with **at least 0.16 SOL** (0.1 stake + 0.05 reserve + fees + rent) plus a small WBTC float (about 0.15 SOL
 of it, `float buy`), `stake_sol = 0.1`, `max_open = 1`, `mode = "on"`. First run the two simulations in docs/20 §4
 step 3 from the box. Pass: buys land mostly at its slot +1 and never past +2; every sell lands, a pool sell after a

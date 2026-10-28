@@ -87,12 +87,31 @@ token (11 in the 15 hours of Oct 28), so an empty hour is normal.
 | `rugsnipe-long` exits 2, journal `TOML parse error ... follow_its_sell ... duplicate key` | the config is root-only, so an unprivileged `grep -q ... \|\| tee -a` could not read it and appended the key a second time | `sudo sed -i '/^follow_its_sell = /d' /etc/rugsnipe/long.toml && echo 'follow_its_sell = false' \| sudo tee -a /etc/rugsnipe/long.toml`; always `sudo grep` on `/etc/rugsnipe` |
 | after the fix, `restart` fails with `Start request repeated too quickly` and nothing in the journal | the crash loop used the unit's 20 starts in 300 s (`StartLimitBurst`), so systemd refused the restart without running the bot | `sudo systemctl reset-failed rugsnipe-long` then `restart` |
 
-## 6. Next on this box
+## 6. The 0.1 SOL test (started Oct 28 18:34 UTC, 20:34 Beirut)
 
-The plan is `07-rework-2026-10-28/README.md` §6: 2-3 days of paper that decide (step 1), then the 0.1 SOL mechanics
-test here (step 2: `rugsnipe-long keygen`, at least 0.16 SOL plus a small WBTC float, the two simulations of
-`docs/20-long-copy.md` §4 step 3 run from this box first, `stake_sol = 0.1`, `max_open = 1`, `mode = "on"`), then
-1 SOL only if both pass. The Triton token and the Nozomi key that were pasted into the chat on Oct 28 should be rotated
+Done in this order, each output as the owner pasted it:
+1. `keygen --out /etc/rugsnipe/keys/long-wallet.json` (the file was absent; the hot role does not create it):
+   wallet **`E7KX1hcMCXg9qUpGE5hXaotRTxv8itSbdo4b8LHmYbyc`**, file 0400 root. The file exists only on this box.
+2. 0.7 SOL sent from the owner's Phantom. `status --chain` showed `wallet 0.7000 SOL`, and that the paper bot held one
+   paper position (#0, bought 18:29 UTC). `float buy 3NZ9... 0.15` through Jupiter: 18,842 WBTC units, landed in slot
+   462579094 (the wallet's first real transaction).
+3. The two simulations of `docs/20-long-copy.md` §4 step 3 from the box, with the box's RPC URL read into a shell
+   variable (`RPC_URL=$(sudo awk -F'"' '/^RPC_URL/{print $2}' /etc/rugsnipe/keys/api-keys.toml)`, never printed):
+   our 0.1 SOL copy of wallet 4's WBTC-routed buy of 3j9ex53k, `buy: err null`, `round trip ... err null`; our pool
+   sell of the graduated 9UinFHHj as one of its holders, `sell ... err null`.
+4. `long.toml`: `mode = "on"`, `stake_sol = 0.1`, `max_open = 1`, `daily_stop_sol = 0.3` (the rest unchanged:
+   `follow_its_sell = false`, `buy_senders = ["nozomi"]`, `sell_senders = ["nozomi"]`, `reserve_sol = 0.05`). Restart;
+   the journal: `long start: mode On wallet E7KX... stake 0.1 SOL ... max_open 1 ... buy senders ["nozomi"] sell senders
+   ["nozomi"]`, `long wallet E7KX... SOL 0.5441 floats [3NZ9JMVB 18841 (0.149 SOL)]`, `long recover: 1 live position(s)`
+   (the paper coin, which closes as paper: the cap and the daily stop count paper and real apart, `engine.rs`
+   `on_trigger`), `long feed connected`.
+
+The paper run on this box ended there (one box runs one bot). What the test must show, over 5-10 trades: buys landing
+at its slot +1 or better (`long buy ... seen at its slot +N`, then `long fill ... paid X (vs its price +N%)`: that
+percentage is where in its slot we landed, `07-rework-2026-10-28/README.md` §5), every sell landing (a pool sell after
+a graduation included), the chain equal to the journal. Then `max_open = 4` at 0.1 SOL for the deciding days, then
+1 SOL only if both pass (plan §6 step 3). `sudo touch /var/lib/rugsnipe-long/KILL` stops new buys; never
+`systemctl stop` while a coin is held. The Triton token and the Nozomi key that were pasted into the chat on Oct 28 should be rotated
 in their portals and the box's `api-keys.toml` updated.
 
 ## Sources

@@ -36,6 +36,7 @@ remaining SOL returned to the owner's Phantom wallet.
 | Oct 28 | fra1 terminated; the long copy keeps running on Ohio (paper) until the evening |
 | Oct 28 17:58 UTC | the long copy starts in paper on the Frankfurt box (`fra-long`, this branch's code, `follow_its_sell = false`) |
 | Oct 28 evening | Ohio terminated by the owner; its paper book after 13:31 UTC and fra1's backup are gone |
+| Oct 28 18:34 UTC | the long copy goes **real at 0.1 SOL** on the Frankfurt box (wallet `E7KX1hcM...`, 1 open, daily stop 0.3); paper there ends |
 
 ## Money
 
@@ -46,8 +47,9 @@ remaining SOL returned to the owner's Phantom wallet.
 - **Withdrawn Oct 27** to the owner's Phantom (`4ZLrCvjc9X739dWrt2pvQ35rNcFDGU46YPFc4DQCkcVK`): 0.335094 SOL from the bot
   wallet and 0.0423 SOL from 40 nonce accounts (32 buy + 8 sell, 0.00106 each). Phantom then held **3.8498 SOL**. Both bot
   wallets are at 0. One empty token account for 2RR6sfbi keeps about 0.0015 SOL of rent.
-- **The long copy's wallet** (`24neU6qr...`) was never funded; its key was on fra1 only. On Ohio, and now on the
-  Frankfurt box, it runs with no wallet at all; the 0.1 SOL test gets a new one.
+- **The long copy's old wallet** (`24neU6qr...`) was never funded; its key was on fra1 only. **Its new wallet**
+  `E7KX1hcMCXg9qUpGE5hXaotRTxv8itSbdo4b8LHmYbyc` (made on the Frankfurt box Oct 28) received 0.7 SOL from the owner's Phantom
+  on Oct 28; 0.15 of it was swapped into WBTC (18,841 units). The 0.1 SOL test trades from it since 18:34 UTC.
 
 ## Reading check.sh (`check-sh-2026-10-27.txt`)
 

@@ -13,7 +13,7 @@ on Oct 27-28; the code was hardened (8 money-losing fixes); the plan before any 
 
 | | |
 |---|---|
-| Status | **paper** (`mode = "log"`, `follow_its_sell = false`) on the Frankfurt box (`fra-long`, Cherry VDS) since Oct 28 17:58 UTC, this branch's code; before that on Ohio (Oct 27 16:11 UTC to Oct 28, the old code; terminated) and on fra1 (Oct 27 morning to 12:45 UTC, 1 trade). Next: 2-3 days of paper, the 0.1 SOL test ([the plan](../07-rework-2026-10-28/README.md#6-the-plan-how-to-go-live-again-in-order)) |
+| Status | **real money at 0.1 SOL** (`mode = "on"`, `stake_sol = 0.1`, `max_open = 1`, `daily_stop_sol = 0.3`, `follow_its_sell = false`; wallet `E7KX1hcM...`) on the Frankfurt box (`fra-long`, Cherry VDS) since Oct 28 18:34 UTC, this branch's code, after paper there from 17:58; before that on Ohio (Oct 27 16:11 UTC to Oct 28, the old code; terminated) and on fra1 (Oct 27 morning to 12:45 UTC, 1 trade). Next: 2-3 days of paper, the 0.1 SOL test ([the plan](../07-rework-2026-10-28/README.md#6-the-plan-how-to-go-live-again-in-order)) |
 | Built from | wallet 4's rule (01-who-it-is §3) and part A of the decomposition (02-decomposition) |
 | Code | `crates/rugsnipe-long/` (process), `crates/pump-codec/src/multihop.rs` (route codec), `deploy/systemd/rugsnipe-long.service` |
 | Config | `config/long.example.toml` → `/etc/rugsnipe/long.toml` on the box |
@@ -106,10 +106,10 @@ sell back in one transaction 1,158 bytes. The round trip costs about 3% at 1 SOL
 
 ## 4. Status and what's next
 
-1. **Paper on the Frankfurt box** since Oct 28 17:58 UTC, this branch's code, `follow_its_sell = false`. Check it with
-   `sudo python3 -I ~/rugsnipe/deploy/bin/rugsnipe-history paper` (see [deploy-frankfurt.md](deploy-frankfurt.md)).
-   Ohio (the old code, the Oct 27-28 paper) was terminated the same evening.
-2. **2-3 days of paper that decide**; then the **0.1 SOL mechanics test** on the box; then 1 SOL only if both pass.
+1. **The 0.1 SOL mechanics test on the Frankfurt box** since Oct 28 18:34 UTC (paper there 17:58-18:34; Ohio, the old
+   code and the Oct 27-28 paper, terminated the same evening). Check it with
+   `sudo python3 -I ~/rugsnipe/deploy/bin/rugsnipe-history paper` (both sides; see [deploy-frankfurt.md](deploy-frankfurt.md)).
+2. **5-10 clean real trades**, then `max_open = 4` at 0.1 SOL as the deciding days; then 1 SOL only if both pass.
    The steps and the pass conditions: [`07-rework-2026-10-28/README.md`](../07-rework-2026-10-28/README.md) §6;
    the box: [`07-rework-2026-10-28/infra.md`](../07-rework-2026-10-28/infra.md) §9; the test: [going-live.md](going-live.md).
 
