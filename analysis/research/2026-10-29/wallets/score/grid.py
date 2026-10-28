@@ -14,6 +14,7 @@ MODEL = sys.argv[2] if len(sys.argv) > 2 else "q"
 LIFT = (sys.argv[3] if len(sys.argv) > 3 else "1") == "1"
 LO, HI = (float(sys.argv[4]), float(sys.argv[5])) if len(sys.argv) > 5 else (1.5, 9.0)
 FEE, BIAS, ITS_TP = 0.0095, 0.0155, 2.5
+ITS_TP = float(os.environ.get("ITS_TP", ITS_TP))   # score: the wallet's own take profit for the lift (wallet 4: 2.5)
 FEE, BIAS = float(os.environ.get("FEE", FEE)), float(os.environ.get("BIAS", BIAS))   # fresh study: paper's costs to compare
 COST = {"pump, other quote": float(os.environ.get("COSTO", 0.9487)), "pump, SOL quote": 0.9713}
 CAP = int(os.environ.get("CAP", "3"))   # fresh study: the cap of "as built" and every grid (the bot runs 4)

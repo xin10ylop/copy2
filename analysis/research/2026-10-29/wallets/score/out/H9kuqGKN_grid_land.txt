@@ -1,0 +1,7 @@
+353 routable buys of 1.45-9.0 SOL, model q, its exits see our tokens True, at most 4 open
+   as built: tp 2.0 sl 0.8 1790 s               P1 153  +5.19 ( +3.22)   P2 161 +12.27 ( +9.62)   P3  30  -2.98 ( -4.70)
+   landing 1 slot(s) after its slot             P1 153  +5.19 ( +3.22)   P2 161 +12.27 ( +9.62)   P3  30  -2.98 ( -4.70)
+   landing 2 slot(s) after its slot             P1 153  +4.94 ( +2.98)   P2 161 +11.51 ( +8.86)   P3  30  -3.09 ( -4.79)
+   landing 3 slot(s) after its slot             P1 153  +4.62 ( +2.65)   P2 161 +11.27 ( +8.64)   P3  30  -3.19 ( -4.84)
+   landing 5 slot(s) after its slot             P1 153  +3.45 ( +1.24)   P2 161 +10.07 ( +7.44)   P3  30  -3.55 ( -5.19)
+   landing 10 slot(s) after its slot            P1 153  +0.83 ( -1.57)   P2 161  +6.44 ( +4.26)   P3  30  -5.37 ( -6.35)

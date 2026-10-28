@@ -27,6 +27,7 @@ for fn in [f for f in [OUT] + glob.glob(OUT + ".*") if os.path.exists(f)]:
 todo = [s for s, *_ in sigs if s not in done]
 if os.environ.get("SHARD"):
     k, n = map(int, os.environ["SHARD"].split("/")); todo = todo[k::n]; OUT = f"{OUT}.{k}"
+    if os.environ.get("REV"): todo = todo[::-1]; OUT += "r"     # a second process from the other end (stop both when merge.py says 0 missing)
 print(time.strftime("%H:%M:%S"), len(sigs), "landed,", len(todo), "to fetch", flush=True)
 BC = {}
 def bcurve(m):

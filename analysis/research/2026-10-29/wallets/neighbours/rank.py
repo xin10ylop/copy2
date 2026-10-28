@@ -3,7 +3,7 @@
 # CreateEvent). The create transaction's own trades (the dev buy) are left out. Per trader, over the coins it bought early:
 #   coins (other-quote coins), share at C+0 / C+1, share before wallet 4's buy, median slot gap to it,
 #   buy size in SOL: K * (1/v_after - 1/v_before), K = wallet 4's SOL value / (1/vt_after - 1/vt_before) on the same coin,
-#   failed: its failed transactions on the curve in the window / all its transactions there,
+#   failed: its failed transactions on the curve in slots up to C + 1 / all its transactions there,
 #   frenzy: other traders' landed buys in the 2 slots after its buy (slots b+1, b+2),
 #   hold: its first sale of the coin after its first early buy: the fetched window (complete up to slot max(C+3, S+2)),
 #         then wallet 4's path (full_paths.py: every trade from wallet 4's buy to its sale, sampled when over 40),
@@ -39,11 +39,14 @@ for m, v in WIN.items():
     if v["kind"] == "pump, SOL quote": cal.append(K / (30 * 1.073e15))     # 30 SOL x 1,073M tokens (6 decimals), in SOL
     rows, failed, ntx = [], collections.Counter(), collections.Counter()
     for t in v["tx"]:
-        if t["err"]: failed[t["payer"]] += 1; ntx[t["payer"]] += 1; continue
+        if t["err"]:
+            if t["s"] <= C + 1: failed[t["payer"]] += 1; ntx[t["payer"]] += 1
+            continue
         users = set()
         for u, b, tok, va, ix in t["tr"]:
             rows.append((t["s"], t["i"] or 0, u, b, tok, va, t["bt"], t["create"])); users.add(u)
-        for u in users or {t["payer"]}: ntx[u] += 1
+        if t["s"] <= C + 1:
+            for u in users or {t["payer"]}: ntx[u] += 1
     def frenzy(slot, who):
         return sum(1 for r in rows if r[3] and r[2] != who and slot + 1 <= r[0] <= slot + 2)
     W4.append(dict(m=m, off=S - C, fr=frenzy(S, L.W), late=v["bt"] >= LATE, other="other" in v["kind"]))

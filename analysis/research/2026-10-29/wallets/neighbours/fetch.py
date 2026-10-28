@@ -4,6 +4,7 @@
 #   before its buy: getSignaturesForAddress(curve, before = its buy sig), paged back to the curve's first signature;
 #   after its buy:  getSignaturesForAddress(curve, until = its buy sig, before = its sell sig), all pages, kept up to the
 #                   window's end; then getTransaction for each signature in the window.
+# Failed transactions are read up to slot C + 1 only.
 # C = the slot of the transaction carrying the coin's CreateEvent (else the oldest landed signature).
 #   python3 -I fetch.py [N]   ->  OUT/win.json  (one entry per coin; resumable through the response cache)
 import sys, os, json, time
@@ -47,7 +48,8 @@ def one(m):
     if not landed_pre: return m, dict(err="nothing before its buy", n_pre=len(pre))
     C0 = landed_pre[-1]["slot"]
     end = max(C0 + 3, S + 2)
-    want = [p for p in pre if p["slot"] >= C0 - 2] + [p for p in post if p["slot"] <= end]
+    # failed transactions only up to C + 1 (where the early buyers fire; later ones are mostly spam retries)
+    want = [p for p in pre if p["slot"] >= C0 - 2] + [p for p in post if p["slot"] <= end and (not p.get("err") or p["slot"] <= C0 + 1)]
     rec = []
     for p in want:
         t = L.tx(p["signature"])
