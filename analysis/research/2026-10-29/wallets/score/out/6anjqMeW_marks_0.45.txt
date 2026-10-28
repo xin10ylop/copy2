@@ -48,4 +48,4 @@
    P3 pump, other quote    831 tokens    +12.19 (   +9.01)
    P3 pump, SOL quote     1158 tokens     +6.19 (   +4.41)
 
-8. after its 0.45+ SOL buys (coins priced in another token, full_paths): curve transactions in its slot after it and the next: median 1.0 (p25..p75 [0, 1, 3], n 150); curve trades on the recorded path, same slots: median 0.5 (p25..p75 [0, 1, 1], n 150)
+8. after its 0.45+ SOL buys (coins priced in another token, full_paths): curve transactions in its slot after it and the next: median 1.0 (p25..p75 [0, 1, 2], n 724); curve trades on the recorded path, same slots: median 0.0 (p25..p75 [0, 0, 1], n 724)
