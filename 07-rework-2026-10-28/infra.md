@@ -375,6 +375,10 @@ What each part should print:
 
 ## 10. The Ohio box
 
+**Terminated by the owner on Oct 28 evening, after this was written.** fra1's backup went with it; the wallet in it
+was already empty (its SOL went to the owner's Phantom on Oct 27, 05-live), and its API keys should be rotated anyway.
+The section below is kept as written; none of it applies any more. The Frankfurt box is the only box.
+
 - **Keep it.** It holds the **only copy of fra1's backup** (wallet and API keys, `/root/backups/fra1-backup.tgz`,
   root only). **Never Terminate it.** AWS Stop keeps the disk; Terminate deletes it.
 - **Don't copy the backup to the Cherry box**, to git or to any cloud sync. The new box gets fresh keys typed in

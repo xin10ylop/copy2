@@ -3,7 +3,8 @@
 ## What this repo is
 
 The wallet-4 half of the rugsnipe project. Wallet 4 = `H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg`.
-- **Strategy A, the long copy:** `crates/rugsnipe-long`. It runs in paper mode on the owner's Ohio box.
+- **Strategy A, the long copy:** `crates/rugsnipe-long`. It runs in paper mode on the owner's Frankfurt box
+  (`fra-long`, Cherry Cloud VDS 2, user `ops`) since Oct 28 17:58 UTC. Ohio and fra1 are terminated.
 - **Strategy D, the launch copy:** the hot copy bot `crates/rugsnipe`, with a `copy_more` entry. It is stopped.
 
 Read `README.md` (status, A-Z index), then `02-decomposition/` (why A and not the rest), then the strategy folder you work
@@ -12,15 +13,18 @@ on. The original project docs are in `docs/` (00-08 background, 19, 20). The sis
 
 **Upstream:** the live code is developed in `xin10ylop/rugsnipe`, branch `claude/eloquent-mayer-264bxk`. This repo was a
 snapshot at `7184554` (Oct 28); **since Oct 28 evening this repo's `crates/rugsnipe-long` is ahead of upstream** (the
-hardening, `07-rework-2026-10-28/`). The Ohio box pulls and builds from upstream, not from here. A code change meant to
-run on the box goes to upstream (or the box gets pointed at this repo); say which you did.
+hardening, `07-rework-2026-10-28/`). The Frankfurt box builds from this repo and branch (`~/rugsnipe` on it is a clone
+of `claude/magical-einstein-k78idp`). A code change meant to run on the box goes here, then
+`03-strategy-A-long-copy/deploy-frankfurt.md` §3 on the box.
 
 ## The owner and how to work with them
 
 - The owner runs every command on the boxes themselves and pastes the output back. You can't reach the boxes.
   Give one copy-paste block, say what each line should print, and say which machine it runs on
-  (`ubuntu@ip-172-31-17-131` = Ohio). Begin blocks with `cd ~/rugsnipe` when they use repo paths. A dropped SSH session
-  lands in `~` (that caused the empty "masked" unit on Oct 27).
+  (`ops@fra-long:~/rugsnipe$` = the Frankfurt box; the old `ubuntu@ip-...` prompt was Ohio, gone). Begin blocks with
+  `cd ~/rugsnipe` when they use repo paths. A dropped SSH session lands in `~` (that caused the empty "masked" unit on
+  Oct 27). The box's config files are root-only: `sudo grep`, never a bare `grep` (a bare `grep -q || tee -a` appended
+  a key twice on Oct 28). After a crash loop, `sudo systemctl reset-failed rugsnipe-long` before the restart.
 - **Answer the question asked, directly.** "Did it behave as it should" means "did it follow its rules", not
   "is it the same as the backtest". Lead with yes or no, then the evidence.
 - Plain words, short sentences, tables. Times: the owner reads Beirut time (UTC+2 on these dates); say which zone.
@@ -35,8 +39,8 @@ run on the box goes to upstream (or the box gets pointed at this repo); say whic
   `*.tok` files, or the fra1 backup. Enable the hook: `git config core.hooksPath .githooks` (it refuses key material).
 - Never print or ask for the contents of a key file. The SSH key (`~/.ssh/<...>.pem`) is the owner's; never ask for it or
   display it.
-- fra1's backup (`/root/backups/fra1-backup.tgz` on Ohio, wallet and API keys inside) stays private: not in git, not
-  shared, not in cloud sync.
+- fra1's backup (wallet and API keys inside) was only on Ohio and is gone with it (Oct 28). None of it is in git; never
+  rebuild it on the Frankfurt box. The box's own keys file (`/etc/rugsnipe/keys/api-keys.toml`, root, 0400) never leaves it.
 - Don't publish the owner's IP, local username or server addresses in new files.
 
 ## Build and test
@@ -50,9 +54,10 @@ cargo test -p pump-codec                        # the route codec (multihop fixt
 cargo run -p rugsnipe-long --example scan -- RPC_URL DIR      # the bot's detection over fetched transactions
 cargo run -p rugsnipe-long --example curve_path -- DIR MINT WALLET
 ```
-On a box: `sudo bash deploy/install.sh --role analytics` (Ohio) or `--role hot` (a Frankfurt box). The installer never
+On the box: `sudo bash deploy/install.sh --role hot --force` (`--force` because Ubuntu 26.04 is newer than the installer
+knows; `rugsnipe-hot` is installed by that role but must never be enabled there). The installer never
 overwrites `/etc/rugsnipe/long.toml`. A changed default (like `max_open`) also needs the box's file edited
-(`03-strategy-A-long-copy/deploy-ohio.md` §3).
+(`03-strategy-A-long-copy/deploy-frankfurt.md` §3).
 
 ## Datasets
 
@@ -90,17 +95,16 @@ bash data/datasets/unpack.sh h9long     # one archive
 
 ## Open items (Oct 28, evening; the plan is `07-rework-2026-10-28/README.md` §6)
 
-1. **Point the Ohio box at this branch** (`xin10ylop/copy2`, `claude/magical-einstein-k78idp`) or merge it upstream, and
-   deploy: the hardened `rugsnipe-long` (8 money-losing fixes, paper sells a slot later, the event's fee). Keep paper,
-   set `follow_its_sell = false` so the journal records both exit policies.
-2. **A Frankfurt box** (Cherry VDS, €59/month, hourly for the test; `07-rework-2026-10-28/infra.md` §9) with the Triton
-   gRPC feed (`https://riptide.rpcpool.com`, the mainnet-shared token in `api-keys.toml`). Paper on both boxes for a
-   day; compare `seen at its slot +N`.
-3. **2-3 days of paper that decide** (the 4 conditions in the plan): positive without the best 2 at the backtest's
-   costs, wallet 4 at 25+ copyable buys a day, its early-sale rate, Frankfurt's lead.
-4. **The 0.1 SOL mechanics test** on Frankfurt (≥ 0.16 SOL in the wallet, a small WBTC float, the two simulations in
+1. **Done Oct 28 evening: the Frankfurt box** (`fra-long`, Cherry Cloud VDS 2, hourly; `03-strategy-A-long-copy/deploy-frankfurt.md`)
+   runs this branch's hardened `rugsnipe-long` in paper (`mode = "log"`, `follow_its_sell = false`, so the journal
+   records both exit policies) on the Triton gRPC feed since 17:58 UTC. **Ohio was terminated the same evening** (the
+   owner's decision): no comparison box, and fra1's backup is gone. The box's lag is read from its own journal
+   (`long paper-buy ... seen at its slot +N`).
+2. **2-3 days of paper that decide** (the plan's conditions): positive without the best 2 at the backtest's costs,
+   wallet 4 at 25+ copyable buys a day, its early-sale rate, buys seen at its slot +1 or better on most copies.
+3. **The 0.1 SOL mechanics test** on Frankfurt (≥ 0.16 SOL in the wallet, a small WBTC float, the two simulations in
    docs/20 §4 first), then 1 SOL × 3-4 only if both pass.
-5. Not built: an alarm when wallet 4 goes quiet or sends SOL out (its predecessor was emptied in one evening); a
+4. Not built: an alarm when wallet 4 goes quiet or sends SOL out (its predecessor was emptied in one evening); a
    successor scan by its fingerprint (`07-rework-2026-10-28/wallet-check.md` §7); 3-hop routes via a v0 transaction
    (about +0.1 SOL a day); the "can wait" list of the code review.
-6. Strategy D stays stopped. If the hot bot ever runs again, deploy the graduation fix `af681ad` first.
+5. Strategy D stays stopped. If the hot bot ever runs again, deploy the graduation fix `af681ad` first.

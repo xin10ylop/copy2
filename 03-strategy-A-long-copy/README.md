@@ -3,22 +3,23 @@
 In short: when wallet 4 buys **1.45 SOL or more** of a pump coin **priced in another token** that we can route, buy
 **1 SOL** right behind it, then sell at **2.0x** its price, **0.8x**, after **1790 s**, or right behind its own sell if
 it leaves first. Backtest, picked on Oct 19-22 and scored out of sample on Oct 23-27, at most 4 open: **+6.73 / +11.13
-SOL**. It runs **in paper mode on the Ohio box** since Oct 27 16:11 UTC (no wallet, nothing sent). Paper so far: 23
+SOL**. It ran **in paper mode on the Ohio box** from Oct 27 16:11 UTC to Oct 28 (no wallet, nothing sent): 23
 positions, 21 closed, 9 won, **+2.47 SOL** to Oct 28 15:31 Beirut time (+1.57 at the backtest's costs; all of it 3 coins
-that graduated). It has entered every buy it should have (checked on chain). It has **never traded real money**.
+that graduated). It entered every buy it should have (checked on chain). Since **Oct 28 17:58 UTC it runs in paper on
+the Frankfurt box** on this branch's code; Ohio was terminated that evening. It has **never traded real money**.
 **Oct 28 evening:** wallet 4 changed its rule on Oct 27 (early sales on half of its big buys) and the copy as tested loses
 on Oct 27-28; the code was hardened (8 money-losing fixes); the plan before any real money is in
 [`07-rework-2026-10-28/`](../07-rework-2026-10-28/README.md).
 
 | | |
 |---|---|
-| Status | **paper** (`mode = "log"`) on the Ohio box (AWS us-east-2) since Oct 27 16:11 UTC, still on the Oct 28 morning code; on fra1 before that (Oct 27 morning to 12:45 UTC, 1 trade). Next: this branch's code, a Frankfurt box, 2-3 days of paper, the 0.1 SOL test ([the plan](../07-rework-2026-10-28/README.md#6-the-plan-how-to-go-live-again-in-order)) |
+| Status | **paper** (`mode = "log"`, `follow_its_sell = false`) on the Frankfurt box (`fra-long`, Cherry VDS) since Oct 28 17:58 UTC, this branch's code; before that on Ohio (Oct 27 16:11 UTC to Oct 28, the old code; terminated) and on fra1 (Oct 27 morning to 12:45 UTC, 1 trade). Next: 2-3 days of paper, the 0.1 SOL test ([the plan](../07-rework-2026-10-28/README.md#6-the-plan-how-to-go-live-again-in-order)) |
 | Built from | wallet 4's rule (01-who-it-is §3) and part A of the decomposition (02-decomposition) |
 | Code | `crates/rugsnipe-long/` (process), `crates/pump-codec/src/multihop.rs` (route codec), `deploy/systemd/rugsnipe-long.service` |
 | Config | `config/long.example.toml` → `/etc/rugsnipe/long.toml` on the box |
 | Source doc | [`docs/20-long-copy.md`](../docs/20-long-copy.md) |
 | Research | [`analysis/research/2026-10-27/h9long/`](../analysis/research/2026-10-27/h9long/README.md) |
-| Pages here | [backtests](backtests.md) · [paper run](paper-run.md) · [deploy on Ohio](deploy-ohio.md) · [going live](going-live.md) · [changes](changes.md) |
+| Pages here | [backtests](backtests.md) · [paper run](paper-run.md) · [deploy on the Frankfurt box](deploy-frankfurt.md) · [on Ohio, until Oct 28](deploy-ohio.md) · [going live](going-live.md) · [changes](changes.md) |
 
 ## 1. The rule
 
@@ -54,7 +55,7 @@ first on 83 of 126 take profits; at 2.0x only on 8-10. 2.5x and above backtest t
 **Why we don't take its profit:** our buy lifts the price by our own tokens (about 6%, 8.5% at 2x), and our sell takes
 exactly that back out. Once we're out, the curve is where it would be without us.
 
-## 2. The settings (as on Ohio, `/etc/rugsnipe/long.toml`)
+## 2. The settings (as on the Frankfurt box, `/etc/rugsnipe/long.toml`)
 
 | Key | Value | Why |
 |---|---|---|
@@ -74,9 +75,9 @@ exactly that back out. Once we're out, the curve is where it would be without us
 | `max_sell_fail_sol` | 0.01 | failed-sell fees per position before slowing to every 10 min |
 | `paper_land_slots` | 1 | paper fills at the end of the slot after the one our feed saw its buy in (since `7184554`); a paper sell the same way after the trade that fired it (Oct 28) |
 | `reserve_sol` | 0.05 | SOL kept beyond the stakes: a wSOL buy needs `stake_sol + reserve_sol` in the wallet (a 0.1 SOL test wallet needs about 0.16) |
-| `follow_its_sell` | true (paper next: **false**) | sell behind its early sale, or keep our exits and record what following would have made (07-rework §3) |
+| `follow_its_sell` | true (**false** on the Frankfurt paper run) | sell behind its early sale, or keep our exits and record what following would have made (07-rework §3) |
 | `float_stake_sol` | 0 (= `stake_sol`) | a bigger stake on WBTC-routed copies (+0.12 SOL a copy against +0.02), for later |
-| `hot_config` | `/etc/rugsnipe/fra1-hot.toml` on Ohio | the feed and senders come from fra1's saved hot config |
+| `hot_config` | `/etc/rugsnipe/rugsnipe.toml` | the feed (Triton gRPC) and the senders (Nozomi `fra2`) come from the hot config; on Ohio it was fra1's saved copy |
 
 ## 3. How the code is laid out (`crates/rugsnipe-long/src/`)
 
@@ -105,10 +106,10 @@ sell back in one transaction 1,158 bytes. The round trip costs about 3% at 1 SOL
 
 ## 4. Status and what's next
 
-1. **Paper on Ohio**, running on the Oct 28 morning code. Check it with `sudo python3 -I ~/history.py paper` (see
-   [deploy-ohio.md](deploy-ohio.md)).
-2. **Deploy this branch** (the hardening; `follow_its_sell = false` for the paper test), add a **Frankfurt box**, and
-   run 2-3 days of paper that decide; then the **0.1 SOL mechanics test** on Frankfurt; then 1 SOL only if both pass.
+1. **Paper on the Frankfurt box** since Oct 28 17:58 UTC, this branch's code, `follow_its_sell = false`. Check it with
+   `sudo python3 -I ~/rugsnipe/deploy/bin/rugsnipe-history paper` (see [deploy-frankfurt.md](deploy-frankfurt.md)).
+   Ohio (the old code, the Oct 27-28 paper) was terminated the same evening.
+2. **2-3 days of paper that decide**; then the **0.1 SOL mechanics test** on the box; then 1 SOL only if both pass.
    The steps and the pass conditions: [`07-rework-2026-10-28/README.md`](../07-rework-2026-10-28/README.md) §6;
    the box: [`07-rework-2026-10-28/infra.md`](../07-rework-2026-10-28/infra.md) §9; the test: [going-live.md](going-live.md).
 
@@ -124,7 +125,7 @@ sell back in one transaction 1,158 bytes. The round trip costs about 3% at 1 SOL
 - **Oct 23-27 rests on WBTC-routed coins** (+10.0 of +12.2). WBTC-routed copies make about +0.12 SOL a copy in both
   periods, SOL-routed about +0.02.
 - **Speed matters most on the quickest winners:** in paper, 4 of 5 take profits fired 1-10 s after its buy, on frenzy
-  coins. Real fills from Ohio will land later than paper assumes.
+  coins. Real fills land a slot later than the Ohio paper run assumed; the hardened paper books that.
 - **It now sells early much more often** (8 of 20 in paper against 3-6% in the data).
 - **Real sending has never run end to end.** Since Oct 28 evening every path is simulated on mainnet (the buy from wSOL
   and WBTC, the closing round trip, the pool sell after graduation into both) and the 8 money-losing bugs of the review

@@ -8,7 +8,8 @@ graduated**, a kind of coin no earlier backtest contained. The code review found
 live**; they are fixed, tested, and the never-run paths are now simulated on mainnet. Part B (its buys paid in PUMP,
 CARDS ...) **cannot be routed** through pump's programs at all. The best box is a **€59 a month Cherry Servers virtual
 server in Frankfurt** with the Triton gRPC feed the owner already pays for. **The plan: do not go to 1 SOL yet.** Run
-the hardened bot on paper for 2-3 days on Frankfurt and Ohio side by side, with the new `follow_its_sell` switch
+the hardened bot on paper for 2-3 days on the Frankfurt box (running since Oct 28 17:58 UTC; Ohio was terminated that
+evening, so there is no side-by-side), with the new `follow_its_sell` switch
 measuring both exit policies in one run, then the 0.1 SOL mechanics test, then decide on 1 SOL with the numbers below.
 
 | Page here | What it is |
@@ -142,18 +143,20 @@ quote's pool hop in paper, a `positions.json.bak`, a `check --config` command, T
   anycast and answers from Frankfurt there. This bot's stream costs about $0.2-0.5 a month, out of the $75 credit.
   Alchemy's Frankfurt node is the fallback (same building).
 - **Senders:** Nozomi `fra2` (the default) for buys and sells, `rpc_send` through Triton. One buy sender only.
-- **Ohio:** keep it (it holds the only copy of fra1's backup; never Terminate it), as the paper comparison and for
-  analytics. Never run two live bots.
+- **Ohio:** was to stay as the paper comparison and the backup's home. **Terminated by the owner on Oct 28 evening**,
+  after this was written; fra1's backup went with it (its wallet was already empty, 05-live). The Frankfurt box is the
+  only box. Never run two live bots.
 
 ## 6. The plan: how to go live again, in order
 
-**Step 0 (today): the code and the measurement.** Point the Ohio box at this repo and branch (or merge this branch
-upstream), install, keep `mode = "log"`, set `follow_its_sell = false` (the journal then records both policies: what
-our own exits make, and what selling behind it would have made, `its_sell_net` on each record). Order the Cherry
-Frankfurt VDS hourly (about €17 for a week), install with `--role hot`, the Triton gRPC feed, paper there too. Run both
-for a day and compare `seen at its slot +N` (infra.md §9, test 2).
+**Step 0 (Oct 28, done).** The Cherry Frankfurt VDS ordered hourly, installed from this branch with `--role hot`
+(`03-strategy-A-long-copy/deploy-frankfurt.md`), the Triton gRPC feed, `mode = "log"`, `follow_its_sell = false` (the
+journal then records both policies: what our own exits make, and what selling behind it would have made,
+`its_sell_net` on each record). Paper started Oct 28 17:58 UTC. As first written this step also pointed Ohio at this
+branch and compared the two boxes' `seen at its slot +N`; Ohio was terminated that evening, so the box's lag is read
+from its own journal instead.
 
-**Step 1 (2-3 days): paper that decides.** Read `history.py paper` on both boxes, plus the `closed.jsonl` records'
+**Step 1 (2-3 days): paper that decides.** Read `rugsnipe-history paper` on the box, plus the `closed.jsonl` records'
 `its_sell_net` for the following policy. Go on only if **all** hold:
 1. the paper book is positive over at least 40 closed copies **without its best 2**, at paper's costs minus 0.062 SOL
    a trade (the backtest's costs: 0.031 fixed and the 5.1% round trip), under at least one of the two exit policies;
@@ -161,7 +164,8 @@ for a day and compare `seen at its slot +N` (infra.md §9, test 2).
    15 hours;
 3. its early-sale rate on those buys is known for the week (if it stays near 50%, the policy that paper prefers is the
    one to run; if it falls back under 15%, following it is the tested rule);
-4. Frankfurt sees its buys at least 0.3 slot ahead of Ohio, or lands at +1 in step 2.
+4. the box sees its buys at its slot +1 or better on most copies (the backtest's fill assumption; was "0.3 slot ahead
+   of Ohio" while Ohio existed), or lands at +1 in step 2.
 
 **Step 2 (1-2 days): the 0.1 SOL mechanics test, on the Frankfurt box.** A new wallet from `rugsnipe-long keygen`,
 funded with **at least 0.16 SOL** (0.1 stake + 0.05 reserve + fees + rent) plus a small WBTC float (about 0.15 SOL

@@ -1,22 +1,26 @@
 # 06. Infrastructure: boxes, code, deploy, tools
 
 In short: the code here is a snapshot of `xin10ylop/rugsnipe`, branch `claude/eloquent-mayer-264bxk`, at commit
-`7184554` (Oct 28). It's the same in the copy1 and copy2 repos. Two boxes were used: **fra1** (Frankfurt bare metal,
-user `ops`) ran the copy bot and the first paper run, and was **terminated on Oct 28**. **Ohio** (AWS us-east-2, user
-`ubuntu`) was the analytics box, and now runs the long copy in paper mode. It holds the only copy of fra1's backup.
+`7184554` (Oct 28), ahead of it since Oct 28 evening (`crates/rugsnipe-long`). Three boxes: **fra1** (Frankfurt bare
+metal, user `ops`) ran the copy bot and the first paper run, **terminated Oct 28**. **Ohio** (AWS us-east-2, user
+`ubuntu`) was the analytics box and ran the long copy's paper from Oct 27 16:11 UTC; **terminated Oct 28 evening**, fra1's
+backup with it. **The Frankfurt box** (`fra-long`, Cherry Cloud VDS 2, user `ops`) runs the long copy in paper mode on
+this branch's code since Oct 28 17:58 UTC ([`03-strategy-A-long-copy/deploy-frankfurt.md`](../03-strategy-A-long-copy/deploy-frankfurt.md)).
 
 ## 1. The boxes
 
 | Box | Was | Now |
 |---|---|---|
 | **fra1** (Frankfurt bare metal, user `ops`) | the hot role: `rugsnipe-hot` (the copy bot), `rugsnipe-guard`, `shredstream-proxy`, timers (operators, discover, pnl-tg); the long copy's first paper run | **terminated Oct 28**. Everything was stopped at about 12:45 UTC Oct 27, the 40 nonce accounts closed, the SOL sent to the owner's Phantom, the state backed up |
-| **Ohio** (AWS us-east-2, user `ubuntu`) | the analytics role (`deploy/aws-ohio-analytics.md`) | `rugsnipe-long` in **paper mode**, no wallet (`03-strategy-A-long-copy/deploy-ohio.md` in copy2); fra1's backup at `/root/backups/fra1-backup.tgz`, unpacked read-only under `/root/fra1` |
+| **Ohio** (AWS us-east-2, user `ubuntu`) | the analytics role (`deploy/aws-ohio-analytics.md`); `rugsnipe-long` in paper mode Oct 27 16:11 UTC to Oct 28, no wallet (`03-strategy-A-long-copy/deploy-ohio.md`); fra1's backup | **terminated Oct 28 evening**. Its paper book to Oct 28 13:31 UTC is saved in `05-live/`; the backup is gone (its wallet was empty) |
+| **the Frankfurt box** (`fra-long`, Cherry Cloud VDS 2 Gen 2, Ubuntu 26.04, user `ops`) | ordered Oct 28, hourly | `rugsnipe-long` in **paper mode** on this branch's code since Oct 28 17:58 UTC, Triton gRPC feed, Nozomi `fra2`, no wallet yet (`03-strategy-A-long-copy/deploy-frankfurt.md`). `rugsnipe-hot` installed, never enabled |
 
-**The backup holds wallet private keys and API keys.** Keep it private: not in git, not shared, not in cloud sync. Never
-print or copy key contents. AWS **Stop** keeps Ohio's disk, and the backup with it. **Terminate** deletes both.
+**The backup held wallet private keys and API keys.** It was only on Ohio and went with it. The wallet in it had been
+emptied on Oct 27 (05-live, Money); its API keys (Alchemy, Helius, Nozomi, Triton) should be rotated. The Frankfurt box
+has its own keys file (`/etc/rugsnipe/keys/api-keys.toml`, root, 0400), typed in from the dashboards; never print it.
 
 Why Frankfurt for the copy bot: the launch race is won in milliseconds, close to the block leaders
-(`docs/03-speed-infra.md`). The long copy holds for minutes, so Ohio's extra latency (about 0.1 s, 2-3 slots) costs
+(`docs/03-speed-infra.md`). The long copy holds for minutes, so a US box's extra latency (about 0.1 s, 2-3 slots) costs
 about 5-10% of its profit (copy2 `03-strategy-A-long-copy/going-live.md`).
 
 **Where to run the long copy, decided Oct 28** ([`07-rework-2026-10-28/infra.md`](../07-rework-2026-10-28/infra.md)): a
@@ -24,8 +28,9 @@ about 5-10% of its profit (copy2 `03-strategy-A-long-copy/going-live.md`).
 building; hourly for the test week), the **Triton gRPC feed** the owner already pays for (`https://riptide.rpcpool.com`,
 the mainnet-shared token in `api-keys.toml`, about $0.2-0.5 a month), Nozomi `fra2` as the one buy sender. Nothing faster
 matters for this bot (in-building bare metal gains 0.3-0.5 ms, about 0.002 of a 211 ms slot). Ohio adds about 100 ms on a
-European leader (0.27 slot on average, 0.5 on European leaders): measure it against Frankfurt with the journal's
-`seen at its slot +N` before deciding (infra.md §9). Keep Ohio for analytics, the paper comparison and the fra1 backup.
+European leader (0.27 slot on average, 0.5 on European leaders). Ohio was terminated on Oct 28 evening, so the lag is
+read from the Frankfurt journal alone (`seen at its slot +N`). The box's four latency pings on Oct 28 (infra.md §9
+test 1): Jito FRA 0.42 ms, Helius fra-sender 0.45 ms, Nozomi fra2 0.17 ms, Triton Riptide 0.17 ms (averages of 50).
 
 ## 2. The code (`crates/`, Rust workspace)
 
@@ -79,10 +84,10 @@ credentials.
 | Wallet | Address | State |
 |---|---|---|
 | the copy bot (hot, "probe") | `4g49xGbgHZk3QYR1o6QSfDUbHmJZFwN6iDp6Vco1skff` | emptied Oct 27 |
-| the long copy | `24neU6qrWGQyvtVxiziJed6egUyTqe1QLM3K8JYNe93Y` | never funded; not on Ohio |
+| the long copy | `24neU6qrWGQyvtVxiziJed6egUyTqe1QLM3K8JYNe93Y` | never funded; its key was on fra1 only (gone). The Frankfurt box gets a new wallet (`rugsnipe-long keygen`) for the 0.1 SOL test |
 | the owner's Phantom | `4ZLrCvjc9X739dWrt2pvQ35rNcFDGU46YPFc4DQCkcVK` | 3.8498 SOL on Oct 28 |
 
 ## Sources
 
 `docs/03`, `docs/06`, `docs/07`, `docs/08`; `deploy/`; each crate's `Cargo.toml`; session records of Oct 27-28 (shutdown,
-withdrawal, backup, Ohio setup).
+withdrawal, backup, Ohio setup, the Frankfurt box's setup and Ohio's termination).

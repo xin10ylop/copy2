@@ -33,7 +33,9 @@ remaining SOL returned to the owner's Phantom wallet.
 | Oct 27 10:29 | the long copy's first paper trade on fra1 (PePEwjLD) |
 | Oct 27 ~12:45 | every rugsnipe unit on fra1 stopped; nonce accounts closed; SOL withdrawn; backup made and copied to Ohio |
 | Oct 27 16:11 | the long copy restarts in paper mode on Ohio |
-| Oct 28 | fra1 terminated; the long copy keeps running on Ohio (paper) |
+| Oct 28 | fra1 terminated; the long copy keeps running on Ohio (paper) until the evening |
+| Oct 28 17:58 UTC | the long copy starts in paper on the Frankfurt box (`fra-long`, this branch's code, `follow_its_sell = false`) |
+| Oct 28 evening | Ohio terminated by the owner; its paper book after 13:31 UTC and fra1's backup are gone |
 
 ## Money
 
@@ -44,7 +46,8 @@ remaining SOL returned to the owner's Phantom wallet.
 - **Withdrawn Oct 27** to the owner's Phantom (`4ZLrCvjc9X739dWrt2pvQ35rNcFDGU46YPFc4DQCkcVK`): 0.335094 SOL from the bot
   wallet and 0.0423 SOL from 40 nonce accounts (32 buy + 8 sell, 0.00106 each). Phantom then held **3.8498 SOL**. Both bot
   wallets are at 0. One empty token account for 2RR6sfbi keeps about 0.0015 SOL of rent.
-- **The long copy's wallet** (`24neU6qr...`) was never funded. On Ohio it runs with no wallet at all.
+- **The long copy's wallet** (`24neU6qr...`) was never funded; its key was on fra1 only. On Ohio, and now on the
+  Frankfurt box, it runs with no wallet at all; the 0.1 SOL test gets a new one.
 
 ## Reading check.sh (`check-sh-2026-10-27.txt`)
 

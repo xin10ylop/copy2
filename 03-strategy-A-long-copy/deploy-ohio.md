@@ -1,4 +1,8 @@
-# Strategy A: running it on the Ohio box
+# Strategy A: running it on the Ohio box (Oct 27-28; the box is gone)
+
+**Superseded on Oct 28 evening: the Ohio box was terminated.** The long copy runs on the Frankfurt box, see
+[deploy-frankfurt.md](deploy-frankfurt.md). This page is kept as the record of the Ohio setup; none of its commands
+have a machine to run on. fra1's backup, which lived only here, went with the box.
 
 In short: the long copy runs in paper mode on the Ohio box (AWS us-east-2, user `ubuntu`). It reuses fra1's feed
 settings and API keys, restored from fra1's backup. It has **no wallet**, so it can't send anything. Install and update
