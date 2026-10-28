@@ -40,6 +40,8 @@ pub struct Trigger {
     pub route: Option<Route>,
     /// It bought through Jupiter in the same transaction.
     pub via_jupiter: bool,
+    /// The curve's fee on its trade, basis points (0 = not in the event).
+    pub fee_bps: u32,
 }
 
 /// One thing it did.
@@ -144,6 +146,7 @@ fn trigger(
         sol_value,
         route,
         via_jupiter: jup,
+        fee_bps: t.fee_bps.unwrap_or(0),
     })
 }
 

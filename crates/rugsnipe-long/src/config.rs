@@ -78,8 +78,23 @@ pub struct LongCfg {
     /// only every 10 min (they never stop).
     pub max_sell_fail_sol: f64,
     /// A paper buy fills on the curve at the end of this many slots after
-    /// the slot we saw its buy in (a real buy lands after we see it).
+    /// the slot we saw its buy in (a real buy lands after we see it); a
+    /// paper sell fills the same way after the trade that fired the exit.
     pub paper_land_slots: u64,
+    /// SOL kept in the wallet beyond the stakes (fees, rent): a wSOL buy
+    /// needs `stake_sol + reserve_sol` in the wallet.
+    pub reserve_sol: f64,
+    /// Sell right behind its own sell when it leaves before any rule of
+    /// ours fires (the backtest's rule). With `false` the position keeps
+    /// our own exits and the journal records what selling behind it would
+    /// have made (2026-10-28: it sells early on half of its big buys now,
+    /// against 3.5% on Oct 19-22; on Oct 27-28 holding to our exits scored
+    /// +3.10 against -0.51, on Oct 19-27 about even).
+    pub follow_its_sell: bool,
+    /// Our buy, valued in SOL, when the route starts from a float (WBTC);
+    /// 0 = `stake_sol`. WBTC-routed copies made about +0.12 SOL a copy
+    /// against +0.02 from wrapped SOL (backtests §9).
+    pub float_stake_sol: f64,
     /// Positions, journal-only state, the kill file.
     pub state_dir: String,
     /// Float prices (Jupiter Price API v3; with a key: `https://api.jup.ag/price/v3`
@@ -113,10 +128,13 @@ impl Default for LongCfg {
             buy_cu_price: 2_000_000,
             sell_cu_price: 1_000_000,
             cu_limit: 300_000,
-            sell_slack_tp: 0.30,
-            sell_slack_exit: 0.50,
+            sell_slack_tp: 0.15,
+            sell_slack_exit: 0.30,
             max_sell_fail_sol: 0.01,
             paper_land_slots: 1,
+            reserve_sol: 0.05,
+            follow_its_sell: true,
+            float_stake_sol: 0.0,
             state_dir: "/var/lib/rugsnipe-long".into(),
             price_api: crate::oracle::API.into(),
         }
@@ -165,10 +183,28 @@ impl LongCfg {
                 return bad("floats must be mints");
             }
         }
-        if self.mode == Mode::On && self.buy_senders.len() > 1 {
-            return bad("one buy sender: two buys landing would double the position");
+        // exactly one: an empty list means every enabled sender (send.rs),
+        // and two buys landing would double the position
+        if self.mode == Mode::On && self.buy_senders.len() != 1 {
+            return bad("buy_senders must name exactly one sender in mode on");
+        }
+        if !(0.0..=10.0).contains(&self.reserve_sol) {
+            return bad("reserve_sol must be in [0, 10]");
+        }
+        if !(0.0..=100.0).contains(&self.float_stake_sol) {
+            return bad("float_stake_sol must be in [0, 100]");
         }
         Ok(())
+    }
+
+    /// Our stake, lamports, for a route from `anchor` (a float or wSOL).
+    pub fn stake_for(&self, float: bool) -> u64 {
+        let s = if float && self.float_stake_sol > 0.0 {
+            self.float_stake_sol
+        } else {
+            self.stake_sol
+        };
+        (s * 1e9) as u64
     }
 
     pub fn copy_pk(&self) -> pump_codec::Pubkey {
@@ -192,6 +228,12 @@ mod tests {
         assert_eq!(c.max_open, 2);
         assert!(LongCfg::from_toml_str("stop = 1.2").is_err());
         assert!(LongCfg::from_toml_str("mode = \"on\"\nbuy_senders = [\"a\", \"b\"]").is_err());
+        // an empty list would mean every enabled sender: several buys
+        assert!(LongCfg::from_toml_str("mode = \"on\"\nbuy_senders = []").is_err());
+        assert!(
+            LongCfg::from_toml_str("buy_senders = []").is_ok(),
+            "paper: not sent"
+        );
         assert!(LongCfg::from_toml_str("nope = 1").is_err());
     }
 }

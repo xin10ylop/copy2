@@ -64,11 +64,30 @@ fn opened(tag: &str) -> Engine {
     e
 }
 
+/// A paper sell fills at the end of the slot after the one it was sent
+/// in, like a paper buy: the exit fires, the slot ends, the next one too.
+fn land_sell(e: &mut Engine) {
+    let s = e.book.positions[0].sell_land_slot;
+    assert!(s > 0, "a paper sell is out");
+    e.on_slot(s);
+    e.on_tick(now_ms());
+    assert_eq!(
+        e.book.positions[0].state,
+        State::Selling,
+        "its slot is not over"
+    );
+    e.on_slot(s + 1);
+    e.on_tick(now_ms());
+}
+
 #[test]
 fn take_profit_closes_with_a_gain() {
     let mut e = opened("tp");
     price_to(&mut e, 2.1);
     e.on_tick(now_ms());
+    let p = &e.book.positions[0];
+    assert_eq!((p.state, p.reason), (State::Selling, Some(Reason::Tp)));
+    land_sell(&mut e);
     let p = &e.book.positions[0];
     assert_eq!(p.state, State::Closed);
     assert_eq!(p.reason, Some(Reason::Tp));
@@ -93,8 +112,10 @@ fn stop_closes_with_a_loss_and_time_after_the_hold() {
     let mut e = opened("stop");
     price_to(&mut e, 0.75);
     e.on_tick(now_ms());
+    assert_eq!(e.book.positions[0].reason, Some(Reason::Stop));
+    land_sell(&mut e);
     let p = &e.book.positions[0];
-    assert_eq!(p.reason, Some(Reason::Stop));
+    assert_eq!(p.state, State::Closed);
     assert!(
         p.net_lamports < -200_000_000 && p.net_lamports > -400_000_000,
         "{}",
@@ -107,6 +128,32 @@ fn stop_closes_with_a_loss_and_time_after_the_hold() {
     assert_eq!(e.book.positions[0].state, State::Open);
     e.on_tick(seen + 1_790_000);
     assert_eq!(e.book.positions[0].reason, Some(Reason::Time));
+    assert_eq!(e.book.positions[0].state, State::Selling);
+}
+
+/// A paper sell is priced on the curve at the end of the slot after the
+/// trade that fired it, not on that trade's own state: a real sell lands a
+/// slot later, and on a frenzy coin the price has moved by then.
+#[test]
+fn a_paper_sell_fills_a_slot_later_on_the_curve_then() {
+    let mut e = opened("selllate");
+    price_to(&mut e, 2.1);
+    e.on_slot(e.book.positions[0].fill_slot() + 5);
+    e.on_tick(now_ms());
+    let p = &e.book.positions[0];
+    assert_eq!(p.state, State::Selling);
+    assert_eq!(p.sell_land_slot, p.fill_slot() + 6);
+    // the price falls back to 1.5x before the landing slot ends: that is
+    // the price it gets
+    price_to(&mut e, 1.5);
+    land_sell(&mut e);
+    let p = &e.book.positions[0];
+    assert_eq!((p.state, p.reason), (State::Closed, Some(Reason::Tp)));
+    assert!(
+        p.net_lamports > 300_000_000 && p.net_lamports < 500_000_000,
+        "about 1.5x less fees: {}",
+        p.net_lamports
+    );
 }
 
 #[test]
@@ -223,11 +270,13 @@ fn a_sell_that_keeps_failing_backs_off_instead_of_spending() {
     // within the wait nothing is sent (an attempt here would fail to send and count a try)
     e.on_tick(t0 + 1_000);
     assert_eq!(e.book.positions[0].sell_tries, 3);
-    // past it the exit is tried again (no wallet here: it cannot be sent, and backs off)
+    // past it the exit is tried again (no wallet here: it cannot be sent).
+    // A send failure is not a landed failure: the floor stays where it is
+    // (`sell_tries`), and the sell is retried after a short wait
     e.on_tick(t0 + 6_000);
     let p = &e.book.positions[0];
-    assert_eq!(p.sell_tries, 4);
-    assert!(p.sell_next_ms > t0 + 6_000);
+    assert_eq!((p.sell_tries, p.send_fails), (3, 1));
+    assert!(p.sell_next_ms > t0 + 6_000 && p.sell_next_ms <= t0 + 7_000);
     // one more failure crosses the 0.001 SOL cap: every 10 min from now
     let p = &mut e.book.positions[0];
     p.state = State::Selling;
@@ -296,6 +345,8 @@ fn its_early_sell_takes_us_out_behind_it() {
     e.on_tx(Src::Copied, &sell);
     assert_eq!(e.book.positions[0].reason, Some(Reason::ItsSell));
     e.on_tick(now_ms());
+    assert_eq!(e.book.positions[0].state, State::Selling);
+    land_sell(&mut e);
     let p = &e.book.positions[0];
     assert_eq!((p.state, p.reason), (State::Closed, Some(Reason::ItsSell)));
     let dir = std::path::PathBuf::from(&e.cfg.state_dir);
@@ -356,4 +407,186 @@ fn a_paper_buy_fills_a_slot_after_we_saw_its_buy() {
     e.on_slot(tx.slot + 5);
     e.on_tick(now_ms());
     assert_eq!(e.book.positions[0].state, State::Open);
+}
+
+/// 2026-10-28: the curve completed while our buy was still out (the hot
+/// bot's 2RR6sfbi: "it graduated as we bought"). The completing trade set
+/// `graduated`, but the exit reason only on an open position; after the
+/// fill the curve had no more trades, so no rule of ours could fire and the
+/// coin sat until the time exit. Now the fill itself sends it to the pool.
+#[test]
+fn a_coin_that_completes_while_our_buy_is_out_sells_on_the_pool_at_the_fill() {
+    let mut e = engine("gradbuy");
+    let tx = fx("w4_buy_wsol_multihop");
+    e.on_tx(Src::Copied, &tx);
+    assert_eq!(e.book.positions[0].state, State::Buying);
+    // what on_tx does on a completing trade of the coin, in any state
+    e.book.positions[0].graduated = true;
+    e.on_slot(tx.slot + 2);
+    e.on_tick(now_ms());
+    let p = &e.book.positions[0];
+    assert_eq!(
+        (p.state, p.reason),
+        (State::Selling, Some(Reason::Complete))
+    );
+    // and an open position whose curve completes unseen by the fill path
+    let mut e = opened("gradopen");
+    e.book.positions[0].graduated = true;
+    e.on_tick(now_ms());
+    assert_eq!(e.book.positions[0].reason, Some(Reason::Complete));
+}
+
+/// It sold while our buy was still out (ChonQdJ8 sold 7 s after buying):
+/// out behind it at the fill, not 30 minutes later.
+#[test]
+fn its_sell_while_our_buy_is_out_takes_us_out_at_the_fill() {
+    use rugsnipe_long::detect::{self, Seen};
+    let mut e = engine("itssellbuying");
+    let tx = fx("w4_buy_wsol_multihop");
+    e.on_tx(Src::Copied, &tx);
+    let sell = fx("w4_sell_wbtc_multihop");
+    let w4: pump_codec::Pubkey = e.cfg.copy_wallet.parse().unwrap();
+    let mint = match detect::read(&sell, &w4, &|_| None).as_slice() {
+        [Seen::Sell { mint, .. }] => *mint,
+        s => panic!("{s:?}"),
+    };
+    e.book.positions[0].mint = mint.to_string();
+    e.on_tx(Src::Copied, &sell);
+    let p = &e.book.positions[0];
+    assert_eq!(p.state, State::Buying);
+    assert!(p.its_sold && p.reason.is_none());
+    e.on_slot(tx.slot + 2);
+    e.on_tick(now_ms());
+    let p = &e.book.positions[0];
+    assert_eq!((p.state, p.reason), (State::Selling, Some(Reason::ItsSell)));
+}
+
+/// One of our transactions is booked once, however many times it arrives
+/// (the feed and a chain check can both deliver it): 2026-10-28, a chain
+/// check re-read the first landed sell, an old failure, on every pass.
+#[test]
+fn our_transaction_is_booked_once_however_often_it_arrives() {
+    let mut e = opened("once");
+    e.cfg.mode = Mode::On;
+    {
+        let p = &mut e.book.positions[0];
+        p.paper = false;
+        p.tokens = 5_000;
+        p.state = State::Selling;
+        p.sell_sigs.push(b58(7));
+    }
+    let tx = ours(&e, 7, true, 300_005, 5_000, 5_000);
+    e.on_tx(Src::Ours, &tx);
+    e.on_tx(Src::Ours, &tx);
+    e.on_tx(Src::Mint, &tx);
+    let p = &e.book.positions[0];
+    assert_eq!((p.state, p.sell_tries, p.costs), (State::Open, 1, 300_005));
+    assert_eq!(p.net_lamports, -300_005);
+    assert_eq!(p.applied, vec![b58(7)]);
+    // the same for a fill
+    let mut e = opened("oncefill");
+    e.cfg.mode = Mode::On;
+    {
+        let p = &mut e.book.positions[0];
+        p.paper = false;
+        p.tokens = 0;
+        p.state = State::Buying;
+        p.buy_sig = Some(b58(8));
+    }
+    let tx = ours(&e, 8, false, 1_005_000, 0, 9_999);
+    e.on_tx(Src::Mint, &tx);
+    e.on_tx(Src::Ours, &tx);
+    let p = &e.book.positions[0];
+    assert_eq!(
+        (p.state, p.tokens, p.net_lamports),
+        (State::Open, 9_999, -1_005_000)
+    );
+}
+
+/// A buy out when the process stopped is checked at once after the
+/// restart, but given up only by its real age (2026-10-28: its send time
+/// was zeroed at the restart, so it read as 90 s old and was dropped on the
+/// first tick; had it then landed, nothing would have managed the coins).
+#[test]
+fn a_restart_checks_an_unseen_buy_at_once_but_keeps_it_until_its_real_age() {
+    let mut e = opened("restartbuy");
+    e.cfg.mode = Mode::On;
+    let sent = now_ms();
+    {
+        let p = &mut e.book.positions[0];
+        p.paper = false;
+        p.tokens = 0;
+        p.state = State::Buying;
+        p.buy_sig = Some(b58(44));
+        p.buy_sent_ms = sent;
+    }
+    let dir = e.cfg.state_dir.clone();
+    e.book
+        .save(&std::path::PathBuf::from(&dir).join("positions.json"))
+        .unwrap();
+    drop(e);
+    let cfg = LongCfg {
+        mode: Mode::Log,
+        state_dir: dir,
+        ..Default::default()
+    };
+    let mut e2 = Engine::new(
+        cfg,
+        Default::default(),
+        None,
+        Rpc::new("http://127.0.0.1:9"),
+        Oracle::default(),
+        None,
+        None,
+    )
+    .unwrap();
+    e2.recover();
+    let p = &e2.book.positions[0];
+    assert!(p.recovered && p.next_chase_ms == 0);
+    assert_eq!(p.buy_sent_ms, sent, "the real send time is kept");
+    // the chain is unreachable here: the check fails, and the buy is not
+    // dropped (not 90 s old)
+    e2.on_tick(now_ms());
+    let p = &e2.book.positions[0];
+    assert_eq!(p.state, State::Buying);
+    assert!(!p.dropped);
+    assert!(p.next_chase_ms > now_ms() + 2_000, "the next check waits");
+}
+
+/// `follow_its_sell = false`: its early sale leaves our exits alone, and the
+/// record keeps what selling behind it would have made (2026-10-28: it
+/// sells early on half of its big buys now; on Oct 27-28 holding to our own
+/// exits scored +3.10 against -0.51 behind it, on Oct 19-27 about even).
+#[test]
+fn its_early_sell_is_not_followed_when_configured_and_is_recorded() {
+    use rugsnipe_long::detect::{self, Seen};
+    let mut e = opened("notfollow");
+    e.cfg.follow_its_sell = false;
+    let sell = fx("w4_sell_wbtc_multihop");
+    let w4: pump_codec::Pubkey = e.cfg.copy_wallet.parse().unwrap();
+    let mint = match detect::read(&sell, &w4, &|_| None).as_slice() {
+        [Seen::Sell { mint, .. }] => *mint,
+        s => panic!("{s:?}"),
+    };
+    e.book.positions[0].mint = mint.to_string();
+    price_to(&mut e, 1.3);
+    e.on_tx(Src::Copied, &sell);
+    let p = &e.book.positions[0];
+    assert_eq!((p.state, p.reason), (State::Open, None), "our exits stay");
+    assert!((p.its_sell_px - 1.3).abs() < 0.01, "{}", p.its_sell_px);
+    assert!(
+        p.its_sell_net > 150_000_000 && p.its_sell_net < 300_000_000,
+        "about +0.2 SOL behind it: {}",
+        p.its_sell_net
+    );
+    e.on_tick(now_ms());
+    assert_eq!(e.book.positions[0].state, State::Open);
+    // then our own take profit
+    price_to(&mut e, 2.1);
+    e.on_tick(now_ms());
+    assert_eq!(e.book.positions[0].reason, Some(Reason::Tp));
+    land_sell(&mut e);
+    let p = &e.book.positions[0];
+    assert_eq!(p.state, State::Closed);
+    assert!(p.its_sell_net > 0 && p.net_lamports > p.its_sell_net);
 }

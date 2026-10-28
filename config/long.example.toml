@@ -44,14 +44,25 @@ sell_tip_lamports = 1000000
 buy_cu_price = 2000000
 sell_cu_price = 1000000
 cu_limit = 300000
-# sell min_out under the expected output: take profit, then stop / time / retries
-sell_slack_tp = 0.30
-sell_slack_exit = 0.50
+# sell min_out under the expected output: take profit, then stop / time / its sell. The floor drops only after
+# sells that landed and failed (2 landed failures: half; 4: almost any price), never after send errors
+sell_slack_tp = 0.15
+sell_slack_exit = 0.30
 # a sell that keeps failing: 3 tries at once, then 5 s, 30 s, 2 min apart; past this much in failed-sell
 # fees on one position, every 10 min (never given up)
 max_sell_fail_sol = 0.01
-# paper: a buy fills on the curve at the end of this many slots after the slot we saw its buy in
+# paper: a buy fills on the curve at the end of this many slots after the slot we saw its buy in; a paper sell the
+# same way after the trade that fired the exit
 paper_land_slots = 1
+# SOL kept in the wallet beyond the stakes (fees, rent): a wSOL buy needs stake_sol + reserve_sol
+reserve_sol = 0.05
+# sell right behind its own early sell (the backtest's rule). false: keep our own exits and record what selling
+# behind it would have made (2026-10-28: it sells early on half of its big buys now; Oct 27-28 holding to our exits
+# scored +3.10 against -0.51 behind it, Oct 19-27 about even). Paper-test it before a real run.
+follow_its_sell = true
+# our buy when the route starts from a float (WBTC); 0 = stake_sol. WBTC-routed copies made about +0.12 SOL a copy
+# against +0.02 from wrapped SOL (2 SOL on WBTC / 1 on wSOL: P1 +8.13, P2 +25.07 against +5.44 / +12.79)
+float_stake_sol = 0.0
 
 state_dir = "/var/lib/rugsnipe-long"
 price_api = "https://lite-api.jup.ag/price/v3"

@@ -133,6 +133,40 @@ pub struct Position {
     /// before it: its slot + 1).
     #[serde(default)]
     pub land_slot: u64,
+    /// Our transactions already booked (signatures): a second delivery of
+    /// one, by the feed or by a chain check, changes nothing.
+    #[serde(default)]
+    pub applied: Vec<String>,
+    /// Live: sells that could not be sent, or were never seen and given
+    /// up. Not landed failures: those are `sell_tries`, the only ones that
+    /// lower the floor.
+    #[serde(default)]
+    pub send_fails: u32,
+    /// It sold the coin while our buy was still out: out behind it once
+    /// the buy fills.
+    #[serde(default)]
+    pub its_sold: bool,
+    /// The curve's fee on its trade, basis points (0: the engine's
+    /// estimate).
+    #[serde(default)]
+    pub fee_bps: u32,
+    /// Paper: the slot whose end state a sell fills on (0: no sell out).
+    #[serde(default)]
+    pub sell_land_slot: u64,
+    /// When not following its sell (`follow_its_sell = false`): the price
+    /// multiple at its sale and what selling behind it would have made
+    /// (lamports, paper-priced), for the record.
+    #[serde(default)]
+    pub its_sell_px: f64,
+    #[serde(default)]
+    pub its_sell_net: i64,
+    /// Live: no chain check of an unseen transaction before this (unix ms).
+    #[serde(skip)]
+    pub next_chase_ms: u64,
+    /// Live: loaded from the book with a transaction out: check it at once,
+    /// whatever its age.
+    #[serde(skip)]
+    pub recovered: bool,
 }
 
 /// How long to wait before the next sell of a position after `tries` failed
@@ -203,6 +237,25 @@ impl Position {
     /// Counts against `max_open`.
     pub fn live(&self) -> bool {
         matches!(self.state, State::Buying | State::Open | State::Selling)
+    }
+
+    /// The curve's fee for this coin, basis points: from its trade event,
+    /// else `default`.
+    pub fn fee(&self, default: u32) -> u32 {
+        if self.fee_bps > 0 {
+            self.fee_bps
+        } else {
+            default
+        }
+    }
+
+    /// Whether `sig` was booked already; marks it booked.
+    pub fn apply(&mut self, sig: &str) -> bool {
+        if self.applied.iter().any(|s| s == sig) {
+            return false;
+        }
+        self.applied.push(sig.to_string());
+        true
     }
 
     /// The price ratio now (without our tokens on a real position).
@@ -295,15 +348,20 @@ impl Book {
         self.positions.iter().filter(|p| p.live())
     }
 
-    /// Closed in the UTC day of `now_ms`: the sum of results (lamports).
+    /// The UTC day's result so far (lamports): positions closed or failed
+    /// (a refused buy's fee) in the day of `now_ms`, plus the failed-
+    /// transaction fees of the live ones (the stuck-coin lesson: a coin
+    /// whose sells keep failing costs money before it closes).
     pub fn realized_today(&self, now_ms: u64, paper: bool) -> i64 {
         let day = now_ms / 86_400_000;
         self.positions
             .iter()
-            .filter(|p| {
-                p.paper == paper && p.state == State::Closed && p.closed_ms / 86_400_000 == day
+            .filter(|p| p.paper == paper)
+            .map(|p| match p.state {
+                State::Closed | State::Failed if p.closed_ms / 86_400_000 == day => p.net_lamports,
+                State::Buying | State::Open | State::Selling => -(p.costs as i64),
+                _ => 0,
             })
-            .map(|p| p.net_lamports)
             .sum()
     }
 
@@ -377,6 +435,15 @@ mod tests {
             dropped: false,
             graduated: false,
             land_slot: 0,
+            applied: vec![],
+            send_fails: 0,
+            its_sold: false,
+            fee_bps: 0,
+            sell_land_slot: 0,
+            its_sell_px: 0.0,
+            its_sell_net: 0,
+            next_chase_ms: 0,
+            recovered: false,
         }
     }
 
@@ -431,10 +498,28 @@ mod tests {
         p.closed_ms = 86_400_000 * 3 + 5;
         b.positions.push(p.clone());
         b.save(&path).unwrap();
-        let b2 = Book::load(&path).unwrap();
+        let mut b2 = Book::load(&path).unwrap();
         assert_eq!(b2.positions, vec![p]);
         assert_eq!(b2.realized_today(86_400_000 * 3 + 100, false), -5);
         assert_eq!(b2.realized_today(86_400_000 * 4, false), 0);
+        // a refused buy's fee counts on its day; a live position's failed-
+        // transaction fees count now
+        let mut f = pos();
+        f.state = State::Failed;
+        f.net_lamports = -605_000;
+        f.closed_ms = 86_400_000 * 3 + 7;
+        let mut o = pos();
+        o.state = State::Open;
+        o.net_lamports = -1_000_000_000;
+        o.costs = 900_000;
+        b2.positions.extend([f, o]);
+        assert_eq!(
+            b2.realized_today(86_400_000 * 3 + 100, false),
+            -5 - 605_000 - 900_000
+        );
+        // a record from before these fields reads back with them empty
+        let p2: Position = serde_json::from_str(&serde_json::to_string(&pos()).unwrap()).unwrap();
+        assert!(p2.applied.is_empty() && !p2.its_sold && p2.send_fails == 0);
         std::fs::remove_dir_all(&dir).ok();
     }
 }

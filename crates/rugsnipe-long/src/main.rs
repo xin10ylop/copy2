@@ -46,6 +46,7 @@ fn main() {
     let args: Vec<String> = std::env::args().skip(1).collect();
     let r = match args.first().map(String::as_str) {
         Some("simulate") => simulate(&args[1..]),
+        Some("simulate-sell") => simulate_sell(&args[1..]),
         Some("run") => run(&args[1..]),
         Some("status") => status(&args[1..]),
         Some("float") => float(&args[1..]),
@@ -77,6 +78,13 @@ fn simulate(args: &[String]) -> Result<(), String> {
     for f in args_all(args, "--float") {
         anchors.push(f.parse().map_err(|_| "--float MINT")?);
     }
+    // the buyback fee recipient index the engine would rotate to (0-7), and
+    // whether the sell closes the coin account (the engine's first sells do)
+    let buyback: usize = arg(args, "--buyback")
+        .unwrap_or("0".into())
+        .parse()
+        .map_err(|_| "--buyback N")?;
+    let close_coin = args.iter().any(|a| a == "--close");
     let mut rpc = Rpc::new(&url);
     let tx = TxLite::from_rpc_json(&rpc.transaction(&sig)?)?;
     let seen = detect::read(&tx, &w4, &|_| None);
@@ -115,11 +123,9 @@ fn simulate(args: &[String]) -> Result<(), String> {
     } else {
         match (t.sol_value, plan.anchor == t.input_mint) {
             (Some(v), true) => (t.input_amount as f64 * sol * 1e9 / v as f64) as u64,
-            _ => {
-                return Err(
-                    "a float anchor needs its own buy valued in SOL with the same input".into(),
-                )
-            }
+            // no oracle here: its buy is read as its 1.5 SOL tier
+            (None, true) => (t.input_amount as f64 * sol / 1.5) as u64,
+            _ => return Err("a float anchor needs its own buy from the same float".into()),
         }
     };
     let fees = Fees {
@@ -136,10 +142,13 @@ fn simulate(args: &[String]) -> Result<(), String> {
         amount_in,
         1,
         &fees,
-        0,
+        buyback,
     );
     let (bytes, _) = txb::sign(&user, &buy, &[0; 32], |_| [0; 64]).map_err(|e| e.to_string())?;
-    println!("buy transaction: {} bytes", bytes.len());
+    println!(
+        "buy transaction: {} bytes (buyback index {buyback}, sell closes the coin account: {close_coin})",
+        bytes.len()
+    );
     let v = rpc.simulate(&bytes, &[coin_ata])?;
     let tokens = v["accounts"][0]["data"][0]
         .as_str()
@@ -169,17 +178,23 @@ fn simulate(args: &[String]) -> Result<(), String> {
         }
         return Err("the buy does not simulate".into());
     }
-    // buy then sell 98% back in one transaction (one budget)
+    // buy then sell back in one transaction (one budget): all of it when
+    // the coin account is closed after (as the engine's first sells do),
+    // else 98%
     let sell = txb::sell_ixs(
         &user,
         &plan.route.reversed(),
         &plan.anchor_program,
         &t.coin_program,
-        tokens * 98 / 100,
+        if close_coin {
+            tokens
+        } else {
+            tokens * 98 / 100
+        },
         1,
-        false,
+        close_coin,
         &fees,
-        0,
+        buyback,
     );
     let mut both = buy.clone();
     both.extend(sell.into_iter().skip(2));
@@ -234,6 +249,169 @@ fn simulate(args: &[String]) -> Result<(), String> {
                 }
             }
         }
+    }
+    Ok(())
+}
+
+/// `simulate-sell --rpc URL --mint MINT --quote QUOTE --user HOLDER [--float WBTC]
+/// [--graduated] [--buyback N] [--close]`: the sell the engine would send for
+/// a coin priced in QUOTE, from HOLDER's whole balance, along
+/// coin -> quote (the curve, or the coin's PumpSwap pool with `--graduated`)
+/// -> the anchor's pool, simulated on mainnet (nothing sent, HOLDER's
+/// signature not checked). 2026-10-28: the engine's pool sell after a
+/// graduation had never run; the hot bot lost 0.57 SOL on exactly that.
+fn simulate_sell(args: &[String]) -> Result<(), String> {
+    let url = arg(args, "--rpc").ok_or("--rpc URL")?;
+    let mint: Pubkey = arg(args, "--mint")
+        .ok_or("--mint")?
+        .parse()
+        .map_err(|_| "--mint")?;
+    let quote: Pubkey = arg(args, "--quote")
+        .ok_or("--quote")?
+        .parse()
+        .map_err(|_| "--quote")?;
+    let user: Pubkey = arg(args, "--user")
+        .ok_or("--user HOLDER")?
+        .parse()
+        .map_err(|_| "--user")?;
+    let graduated = args.iter().any(|a| a == "--graduated");
+    let close_coin = args.iter().any(|a| a == "--close");
+    let buyback: usize = arg(args, "--buyback")
+        .unwrap_or("0".into())
+        .parse()
+        .map_err(|_| "--buyback N")?;
+    let mut anchors = vec![c::WSOL_MINT];
+    for f in args_all(args, "--float") {
+        anchors.push(f.parse().map_err(|_| "--float MINT")?);
+    }
+    let mut rpc = Rpc::new(&url);
+    let coin_program = route::Chain::mint_program(&mut rpc, &mint).ok_or("coin program")?;
+    let quote_program = route::Chain::mint_program(&mut rpc, &quote).ok_or("quote program")?;
+    let tokens = rpc.token_balance(&user, &mint, &coin_program)?;
+    if tokens == 0 {
+        return Err(format!("{user} holds none of {mint}"));
+    }
+    // the route the engine stores for a direct curve buy behind the quote's
+    // pool (or the curve alone when the quote is an anchor), reversed; the
+    // coin's hop as a pool after graduation (engine.rs send_sell)
+    let curve = pump_codec::multihop::Hop::curve(&mint, &coin_program, &quote, &quote_program);
+    let (anchor, mut hops) = if anchors.contains(&quote) {
+        (quote, vec![curve])
+    } else {
+        let mut found = None;
+        for a in &anchors {
+            let pool = pda::canonical_pump_swap_pool(&quote, a);
+            if route::Chain::pool_exists(&mut rpc, &pool) {
+                let ap = route::Chain::mint_program(&mut rpc, a).ok_or("anchor program")?;
+                found = Some((
+                    *a,
+                    pump_codec::multihop::Hop::pool(&pool, &quote, &quote_program, a, &ap),
+                ));
+                break;
+            }
+        }
+        let (a, hop) = found.ok_or("no anchor's pool against the quote")?;
+        (a, vec![hop, curve])
+    };
+    let anchor_program = route::Chain::mint_program(&mut rpc, &anchor).ok_or("anchor program")?;
+    let buy_route =
+        pump_codec::multihop::Route::new(anchor, hops.clone()).map_err(|e| format!("{e:?}"))?;
+    let mut r = buy_route.reversed();
+    if graduated {
+        let pool = pda::canonical_pump_swap_pool(&mint, &quote);
+        if !route::Chain::pool_exists(&mut rpc, &pool) {
+            return Err(format!("no canonical pool for {mint} against {quote}"));
+        }
+        hops = r
+            .hops
+            .iter()
+            .map(|h| {
+                if h.venue == pump_codec::multihop::Venue::Curve && h.base_mint == mint {
+                    pump_codec::multihop::Hop::pool(
+                        &pool,
+                        &mint,
+                        &coin_program,
+                        &h.quote_mint,
+                        &quote_program,
+                    )
+                } else {
+                    *h
+                }
+            })
+            .collect();
+        r = pump_codec::multihop::Route::new(r.input, hops).map_err(|e| format!("{e:?}"))?;
+    }
+    println!(
+        "sell route ({} hops{}): {:?}; {} tokens, buyback index {buyback}, close coin account {close_coin}",
+        r.hops.len(),
+        if graduated { ", graduated" } else { "" },
+        r.mints().iter().map(|m| m.to_string()[..8].to_string()).collect::<Vec<_>>(),
+        tokens
+    );
+    let fees = Fees {
+        cu_limit: 400_000,
+        cu_price: 1,
+        tip: None,
+    };
+    let sell = txb::sell_ixs(
+        &user,
+        &r,
+        &anchor_program,
+        &coin_program,
+        tokens,
+        1,
+        close_coin,
+        &fees,
+        buyback,
+    );
+    let (bytes, _) = txb::sign(&user, &sell, &[0; 32], |_| [0; 64]).map_err(|e| e.to_string())?;
+    let watch = if anchor == c::WSOL_MINT {
+        user
+    } else {
+        pda::associated_token_address(&user, &anchor, &anchor_program)
+    };
+    let before = if anchor == c::WSOL_MINT {
+        rpc.balance(&user)?
+    } else {
+        rpc.token_balance(&user, &anchor, &anchor_program)?
+    };
+    let v = rpc.simulate(&bytes, &[watch])?;
+    let after = if anchor == c::WSOL_MINT {
+        v["accounts"][0]["lamports"].as_u64().unwrap_or(0)
+    } else {
+        v["accounts"][0]["data"][0]
+            .as_str()
+            .map(|s| {
+                token_amount(
+                    &base64::Engine::decode(&base64::engine::general_purpose::STANDARD, s)
+                        .unwrap_or_default(),
+                )
+            })
+            .unwrap_or(0)
+    };
+    println!(
+        "sell ({} bytes): err {} units {} anchor {} -> {} ({:+})",
+        bytes.len(),
+        v["err"],
+        v["unitsConsumed"],
+        before,
+        after,
+        after as i128 - before as i128
+    );
+    if !v["err"].is_null() {
+        for l in v["logs"]
+            .as_array()
+            .into_iter()
+            .flatten()
+            .rev()
+            .take(14)
+            .collect::<Vec<_>>()
+            .into_iter()
+            .rev()
+        {
+            println!("   {}", l.as_str().unwrap_or(""));
+        }
+        return Err("the sell does not simulate".into());
     }
     Ok(())
 }
@@ -321,7 +499,16 @@ fn run(args: &[String]) -> Result<(), String> {
     let oracle = Oracle::default();
     oracle.spawn(&cfg.price_api, cfg.float_pks(), Duration::from_secs(20));
     let copy = cfg.copy_pk();
+    // real mode: the blockhash is kept fresh off the send path
+    let bh = rugsnipe_long::chain::Blockhashes::default();
+    if cfg.mode == Mode::On {
+        bh.spawn(
+            &keys::resolve_url(&k, &cfg.rpc_url)?,
+            Duration::from_secs(3),
+        );
+    }
     let mut eng = Engine::new(cfg, me, signer, rpc, oracle, out_buy, out_sell)?;
+    eng.set_blockhashes(bh);
     let (tx, rx) = std::sync::mpsc::channel();
     let h = feed::spawn(
         feed::FeedCfg {

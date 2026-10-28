@@ -10,7 +10,7 @@
 //! with our tokens added (the curve as it would be with us in it), the
 //! route's other hops at its own fill's rate, and the fees we would pay.
 
-use crate::chain::Rpc;
+use crate::chain::{Blockhashes, Rpc};
 use crate::config::{LongCfg, Mode};
 use crate::detect::{self, Seen, Trigger};
 use crate::feed::{FeedHandle, FeedMsg, Src};
@@ -36,14 +36,22 @@ const CURVE_FEE_BPS: u32 = 125;
 /// A buy not seen landed after this is asked for by signature.
 const BUY_WAIT_MS: u64 = 20_000;
 const SELL_WAIT_MS: u64 = 15_000;
-/// SOL kept in the wallet for fees beyond the stakes.
-const SOL_RESERVE: u64 = 50_000_000;
+/// An unseen transaction is asked for at most this often (2026-10-28: it
+/// was asked for on every tick, a blocking call several times a second).
+const CHASE_EVERY_MS: u64 = 2_500;
+/// A transaction not seen this long after its send is given up (the
+/// blockhash is past its life).
+const DROP_AFTER_MS: u64 = 90_000;
+/// A cached blockhash older than this is not used.
+const BLOCKHASH_MAX_AGE_MS: u64 = 20_000;
 
 pub struct Engine {
     pub cfg: LongCfg,
     me: Pubkey,
     signer: Option<HotSigner>,
     rpc: Rpc,
+    /// Refreshed on its own thread in real mode (`set_blockhashes`).
+    bh: Blockhashes,
     oracle: Oracle,
     out_buy: Option<Out>,
     out_sell: Option<Out>,
@@ -94,6 +102,7 @@ impl Engine {
             me,
             signer,
             rpc,
+            bh: Blockhashes::default(),
             oracle,
             out_buy,
             out_sell,
@@ -119,6 +128,11 @@ impl Engine {
         self.rewatch();
     }
 
+    /// The blockhash cache a thread keeps fresh (real mode).
+    pub fn set_blockhashes(&mut self, bh: Blockhashes) {
+        self.bh = bh;
+    }
+
     fn real(&self) -> bool {
         self.cfg.mode == Mode::On
     }
@@ -129,8 +143,9 @@ impl Engine {
             .exists()
     }
 
+    /// Write the book (pruning is `on_tick`'s, once per tick, so that
+    /// positions never move under an index held by the caller).
     fn save(&mut self) {
-        self.book.prune(now_ms(), 3 * 86_400_000);
         if let Err(e) = self.book.save(&self.book_path) {
             eprintln!("long: saving positions: {e}");
         }
@@ -182,8 +197,12 @@ impl Engine {
                     .iter_mut()
                     .filter(|p| p.live() && p.mint_pk() == t.mint)
                 {
-                    // a paper buy fills on the state at the end of its landing slot
-                    if p.paper && p.state == State::Buying && tx.slot > p.fill_slot() {
+                    // a paper buy (sell) fills on the state at the end of its
+                    // landing slot: later trades wait for the fill
+                    if p.paper
+                        && ((p.state == State::Buying && tx.slot > p.fill_slot())
+                            || (p.state == State::Selling && tx.slot > p.sell_land_slot))
+                    {
                         continue;
                     }
                     if tx.slot >= p.last_slot {
@@ -214,18 +233,46 @@ impl Engine {
                     Seen::Sell { mint, .. } => {
                         // it sold before any rule of ours fired: out behind it,
                         // as the backtest sells (its price path ends at its sale)
+                        let follow = self.cfg.follow_its_sell;
+                        let fees = self.paper_fees();
                         for p in self
                             .book
                             .positions
                             .iter_mut()
                             .filter(|p| p.mint_pk() == mint)
                         {
+                            if !follow && p.live() && p.its_sell_px == 0.0 {
+                                // our own exits stay; what selling behind it
+                                // would have made goes on the record
+                                p.its_sell_px = p.price();
+                                p.its_sell_net = if p.state == State::Buying {
+                                    0
+                                } else {
+                                    Self::paper_net(p, fees)
+                                };
+                                println!(
+                                    "long its-sell #{} {} at {:.2}x: not followed (would make {} SOL); holding to our exits",
+                                    p.id,
+                                    m8(&mint),
+                                    p.its_sell_px,
+                                    sol(p.its_sell_net as i128)
+                                );
+                                continue;
+                            }
                             // (an exit of ours waiting to be retried goes now too)
                             if p.state == State::Open && p.reason != Some(Reason::Complete) {
                                 p.reason = Some(Reason::ItsSell);
                                 println!("long its-sell #{} {}: out behind it", p.id, m8(&mint));
                             } else if p.live() {
-                                println!("long its-sell {} (we hold it)", m8(&mint));
+                                // our buy still out, or a sell of ours: out
+                                // behind it as soon as the buy fills
+                                p.its_sold = true;
+                                println!(
+                                    "long its-sell #{} {} while {:?}: out behind it once filled",
+                                    p.id,
+                                    m8(&mint),
+                                    p.state
+                                );
                             }
                         }
                     }
@@ -251,6 +298,7 @@ impl Engine {
 
     pub fn on_trigger(&mut self, t: Trigger) {
         let now = now_ms();
+        let t0 = std::time::Instant::now();
         // its own trade prices a token it paid with when the SOL came in the
         // same transaction (a Jupiter leg): a WBTC/SOL rate on every such buy
         if let Some(v) = t.sol_value {
@@ -306,7 +354,7 @@ impl Engine {
             Ok(p) => p,
             Err(e) => return self.skip(&t, &format!("route: {e}")),
         };
-        let stake = (self.cfg.stake_sol * 1e9) as u64;
+        let stake = self.cfg.stake_for(plan.anchor != c::WSOL_MINT);
         // our amount in, in anchor units, and its SOL value
         let amount_in = if plan.anchor == c::WSOL_MINT {
             stake
@@ -372,6 +420,15 @@ impl Engine {
             graduated: false,
             // the slot we saw its buy in (our feed's latest), plus the landing
             land_slot: t.slot.max(self.slot) + self.cfg.paper_land_slots,
+            applied: vec![],
+            send_fails: 0,
+            its_sold: false,
+            fee_bps: t.fee_bps,
+            sell_land_slot: 0,
+            its_sell_px: 0.0,
+            its_sell_net: 0,
+            next_chase_ms: 0,
+            recovered: false,
         };
         if paper {
             println!(
@@ -386,13 +443,15 @@ impl Engine {
             );
         } else {
             // money checks
+            let reserve = (self.cfg.reserve_sol * 1e9) as u64;
             if plan.anchor == c::WSOL_MINT {
-                if self.sol_balance < stake + SOL_RESERVE {
+                if self.sol_balance < stake + reserve {
                     return self.skip(
                         &t,
                         &format!(
-                            "SOL balance {:.3} under the stake + reserve",
-                            self.sol_balance as f64 / 1e9
+                            "SOL balance {:.3} under the stake + reserve {:.3}",
+                            self.sol_balance as f64 / 1e9,
+                            reserve as f64 / 1e9
                         ),
                     );
                 }
@@ -402,7 +461,7 @@ impl Engine {
             match self.send_buy(&p, &plan.route, min_out) {
                 Ok(sig) => {
                     println!(
-                        "long buy #{id} {} its {:.3} SOL route {} ({} hops) in {} of {} min_out {} sent {}",
+                        "long buy #{id} {} its {:.3} SOL route {} ({} hops) in {} of {} min_out {} sent {} in {} ms; seen at its slot +{}",
                         m8(&t.mint),
                         v as f64 / 1e9,
                         plan.how,
@@ -410,7 +469,9 @@ impl Engine {
                         amount_in,
                         m8(&plan.anchor),
                         min_out,
-                        &sig[..8]
+                        &sig[..8],
+                        t0.elapsed().as_millis(),
+                        self.slot.saturating_sub(t.slot)
                     );
                     p.buy_sig = Some(sig);
                     if plan.anchor == c::WSOL_MINT {
@@ -449,12 +510,18 @@ impl Engine {
         )
     }
 
+    /// The cache's hash (a thread keeps it fresh), else one from this
+    /// process's last fetch, else a fetch now.
     fn blockhash(&mut self) -> Result<[u8; 32], String> {
+        if let Some(h) = self.bh.get(BLOCKHASH_MAX_AGE_MS) {
+            return Ok(h);
+        }
         match self.blockhash {
-            Some((h, at)) if now_ms().saturating_sub(at) < 20_000 => Ok(h),
+            Some((h, at)) if now_ms().saturating_sub(at) < BLOCKHASH_MAX_AGE_MS => Ok(h),
             _ => {
                 let (h, _) = self.rpc.blockhash()?;
                 self.blockhash = Some((h, now_ms()));
+                self.bh.set(h);
                 Ok(h)
             }
         }
@@ -485,17 +552,35 @@ impl Engine {
         } else {
             &self.out_sell
         };
-        if let Some(out) = out {
-            for s in out.send_each(kind, &txs, &tips) {
-                if !s.ok {
-                    eprintln!("long send {} {}: {}", s.label, &s.sig[..8], s.why);
-                }
+        // the senders and the RPC copy at the same time (the RPC copy is
+        // the same bytes as the first sender's: the same signature)
+        let rpc = &self.rpc;
+        let rpc_copy = (self.cfg.rpc_send || out.is_none()).then_some(&txs[0].0);
+        let (sent, rpc_res) = std::thread::scope(|sc| {
+            let h = rpc_copy.map(|b| sc.spawn(move || rpc.send(b)));
+            let sent = out
+                .as_ref()
+                .map(|o| o.send_each(kind, &txs, &tips))
+                .unwrap_or_default();
+            (
+                sent,
+                h.map(|h| h.join().unwrap_or_else(|_| Err("rpc send thread".into()))),
+            )
+        });
+        let mut accepted = false;
+        for s in &sent {
+            accepted |= s.ok;
+            if !s.ok {
+                eprintln!("long send {} {}: {}", s.label, &s.sig[..8], s.why);
             }
         }
-        if self.cfg.rpc_send || out.is_none() {
-            if let Err(e) = self.rpc.send(&txs[0].0) {
-                eprintln!("long send rpc {}: {e}", &first[..8]);
-            }
+        match rpc_res {
+            Some(Ok(_)) => accepted = true,
+            Some(Err(e)) => eprintln!("long send rpc {}: {e}", &first[..8]),
+            None => {}
+        }
+        if !accepted {
+            return Err("no path accepted the transaction".into());
         }
         Ok(txs
             .iter()
@@ -534,9 +619,13 @@ impl Engine {
         .map(|v| v.into_iter().next().unwrap_or_default())
     }
 
-    /// Expected anchor out for selling our tokens now, and the floor.
+    /// Expected anchor out for selling our tokens now, and the floor. The
+    /// floor drops only after sells that landed and failed (`sell_tries`:
+    /// the price moved past the floor), never after send errors or drops
+    /// (`send_fails`): 2 landed failures take half, 4 take almost any
+    /// price (a coin that cannot be sold is a full loss, 2RR6sfbi).
     fn sell_min_out(&self, p: &Position) -> u64 {
-        let quote_out = pos::curve_sell_live(p.vt, p.vq, p.tokens, CURVE_FEE_BPS) as f64;
+        let quote_out = pos::curve_sell_live(p.vt, p.vq, p.tokens, p.fee(CURVE_FEE_BPS)) as f64;
         // the route's other hops at our buy's own rate (anchor per quote)
         let rate = if p.quote_in > 0 && p.anchor != p.quote_mint {
             p.amount_in as f64 / p.quote_in as f64
@@ -545,8 +634,8 @@ impl Engine {
         };
         let expected = quote_out * rate;
         let slack = match (p.reason, p.sell_tries) {
-            (_, n) if n >= 4 => 0.999,
-            (_, n) if n >= 2 => 0.7,
+            (_, n) if n >= 4 => 0.9,
+            (_, n) if n >= 2 => 0.5,
             (Some(Reason::Tp), _) => self.cfg.sell_slack_tp,
             _ => self.cfg.sell_slack_exit,
         };
@@ -614,7 +703,8 @@ impl Engine {
         })
     }
 
-    /// Our own transaction: a fill, a sell, or a failure of either.
+    /// Our own transaction: a fill, a sell, or a failure of either. Booked
+    /// once, whichever way it arrives (the feed, a chain check, both).
     fn on_ours(&mut self, tx: &TxLite) {
         let sig = tx.sig_b58();
         let me = self.me;
@@ -625,6 +715,9 @@ impl Engine {
         else {
             return;
         };
+        if !self.book.positions[i].apply(&sig) {
+            return;
+        }
         let now = now_ms();
         let price = {
             let a = Position::pk(&self.book.positions[i].anchor);
@@ -644,12 +737,22 @@ impl Engine {
         } else {
             tx.token_delta(&me, &anchor)
         };
+        if anc != 0 && price.is_none() {
+            println!(
+                "long WARNING #{} {}: no price for the float {}; its {} units are booked at 0",
+                p.id,
+                m8(&mint),
+                m8(&anchor),
+                anc
+            );
+        }
         p.net_lamports += lam as i64 + (anc as f64 * price.unwrap_or(0.0)) as i64;
         let is_buy = p.buy_sig.as_deref() == Some(sig.as_str());
         if tx.err {
             p.costs += tx.fee;
             if is_buy {
                 p.state = State::Failed;
+                p.dropped = false;
                 p.closed_ms = now;
                 println!("long buy-failed #{} {} cost {}", p.id, m8(&mint), sol(lam));
             } else if p.state == State::Selling {
@@ -675,6 +778,17 @@ impl Engine {
                         sol(-(p.costs as i128))
                     );
                 }
+                // the curve may have completed unseen (a feed gap, a
+                // restart): read it, so the next sell goes to the pool
+                let (id, graduated) = (p.id, p.graduated);
+                if !graduated && self.rpc.curve_complete(&mint) == Some(true) {
+                    let p = &mut self.book.positions[i];
+                    p.graduated = true;
+                    println!(
+                        "long #{id} {}: the curve is complete; selling on the pool",
+                        m8(&mint)
+                    );
+                }
             }
         } else if is_buy && (p.state == State::Buying || (p.state == State::Failed && p.dropped)) {
             if p.dropped {
@@ -687,12 +801,20 @@ impl Engine {
                 p.closed_ms = 0;
             }
             p.tokens = tx.token_delta(&me, &mint).max(0) as u64;
-            // our curve trade's quote in (the rate for the sell bound)
-            p.quote_in = tx
+            // our curve trade's quote in (the rate for the sell bound); the
+            // trigger's estimate stays when the trade is not in the transaction
+            match tx
                 .trades()
                 .iter()
                 .find(|t| t.user == me && t.mint == mint && t.is_buy)
-                .map_or(0, |t| t.quote_amount);
+            {
+                Some(t) => p.quote_in = t.quote_amount,
+                None => println!(
+                    "long WARNING #{} {}: no curve trade of ours in the fill; keeping the estimated quote",
+                    p.id,
+                    m8(&mint)
+                ),
+            }
             p.state = if p.tokens > 0 {
                 State::Open
             } else {
@@ -703,8 +825,18 @@ impl Engine {
                 p.vq = t.vq;
                 p.last_slot = tx.slot;
             }
+            // what happened while the buy was out decides the exit now:
+            // the curve completed (sell on the pool), or it sold (out
+            // behind it)
+            if p.state == State::Open {
+                if p.graduated {
+                    p.reason = Some(Reason::Complete);
+                } else if p.its_sold {
+                    p.reason = Some(Reason::ItsSell);
+                }
+            }
             println!(
-                "long fill #{} {} tokens {} paid {} (vs its price {:+.1}%)",
+                "long fill #{} {} tokens {} paid {} (vs its price {:+.1}%){}",
                 p.id,
                 m8(&mint),
                 p.tokens,
@@ -713,7 +845,13 @@ impl Engine {
                     / p.its_lamports.max(1) as f64
                     / (p.tokens as f64 / (p.stake_lamports.max(1) as f64))
                     - 1.0)
-                    * 100.0
+                    * 100.0,
+                match p.reason {
+                    Some(Reason::Complete) =>
+                        "; the curve completed meanwhile: selling on the pool",
+                    Some(Reason::ItsSell) => "; it sold meanwhile: out behind it",
+                    _ => "",
+                }
             );
         } else if !is_buy {
             let left = tx.token_delta(&me, &mint);
@@ -753,11 +891,15 @@ impl Engine {
 
     // -------------------------------------------------------------- clock
     pub fn on_tick(&mut self, now: u64) {
+        // old closed positions leave the book here only: nothing below holds
+        // an index across it
+        self.book.prune(now, 3 * 86_400_000);
         if self.real() && now.saturating_sub(self.last_refresh_ms) > 30_000 {
             self.refresh(false);
         }
         enum Act {
             PaperFill,
+            PaperClose,
             Chase(bool),
             Exit(Reason),
         }
@@ -771,15 +913,30 @@ impl Engine {
             .filter_map(|(i, p)| match p.state {
                 // a paper buy fills once its landing slot is over
                 State::Buying if p.paper && slot > p.fill_slot() => Some((i, Act::PaperFill)),
-                State::Buying if !p.paper && now.saturating_sub(p.buy_sent_ms) > BUY_WAIT_MS => {
+                // a paper sell the same way
+                State::Selling if p.paper && slot > p.sell_land_slot => Some((i, Act::PaperClose)),
+                // a transaction not seen in time (or out when we started)
+                // is asked for, every CHASE_EVERY_MS
+                State::Buying
+                    if !p.paper
+                        && now >= p.next_chase_ms
+                        && (p.recovered || now.saturating_sub(p.buy_sent_ms) > BUY_WAIT_MS) =>
+                {
                     Some((i, Act::Chase(true)))
                 }
-                State::Selling if !p.paper && now.saturating_sub(p.sell_sent_ms) > SELL_WAIT_MS => {
+                State::Selling
+                    if !p.paper
+                        && now >= p.next_chase_ms
+                        && (p.recovered || now.saturating_sub(p.sell_sent_ms) > SELL_WAIT_MS) =>
+                {
                     Some((i, Act::Chase(false)))
                 }
                 State::Open if now >= p.sell_next_ms => p
                     .reason
                     .filter(|r| matches!(r, Reason::Complete | Reason::ItsSell))
+                    // the curve completed while our buy was out: the price
+                    // is frozen, no rule of ours would fire (2RR6sfbi)
+                    .or_else(|| p.graduated.then_some(Reason::Complete))
                     .or_else(|| pos::exit_due(p, now, cfg.take_profit, cfg.stop, cfg.max_hold_s))
                     .map(|r| (i, Act::Exit(r))),
                 _ => None,
@@ -795,8 +952,12 @@ impl Engine {
                 Act::PaperFill => {
                     let p = &mut self.book.positions[i];
                     let share = p.stake_lamports as f64 / p.its_lamports.max(1) as f64;
+                    // its quote in is what the curve took, fees apart (the
+                    // event reports it before fees), and its SOL value is
+                    // all it spent: our share of the quote buys tokens at
+                    // the curve's rate with no fee off it again
                     let q = (p.its_quote_in as f64 * share) as u64;
-                    p.tokens = pos::curve_buy(p.vt, p.vq, q, CURVE_FEE_BPS);
+                    p.tokens = pos::curve_buy(p.vt, p.vq, q, 0);
                     p.quote_in = q;
                     let min_out = (p.its_tokens as f64 * share / (1.0 + max_premium)) as u64;
                     if p.tokens < min_out {
@@ -817,6 +978,12 @@ impl Engine {
                         continue;
                     }
                     p.state = State::Open;
+                    // what happened while the buy was out (paper too)
+                    if p.graduated {
+                        p.reason = Some(Reason::Complete);
+                    } else if p.its_sold {
+                        p.reason = Some(Reason::ItsSell);
+                    }
                     println!(
                         "long paper-fill #{} {} tokens {} at {:.3}x its price",
                         p.id,
@@ -826,12 +993,34 @@ impl Engine {
                     );
                     changed = true;
                 }
+                Act::PaperClose => {
+                    self.paper_close(i, now);
+                    changed = true;
+                }
                 Act::Chase(buy) => changed |= self.chase(i, buy),
                 Act::Exit(r) => {
                     self.exit(i, r, now);
                     changed = true;
                 }
             }
+        }
+        // an exit decided by a fill in this tick (the curve completed, or it
+        // sold, while our buy was out) goes now, not after the next message
+        let due: Vec<(usize, Reason)> = self
+            .book
+            .positions
+            .iter()
+            .enumerate()
+            .filter(|(_, p)| p.state == State::Open && now >= p.sell_next_ms)
+            .filter_map(|(i, p)| {
+                p.reason
+                    .filter(|r| matches!(r, Reason::Complete | Reason::ItsSell))
+                    .map(|r| (i, r))
+            })
+            .collect();
+        for (i, r) in due {
+            self.exit(i, r, now);
+            changed = true;
         }
         if changed {
             self.rewatch();
@@ -846,37 +1035,25 @@ impl Engine {
         p.reason = Some(r);
         let px = p.price();
         if p.paper {
-            let quote_out = pos::curve_sell_paper(p.vt, p.vq, p.tokens, CURVE_FEE_BPS) as f64;
-            let back = quote_out * p.stake_lamports as f64 / p.quote_in.max(1) as f64;
-            let fees = 2 * (5_000 + self.cfg.cu_limit as u64 * self.cfg.buy_cu_price / 1_000_000)
-                + self.cfg.buy_tip_lamports
-                + self.cfg.sell_tip_lamports;
-            p.out_lamports = back as u64;
-            p.net_lamports = back as i64 - p.stake_lamports as i64 - fees as i64;
-            p.state = State::Closed;
-            p.closed_ms = now;
+            // a paper sell lands like a paper buy: on the state at the end
+            // of `paper_land_slots` after the trade that fired the exit
+            // (2026-10-28: it closed on the firing trade's own state, which
+            // a real sell never gets)
+            p.state = State::Selling;
+            p.sell_sent_ms = now;
+            p.sell_land_slot = self.slot + self.cfg.paper_land_slots;
             println!(
-                "long paper-closed #{} {} {} at {:.2}x net {} SOL ({:+.1}%) held {}s peak {:.2}x",
+                "long paper-sell #{} {} {} at {:.2}x; fills at the end of slot +{}",
                 p.id,
                 &p.mint[..8],
                 r.name(),
                 px,
-                sol(p.net_lamports as i128),
-                p.net_lamports as f64 / p.stake_lamports.max(1) as f64 * 100.0,
-                now.saturating_sub(p.seen_ms) / 1000,
-                p.peak
+                self.cfg.paper_land_slots
             );
-            let rec = serde_json::to_string(&*p).unwrap_or_default();
-            if let Ok(mut f) = std::fs::OpenOptions::new()
-                .create(true)
-                .append(true)
-                .open(&self.closed_path)
-            {
-                let _ = writeln!(f, "{rec}");
-            }
             return;
         }
         let (id, mint, tries) = (p.id, p.mint.clone(), p.sell_tries);
+        let t0 = std::time::Instant::now();
         match self.send_sell(i) {
             Ok(sigs) => {
                 let sig = sigs.first().cloned().unwrap_or_default();
@@ -885,30 +1062,97 @@ impl Engine {
                 p.sell_sent_ms = now;
                 p.sell_sigs.extend(sigs);
                 println!(
-                    "long sell #{id} {} {} at {px:.2}x try {tries} sent {}",
+                    "long sell #{id} {} {} at {px:.2}x try {tries} sent {} in {} ms",
                     &mint[..8],
                     r.name(),
-                    &sig[..8]
+                    &sig[..8],
+                    t0.elapsed().as_millis()
                 );
             }
             Err(e) => {
-                let cap = (self.cfg.max_sell_fail_sol * 1e9) as u64;
+                // not sent: no floor change (nothing landed), a short wait
                 let p = &mut self.book.positions[i];
-                p.sell_tries += 1;
-                p.sell_next_ms = now + pos::sell_backoff_ms(p.sell_tries, p.costs, cap).max(1_000);
-                eprintln!("long sell #{id} {}: {e}", &mint[..8]);
+                p.send_fails += 1;
+                p.sell_next_ms = now + 1_000 * p.send_fails.min(5) as u64;
+                eprintln!(
+                    "long sell #{id} {}: not sent ({e}); send failure {} (retry in {} s)",
+                    &mint[..8],
+                    p.send_fails,
+                    p.send_fails.min(5)
+                );
             }
         }
     }
 
-    /// A buy or sell not seen landed in time: ask the chain.
+    /// The fees a paper round trip pays: both transactions' base and
+    /// priority fees and both tips.
+    fn paper_fees(&self) -> u64 {
+        2 * 5_000
+            + self.cfg.cu_limit as u64 * (self.cfg.buy_cu_price + self.cfg.sell_cu_price)
+                / 1_000_000
+            + self.cfg.buy_tip_lamports
+            + self.cfg.sell_tip_lamports
+    }
+
+    /// A paper position's result if sold on the curve as it is now
+    /// (lamports): our tokens back into it, the route's other hops at our
+    /// own fill's rate, less `fees`.
+    fn paper_net(p: &Position, fees: u64) -> i64 {
+        let quote_out = pos::curve_sell_paper(p.vt, p.vq, p.tokens, p.fee(CURVE_FEE_BPS)) as f64;
+        let back = quote_out * p.stake_lamports as f64 / p.quote_in.max(1) as f64;
+        back as i64 - p.stake_lamports as i64 - fees as i64
+    }
+
+    /// A paper sell at the end of its landing slot: the curve as it is then,
+    /// our tokens sold back into it.
+    fn paper_close(&mut self, i: usize, now: u64) {
+        let fees = self.paper_fees();
+        let p = &mut self.book.positions[i];
+        let r = p.reason.unwrap_or(Reason::Manual);
+        let px = p.price();
+        let net = Self::paper_net(p, fees);
+        p.out_lamports = (net + p.stake_lamports as i64 + fees as i64).max(0) as u64;
+        p.net_lamports = net;
+        p.state = State::Closed;
+        p.closed_ms = now;
+        println!(
+            "long paper-closed #{} {} {} at {:.2}x net {} SOL ({:+.1}%) held {}s peak {:.2}x",
+            p.id,
+            &p.mint[..8],
+            r.name(),
+            px,
+            sol(p.net_lamports as i128),
+            p.net_lamports as f64 / p.stake_lamports.max(1) as f64 * 100.0,
+            now.saturating_sub(p.seen_ms) / 1000,
+            p.peak
+        );
+        let rec = serde_json::to_string(&*p).unwrap_or_default();
+        if let Ok(mut f) = std::fs::OpenOptions::new()
+            .create(true)
+            .append(true)
+            .open(&self.closed_path)
+        {
+            let _ = writeln!(f, "{rec}");
+        }
+    }
+
+    /// A buy or sell not seen landed in time: ask the chain. Only the
+    /// signatures not booked yet are read (2026-10-28: it re-read the first
+    /// landed one, an old failed sell, and never the newer one), a landed
+    /// success first.
     fn chase(&mut self, i: usize, buy: bool) -> bool {
-        let p = &self.book.positions[i];
+        let now = now_ms();
+        let p = &mut self.book.positions[i];
+        p.next_chase_ms = now + CHASE_EVERY_MS;
+        p.recovered = false;
         let sigs: Vec<String> = if buy {
             p.buy_sig.iter().cloned().collect()
         } else {
             p.sell_sigs.clone()
-        };
+        }
+        .into_iter()
+        .filter(|s| !p.applied.contains(s))
+        .collect();
         if sigs.is_empty() {
             return false;
         }
@@ -916,36 +1160,45 @@ impl Engine {
             Ok(s) => s,
             Err(_) => return false,
         };
-        // landed (ok or failed): read it as the feed would have
-        for (s, r) in sigs.iter().zip(&st) {
-            if r.is_some() {
-                if let Ok(v) = self.rpc.transaction(s) {
-                    if let Ok(tx) = TxLite::from_rpc_json(&v) {
-                        self.on_ours(&tx);
-                        return true;
-                    }
+        // landed: read every one as the feed would have, the successes first
+        let mut landed: Vec<(&String, bool)> = sigs
+            .iter()
+            .zip(&st)
+            .filter_map(|(s, r)| r.as_ref().map(|r| (s, r.is_ok())))
+            .collect();
+        landed.sort_by_key(|(_, ok)| !ok);
+        let mut applied = false;
+        for (s, _) in landed {
+            if let Ok(v) = self.rpc.transaction(s) {
+                if let Ok(tx) = TxLite::from_rpc_json(&v) {
+                    self.on_ours(&tx);
+                    applied = true;
                 }
             }
         }
+        if applied {
+            return true;
+        }
         // nothing landed: the blockhash is past its life after ~60 s
         let p = &mut self.book.positions[i];
-        let age = now_ms().saturating_sub(if buy { p.buy_sent_ms } else { p.sell_sent_ms });
-        if age < 90_000 {
+        let age = now.saturating_sub(if buy { p.buy_sent_ms } else { p.sell_sent_ms });
+        if age < DROP_AFTER_MS {
             return false;
         }
         if buy {
             p.state = State::Failed;
             p.dropped = true;
-            p.closed_ms = now_ms();
+            p.closed_ms = now;
             println!("long buy-dropped #{} {}", p.id, &p.mint[..8]);
         } else {
+            // not a landed failure: the floor stays
             p.state = State::Open;
-            p.sell_tries += 1;
+            p.send_fails += 1;
             println!(
-                "long sell-dropped #{} {} try {} (retried)",
+                "long sell-dropped #{} {} (send failure {}; retried)",
                 p.id,
                 &p.mint[..8],
-                p.sell_tries
+                p.send_fails
             );
         }
         true
@@ -994,21 +1247,23 @@ impl Engine {
     }
 
     /// After a restart: live positions whose transactions were in flight.
-    fn recover(&mut self) {
-        let n = self.book.positions.len();
+    pub fn recover(&mut self) {
         let live = self.book.live().count();
         if live > 0 {
             println!("long recover: {live} live position(s)");
         }
-        for i in 0..n {
-            match self.book.positions[i].state {
-                State::Buying if !self.book.positions[i].paper => {
-                    self.book.positions[i].buy_sent_ms = 0;
-                }
-                State::Selling => {
-                    self.book.positions[i].sell_sent_ms = 0;
-                }
-                _ => {}
+        // its buys we already copied (a second buy of a coin is not copied
+        // for an hour), rebuilt from the book
+        for p in &self.book.positions {
+            self.its_bought.insert(p.mint_pk(), p.seen_ms);
+        }
+        // a transaction out when we stopped: ask the chain for it at once,
+        // but give it up only by its real age (2026-10-28: the send time
+        // was zeroed, so a buy in flight was dropped on the first tick)
+        for p in self.book.positions.iter_mut() {
+            if !p.paper && matches!(p.state, State::Buying | State::Selling) {
+                p.recovered = true;
+                p.next_chase_ms = 0;
             }
         }
         // a buy given up shortly before the stop may have landed while we

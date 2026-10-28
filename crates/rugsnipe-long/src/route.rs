@@ -165,6 +165,7 @@ mod tests {
             sol_value: Some(1_500_000_000),
             route,
             via_jupiter: false,
+            fee_bps: 0,
         }
     }
 

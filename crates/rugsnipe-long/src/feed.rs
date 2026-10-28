@@ -57,26 +57,44 @@ impl FeedHandle {
     }
 }
 
-fn request(cfg: &FeedCfg, mints: &BTreeSet<Pubkey>) -> SubscribeRequest {
-    let f = |include: Vec<String>, failed: bool| SubscribeRequestFilterTransactions {
+/// Yellowstone's `failed` filter: `Some(false)` = landed and succeeded only,
+/// `Some(true)` = **failed only**, `None` = both. The copied wallet's and the
+/// held coins' streams want successes; ours wants both (a failed buy is a
+/// cost, and a success must reach us even when its coin is no longer
+/// watched: 2026-10-28, the filter was `Some(true)`, so our own fills came
+/// only through the "mints" filter and a buy given up as dropped that landed
+/// after all was never seen).
+pub fn request(cfg: &FeedCfg, mints: &BTreeSet<Pubkey>) -> SubscribeRequest {
+    let f = |include: Vec<String>, failed: Option<bool>| SubscribeRequestFilterTransactions {
         vote: Some(false),
-        failed: Some(failed),
+        failed,
         account_include: include,
         ..Default::default()
     };
     let mut transactions = HashMap::new();
-    transactions.insert("copied".to_string(), f(vec![cfg.copied.to_string()], false));
+    transactions.insert(
+        "copied".to_string(),
+        f(vec![cfg.copied.to_string()], Some(false)),
+    );
     if let Some(o) = cfg.ours {
-        transactions.insert("ours".to_string(), f(vec![o.to_string()], true));
+        transactions.insert("ours".to_string(), f(vec![o.to_string()], None));
     }
     if !mints.is_empty() {
         transactions.insert(
             "mints".to_string(),
-            f(mints.iter().map(|m| m.to_string()).collect(), false),
+            f(mints.iter().map(|m| m.to_string()).collect(), Some(false)),
         );
     }
     let mut slots = HashMap::new();
-    slots.insert("slots".to_string(), SubscribeRequestFilterSlots::default());
+    // one message a slot (at the subscription's commitment), not one per
+    // commitment level
+    slots.insert(
+        "slots".to_string(),
+        SubscribeRequestFilterSlots {
+            filter_by_commitment: Some(true),
+            ..Default::default()
+        },
+    );
     SubscribeRequest {
         transactions,
         slots,
@@ -221,4 +239,28 @@ async fn session(
         }
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn our_own_stream_carries_failed_and_successful_transactions() {
+        let cfg = FeedCfg {
+            url: String::new(),
+            x_token: None,
+            copied: Pubkey::new_from_array([1; 32]),
+            ours: Some(Pubkey::new_from_array([2; 32])),
+        };
+        let mut mints = BTreeSet::new();
+        mints.insert(Pubkey::new_from_array([3; 32]));
+        let r = request(&cfg, &mints);
+        assert_eq!(r.transactions["copied"].failed, Some(false));
+        assert_eq!(r.transactions["mints"].failed, Some(false));
+        assert_eq!(r.transactions["ours"].failed, None, "both, not failed only");
+        assert_eq!(r.transactions["ours"].vote, Some(false));
+        assert_eq!(r.slots["slots"].filter_by_commitment, Some(true));
+        assert_eq!(r.commitment, Some(CommitmentLevel::Processed as i32));
+    }
 }

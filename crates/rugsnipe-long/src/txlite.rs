@@ -43,6 +43,9 @@ pub struct Trade {
     pub real_token: Option<u64>,
     /// `None` or a SOL-like mint on SOL coins.
     pub quote_mint: Option<Pubkey>,
+    /// The curve's fee on this trade, basis points: protocol plus creator
+    /// (`None` on an event without them).
+    pub fee_bps: Option<u32>,
     /// Top-level instruction that produced it.
     pub outer: u8,
 }
@@ -117,6 +120,9 @@ impl TxLite {
                         .unwrap_or(t.virtual_sol_reserves),
                     real_token: t.real_token_reserves,
                     quote_mint: t.quote_mint,
+                    fee_bps: t
+                        .fee_basis_points
+                        .map(|f| (f + t.creator_fee_basis_points.unwrap_or(0)).min(10_000) as u32),
                     outer: *o,
                 });
             }

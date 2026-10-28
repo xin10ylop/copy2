@@ -2,6 +2,7 @@
 //! be): accounts with a cache, the blockhash, signature statuses,
 //! simulation and `sendTransaction`.
 
+use crate::oracle::now_ms;
 use crate::route::Chain;
 use base64::Engine as _;
 use pump_codec::constants as c;
@@ -9,6 +10,15 @@ use pump_codec::Pubkey;
 use rugsnipe_tx::rpc::RpcClient;
 use serde_json::{json, Value};
 use std::collections::HashMap;
+use std::sync::{Arc, Mutex};
+use std::time::Duration;
+
+/// A missing account is remembered this long only: a pool that does not
+/// exist yet (a coin's PumpSwap pool right after it graduates, a new quote
+/// token's pool) must be looked up again (2026-10-28: a miss cached for the
+/// process's life would have kept every sell of a graduated coin on its
+/// dead curve, the hot bot's 2RR6sfbi failure again).
+const MISS_TTL_MS: u64 = 30_000;
 
 /// An account's owner, lamports and data.
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -20,8 +30,48 @@ pub struct Acct {
 
 pub struct Rpc {
     pub rpc: RpcClient,
-    /// Accounts that do not change for our purposes (pools, mints).
-    cache: HashMap<Pubkey, Option<Acct>>,
+    /// Accounts that do not change for our purposes (pools, mints), with
+    /// when they were read (a miss expires, see [`MISS_TTL_MS`]).
+    cache: HashMap<Pubkey, (Option<Acct>, u64)>,
+}
+
+/// The latest blockhash, refreshed on a thread of its own so the send path
+/// never waits for it (2026-10-28: fetched on demand, it cost one cold RPC
+/// round trip on almost every buy).
+#[derive(Clone, Default)]
+pub struct Blockhashes {
+    inner: Arc<Mutex<Option<([u8; 32], u64)>>>,
+}
+
+impl Blockhashes {
+    /// The cached hash when younger than `max_age_ms`.
+    pub fn get(&self, max_age_ms: u64) -> Option<[u8; 32]> {
+        let g = self.inner.lock().ok()?;
+        let (h, at) = (*g)?;
+        (now_ms().saturating_sub(at) < max_age_ms).then_some(h)
+    }
+
+    pub fn set(&self, h: [u8; 32]) {
+        if let Ok(mut g) = self.inner.lock() {
+            *g = Some((h, now_ms()));
+        }
+    }
+
+    /// Refresh from `url` every `every` on a thread of its own.
+    pub fn spawn(&self, url: &str, every: Duration) {
+        let rpc = Rpc::new(url);
+        let me = self.clone();
+        std::thread::Builder::new()
+            .name("long-blockhash".into())
+            .spawn(move || loop {
+                match rpc.blockhash() {
+                    Ok((h, _)) => me.set(h),
+                    Err(e) => eprintln!("long blockhash: {e}"),
+                }
+                std::thread::sleep(every);
+            })
+            .expect("spawn the blockhash thread");
+    }
 }
 
 fn b64(s: &str) -> Vec<u8> {
@@ -68,15 +118,20 @@ impl Rpc {
         Ok(out)
     }
 
-    /// One account through the cache.
+    fn fresh(&self, k: &Pubkey) -> Option<Option<Acct>> {
+        let (a, at) = self.cache.get(k)?;
+        (a.is_some() || now_ms().saturating_sub(*at) < MISS_TTL_MS).then(|| a.clone())
+    }
+
+    /// One account through the cache (a hit stays, a miss expires).
     pub fn cached(&mut self, k: &Pubkey) -> Option<Acct> {
-        if let Some(a) = self.cache.get(k) {
-            return a.clone();
+        if let Some(a) = self.fresh(k) {
+            return a;
         }
         match self.accounts(&[*k]) {
             Ok(mut v) => {
                 let a = v.pop().flatten();
-                self.cache.insert(*k, a.clone());
+                self.cache.insert(*k, (a.clone(), now_ms()));
                 a
             }
             Err(_) => None,
@@ -87,17 +142,29 @@ impl Rpc {
     pub fn prefetch(&mut self, keys: &[Pubkey]) {
         let want: Vec<Pubkey> = keys
             .iter()
-            .filter(|k| !self.cache.contains_key(k))
+            .filter(|k| self.fresh(k).is_none())
             .copied()
             .collect();
         if want.is_empty() {
             return;
         }
         if let Ok(v) = self.accounts(&want) {
+            let now = now_ms();
             for (k, a) in want.into_iter().zip(v) {
-                self.cache.insert(k, a);
+                self.cache.insert(k, (a, now));
             }
         }
+    }
+
+    /// Whether `mint`'s bonding curve is complete, read now (not cached):
+    /// after a sell of ours fails, the curve may have graduated unseen.
+    /// `None` when the read fails or the account does not decode.
+    pub fn curve_complete(&self, mint: &Pubkey) -> Option<bool> {
+        let bc = pump_codec::pda::bonding_curve(mint);
+        let a = self.accounts(&[bc]).ok()?.pop().flatten()?;
+        pump_codec::curve::BondingCurve::decode(&a.data)
+            .ok()
+            .map(|c| c.complete)
     }
 
     pub fn blockhash(&self) -> Result<([u8; 32], u64), String> {

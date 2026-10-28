@@ -69,6 +69,38 @@ within a slot** (`exits_pess.py`):
   buy not seen in 90 s is given up as dropped; if it lands after all (`long late-fill`), the position reopens on its
   tokens, also when it landed while the bot was down. Statuses search the whole history, so a sell that landed while
   the bot was down closes the position instead of being sold again.
+- **Hardened before real money (2026-10-28, the live-readiness review, `07-rework-2026-10-28/code-review.md`):**
+  our own feed stream carries successes too (the filter said failed-only, so a buy given up as dropped that landed
+  after all was never seen); a coin whose curve completes while our buy is out sells on the pool at the fill (the
+  exit reason was set on open positions only: 2RR6sfbi's case, the price frozen, held to the timer); every
+  transaction of ours is booked once (`applied`), and a chain check reads the unbooked signatures, successes first
+  (it re-read the first landed one, an old failed sell, on every pass); a chain check every 2.5 s, not every
+  message; a missing account (a coin's pool before migration) is remembered 30 s, not forever; after a landed
+  failed sell the curve is read, and a complete one sends the next sell to the pool; the floor drops only after
+  landed failures (2: half, 4: almost any price), never after send errors or drops (`send_fails`); the defaults
+  are 15% under the expected output on a take profit and 30% otherwise (were 30% / 50%); `buy_senders` must name
+  exactly one sender in mode on (an empty list meant every enabled sender: several buys); `reserve_sol` (0.05) is a
+  setting, so a 0.1 SOL test wallet needs about 0.16 SOL; the blockhash is refreshed every 3 s on its own thread,
+  the senders' connections are kept alive every 20 s and the RPC copy goes out beside the sender's, not after
+  (the buy was built on a cold path: about 0.5 s from Ohio to Frankfurt); a send that no path accepted is an
+  error and retried in 1-5 s; its sell while our buy is out takes us out at the fill (`its_sold`); a restart
+  checks a transaction in flight at once but drops it only by its real age; the day's result for the daily stop
+  counts refused buys' fees and the live positions' failed-sell fees; the book is pruned once per tick; a float
+  leg without a price is booked at 0 with a warning; its buys we copied are rebuilt from the book at start;
+  the journal says how long a buy or sell took to send (`sent ... in N ms`) and at what feed lag (`seen at its
+  slot +N`). **Simulated on mainnet** (`rugsnipe-long simulate --buyback N --close`, `simulate-sell --graduated`):
+  the 2-hop buy from wSOL and from WBTC, the closing round trip, and the 2-hop pool sell after graduation into
+  wSOL and into WBTC, at buyback indexes 0-7 (a sell now creates the float's account too, idempotently).
+- **Paper, honest about fills and fees (2026-10-28):** a paper sell fills at the end of `paper_land_slots` after the
+  trade that fired the exit, like a paper buy (it closed on the firing trade's own state, which a real sell never
+  gets; the journal line is `long paper-sell`); the curve fee is the one in its trade event (protocol plus creator
+  basis points), and the buy's quote is not charged the fee twice (the event reports it before fees).
+- **Two switches for the next paper test (2026-10-28):** `follow_its_sell = false` keeps our own exits when it sells
+  early and records what selling behind it would have made (`its_sell_px`, `its_sell_net` on the record; journal
+  `long its-sell #N ... not followed (would make X SOL)`): it sells early on half of its 1.45+ SOL buys since Oct 27,
+  against 3.5% on Oct 19-22, and on Oct 27-28 holding to our exits scored +3.10 against -0.51 behind it, on Oct
+  19-27 about even (`analysis/research/2026-10-28/more/`). `float_stake_sol` stakes more on WBTC-routed copies
+  (about +0.12 SOL a copy against +0.02 from wSOL).
 - **Accounting is chain-true:** a position's result is the sum of our wallet's lamport changes over its transactions,
   plus a float's token change at the oracle price. Paper (`mode = "log"`) prices the same decisions on the live curve.
 - **Measured on mainnet** (simulation from our wallet, a 2-hop wSOL route): buy 1,088 bytes, 166k compute units; buy
@@ -87,7 +119,14 @@ sudo /opt/rugsnipe/bin/rugsnipe-long keygen --out /etc/rugsnipe/keys/long-wallet
 2. **Fund the wallet** (the address keygen printed): `max_open` x `stake_sol` + about 0.1 SOL for fees, split between
    SOL (routes from wrapped SOL) and the WBTC float: `sudo /opt/rugsnipe/bin/rugsnipe-long float buy
    3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh 3.0 --config /etc/rugsnipe/long.toml` (through Jupiter).
-3. **Real:** `mode = "on"` in long.toml, `sudo systemctl restart rugsnipe-long`.
+3. **Before real:** simulate the paths that never ran, from the box, with a recent buy of wallet 4
+   (`SIG`) and a graduated coin someone holds (`MINT`, its `QUOTE`, a `HOLDER` with SOL): nothing is sent.
+   ```
+   sudo /opt/rugsnipe/bin/rugsnipe-long simulate --rpc "$RPC_URL" --tx SIG --user H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg --sol 0.1 --float 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh --buyback 3 --close
+   sudo /opt/rugsnipe/bin/rugsnipe-long simulate-sell --rpc "$RPC_URL" --mint MINT --quote QUOTE --user HOLDER --float 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh --graduated --close
+   ```
+   Both print `err null`. (Oct 28: both passed on mainnet for wSOL and WBTC routes.)
+4. **Real:** `mode = "on"` in long.toml, `sudo systemctl restart rugsnipe-long`.
 - **Stop new buys:** `sudo touch /var/lib/rugsnipe-long/KILL` (exits continue); remove it to resume.
 - **The book:** `sudo /opt/rugsnipe/bin/rugsnipe-long status --config /etc/rugsnipe/long.toml --chain`.
 - **Floats back to SOL:** `... float sell 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh all --config ...`.

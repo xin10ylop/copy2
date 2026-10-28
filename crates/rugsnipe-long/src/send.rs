@@ -6,10 +6,16 @@
 
 use pump_codec::Pubkey;
 use rugsnipe_core::config::Config;
-use rugsnipe_tx::senders::{providers, ApiKeys, SendResult, Sender, Variant, VariantKind};
+use rugsnipe_tx::senders::{
+    providers, ApiKeys, SendResult, Sender, Variant, VariantKind, KEEPALIVE_EVERY,
+};
+use std::sync::Arc;
 
 pub struct Out {
-    senders: Vec<(String, Box<dyn Sender>)>,
+    /// Shared with the keepalive thread, which renews each sender's idle
+    /// connection every [`KEEPALIVE_EVERY`] (2026-10-28: without it every
+    /// buy, about one an hour, went out on a cold socket).
+    senders: Arc<Vec<(String, Box<dyn Sender>)>>,
 }
 
 /// One signed copy: what it was for and how it went.
@@ -51,6 +57,22 @@ impl Out {
                 return Err(format!("sender {w}: not enabled in the hot config"));
             }
         }
+        let senders = Arc::new(senders);
+        let ka = senders.clone();
+        std::thread::Builder::new()
+            .name("long-keepalive".into())
+            .spawn(move || {
+                for (_, s) in ka.iter() {
+                    let _ = s.warm();
+                }
+                loop {
+                    std::thread::sleep(KEEPALIVE_EVERY);
+                    for (_, s) in ka.iter() {
+                        s.keepalive();
+                    }
+                }
+            })
+            .map_err(|e| format!("keepalive thread: {e}"))?;
         Ok(Self { senders })
     }
 

@@ -110,14 +110,16 @@ pub fn sell_ixs(
     let coin_ata = pda::associated_token_address(user, &coin, coin_program);
     let wsol = anchor == c::WSOL_MINT;
     let mut v = budget(fees);
-    if wsol {
-        v.push(pi::create_associated_token_account_idempotent(
-            user,
-            user,
-            &c::WSOL_MINT,
-            &c::SPL_TOKEN_PROGRAM_ID,
-        ));
-    }
+    // the account the proceeds land in: wrapped SOL's is created here and
+    // closed after; a float's exists while we hold the float, but is
+    // created all the same (idempotent) so that a sell never fails on a
+    // closed account (2026-10-28, simulated: `AccountNotInitialized`)
+    v.push(pi::create_associated_token_account_idempotent(
+        user,
+        user,
+        &anchor,
+        anchor_program,
+    ));
     v.push(multihop::multi_hop_swap(&MultiHop {
         user: *user,
         user_in: coin_ata,
