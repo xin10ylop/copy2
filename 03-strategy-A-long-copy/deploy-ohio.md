@@ -90,7 +90,7 @@ cd ~/rugsnipe
 git remote add copy2 https://github.com/xin10ylop/copy2.git 2>/dev/null; git fetch -q copy2 claude/magical-einstein-k78idp
 git checkout -q -B rework copy2/claude/magical-einstein-k78idp && git log --oneline -1
 sudo bash deploy/install.sh --role analytics
-grep -q '^follow_its_sell' /etc/rugsnipe/long.toml || echo 'follow_its_sell = false' | sudo tee -a /etc/rugsnipe/long.toml
+sudo grep -q '^follow_its_sell' /etc/rugsnipe/long.toml || echo 'follow_its_sell = false' | sudo tee -a /etc/rugsnipe/long.toml
 sudo systemctl restart rugsnipe-long && sleep 15 && sudo journalctl -u rugsnipe-long -n 4 --no-pager
 ```
 What each line should print: `git log` one line with the branch's latest commit (the Oct 28 evening hardening); the
