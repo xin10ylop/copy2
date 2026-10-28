@@ -19,7 +19,8 @@ max_hold_s = 1790
 # positions open at once: each takes stake_sol (grid.py cap, P1 Oct 19-22 / P2 Oct 23-27: 1 open +2.6 / +3.5,
 # 2 +6.5 / +8.1, 3 +5.0 / +9.6, 4 +6.7 / +11.1, 5 +6.7 / +10.9 SOL; the wallet itself: a median 2 of these open, max 11)
 max_open = 4
-# our buy refused above this premium over its average price
+# our buy refused when the price before our fill is more than this over the price its buy left (the
+# backtest's limit; our own impact is not part of it)
 max_premium = 0.25
 # no new buys once today's (UTC) realized result is at or below -daily_stop_sol
 daily_stop_sol = 3.0

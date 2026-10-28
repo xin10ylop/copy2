@@ -34,7 +34,7 @@ on Oct 27-28; the code was hardened (8 money-losing fixes); the plan before any 
   (journal `long skip ...`).
 
 **Our buy:** 1 SOL (`stake_sol`), one transaction, one sender plus the same bytes by `sendTransaction`. It's refused if
-the price is more than **25%** above wallet 4's (`max_premium`; `min_out` from its own fill).
+the price is more than **25%** above the price wallet 4's buy left (`max_premium`; `min_out` is the curve's quote at that price, since Oct 29).
 
 **Exits**, on every trade of the coin: the curve price against the price its buy left, *without our own tokens*:
 

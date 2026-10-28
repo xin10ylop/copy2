@@ -387,6 +387,22 @@ fn a_paper_buy_past_the_price_limit_is_refused() {
     assert_eq!(e.book.positions[0].state, State::Open);
 }
 
+/// The limit is against the price its buy left, not its average price, and
+/// it does not tighten with our stake (2026-10-29: at 0.5 SOL two real buys
+/// were refused at 1.25x its average, about 1.17x the price it left).
+#[test]
+fn the_price_limit_is_against_the_price_its_buy_left() {
+    let tx = fx("w4_buy_wsol_multihop");
+    for (px, open) in [(1.2, true), (1.3, false)] {
+        let mut e = engine(if open { "limit_in" } else { "limit_out" });
+        e.on_tx(Src::Copied, &tx);
+        price_to(&mut e, px);
+        e.on_slot(tx.slot + 2);
+        e.on_tick(now_ms());
+        assert_eq!(e.book.positions[0].state == State::Open, open, "at {px}x");
+    }
+}
+
 /// A paper buy lands after we see its buy, not after its own slot: seen 3
 /// slots late (our feed's latest slot), it fills on the state at the end of
 /// the slot after that (`paper_land_slots` = 1).

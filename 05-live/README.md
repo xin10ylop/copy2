@@ -41,6 +41,7 @@ remaining SOL returned to the owner's Phantom wallet.
 | Oct 28 19:20:43 UTC | the second real buy, E3hauBDZ, **refused by the 25% premium floor** on chain (`ExceededSlippage`): same slot as its buy, 7 coin trades ahead of us had moved the price to 1.36x; cost 0.0004 SOL |
 | Oct 28 19:28-21:22 UTC | four more real trades (EMJs7igZ +0.1028, GUcG2eK2 +0.0818, 6TrDECwR −0.0334 on the stop, JAckzYTT +0.1074), all checked on chain; then E61exR62 −0.0366 on a 4-second stop; **the evening at 0.1 SOL: 6 closed, 4 won, +0.3146 SOL** (`03-strategy-A-long-copy/deploy-frankfurt.md` §6) |
 | Oct 28 22:04 UTC | **the stake raised to 0.5 SOL × 3 open, daily stop 1.0** (the owner's decision); 1.5 SOL more from Phantom, 0.5 more into the WBTC float; the wallet holds 2.508 SOL in all |
+| Oct 28 22:33, 22:39 UTC | the first two 0.5 SOL buys refused by the premium floor (0.0004 SOL each); the floor was found about 7% tighter than the tested 25% at that stake and fixed on Oct 29 (`deploy-frankfurt.md` §6) |
 
 ## Money
 

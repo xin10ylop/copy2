@@ -293,6 +293,23 @@ pub fn curve_buy(vt: u64, vq: u64, quote_in: u64, fee_bps: u32) -> u64 {
     pump_codec::multihop::cp_out(vq, vt, quote_in, fee_bps)
 }
 
+/// The fewest tokens our buy of `quote_in` (net of the fee) may return: the
+/// curve's own quote at `(vt_post, vq_post)`, the state its buy left, once
+/// the price is `1 + max_premium` times higher. That is the backtest's
+/// limit (`grid.py`: the price before our fill against the price its buy
+/// left), and it does not move with our stake, since our own impact is
+/// inside the quote. Until 2026-10-29 the floor was its average price plus
+/// the premium, which its own buy and our size ate into (about 7% at
+/// 0.5 SOL on a fresh curve: two real buys were refused at about 1.17x).
+/// On a constant-product curve a price `f` times higher is
+/// `(vt / sqrt f, vq * sqrt f)`.
+pub fn buy_min_out(vt_post: u64, vq_post: u64, quote_in: u64, max_premium: f64) -> u64 {
+    let f = (1.0 + max_premium.max(0.0)).sqrt();
+    let vt = (vt_post as f64 / f) as u64;
+    let vq = (vq_post as f64 * f) as u64;
+    curve_buy(vt, vq, quote_in, 0)
+}
+
 /// Selling `tokens` into a live curve at `(vt, vq)` that already has them
 /// out (a real position: our buy is in the curve's state): the quote that
 /// comes back, the fee off the output.
@@ -374,6 +391,22 @@ impl Book {
 
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn the_buy_floor_is_the_curve_at_the_premium_over_the_price_its_buy_left() {
+        // a fresh v2 curve after its 1.5 SOL buy: 31.48 SOL of virtual quote,
+        // 1.0225e9 tokens of 6 decimals
+        let (vt, vq) = (1_022_500_000_000_000u64, 31_481_000_000u64);
+        let exact = super::curve_buy(vt, vq, 500_000_000, 0);
+        assert_eq!(super::buy_min_out(vt, vq, 500_000_000, 0.0), exact);
+        // 25% over its price buys about a fifth fewer tokens
+        let r = super::buy_min_out(vt, vq, 500_000_000, 0.25) as f64 / exact as f64;
+        assert!(r > 0.79 && r < 0.81, "{r}");
+        // the floor scales with the stake, our own impact apart
+        let small = super::buy_min_out(vt, vq, 100_000_000, 0.25) as f64;
+        let big = super::buy_min_out(vt, vq, 1_000_000_000, 0.25) as f64;
+        assert!(big / small > 9.6 && big / small < 10.0, "{}", big / small);
+    }
+
     use super::*;
 
     #[test]

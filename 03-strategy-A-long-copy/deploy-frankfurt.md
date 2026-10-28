@@ -164,6 +164,15 @@ wallet then held 2.508 SOL in all, every lamport accounted for on chain (`getSig
 transactions: 2.2 in, 0.6567 into the two float swaps and their costs, +0.3143 from the seven trades, three dust
 transfers from a stranger).
 
+**Oct 28 22:33 and 22:39 UTC: the first two 0.5 SOL buys refused on chain** (Fawdfdv9: our buy at its slot +1, position
+4 of the block, 2 trades of the coin between, refused by 0.2%; 2HuAFrTr: its slot, 5 trades between, price 1.36x,
+refused by 8.2%; `ExceededSlippage` both, 0.0004 SOL each). The first one showed the floor was not the tested rule: the
+bot computed `min_out` as our share of **its average fill** plus 25%, so its own 1.5 SOL buy (about 5% between its
+average and the price it left on a fresh curve) and our own impact (about 2% at 0.5 SOL, 3% at 1 SOL) ate into the
+margin, and the real limit was about 1.17x the price its buy left at 0.5 SOL (1.155x at 1 SOL), against the 1.25x of
+`grid.py premium`. **Fixed Oct 29** (`pos::buy_min_out`: the curve's own quote at 1.25x the price its buy left;
+engine test `the_price_limit_is_against_the_price_its_buy_left`); deployed with §3.
+
 The paper run on this box ended there (one box runs one bot). What the test must show, over 5-10 trades: buys landing
 at its slot +1 or better (`long buy ... seen at its slot +N`, then `long fill ... paid X (vs its price +N%)`: that
 percentage is where in its slot we landed, `07-rework-2026-10-28/README.md` §5), every sell landing (a pool sell after

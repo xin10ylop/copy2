@@ -371,7 +371,7 @@ impl Engine {
             stake as f64 / v as f64
         };
         let quote_in_est = (t.its_quote_in as f64 * share) as u64;
-        let min_out = (t.its_tokens as f64 * share / (1.0 + self.cfg.max_premium)) as u64;
+        let min_out = pos::buy_min_out(t.vt_post, t.vq_post, quote_in_est, self.cfg.max_premium);
         let (input, hops) = Position::store_route(&plan.route);
         let id = self.book.next_id;
         self.book.next_id += 1;
@@ -959,7 +959,7 @@ impl Engine {
                     let q = (p.its_quote_in as f64 * share) as u64;
                     p.tokens = pos::curve_buy(p.vt, p.vq, q, 0);
                     p.quote_in = q;
-                    let min_out = (p.its_tokens as f64 * share / (1.0 + max_premium)) as u64;
+                    let min_out = pos::buy_min_out(p.vt_ref, p.vq_ref, q, max_premium);
                     if p.tokens < min_out {
                         p.state = State::Failed;
                         p.costs = refused_fee;

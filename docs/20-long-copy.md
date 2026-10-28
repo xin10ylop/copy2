@@ -48,7 +48,9 @@ within a slot** (`exits_pess.py`):
   quote's canonical pool against wSOL or WBTC. Wrapped SOL is wrapped and unwrapped inside the transaction. At most 2
   hops (a 3-hop transaction is over 1,232 bytes); no Jupiter leg (that part made +0.4 out of sample).
 - **Buy:** one transaction, one sender (two landing would double the position) plus the same bytes by
-  `sendTransaction`; `min_out` from its own fill at `max_premium` (25%).
+  `sendTransaction`; `min_out` is the curve's own quote at `max_premium` (25%) over the price its buy left (the
+  backtest's limit; our own impact is inside the quote, so the floor does not tighten with the stake; until Oct 29 it
+  was its average price plus the premium, about 7% tighter at 0.5 SOL, and two real buys were refused at about 1.17x).
   A paper buy fills on the curve at the end of `paper_land_slots` (1) slots after the slot our feed saw its buy
   in (journal `seen at its slot +N`: our feed's lag; before 2026-10-28 it filled after its own slot +1) and is
   refused by the same `min_out`
