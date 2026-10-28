@@ -121,6 +121,16 @@ the "+1 slot" row the backtests assume. Received 17% above the floor (`min_out`)
 the wallet a minute earlier (slots 462579268 and 462579290) are a third party's dust (1,000 lamports and a USDC token
 account), not ours.
 
+**The second real buy, refused by the floor (Oct 28 19:20:43 UTC), checked on chain:** E3hauBDZ, its 1.5 SOL buy at slot
+462592485 position 142 (the block's first trade of the coin); ours **in the same slot**, position 402, with 7 trades of
+the coin between (positions 143-401). Those 7 trades had moved the price to about 1.36x its price, above the 25%
+`max_premium`, so the program refused ours: `ExceededSlippage` (6004), 3,382,585,462,822 tokens offered against our
+`min_out` 3,673,345,739,972. Cost 0.000405 SOL (the base and priority fee; a failed transaction pays no tip). The journal:
+`long buy #2 ... sent in 6 ms; seen at its slot +0`, then `long buy-failed #2 E3hauBDZ cost -0.0004`. That is the rule
+working as built (`backtests.md` §9: a tighter or looser premium limit loses out of sample); it also shows that landing
+in its slot is not enough on its own: the copiers that got in ahead of us inside the slot are what the position fight
+is about (`07-rework-2026-10-28/README.md` §5).
+
 The paper run on this box ended there (one box runs one bot). What the test must show, over 5-10 trades: buys landing
 at its slot +1 or better (`long buy ... seen at its slot +N`, then `long fill ... paid X (vs its price +N%)`: that
 percentage is where in its slot we landed, `07-rework-2026-10-28/README.md` §5), every sell landing (a pool sell after

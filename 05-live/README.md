@@ -38,6 +38,7 @@ remaining SOL returned to the owner's Phantom wallet.
 | Oct 28 evening | Ohio terminated by the owner; its paper book after 13:31 UTC and fra1's backup are gone |
 | Oct 28 18:34 UTC | the long copy goes **real at 0.1 SOL** on the Frankfurt box (wallet `E7KX1hcM...`, 1 open, daily stop 0.3); paper there ends |
 | Oct 28 18:35:51 UTC | **the first real trade**: FUN1RZrj, our buy one slot behind its buy at the top of the block (3 coin trades between), take profit 3 s later, **+0.0927 SOL** on 0.1; the chain equals the journal (`03-strategy-A-long-copy/deploy-frankfurt.md` §6) |
+| Oct 28 19:20:43 UTC | the second real buy, E3hauBDZ, **refused by the 25% premium floor** on chain (`ExceededSlippage`): same slot as its buy, 7 coin trades ahead of us had moved the price to 1.36x; cost 0.0004 SOL |
 
 ## Money
 
