@@ -297,6 +297,24 @@ K = 600 is the end of its slot (= `land` 0). Same model, costs and cap as §3 (q
 - Where we really land is measured by the journal's `long fill ... paid X (vs its price +N%)` and the fill slot in
   the 0.1 SOL test (plan §6 step 2); paper only shows `seen at its slot +N`.
 
+**Under the live bot's conditions** (`land_cond.py`, `out/land_cond.txt`; the bot's set, following its early sell as
+in every row above; the live bot holds instead, which `more/` D-v puts at −0.51 → +3.10 on P3 at slot +1):
+
+| stake × cap, costs | landing | P1 | P2 | P3 |
+|---|---|---|---|---|
+| 1 SOL × 4, the backtest's costs (0.0095 a transaction, 0.0155 bias) | slot +1 (published) | +5.19 (+3.22) | +13.49 (+10.70) | **−0.51 (−2.39)** |
+| same | its slot, 100 positions behind | +10.82 (+8.59) | +15.73 (+12.92) | +1.87 (−0.30) |
+| **0.1 SOL × 1, the live costs** (0.0014 a transaction, no bias) | slot +1 | +0.26 (+0.06) | +0.54 (+0.31) | −0.02 (−0.21) |
+| same | its slot, 100 / 30 positions behind | +0.63 / +0.83 | +0.67 / +0.77 | **+0.17 / +0.19** (−0.06 / −0.04) |
+| 0.3 SOL × 3, the live costs | its slot, 100 / 30 positions | +4.16 / +5.07 | +5.73 / +6.18 | +0.91 / +0.98 (+0.22 / +0.30) |
+| 1 SOL × 3, the live costs | slot +1 | +8.03 (+6.00) | +16.75 (+13.89) | +0.51 (−1.44) |
+| same | its slot, 100 / 30 positions | +13.51 / +16.41 | +18.71 / +20.15 | +2.89 / +3.13 (+0.66 / +0.90) |
+
+The first evening live (Oct 28 18:34-21:32 UTC, 0.1 SOL × 1, 4 of 6 buys in its slot 5-7 trades behind its buy) made
++0.35 on 5 closed: the model's P3 pace at that size is about +0.1 a day, so the evening was a hot stretch, in the
+direction the model gives once the landing and the costs are the real ones. The published −0.51 is the same data with
+the buy a slot later, the costs 7 times tonight's, and selling behind its early sales.
+
 ## Notes
 
 - `behave.py` (the original too) prints its first-buy SOL with a minus sign, so its size buckets put every coin under
