@@ -22,6 +22,9 @@
       marginal multiple at its sale p10..p90 [0.76, 0.91, 1.0, 1.27, 2.57]; >= 2.4x 125, <= 0.75x 69, 0.75-2.4x before 1,790 s 78; its net +228.95, won 269
       held: <5 s 11  5-30 s 65  30 s-2 min 55  2-10 min 81  10-29.8 min 45  29.8-31 min 484  >31 min 0
       multiple at sales before 1,790 s: <0.5 5  0.5-0.75 49  0.75-1.0 35  1.0-1.5 30  1.5-2.0 11  2.0-2.4 2  2.4-3 107  3+ 18
+   P1 by shape: 1 buy 1 sale 1828 +140.45  1 buy, 2+ sales 1 -0.32  no sale 4 +7.49
+   P2 by shape: 1 buy 1 sale 1212 +111.93  no sale 8 +21.62
+   P3 by shape: 1 buy 1 sale 285 +45.68  2+ buys 1 +2.92  no sale 9 +35.95
    coins priced in another token by its curve trades: 2 (one buy one sell) 3325, 1 21, 3+ 2
 
 3. early sales, 1.45+ SOL one-buy one-sell trips (early.py)

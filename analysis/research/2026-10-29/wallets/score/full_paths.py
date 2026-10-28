@@ -1,7 +1,7 @@
 # Every landed curve trade from its buy to its sell for its trips with a first buy of at least MIN_SOL (SOL value),
 # both quotes: the whole price path, for exits of our own (fixed holds, trailing stops, take-profit ladders).
 #   python3 -I full_paths.py WALLET MIN_SOL   ->  <w8>_fpaths.json  (resumable)
-# score: KINDS="pump, other quote" limits the trips to one kind, ROUTES=ABC to the routable ones (route_q.py); each trip also keeps n01, the number of landed curve
+# score: MULTI=1 adds its one-buy several-sale coins; KINDS="pump, other quote" limits the trips to one kind, ROUTES=ABC to the routable ones (route_q.py); each trip also keeps n01, the number of landed curve
 # transactions after its buy in its slot and the next (from the signature pages, so never sampled).
 import sys, json, os, time
 from concurrent.futures import ThreadPoolExecutor
@@ -14,7 +14,9 @@ W = sys.argv[1]; MIN = float(sys.argv[2]); CAP = int(sys.argv[3]) if len(sys.arg
 rows = [json.loads(l) for l in open(f"{SP}/h9long/{W[:8]}.jsonl")]
 sig_of = {(t[0], r["s"], t[2]): r["sig"] for r in rows for t in r["tr"] if t[1] == W}
 T = json.load(open(f"{SP}/h9long/{W[:8]}_trips.json"))
-pick = [x for x in T if not x["open"] and len(x["tr"]) == 2 and x["tr"][0]["buy"] and not x["tr"][1]["buy"]
+# score: MULTI=1 also takes coins it bought once and sold in several parts (the path runs to its LAST sale)
+def onebuy(x): return x["tr"][0]["buy"] and not x["tr"][-1]["buy"] and sum(t["buy"] for t in x["tr"]) == 1 and len(x["tr"]) >= 2
+pick = [x for x in T if not x["open"] and (len(x["tr"]) == 2 or (os.environ.get("MULTI") == "1" and onebuy(x))) and x["tr"][0]["buy"] and not x["tr"][-1]["buy"]
         and (x["tr"][0]["v"] or 0) >= MIN and x["kind"] in os.environ.get("KINDS", "pump, other quote|pump, SOL quote").split("|")]   # score: KINDS
 if os.environ.get("ROUTES"):                       # score: only the buys route_q.py puts in these classes (e.g. ABC)
     os.environ["W"] = W; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -38,7 +40,7 @@ def trades(tx, m):
 def one(x):
     m = x["m"]
     if m in have: return m, have[m]
-    b, s = x["tr"]
+    b, s = x["tr"][0], x["tr"][-1]                  # score: its last sale (= its only one unless MULTI)
     bs, ss = sig_of.get((m, b["s"], 1)), sig_of.get((m, s["s"], 0))
     if not bs or not ss: return m, None
     bc = C.bonding_curve(m); sigs, before = [], ss; slots = []

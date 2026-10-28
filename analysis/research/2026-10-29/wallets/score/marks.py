@@ -86,6 +86,14 @@ for lo, name in ((0, "all sizes"), (FLOOR, f"{FLOOR}+ SOL")):
     tm = [r["marg"] for r in rs if r["sec"] < 1790]
     mb = collections.Counter(("<0.5", "0.5-0.75", "0.75-1.0", "1.0-1.5", "1.5-2.0", "2.0-2.4", "2.4-3", "3+")[(m >= .5) + (m >= .75) + (m >= 1) + (m >= 1.5) + (m >= 2) + (m >= 2.4) + (m >= 3)] for m in tm)
     print("      multiple at sales before 1,790 s: " + "  ".join(f"{k} {mb[k]}" for k in ("<0.5", "0.5-0.75", "0.75-1.0", "1.0-1.5", "1.5-2.0", "2.0-2.4", "2.4-3", "3+")))
+for p in ("P1", "P2", "P3"):                   # its result by the shape of the coin's trades (one sale or several)
+    g = collections.defaultdict(list)
+    for x in oq:
+        if per(x["tr"][0]["bt"]) != p: continue
+        nb = sum(t["buy"] for t in x["tr"]); ns = len(x["tr"]) - nb
+        g["1 buy 1 sale" if (nb, ns) == (1, 1) else "1 buy, 2+ sales" if nb == 1 and ns >= 2 else "no sale" if not ns else "2+ buys"].append(x["net"] or 0)
+    M[f"m2_shape_{p}"] = {k: (len(v), sum(v)) for k, v in g.items()}
+    print(f"   {p} by shape: " + "  ".join(f"{k} {len(v)} {sum(v):+.2f}" for k, v in sorted(g.items())))
 nt = collections.Counter(len(x["tr"]) for x in oq)
 print(f"   coins priced in another token by its curve trades: 2 (one buy one sell) {nt[2]}, 1 {nt[1]}, 3+ {sum(v for k, v in nt.items() if k >= 3)}")
 # 3

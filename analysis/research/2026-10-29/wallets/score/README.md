@@ -87,3 +87,26 @@ Wallet 4's row is its own data (`fresh3`, Oct 19 → Oct 28 14:54 UTC) through t
 create+0/+1 share is from `07-rework-2026-10-28/wallet-check.md` §6 (47 of 47 measured coins at the create slot or the
 next) and `../../../2026-10-28/more/` (age.py: 322 of 323 big buys within 2 s of the create); `create.py` was not re-run
 on it.
+
+## Status (Oct 28, 23:26 UTC)
+
+Priority changed at 23:20 (the neighbours search, `../neighbours/README.md`): only 6anjqMeW passes its profile screen, so
+6anjqMeW gets the full pipeline on its own history (also at a 0.45 SOL floor, its own size), and AMDEmVoc, Fhbh1DTU and
+dKMjeGJ4 only the cheap marks (daily counts, hold, failed share), no backtest. 6anjqMeW and AMDEmVoc are fetched in full;
+dKMjeGJ4 and Fhbh1DTU were paused at about 80% so 6anjqMeW's paths come first.
+
+**6anjqMeW does not trade like wallet 4.** It buys 0.5 SOL (p25-p75; 0.25 at p10, 1.0 on 556 coins) of coins priced in
+another token, never 1.45+. It sells most coins in one piece within seconds or on fixed timers (10-s bins: 0 s 1,445
+trips, 240 s 301, 480 s 197, 740 s 182, 60 s 98, of 3,332), and those one-sale coins lose: −83.52 SOL. Its profit is
+the coins it sells in 2-4 parts (1,101 coins, +131.6): a first sale of 10-50% of its tokens 1-7 s after its buy at a
+median 1.22x, the rest later. By period (coins priced in another token, first trade a buy, `marks.py` data):
+
+| period | one buy, one sale | one buy, 2+ sales | its whole result (every token, ledger) |
+|---|---|---|---|
+| P1 Oct 19-22 | 1,800 coins, −16.90 | 395, +36.27 | +32.92 on 4,047 tokens |
+| P2 Oct 23-27 | 996, −42.51 | 444, +60.84 | +33.09 on 3,287 |
+| P3 Oct 27-28 | 537, −23.86 | 262, +34.54 | +16.54 on 2,200 |
+
+`grid.py` copies one-buy one-sale trips only. For 6anjqMeW that set is exactly the coins it gave up on, so
+`full_paths.py` and `grid.py` got `MULTI=1`: a coin it bought once and sold in parts is one trip from its buy to its
+last sale, its earlier partial sales being trades on the recorded path.

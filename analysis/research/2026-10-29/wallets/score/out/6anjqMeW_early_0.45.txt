@@ -1,0 +1,35 @@
+
+== its one-buy one-sell trips, 0.45+ SOL, other quote, all: how it sold   [n: tp / stop / time / early (share)]
+   P1 1752:  tp  16 ( 0.9%)  stop 114 ( 6.5%)  time  10 ( 0.6%)  early 1612 (92.0%)   its net  -16.96  (early sells  +0.75)
+   P2  706:  tp   0 ( 0.0%)  stop  37 ( 5.2%)  time   1 ( 0.1%)  early 668 (94.6%)   its net  -33.25  (early sells -25.30)
+   P3  441:  tp   0 ( 0.0%)  stop  33 ( 7.5%)  time   4 ( 0.9%)  early 404 (91.6%)   its net  -23.69  (early sells -16.12)
+
+== its one-buy one-sell trips, 0.45+ SOL, other quote, routable (route class A, B, C): how it sold   [n: tp / stop / time / early (share)]
+   P1  353:  tp   4 ( 1.1%)  stop  16 ( 4.5%)  time   5 ( 1.4%)  early 328 (92.9%)   its net  +12.84  (early sells +14.70)
+   P2  149:  tp   0 ( 0.0%)  stop   9 ( 6.0%)  time   0 ( 0.0%)  early 140 (94.0%)   its net   -9.23  (early sells  -7.30)
+   P3   64:  tp   0 ( 0.0%)  stop   8 (12.5%)  time   0 ( 0.0%)  early  56 (87.5%)   its net   -4.45  (early sells  -2.83)
+
+== the early sells (0.45+ SOL, other quote, all routes): p10 p25 p50 p75 p90
+   P1 1612: seconds held [2, 3, 240, 480, 740]  multiple at its sale [0.85, 0.92, 0.99, 1.02, 1.38]  SOL value multiple [0.8, 0.86, 0.93, 0.99, 1.31]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 555  10-60 s 96  1-5 min 402  5-15 min 497  15-30 min 62
+      multiple: 0.75-1.0x 872  1.0-1.5x 591  1.5-2.0x 46  2.0-2.4x 103   won 328
+      quote: via SOL only 1262  EPjFWdd5 201  CARDS 40  WBTC 37  WLFinEv6 14  TTWO 12  A7bd 7  PUMP 7   route class: A 233  B 29  C 66  E 1284
+      for scale, time: 10 quote via SOL only 8  ABNB56Tt 1  EPjFWdd5 1
+      for scale, tp: 16 quote via SOL only 11  EPjFWdd5 3  WBTC 2
+   P2 668: seconds held [1, 2, 2, 22, 190]  multiple at its sale [0.85, 0.93, 1.0, 1.02, 1.07]  SOL value multiple [0.8, 0.89, 0.96, 0.98, 1.03]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 484  10-60 s 64  1-5 min 77  5-15 min 32  15-30 min 11
+      multiple: 0.75-1.0x 274  1.0-1.5x 390  1.5-2.0x 2  2.0-2.4x 2   won 88
+      quote: via SOL only 554  EPjFWdd5 81  WBTC 18  TTWO 5  PUMP 3  AAPLEDt8 1  5tCju6YN 1  DJTu 1   route class: A 89  B 38  C 13  E 528
+      for scale, time: 1 quote EPjFWdd5 1
+      for scale, tp: 0 quote 
+   P3 404: seconds held [1, 1, 3, 60, 698]  multiple at its sale [0.85, 0.94, 1.0, 1.02, 1.08]  SOL value multiple [0.8, 0.88, 0.96, 0.99, 1.04]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 263  10-60 s 36  1-5 min 51  5-15 min 33  15-30 min 21
+      multiple: 0.75-1.0x 165  1.0-1.5x 239  1.5-2.0x 0  2.0-2.4x 0   won 57
+      quote: via SOL only 320  EPjFWdd5 71  WBTC 5  PreweJYE 4  DJTu 3  Pren 1   route class: A 47  B 5  C 4  E 348
+      for scale, time: 4 quote via SOL only 3  EPjFWdd5 1
+      for scale, tp: 0 quote 
+
+== every coin first bought for 0.45+ SOL (other quote), any number of trades: its first curve sale
+   P1 2140 coins: 1 buys 10 sells 2  1 buys 14 sells 1  1 buys 2 sells 212  1 buys 3 sells 88  1 buys 4 sells 34  1 buys 5 sells 16  1 buys 6 sells 20  1 buys 7 sells 3  1 buys 8 sells 2  1 buys 9 sells 2  2 buys 2 sells 4  2 buys 3 sells 2  2 buys 4 sells 1  2 buys 5 sells 1  early first sale, sold all 1618  early first sale, sold part 379  still holds some 13  trades: 1 buy 1 sell 1752   early first sale 1997 (93.3%)
+   P2 1072 coins: 1 buys 10 sells 4  1 buys 11 sells 6  1 buys 12 sells 2  1 buys 14 sells 1  1 buys 15 sells 1  1 buys 16 sells 1  1 buys 17 sells 1  1 buys 2 sells 163  1 buys 3 sells 89  1 buys 4 sells 41  1 buys 5 sells 21  1 buys 6 sells 10  1 buys 7 sells 4  1 buys 8 sells 3  1 buys 9 sells 5  2 buys 2 sells 3  2 buys 3 sells 1  2 buys 4 sells 3  2 buys 5 sells 1  2 buys 6 sells 1  2 buys 7 sells 2  3 buys 3 sells 1  3 buys 6 sells 1  4 buys 16 sells 1  early first sale, sold all 673  early first sale, sold part 360  still holds some 22  trades: 1 buy 1 sell 706   early first sale 1033 (96.4%)
+   P3 700 coins: 1 buy, no curve sale 10  1 buys 10 sells 1  1 buys 11 sells 1  1 buys 12 sells 1  1 buys 2 sells 105  1 buys 3 sells 79  1 buys 4 sells 18  1 buys 5 sells 8  1 buys 6 sells 11  1 buys 7 sells 4  1 buys 8 sells 3  2 buys 11 sells 1  2 buys 13 sells 2  2 buys 2 sells 4  2 buys 3 sells 3  2 buys 4 sells 2  2 buys 5 sells 1  2 buys 7 sells 1  2 buys 9 sells 1  3 buys 4 sells 1  7 buys 7 sells 1  early first sale, sold all 412  early first sale, sold part 238  still holds some 27  trades: 1 buy 1 sell 442   early first sale 650 (92.9%)

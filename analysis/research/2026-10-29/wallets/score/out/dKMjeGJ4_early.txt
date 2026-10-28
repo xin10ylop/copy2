@@ -1,0 +1,35 @@
+
+== its one-buy one-sell trips, 1.45+ SOL, other quote, all: how it sold   [n: tp / stop / time / early (share)]
+   P1    3:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early   3 (100.0%)   its net   -0.72  (early sells  -0.72)
+   P2   48:  tp   0 ( 0.0%)  stop   3 ( 6.2%)  time   1 ( 2.1%)  early  44 (91.7%)   its net   -6.37  (early sells  -2.71)
+   P3    1:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early   1 (100.0%)   its net   -0.23  (early sells  -0.23)
+
+== its one-buy one-sell trips, 1.45+ SOL, other quote, routable (route class A, B, C): how it sold   [n: tp / stop / time / early (share)]
+   P1    0:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early   0 ( 0.0%)   its net   +0.00  (early sells  +0.00)
+   P2    7:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early   7 (100.0%)   its net   -0.95  (early sells  -0.95)
+   P3    0:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early   0 ( 0.0%)   its net   +0.00  (early sells  +0.00)
+
+== the early sells (1.45+ SOL, other quote, all routes): p10 p25 p50 p75 p90
+   P1 3: seconds held [2, 2, 2, 3, 3]  multiple at its sale [0.86, 0.86, 0.95, 1.0, 1.0]  SOL value multiple [0.91, 0.91, 0.96, 0.98, 0.98]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 3  10-60 s 0  1-5 min 0  5-15 min 0  15-30 min 0
+      multiple: 0.75-1.0x 2  1.0-1.5x 1  1.5-2.0x 0  2.0-2.4x 0   won 0
+      quote: DJTu 2  PUMP 1   route class: E 3
+      for scale, time: 0 quote 
+      for scale, tp: 0 quote 
+   P2 44: seconds held [2, 2, 2, 3, 4]  multiple at its sale [0.89, 0.98, 1.01, 1.16, 1.37]  SOL value multiple [0.93, 0.96, 0.98, 1.05, 1.14]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 44  10-60 s 0  1-5 min 0  5-15 min 0  15-30 min 0
+      multiple: 0.75-1.0x 15  1.0-1.5x 28  1.5-2.0x 1  2.0-2.4x 0   won 15
+      quote: SPCX 10  PUMP 8  DJTu 7  WBTC 6  XspzcW1P 1  PEPEqnuu 1  6p6xgHyF 1  J8PSdNP3 1   route class: A 1  C 6  E 37
+      for scale, time: 1 quote via SOL only 1
+      for scale, tp: 0 quote 
+   P3 1: seconds held [2, 2, 2, 2, 2]  multiple at its sale [0.89, 0.89, 0.89, 0.89, 0.89]  SOL value multiple [0.93, 0.93, 0.93, 0.93, 0.93]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 1  10-60 s 0  1-5 min 0  5-15 min 0  15-30 min 0
+      multiple: 0.75-1.0x 1  1.0-1.5x 0  1.5-2.0x 0  2.0-2.4x 0   won 0
+      quote: PUMP 1   route class: E 1
+      for scale, time: 0 quote 
+      for scale, tp: 0 quote 
+
+== every coin first bought for 1.45+ SOL (other quote), any number of trades: its first curve sale
+   P1 60 coins: 1 buys 2 sells 12  1 buys 3 sells 20  1 buys 4 sells 9  1 buys 5 sells 3  1 buys 6 sells 6  1 buys 7 sells 1  1 buys 8 sells 6  early first sale, sold all 3  early first sale, sold part 53  still holds some 33  trades: 1 buy 1 sell 3   early first sale 56 (93.3%)
+   P2 213 coins: 1 buys 2 sells 93  1 buys 3 sells 58  1 buys 4 sells 9  1 buys 5 sells 2  1 buys 6 sells 2  1 buys 7 sells 1  early first sale, sold all 44  early first sale, sold part 158  still holds some 84  trades: 1 buy 1 sell 48   early first sale 202 (94.8%)
+   P3 98 coins: 1 buys 11 sells 1  1 buys 2 sells 42  1 buys 3 sells 26  1 buys 4 sells 16  1 buys 5 sells 4  1 buys 6 sells 3  1 buys 8 sells 4  1 buys 9 sells 1  early first sale, sold all 1  early first sale, sold part 95  still holds some 31  trades: 1 buy 1 sell 1   early first sale 96 (98.0%)

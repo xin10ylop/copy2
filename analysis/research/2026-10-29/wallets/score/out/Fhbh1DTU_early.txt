@@ -1,0 +1,35 @@
+
+== its one-buy one-sell trips, 1.45+ SOL, other quote, all: how it sold   [n: tp / stop / time / early (share)]
+   P1  161:  tp   1 ( 0.6%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early 160 (99.4%)   its net  +18.53  (early sells +13.55)
+   P2   98:  tp   0 ( 0.0%)  stop   1 ( 1.0%)  time   0 ( 0.0%)  early  97 (99.0%)   its net   +2.27  (early sells  +3.26)
+   P3   57:  tp   0 ( 0.0%)  stop   3 ( 5.3%)  time   0 ( 0.0%)  early  54 (94.7%)   its net   +3.04  (early sells  +6.34)
+
+== its one-buy one-sell trips, 1.45+ SOL, other quote, routable (route class A, B, C): how it sold   [n: tp / stop / time / early (share)]
+   P1   87:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early  87 (100.0%)   its net  +13.37  (early sells +13.37)
+   P2   51:  tp   0 ( 0.0%)  stop   1 ( 2.0%)  time   0 ( 0.0%)  early  50 (98.0%)   its net   +4.13  (early sells  +5.11)
+   P3   38:  tp   0 ( 0.0%)  stop   1 ( 2.6%)  time   0 ( 0.0%)  early  37 (97.4%)   its net   +3.11  (early sells  +4.34)
+
+== the early sells (1.45+ SOL, other quote, all routes): p10 p25 p50 p75 p90
+   P1 160: seconds held [1, 2, 2, 2, 3]  multiple at its sale [0.93, 1.0, 1.01, 1.11, 1.32]  SOL value multiple [0.91, 0.95, 0.99, 1.08, 1.26]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 153  10-60 s 5  1-5 min 2  5-15 min 0  15-30 min 0
+      multiple: 0.75-1.0x 29  1.0-1.5x 126  1.5-2.0x 5  2.0-2.4x 0   won 70
+      quote: via SOL only 85  PUMP 45  CARDS 20  DoGEV7LA 2  CHWYHz2z 1  PEPEqnuu 1  EKpQGSJt 1  DvdmEnzt 1   route class: A 87  E 73
+      for scale, time: 0 quote 
+      for scale, tp: 1 quote PUMP 1
+   P2 97: seconds held [1, 1, 2, 2, 9]  multiple at its sale [0.94, 1.0, 1.02, 1.09, 1.19]  SOL value multiple [0.92, 0.96, 0.99, 1.05, 1.15]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 89  10-60 s 8  1-5 min 0  5-15 min 0  15-30 min 0
+      multiple: 0.75-1.0x 21  1.0-1.5x 73  1.5-2.0x 3  2.0-2.4x 0   won 37
+      quote: PUMP 37  via SOL only 35  H74CYmXg 12  DoGEV7LA 5  Ce2gx9KG 2  9BB6NFEc 1  PEPEqnuu 1  J3NKxxXZ 1   route class: A 50  E 47
+      for scale, time: 0 quote 
+      for scale, tp: 0 quote 
+   P3 54: seconds held [1, 2, 2, 2, 3]  multiple at its sale [0.95, 1.0, 1.05, 1.12, 1.31]  SOL value multiple [0.92, 0.96, 1.03, 1.12, 1.27]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 50  10-60 s 4  1-5 min 0  5-15 min 0  15-30 min 0
+      multiple: 0.75-1.0x 11  1.0-1.5x 40  1.5-2.0x 3  2.0-2.4x 0   won 29
+      quote: via SOL only 34  PUMP 12  DoGEV7LA 3  J3NKxxXZ 2  9cRCn9rG 2  H74CYmXg 1   route class: A 37  E 17
+      for scale, time: 0 quote 
+      for scale, tp: 0 quote 
+
+== every coin first bought for 1.45+ SOL (other quote), any number of trades: its first curve sale
+   P1 382 coins: 1 buy, no curve sale 2  1 buys 10 sells 3  1 buys 11 sells 2  1 buys 12 sells 1  1 buys 2 sells 49  1 buys 3 sells 37  1 buys 4 sells 33  1 buys 5 sells 12  1 buys 6 sells 8  1 buys 7 sells 21  1 buys 8 sells 7  1 buys 9 sells 5  2 buys 15 sells 1  2 buys 19 sells 1  2 buys 2 sells 11  2 buys 3 sells 3  2 buys 4 sells 1  2 buys 5 sells 1  3 buys 11 sells 2  3 buys 3 sells 7  3 buys 4 sells 1  4 buys 12 sells 1  4 buys 4 sells 4  4 buys 5 sells 1  5 buys 7 sells 1  5 buys 9 sells 1  6 buys 6 sells 2  7 buys 10 sells 1  7 buys 14 sells 1  7 buys 7 sells 1  early first sale, sold all 186  early first sale, sold part 189  still holds some 66  trades: 1 buy 1 sell 161   early first sale 375 (98.2%)
+   P2 261 coins: 1 buys 10 sells 2  1 buys 11 sells 1  1 buys 12 sells 1  1 buys 2 sells 32  1 buys 3 sells 24  1 buys 4 sells 18  1 buys 5 sells 7  1 buys 6 sells 7  1 buys 7 sells 22  1 buys 8 sells 5  1 buys 9 sells 5  2 buys 10 sells 1  2 buys 11 sells 1  2 buys 2 sells 11  2 buys 3 sells 6  2 buys 4 sells 1  2 buys 6 sells 1  2 buys 7 sells 1  2 buys 8 sells 1  3 buys 14 sells 1  3 buys 24 sells 2  3 buys 3 sells 4  3 buys 4 sells 2  3 buys 5 sells 1  3 buys 9 sells 1  4 buys 4 sells 1  4 buys 6 sells 1  5 buys 16 sells 1  6 buys 10 sells 1  6 buys 7 sells 1  early first sale, sold all 113  early first sale, sold part 146  still holds some 44  trades: 1 buy 1 sell 98   early first sale 259 (99.2%)
+   P3 119 coins: 1 buy, no curve sale 1  1 buys 10 sells 1  1 buys 2 sells 12  1 buys 3 sells 8  1 buys 4 sells 6  1 buys 5 sells 3  1 buys 6 sells 3  1 buys 7 sells 8  1 buys 8 sells 4  1 buys 9 sells 4  2 buys 16 sells 1  2 buys 2 sells 5  2 buys 3 sells 1  2 buys 4 sells 1  3 buys 11 sells 1  3 buys 3 sells 1  4 buys 9 sells 1  5 buys 5 sells 1  early first sale, sold all 61  early first sale, sold part 54  still holds some 13  trades: 1 buy 1 sell 57   early first sale 115 (96.6%)

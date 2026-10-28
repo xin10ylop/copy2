@@ -1,0 +1,24 @@
+tokens 5759  realized +403.09  open -57.77  sold from before the start +1777.50  token transfers 217  SOL/USD last 0.009844022690964504  transfers 246 net -77.25
+unpriced [('GyL3Wb,PrekqL', 39), ('GUfXMe,XsCPL9', 31), ('CrAr4R,D6JUb9', 30), ('4Adcam,98sMhv', 29), ('DQL6Rc,PrekqL', 26)]
+  GsWgoEk1  real  +17.893  open  +0.000  buys   1 sells   1
+  DQsg3Whg  real  +13.480  open  +0.000  buys   1 sells   8
+  Mc2UY2q4  real  +12.033  open  +0.000  buys   1 sells   7
+  Gh2HjBHk  real  +10.969  open  -0.000  buys   1 sells   9
+  44mvktb2  real   +9.710  open  +0.000  buys   1 sells  12
+  4M8H6PqW  real   +9.516  open  +0.000  buys   1 sells   5
+  3SUXi1mV  real   +7.894  open  +0.000  buys   1 sells   9
+  3goEJAqw  real   +7.508  open  +0.000  buys   1 sells   6
+  B1N47nRS  real   +7.235  open  +0.000  buys   1 sells   2
+  3YAfwq2i  real   +7.235  open  +0.000  buys   1 sells  12
+  HGUH4M1N  real   +6.145  open  +0.000  buys   1 sells   2
+  CmirL677  real   +5.489  open  +0.000  buys   1 sells  11
+  A7eUT51X  real   +5.438  open  +0.000  buys   1 sells  10
+  omg2CHai  real   +5.026  open  -0.000  buys   1 sells  10
+  BoS5BXnd  real   +4.998  open  +0.000  buys   1 sells   3
+  58QyXQ1U  real   -7.279  open  -0.048  buys  26 sells  10
+  CHWYHz2z  real   -6.971  open  -0.799  buys  23 sells  12
+  5tCju6YN  real   -5.455  open  -4.594  buys  33 sells   7
+  5MQhtwFm  real   -7.696  open  -2.661  buys  19 sells   8
+  7V1evjzU  real   -9.847  open  -0.518  buys  32 sells  15
+  pumpCmXq  real  -12.567  open  -0.001  buys 2021 sells 1307
+check: cash moved by trading +1949.10; open positions at cost 130.07

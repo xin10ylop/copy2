@@ -1,9 +1,0 @@
-== H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg  rows 19981, last row 10-28 14:54 UTC, days P1 4.00 P2 4.01 P3 1.61
-
-1. first buys of coins priced in another token (and SOL-priced, for scale), by its SOL value
-   its first-buy SOL, other quote: p10..p90 [0.73, 0.9, 1.06, 1.37, 1.5]   SOL-priced: [0.32, 0.55, 0.61, 0.87, 1.27]
-   1.45+ SOL P1:   400 coins,  100.0 a day;  create+0/+1 0 of 0 measured (0%), 0.0 a day; within 2 s 0;  SOL-priced 1.45+: 87
-   1.45+ SOL P2:   296 coins,   73.7 a day;  create+0/+1 0 of 0 measured (0%), 0.0 a day; within 2 s 0;  SOL-priced 1.45+: 40
-   1.45+ SOL P3:    55 coins,   34.2 a day;  create+0/+1 0 of 0 measured (0%), 0.0 a day; within 2 s 0;  SOL-priced 1.45+: 3
-   1.45+ quote mix: ? 751
-   1.45+ route class (route_q): A 220  B 108  C 30  E 393   routable (A B C) 358 of 751 (48%)

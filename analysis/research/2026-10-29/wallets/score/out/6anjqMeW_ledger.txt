@@ -1,0 +1,24 @@
+tokens 9535  realized +82.39  open +0.16  sold from before the start +8.43  token transfers 231  SOL/USD last 0.009806793032708195  transfers 358 net +6.81
+unpriced [('7RRfEt,98sMhv', 3), ('DeB2kf,Xs3oZw', 2), ('AndDyg,XspzcW', 2), ('BS8MJL,J8PSdN', 2), ('AYwrHp,Pre8AR', 2)]
+  pumpCmXq  real   +3.609  open  +0.000  buys  76 sells 105
+  G9Vebqfy  real   +3.413  open  +0.000  buys   1 sells  19
+  3NZ9JMVB  real   +3.260  open  +0.000  buys 213 sells 181
+  3To5zzSr  real   +2.257  open  +0.000  buys   1 sells   5
+  27APUrS5  real   +2.198  open  +0.000  buys   1 sells   6
+  3mhimAwn  real   +1.714  open  +0.000  buys   1 sells   1
+  GXYzu11R  real   +1.622  open  +0.000  buys   1 sells   1
+  5rZTH5eh  real   +1.598  open  +0.000  buys   1 sells   1
+  5a7nDZcR  real   +1.580  open  +0.000  buys   1 sells   4
+  B1N47nRS  real   +1.357  open  +0.000  buys   1 sells   6
+  4G6THa3e  real   +1.349  open  +0.000  buys   1 sells   1
+  BvzwP111  real   +1.325  open  +0.000  buys   1 sells   1
+  DJTu7vi8  real   +1.325  open  +0.000  buys  32 sells  21
+  7agoFLbX  real   +1.321  open  +0.000  buys   1 sells   9
+  FGQbFLtH  real   +1.260  open  +0.000  buys   1 sells   1
+  2Cs8HksH  real   -0.582  open  +0.000  buys   1 sells   1
+  88UTtQd6  real   -0.585  open  +0.000  buys   1 sells   1
+  GnqRbTFs  real   -0.586  open  +0.000  buys   1 sells   1
+  CARDSccU  real   -0.711  open  +0.000  buys 114 sells 109
+  AMZNw7cw  real   -0.967  open  +0.000  buys  12 sells   8
+  6ombVv3Y  real   -1.004  open  +0.000  buys   1 sells   2
+check: cash moved by trading +83.15; open positions at cost 4.54

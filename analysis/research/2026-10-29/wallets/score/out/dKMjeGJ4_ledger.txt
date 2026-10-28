@@ -1,0 +1,24 @@
+tokens 3626  realized +749.56  open +0.00  sold from before the start +0.21  token transfers 12  SOL/USD last 0.009839025948651041  transfers 159 net +10.52
+unpriced []
+  Jmy7SAPy  real  +48.284  open  +0.000  buys   1 sells  12
+  pumpCmXq  real  +36.515  open  +0.000  buys 313 sells 268
+  91n7QUvu  real  +25.585  open  +0.000  buys   1 sells   8
+  A1vV5Us4  real  +20.169  open  +0.000  buys   1 sells  13
+  DJTu7vi8  real  +18.302  open  +0.000  buys 120 sells 103
+  SPCXxcqX  real  +17.739  open  +0.000  buys 141 sells 121
+  3f5UT4Na  real  +17.345  open  +0.000  buys   1 sells   7
+  5ChT61vP  real  +14.946  open  +0.000  buys   1 sells   6
+  E6bDY24a  real  +13.598  open  +0.000  buys   1 sells   9
+  GGHi5KXL  real  +13.210  open  +0.000  buys   1 sells   3
+  PFWAHnSh  real  +12.422  open  +0.000  buys   1 sells   5
+  4vCMmKk4  real  +12.007  open  +0.000  buys   1 sells  10
+  J8TgGVnN  real  +11.797  open  +0.000  buys   1 sells  11
+  Ep1EjfNk  real  +11.276  open  +0.000  buys   1 sells   3
+  DypFu254  real  +10.961  open  +0.000  buys   1 sells   2
+  EguH3gkB  real   -3.452  open  -0.000  buys   1 sells   3
+  2NyvjmAd  real   -3.564  open  -0.000  buys   1 sells   6
+  2ycvHcdf  real   -3.582  open  +0.000  buys   1 sells   6
+  8EnKF6u5  real   -3.905  open  +0.000  buys   1 sells   4
+  4QfvovwX  real   -4.324  open  -0.000  buys   1 sells   3
+  GnJfMgsX  real   -5.552  open  +0.000  buys   1 sells   3
+check: cash moved by trading +752.63; open positions at cost 0.00

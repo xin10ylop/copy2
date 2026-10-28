@@ -1,0 +1,28 @@
+
+== pump, other quote: 803 closed coins whose first trade is a buy, net +6.69
+   buys per coin p10..p90 [1, 1, 1, 1, 1]  sells per coin [1, 1, 1, 2, 3]  first-buy SOL [-0.505, -0.504, -0.502, -0.502, -0.253]  tip M [1.0, 1.0, 2.5, 3.0, 3.0]
+   slots to first sell [5, 6, 15, 560, 3471]  to last sell [6, 11, 40, 944, 3575]
+   ix of first buy [('buy_exact_quote_in', 604), ('multi_hop_swap', 199)]
+   price at its first sell / after its first buy [0.799, 0.925, 0.989, 1.153, 1.445]
+   its net / first-buy SOL [-11.638, -5.986, -2.162, 2.247, 14.415]  mean 0.833  won 257 / 803
+   first sell after      <=2 slots: coins    19 net    +3.57 won 16
+   first sell after     3-10 slots: coins   283 net    +5.33 won 98
+   first sell after    11-50 slots: coins   177 net    +0.45 won 63
+   first sell after   51-200 slots: coins    64 net    -0.24 won 18
+   first sell after 201-1000 slots: coins   102 net    -0.50 won 30
+   first sell after    >1000 slots: coins   156 net    -2.34 won 30
+   first buy     <0.6 SOL: coins   803 net    +6.69 won 257
+
+== pump, SOL quote: 1134 closed coins whose first trade is a buy, net +2.36
+   buys per coin p10..p90 [1, 1, 1, 1, 1]  sells per coin [1, 1, 1, 2, 3]  first-buy SOL [-0.505, -0.502, -0.502, -0.502, -0.502]  tip M [1.0, 1.0, 2.0, 3.0, 3.0]
+   slots to first sell [4, 7, 12, 31, 495]  to last sell [6, 10, 18, 70, 1298]
+   ix of first buy [('buy_exact_quote_in', 1131), ('buy_exact_sol_in', 3)]
+   price at its first sell / after its first buy [0.781, 0.895, 0.981, 1.141, 1.341]
+   its net / first-buy SOL [-11.97, -6.411, -2.003, 3.057, 13.22]  mean 0.208  won 403 / 1134
+   first sell after      <=2 slots: coins    63 net    +4.89 won 50
+   first sell after     3-10 slots: coins   434 net    +8.63 won 182
+   first sell after    11-50 slots: coins   378 net    -8.01 won 112
+   first sell after   51-200 slots: coins    92 net    -3.05 won 18
+   first sell after 201-1000 slots: coins    88 net    -0.97 won 20
+   first sell after    >1000 slots: coins    76 net    +0.78 won 20
+   first buy     <0.6 SOL: coins  1134 net    +2.36 won 403

@@ -25,7 +25,12 @@ TRIPS = []
 for m, v in P.items():
     if not v or "path" not in v: continue
     x = T[m]
-    if len(x["tr"]) != 2: continue
+    if len(x["tr"]) != 2:
+        # score: MULTI=1 copies a coin it bought once and sold in parts as one trip from its buy to its LAST sale (its earlier
+        # partial sales are trades on the recorded path)
+        if os.environ.get("MULTI") == "1" and x["tr"][0]["buy"] and not x["tr"][-1]["buy"] and sum(t["buy"] for t in x["tr"]) == 1:
+            x = dict(x, tr=[x["tr"][0], x["tr"][-1]])
+        else: continue
     its = x["tr"][0]["v"] or 0
     if LO <= its < HI and "other" in x["kind"] and cls(x) in os.environ.get("ROUTES", "ABC"):
         TRIPS.append((m, x, v["path"]))
@@ -49,7 +54,7 @@ FILL = {}
 ENTRY = {}
 
 
-def one(x, path0, tp=2.0, sl=0.8, hold=1790, trail=None, land=1, pmax=None, stake=1.0):
+def one(x, path0, tp=2.0, sl=0.8, hold=1790, trail=None, land=1, pmax=None, stake=float(os.environ.get("STAKE", 1.0))):   # score: STAKE
     """(buy time, close time, result SOL) or None when the entry is refused; KIND[mint] = the exit that closed it."""
     b, s = x["tr"]; its = b["v"]
     vbb, vab = b["vt"] + b["tok"], b["vt"]; Qi = 1 / vab - 1 / vbb

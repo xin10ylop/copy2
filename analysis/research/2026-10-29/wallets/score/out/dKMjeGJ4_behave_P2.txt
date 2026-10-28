@@ -1,0 +1,25 @@
+
+== pump, other quote: 129 closed coins whose first trade is a buy, net -7.62
+   buys per coin p10..p90 [1, 1, 1, 1, 1]  sells per coin [1, 1, 2, 2, 3]  first-buy SOL [-6.967, -3.583, -2.093, -2.09, -2.078]  tip M [0.0, 0.0, 6.524, 9.7, 51.236]
+   slots to first sell [2, 9, 13, 16, 22]  to last sell [9, 10, 26, 37, 64]
+   ix of first buy [('buy_exact_quote_in', 129)]
+   price at its first sell / after its first buy [0.792, 0.867, 0.941, 1.041, 1.225]
+   its net / first-buy SOL [-59.973, -17.455, -6.355, 13.842, 49.348]  mean -5.906  won 49 / 129
+   first sell after      <=2 slots: coins    13 net    +0.52 won 6
+   first sell after     3-10 slots: coins    46 net    -9.77 won 9
+   first sell after    11-50 slots: coins    68 net    +1.21 won 33
+   first sell after   51-200 slots: coins     1 net    +1.20 won 1
+   first sell after    >1000 slots: coins     1 net    -0.78 won 0
+   first buy     <0.6 SOL: coins   129 net    -7.62 won 49
+
+== pump, SOL quote: 881 closed coins whose first trade is a buy, net +166.53
+   buys per coin p10..p90 [1, 1, 1, 1, 1]  sells per coin [1, 2, 2, 3, 4]  first-buy SOL [-4.202, -3.602, -2.102, -2.102, -1.802]  tip M [0.0, 3.0, 60.0, 100.0, 174.0]
+   slots to first sell [0, 1, 8, 11, 15]  to last sell [8, 11, 27, 55, 82]
+   ix of first buy [('buy_exact_quote_in', 881)]
+   price at its first sell / after its first buy [0.814, 0.902, 0.965, 1.068, 1.198]
+   its net / first-buy SOL [-58.502, -26.108, -9.022, 20.946, 94.162]  mean 18.903  won 326 / 881
+   first sell after      <=2 slots: coins   306 net   +47.07 won 110
+   first sell after     3-10 slots: coins   345 net   -60.68 won 81
+   first sell after    11-50 slots: coins   227 net  +116.80 won 132
+   first sell after   51-200 slots: coins     3 net   +63.35 won 3
+   first buy     <0.6 SOL: coins   881 net  +166.53 won 326
