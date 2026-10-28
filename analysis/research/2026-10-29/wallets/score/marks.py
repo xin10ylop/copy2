@@ -25,7 +25,9 @@ sigs = json.load(open(f"{H}_sigs.json"))
 P3 = 1793060400
 def per(t): return "P1" if datetime.datetime.fromtimestamp(t, datetime.timezone.utc).day <= 22 else "P2" if t < P3 else "P3"
 end = max(r["bt"] for r in rows)
-DAYS = {"P1": 4.0, "P2": (P3 - 1792713600) / 86400, "P3": (end - P3) / 86400}
+start = min(r["bt"] for r in rows)                # a young wallet: count its days from its first row
+DAYS = {p: max(0.0, (min(b, end) - max(a, start)) / 86400) for p, (a, b) in
+        {"P1": (1792368000, 1792713600), "P2": (1792713600, P3), "P3": (P3, end)}.items()}
 def q(xs, ps=(10, 25, 50, 75, 90), nd=2):
     xs = sorted(xs); return [round(xs[min(len(xs) - 1, int(p / 100 * len(xs)))], nd) for p in ps] if xs else []
 NAMES = {"CARDSccU": "CARDS", "pumpCmXq": "PUMP", "3NZ9JMVB": "WBTC", "TTWofwAg": "TTWO", "WXMRyRZh": "WXMR", "A7bdiYdS": "A7bd",
@@ -55,9 +57,9 @@ for lo in (FLOOR, 0.5):
         meas = [x for x in xs if CR.get(x["m"]) and CR[x["m"]][0] is not None]
         c01 = sum(1 for x in meas if x["tr"][0]["s"] - CR[x["m"]][0] <= 1)
         c2s = sum(1 for x in meas if CR[x["m"]][1] and x["tr"][0]["bt"] - CR[x["m"]][1] <= 2)
-        M[f"m1_{lo}_{p}"] = dict(n=len(xs), day=len(xs) / DAYS[p], meas=len(meas), c01=c01, c2s=c2s, sol=len(sol))
-        print(f"   {lo}+ SOL {p}: {len(xs):5d} coins, {len(xs) / DAYS[p]:6.1f} a day;  create+0/+1 {c01} of {len(meas)} measured"
-              f" ({100 * c01 / max(len(meas), 1):.0f}%), {c01 / DAYS[p]:.1f} a day; within 2 s {c2s};  SOL-priced {lo}+: {len(sol)}")
+        M[f"m1_{lo}_{p}"] = dict(n=len(xs), day=len(xs) / max(DAYS[p], 1e-9), meas=len(meas), c01=c01, c2s=c2s, sol=len(sol))
+        print(f"   {lo}+ SOL {p}: {len(xs):5d} coins, {len(xs) / max(DAYS[p], 1e-9):6.1f} a day;  create+0/+1 {c01} of {len(meas)} measured"
+              f" ({100 * c01 / max(len(meas), 1):.0f}%), {c01 / max(DAYS[p], 1e-9):.1f} a day; within 2 s {c2s};  SOL-priced {lo}+: {len(sol)}")
     xs = [x for x in oq if (x["tr"][0]["v"] or 0) >= lo]
     M[f"m1_{lo}_quotes"] = collections.Counter(qname(x["m"]) for x in xs).most_common(6)
     M[f"m5_{lo}"] = dict(n=len(xs), abc=sum(cls(x) in "ABC" for x in xs), cls=dict(collections.Counter(cls(x) for x in xs)))

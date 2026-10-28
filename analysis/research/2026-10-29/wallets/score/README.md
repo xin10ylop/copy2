@@ -3,34 +3,49 @@
 Strategy A copies wallet 4 (`H9kuqGKN`): its 1.45+ SOL buys of pump coins priced in another token, at the create slot or
 the next, held to 2.0x / 0.8x / 1,790 s (`../../../2026-10-28/fresh/README.md`). This folder runs the same per-wallet
 pipeline on other wallets, to find ones with the same edge. First batch: the four neighbours named in
-`07-rework-2026-10-28/wallet-check.md` §4b.
+`07-rework-2026-10-28/wallet-check.md` §4b, then two from the fresh-creates scan.
 
-| short | address | what wallet-check.md §4b says |
+| short | address | what was said before (wallet-check.md §4b; for the last two `../creates/README.md`) |
 |---|---|---|
 | 6anjqMeW | `6anjqMeWigQFo5wpciARAunVQUXTqoat8w8fFWarCkpc` | fast launch buyer, fixed 0.5 SOL, on 28 of 40 sampled wallet-4 coins |
 | AMDEmVoc | `AMDEmVocLtN5ji2gBY7BrmSHEyM5vt6TGszBbg4crMXg` | 0.6 SOL buys, on 11 of 40 |
 | Fhbh1DTU | `Fhbh1DTUDKt6qu9zVg8Q5VgnZa1WWWbxBxG6pCoJoggA` | micro-buy bot (0.002-0.003 SOL), on 5 of 40 |
 | dKMjeGJ4 | `dKMjeGJ4Mk9S3hxdfTThvZ7exks2xMwWqSM5NvN2CTK` | slot-0 sniper that sells in 0-3 s (docs/research/strategy-copytrade.md, docs/19) |
+| 3dwZP6T8 | `3dwZP6T8tApEByVMiwYVeMQC7gwjeEVy6HjWWVyvhS6c` | buys big (1.95 SOL median) at create+0/+1 and holds minutes (first sale median 274 s) |
+| DsGJkPzF | `DsGJkPzFEQZuwy7JjZzPcJEyEfdC6StV7rarXG4ftRSA` | smaller (0.54 SOL median), mixed holds, first sale median 35 s |
 
 Periods (UTC, by the coin's first buy): **P1** Oct 19-22 (pick), **P2** Oct 23 → Oct 27 00:20 (score), **P3** Oct 27
-00:20 → the wallet's last row (Oct 28 22:22-22:52). (+x) = without each period's best 2. Costs as everywhere: 0.0095 SOL a
+00:20 → the wallet's last row (Oct 28 22:22-23:36). (+x) = without each period's best 2. Costs as everywhere: 0.0095 SOL a
 transaction, 0.0155 SOL bias a fill, 5.13% round trip on coins priced in another token; model q + lift (`grid.py`).
 Every number below is in `out/<w8>_<step>.txt`.
 
-**Priority change (23:20 UTC, from `../neighbours/README.md`):** only 6anjqMeW passed the neighbours' profile screen, so
+**Priority changes:** at 23:20 UTC (from `../neighbours/README.md`) only 6anjqMeW passed the neighbours' profile screen, so
 it got the full pipeline on its own history (also at a 0.45 SOL floor, its own size). AMDEmVoc, Fhbh1DTU and dKMjeGJ4
-got the cheap marks only (counts, hold, early sales, failed share, routes, own result): no paths, no backtest.
+got the cheap marks only (counts, hold, early sales, failed share, routes, own result): no paths, no backtest. At 23:37
+UTC two more came from the fresh-creates scan (`../creates/README.md`): 3dwZP6T8 (full pipeline, 1.45 and 1.0 floors) and
+DsGJkPzF (cheap marks and the backtest at 0.45).
 
 ## The answer
 
-**None of the four has wallet 4's edge. Not worth copying with strategy A, as is or with a changed exit.** All four are
-launch scalpers: they buy at the create slot or the next, sell most coins in one piece within seconds or minutes at
-about the price they paid, and make most of their money on the coins that run in the first seconds, which they sell in
-parts (6anjqMeW: one-sale coins −83.27 SOL, coins sold in parts +131.65). Wallet 4 is the opposite: it sells 99.9% of
-its coins in one piece, and those make its money (+140.45 / +111.93 / +45.68 in P1 / P2 / P3). It held 74% of them to
-its 30-minute timer; the median one-sale hold here is 1 s (Fhbh1DTU), 2 s (dKMjeGJ4), 6 s (AMDEmVoc) and 43 s
-(6anjqMeW, with timers at 4, 8 and 12 minutes); at most 2% of any one's one-sale trips reach 30 minutes. A copy that lands a slot
-later buys what they are already selling.
+**None of the six has wallet 4's edge. None is worth copying with strategy A now, as is or with a changed exit.**
+
+- **6anjqMeW** (full pipeline): never buys 1.45+; at its own 0.5 SOL size our copy loses in every period and every
+  setting (P1 −11.60, P2 −17.81, P3 −8.48 on 416 / 208 / 96 copies). **Not worth it.**
+- **3dwZP6T8** (full pipeline, the creates scan's candidate; first transaction Oct 24 11:13 UTC): the nearest to wallet 4,
+  with 1.9 SOL other-token launch buys, 53% routable, 20-30 a day, but it sells on a **272 s timer**. Our copy as built:
+  P2 −3.21 (−5.29), P3 +1.78 (−0.38). Selling just before its timer is about break-even. **Not worth it now; re-score it
+  after another week.**
+- **DsGJkPzF** (cheap marks + the 0.45 backtest): a 20 s scalper; the copy loses in all three periods. **Not worth it.**
+- **AMDEmVoc, Fhbh1DTU, dKMjeGJ4** (cheap marks only): launch flippers that hold 1-6 s. **Not worth it.**
+
+They are launch scalpers. They buy at the create slot or the next and sell most coins in one piece, within seconds or
+on a short timer, at about the price they paid. Most of their money comes from the coins that run in the first seconds
+or minutes, which they sell in parts (6anjqMeW: one-sale coins −83.27 SOL, coins sold in parts +131.65; 3dwZP6T8: −7.73
+and +44.47). Wallet 4 is the opposite: it sells 99.9% of its coins in one piece, and those make its money (+140.45 /
++111.93 / +45.68 in P1 / P2 / P3). It holds 74% of them to its 30-minute timer. The median one-sale hold here is 1 s
+(Fhbh1DTU), 2 s (dKMjeGJ4), 6 s (AMDEmVoc), 22 s (DsGJkPzF), 43 s (6anjqMeW, timers at 4, 8 and 12 minutes) and 274 s
+(3dwZP6T8). At most 2% of any one's one-sale trips reach 30 minutes. A copy that lands a slot later buys what they are
+about to sell.
 
 ## The table
 
@@ -41,6 +56,8 @@ later buys what they are already selling.
 | **AMDEmVoc** | 1.45+: 0.2 / 0.2 / 0 (2 coins). 0.5+: 139.8 / 189.6 / 152.3; create+0/+1 98%; PUMP 178, xStocks 120, CARDS 103 (of 1,615) | one-sale trips held 4 / 6 / 8 s (p25 / median / p75) at 1.00x, 0% to 1,790 s; profit from 75 coins sold in parts | 1.45+: 1 trip; 0.55+: 95.1% / 96.6% / 95.1% | 3.2% | 1.45+: 0 of 2; 0.5+: 28% | +27.29 (+21.08) / +55.34 (+50.36) / +17.02 (+11.17) | not run (cheap marks only) | not run |
 | **Fhbh1DTU** | 1.45+: **95.5 / 65.0 / 61.4**; create+0/+1 72% / 65% / 69%; PUMP 307, CSocnzcR 99, CARDS 66, DoGEV7LA 34 (of 762) | one-sale trips held 1 / 1 / 2 s at 1.00x, 0% to 1,790 s; profit from coins sold in parts | 1.45+: 99.4% / 99.0% / 94.7% | **86.3%** | 1.45+: 40% (308 of 762); 0.5+: 29% | +125.49 (+94.11) / +160.04 (+137.04) / +59.79 (+42.38), plus +1,777.50 from tokens it did not buy here | not run | not run |
 | **dKMjeGJ4** | 1.45+: 15.0 / 53.1 / 51.1; create+0/+1 99%; PUMP 116, SPCX 54, xStocks 51, DJTu 46 (of 371). SOL-priced 1.45+: 1,327 / 1,155 / 564 coins | 2-8 SOL slot-0 sniper; sells in parts, first sale 6-13 slots, last 26-37 slots (medians) | 1.45+: 3 / 48 / 1 trips, 92-100% | **47.2%** | 1.45+: 11% (39 of 371) | +390.82 (+328.72) / +290.23 (+221.77) / +68.51 (+44.71); other-token coins +0.15 / +10.16 / −4.63 | not run | not run |
+| **3dwZP6T8** (first tx Oct 24 11:13) | 1.45+: **— / 32.6 / 22.3**; create+0/+1 78% / 77%; C5xph2yL 31, PUMP 12, xStocks 8, WBTC 8 (of 127) | a **272 s timer** (70% of 107 one-sale trips at 260-290 s); on a run a first sale at a median 2.12x; one-sale coins −7.73, coins sold in parts +44.47 | 1.45+: — / 98.6% / 97.1% | 35.6% | 1.45+: **53%** (67 of 127) | — / +20.57 (+12.45) / +19.74 (+11.94) | 1.45 floor (= 1.0 floor): **— / −3.21 (−5.29), 49 / +1.78 (−0.38), 17**; our hold 260 s: +1.32 (−0.61) / +2.51 (+0.35) | 1 (p25 0, p75 2; 125) |
+| **DsGJkPzF** | 1.45+: 0 / 0 / 0.5 (1 coin). 0.45+: 102.8 / 32.6 / 36.0; create+0/+1 99%; CARDS 150, PUMP 124, WBTC 54 (of 613) | a **20 s timer** (65% of 1,503 one-sale trips at 10-40 s), at 1.00x; sells in one piece | 0.45+: 92.7% / 96.2% / 85.5% | 5.3% | 0.45+: 20% (122 of 613) | its pump coins in another token −2.50 / −2.46 / +2.92 (whole ledger unusable, see below) | 0.45 floor: −1.42 (−3.23), 68 / −0.88 (−2.81), 32 / −1.99 (−3.00), 22 | 1 (p25 0, p75 2; 122) |
 
 Wallet 4's row is its own data (`fresh3`, Oct 19 → Oct 28 14:54 UTC) through the same scripts (`out/H9kuqGKN_*.txt`):
 `marks.py` with its own route class (`ROUTECLS=wallet4`), `grid.py cap|land q 1 1.45 9` at 4 open, `frenzy.py`. Its
@@ -61,8 +78,8 @@ them (1,418 / 1,530 / 1,113). Its quotes: PUMP 552, CARDS 400, SPCX 361, xStocks
 - One-sale coins (3,333, −83.27): held under 5 s (1,400 of 3,332 trips), or to fixed timers of 240 s (301), 480 s
   (197) and 740 s (182) (10-s bins); 1% reach 1,790 s; sold at a median 0.99x. The timers are mostly P1 (its early
   sales held a median 240 s in P1, 2 s in P2, 3 s in P3).
-- Coins sold in 2-4 parts (1,101, +131.65): the first part (10-50% of its tokens) 0-4 s after its buy at a median
-  1.22-1.28x, the rest a median 5-10 s after its buy; the best part at a median 1.26-1.40x.
+- Coins sold in 2-4 parts (1,101, +131.65): the first part (10-50% of its tokens on the 2-sale coins) a median 2-4 s
+  after its buy at a median 1.22-1.28x, the last a median 5-10 s after its buy; its best part at a median 1.26-1.40x.
 - On its 0.45+ one-sale trips the early-sale rate (before 1,790 s, between 0.75x and 2.4x) is 92.0% / 94.6% / 91.6%.
 
 | | one buy, one sale | one buy, 2+ sales | all its tokens (ledger, without the best 2) |
@@ -125,7 +142,70 @@ sells in parts within seconds (first sale a median 6-13 slots after its buy, las
 The research of Oct 24 already found its edge is the first fill, which a copier cannot inherit
 (`docs/research/strategy-copytrade.md`).
 
-<!-- NEW -->
+## The two from the fresh-creates scan (`../creates/README.md`)
+
+**3dwZP6T8** (`3dwZP6T8tApEByVMiwYVeMQC7gwjeEVy6HjWWVyvhS6c`, `out/3dwZP6T8_*.txt`). **A young wallet: its first
+transaction is Oct 24 11:13:13 UTC** (signature `PiRLAz8XHY1rNDkv…`, the oldest of its 4,828; `sigs.py` paged to the
+end before Oct 19). So it has no P1, and P2 is 2.55 days.
+
+- (1) 1.9 SOL buys (p10 1.84, p90 1.94) of coins priced in another token: 83 in P2, 44 in P3 (32.6 and 22.3 a day),
+  77-78% at the create slot or the next, all within 2 s of the create. Quotes: C5xph2yL 31, PUMP 12, xStocks 8,
+  WBTC 8 of 127. About as many SOL-priced coins beside them (59, 53), same size.
+- (2) Its rule: **a 272 s timer** (70% of its 107 one-sale trips sold 260-290 s after the buy; seconds held p25 / median
+  / p75 272 / 274 / 303), and on a run **a first sale at about 2x**: on 18 coins sold in parts the first sale came at a
+  median 2.12x (p10 1.92x) a median 65 s after its buy, the rest by a median 437 s. The one-sale coins lose (−1.87 in
+  P2, −5.86 in P3); the coins sold in parts make its money (+21.71, +22.76).
+- (3) Early sales (wallet 4's definition) 98.6% / 97.1%: its timer comes at 4.5 minutes, before our 1,790 s.
+- (4) Failed 35.6% of its own (505 failed, 913 landed it signed).
+- (5) Routable: **53%** (67 of 127: A 28, B 31, C 8), like wallet 4's 48%.
+- (6) Its result: P2 +20.57 (+12.45), P3 +19.74 (+11.94) on every token; the ledger check agrees (cash moved by
+  trading +42.24, realized +42.22). Transfers out −37.11.
+- Tips 200,000 and 1,000,000 lamports, never wallet 4's 1,067,000 / 1,010,000: not wallet 4's operator by that mark.
+
+**DsGJkPzF** (`DsGJkPzFEQZuwy7JjZzPcJEyEfdC6StV7rarXG4ftRSA`, `out/DsGJkPzF_*.txt`; cheap marks and the 0.45 backtest).
+
+- (1) 0.3 or 1.0 SOL buys of coins priced in another token (p25 0.3, p75 0.99); at 0.45+: 102.8 / 32.6 / 36.0 a day,
+  98-100% at the create slot or the next. Quotes: CARDS 150, PUMP 124, WBTC 54, SPCX 27 of 613.
+- (2) Its rule: **a 20 s timer** (65% of 1,503 one-sale trips sold 10-40 s after the buy; p25 / median / p75 21 / 22 /
+  35 s), sold at a median 1.00x; it sells everything at once (1,503 of 1,512 coins).
+- (3) Early sales (0.45+): 92.7% / 96.2% / 85.5%. (4) Failed 5.3%. (5) Routable 20% (122 of 613).
+- (6) Its pump coins priced in another token: −2.50 (−8.37) / −2.46 (−4.24) / +2.92 (−0.34). The ledger's whole-wallet
+  figures (+131.22 / +4.62 / +18.24) are not usable: they rest on xStock trades (+87.86 on 19 xStocks, priced from its
+  own token-for-token swaps) and realized +154.08 against only +26.33 of cash moved by trading.
+
+**Our copy of 3dwZP6T8** (`grid_*.txt` at 1.45, `grid_*_1.0.txt` at 1.0: the same 66 routable buys, all its buys are
+1.84+ SOL; `MULTI=1`, 1 SOL, 2.0 / 0.8 / 1,790 s, q + lift, slot + 1, 4 open; no P1):
+
+| variant | P2 Oct 24 11:13 → Oct 27 00:20 | P3 Oct 27-28 |
+|---|---|---|
+| **as built (1.45 or 1.0 floor)** | **−3.21 (−5.29), 49** | **+1.78 (−0.38), 17** |
+| one-sale coins only | −8.14 (−8.41), 43 | −2.81 (−2.61), 12 |
+| its own 2x first sale in the lift (ITS_TP=2.0) | −5.47 (−6.54) | −0.38 (−1.49) |
+| 0.5 SOL a copy | −2.41 (−3.45) | +0.66 (−0.42) |
+| take profit 1.1x … none, SL 0.8 (best on P2) | 1.5x: −1.66 (−3.14) | 1.5x: −0.09 (−1.46) |
+| landing slot + 2 / + 5 / + 10 | −3.25 / −2.36 / −4.01 | +1.52 / +1.64 / +1.56 |
+| **our hold just before its timer** (`grid_hold.txt`): TP 2.0, 260 s | +1.32 (−0.61) | +2.51 (+0.35) |
+| TP 1.5, 180 s (the best of that small grid on P2) | +2.10 (+0.62) | +0.80 (−0.29) |
+| 3dwZP6T8 itself on the same coins | +11.26 | +8.96 |
+
+As built, 43 of its 49 P2 copies end right after its 272 s sale (−8.14, −0.19 a copy) and 6 reach 2.0x (+4.93). The
+cap never binds (1 open: −2.91). Selling a few seconds before its timer turns it about flat: picked on P2 (TP 1.5,
+180 s, +0.62 without the best 2), it scores −0.29 without the best 2 on P3's 17 copies. That grid was made after seeing
+the as-built result, on 2.5 + 2 days. The frenzy behind its buys is as thin as 6anjqMeW's (a median 1 landed curve
+transaction in its slot and the next, 125 buys).
+
+**Verdict on 3dwZP6T8: not worth it now, the nearest to wallet 4 so far.** It is the only one with wallet 4's kind of
+buys (1.9 SOL, other-token launches, 53% routable, 20-30 a day), but it sells on a 4.5-minute timer that comes before
+our exits, and our copy as built loses on P2 and is negative on P3 without the best 2. With an exit just before its
+timer it is about break-even on 66 copies. Re-score it after another week of history: a new P1 / P2 split could pick the
+exit honestly. It started on Oct 24, so it may also be someone's new wallet.
+
+**Our copy of DsGJkPzF** (0.45 floor, routable, `MULTI=1`; `grid_*_0.45.txt`): **P1 −1.42 (−3.23), 68; P2 −0.88
+(−2.81), 32; P3 −1.99 (−3.00), 22.** Every take profit from 1.1x to none is negative without the best 2 in every period
+(the best, 1.75x, is P1 +0.03 (−1.79)); no lift −1.64 / −0.62 / −1.99; 0.5 SOL −1.81 / −0.96 / −1.37; later landings
+worse. 102 of 122 copies end right after its 20 s sale (−0.096 to −0.143 a copy). It made +0.10 / +0.33 / −0.34 on the
+same coins itself. Frenzy: a median 1 (p25 0, p75 2). **Verdict: not worth it**: a 20 s scalper at about 1.0x with
+no edge on its other-token coins even for itself.
 
 ## Run order (any wallet)
 
@@ -156,7 +236,8 @@ Fhbh1DTU and dKMjeGJ4. `missing.py W8` tells how many landed signatures no file 
 | `early.py`, `grid.py` | `2026-10-28/fresh/` | SP; the wallet from `W` (was wallet 4); route class from `route_q.py`. `grid.py` also: `ITS_TP` (the wallet's own take profit in the lift, default 2.5), `STAKE` (default 1 SOL), `MULTI=1` (a coin it bought once and sold in parts is one trip to its last sale; without it only one-sale coins are copied) |
 | `full_paths.py` | `2026-10-28/fresh/` | SP; `KINDS` and `ROUTES` filters; `MULTI=1` (as in grid.py, the path runs to its last sale); keeps `n01`, the landed curve transactions after its buy in its slot and the next (mark 8) |
 | `route_q.py` | new | route class from the curve's quote token: C = WBTC-quoted, A = canonical PumpSwap pool vs wSOL, B = vs WBTC only, E = none (`more/pools.py`'s PDA, getAccountInfo). `route_cls.py` read wallet 4's own route, which other wallets do not share. `ROUTECLS=wallet4` uses route_cls.py |
-| `create.py` | new (`more/age.py`'s method) | the create slot of each coin it first bought for 0.5+ SOL in another token: the oldest signature on the bonding curve before its buy |
+| `create.py` | new (`more/age.py`'s method) | the create slot of each coin it first bought for MIN+ SOL in another token (0.5; 0.45 for 6anjqMeW and DsGJkPzF): the oldest signature on the bonding curve before its buy |
+| `hold.py` | new | grid.py's model with our hold shorter than the wallet's own timer (3dwZP6T8: `out/3dwZP6T8_grid_hold.txt`) |
 | `marks.py`, `row.py` | new | marks 1-6 and 8 from the files above (also its result by the shape of the coin's trades: one sale or several); one table row |
 | `frenzy.py`, `missing.py` | new | mark 8 for wallet 4 (its old paths have no n01); the fetch check |
 
@@ -164,11 +245,11 @@ Checked on wallet 4's own data (`SP=.../fresh3 ROUTECLS=wallet4`): `grid.py cap 
 (+3.22) 153, P2 +12.27 (+9.62) 161, P3 −2.98 (−4.70) 30, the fresh README's "1.45+ floor" row exactly; `marks.py` gives
 its P3 +82.00 (+58.80) and the early-sale table (3.5% / 13.6% / 49.0%) as published (`out/H9kuqGKN_*.txt`).
 
-## Fetch (Oct 28, 22:51-23:30 UTC)
+## Fetch (Oct 28, 22:51-23:42 UTC)
 
-`sigs.py WALLET 1792368000` (Oct 19 00:00 UTC) on every candidate. All four were fetched in full, Oct 19 to their last
-row (22:22-22:52 UTC Oct 28): pull.py reads landed transactions only, and those were 16,012-33,792 a wallet, not far
-above wallet 4's 19,981, so no window was cut. Fhbh1DTU's 155,007 failed signatures were counted, not fetched.
+`sigs.py WALLET 1792368000` (Oct 19 00:00 UTC) on every candidate. All six were fetched in full, Oct 19 (or their start) to
+their last row (22:22-23:36 UTC Oct 28): pull.py reads landed transactions only, and those were 4,323-33,792 a wallet,
+not far above wallet 4's 19,981, so no window was cut. Fhbh1DTU's 155,007 failed signatures were counted, not fetched.
 
 | wallet | signatures | failed | landed (fetched by pull.py) |
 |---|---|---|---|
@@ -176,10 +257,13 @@ above wallet 4's 19,981, so no window was cut. Fhbh1DTU's 155,007 failed signatu
 | AMDEmVoc | 16,436 | 424 | 16,012 |
 | Fhbh1DTU | 182,408 | 155,007 | 27,401 |
 | dKMjeGJ4 | 52,169 | 18,377 | 33,792 |
+| 3dwZP6T8 (all of it: first signature Oct 24 11:13:13 UTC) | 4,828 | 505 | 4,323 |
+| DsGJkPzF | 9,998 | 524 | 9,474 |
 | (wallet 4, fresh3, to Oct 28 14:54) | 20,476 | 495 | 19,981 |
 
-Throughput was about 60 transactions a second however many fetch processes ran (the session's HTTPS proxy was the
-limit, at about 240% CPU): about 25 minutes for the four, then 12 minutes for 6anjqMeW's 724 paths.
+Throughput was about 60 transactions a second however many fetch processes ran (3 to 21; the session's HTTPS proxy
+process sat at about 240% CPU, so it is the likely limit): about 25 minutes for the first four, 12 minutes for
+6anjqMeW's 724 paths.
 
 ## The marks (how each column is measured)
 
@@ -196,7 +280,8 @@ limit, at about 240% CPU): about 25 minutes for the four, then 12 minutes for 6a
 5. **Routable**: share of its 1.45+ (0.5+) first buys whose curve quote `route_q.py` puts in A, B or C.
 6. **Its own result** (`ledger.py`, every token, by the period of its first buy), and without the period's best 2.
 7. **Our copy** (`grid.py`, routable, 1.45-9 SOL, 1 SOL a copy, at most 4 open, TP 2.0 / SL 0.8 / 1,790 s, q + lift,
-   landing at its slot + 1; and + 3 from `grid.py land`), P1 / P2 / P3, (without the best 2), copies. For 6anjqMeW also
-   from its own size (0.45 SOL), with `MULTI=1`.
+   landing at its slot + 1; and + 3 from `grid.py land`), P1 / P2 / P3, (without the best 2), copies. With `MULTI=1` for
+   the wallets that sell in parts; for 6anjqMeW and DsGJkPzF from their own size (0.45 SOL), for 3dwZP6T8 also from 1.0.
 8. **The frenzy**: landed transactions on the coin's curve after its buy in its slot and the next (median), on its
-   1.45+ SOL trips of coins priced in another token (`full_paths.py`'s n01; wallet 4: `frenzy.py`).
+   1.45+ SOL trips of coins priced in another token (6anjqMeW and DsGJkPzF: its routable 0.45+ buys; 3dwZP6T8: every
+   1.0+ buy; `full_paths.py`'s n01; wallet 4: `frenzy.py`).

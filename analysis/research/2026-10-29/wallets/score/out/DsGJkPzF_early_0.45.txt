@@ -1,0 +1,35 @@
+
+== its one-buy one-sell trips, 0.45+ SOL, other quote, all: how it sold   [n: tp / stop / time / early (share)]
+   P1  410:  tp  15 ( 3.7%)  stop  15 ( 3.7%)  time   0 ( 0.0%)  early 380 (92.7%)   its net   -0.05  (early sells -13.71)
+   P2  131:  tp   1 ( 0.8%)  stop   4 ( 3.1%)  time   0 ( 0.0%)  early 126 (96.2%)   its net   -2.36  (early sells  -1.92)
+   P3   69:  tp   4 ( 5.8%)  stop   6 ( 8.7%)  time   0 ( 0.0%)  early  59 (85.5%)   its net   +3.55  (early sells  +0.58)
+
+== its one-buy one-sell trips, 0.45+ SOL, other quote, routable (route class A, B, C): how it sold   [n: tp / stop / time / early (share)]
+   P1   68:  tp   3 ( 4.4%)  stop   5 ( 7.4%)  time   0 ( 0.0%)  early  60 (88.2%)   its net   +0.10  (early sells  -0.32)
+   P2   32:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early  32 (100.0%)   its net   +0.33  (early sells  +0.33)
+   P3   22:  tp   0 ( 0.0%)  stop   1 ( 4.5%)  time   0 ( 0.0%)  early  21 (95.5%)   its net   -0.34  (early sells  -0.12)
+
+== the early sells (0.45+ SOL, other quote, all routes): p10 p25 p50 p75 p90
+   P1 380: seconds held [8, 21, 22, 25, 59]  multiple at its sale [0.87, 0.93, 1.0, 1.03, 1.2]  SOL value multiple [0.83, 0.91, 0.95, 0.99, 1.09]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 41  10-60 s 302  1-5 min 37  5-15 min 0  15-30 min 0
+      multiple: 0.75-1.0x 193  1.0-1.5x 171  1.5-2.0x 11  2.0-2.4x 5   won 74
+      quote: CARDS 126  PUMP 80  WBTC 31  SPCX 13  D42TjMjz 13  CSocnzcR 12  WXMR 10  TTWO 9   route class: A 28  B 1  C 31  E 320
+      for scale, time: 0 quote 
+      for scale, tp: 15 quote CARDS 6  CSocnzcR 2  WXMR 1  WBTC 1
+   P2 126: seconds held [5, 20, 21, 31, 64]  multiple at its sale [0.89, 0.93, 0.99, 1.0, 1.15]  SOL value multiple [0.91, 0.94, 0.97, 0.99, 1.12]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 17  10-60 s 88  1-5 min 21  5-15 min 0  15-30 min 0
+      multiple: 0.75-1.0x 68  1.0-1.5x 52  1.5-2.0x 2  2.0-2.4x 4   won 23
+      quote: PUMP 26  WBTC 14  CARDS 10  C5xph2yL 9  TTWO 8  WXMR 8  A7bd 7  DJTu 5   route class: A 9  B 9  C 14  E 94
+      for scale, time: 0 quote 
+      for scale, tp: 1 quote TTWO 1
+   P3 59: seconds held [4, 15, 22, 63, 64]  multiple at its sale [0.88, 0.94, 1.0, 1.02, 1.47]  SOL value multiple [0.9, 0.95, 0.98, 0.99, 1.16]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 7  10-60 s 36  1-5 min 16  5-15 min 0  15-30 min 0
+      multiple: 0.75-1.0x 22  1.0-1.5x 32  1.5-2.0x 1  2.0-2.4x 4   won 11
+      quote: PUMP 8  SPCX 8  WBTC 4  98sM 4  C5xph2yL 3  A7bd 3  H74CYmXg 3  WXMR 2   route class: A 14  B 3  C 4  E 38
+      for scale, time: 0 quote 
+      for scale, tp: 4 quote PUMP 2  TTWO 1  J3NKxxXZ 1
+
+== every coin first bought for 0.45+ SOL (other quote), any number of trades: its first curve sale
+   P1 411 coins: 2 buys 1 sells 1  early first sale, sold all 381  still holds some 1  trades: 1 buy 1 sell 410   early first sale 381 (92.7%)
+   P2 131 coins: early first sale, sold all 126  trades: 1 buy 1 sell 131   early first sale 126 (96.2%)
+   P3 71 coins: 1 buy, no curve sale 1  2 buys 1 sells 1  early first sale, sold all 60  still holds some 1  trades: 1 buy 1 sell 69   early first sale 60 (84.5%)

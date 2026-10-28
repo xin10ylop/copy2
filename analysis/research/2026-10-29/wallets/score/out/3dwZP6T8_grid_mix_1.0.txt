@@ -1,0 +1,10 @@
+66 routable buys of 1.0-9.0 SOL, model q, its exits see our tokens True, at most 4 open
+   as built: tp 2.0 sl 0.8 1790 s               P1   0  +0.00 ( +0.00)   P2  49  -3.21 ( -5.29)   P3  17  +1.78 ( -0.38)
+   P1:
+   P2:
+     its early sell, we follow            43 copies    -8.14 SOL  mean -0.189
+     tp                                    6 copies    +4.93 SOL  mean +0.822
+   P3:
+     its early sell, we follow            12 copies    -2.81 SOL  mean -0.234
+     tp                                    4 copies    +3.72 SOL  mean +0.930
+     tp, its sell first                    1 copies    +0.87 SOL  mean +0.870

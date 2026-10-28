@@ -113,4 +113,6 @@ bash data/datasets/unpack.sh h9long     # one archive
 4. Not built: an alarm when wallet 4 goes quiet or sends SOL out (its predecessor was emptied in one evening); a
    successor scan by its fingerprint (`07-rework-2026-10-28/wallet-check.md` §7); 3-hop routes via a v0 transaction
    (about +0.1 SOL a day); the "can wait" list of the code review.
+   **Other wallets to copy: searched Oct 29, none found** (`analysis/research/2026-10-29/wallets/README.md`: six scored
+   in full, all flip or sell on short timers; the nearest, `3dwZP6T8`, is worth re-scoring after a week).
 5. Strategy D stays stopped. If the hot bot ever runs again, deploy the graduation fix `af681ad` first.

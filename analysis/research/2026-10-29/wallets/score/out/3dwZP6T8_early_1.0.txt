@@ -1,0 +1,35 @@
+
+== its one-buy one-sell trips, 1.0+ SOL, other quote, all: how it sold   [n: tp / stop / time / early (share)]
+   P1    0:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early   0 ( 0.0%)   its net   +0.00  (early sells  +0.00)
+   P2   73:  tp   1 ( 1.4%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early  72 (98.6%)   its net   -1.87  (early sells  -6.77)
+   P3   34:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   1 ( 2.9%)  early  33 (97.1%)   its net   -5.86  (early sells  -5.81)
+
+== its one-buy one-sell trips, 1.0+ SOL, other quote, routable (route class A, B, C): how it sold   [n: tp / stop / time / early (share)]
+   P1    0:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early   0 ( 0.0%)   its net   +0.00  (early sells  +0.00)
+   P2   43:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early  43 (100.0%)   its net   -2.73  (early sells  -2.73)
+   P3   12:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early  12 (100.0%)   its net   -1.74  (early sells  -1.74)
+
+== the early sells (1.0+ SOL, other quote, all routes): p10 p25 p50 p75 p90
+   P1 0: seconds held []  multiple at its sale []  SOL value multiple []  share of its tokens sold []
+      held: <10 s 0  10-60 s 0  1-5 min 0  5-15 min 0  15-30 min 0
+      multiple: 0.75-1.0x 0  1.0-1.5x 0  1.5-2.0x 0  2.0-2.4x 0   won 0
+      quote:    route class: 
+      for scale, time: 0 quote 
+      for scale, tp: 0 quote 
+   P2 72: seconds held [272, 273, 274, 306, 370]  multiple at its sale [0.84, 0.92, 0.98, 1.04, 1.18]  SOL value multiple [0.82, 0.89, 0.93, 0.99, 1.13]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 0  10-60 s 0  1-5 min 52  5-15 min 20  15-30 min 0
+      multiple: 0.75-1.0x 43  1.0-1.5x 29  1.5-2.0x 0  2.0-2.4x 0   won 16
+      quote: via SOL only 69  GYFGHK9e 1  BY9TNoqw 1  EdSuZVh4 1   route class: A 14  B 24  C 5  E 29
+      for scale, time: 0 quote 
+      for scale, tp: 1 quote FAuc5ZDy 1
+   P3 33: seconds held [272, 272, 273, 277, 388]  multiple at its sale [0.84, 0.89, 0.94, 1.01, 1.05]  SOL value multiple [0.8, 0.85, 0.89, 0.96, 1.01]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 0  10-60 s 0  1-5 min 27  5-15 min 6  15-30 min 0
+      multiple: 0.75-1.0x 22  1.0-1.5x 11  1.5-2.0x 0  2.0-2.4x 0   won 4
+      quote: via SOL only 30  GWKw27d8 1  3kFWwzjQ 1  9gexoGn8 1   route class: A 9  C 3  E 21
+      for scale, time: 1 quote via SOL only 1
+      for scale, tp: 0 quote 
+
+== every coin first bought for 1.0+ SOL (other quote), any number of trades: its first curve sale
+   P1 0 coins:    early first sale 0 (0.0%)
+   P2 83 coins: 1 buys 2 sells 10  early first sale, sold all 72  early first sale, sold part 9  trades: 1 buy 1 sell 73   early first sale 81 (97.6%)
+   P3 44 coins: 1 buy, no curve sale 1  1 buys 2 sells 9  early first sale, sold all 33  early first sale, sold part 6  still holds some 2  trades: 1 buy 1 sell 34   early first sale 39 (88.6%)
