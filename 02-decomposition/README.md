@@ -37,10 +37,15 @@ Oct 23-27 at 1 SOL stakes, 3 open (4 open: +6.73 / +11.13). We make much less th
 - we pay about 5% in curve fees for the round trip, plus about 0.03 SOL fixed per trade;
 - we have to sell at 2.0x, because its own 2.5x sale would hit first.
 
-**B: out.** To copy these we'd have to hold PUMP, CARDS, TTWO and the rest, and their prices can fall while we hold
-them. Tested as if we held every one of those tokens at no risk (`ROUTES=E grid.py`): Oct 19-22 +24.63 on 189 copies;
+**B: out, and it cannot be routed at all** (Oct 28, `analysis/research/2026-10-28/more/` §A): `multi_hop_swap` takes
+canonical pump pools only (simulated on mainnet: `OnlyPumpPools`, error 6078), and none of the 78 part-B quote tokens
+(PUMP, CARDS, TTWO, USDC, ZEC, XMR, SPCX, the xStocks ...) has a canonical pool against wSOL or WBTC. Pricing them in the
+oracle would only change the skip's wording. The one way in is to hold the quote as a float; to copy these we'd have to
+hold PUMP, CARDS, TTWO and the rest, and their prices can fall while we hold them. Tested as if we held every one of those tokens at no risk (`ROUTES=E grid.py`): Oct 19-22 +24.63 on 189 copies;
 Oct 23-27 +0.43 on 94 (PUMP −1.32). It fell apart in the later period. Mixed in with A (3 open) they make Oct 23-27 worse,
-+7.38 against +9.63, because they take the open slots. Counted by route instead, the 305 big buys that need Jupiter
++7.38 against +9.63, because they take the open slots. On Oct 27-28 (P3) they recovered a little, +4.85 (+2.65) on 17 as
+if held at no risk; a PUMP float beside A still lowers P2 (+10.13 against +11.13), CARDS stopped (no big CARDS buys after
+Oct 22), and ZEC is the one float positive beside A in all three periods, on few wins (`more/` §A). Counted by route instead, the 305 big buys that need Jupiter
 (direct buys of other quotes, PUMP floats, 3+ hops) made +28.57 on Oct 19-22 and +3.06 (+0.41 without the best 2) on
 Oct 23-27 (h9long README, "What rugsnipe-long can route").
 
@@ -111,8 +116,8 @@ The 76 copies that filled, over check.sh's window:
 
 | Part | Its profit, 8 days | Its profit, check.sh window | Tradeable? | Why | Where |
 |---|---|---|---|---|---|
-| **A** | +102 | +6.02 | **Yes** | routable through pump's own programs; positive in both periods | [strategy A](../03-strategy-A-long-copy/README.md) |
-| B | +116 | +0.06 | No | paid in tokens we don't hold; tested +24.6 then +0.4; takes A's slots | §2 |
+| **A** | +102 | +6.02 | **Yes** | routable through pump's own programs; positive in both periods; **loses on Oct 27-28 since its rule changed** (`07-rework-2026-10-28/`) | [strategy A](../03-strategy-A-long-copy/README.md) |
+| B | +116 | +0.06 | No | paid in tokens we don't hold and **not routable at all** (canonical pools only); as floats +24.6 then +0.4; takes A's slots | §2 |
 | C | +60 | +10.68 | No | smaller buys lose or flip between periods | §2 |
 | **D** | +29 | +2.87 | **Yes (traded live)** | SOL coins, launch slice; ours +0.15 against its +2.77 | [strategy D](../04-strategy-D-launch-copy/README.md) |
 | E | +17 | −2.76 | No | PumpSwap-only; neither bot follows them | §2 |

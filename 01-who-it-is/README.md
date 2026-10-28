@@ -14,7 +14,7 @@ bot's copies of its SOL-coin launch buys (real money, Oct 26 19:36 to Oct 27 09:
 | Found | Oct 26 evening, the second copy-target search (`analysis/research/2026-10-26/wallets2/`, docs/19 §11) |
 | Copied live from | Oct 26 17:36 UTC (19:36 Beirut), launch buys only, by the copy bot (strategy D) |
 | Paper long copy from | Oct 27 10:29 UTC on fra1, then Oct 27 16:11 UTC on Ohio (strategy A) |
-| Its balance | 467.7 SOL on Oct 27 (its native SOL rose +412 with +11.9 deposited) |
+| Its balance | 467.7 SOL on Oct 27 00:40 UTC, 569.5 at Oct 28 14:54 UTC. **No deposits since Oct 19** (the "+11.9 deposited" in the first version of this page was rent back from closing token accounts plus pump's holder-fee payouts); 5.0 SOL went out into a privacy pool on Oct 27 ([`07-rework-2026-10-28/wallet-check.md`](../07-rework-2026-10-28/wallet-check.md)) |
 
 ## 1. How it was found
 
@@ -88,6 +88,11 @@ On its part-A buys (`grid.py cap`, h9long README):
 
 ## 6. What changes over time (watch these)
 
+- **Its rule changed on Oct 27** (checked on chain, `analysis/research/2026-10-28/fresh/` §2): on its 1.45+ SOL other-quote
+  buys it sold early (before 30 minutes, neither at its 2.5x nor its 0.7x) on 3.5% of trips on Oct 19-22, 13.6% on
+  Oct 23-27 and **49% on Oct 27-28**; only 39% ran to its timer (67% before). It still made +82 SOL in those 38 hours.
+- **Its copyable buys are thinning:** 1.45+ SOL other-token buys a day 64, 78, 80, 77, 73, 56, 112 (Oct 19-25), then 35,
+  32, and 11 in the 15 hours of Oct 28 (`wallet-check.md`, `perday.out`).
 - **The edge is shrinking.** Its big buys hit 2.5x 29% of the time on Oct 19, and about 10% by Oct 27. On Oct 23-27 it
   made about +4 SOL a day this way, against +10 before (docs/20 §2).
 - **It sells early more often.** In the paper run on Oct 27-28 it sold before 30 minutes on 8 of 20 copies (40%),
@@ -96,6 +101,22 @@ On its part-A buys (`grid.py cap`, h9long README):
   ([`03-strategy-A-long-copy/paper-run.md`](../03-strategy-A-long-copy/paper-run.md)).
 - **Frenzy coins.** Some coins it buys double within seconds as other bots pile in: 6y9aDagF was 1.2x after 1 s and 2.0x
   after 2 s.
+
+## 8. Where it came from, and who is around it (Oct 28, `07-rework-2026-10-28/wallet-check.md`)
+
+- **Born Oct 17 19:22 UTC**: 39.52 SOL from a one-day test wallet (`8h5eizMg`), then 19.92 SOL from a public privacy
+  pool. The same evening an 82-day bot wallet, `HxcdEi6C` (62,231 signatures since Jul 27, the same 1.0 / 1.5 SOL buys
+  of other-token coins), stopped, put 60 SOL into the same pool and sent 229 SOL to exchanges. All three wallets use a
+  durable nonce first and the same two exact tip sizes (1,067,000 and 1,010,000 lamports), which no other sampled wallet
+  uses. **Wallet 4 is very probably its successor.** The pool hides the direct link on purpose.
+- **One bot, no siblings, no leader, no wash trading:** it buys at the coin's create slot or the next (47 of 47 measured)
+  at a median 1.08x the launch price; the buyer before it is a different wallet almost every time; it never created a
+  coin and never paid any of the 4,594 creators of its coins. Fast launch buyers (`6anjqMeW`, 0.5 SOL) land in its slot or
+  the next on 27 of 40 sampled coins: our fills come behind them.
+- **Its infrastructure:** one tip a transaction (Helius 54%, Astralane 17%, Jito 12%, Nozomi 10%), a median block
+  position of about 220 (no top-of-block lane), 2.4% failed transactions, its own transaction builder (no retail router).
+- **Red flags:** hidden funding by design; the operator rotates wallets; 5 SOL back into the pool on Oct 27; the copyable
+  flow down to a third. An alarm for it going quiet, and a successor scan by its fingerprint, are not built.
 
 ## 7. Reading check.sh for this wallet
 

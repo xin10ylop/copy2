@@ -1,5 +1,10 @@
 # Strategy A: going live (the plan, not yet started)
 
+**Superseded on Oct 28 evening by [`07-rework-2026-10-28/README.md`](../07-rework-2026-10-28/README.md) §6** (the hardened
+code, a Frankfurt box, 2-3 days of paper that decide, then the 0.1 SOL test). The steps below still hold for the test
+itself, with these corrections: fund **at least 0.16 SOL** (`reserve_sol` 0.05 + the 0.1 stake + fees + rent), run the two
+mainnet simulations in docs/20 §4 first, and run the test on the Frankfurt box, not Ohio.
+
 In short: the long copy has never sent a real transaction. The plan is three steps: **(1)** 2-3 days of paper on Ohio;
 **(2)** a small real test, 0.1 SOL a trade, 1 position, about 5 trades, to check that real money moves correctly;
 **(3)** 1 SOL a trade, 4 open, about 4.1 SOL in the wallet, only if both look right. Ohio can run it live, because the

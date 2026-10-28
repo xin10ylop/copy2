@@ -1,6 +1,7 @@
 # Strategy A: every backtest
 
-In short: the rule was picked on **P1 = Oct 19-22** and scored on **P2 = Oct 23-27** (out of sample), with harsh costs
+In short: the rule was picked on **P1 = Oct 19-22** and scored on **P2 = Oct 23-27** (out of sample), with harsh costs.
+**On fresh data (P3 = Oct 27-28, §12) it loses, because wallet 4 changed its rule.** With harsh costs
 and wallet 4's own sale placed ahead of ours whenever the two are within a slot. On the coins the bot can route, at 1 SOL
 and 3 open: **P1 +5.03, P2 +9.63** (4 open: **+6.73 / +11.13**). TP 2.0x is the best take profit in both periods. 1 SOL
 is the smallest stake that clears the fixed costs. Every band of its smaller buys loses or flips. Landing late costs
@@ -170,6 +171,29 @@ they take the open slots. Left out.
   trade below the backtest's, roughly +2 SOL per 135 trades. **Not confirmed**: it needs the real test (going-live.md).
 - We don't need to beat wallet 4, only follow it. Landing 2 slots later costs about 0.003-0.006 SOL a trade, about what
   its 0.007 fee would cost us to land faster.
+
+## 12. Fresh data: P3 = Oct 27 00:20 → Oct 28 14:54 UTC (Oct 28 evening, `analysis/research/2026-10-28/fresh/`)
+
+The study re-run with 38.6 more hours, every table with a P3 column (the scripts are the same, patched for the period):
+
+| set, 4 open | P1 | P2 | **P3** |
+|---|---|---|---|
+| as published (1.5+ floor, routable) | +6.73 (+4.76), 145 | +11.13 (+8.48), 145 | **−2.02 (−3.74), 25** |
+| as the bot trades (1.45 floor, its route verdicts, graduated coins in) | +5.44 (+3.47), 153 | +12.79 (+10.00), 162 | **−0.51 (−2.39), 32** |
+| wallet 4 on the same coins | +45.33 | +59.34 | +17.69 |
+| everything, routable or not (`exits_pess.py`, 1.5+) | +39.53 (+35.92) | +15.44 (+12.39) | +3.78 (+1.37), 42 |
+| part B as if we held every quote (`ROUTES=E`) | +24.63 | +0.58 | +4.85 (+2.65), 17 |
+
+- Every band, stake, stop, landing delay and take profit from 1.75x up loses on P3. Only TP 1.4-1.5x is positive on
+  P3, and it lost on P1: a P3 pick, not a finding.
+- 11 of the 25 copies end behind its early sale (1 of 145 in P1, 8 of 145 in P2): it sells early on 49% of these buys
+  now (3.5% in P1). Holding to our own exits instead: the bot's set P3 +3.10 (+1.02), P2 −0.25, P1 −0.04 (`more/` D-v).
+- **A gap in every earlier backtest:** `full_paths.py` needs a curve sale, so coins that graduated before wallet 4
+  sold were never in the data. They made all of paper's profit (3 coins, +2.47). With them the bot's set is +0.45
+  (−1.43) on P3 at the 1.5 floor.
+- Paper against the model on the same 21 coins: exits agree on every coin but one; +2.87 at paper's costs, +1.57 at
+  the backtest's, +2.47 in paper (`fresh/` §4).
+- P3 is 25-32 copies: one more coin like 6y9aDagF flips its sign.
 
 ## Sources
 

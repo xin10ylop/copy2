@@ -41,3 +41,19 @@ Numbers in brackets are without each period's best 2.
 | the copy bot's wallet, every lamport (Oct 26 13:22 – Oct 27 10:07 UTC) | −1.4115 = closed −0.809, 2RR6sfbi −0.510, failed sells −0.092 | [stuck coin](../05-live/stuck-coin-2RR6sfbi.md) |
 | check.sh's window split into A-F | +36.92: F +20.16, C +10.68, A +6.02, D +2.87, B +0.06, E −2.76 | [02-decomposition §3](../02-decomposition/README.md) |
 | paper long copy against the chain | 21 of 21 entered, nothing missed | [paper run §4](../03-strategy-A-long-copy/paper-run.md) |
+
+## Added Oct 28 evening (`07-rework-2026-10-28/`)
+
+| Test | Result | Page | Script |
+|---|---|---|---|
+| the long copy on fresh data, P3 = Oct 27 00:20 → Oct 28 14:54 (4 open) | **−2.02 (−3.74)** on 25; as the bot trades −0.51 (−2.39) on 32; every band, stake, stop, delay and TP ≥ 1.75x negative | `03-strategy-A-long-copy/backtests.md` §12, `analysis/research/2026-10-28/fresh/README.md` §3 | `fresh/grid.py` (CAP=4, GRAD=1) |
+| wallet 4's rule on P3: early sales 49%, timer 39% | its rule changed on Oct 27 | `fresh/README.md` §2 | `fresh/early.py`, `exitrule.py` |
+| paper vs the model, the 21 closed paper coins | +2.47 paper, +2.87 at paper's costs, +1.57 at the backtest's; 3 graduated coins = all the profit | `fresh/README.md` §4 | `fresh/grid.py paper`, `grad_paths.py` |
+| part B routable with pricing? | no: `OnlyPumpPools`; no canonical pools | `more/README.md` §A | `more/pools.py`, `sim_pool.py` |
+| part B as floats (PUMP, CARDS, TTWO, ZEC, USDC) beside A | PUMP P2 +10.13 vs +11.13; ZEC +1.3 / +1.4 / +0.9 on few wins | `more/README.md` §A | `more/floats.py` |
+| 3-hop routes (v0 + pump's lookup table) | fit (1,027 bytes); +0.99 SOL over 9.6 days on 7 copies | `more/README.md` §B | `more/txsize.py`, `hops3.py` |
+| part C at 0.7x its size, WBTC routes | P2 −5.98 | `more/README.md` §C | `more/partc.py` |
+| ignore its early sell (keep our exits) | paper's 9: +1.97 vs −1.36; bot's set P3 +3.10 (+1.02) vs −0.51, P2 −0.25, P1 −0.04 | `more/README.md` §D-v | `more/early.py`, `early2.py` |
+| stake 2.0 on WBTC routes / 1.0 on wSOL | P1 +8.13, P2 +25.07, P3 +1.02 (bot's set) | `more/README.md` §D-i | `more/better.py route` |
+| partial exits, TP floors, entry filters, stop by route, entry limit | none passes out of sample | `more/README.md` §D | `more/better.py`, `filters.py` |
+| landing in its own slot (the value of speed, upper bound) | +0.4-1.2 SOL a day | `more/README.md` §D-vii | `more/better.py land` |

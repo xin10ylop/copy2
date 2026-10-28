@@ -23,7 +23,7 @@ Beirut time (UTC+2 on these dates); journal times are UTC.
 On fra1 the only trade was PePEwjLD (bought 10:29:41 UTC). CkFH2smc (16:14:35 UTC) was the first trade on Ohio. Ohio saw
 its buy in the same second wallet 4 made it.
 
-## 2. The 22 positions (from the history paste)
+## 2. The 22 positions (from the history paste; #22 9ENc9LwF, Oct 28 15:31 Beirut, its_sell after 11 s, −0.1874, came later: 23 positions, 21 closed, +2.4666)
 
 | # | bought (Beirut) | its SOL | route | exit | peak | held | net SOL |
 |---|---|---|---|---|---|---|---|
@@ -99,15 +99,20 @@ that were either 1.45 SOL or more or paid in a token we can't price. All of them
 
 ## 5. What differs from the backtest (watch these)
 
-1. **Wallet 4 sells early much more often:** 8 of 20 trades (40%), against 3-6% in the Oct 19-27 data. Some are its stop
-   firing in a crash, where ours would have fired too (6DS5ErwH, BPhav4G4, both around −30%). Others are very fast:
-   ChonQdJ8 after 7 seconds (checked on chain: it sold everything, losing 10% itself), and DJXThGNt after 3 seconds at
-   1.99x, just short of our 2.0x. If this goes on for a few days, its behaviour has changed and the rule needs re-testing
-   on fresh data.
+1. **Wallet 4 sells early much more often:** 8 of 20 trades (40%), against 3-6% in the Oct 19-27 data. **Confirmed on
+   chain on Oct 28 evening** (`analysis/research/2026-10-28/fresh/` §2): its early sales on 1.45+ SOL other-quote buys
+   were 3.5% on Oct 19-22, 13.6% on Oct 23-27 and **49% on Oct 27-28**; all 9 paper `its_sell` exits are early sales.
+   Correction: 6DS5ErwH and BPhav4G4 were **not** its stop; it sold at 0.83x and 0.94x, and the copies lost about 30%
+   because they entered at 1.06x and 1.16x its price and its own sale pushed the price down further. The rule was
+   re-tested on fresh data: as built it loses on Oct 27-28; holding to our own exits instead of following its sale would
+   have made +1.97 on these 9 copies against −1.36 (`more/` D-v). That is the `follow_its_sell` switch.
 2. **The profit rests on take profits within seconds.** 4 of the 5 came 1-10 s after its buy (#3 1 s, #9 4 s, #13 10 s,
    #15 2 s), on coins that doubled while other bots piled in. Those 4 made +3.32; without them the run is −0.67. They are
    exactly the trades where our real speed matters most. On 6y9aDagF (#3) the price was 1.2x 1 s after its buy and over
-   2.0x after 2 s (`coins/6y9a.path`, from `examples/curve_path.rs`).
+   2.0x after 2 s (`coins/6y9a.path`, from `examples/curve_path.rs`). **Oct 28 evening:** three of them (6y9aDagF,
+   9UinFHHj, 3xwpPXRJ) are coins that **graduated before wallet 4 sold**; they made +2.47 of paper's +2.47, and no
+   earlier backtest contained such coins (`fresh/` §4). The backtest reproduces paper coin by coin otherwise: +2.87 at
+   paper's costs, +1.57 at the backtest's (0.062 SOL a trade more).
 3. **Paper's landing was optimistic until `7184554`.** Paper filled at wallet 4's slot + 1, whenever Ohio actually saw
    the buy. Since `7184554` it fills at the end of the slot after the one Ohio saw it in. Each `paper-buy` journal line
    ends with `seen at its slot +N`, so Ohio's lag is measured. **That commit wasn't yet deployed on Ohio at the time of

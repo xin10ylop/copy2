@@ -19,6 +19,14 @@ Why Frankfurt for the copy bot: the launch race is won in milliseconds, close to
 (`docs/03-speed-infra.md`). The long copy holds for minutes, so Ohio's extra latency (about 0.1 s, 2-3 slots) costs
 about 5-10% of its profit (copy2 `03-strategy-A-long-copy/going-live.md`).
 
+**Where to run the long copy, decided Oct 28** ([`07-rework-2026-10-28/infra.md`](../07-rework-2026-10-28/infra.md)): a
+**Cherry Servers Frankfurt VDS** (`G2-4-16gb-100nv-ded`, €59 a month or €0.101 an hour, 0.4-0.6 ms from the TeraSwitch
+building; hourly for the test week), the **Triton gRPC feed** the owner already pays for (`https://riptide.rpcpool.com`,
+the mainnet-shared token in `api-keys.toml`, about $0.2-0.5 a month), Nozomi `fra2` as the one buy sender. Nothing faster
+matters for this bot (in-building bare metal gains 0.3-0.5 ms, about 0.002 of a 211 ms slot). Ohio adds about 100 ms on a
+European leader (0.27 slot on average, 0.5 on European leaders): measure it against Frankfurt with the journal's
+`seen at its slot +N` before deciding (infra.md §9). Keep Ohio for analytics, the paper comparison and the fra1 backup.
+
 ## 2. The code (`crates/`, Rust workspace)
 
 | Crate | What it is |
@@ -32,7 +40,7 @@ about 5-10% of its profit (copy2 `03-strategy-A-long-copy/going-live.md`).
 | `rugsnipe-sim` | template legality, compute and loaded-bytes checks by simulation |
 | `rugsnipe` | the binaries: **`rugsnipe-hot`** (the copy bot's hot loop: `entry.copy`, `entry.copy_more`, follow, tweet feed ...), replay, guard |
 | `rugsnipe-ctl` | operator CLI: config validate, nonce create, `unkill` |
-| `rugsnipe-long` | **the long copy** (copy2's strategy A) |
+| `rugsnipe-long` | **the long copy** (copy2's strategy A); hardened Oct 28 evening on this branch, ahead of upstream (`07-rework-2026-10-28/code-review.md`) |
 
 Python: `analysis/rugsnipe_analysis/` (the validation and discovery package), `analysis/research/<date>/<topic>/`
 (every study, each with a README), `analysis/scripts/`. Architecture in full: `docs/06-architecture.md`.

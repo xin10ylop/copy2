@@ -10,9 +10,10 @@ Read `README.md` (status, A-Z index), then `02-decomposition/` (why A and not th
 on. The original project docs are in `docs/` (00-08 background, 19, 20). The sister repo **copy1** holds operator 1
 ("him", AHwJSnFN) and the other copied wallets. The code is identical in both repos.
 
-**Upstream:** the live code is developed in `xin10ylop/rugsnipe`, branch `claude/eloquent-mayer-264bxk`. This repo is a
-snapshot at `7184554` (Oct 28). The Ohio box pulls and builds from upstream, not from here. A code change meant to run on
-the box goes to upstream (or the box gets pointed at this repo); say which you did.
+**Upstream:** the live code is developed in `xin10ylop/rugsnipe`, branch `claude/eloquent-mayer-264bxk`. This repo was a
+snapshot at `7184554` (Oct 28); **since Oct 28 evening this repo's `crates/rugsnipe-long` is ahead of upstream** (the
+hardening, `07-rework-2026-10-28/`). The Ohio box pulls and builds from upstream, not from here. A code change meant to
+run on the box goes to upstream (or the box gets pointed at this repo); say which you did.
 
 ## The owner and how to work with them
 
@@ -42,7 +43,9 @@ the box goes to upstream (or the box gets pointed at this repo); say which you d
 
 ```
 cargo build --release -p rugsnipe-long          # toolchain pinned in rust-toolchain.toml
-cargo test -p rugsnipe-long                     # 9 engine tests + 15 library tests
+cargo test -p rugsnipe-long                     # 15 engine tests + 16 library tests
+cargo run --release -p rugsnipe-long -- simulate --rpc RPC_URL --tx SIG --user WALLET --sol 0.1 --buyback 3 --close   # our buy + round trip, simulated
+cargo run --release -p rugsnipe-long -- simulate-sell --rpc RPC_URL --mint MINT --quote QUOTE --user HOLDER --graduated --close
 cargo test -p pump-codec                        # the route codec (multihop fixtures byte-equal to wallet 4's own)
 cargo run -p rugsnipe-long --example scan -- RPC_URL DIR      # the bot's detection over fetched transactions
 cargo run -p rugsnipe-long --example curve_path -- DIR MINT WALLET
@@ -61,6 +64,8 @@ archive, what it backs and its checksum.
 bash data/datasets/unpack.sh            # unpacks every archive into the SP path above, so the scripts run unchanged
 bash data/datasets/unpack.sh h9long     # one archive
 ```
+- `fresh3` (the study extended to Oct 28 14:54 UTC, with P3), `more` and `w4wallet` were added on Oct 28 evening; the
+  `2026-10-28/fresh/` scripts read `SP/fresh3/h9long/`, the `more/` and `wallet/` scripts their own `SPX` path.
 - Each archive is a scratchpad folder as it was on Oct 28: the data plus the scripts and helper modules kept beside it
   (several studies import `SP/month/*.py` and `SP/rivalpnl/*.py`, or `chdir` into `SP/dec/copy`). Logs, `*.tok`,
   `*.toml`, `.triton_url` and `live/` are left out. `analysis/research/_helpers/` has the two helper libraries
@@ -83,14 +88,19 @@ bash data/datasets/unpack.sh h9long     # one archive
 - Docs here: update the curated page (`03-strategy-A-long-copy/*.md` etc.), add sources, keep the README status
   table current.
 
-## Open items (Oct 28)
+## Open items (Oct 28, evening; the plan is `07-rework-2026-10-28/README.md` §6)
 
-1. **Deploy `7184554` on Ohio** (paper fills follow Ohio's real lag; journal `seen at its slot +N`). Then measure
-   the lag and how much it costs.
-2. Watch 2-3 days of paper: the win rate, wallet 4's early-sell rate (8 of 20 so far, against 3-6% in the data), and
-   take profits within seconds.
-3. If paper stays positive, the **0.1 SOL real test** (`03-strategy-A-long-copy/going-live.md`): real buys,
-   WBTC routes, the pool sell after graduation, chain-true accounting, real fees and landing.
-4. Re-run the 8-day study on fresh data (from Oct 27) if wallet 4's behaviour keeps changing (`h9long/` in order).
-5. check.sh / history: count open positions and failed-sell fees (the stuck-coin lesson). Not done.
+1. **Point the Ohio box at this branch** (`xin10ylop/copy2`, `claude/magical-einstein-k78idp`) or merge it upstream, and
+   deploy: the hardened `rugsnipe-long` (8 money-losing fixes, paper sells a slot later, the event's fee). Keep paper,
+   set `follow_its_sell = false` so the journal records both exit policies.
+2. **A Frankfurt box** (Cherry VDS, €59/month, hourly for the test; `07-rework-2026-10-28/infra.md` §9) with the Triton
+   gRPC feed (`https://riptide.rpcpool.com`, the mainnet-shared token in `api-keys.toml`). Paper on both boxes for a
+   day; compare `seen at its slot +N`.
+3. **2-3 days of paper that decide** (the 4 conditions in the plan): positive without the best 2 at the backtest's
+   costs, wallet 4 at 25+ copyable buys a day, its early-sale rate, Frankfurt's lead.
+4. **The 0.1 SOL mechanics test** on Frankfurt (≥ 0.16 SOL in the wallet, a small WBTC float, the two simulations in
+   docs/20 §4 first), then 1 SOL × 3-4 only if both pass.
+5. Not built: an alarm when wallet 4 goes quiet or sends SOL out (its predecessor was emptied in one evening); a
+   successor scan by its fingerprint (`07-rework-2026-10-28/wallet-check.md` §7); 3-hop routes via a v0 transaction
+   (about +0.1 SOL a day); the "can wait" list of the code review.
 6. Strategy D stays stopped. If the hot bot ever runs again, deploy the graduation fix `af681ad` first.

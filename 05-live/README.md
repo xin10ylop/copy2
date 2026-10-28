@@ -2,8 +2,8 @@
 
 In short: **strategy D** (the copy bot's launch copies of wallet 4) ran on real money from Oct 26 17:36 UTC to Oct 27
 07:50 UTC. It netted **+0.1456 SOL** on 77 filled copies, or about **−0.43** counting the stuck coin 2RR6sfbi
-(−0.57). **Strategy A** (the long copy) has only run on paper, **+2.6541 SOL** on 20 closed positions to Oct 28 10:40
-Beirut. The copy bot as a whole lost **−5.13 SOL** over Oct 22-27. It is stopped, its server fra1 terminated, and its
+(−0.57). **Strategy A** (the long copy) has only run on paper, **+2.4666 SOL** on 21 closed positions to Oct 28 15:31
+Beirut (+1.57 at the backtest's costs; all of it 3 coins that graduated; `07-rework-2026-10-28/`). The copy bot as a whole lost **−5.13 SOL** over Oct 22-27. It is stopped, its server fra1 terminated, and its
 remaining SOL returned to the owner's Phantom wallet.
 
 ## Files here

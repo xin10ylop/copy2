@@ -80,8 +80,27 @@ sudo systemctl restart rugsnipe-long && sleep 15 && sudo journalctl -u rugsnipe-
 ```
 Restarting is safe: open positions and the paper record are kept (`positions.json`, `closed.jsonl`).
 
-## 4. Updating the code: **pending, commit `7184554`**
+## 4. Updating the code: **pending; now this repo's branch (Oct 28 evening), which includes `7184554`**
 
+The hardened code lives in this repo (`xin10ylop/copy2`, branch `claude/magical-einstein-k78idp`), ahead of upstream.
+Point the box's checkout at it (copy2 is public: no key needed), build, set the paper switch, restart. On Ohio
+(`ubuntu@ip-172-31-17-131`):
+```
+cd ~/rugsnipe
+git remote add copy2 https://github.com/xin10ylop/copy2.git 2>/dev/null; git fetch -q copy2 claude/magical-einstein-k78idp
+git checkout -q -B rework copy2/claude/magical-einstein-k78idp && git log --oneline -1
+sudo bash deploy/install.sh --role analytics
+grep -q '^follow_its_sell' /etc/rugsnipe/long.toml || echo 'follow_its_sell = false' | sudo tee -a /etc/rugsnipe/long.toml
+sudo systemctl restart rugsnipe-long && sleep 15 && sudo journalctl -u rugsnipe-long -n 4 --no-pager
+```
+What each line should print: `git log` one line with the branch's latest commit (the Oct 28 evening hardening); the
+installer's usual log ending without an error; `tee` echoes `follow_its_sell = false`; the journal shows `long start:
+mode Log ...` and `long feed connected`. From then on the journal has `long paper-buy ... seen at its slot +N` (Ohio's
+feed lag), `long paper-sell ... fills at the end of slot +1`, and on its early sales `long its-sell #N ... not followed
+(would make X SOL)`, with `its_sell_net` on every record in `closed.jsonl`, so one paper run measures both exit policies.
+To go back to upstream: `git checkout -q claude/eloquent-mayer-264bxk && sudo bash deploy/install.sh --role analytics`.
+
+The old update line (upstream, `7184554` only):
 ```
 cd ~/rugsnipe && git pull -q --ff-only origin claude/eloquent-mayer-264bxk && git log --oneline -1
 sudo bash deploy/install.sh --role analytics
