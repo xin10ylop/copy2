@@ -15,8 +15,8 @@ R = json.load(open(L.OUT + "/rank.json")); A = json.load(open(L.OUT + "/activity
 w4 = R["w4"]; late4 = w4["late"] / w4["coins"]
 now = max(a["newest"] for a in A.values())
 def ts(t): return datetime.datetime.fromtimestamp(t, datetime.timezone.utc).strftime("%m-%d %H:%M")
-print(f"wallet 4 baseline: {w4['coins']} coins, {w4['late']} on Oct 27-28 ({late4:.1%}), median frenzy {w4['fr']}; newest signature seen {ts(now)} UTC")
-print(f"{'wallet':44s} {'coins':>5s} {'big':>4s} {'SOL':>5s} {'hold_s':>6s} {'flip':>5s} {'frz':>4s} {'fail':>5s} {'live':>5s} {'late':>4s} {'last sig':>11s}  a b c d e  verdict")
+print(f"wallet 4 baseline: {w4['coins']} coins, {w4['late']} on Oct 27-28 ({late4:.1%}), median frenzy {w4['fr']}, its return {w4['ret']:+.3f}; newest signature seen {ts(now)} UTC")
+print(f"{'wallet':44s} {'coins':>5s} {'big':>4s} {'SOL':>5s} {'hold_s':>6s} {'flip':>5s} {'frz':>4s} {'fail':>5s} {'live':>5s} {'late':>4s} {'ret':>6s} {'last sig':>11s}  a b c d e  verdict")
 for u in list(dict.fromkeys(R["top"] + list(R["named"].values()))):
     s = R["sum"].get(u); a = A.get(u)
     if not s: print(f"{u:44s} not an early buyer on these coins"); continue
@@ -32,5 +32,5 @@ for u in list(dict.fromkeys(R["top"] + list(R["named"].values()))):
     why = [n for n, ok in zip("abcde", (ca, cb, cc, cd, ce)) if not ok]
     hold = f"{s['hold']:.0f}" if s["hold"] is not None else "-"
     print(f"{u:44s} {s['coins']:5d} {big_other:4d} {s['size']:5.2f} {hold:>6s} {flips:5.0%} {s['fr']:4.0f} {fail:5.0%} "
-          f"{(a['failed'] if a else float('nan')):5.0%} {s['late']:4d} {ts(a['newest']) if a else '-':>11s}  "
+          f"{(a['failed'] if a else float('nan')):5.0%} {s['late']:4d} {s['ret']:+6.3f} {ts(a['newest']) if a else '-':>11s}  "
           + " ".join("y" if ok else "." for ok in (ca, cb, cc, cd, ce)) + f"  {v}" + (f" (fails {','.join(why)})" if why else ""))

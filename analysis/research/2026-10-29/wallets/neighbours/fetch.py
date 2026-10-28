@@ -67,7 +67,7 @@ todo = [m for m in coins if m not in have or "err" in have[m]]
 print(time.strftime("%H:%M:%S"), len(coins), "coins,", len(todo), "to do", flush=True)
 n = 0
 with ThreadPoolExecutor(int(os.environ.get("THREADS", "12"))) as ex:
-    for m, v in ex.map(lambda m: (lambda: one(m))() if True else None, todo):
+    for m, v in ex.map(one, todo):
         have[m] = v; n += 1
         if n % 50 == 0:
             print(time.strftime("%H:%M:%S"), n, "/", len(todo), flush=True); json.dump(have, open(OUTF, "w"))

@@ -83,6 +83,12 @@ for m, v in WIN.items():
             rec.update(sold=False, mark=mark)
         E[u].append(rec)
 
+def x_of(r): return r["mult"] if r["sold"] else r.get("mark")
+def ret(recs):
+    """gross return on its early buys: sum(size x (multiple - 1)) / sum(size), multiple = its first sale's (sold) or the
+    marked one at wallet 4's sale (not sold); no fees; a partial first sale counts as a full one"""
+    v = [(r["size"], x_of(r)) for r in recs if x_of(r)]
+    return sum(a * (x - 1) for a, x in v) / sum(a for a, _ in v) if v else None
 def summary(u, recs):
     n = len(recs); sz = [r["size"] for r in recs]
     sold = [r for r in recs if r["sold"]]; hs = [r["hold_s"] for r in sold if r["hold_s"] is not None]
@@ -96,7 +102,8 @@ def summary(u, recs):
                 fr=med([r["fr"] for r in recs]), sold=len(sold), flip=flip, hold=med(hs), hold_p25=pct(hs, 0.25), hold_p75=pct(hs, 0.75),
                 held_past=unsold_full, won=won, marked=len(marked), wonm=wonm, mult=med([r["mult"] for r in sold]),
                 late=sum(r["late"] for r in recs), first=min(r["bt"] for r in recs), last=max(r["bt"] for r in recs),
-                quotes=collections.Counter(r["q"] for r in recs).most_common(3))
+                quotes=collections.Counter(r["q"] for r in recs).most_common(3), ret=ret(recs), fr_mean=sum(r["fr"] for r in recs) / n,
+                sizes=[sum(1 for r in recs if lo <= r["size"] < hi) for lo, hi in ((0, .2), (.2, .45), (.45, .8), (.8, 1.5), (1.5, 99))], ret_n=sum(1 for r in recs if x_of(r)))
 SUM = {u: summary(u, r) for u, r in E.items()}
 def ts(t): return datetime.datetime.fromtimestamp(t, datetime.timezone.utc).strftime("%m-%d")
 def line(s, full=False):
@@ -136,10 +143,24 @@ if __name__ == "__main__":
     print("THE FOUR NAMED IN wallet-check.md")
     for k, a in NAMED.items():
         print(line(SUM[a], True) if a in SUM else f"{a} not among the early buyers")
+    # the named four anywhere on these coins: a buy in the fetched window at any slot, or any row in wallet 4's path
+    for k, a in NAMED.items():
+        offs = collections.Counter(); inpath = 0
+        for m, v in WIN.items():
+            if "err" in v: continue
+            o = [t["s"] - v["C"] for t in v["tx"] if not t["err"] for u, b, *_ in t["tr"] if u == a and b]
+            if o: offs[min(min(o), 4)] += 1
+            if any(r[2] == k for r in ((P.get(m) or G.get(m) or {}).get("path") or [])): inpath += 1
+        print(f"  {k}: first buy in the window at C+0..C+3 / later (4 = 4+): {dict(sorted(offs.items()))}; in wallet 4's path (any trade, its buy to its sale) on {inpath} coins")
     for s in top + [SUM[a] for a in NAMED.values() if a in SUM]:
         print(f"  {s['addr'][:8]} hold p25/p75 {s['hold_p25']}/{s['hold_p75']} s, median sale multiple {s['mult'] and round(s['mult'], 3)}, quotes {s['quotes']}")
-    w4 = dict(coins=len(W4), other=sum(w["other"] for w in W4), late=sum(w["late"] for w in W4), fr=med([w["fr"] for w in W4]),
+    w4 = dict(fr_mean=sum(w["fr"] for w in W4) / len(W4), coins=len(W4), other=sum(w["other"] for w in W4), late=sum(w["late"] for w in W4), fr=med([w["fr"] for w in W4]),
               c0=sum(w["off"] == 0 for w in W4) / len(W4))
-    print(f"wallet 4 on these coins: {w4}")
+    tw = [T[m]["tr"] for m in WIN if m not in G and len(T[m]["tr"]) == 2]
+    w4["ret"] = sum(-t[1]["v"] for t in tw) / sum(t[0]["v"] for t in tw) - 1
+    print(f"wallet 4 on these coins: {w4} (ret = its SOL out / SOL in - 1 over {len(tw)} closed trips, fees included)")
+    print("gross return estimate on its early buys (sold at its first sale / unsold marked at wallet 4's sale; no fees):")
+    for s in top + [SUM[a] for a in NAMED.values() if a in SUM]:
+        print(f"  {s['addr'][:8]} {s['ret']:+.3f} over {s['ret_n']} coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: {s['sizes']}; mean frenzy {s['fr_mean']:.2f}")
     json.dump(dict(w4=w4, sum=SUM, top=[s["addr"] for s in top], named=NAMED, recs={u: E[u] for u in [s["addr"] for s in top] + list(NAMED.values()) if u in E}),
               open(L.OUT + "/rank.json", "w"))

@@ -1,0 +1,104 @@
+coins fetched 856, usable 856, skipped {}
+create slot from the CreateEvent on 856 of 856
+wallet 4's buy slot - create slot: +0 457, +1 391, +2 4, +3+ 4 (of 856)
+  other-quote coins only: +0 397, +1 345, +2 4, +3 4
+wallet 4's frenzy (others' buys in its slot +1..+2): median 0.0, p25 0, p75 1
+size calibration, SOL-quote coins: K / (30 SOL x 1,073M tokens) median 1.0139 p10 1.0139 p90 1.0146 (n 106)
+traders that bought at C+0/C+1 on at least one coin: 1008; on 10+ coins: 23
+
+columns: coins (other-quote coins, coins with an early buy >= 0.45 SOL), share at C+0, share before wallet 4's buy, median slot gap to its buy,
+median / p90 first early buy SOL, failed / all its txs on the curve in the window, median frenzy, sales seen, flips (<= 5 s),
+median hold s (p25-p75 below), coins held past wallet 4's sale (unsampled path), won at its first sale (+ won marked at wallet 4's sale),
+coins on Oct 27-28, first..last coin date
+trader   coins othr >=.45 at+0 befW4 gap  sizeSOL   p90 fail/txs  frz sold flip hold_s held   won(sold+mark) 27-28 dates
+6anjqMeW  547  484  363   42%    1%   +0  0.500  1.001    0/550     0  357   21    480   35 128/357 +105/190m   52 10-19..10-28
+AMDEmVoc  135  118  126   50%   18%   +0  0.601  1.210    1/138     1   85   31      7    6 53/85 +27/50m   10 10-19..10-28
+DsGJkPzF   65   64   33   58%   18%   +0  0.651  1.005    0/65      0   43    1     27    4 29/43 +14/22m    2 10-19..10-28
+Fhbh1DTU   62   62   62   66%   94%   +0  2.979  5.154  511/598     0   56   48      1    0   54/56 +5/6m    4 10-19..10-28
+9su3UPQW   48   48   20   40%   23%   +0  0.374  1.002    0/48      0   32   23      4    0 20/32 +10/16m    0 10-19..10-26
+9qz7cWBq   44   36   44   75%   93%   +0  2.976  8.011    0/53      1   37   33      2    1   37/37 +3/7m    5 10-19..10-28
+FiFawHqx   33   33   33   82%   97%   +0  2.004  6.013    0/39      1   27   24      2    1   27/27 +3/6m    4 10-19..10-28
+C5EMTGGE   32   32   27   41%   19%   +0  0.770  0.810    0/32      1   21    5     11    1  13/21 +5/11m    1 10-19..10-28
+53DnQU1d   26   19   25   42%   12%   +0  0.994  1.493    0/26      1   16    8     13    0  11/16 +6/10m    7 10-19..10-28
+Anubis51   24   11   23   33%    0%   +0  1.486  2.243    0/25      1    8    8      2    1   5/8 +13/16m    2 10-19..10-27
+vcwCRZjr   24   23    0    0%    0%   +0  0.198  0.241    0/24      1   19   19      2    0   12/19 +4/5m    3 10-19..10-28
+dKMjeGJ4   21   11   21   57%   90%   +0  3.605  8.017    0/23      2   15   13      2    3   14/15 +4/6m    2 10-20..10-27
+BGMfeBCJ   20   18    0   20%    0%   +0  0.061  0.120    0/20      0   10    5      7    0   0/10 +7/10m    4 10-19..10-28
+8ptvshQR   15    9   15   47%   53%   +0  1.337  1.908    0/15      1    9    9      2    0     6/9 +4/6m    1 10-19..10-27
+GCfEnwFt   13    8    0   15%    0%   +0  0.050  0.198    0/14      0    5    0    480    1     1/5 +4/8m    0 10-19..10-20
+CRkdFUJM   12   12    1   67%   25%   +0  0.250  0.409    0/13      0    9    6      3    0     8/9 +1/3m    0 10-22..10-23
+69d6eAno   12   12    0   33%    0%   +0  0.099  0.100    0/12      0   11    2     13    0    6/11 +1/1m    7 10-25..10-28
+G8gTguf7   11    0    0   18%    0%   +0  0.250  0.251    0/19      4    4    4      1    0     3/4 +4/7m    0 10-19..10-23
+G9sQPg9E   11    0   11   64%   45%   +0  1.001  1.002    0/11      5    2    2      1    0     2/2 +5/9m    0 10-19..10-26
+HVE8996r   11    0    0   36%    0%   +0  0.045  0.093    0/11      1    5    0     88    0     1/5 +3/6m    0 10-19..10-24
+AEgTuy8L   10    6   10   60%   40%   +0  1.053  3.024    0/10      3    7    5      1    0     4/7 +2/3m    0 10-19..10-26
+8fN6NyEP   10    0    1    0%    0%   +0  0.351  0.501    0/10      2    7    1     32    0     2/7 +0/3m    0 10-19..10-23
+5xFhXswZ   10    0    0    0%    0%   +1  0.050  0.050    0/10      0    5    0      7    0     2/5 +2/5m    0 10-19..10-22
+
+TOP 15 by coins with an early buy >= 0.45 SOL
+trader                                       coins othr >=.45 at+0 befW4 gap  sizeSOL   p90 fail/txs  frz sold flip hold_s held   won(sold+mark) 27-28 dates
+6anjqMeWigQFo5wpciARAunVQUXTqoat8w8fFWarCkpc  547  484  363   42%    1%   +0  0.500  1.001    0/550     0  357   21    480   35 128/357 +105/190m   52 10-19..10-28
+AMDEmVocLtN5ji2gBY7BrmSHEyM5vt6TGszBbg4crMXg  135  118  126   50%   18%   +0  0.601  1.210    1/138     1   85   31      7    6 53/85 +27/50m   10 10-19..10-28
+Fhbh1DTUDKt6qu9zVg8Q5VgnZa1WWWbxBxG6pCoJoggA   62   62   62   66%   94%   +0  2.979  5.154  511/598     0   56   48      1    0   54/56 +5/6m    4 10-19..10-28
+9qz7cWBqYBP2TnGfzMmxX64G4PQip7HtogjPBBnMhWpw   44   36   44   75%   93%   +0  2.976  8.011    0/53      1   37   33      2    1   37/37 +3/7m    5 10-19..10-28
+DsGJkPzFEQZuwy7JjZzPcJEyEfdC6StV7rarXG4ftRSA   65   64   33   58%   18%   +0  0.651  1.005    0/65      0   43    1     27    4 29/43 +14/22m    2 10-19..10-28
+FiFawHqxeTVBhv6YbqbLwDVuvokRpPUM1bNwAyxhGc6W   33   33   33   82%   97%   +0  2.004  6.013    0/39      1   27   24      2    1   27/27 +3/6m    4 10-19..10-28
+C5EMTGGE87SqLyuvhShLDMj2jUBwqBLJAZF6ybK8Jyqw   32   32   27   41%   19%   +0  0.770  0.810    0/32      1   21    5     11    1  13/21 +5/11m    1 10-19..10-28
+53DnQU1dJZNHfKBpv2Lhsd4EBGNpwsF4tS13Egc1m6Tv   26   19   25   42%   12%   +0  0.994  1.493    0/26      1   16    8     13    0  11/16 +6/10m    7 10-19..10-28
+Anubis512ho5t7S6LNSwoxUWdeQmX2kf3RvZ8ApHHF5w   24   11   23   33%    0%   +0  1.486  2.243    0/25      1    8    8      2    1   5/8 +13/16m    2 10-19..10-27
+dKMjeGJ4Mk9S3hxdfTThvZ7exks2xMwWqSM5NvN2CTK    21   11   21   57%   90%   +0  3.605  8.017    0/23      2   15   13      2    3   14/15 +4/6m    2 10-20..10-27
+9su3UPQW3txjtKDZAkf2Kdimp5tEb9TM6hnJrGC1U7pY   48   48   20   40%   23%   +0  0.374  1.002    0/48      0   32   23      4    0 20/32 +10/16m    0 10-19..10-26
+8ptvshQRZPRaRQBSCRxhHwbJFr6ktyUQ1SATDCLijkBW   15    9   15   47%   53%   +0  1.337  1.908    0/15      1    9    9      2    0     6/9 +4/6m    1 10-19..10-27
+G9sQPg9Eimkwe72w1xH1tPUc9RFNuK6Ufw5AyWy6j7ob   11    0   11   64%   45%   +0  1.001  1.002    0/11      5    2    2      1    0     2/2 +5/9m    0 10-19..10-26
+AEgTuy8Lg4wfnjm285mk3P2k1p39ofqNXk8b5VtYhdCs   10    6   10   60%   40%   +0  1.053  3.024    0/10      3    7    5      1    0     4/7 +2/3m    0 10-19..10-26
+CUQqcZZGr8QLjEzMpxUZyiZirBujE2Y9yZDyfCRw1CAB    9    7    9   78%  100%   +0  3.004  3.498    0/9       2    8    8      2    0     8/8 +1/1m    0 10-19..10-20
+
+THE FOUR NAMED IN wallet-check.md
+6anjqMeWigQFo5wpciARAunVQUXTqoat8w8fFWarCkpc  547  484  363   42%    1%   +0  0.500  1.001    0/550     0  357   21    480   35 128/357 +105/190m   52 10-19..10-28
+AMDEmVocLtN5ji2gBY7BrmSHEyM5vt6TGszBbg4crMXg  135  118  126   50%   18%   +0  0.601  1.210    1/138     1   85   31      7    6 53/85 +27/50m   10 10-19..10-28
+Fhbh1DTUDKt6qu9zVg8Q5VgnZa1WWWbxBxG6pCoJoggA   62   62   62   66%   94%   +0  2.979  5.154  511/598     0   56   48      1    0   54/56 +5/6m    4 10-19..10-28
+dKMjeGJ4Mk9S3hxdfTThvZ7exks2xMwWqSM5NvN2CTK    21   11   21   57%   90%   +0  3.605  8.017    0/23      2   15   13      2    3   14/15 +4/6m    2 10-20..10-27
+  6anjqMeW: first buy in the window at C+0..C+3 / later (4 = 4+): {0: 230, 1: 317, 2: 49, 3: 1, 4: 1}; in wallet 4's path (any trade, its buy to its sale) on 601 coins
+  AMDEmVoc: first buy in the window at C+0..C+3 / later (4 = 4+): {0: 67, 1: 68, 2: 5}; in wallet 4's path (any trade, its buy to its sale) on 129 coins
+  Fhbh1DTU: first buy in the window at C+0..C+3 / later (4 = 4+): {0: 41, 1: 21, 2: 2}; in wallet 4's path (any trade, its buy to its sale) on 70 coins
+  dKMjeGJ4: first buy in the window at C+0..C+3 / later (4 = 4+): {0: 12, 1: 9}; in wallet 4's path (any trade, its buy to its sale) on 13 coins
+  6anjqMeW hold p25/p75 196/740 s, median sale multiple 0.991, quotes [('?', 221), ('WBTC', 71), ('CARDS', 63)]
+  AMDEmVoc hold p25/p75 5/10 s, median sale multiple 1.035, quotes [('?', 59), ('WBTC', 21), ('CARDS', 13)]
+  Fhbh1DTU hold p25/p75 0/2 s, median sale multiple 1.277, quotes [('?', 24), ('PUMP', 7), ('CARDS', 6)]
+  9qz7cWBq hold p25/p75 0/3 s, median sale multiple 1.293, quotes [('?', 10), ('PUMP', 9), ('CARDS', 9)]
+  DsGJkPzF hold p25/p75 22/44 s, median sale multiple 1.055, quotes [('CARDS', 15), ('?', 11), ('PUMP', 10)]
+  FiFawHqx hold p25/p75 0/2 s, median sale multiple 1.294, quotes [('PUMP', 7), ('WBTC', 5), ('A7bd', 5)]
+  C5EMTGGE hold p25/p75 6/14 s, median sale multiple 1.104, quotes [('?', 9), ('PUMP', 8), ('TTWO', 5)]
+  53DnQU1d hold p25/p75 2/35 s, median sale multiple 1.051, quotes [('?', 22), ('WBTC', 4)]
+  Anubis51 hold p25/p75 2/3 s, median sale multiple 1.052, quotes [('?', 13), ('CARDS', 6), ('WBTC', 3)]
+  dKMjeGJ4 hold p25/p75 1/4 s, median sale multiple 1.204, quotes [('?', 10), ('A7bd', 3), ('SPCX', 2)]
+  9su3UPQW hold p25/p75 3/6 s, median sale multiple 1.056, quotes [('?', 19), ('PUMP', 6), ('Pren', 4)]
+  8ptvshQR hold p25/p75 0/3 s, median sale multiple 1.108, quotes [('?', 6), ('PUMP', 3), ('WBTC', 1)]
+  G9sQPg9E hold p25/p75 1/1 s, median sale multiple 1.166, quotes [('?', 11)]
+  AEgTuy8L hold p25/p75 1/156 s, median sale multiple 1.039, quotes [('?', 4), ('CARDS', 3), ('PUMP', 2)]
+  CUQqcZZG hold p25/p75 2/2 s, median sale multiple 1.174, quotes [('CARDS', 3), ('?', 2), ('Pren', 2)]
+  6anjqMeW hold p25/p75 196/740 s, median sale multiple 0.991, quotes [('?', 221), ('WBTC', 71), ('CARDS', 63)]
+  AMDEmVoc hold p25/p75 5/10 s, median sale multiple 1.035, quotes [('?', 59), ('WBTC', 21), ('CARDS', 13)]
+  Fhbh1DTU hold p25/p75 0/2 s, median sale multiple 1.277, quotes [('?', 24), ('PUMP', 7), ('CARDS', 6)]
+  dKMjeGJ4 hold p25/p75 1/4 s, median sale multiple 1.204, quotes [('?', 10), ('A7bd', 3), ('SPCX', 2)]
+wallet 4 on these coins: {'fr_mean': 1.1822429906542056, 'coins': 856, 'other': 750, 'late': 58, 'fr': 0.0, 'c0': 0.5338785046728972, 'ret': 0.1925891176407084} (ret = its SOL out / SOL in - 1 over 847 closed trips, fees included)
+gross return estimate on its early buys (sold at its first sale / unsold marked at wallet 4's sale; no fees):
+  6anjqMeW +0.186 over 547 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [0, 184, 233, 130, 0]; mean frenzy 0.78
+  AMDEmVoc +0.232 over 135 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [2, 7, 96, 30, 0]; mean frenzy 1.37
+  Fhbh1DTU +0.460 over 62 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [0, 0, 1, 7, 54]; mean frenzy 1.08
+  9qz7cWBq +0.353 over 44 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [0, 0, 0, 10, 34]; mean frenzy 2.41
+  DsGJkPzF +0.451 over 65 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [0, 32, 2, 31, 0]; mean frenzy 1.11
+  FiFawHqx +0.384 over 33 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [0, 0, 0, 4, 29]; mean frenzy 1.48
+  C5EMTGGE +0.168 over 32 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [0, 5, 16, 11, 0]; mean frenzy 1.22
+  53DnQU1d +0.171 over 26 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [0, 1, 10, 15, 0]; mean frenzy 1.62
+  Anubis51 +0.598 over 24 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [0, 1, 0, 11, 12]; mean frenzy 2.79
+  dKMjeGJ4 +0.232 over 21 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [0, 0, 0, 0, 21]; mean frenzy 3.52
+  9su3UPQW +0.186 over 48 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [0, 28, 5, 15, 0]; mean frenzy 1.04
+  8ptvshQR +0.353 over 15 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [0, 0, 0, 9, 6]; mean frenzy 2.33
+  G9sQPg9E +0.497 over 11 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [0, 0, 0, 11, 0]; mean frenzy 7.18
+  AEgTuy8L +0.137 over 10 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [0, 0, 4, 2, 4]; mean frenzy 3.10
+  CUQqcZZG +0.438 over 9 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [0, 0, 0, 0, 9]; mean frenzy 2.11
+  6anjqMeW +0.186 over 547 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [0, 184, 233, 130, 0]; mean frenzy 0.78
+  AMDEmVoc +0.232 over 135 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [2, 7, 96, 30, 0]; mean frenzy 1.37
+  Fhbh1DTU +0.460 over 62 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [0, 0, 1, 7, 54]; mean frenzy 1.08
+  dKMjeGJ4 +0.232 over 21 coins; first early buy SOL <0.2 / 0.2-0.45 / 0.45-0.8 / 0.8-1.5 / 1.5+: [0, 0, 0, 0, 21]; mean frenzy 3.52

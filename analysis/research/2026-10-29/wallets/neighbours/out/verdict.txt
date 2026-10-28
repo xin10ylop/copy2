@@ -1,0 +1,17 @@
+wallet 4 baseline: 856 coins, 58 on Oct 27-28 (6.8%), median frenzy 0.0, its return +0.193; newest signature seen 10-28 23:14 UTC
+wallet                                       coins  big   SOL hold_s  flip  frz  fail  live late    ret    last sig  a b c d e  verdict
+6anjqMeWigQFo5wpciARAunVQUXTqoat8w8fFWarCkpc   547  314  0.50    480    6%    0    0%    2%   52 +0.186 10-28 23:13  y y y y y  WORTH A FULL SCORING
+AMDEmVocLtN5ji2gBY7BrmSHEyM5vt6TGszBbg4crMXg   135  109  0.60      7   36%    1    1%    1%   10 +0.232 10-28 23:13  y . y y y  no (fails b)
+Fhbh1DTUDKt6qu9zVg8Q5VgnZa1WWWbxBxG6pCoJoggA    62   62  2.98      1   86%    0   85%   81%    4 +0.460 10-28 23:13  y . y . y  no (fails b,d)
+9qz7cWBqYBP2TnGfzMmxX64G4PQip7HtogjPBBnMhWpw    44   36  2.98      2   89%    1    0%   24%    5 +0.353 10-28 23:13  y . y . y  no (fails b,d)
+DsGJkPzFEQZuwy7JjZzPcJEyEfdC6StV7rarXG4ftRSA    65   33  0.65     27    2%    0    0%    4%    2 +0.451 10-28 23:13  y . y y .  no (fails b,e)
+FiFawHqxeTVBhv6YbqbLwDVuvokRpPUM1bNwAyxhGc6W    33   33  2.00      2   89%    1    0%    4%    4 +0.384 10-28 23:08  y . y y y  no (fails b)
+C5EMTGGE87SqLyuvhShLDMj2jUBwqBLJAZF6ybK8Jyqw    32   27  0.77     11   24%    1    0%    6%    1 +0.168 10-28 23:09  y . y y .  no (fails b,e)
+53DnQU1dJZNHfKBpv2Lhsd4EBGNpwsF4tS13Egc1m6Tv    26   18  0.99     13   50%    1    0%    2%    7 +0.171 10-28 23:12  . . y y y  no (fails a,b)
+Anubis512ho5t7S6LNSwoxUWdeQmX2kf3RvZ8ApHHF5w    24   11  1.49      2  100%    1    0%    2%    2 +0.598 10-28 23:13  . . y y y  no (fails a,b)
+dKMjeGJ4Mk9S3hxdfTThvZ7exks2xMwWqSM5NvN2CTK     21   11  3.60      2   87%    2    0%    0%    2 +0.232 10-28 23:05  . . y y y  no (fails a,b)
+9su3UPQW3txjtKDZAkf2Kdimp5tEb9TM6hnJrGC1U7pY    48   20  0.37      4   72%    0    0%    2%    0 +0.186 10-28 23:09  . . y y .  no (fails a,b,e)
+8ptvshQRZPRaRQBSCRxhHwbJFr6ktyUQ1SATDCLijkBW    15    9  1.34      2  100%    1    0%    8%    1 +0.353 10-28 23:11  . . y y y  no (fails a,b)
+G9sQPg9Eimkwe72w1xH1tPUc9RFNuK6Ufw5AyWy6j7ob    11    0  1.00      1  100%    5    0%    1%    0 +0.497 10-28 23:00  . . y y .  no (fails a,b,e)
+AEgTuy8Lg4wfnjm285mk3P2k1p39ofqNXk8b5VtYhdCs    10    6  1.05      1   71%    3    0%   22%    0 +0.137 10-28 23:14  . . y . .  no (fails a,b,d,e)
+CUQqcZZGr8QLjEzMpxUZyiZirBujE2Y9yZDyfCRw1CAB     9    7  3.00      2  100%    2    0%    4%    0 +0.438 10-20 07:31  . . y y .  no (fails a,b,e)
