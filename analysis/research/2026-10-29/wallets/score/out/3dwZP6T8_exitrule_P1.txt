@@ -1,0 +1,16 @@
+
+== pump, other quote: 0 one-buy one-sell trips
+   seconds held 1700-2500 []
+   slots held for those []
+   held < 1700 s: marginal price multiple []
+   held < 1700 s: average-price multiple  []
+   held < 1700 s: value multiple (SOL)    []
+   seconds held, all []
+
+== pump, SOL quote: 0 one-buy one-sell trips
+   seconds held 1700-2500 []
+   slots held for those []
+   held < 1700 s: marginal price multiple []
+   held < 1700 s: average-price multiple  []
+   held < 1700 s: value multiple (SOL)    []
+   seconds held, all []

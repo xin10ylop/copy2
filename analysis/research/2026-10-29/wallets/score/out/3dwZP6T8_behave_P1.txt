@@ -1,0 +1,6 @@
+
+== pump, other quote: 0 closed coins whose first trade is a buy, net +0.00
+   buys per coin p10..p90 []  sells per coin []  first-buy SOL []  tip M []
+   slots to first sell []  to last sell []
+   ix of first buy []
+   price at its first sell / after its first buy []
