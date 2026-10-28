@@ -106,6 +106,21 @@ Done in this order, each output as the owner pasted it:
    (the paper coin, which closes as paper: the cap and the daily stop count paper and real apart, `engine.rs`
    `on_trigger`), `long feed connected`.
 
+**The first real trade, 75 s after the switch (Oct 28 18:35:51 UTC), checked on chain from the Triton endpoint:**
+
+| | Journal | Chain |
+|---|---|---|
+| its buy | FUN1RZrj, 1.498 SOL, seen at its slot +0 | slot 462579900, position 545 of 585, 3 coin trades before it in the block |
+| our buy | `long buy #1 ... in 12605 of 3NZ9JMVB ... sent in 6 ms`, `fill ... (vs its price +6.6%)` | slot 462579901 (its slot +1), **position 24 of 491, first coin trade of its block**; 3 coin trades between its buy and ours (the rest of its block); −12,605 WBTC units, +1,838,789 coins; −0.0043 SOL (tip, fees, the coin account's rent) |
+| our sell | `take_profit at 2.05x try 0 sent in 3 ms`, 3 s later | slot 462579914, +24,783 WBTC units, coins to 0, +0.0003 SOL (rent back minus tip and fees) |
+| result | `closed ... net +0.0927 SOL (+92.7%) peak 2.14x` | +12,178 WBTC units = +0.0963 SOL at the float's price, minus 0.004 SOL of fees: **+0.092** |
+
+So the first copy landed a slot behind its buy but at the top of that block, with only the 3 trades that followed its
+buy inside its own block ahead of us: in the terms of `fresh/land_pos.py` that is the "30 positions behind" row, not
+the "+1 slot" row the backtests assume. Received 17% above the floor (`min_out`). Two 5,000-lamport transactions to
+the wallet a minute earlier (slots 462579268 and 462579290) are a third party's dust (1,000 lamports and a USDC token
+account), not ours.
+
 The paper run on this box ended there (one box runs one bot). What the test must show, over 5-10 trades: buys landing
 at its slot +1 or better (`long buy ... seen at its slot +N`, then `long fill ... paid X (vs its price +N%)`: that
 percentage is where in its slot we landed, `07-rework-2026-10-28/README.md` §5), every sell landing (a pool sell after
