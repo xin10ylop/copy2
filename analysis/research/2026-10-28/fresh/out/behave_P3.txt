@@ -1,0 +1,27 @@
+
+== pump, other quote: 293 closed coins whose first trade is a buy, net +86.09
+   buys per coin p10..p90 [1, 1, 1, 1, 1]  sells per coin [1, 1, 1, 1, 1]  first-buy SOL [-1.502, -1.35, -0.911, -0.863, -0.692]  tip M [0.0, 1.067, 1.067, 1.067, 1.067]
+   slots to first sell [184, 855, 3749, 8455, 8474]  to last sell [184, 855, 3751, 8455, 8475]
+   ix of first buy [('multi_hop_swap', 154), ('buy_exact_quote_in', 139)]
+   price at its first sell / after its first buy [0.723, 0.876, 0.948, 1.149, 1.825]
+   its net / first-buy SOL [-32.98, -13.991, -4.228, 23.932, 113.394]  mean 29.381  won 120 / 293
+   first sell after     3-10 slots: coins     1 net    -0.39 won 0
+   first sell after    11-50 slots: coins    12 net   +10.46 won 5
+   first sell after   51-200 slots: coins    18 net    +6.94 won 11
+   first sell after 201-1000 slots: coins    49 net   +16.38 won 25
+   first sell after    >1000 slots: coins   206 net   +15.21 won 73
+   first buy     <0.6 SOL: coins   293 net   +86.09 won 120
+
+== pump, SOL quote: 210 closed coins whose first trade is a buy, net -3.71
+   buys per coin p10..p90 [1, 1, 1, 1, 1]  sells per coin [0, 1, 1, 1, 1]  first-buy SOL [-1.171, -0.707, -0.589, -0.46, -0.316]  tip M [0.0, 1.067, 1.067, 1.067, 6.6]
+   slots to first sell [27, 99, 593, 6660, 8464]  to last sell [27, 99, 593, 6660, 8464]
+   ix of first buy [('buy_exact_quote_in', 210)]
+   price at its first sell / after its first buy [0.417, 0.591, 0.838, 0.972, 1.734]
+   its net / first-buy SOL [-38.247, -21.164, -9.057, 5.813, 48.098]  mean -1.768  won 58 / 210
+   first sell after      <=2 slots: coins     3 net    -2.14 won 0
+   first sell after     3-10 slots: coins     3 net    -0.85 won 0
+   first sell after    11-50 slots: coins    25 net    -6.04 won 2
+   first sell after   51-200 slots: coins    28 net    -2.39 won 6
+   first sell after 201-1000 slots: coins    51 net    +1.45 won 21
+   first sell after    >1000 slots: coins    66 net    +0.04 won 11
+   first buy     <0.6 SOL: coins   210 net    -3.71 won 58

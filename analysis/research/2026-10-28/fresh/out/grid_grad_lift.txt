@@ -1,0 +1,16 @@
+320 routable buys of 1.5-9.0 SOL, model q, its exits see our tokens True, at most 3 open
+   as built: tp 2.0 sl 0.8 1790 s               P1 135  +5.03 ( +3.06)   P2 136  +9.63 ( +6.98)   P3  25  -2.02 ( -3.74)
+   P1 3A54PtUy route E its 1.474  model +0.8654  tp                               curve top  2.54x  2.0x on trade 47 of 76 after its buy  its net +2.014
+   P1 7wY4rfVs route E its 1.555  model +0.4699  its early sell, we follow        curve top  1.60x  2.0x on trade None of 28 after its buy  its net +2.206
+   P2 C6YAkAbE route E its 1.471  model +0.2355  its early sell, we follow        curve top  1.65x  2.0x on trade None of 50 after its buy  its net +2.368
+   P2 3R1Kry3r route C its 1.503  model +1.2203  tp, its sell first               curve top  4.61x  2.0x on trade 122 of 160 after its buy  its net +7.287
+   P3 6y9aDagF route B its 1.503  model +0.9736  tp                               curve top  2.49x  2.0x on trade 31 of 49 after its buy  its net +3.717
+   P3 9UinFHHj route B its 1.503  model +0.7930  tp                               curve top  3.87x  2.0x on trade 33 of 137 after its buy  its net -0.444
+   P3 3xwpPXRJ route A its 1.502  model +0.7309  tp                               curve top  2.56x  2.0x on trade 31 of 49 after its buy  its net +7.471
+   P3 AsY6oq86 route E its 1.502  model +0.6098  tp                               curve top 11.15x  2.0x on trade 27 of 577 after its buy  its net +11.018
+   P3 2FSWwQwj route A its 1.502  model +0.5166  tp                               curve top  2.76x  2.0x on trade 12 of 23 after its buy  its net +2.348
+   P1 class E: 2 copies +1.3354
+   P2 class E: 1 copies +0.2355
+   P2 routable (A B C): 1 copies +1.2203
+   P3 class E: 1 copies +0.6098
+   P3 routable (A B C): 4 copies +3.0141

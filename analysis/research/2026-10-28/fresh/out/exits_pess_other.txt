@@ -1,0 +1,49 @@
+tp 2.0 sl 0.8 haircut 0%: fires {'tp': 163, 'sl': 83, 'time': 2, 'end': 393, 'end_time': 355}, TP fills placed after its sell 8
+   P1 352 copies   +39.53  without best 2  +35.92
+   P2 247 copies   +15.44  without best 2  +12.39
+   P3 42 copies    +3.78  without best 2   +1.37
+   by quote token (copies, net):
+     P1 PUMP         41  +10.42
+     P1 EPjFWdd5      8   +5.63
+     P1 ?           119   +4.87
+     P1 WBTC         28   +4.06
+     P1 TTWO         11   +3.00
+     P1 WXMR          6   +2.64
+     P1 SPCX          7   +1.59
+     P1 A7bd          6   +1.45
+     P1 CARDS        66   +1.02
+     P1 XsoC          4   -0.94
+     P1 XsbEhLAt      3   +0.61
+     P1 Pren          7   +0.58
+     P1 WETH          3   -0.44
+     P1 PreweJYE      3   -0.40
+     P1 Xsc9qvGR      5   +0.29
+     P1 XsDoVfqe      3   +0.12
+     P2 WBTC         83  +10.93
+     P2 ?            63   +1.74
+     P2 DJTu          4   -1.57
+     P2 A7bd         15   +1.44
+     P2 4Zp52aF4      1   +1.37
+     P2 CrAr4RRJ      6   +1.23
+     P2 PUMP         19   -1.16
+     P2 EPjFWdd5      1   +1.10
+     P2 PreweJYE      3   +0.75
+     P2 SPCX          6   -0.57
+     P2 TTWO          5   -0.41
+     P2 98sM          3   +0.19
+     P2 Pren          3   -0.10
+     P2 WXMR          5   +0.08
+     P2 WETH          3   -0.04
+     P3 ?            21   -1.38
+     P3 PUMP          3   +1.27
+     P3 CARDS         1   +1.19
+     P3 GRNDYDpq      1   +1.15
+     P3 WXMR          3   +0.72
+     P3 WBTC          4   -0.20
+   by day (UTC): 10-19 74 +11.72  10-20 102 +9.99  10-21 87 +0.09  10-22 89 +17.73  10-23 61 +2.13  10-24 54 +5.83  10-25 80 +6.63  10-26 49 +1.31  10-27 29 -0.34  10-28 16 +3.66
+   at most 1 open: P1 146 +16.76 (+13.15)  P2 113 +4.85 (+2.20)  P3 29 +1.34 (-0.93)
+   at most 2 open: P1 242 +33.37 (+29.75)  P2 181 +7.67 (+5.01)  P3 39 +3.08 (+0.71)
+   at most 3 open: P1 294 +36.85 (+33.24)  P2 214 +10.65 (+7.60)  P3 42 +3.78 (+1.37)
+   at most 4 open: P1 330 +40.57 (+36.96)  P2 230 +12.14 (+9.09)  P3 42 +3.78 (+1.37)
+   at most 5 open: P1 342 +40.84 (+37.22)  P2 241 +15.42 (+12.37)  P3 42 +3.78 (+1.37)
+   at most 99 open: P1 352 +39.53 (+35.92)  P2 247 +15.44 (+12.39)  P3 42 +3.78 (+1.37)

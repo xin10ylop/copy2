@@ -1,0 +1,6 @@
+own (self-paid) landed 16771  pump-curve buys 4997  sells 4761  1.45+ other-quote buys 618  SOL-coin buys 1649
+all own                  n=16771 fee SOL p10/50/90 [1e-05, 1e-05, 0.00779]  tipped 4452 (27%) tip SOL p10/50/90 [1e-05, 0.00107, 0.0022]  block index p10/50/90 [32, 224, 778]
+curve buys               n= 4997 fee SOL p10/50/90 [0.00274, 0.00618, 0.01834]  tipped 2529 (51%) tip SOL p10/50/90 [0.00107, 0.00107, 0.0165]  block index p10/50/90 [24, 221, 775]
+1.45+ other-quote buys   n=  618 fee SOL p10/50/90 [0.00618, 0.00804, 0.01534]  tipped 305 (49%) tip SOL p10/50/90 [0.00107, 0.00107, 0.011]  block index p10/50/90 [24, 207, 728]
+SOL-coin buys            n= 1649 fee SOL p10/50/90 [0.00258, 0.00304, 0.02]  tipped 904 (55%) tip SOL p10/50/90 [0.00107, 0.00107, 0.03167]  block index p10/50/90 [25, 221, 762]
+curve sells              n= 4761 fee SOL p10/50/90 [1e-05, 1e-05, 0.00029]  tipped 1610 (34%) tip SOL p10/50/90 [1e-05, 0.00101, 0.00101]  block index p10/50/90 [40, 230, 789]

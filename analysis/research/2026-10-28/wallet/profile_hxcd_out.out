@@ -1,0 +1,19 @@
+EcpaPDc992nXXK6dd31ZKfaNGZTVQYYonwPAQwtNMfuy sigs 38 2026-04-07 12:22:07 -> 2026-10-26 09:01:27 label None sampled 37 self-paid 0 ver {'0': 17, 'legacy': 20}
+   pump buys 0 (other-quote 0, 1.45-1.6 SOL other-quote 0) sells 0 buy SOL p10/50/90 None/None/None
+   progs [('Tokenkeg', 12), ('L2TExMFK', 1)]
+   plain >=0.5: [('OUT', '5yASLjtN', 11.205, '10-17 19:02'), ('OUT', '5yASLjtN', 1.155, '09-15 10:31'), ('IN', '5deb46rC', 1.155, '09-15 10:11'), ('OUT', '5yASLjtN', 0.673, '07-13 22:01'), ('IN', '71nhS5S6', 0.673, '07-13 21:45'), ('OUT', '5yASLjtN', 0.686, '07-04 15:32'), ('IN', 'EWovJWRp', 0.686, '07-04 15:23')]
+3uYFjNMtfL1SadLpJ2eq1TwN2ZxqYAafh5NXV9qCBrBc sigs 34 2026-05-06 00:22:37 -> 2026-10-17 19:02:02 label None sampled 34 self-paid 0 ver {'0': 17, 'legacy': 17}
+   pump buys 0 (other-quote 0, 1.45-1.6 SOL other-quote 0) sells 0 buy SOL p10/50/90 None/None/None
+   progs [('Tokenkeg', 12), ('L2TExMFK', 1)]
+   plain >=0.5: [('OUT', '5yASLjtN', 11.2, '10-17 19:02'), ('OUT', '5yASLjtN', 1.709, '10-01 04:00'), ('IN', '9MheRDeT', 1.709, '10-01 03:48'), ('OUT', '5yASLjtN', 4.754, '09-15 10:31'), ('IN', '3W367e23', 4.754, '09-15 10:15'), ('OUT', '5yASLjtN', 2.95, '06-04 02:01'), ('IN', '3rTp1zoi', 2.95, '06-04 01:59')]
+FkjPrQJdb8wM8xrJZqBeay19nDkaBEnitwoAgskEam1e sigs 49 2026-03-28 13:08:43 -> 2026-10-26 09:30:54 label None sampled 49 self-paid 0 ver {'0': 24, 'legacy': 25}
+   pump buys 0 (other-quote 0, 1.45-1.6 SOL other-quote 0) sells 0 buy SOL p10/50/90 None/None/None
+   progs [('Tokenkeg', 18), ('L2TExMFK', 3)]
+   plain >=0.5: [('OUT', '5yASLjtN', 16.799, '10-17 19:02'), ('OUT', '5yASLjtN', 1.314, '10-01 04:00'), ('IN', '7Gv42dGn', 1.314, '10-01 03:49'), ('OUT', '5yASLjtN', 0.947, '08-01 18:31'), ('OUT', '5yASLjtN', 1.105, '07-13 22:01'), ('IN', '7yyE9DiJ', 1.105, '07-13 21:51'), ('OUT', '5yASLjtN', 1.029, '06-24 23:01'), ('IN', 'BTPLpD8H', 1.029, '06-24 22:54')]
+3tJ67qa2GDfvv2wcMYNUfN5QBZrFpTwcU8ASZKMvCTVU sigs 2000+ 2026-10-19 23:06:44 -> 2026-10-28 15:24:10 label None sampled 120 self-paid 0 ver {'0': 119, 'legacy': 1}
+   pump buys 0 (other-quote 0, 1.45-1.6 SOL other-quote 0) sells 0 buy SOL p10/50/90 None/None/None
+   progs [('J88B7gma', 120), ('RangohQx', 41), ('3i5JeuZu', 1)]
+8DapbAzhHndS64dEfzN9KxzdNhLPn7n7mUkV8R8FqruG sigs 9 2026-10-17 21:22:46 -> 2026-10-18 00:02:36 label None sampled 9 self-paid 3 ver {'legacy': 9}
+   pump buys 0 (other-quote 0, 1.45-1.6 SOL other-quote 0) sells 0 buy SOL p10/50/90 None/None/None
+   progs []
+   plain >=0.5: [('OUT', 'ASTyfSim', 24.574, '10-18 00:02'), ('IN', 'HxcdEi6C', 24.574, '10-17 23:58'), ('OUT', 'ASTyfSim', 25.0, '10-17 23:50'), ('IN', 'HxcdEi6C', 25.0, '10-17 23:45'), ('OUT', 'ASTyfSim', 9.99, '10-17 21:26'), ('IN', 'MCquEenF', 10.0, '10-17 21:22')]

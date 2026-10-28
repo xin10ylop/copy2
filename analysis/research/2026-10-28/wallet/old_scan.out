@@ -1,0 +1,21 @@
+signatures before Oct 19: 1717 failed 36 first 2026-10-17 19:22:57 5MtwbJvhEFcreyY8zDUw2wwStvHepsZYPBmqaPSJ6m7q7UhAsLTKx1eRDtTmLvGvaWbKhsDMs1g4fUPxy4sz5rgW
+per day {'10-17': 317, '10-18': 1400}
+
+first 12 transactions:
+('5MtwbJvhEFcreyY8zDUw2wwStvHepsZYPBmqaPSJ6m7q7UhAsLTKx1eRDtTmLvGvaWbKhsDMs1g4fUPxy4sz5rgW', '2026-10-17 19:22:57', False, 39.52008, [], [('sys', '8h5eizMg', 'H9kuqGKN', 39.52008)])
+('5oBxFLHU8pBjNGvrm1iErhbKF84dY1enHmWnGuG8xyBrCDHJVAzKbCQAKDVeutgcC2YnodtNyAnco5QswKY7ttMQ', '2026-10-17 19:24:57', True, -0.001505, [], [])
+('mipBvBEahh55X3ym75FjdecGAfMwZHAUWVJLviZ5o5c9JygHeb2dZ3jFJqzCJdp3b9wCcGrHSi7PaGJP5r7mhM7', '2026-10-17 19:24:58', True, -0.001505, [], [])
+('5Z9YnPRPr8NTuSmp7rDwXnPE8kTvpM7YiwNkVD2oRzs85HoPZWq5USza3W9sa8nP398yBcTUaHV8NDAjcjXUo2QE', '2026-10-17 19:24:58', True, -0.001505, [], [])
+('39wEui4rEWHiuHJAhD7fwcAgcTHnuQ8e9JDR9NiMxiXoLswuG72ammppQtdV2rDprzw8dEWGbPz9qepprjTfPApG', '2026-10-17 19:24:59', True, -0.001505, [], [])
+('44gLYYJN1z2h9z1fP5V8pQWs776ZMH9nhA5gJsdhjrvaR9xWFVjBz4kjWGmHioz9m6mV26TG5s55WhUp2NRvzFYC', '2026-10-17 19:25:00', True, -0.001505, [], [])
+('4586AVRTRApJCksdmKzN1NURBDRWPpBh8unYkQrqAuNB5XSKxKBdjadA9MsmZnPAnYfK5J2vaAzfXafstLpy3ocs', '2026-10-17 19:25:01', True, -0.001505, [], [])
+('5t1MLqzNb2YWGpcnuk5h4ibvW22aAu7zpSp16DZgiCKTe3YWPE2qW16r5ExTcDA6S4c4Mbfmegf7GUjR2mF18Pac', '2026-10-17 19:25:02', True, -0.001505, [], [])
+('4GcJ81T5aTZs9xUoeDWCPSDCJLMSaZNEwXT54nSmT8u5Ekerhr9Wm3Hzib1CUdme5fARejmwZqNg7oekMbfNBuRm', '2026-10-17 19:25:03', True, -0.001505, [], [])
+('4N22iUau5cRxU1cNWTwm3fBjesFu8nfgur3AcSERoAqf7GcADQZ7ZzLwkQK65bk4LWpDJ1D5t5WaWf58oDKj9zkg', '2026-10-17 19:25:04', True, -0.001505, [], [])
+('5DV9BMrbm2dPHarjx2vtyDYc2LsrezBENTP55BAkqARWWH3sptx2yew9amCq2wRyjNLWqWQ35X73GK2wGWdRA2Wc', '2026-10-17 19:25:05', True, -0.001505, [], [])
+('4JT983TEPzSJEgRE5QdyHuVTqRMZm8k3MSEi5r7FUQUecsRv8hPejiZxD2Aoue3LPni82oS7oWWcgK5kgCMZdF4A', '2026-10-17 19:25:06', True, -0.001505, [], [])
+
+programs: [('TokenzQd', 1382), ('6EF8rrec', 1125), ('Tokenkeg', 808), ('ATokenGP', 451), ('pAMMBay6', 389), ('JUP6LkbZ', 249), ('whirLbMi', 72), ('goonuddt', 53), ('LBUZKhRx', 46), ('3TK9D8ao', 41), ('CAMMCzo5', 34), ('BiSoNHVp', 33), ('HpNfyc2S', 29), ('TessVdML', 28), ('MNFSTqtC', 16), ('HBVw6bZt', 15), ('HADRoNbL', 5), ('675kPX9M', 4), ('DRVSpZ2Y', 3), ('REALQqNE', 2), ('9fhQBbum', 1), ('cpamdpZC', 1), ('PERPHjGB', 1)]
+
+plain SOL/wSOL transfers >= 0.05 SOL to/from wallet 4 before Oct 19:
+2026-10-17 19:22:57 sys 8h5eizMgJ14dpEht6YfcMwYhZwiD2q88BFM4FNPdSbsx -> H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg 39.5201 payer 8h5eizMg 5MtwbJvhEFcreyY8zDUw

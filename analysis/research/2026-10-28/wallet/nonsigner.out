@@ -1,0 +1,79 @@
+
+pump: 1891 txs, 1 distinct payers; wallet 4 SOL change sum +0.7548
+   payer HckQ93Xqjjo8mwt5pNPWvyCTZXQZ858rvzmm7ZRrZg9t 1891
+   ix 1005 Program log: Instruction: DistributeFeeToHolders
+   ix 776 Program log: Instruction: DistributeFeeToHolders Program log: Instruction: TransferChecked Program log: Instruction: Tra
+   ix 57 Program log: Instruction: DistributeFeeToHolders Program log: Instruction: GetAccountDataSize Program log: Instruction: 
+   tokens received [('3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh', 593), ('pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn', 431), ('CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp', 118), ('D42TjMjz5H7toPu5md5KBXreZkCSdZMEfLQwmBhJXvb1', 111)]
+
+BYdq spam: 1270 txs, 1 distinct payers; wallet 4 SOL change sum +0.0000
+   payer DeFG8i8zoJ3hN155nmvLq266ZVxWmNgRaTz5KQVHfe2S 1270
+   ix 1264 
+   ix 3 Program log: Instruction: BuyExactSolIn Program log: Instruction: GetFeesWithQuoteMint Program log: Instruction: Transfe
+   ix 2 Program log: Instruction: Sell Program log: Instruction: GetFeesWithQuoteMint Program log: Instruction: TransferChecked
+   tokens received []
+
+system only: 14 txs, 14 distinct payers; wallet 4 SOL change sum +0.0540
+   payer Ctbi43GUPk4Wxggos274qaK4rnj2TgHckTFPupH6vi2N 1
+   payer BbcpLHVKPzB3qqwpRaBoEM99kdAxoK8vfcqGqiEixyq3 1
+   payer BMcsGf2aaFibrBAfrDHGBUB1b1dA7165jxB6rFHGFz59 1
+   payer JAuZsQGdinKUJX2B4gq87Xd6CzoyxFxWbc7hWzr2y6ay 1
+   payer BNPkei5peCP6GCWu5bhmp7hgAEwrE4zNHL2DSnow4ep1 1
+   ix 14 
+   tokens received []
+
+ATokenGP,MemoSq4g,TokenzQd: 14 txs, 2 distinct payers; wallet 4 SOL change sum +0.0000
+   payer NTRNDMczz1bzzB3eYk5VdMdovbf223wFuq57FEjqkoA 10
+   payer 4aq4HqAsKF7wUeWho9LU7Jnn8kivE2ZywaE37tqgoops 4
+   ix 12 Program log: Instruction: GetAccountDataSize Program log: Instruction: InitializeImmutableOwner Program log: Instruction
+   ix 1 Program log: Instruction: TransferChecked Program log: Instruction: TransferChecked Program log: Instruction: GetAccount
+   ix 1 Program log: Instruction: TransferChecked Program log: Instruction: TransferChecked Program log: Instruction: TransferCh
+   tokens received [('NTRNDMqQSiwEC2jJs3wJiZS6bpGYQJtMNQJgiX3WyV6', 7), ('C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL6pump', 4), ('SAtoZGJkh4Eid9EQZYXWnCNVn5asZrWZLouBMX1SHi1', 2), ('GGHvZa9sfwGPcFEZJNK4dLTLzXGQWYqmg6tkC9Vpump', 1)]
+
+MemoSq4g: 5 txs, 1 distinct payers; wallet 4 SOL change sum +0.0000
+   payer 3uxuYqjuxm2A8ovMoJU1QfCD9nKWxA4m3nQXJCnr6QSH 5
+   ix 5 
+   tokens received []
+
+ATokenGP,Tokenkeg: 5 txs, 3 distinct payers; wallet 4 SOL change sum +0.0000
+   payer CPgPrxLxuZnRKfccwWLQcPd1fQYFqvy58CsuBb5Zx6PZ 3
+   payer 9aUgTJNQ1TaJxUEbSnpF3HACYhpmm79DurBe9g6EytCi 1
+   payer AB2mPLaGbxSvxvy4KffbUcnkp5doTbBAXantfYLSyQuM 1
+   ix 5 
+   tokens received [('6Sij6nZ4oLXtdG9nShWAcs9E4sfTa1n9PZNipvs2zRYW', 3), ('DyczZx861NuKA1ysdtEeXEPcJAwYACZ8NAHofoEhj9ye', 1), ('Hw9s2Si2MUXxZasQhNrorqueGKWEwLy8nXzWcvJ7iray', 1)]
+
+CcmRKTuZ: 4 txs, 4 distinct payers; wallet 4 SOL change sum +0.0000
+   payer cc3novbXuNSe292qKH2gGhxToaWjuBvJbA7zQf8NVxi 1
+   payer EHc2K8AJusekJNiK14Qvkbu4nTShWFNFQUgYGQRtzZq7 1
+   payer 3L5hCjiEz1zXPvLER4CfrLFDAh8X7p16qbJdJoZqTCqH 1
+   payer 22AA4MTxsv8P5sb8f44G8kv7nuTcxZmdZgRW4cD1XRa4 1
+   ix 1 Program log: Instruction: MakeOffer
+   ix 1 Program log: Instruction: MakeOffer Program log: Instruction: MakeOffer
+   ix 1 Program log: Instruction: MakeOffer Program log: Instruction: MakeOffer Program log: Instruction: MakeOffer
+   tokens received []
+
+6keGXHZ6: 2 txs, 1 distinct payers; wallet 4 SOL change sum +0.0190
+   payer 7fWGS4jLfrEgQaffymnGDMEUVAYPx5BLgEQtEvE5ZNEx 2
+   ix 2 
+   tokens received []
+
+BGUMAp9G,CoREENxT,mcmt6YrQ,mnoopTCr: 2 txs, 1 distinct payers; wallet 4 SOL change sum +0.0000
+   payer 9EZ1xxSdMDv6uyVsN7xetLsjZRRjfaxF5XyYPBazs5K5 2
+   ix 1 Program log: Instruction: BurnV2 Program log: Instruction: UpdateCollectionInfoV1 Program log: Instruction: ReplaceLeaf
+   ix 1 Program log: Instruction: MintV2 Program log: Instruction: UpdateCollectionInfoV1 Program log: Instruction: Append
+   tokens received []
+
+BGUMAp9G,cmtDvXum,noopb9bk: 1 txs, 1 distinct payers; wallet 4 SOL change sum +0.0000
+   payer EcbhSTBSW7waDJLVi83CQtXQrmUoVRMZtVbXCeKk42P4 1
+   ix 1 Program log: Instruction: MintToCollectionV1 Program log: Instruction: Append Program log: Instruction: MintToCollection
+   tokens received []
+
+ATokenGP,TokenzQd: 1 txs, 1 distinct payers; wallet 4 SOL change sum +0.0000
+   payer 8zWrsZPovLZ9v41SagnKPhJwJcRCWwJAEGSQ5T6FegRX 1
+   ix 1 Program log: Instruction: TransferChecked Program log: Instruction: TransferChecked Program log: Instruction: TransferCh
+   tokens received [('DJTu7vi8norVzdVAffgvb39VP7wjKeTsgaMBJrzfxvoF', 1)]
+
+CoREENxT,MemoSq4g: 1 txs, 1 distinct payers; wallet 4 SOL change sum +0.0000
+   payer GachaNgyXTU3zFogQ8Z5jR2BLXs8215X2AtEH18VxJq3 1
+   ix 1 Program log: Instruction: Transfer
+   tokens received []

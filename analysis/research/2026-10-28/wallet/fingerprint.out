@@ -1,0 +1,24 @@
+
+H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg: sampled 300, self-paid 180, durable nonce first 101
+  top-level sequences: [('1111 1111 1111 Toke 6EF8', 30), ('ATok', 27), ('1111 1111 pAMM', 19), ('1111 1111 6EF8', 18), ('ATok 1111 Toke', 13), ('1111 1111 ATok pAMM', 12)]
+  cu price: [('cfg:20000000', 5), ('cfg:224353', 4), ('cfg:533774', 3), ('cfg:217928', 3), ('cfg:205773', 2), ('cfg:558200', 2)]
+  cu limit: [('cfg:6159', 13), ('cfg:15758', 9), ('cfg:16270', 6), ('cfg:23190', 6), ('cfg:55410', 5)]
+  tips by service: [('SPEEDLANDING', 27), ('HELIUS', 19), ('JITO', 18), ('ASTRALANE', 12), ('LUNARLANDER', 2), ('NOZOMI', 1), ('STELLIUM', 1), ('FLASHBLOCK', 1)]
+  tip lamports: [(1067000, 40), (1010000, 32), (2200000, 4), (5000, 3), (10000000, 2)]
+  wrap amounts (SOL to own wSOL): [(5.0, 6), (1.5, 2), (0.4414, 1), (0.7506, 1), (1.4994, 1), (0.0214, 1), (0.2956, 1), (0.876, 1)]
+
+HxcdEi6CWzQtPCmM8E2maEZ3oYVGZxESqCWU1iPzmhVW: sampled 300, self-paid 287, durable nonce first 215
+  top-level sequences: [('1111 1111 1111 Toke 6EF8', 49), ('1111 1111 6EF8', 34), ('JUP6', 23), ('1111 1111 ATok 6EF8', 18), ('ATok 1111 Toke', 18), ('1111 ATok 6EF8', 17)]
+  cu price: [('cfg:2567247', 10), ('cfg:2643247', 8), ('cfg:20000000', 6), ('cfg:198740', 6), ('cfg:185891', 6), ('cfg:192316', 6)]
+  cu limit: [('cfg:6159', 17), ('cfg:50669', 11), ('cfg:44902', 11), ('cfg:46402', 10), ('cfg:49402', 9)]
+  tips by service: [('HELIUS', 62), ('SPEEDLANDING', 52), ('ASTRALANE', 20), ('JITO', 8), ('NOZOMI', 7), ('NODE1', 4), ('ZEROSLOT', 1), ('LUNARLANDER', 1)]
+  tip lamports: [(1067000, 78), (1010000, 52), (5000, 13), (31670000, 5), (4400000, 2), (2200000, 2)]
+  wrap amounts (SOL to own wSOL): [(5.0, 9), (1.125, 5), (1.5, 4), (0.9, 3), (0.5119, 1), (0.1237, 1), (1.4274, 1), (1.25, 1)]
+
+8h5eizMgJ14dpEht6YfcMwYhZwiD2q88BFM4FNPdSbsx: sampled 101, self-paid 91, durable nonce first 36
+  top-level sequences: [('1111 1111 1111 Toke 6EF8', 14), ('1111', 13), ('1111 1111', 12), ('ATok 1111 Toke', 7), ('1111 Toke ATok JUP6', 5), ('Comp ATok JUP6 Toke', 5)]
+  cu price: [('cfg:2719248', 4), ('cfg:729181', 2), ('cfg:253670', 2), ('cfg:321', 2), ('cfg:2938281', 2), ('cfg:3023250', 2)]
+  cu limit: [('cfg:7809', 6), ('cfg:53669', 4), ('cfg:17920', 3), ('cfg:170250', 2), ('cfg:59227', 2)]
+  tips by service: [('HELIUS', 8), ('SPEEDLANDING', 7), ('ASTRALANE', 6), ('NODE1', 1), ('STELLIUM', 1), ('JITO', 1), ('ZEROSLOT', 1), ('NOZOMI', 1)]
+  tip lamports: [(1067000, 18), (1010000, 7), (5500000, 1), (5000, 1)]
+  wrap amounts (SOL to own wSOL): [(1.5, 5), (5.0, 5), (1.1253, 1), (1.6667, 1), (0.6914, 1), (0.75, 1), (1.4766, 1), (0.1336, 1)]

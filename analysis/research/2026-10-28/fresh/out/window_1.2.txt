@@ -1,0 +1,5 @@
+its curve buys 2026-10-28 13:14 to 2026-10-28 14:55 UTC: pump, SOL quote 18  pump, other quote 10
+of coins priced in another token, 1.2+ SOL: 3
+   10-28 13:26:38 UTC  DNiG4gF1zKRvif9eRE4d3BQQWX7t6d4jt651dHeBcozY  its 1.501 SOL  route E  quote PUMP  paid with pumpCmXq  (2 curve trades)
+   10-28 13:31:34 UTC  9ENc9LwFXmtUiAVNyYp5LqZMrEuZ3FWLAnmz5fD4pump  its 1.509 SOL  route B  quote WBTC  paid with 3NZ9JMVB  (2 curve trades)
+   10-28 14:07:41 UTC  4iEirfYpenWk1MRwjuMw5a8uUJBby1gDKNcNvJjQpump  its 1.478 SOL  route E  quote XsaBXg8d  paid with XsaBXg8d  (2 curve trades)

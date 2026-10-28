@@ -1,0 +1,26 @@
+buys with its own tx found in the curve list: 40 of 40
+other buys by position: {'same slot, after': 58, 'slot -1': 28, 'slot +1': 21, 'same slot, before': 39, 'slot +2': 5}
+wallet                                        coins         slot -2         slot -1  same slot, bef  same slot, aft         slot +1         slot +2  nonce  tips
+6anjqMeWigQFo5wpciARAunVQUXTqoat8w8fFWarCkpc     28               0               0               1              16              11               0  28/28  [(1000000, 14), (1400000, 9)]
+AMDEmVocLtN5ji2gBY7BrmSHEyM5vt6TGszBbg4crMXg     11               0               0               2               9               0               0  11/11  [(1010001, 10)]
+Fhbh1DTUDKt6qu9zVg8Q5VgnZa1WWWbxBxG6pCoJoggA      5               0               1               3               0               1               0  5/5  [(59899999, 1), (1100000, 1)]
+DsGJkPzFEQZuwy7JjZzPcJEyEfdC6StV7rarXG4ftRSA      3               0               0               0               3               0               0  3/3  [(1020000, 3)]
+BGMfeBCJoD9QyFjVNgC4SgXYPMJ1THB6sJSynQh8pUP1      3               0               0               0               2               1               0  3/3  [(5000, 3)]
+C5EMTGGE87SqLyuvhShLDMj2jUBwqBLJAZF6ybK8Jyqw      3               0               0               0               3               0               0  3/3  [(1020000, 3)]
+CKii77zzepRCAMKwHLsyrtrLFdQHjAgCDrbQH2wBiXXX      2               0               0               0               2               0               0  2/2  [(1200730, 1), (1200155, 1)]
+J6YSoAhzeNLxX23KgMfNaQMYctGbatkbsPTSiJmQ3KUc      2               0               1               1               0               0               0  0/2  []
+42dqmewca2fQfwo1jLvdwcygqsdQiqVTMD4fGXK1qheN      2               0               0               0               2               0               0  2/2  [(1200963, 1), (1200469, 1)]
+9qz7cWBqYBP2TnGfzMmxX64G4PQip7HtogjPBBnMhWpw      2               0               1               1               0               0               0  2/2  []
+GTW4HfwbJfmjG1xCRQGeJixRJLbEtu7e54uE3b2ATfXT      2               0               0               0               0               1               1  2/2  [(200000, 2)]
+53DnQU1dJZNHfKBpv2Lhsd4EBGNpwsF4tS13Egc1m6Tv      2               0               0               0               2               0               0  1/2  [(1000000, 1), (2000000, 1)]
+69d6eAnot869mAuaDZqyF8qqDmXKQZqfhmDCyfQDapFp      2               0               0               0               1               1               0  0/2  [(1000000, 2)]
+D1F4pC8EcUAcfzVhpHe2EsYdHurj7s6P8VwM2JjBhbRs      1               0               1               0               0               0               0  0/1  []
+CUQqcZZGr8QLjEzMpxUZyiZirBujE2Y9yZDyfCRw1CAB      1               0               1               0               0               0               0  1/1  [(32300000, 1)]
+A52FjvWEKYLyP1Lqf3hX93jZKREDJTvtTY9HA5ov7o97      1               0               1               0               0               0               0  0/1  [(2500000, 1)]
+2M9A3gPEkQcRRCYDiyF48T6UrhbhX3SxEW7d4nfuXTbi      1               0               1               0               0               0               0  0/1  [(2500000, 1)]
+6yoYzWkJUX6ZBGNc93Gso98J4xkmh7CcoL46hCkAD8MR      1               0               1               0               0               0               0  0/1  [(2500000, 1)]
+9Y1iUuP4JnZAEYmubwewqTTh6yJG9AraH8YRFJ8t6URS      1               0               1               0               0               0               0  0/1  [(2500000, 1)]
+56A9duejKNV7UvRA6ZtvJUe4V1yuRh2KjY9wxGjncqZr      1               0               1               0               0               0               0  0/1  [(2500000, 1)]
+
+most often BEFORE wallet 4 (slot -2/-1/same-before): [('Fhbh1DTU', 4, 5), ('AMDEmVoc', 2, 11), ('J6YSoAhz', 2, 2), ('9qz7cWBq', 2, 2), ('6anjqMeW', 1, 28), ('D1F4pC8E', 1, 1), ('CUQqcZZG', 1, 1), ('A52FjvWE', 1, 1)]
+wallets that bought on more than one of the 40 coins: 13  on 1 coin only: 84

@@ -1,0 +1,9 @@
+Fhbh1DTUDKt6qu9zVg8Q5VgnZa1WWWbxBxG6pCoJoggA sigs 2000+ 2026-10-28 13:03:09 -> 2026-10-28 15:35:16 label None sampled 150 self-paid 137 ver {'0': 125, 'legacy': 25}
+   pump buys 44 (other-quote 44, 1.45-1.6 SOL other-quote 0) sells 66 buy SOL p10/50/90 0.002/0.002/0.003
+   progs [('6EF8rrec', 123), ('TokenzQd', 120), ('Tokenkeg', 83), ('L2TExMFK', 79), ('9buc3tzJ', 65), ('pfeeUxB6', 65), ('LanMV9sA', 26), ('3KyMT9UH', 6)]
+6anjqMeWigQFo5wpciARAunVQUXTqoat8w8fFWarCkpc sigs 2000+ 2026-10-27 22:14:57 -> 2026-10-28 15:34:20 label None sampled 150 self-paid 148 ver {'1': 147, 'legacy': 2, '0': 1}
+   pump buys 51 (other-quote 26, 1.45-1.6 SOL other-quote 0) sells 76 buy SOL p10/50/90 0.503/0.505/0.51
+   progs [('TokenzQd', 141), ('satasbJp', 141), ('6EF8rrec', 128), ('Tokenkeg', 80), ('MemoSq4g', 79), ('ATokenGP', 71), ('pfeeUxB6', 52), ('CAMMCzo5', 28)]
+AMDEmVocLtN5ji2gBY7BrmSHEyM5vt6TGszBbg4crMXg sigs 2000+ 2026-10-27 02:46:27 -> 2026-10-28 15:34:41 label None sampled 150 self-paid 127 ver {'1': 68, 'legacy': 79, '0': 3}
+   pump buys 48 (other-quote 19, 1.45-1.6 SOL other-quote 0) sells 66 buy SOL p10/50/90 0.603/0.603/0.605
+   progs [('TokenzQd', 122), ('6EF8rrec', 113), ('Tokenkeg', 54), ('ATokenGP', 50), ('DDDDUigG', 44), ('BYdq7NJX', 23), ('CAMMCzo5', 20), ('pAMMBay6', 13)]

@@ -1,0 +1,6 @@
+   as built: tp 2.0 sl 0.8 1790 s               P1 143  +3.49 ( +1.53)   P2 153 +11.89 ( +9.10)   P3  32  -0.51 ( -2.39)
+   as built: tp 2.0 sl 0.8 1790 s               P1 153  +5.19 ( +3.22)   P2 162 +13.49 (+10.70)   P3  32  -0.51 ( -2.39)
+218 routable buys of 1.45-9.0 SOL, model q, its exits see our tokens True, at most 4 open
+   as built: tp 2.0 sl 0.8 1790 s               P1 121  +2.48 ( +0.65)   P2  71  +2.26 ( -0.38)   P3  26  -2.06 ( -3.78)
+138 routable buys of 1.45-9.0 SOL, model q, its exits see our tokens True, at most 4 open
+   as built: tp 2.0 sl 0.8 1790 s               P1  33  +2.67 ( +0.70)   P2  91 +11.24 ( +8.93)   P3   6  +1.56 ( -0.21)

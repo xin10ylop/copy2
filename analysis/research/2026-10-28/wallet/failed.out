@@ -1,0 +1,28 @@
+failed 495 payer is W 489 SOL lost (its balance change) -2.854
+per day [('10-19', 45), ('10-20', 44), ('10-21', 67), ('10-22', 43), ('10-23', 60), ('10-24', 54), ('10-25', 47), ('10-26', 73), ('10-27', 45), ('10-28', 17)]
+error kinds:
+   143 TokenzQd "IncorrectProgramId"
+   71 JUP6LkbZ {"Custom": 6001}
+   67 pAMMBay6 {"Custom": 3012}
+   61 6EF8rrec {"Custom": 6005}
+   50 11111111 {"Custom": 0}
+   37 JUP6LkbZ "ComputationalBudgetExceeded"
+   24 JUP6LkbZ "ProgramFailedToComplete"
+   13 pAMMBay6 "ProgramFailedToComplete"
+   8 6EF8rrec {"Custom": 3012}
+   6 6EF8rrec {"Custom": 6086}
+   5 6EF8rrec "ProgramFailedToComplete"
+   4 JUP6LkbZ {"Custom": 6024}
+last error log lines:
+   143 Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb failed: incorrect program id for instruction
+   71 Program JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4 failed: custom program error: 0x1771
+   67 Program pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA failed: custom program error: 0xbc4
+   61 Program 6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P failed: custom program error: 0x1775
+   50 Program 11111111111111111111111111111111 failed: custom program error: 0x0
+   37 Program JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4 failed: Computational budget exceeded
+   15 Program JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4 failed: Program failed to complete
+   13 Program pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA failed: exceeded CUs meter at BPF instruction
+   9 Program JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4 failed: exceeded CUs meter at BPF instruction
+   8 Program 6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P failed: custom program error: 0xbc4
+   6 Program 6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P failed: custom program error: 0x17c6
+   5 Program 6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P failed: exceeded CUs meter at BPF instruction

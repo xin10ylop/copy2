@@ -1,0 +1,5 @@
+356 routable buys of 1.45-9.0 SOL, model q, its exits see our tokens True, at most 4 open
+   as built: tp 2.0 sl 0.8 1790 s               P1 153  +5.19 ( +3.22)   P2 162 +13.49 (+10.70)   P3  32  -0.51 ( -2.39)
+   P1: 153 copies, ours +5.19, its own on the same coins +45.33
+   P2: 162 copies, ours +13.49, its own on the same coins +59.34
+   P3: 32 copies, ours -0.51, its own on the same coins +17.69

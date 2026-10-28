@@ -1,0 +1,10 @@
+tp 2.0 sl 0.8 haircut 0%: fires {'tp': 21, 'sl': 50, 'time': 1, 'end': 33, 'end_time': 24}, TP fills placed after its sell 2
+   P1 73 copies   -11.12  without best 2  -13.63
+   P2 31 copies    -2.34  without best 2   -4.41
+   P3 1 copies    -0.51  without best 2   +0.00
+   at most 1 open: P1 58 -7.58 (-10.09)  P2 29 -2.40 (-4.48)  P3 1 -0.51 (+0.00)
+   at most 2 open: P1 70 -9.65 (-12.15)  P2 31 -2.34 (-4.41)  P3 1 -0.51 (+0.00)
+   at most 3 open: P1 73 -11.12 (-13.63)  P2 31 -2.34 (-4.41)  P3 1 -0.51 (+0.00)
+   at most 4 open: P1 73 -11.12 (-13.63)  P2 31 -2.34 (-4.41)  P3 1 -0.51 (+0.00)
+   at most 5 open: P1 73 -11.12 (-13.63)  P2 31 -2.34 (-4.41)  P3 1 -0.51 (+0.00)
+   at most 99 open: P1 73 -11.12 (-13.63)  P2 31 -2.34 (-4.41)  P3 1 -0.51 (+0.00)

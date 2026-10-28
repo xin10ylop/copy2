@@ -1,0 +1,25 @@
+# The paper run as pasted by the owner on Oct 28 (history.py paper on the Ohio box): #, bought (Beirut, UTC+2), its SOL,
+# route, state, exit, peak, held, net SOL, coin. Stake 1.0 SOL. Paper filled at its slot +1 (7184554 not deployed).
+0	2026-10-27 12:29:41	1.500	copied	closed	time	1.04x	1790s	-0.0230	PePEwjLDedJ4xjiDEQuXieYfrd9czdHKfZ3PZzMuBhu
+1	2026-10-27 18:14:35	1.500	copied	closed	time	1.56x	1790s	-0.1843	CkFH2smc23KmEwqtFnwVcvtYcf6ACyZzSzazoqg4cAke
+2	2026-10-27 20:25:35	1.500	copied	closed	time	1.05x	1790s	-0.1277	6qUyTWv4MyfPsPW27kExcmXcet79boiwQ8obk9YBpump
+3	2026-10-27 21:07:16	1.502	copied	closed	tp	2.04x	1s	+0.8377	6y9aDagFD9RXVpJidYqmDozC3Qn2uRdtwPeoxT8pump
+4	2026-10-27 21:49:24	1.500	copied	closed	its_sell	1.24x	197s	-0.2958	BPhav4G4JBCRHqViJSFsAQEvZwb2iDUxmXXa7Hw3pump
+5	2026-10-27 22:09:03	1.493	copied	closed	its_sell	1.73x	7s	-0.1756	ChonQdJ8HVNNuVVCgYwLKs7tXX3FAPYSZ92i8igGgUS8
+6	2026-10-27 23:02:24	1.500	copied	closed	its_sell	1.25x	475s	-0.2468	FUCKKmZZ3m1fW1eG1w24YNUZky4BucUNmWYoux5cpUmP
+7	2026-10-27 23:31:01	1.500	copied	closed	tp	2.05x	124s	+0.9869	69iQjjf8ay1SM32gnSHLE5zC3s4qqgMquStiAwkTpump
+8	2026-10-27 23:39:24	1.500	copied	closed	stop	1.27x	23s	-0.3124	rAPE9kiTRocjtSmiuFGHv3AYvxvDF9nwMijAarthRoT
+9	2026-10-27 23:46:28	1.502	copied	closed	tp	2.01x	4s	+0.8769	9UinFHHjEjdS3TfmVWLk2MUThGdRPoUPU1RgMKv2pump
+10	2026-10-28 01:10:20	1.500	copied	closed	time	1.21x	1790s	-0.0973	CogafBTpuapbMEo2RmhnkRcWkoNTG1G76G7dbBZopump
+11	2026-10-28 02:24:51	1.457	curve	closed	its_sell	1.60x	286s	+0.1038	HytpiyuR3sVXGB5UqoqrnThCPH2X1tWVm5neep3Dpump
+12	2026-10-28 03:04:23	1.500	copied	closed	its_sell	1.06x	141s	-0.3031	6DS5ErwHfSfqKL8UakJmkxfb1SU5DHndbUEHy8nqpump
+13	2026-10-28 03:10:37	1.500	copied	closed	tp	2.01x	10s	+0.7511	3xwpPXRJ7zMDutnxiBPxcbYdJ1u9yZtVj8WjN6Nspump
+14	2026-10-28 03:15:19	1.500	copied	closed	time	1.04x	1790s	-0.2238	4BvM3fKHbiQqaCiFuDjmB5eDSj6NUCg2n55j4r7cpump
+15	2026-10-28 03:27:36	1.500	copied	closed	tp	2.02x	2s	+0.8557	5f45YWuVRC77Zh9mTtjGzhheL15P67X3cx1VXjsrpump
+16	2026-10-28 03:31:36	1.500	copied	closed	its_sell	1.99x	3s	-0.0623	DJXThGNtYLYyx5wVkQE6GuL4nyGGTimcEeitka8apump
+17	2026-10-28 04:23:47	1.500	copied	failed	price limit 1.518x			0	5a7nDZcRLmeyb92ayCN7NHxkoLo2wQH9YdC8pA6gpump
+18	2026-10-28 04:27:39	1.501	copied	closed	time	1.07x	1790s	+0.0087	w9XZuzKehm3K7KY8ENM8wWWcDBtQgFG8bJ97UUYpump
+19	2026-10-28 04:41:16	1.500	copied	closed	its_sell	1.55x	907s	+0.1424	9hhXcHT9r7vgqDoe17JrnL5Z5on1meoYXP5NYTeWpump
+20	2026-10-28 08:49:59	1.502	copied	closed	its_sell	1.46x	1360s	+0.1429	3j9ex53kQkZFYR8dWvJfKm5CSHT7mf3GALCGZwFkpump
+21	2026-10-28 10:40:06	1.500	copied	failed	price limit 1.321x			0	EwsKTHxBLL8xgDXgfXbAaf3BZMLtkbtqMmbE9b44pump
+22	2026-10-28 15:31:34	1.504	copied	closed	its_sell	1.65x	11s	-0.1874	9ENc9LwFXmtUiAVNyYp5LqZMrEuZ3FWLAnmz5fD4pump

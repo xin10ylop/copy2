@@ -1,0 +1,95 @@
+total +354.91 SOL on 4849 tokens (realized +357.94, open -3.04); sold from before the window +78.62
+
+== by kind
+   pump, other quote            coins  3056  net  +278.02  won  732  without best 2  +264.23  best +7.29
+   pump, SOL quote              coins  1439  net   +28.85  won  300  without best 2   +22.17  best +3.79
+   pumpswap only                coins   264  net   +17.33  won   82  without best 2    -3.32  best +13.53
+   big: xStock                  coins    19  net   +11.22  won    4  without best 2    +1.25  best +7.18
+   big: PUMP                    coins     1  net    +6.93  won    1  without best 2    +0.00  best +6.93
+   big: WBTC                    coins     1  net    +6.72  won    1  without best 2    +0.00  best +6.72
+   big: TTWO                    coins     1  net    +2.51  won    1  without best 2    +0.00  best +2.51
+   other token                  coins    67  net    +2.16  won    3  without best 2    +0.42  best +0.93
+   big: WETH                    coins     1  net    +1.16  won    1  without best 2    +0.00  best +1.16
+
+P1: +245.56 SOL on 2911 tokens
+
+== by kind, P1 (first buy)
+   pump, other quote            coins  1836  net  +147.62  won  358  without best 2  +136.69  best +5.84
+   pumpswap only                coins   140  net   +39.10  won   52  without best 2   +18.45  best +13.53
+   pump, SOL quote              coins   861  net   +28.10  won  170  without best 2   +22.70  best +2.77
+   big: xStock                  coins    17  net   +11.23  won    4  without best 2    +1.25  best +7.18
+   big: PUMP                    coins     1  net    +6.93  won    1  without best 2    +0.00  best +6.93
+   big: WBTC                    coins     1  net    +6.72  won    1  without best 2    +0.00  best +6.72
+   big: TTWO                    coins     1  net    +2.51  won    1  without best 2    +0.00  best +2.51
+   other token                  coins    53  net    +2.18  won    3  without best 2    +0.44  best +0.93
+   big: WETH                    coins     1  net    +1.16  won    1  without best 2    +0.00  best +1.16
+
+P2: +109.35 SOL on 1938 tokens
+
+== by kind, P2 (first buy)
+   pump, other quote            coins  1220  net  +130.40  won  374  without best 2  +116.61  best +7.29
+   pump, SOL quote              coins   578  net    +0.75  won  130  without best 2    -5.92  best +3.79
+   big: xStock                  coins     2  net    -0.00  won    0  without best 2    +0.00  best -0.00
+   other token                  coins    14  net    -0.02  won    0  without best 2    -0.02  best +0.00
+   pumpswap only                coins   124  net   -21.78  won   30  without best 2   -23.57  best +0.93
+
+P3: +0.00 SOL on 0 tokens
+
+== by kind, P3 (first buy)
+
+== pump coins by entry stage
+   pump, other quote / early (5-30%) coins  2327  net  +202.80  won  535  without best 2  +190.21  best +6.50
+   pump, other quote / late (30%+) coins   257  net   +71.29  won   95  without best 2   +59.04  best +7.29
+   pumpswap only / no curve buy coins   264  net   +17.33  won   82  without best 2    -3.32  best +13.53
+   pump, SOL quote / early (5-30%) coins   587  net   +14.73  won   92  without best 2    +9.56  best +2.62
+   pump, SOL quote / late (30%+) coins   670  net    +8.44  won  184  without best 2    +1.77  best +3.79
+   pump, SOL quote / launch (< 5% sold) coins   180  net    +5.68  won   24  without best 2    +2.22  best +1.94
+   pump, other quote / launch (< 5% sold) coins   469  net    +3.93  won  102  without best 2    +0.54  best +1.72
+   pump, other quote / no curve buy coins     3  net    +0.00  won    0  without best 2    +0.00  best +0.00
+   pump, SOL quote / no curve buy coins     2  net    +0.00  won    0  without best 2    +0.00  best +0.00
+
+== by day (first buy, UTC)
+   10-19                        coins   654  net  +123.40  won  138  without best 2  +102.69  best +13.53
+   10-20                        coins   794  net   +54.49  won  157  without best 2   +48.38  best +3.23
+   10-25                        coins   451  net   +40.11  won  137  without best 2   +26.32  best +7.29
+   10-26                        coins   376  net   +40.03  won  113  without best 2   +28.22  best +6.09
+   10-22                        coins   711  net   +39.43  won  155  without best 2   +29.37  best +5.10
+   10-21                        coins   752  net   +28.24  won  141  without best 2   +18.91  best +5.84
+   10-24                        coins   520  net   +18.80  won  161  without best 2   +13.10  best +2.99
+   10-23                        coins   582  net   +14.24  won  121  without best 2    +8.27  best +3.01
+   10-27                        coins     9  net    -3.83  won    2  without best 2    -4.84  best +0.96
+
+== by 6-hour block (UTC)
+   10-19 00h                    coins   141  net   +69.79  won   38  without best 2   +49.14  best +13.53
+   10-20 12h                    coins   148  net   +30.43  won   36  without best 2   +24.32  best +3.23
+   10-22 00h                    coins   144  net   +29.80  won   44  without best 2   +19.74  best +5.10
+   10-19 18h                    coins   244  net   +29.35  won   45  without best 2   +15.23  best +7.18
+   10-23 18h                    coins   191  net   +26.42  won   47  without best 2   +21.06  best +2.86
+   10-20 00h                    coins   225  net   +26.06  won   52  without best 2   +20.83  best +2.69
+   10-21 00h                    coins   143  net   +24.98  won   36  without best 2   +20.16  best +2.43
+   10-26 12h                    coins   110  net   +23.28  won   39  without best 2   +15.60  best +3.94
+   10-25 00h                    coins   113  net   +22.00  won   41  without best 2    +9.87  best +7.29
+   10-19 12h                    coins   165  net   +20.84  won   37  without best 2   +14.73  best +3.70
+   10-24 18h                    coins   178  net   +15.40  won   73  without best 2    +9.70  best +2.99
+   10-26 18h                    coins   147  net   +13.29  won   42  without best 2    +3.41  best +6.09
+   10-22 06h                    coins   104  net   +12.27  won   31  without best 2    +7.74  best +2.29
+   10-25 06h                    coins    87  net   +11.84  won   27  without best 2    +4.92  best +3.75
+   10-25 18h                    coins   125  net   +10.56  won   40  without best 2    +5.97  best +2.36
+   10-22 18h                    coins   251  net    +8.26  won   42  without best 2    +3.41  best +2.62
+   10-21 18h                    coins   287  net    +6.85  won   50  without best 2    -2.49  best +5.84
+   10-24 00h                    coins   108  net    +6.44  won   30  without best 2    +2.43  best +2.01
+   10-19 06h                    coins   104  net    +3.43  won   18  without best 2    -2.47  best +3.59
+   10-26 00h                    coins    77  net    +2.56  won   19  without best 2    -6.30  best +5.72
+   10-20 06h                    coins   149  net    +2.09  won   31  without best 2    -1.84  best +2.00
+   10-21 12h                    coins   169  net    +1.60  won   34  without best 2    -3.59  best +2.77
+   10-24 12h                    coins   149  net    +1.10  won   41  without best 2    -2.97  best +2.59
+   10-26 06h                    coins    42  net    +0.91  won   13  without best 2    -3.34  best +2.34
+   10-23 06h                    coins    94  net    -2.34  won   24  without best 2    -5.45  best +1.63
+   10-23 00h                    coins    83  net    -2.52  won   14  without best 2    -8.48  best +3.01
+   10-27 00h                    coins     9  net    -3.83  won    2  without best 2    -4.84  best +0.96
+   10-20 18h                    coins   272  net    -4.09  won   38  without best 2    -9.06  best +2.62
+   10-24 06h                    coins    85  net    -4.14  won   17  without best 2    -7.56  best +2.00
+   10-25 12h                    coins   126  net    -4.28  won   29  without best 2   -12.36  best +6.50
+   10-21 06h                    coins   153  net    -5.19  won   21  without best 2    -9.49  best +2.15
+   10-23 12h                    coins   214  net    -7.32  won   36  without best 2   -11.22  best +1.99
+   10-22 12h                    coins   212  net   -10.90  won   38  without best 2   -16.90  best +3.74

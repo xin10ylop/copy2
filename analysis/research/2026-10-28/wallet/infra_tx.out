@@ -1,0 +1,5 @@
+200 tipped own txs: tips per tx {1: 200}
+  service: [('HELIUS', 109), ('ASTRALANE', 34), ('JITO', 24), ('NOZOMI', 20), ('SPEEDLANDING', 9), ('NEXTBLOCK', 2), ('SOYAS', 1), ('BLOCKRAZOR', 1)]
+  amount (lamports): [(1067000, 94), (5000, 43), (1010000, 36), (31670000, 9), (10000000, 3), (1210000, 2), (12673237, 1), (11000228, 1)]
+  service x amount: [(('HELIUS', 5000), 43), (('HELIUS', 1067000), 39), (('ASTRALANE', 1067000), 22), (('HELIUS', 1010000), 20), (('JITO', 1067000), 15), (('NOZOMI', 1067000), 10), (('JITO', 1010000), 7), (('SPEEDLANDING', 1067000), 6), (('NOZOMI', 31670000), 4), (('ASTRALANE', 31670000), 4)]
+100 random own txs: version {'1': 99, '0': 1}  durable nonce first 63  priorityFee lamports p10/50/90 [418, 3325833, 19947598] n 63  CU limit p10/50/90 [6159, 60317, 174127]

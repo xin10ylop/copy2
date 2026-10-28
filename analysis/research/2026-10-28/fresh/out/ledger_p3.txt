@@ -1,0 +1,24 @@
+tokens 591  realized +85.61  open -0.79  sold from before the start +32.37  token transfers 46  SOL/USD last 0.009879656908918124  transfers 44 net -3.21
+unpriced [('7x4EfR,C5xph2', 1), ('3B7SHo,C5xph2', 1), ('2fmGWH,C5xph2,Gameg3', 1), ('4W9nkD,A4tiCb,C5xph2', 1), ('GYbCFF,Xsa62P', 1)]
+  5rZTH5eh  real  +12.177  open  +0.000  buys   1 sells   1
+  AsY6oq86  real  +11.018  open  +0.000  buys   1 sells   1
+  3xwpPXRJ  real   +7.471  open  +0.000  buys   1 sells   1
+  5a7nDZcR  real   +7.192  open  +0.000  buys   1 sells   1
+  EVcoZp3P  real   +3.862  open  +0.000  buys   1 sells   1
+  6y9aDagF  real   +3.717  open  +0.000  buys   1 sells   1
+  GgAbWLrv  real   +2.989  open  +0.000  buys   1 sells   1
+  4sMMk38s  real   +2.916  open  +0.000  buys   1 sells   1
+  Gko2g4W2  real   +2.897  open  +0.000  buys   1 sells   1
+  81Y1jv7k  real   +2.849  open  +0.000  buys   1 sells   1
+  6z8sP7Li  real   +2.499  open  +0.000  buys   1 sells   1
+  2FSWwQwj  real   +2.348  open  +0.000  buys   1 sells   1
+  2ocjhyHM  real   +2.145  open  +0.000  buys   1 sells   1
+  ACTnhwTv  real   +2.107  open  +0.000  buys   1 sells   1
+  4zRN29dX  real   +2.042  open  +0.000  buys   1 sells   1
+  37fgZHsQ  real   -0.823  open  +0.000  buys   1 sells   1
+  8U9o6SvH  real   -0.846  open  +0.000  buys   1 sells   1
+  3B7SHozU  real   -0.886  open  +0.000  buys   1 sells   1
+  ApnWnzWr  real   -0.955  open  +0.000  buys   1 sells   1
+  2fmGWH2w  real   -1.062  open  +0.000  buys   1 sells   1
+  Gameg3pj  real   -1.407  open  +0.000  buys   1 sells   1
+check: cash moved by trading +103.97; open positions at cost 12.42

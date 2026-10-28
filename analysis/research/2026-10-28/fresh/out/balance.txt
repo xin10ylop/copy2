@@ -1,0 +1,46 @@
+signatures 20476, landed 19981, rows 19981, last row 10-28 14:54:39 UTC
+activity by UTC day: period day  signatures  landed (failed)
+   P1 10-19    2116   2071 (45)
+   P1 10-20    2800   2756 (44)
+   P1 10-21    2409   2342 (67)
+   P1 10-22    2339   2296 (43)
+   P2 10-23    1996   1936 (60)
+   P2 10-24    2270   2216 (54)
+   P2 10-25    1928   1881 (47)
+   P2 10-26    1390   1317 (73)
+   P2 10-27      29     29 (0)
+   P3 10-27    2551   2506 (45)
+   P3 10-28     648    631 (17)
+   P1: 9664 signatures, 9465 landed over 96.0 h: 2366 landed a day
+   P2: 7613 signatures, 7379 landed over 96.3 h: 1839 landed a day
+   P3: 3199 signatures, 3137 landed over 38.6 h: 1952 landed a day
+
+P3 (3137 landed rows): native SOL +100.958, wSOL -0.629, USD -0.00; fees + tips paid 5.209
+   transfers (no token moved, > 0.003 SOL): 44 net -3.212: in 41 +1.796, out 3 -5.008
+      10-27 13:59 UTC    -5.0016  signed by it True
+      10-27 01:51 UTC    +0.0537  signed by it False
+      10-27 17:11 UTC    +0.0505  signed by it True
+      10-27 17:11 UTC    +0.0501  signed by it True
+      10-27 17:11 UTC    +0.0494  signed by it True
+      10-27 17:11 UTC    +0.0490  signed by it True
+      10-28 14:33 UTC    +0.0490  signed by it True
+      10-27 17:11 UTC    +0.0489  signed by it True
+   native SOL change in the first minutes of P3 (its swing around the docs' 467.7 SOL reading): 10 min -1.336  20 min -1.338  30 min -1.202  40 min +1.549  60 min -1.838  90 min +0.223  120 min +0.988
+   native SOL change before P3 (Oct 19 00:00 to Oct 27 00:20): +413.558
+   the transfers by program (Tokenkeg / TokenzQd: token-account closings, the rent comes back):
+      out signed by it     9fhQBbum                       1  -5.0016
+      out signed by it     ATokenGP,TokenzQd              2  -0.0062
+      in  not signed by it 6EF8rrec                       1  +0.0364
+      in  not signed by it no program                     1  +0.0537
+      in  signed by it     Tokenkeg,TokenzQd              3  +0.1294
+      in  signed by it     Tokenkeg                       5  +0.1935
+      in  signed by it     TokenzQd                      31  +1.3828
+   native SOL change less transfers: +104.170
+   token holdings changed over P3 (largest by value at the ledger's last price):
+      TTWO     -1.69648 tokens  about -3.246 SOL
+      DoGEV7LA -3383.92 tokens  about -2.632 SOL
+      WXMRyRZh -0.411858 tokens  about -2.447 SOL
+      ETh25zJu -3.63753e+07 tokens  about -1.763 SOL
+      SPCXxcqX -1.12947 tokens  about -1.625 SOL
+      XsqE9cRR -0.621546 tokens  about -1.588 SOL
+      all tokens: about -15.274 SOL

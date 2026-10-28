@@ -1,0 +1,9 @@
+   P1 10-21 01:41:24 UTC  3A54PtUyWRFvEhDkVYoLKT1D2jSjDP7nQbeSBbGXpump  its 1.474 SOL  route E  its net +2.014  sold after 8 s at 2.37x its SOL  
+   P1 10-21 04:19:44 UTC  7wY4rfVsUcNcwKcrLw6CHazzXw4bihcwP73ynj6jpump  its 1.555 SOL  route E  its net +2.206  sold after 9 s at 2.42x its SOL  
+   P2 10-25 01:18:47 UTC  C6YAkAbEKF8R6Qfq2CJA4CgAc8WhoYUtLq8ZatnLpump  its 1.471 SOL  route E  its net +2.368  sold after 38 s at 2.61x its SOL  
+   P2 10-25 03:59:37 UTC  3R1Kry3rj4xpFwud5quHtpQQxh6e8gwp25qiaEqBXkid  its 1.503 SOL  route C  its net +7.287  sold after 214 s at 5.85x its SOL  
+   P3 10-27 19:07:16 UTC  6y9aDagFD9RXVpJidYqmDozC3Qn2uRdtwPeoxT8pump  its 1.503 SOL  route B  its net +3.717  sold after 7 s at 3.48x its SOL  
+   P3 10-27 21:46:28 UTC  9UinFHHjEjdS3TfmVWLk2MUThGdRPoUPU1RgMKv2pump  its 1.503 SOL  route B  its net -0.444  sold after 21 s at 0.71x its SOL  
+   P3 10-28 01:10:37 UTC  3xwpPXRJ7zMDutnxiBPxcbYdJ1u9yZtVj8WjN6Nspump  its 1.502 SOL  route A  its net +7.471  sold after 65 s at 5.98x its SOL  
+   P3 10-28 01:18:11 UTC  AsY6oq86gpvjfxhsZqwBcNdyL2geHptmMSdzCjTPpump  its 1.502 SOL  route E  its net +11.018  sold after 133 s at 8.34x its SOL  
+   P3 10-28 01:54:00 UTC  2FSWwQwjMqUrbjpDC39ub9dbgK24jPEReLaUDRtSpump  its 1.502 SOL  route A  its net +2.348  sold after 12 s at 2.57x its SOL  

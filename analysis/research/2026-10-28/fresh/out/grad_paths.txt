@@ -1,0 +1,11 @@
+15:24:13 9 trips
+15:24:52 3A54PtUy (76, 91, False)
+15:24:52 7wY4rfVs (28, 31, False)
+15:24:52 C6YAkAbE (50, 65, False)
+15:25:08 3R1Kry3r (160, 217, False)
+15:25:08 6y9aDagF (49, 64, False)
+15:25:08 9UinFHHj (137, 140, False)
+15:25:08 3xwpPXRJ (49, 57, False)
+15:26:30 AsY6oq86 (577, 628, True)
+15:26:30 2FSWwQwj (23, 25, False)
+done

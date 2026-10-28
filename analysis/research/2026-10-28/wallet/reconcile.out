@@ -1,0 +1,9 @@
+balance at 2026-10-27 00:40 UTC: 467.6827
+balance at 2026-10-28 00:00 UTC: 495.4524
+balance at the end: 569.533
+  its trading and everything else it signed            +505.833
+  paid by others (pump holder-fee payouts, dust)       +0.828
+  failed-tx fees                                       -2.854
+  rent back from closing its token accounts            +12.857
+  5 SOL into the privacy pool                          -5.002
+  total 511.662

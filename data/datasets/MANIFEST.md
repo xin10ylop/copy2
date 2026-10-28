@@ -29,3 +29,6 @@ under `analysis/research/`.
 | `w4scan2` | 1 | 175.6K | 1.2M | 157 | the same |
 | `w4scan3` | 1 | 185.4K | 1.4M | 161 | the same |
 | `w4win` | 1 | 943.0K | 9.7M | 1,598 | used by 2026-10-28/decomp |
+| `fresh3` | 1 | 6.6M | 65M | 60 | **Oct 28, the extended study**: `fresh3/h9long/` = the `h9long` folder with wallet 4's transactions to Oct 28 14:54 UTC (20,476 signatures, 19,981 rows) and every derived file regenerated with P3 (`H9kuqGKN_fpaths.json` with the Oct 27-28 trips and the graduated coins' paths). Used by 2026-10-28/fresh and 2026-10-28/more (`DATA=fresh3`) |
+| `more` | 1 | 324K | 1.4M | 10 | used by 2026-10-28/more: the fetched pools, routes, skips, quotes, coin ages and the curve paths after its early sales. Unpacks to `<SP>/more/`; the scripts' `SPX` must point there |
+| `w4wallet` | 1 | 6.4M | 19M | 37 | used by 2026-10-28/wallet: signature lists, flows, pool events, neighbour transactions (the scripts and printed outputs are in the study folder). Unpacks to `<SP>/wallet/` |

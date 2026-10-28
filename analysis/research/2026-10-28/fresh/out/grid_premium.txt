@@ -1,0 +1,10 @@
+320 routable buys of 1.5-9.0 SOL, model q, its exits see our tokens True, at most 4 open
+   as built: tp 2.0 sl 0.8 1790 s               P1 145  +6.73 ( +4.76)   P2 145 +11.13 ( +8.48)   P3  25  -2.02 ( -3.74)
+   entry at most None over its price            P1 145  +6.73 ( +4.76)   P2 145 +11.13 ( +8.48)   P3  25  -2.02 ( -3.74)
+   entry at most 0.5 over its price             P1 144  +6.63 ( +4.67)   P2 143 +10.65 ( +7.99)   P3  24  -2.27 ( -3.98)
+   entry at most 0.25 over its price            P1 141  +6.05 ( +4.08)   P2 141 +11.24 ( +8.58)   P3  23  -1.86 ( -3.57)
+   entry at most 0.15 over its price            P1 133  +6.39 ( +4.43)   P2 137 +11.61 ( +8.96)   P3  21  -1.24 ( -2.95)
+   entry at most 0.1 over its price             P1 112  +4.48 ( +2.53)   P2 130 +12.86 (+10.20)   P3  18  -0.71 ( -2.43)
+   entry at most 0.07 over its price            P1  81  +4.85 ( +2.90)   P2 122 +11.16 ( +8.50)   P3  16  -0.00 ( -1.72)
+   entry at most 0.05 over its price            P1  54  +4.77 ( +2.81)   P2 117 +11.36 ( +8.70)   P3  12  -0.53 ( -1.40)
+   entry at most 0.03 over its price            P1  22  +3.69 ( +1.74)   P2 101  +8.63 ( +5.97)   P3   9  -0.35 ( -1.19)

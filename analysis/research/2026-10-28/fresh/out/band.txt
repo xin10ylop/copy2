@@ -1,0 +1,50 @@
+its buys 0.8-1.0 SOL, stake 1, model q, its exits see our tokens True, haircut 0%: 232 copies, its TP earlier by our lift on 19
+   at most 3 open: P1 85 -0.11 (-2.61)  P2 87 -1.55 (-3.72)  P3 32 -1.36 (-2.83)
+   at most 4 open: P1 89 -1.05 (-3.55)  P2 91 -0.99 (-3.15)  P3 33 -1.72 (-3.19)
+   at most 5 open: P1 90 -1.23 (-3.73)  P2 92 -1.07 (-3.24)  P3 33 -1.72 (-3.19)
+   at most 99 open: P1 91 -1.40 (-3.90)  P2 108 -2.39 (-4.56)  P3 33 -1.72 (-3.19)
+its buys 0.8-1.0 SOL, stake 1, model v, its exits see our tokens True, haircut 0%: 232 copies, its TP earlier by our lift on 20
+   at most 3 open: P1 85 +0.64 (-2.03)  P2 87 -1.08 (-3.37)  P3 32 -1.21 (-2.83)
+   at most 4 open: P1 89 -0.34 (-3.00)  P2 91 -0.42 (-2.70)  P3 33 -1.58 (-3.20)
+   at most 5 open: P1 90 -0.52 (-3.19)  P2 92 -0.50 (-2.79)  P3 33 -1.58 (-3.20)
+   at most 99 open: P1 91 -0.70 (-3.37)  P2 108 -1.82 (-4.11)  P3 33 -1.58 (-3.20)
+its buys 1.0-1.25 SOL, stake 1, model q, its exits see our tokens True, haircut 0%: 186 copies, its TP earlier by our lift on 16
+   at most 3 open: P1 89 +6.55 (+4.50)  P2 68 -6.23 (-7.83)  P3 24 -1.35 (-3.06)
+   at most 4 open: P1 92 +5.62 (+3.57)  P2 70 -6.46 (-8.06)  P3 24 -1.35 (-3.06)
+   at most 5 open: P1 92 +5.62 (+3.57)  P2 70 -6.46 (-8.06)  P3 24 -1.35 (-3.06)
+   at most 99 open: P1 92 +5.62 (+3.57)  P2 70 -6.46 (-8.06)  P3 24 -1.35 (-3.06)
+its buys 1.0-1.25 SOL, stake 1, model v, its exits see our tokens True, haircut 0%: 186 copies, its TP earlier by our lift on 19
+   at most 3 open: P1 89 +7.93 (+5.66)  P2 68 -6.33 (-7.90)  P3 24 -1.27 (-3.12)
+   at most 4 open: P1 92 +6.97 (+4.70)  P2 70 -6.56 (-8.14)  P3 24 -1.27 (-3.12)
+   at most 5 open: P1 92 +6.97 (+4.70)  P2 70 -6.56 (-8.14)  P3 24 -1.27 (-3.12)
+   at most 99 open: P1 92 +6.97 (+4.70)  P2 70 -6.56 (-8.14)  P3 24 -1.27 (-3.12)
+its buys 1.25-1.45 SOL, stake 1, model q, its exits see our tokens True, haircut 0%: 78 copies, its TP earlier by our lift on 4
+   at most 3 open: P1 20 -1.84 (-2.70)  P2 34 -0.69 (-2.68)  P3 22 -0.93 (-2.80)
+   at most 4 open: P1 20 -1.84 (-2.70)  P2 36 -0.92 (-2.90)  P3 22 -0.93 (-2.80)
+   at most 5 open: P1 20 -1.84 (-2.70)  P2 36 -0.92 (-2.90)  P3 22 -0.93 (-2.80)
+   at most 99 open: P1 20 -1.84 (-2.70)  P2 36 -0.92 (-2.90)  P3 22 -0.93 (-2.80)
+its buys 1.25-1.45 SOL, stake 1, model v, its exits see our tokens True, haircut 0%: 78 copies, its TP earlier by our lift on 4
+   at most 3 open: P1 20 -1.82 (-2.77)  P2 34 -0.43 (-2.62)  P3 22 -0.70 (-2.85)
+   at most 4 open: P1 20 -1.82 (-2.77)  P2 36 -0.66 (-2.85)  P3 22 -0.70 (-2.85)
+   at most 5 open: P1 20 -1.82 (-2.77)  P2 36 -0.66 (-2.85)  P3 22 -0.70 (-2.85)
+   at most 99 open: P1 20 -1.82 (-2.77)  P2 36 -0.66 (-2.85)  P3 22 -0.70 (-2.85)
+its buys 1.45-1.5 SOL, stake 1, model q, its exits see our tokens True, haircut 0%: 33 copies, its TP earlier by our lift on 4
+   at most 3 open: P1 8 -1.54 (-1.34)  P2 19 +0.67 (-1.08)  P3 5 -0.96 (-0.71)
+   at most 4 open: P1 8 -1.54 (-1.34)  P2 20 +0.54 (-1.22)  P3 5 -0.96 (-0.71)
+   at most 5 open: P1 8 -1.54 (-1.34)  P2 20 +0.54 (-1.22)  P3 5 -0.96 (-0.71)
+   at most 99 open: P1 8 -1.54 (-1.34)  P2 20 +0.54 (-1.22)  P3 5 -0.96 (-0.71)
+its buys 1.45-1.5 SOL, stake 1, model v, its exits see our tokens True, haircut 0%: 33 copies, its TP earlier by our lift on 4
+   at most 3 open: P1 8 -1.58 (-1.39)  P2 19 +0.92 (-1.04)  P3 5 -0.99 (-0.73)
+   at most 4 open: P1 8 -1.58 (-1.39)  P2 20 +0.78 (-1.17)  P3 5 -0.99 (-0.73)
+   at most 5 open: P1 8 -1.58 (-1.39)  P2 20 +0.78 (-1.17)  P3 5 -0.99 (-0.73)
+   at most 99 open: P1 8 -1.58 (-1.39)  P2 20 +0.78 (-1.17)  P3 5 -0.99 (-0.73)
+its buys 1.5-9.0 SOL, stake 1, model q, its exits see our tokens True, haircut 0%: 320 copies, its TP earlier by our lift on 42
+   at most 3 open: P1 135 +5.03 (+3.06)  P2 136 +9.63 (+6.98)  P3 25 -2.02 (-3.74)
+   at most 4 open: P1 145 +6.73 (+4.76)  P2 145 +11.13 (+8.48)  P3 25 -2.02 (-3.74)
+   at most 5 open: P1 146 +6.69 (+4.72)  P2 147 +10.86 (+8.21)  P3 25 -2.02 (-3.74)
+   at most 99 open: P1 146 +6.69 (+4.72)  P2 149 +10.43 (+7.77)  P3 25 -2.02 (-3.74)
+its buys 1.5-9.0 SOL, stake 1, model v, its exits see our tokens True, haircut 0%: 320 copies, its TP earlier by our lift on 46
+   at most 3 open: P1 135 +6.09 (+3.95)  P2 136 +11.15 (+8.28)  P3 25 -2.01 (-3.80)
+   at most 4 open: P1 145 +8.06 (+5.92)  P2 145 +12.87 (+10.00)  P3 25 -2.01 (-3.80)
+   at most 5 open: P1 146 +8.02 (+5.89)  P2 147 +12.60 (+9.72)  P3 25 -2.01 (-3.80)
+   at most 99 open: P1 146 +8.02 (+5.89)  P2 149 +12.15 (+9.27)  P3 25 -2.01 (-3.80)

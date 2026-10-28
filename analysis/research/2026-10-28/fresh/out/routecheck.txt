@@ -1,0 +1,6 @@
+   route_cls E      bot: no route: NoAnchor       3
+   route_cls E      bot: unpriced                 9
+   route_cls A/B/C  bot: ROUTABLE                 20
+   route_cls A/B/C  bot: no route: TooLong        2
+   differs: AvcwGFaFVtukPHy7MCoc8nbr1LN5QcqSAQ3c4oJZpump A no route: TooLong 1.502 2
+   differs: 2FSWwQwjMqUrbjpDC39ub9dbgK24jPEReLaUDRtSpump A no route: TooLong 1.502 1

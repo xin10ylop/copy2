@@ -1,0 +1,12 @@
+BJjTnf2BoyeJZ9JnPWo75rAK2YcvXrBbX3uJ6NP4oDgB sigs 5 2026-10-17 20:49:04 -> 2026-10-17 21:11:42 label None sampled 5 self-paid 2 ver {'legacy': 4, '0': 1}
+   pump buys 0 (other-quote 0, 1.45-1.6 SOL other-quote 0) sells 0 buy SOL p10/50/90 None/None/None
+   progs [('Stake111', 1), ('ATokenGP', 1), ('SP12tWFx', 1), ('T1TANpTe', 1), ('Tokenkeg', 1), ('stkitrT1', 1)]
+   plain >=0.5: [('IN', 'MCquEenF', 50.0, '10-17 20:49')]
+6SWyKzv59saDucTWREEND85Hj2vFy8ceptrwUsCCqhpn sigs 2 2026-10-17 21:28:14 -> 2026-10-17 21:30:27 label None sampled 2 self-paid 0 ver {'legacy': 2}
+   pump buys 0 (other-quote 0, 1.45-1.6 SOL other-quote 0) sells 0 buy SOL p10/50/90 None/None/None
+   progs []
+   plain >=0.5: [('IN', 'MCquEenF', 18.801, '10-17 21:28')]
+4dVRRH6kg6TvQ3ppLLmY2QMK5fzVrq5oiYGzdAaTgQDN sigs 43 2026-03-18 07:30:30 -> 2026-10-26 10:08:31 label None sampled 43 self-paid 0 ver {'0': 23, 'legacy': 20}
+   pump buys 0 (other-quote 0, 1.45-1.6 SOL other-quote 0) sells 0 buy SOL p10/50/90 None/None/None
+   progs [('Tokenkeg', 14), ('L2TExMFK', 1)]
+   plain >=0.5: [('OUT', '5yASLjtN', 11.199, '10-17 19:02'), ('IN', 'MCquEenF', 11.199, '10-17 18:59'), ('OUT', '5yASLjtN', 0.737, '09-06 19:00'), ('IN', 'GDUBL5K4', 0.737, '09-06 18:10'), ('OUT', '5yASLjtN', 0.567, '08-20 18:02'), ('IN', 'k5tYg5zS', 0.567, '08-20 17:43'), ('OUT', '5yASLjtN', 5.081, '08-02 07:02'), ('IN', 'HhrMwPub', 5.081, '08-01 18:31')]

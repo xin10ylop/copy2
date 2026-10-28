@@ -1,0 +1,35 @@
+
+== its one-buy one-sell trips, 1.45+ SOL, other quote, all: how it sold   [n: tp / stop / time / early (share)]
+   P1  398:  tp  87 (21.9%)  stop  30 ( 7.5%)  time 267 (67.1%)  early  14 ( 3.5%)   its net +137.25  (early sells  -8.28)
+   P2  294:  tp  32 (10.9%)  stop  24 ( 8.2%)  time 198 (67.3%)  early  40 (13.6%)   its net  +68.75  (early sells  +1.19)
+   P3   49:  tp   6 (12.2%)  stop   0 ( 0.0%)  time  19 (38.8%)  early  24 (49.0%)   its net  +22.95  (early sells  +5.65)
+
+== its one-buy one-sell trips, 1.45+ SOL, other quote, routable (route class A, B, C): how it sold   [n: tp / stop / time / early (share)]
+   P1  154:  tp  26 (16.9%)  stop   9 ( 5.8%)  time 118 (76.6%)  early   1 ( 0.6%)   its net  +45.15  (early sells  -0.01)
+   P2  169:  tp  17 (10.1%)  stop   7 ( 4.1%)  time 126 (74.6%)  early  19 (11.2%)   its net  +49.30  (early sells  +2.90)
+   P3   30:  tp   2 ( 6.7%)  stop   0 ( 0.0%)  time  13 (43.3%)  early  15 (50.0%)   its net   +6.89  (early sells  +0.73)
+
+== the early sells (1.45+ SOL, other quote, all routes): p10 p25 p50 p75 p90
+   P1 14: seconds held [160, 221, 595, 940, 1096]  multiple at its sale [0.8, 0.82, 0.97, 1.07, 1.19]  SOL value multiple [0.7, 0.93, 0.95, 1.0, 1.15]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 0  10-60 s 1  1-5 min 3  5-15 min 6  15-30 min 4
+      multiple: 0.75-1.0x 10  1.0-1.5x 3  1.5-2.0x 1  2.0-2.4x 0   won 2
+      quote: CARDS 5  EPjFWdd5 4  via SOL only 3  HiMSSzzw 1  Pren 1   route class: A 1  E 13
+      for scale, time: 267 quote via SOL only 95  CARDS 51  PUMP 27  WBTC 23
+      for scale, tp: 87 quote CARDS 19  via SOL only 17  PUMP 17  WBTC 8
+   P2 40: seconds held [22, 89, 308, 605, 1163]  multiple at its sale [0.83, 0.91, 1.1, 1.4, 1.67]  SOL value multiple [0.77, 0.9, 1.09, 1.32, 1.65]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 0  10-60 s 8  1-5 min 12  5-15 min 11  15-30 min 9
+      multiple: 0.75-1.0x 16  1.0-1.5x 17  1.5-2.0x 6  2.0-2.4x 1   won 23
+      quote: via SOL only 9  PUMP 7  WBTC 5  DJTu 4  A7bd 3  C5xph2yL 2  CrAr4RRJ 2  3LPTanzy 2   route class: A 12  B 7  E 21
+      for scale, time: 198 quote WBTC 77  via SOL only 46  PUMP 14  A7bd 8
+      for scale, tp: 32 quote WBTC 9  via SOL only 8  PUMP 5  A7bd 3
+   P3 24: seconds held [7, 24, 142, 410, 830]  multiple at its sale [0.83, 0.95, 1.18, 1.38, 1.95]  SOL value multiple [0.79, 0.91, 1.06, 1.32, 1.86]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 4  10-60 s 6  1-5 min 7  5-15 min 5  15-30 min 2
+      multiple: 0.75-1.0x 9  1.0-1.5x 10  1.5-2.0x 4  2.0-2.4x 1   won 12
+      quote: via SOL only 12  WXMR 3  WBTC 3  GRNDYDpq 1  A7bd 1  TTWO 1  SPCX 1  PUMP 1   route class: A 12  B 2  C 1  E 9
+      for scale, time: 19 quote via SOL only 12  6GmAFSYs 2  6p6xgHyF 1  XsoBhf2u 1
+      for scale, tp: 6 quote via SOL only 2  CARDS 1  PUMP 1  A7bd 1
+
+== every coin first bought for 1.45+ SOL (other quote), any number of trades: its first curve sale
+   P1 400 coins: 1 buy, no curve sale 2  early first sale, sold all 14  trades: 1 buy 1 sell 398   early first sale 14 (3.5%)
+   P2 296 coins: 1 buy, no curve sale 2  early first sale, sold all 40  trades: 1 buy 1 sell 294   early first sale 40 (13.5%)
+   P3 55 coins: 1 buy, no curve sale 5  2 buys 2 sells 1  early first sale, sold all 24  trades: 1 buy 1 sell 49   early first sale 24 (43.6%)

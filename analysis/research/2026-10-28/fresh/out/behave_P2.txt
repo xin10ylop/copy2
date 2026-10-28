@@ -1,0 +1,27 @@
+
+== pump, other quote: 1220 closed coins whose first trade is a buy, net +133.55
+   buys per coin p10..p90 [1, 1, 1, 1, 1]  sells per coin [1, 1, 1, 1, 1]  first-buy SOL [-1.503, -1.426, -1.019, -0.898, -0.725]  tip M [0.0, 0.0, 0.0, 1.067, 1.067]
+   slots to first sell [370, 8421, 8474, 8491, 8507]  to last sell [370, 8421, 8474, 8491, 8507]
+   ix of first buy [('buy_exact_quote_in', 744), ('multi_hop_swap', 476)]
+   price at its first sell / after its first buy [0.764, 0.869, 0.923, 0.99, 1.497]
+   its net / first-buy SOL [-32.979, -15.951, -7.293, 6.432, 80.714]  mean 10.947  won 375 / 1220
+   first sell after     3-10 slots: coins     2 net    -0.75 won 0
+   first sell after    11-50 slots: coins    33 net    +8.33 won 12
+   first sell after   51-200 slots: coins    59 net   +42.94 won 34
+   first sell after 201-1000 slots: coins    89 net   +48.27 won 48
+   first sell after    >1000 slots: coins  1029 net   +13.13 won 273
+   first buy     <0.6 SOL: coins  1220 net  +133.55 won 375
+
+== pump, SOL quote: 578 closed coins whose first trade is a buy, net +0.75
+   buys per coin p10..p90 [1, 1, 1, 1, 1]  sells per coin [0, 1, 1, 1, 1]  first-buy SOL [-1.249, -0.855, -0.603, -0.51, -0.355]  tip M [0.0, 0.0, 1.067, 1.067, 10.0]
+   slots to first sell [34, 171, 4820, 8490, 8513]  to last sell [34, 171, 4820, 8490, 8513]
+   ix of first buy [('buy_exact_quote_in', 578)]
+   price at its first sell / after its first buy [0.534, 0.687, 0.899, 0.972, 1.498]
+   its net / first-buy SOL [-44.592, -21.864, -6.407, -0.846, 59.172]  mean 0.13  won 130 / 578
+   first sell after      <=2 slots: coins     2 net    -0.54 won 0
+   first sell after     3-10 slots: coins    14 net    -5.02 won 0
+   first sell after    11-50 slots: coins    51 net    -3.22 won 12
+   first sell after   51-200 slots: coins    67 net    -2.76 won 22
+   first sell after 201-1000 slots: coins    89 net    +2.32 won 28
+   first sell after    >1000 slots: coins   292 net    -5.86 won 36
+   first buy     <0.6 SOL: coins   578 net    +0.75 won 130

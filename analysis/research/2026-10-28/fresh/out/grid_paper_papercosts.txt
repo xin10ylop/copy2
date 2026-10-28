@@ -1,0 +1,27 @@
+854 routable buys of 0.0-99.0 SOL, model q, its exits see our tokens True, at most 3 open
+   as built: tp 2.0 sl 0.8 1790 s               P1 281 +26.26 (+23.57)   P2 288 +17.56 (+15.00)   P3 109  +2.41 ( +0.04)
+    # bought UTC  coin     paper exit    paper |    model  pmax.25  model exit                         | its: SOL rt   sec  mult
+    0 27 10:29:41 PePEwjLD time        -0.0230 |  -0.0233  -0.0233  time (its 30-minute sell)          | 1.502 A  1800  1.02x | we buy at 1.018x, sell at 1.02x
+    1 27 16:14:35 CkFH2smc time        -0.1843 |  -0.0868  -0.0868  its early sell, we follow          | 1.502 A   830  1.18x | we buy at 1.122x, sell at 1.05x
+    2 27 18:25:35 6qUyTWv4 time        -0.1277 |  -0.1215  -0.1215  time (its 30-minute sell)          | 1.502 A  1800  0.92x | we buy at 1.024x, sell at 0.92x
+    3 27 19:07:16 6y9aDagF tp          +0.8377 |  +1.0609  +1.0609  tp                                 | 1.503 B     7  2.49x | we buy at 1.086x, sell at 2.33x
+    4 27 19:49:24 BPhav4G4 its_sell    -0.2958 |  -0.2813  -0.2813  its early sell, we follow          | 1.502 A   197  0.94x | we buy at 1.163x, sell at 0.85x
+    5 27 20:09:03 ChonQdJ8 its_sell    -0.1756 |  -0.1701  -0.1701  its early sell, we follow          | 1.495 A     7  0.99x | we buy at 1.093x, sell at 0.93x
+    6 27 21:02:24 FUCKKmZZ its_sell    -0.2468 |  -0.2362  -0.2362  its early sell, we follow          | 1.502 A   475  1.00x | we buy at 1.170x, sell at 0.91x
+    7 27 21:31:01 69iQjjf8 tp          +0.9869 |  +0.8877  +0.8877  tp                                 | 1.502 A   276  1.93x | we buy at 1.024x, sell at 2.08x
+    8 27 21:39:24 rAPE9kiT stop        -0.3124 |  -0.3370  -0.3370  sl, its sell first                 | 1.502 A    24  0.76x | we buy at 1.070x, sell at 0.72x
+    9 27 21:46:28 9UinFHHj tp          +0.8769 |  +0.8753  +0.8753  tp                                 | 1.503 B    21  3.87x | we buy at 1.049x, sell at 2.05x
+   10 27 23:10:20 CogafBTp time        -0.0973 |  -0.0919  -0.0919  time (its 30-minute sell)          | 1.502 A  1800  1.03x | we buy at 1.106x, sell at 1.03x
+   11 28 00:24:51 HytpiyuR its_sell    +0.1038 |  +0.0967  +0.0967  its early sell, we follow          | 1.503 C   287  1.27x | we buy at 1.024x, sell at 1.16x
+   12 28 01:04:23 6DS5ErwH its_sell    -0.3031 |  -0.2898  -0.2898  its early sell, we follow          | 1.502 A   142  0.83x | we buy at 1.056x, sell at 0.76x
+   13 28 01:10:37 3xwpPXRJ tp          +0.7511 |  +0.8114  +0.8114  tp                                 | 1.502 A    65  2.56x | we buy at 1.123x, sell at 2.12x
+   14 28 01:15:19 4BvM3fKH time        -0.2238 |  -0.2138  -0.2138  time (its 30-minute sell)          | 1.502 A  1800  0.83x | we buy at 1.037x, sell at 0.83x
+   15 28 01:27:36 5f45YWuV tp          +0.8557 |  +0.9941  +0.9941  tp, its sell first                 | 1.502 A     4  2.53x | we buy at 1.067x, sell at 2.24x
+   16 28 01:31:36 DJXThGNt its_sell    -0.0623 |  -0.0609  -0.0609  its early sell, we follow          | 1.502 A     4  1.10x | we buy at 1.054x, sell at 1.02x
+   17 28 02:23:47 5a7nDZcR price limit 1.518x        0 |  +0.3101  +0.0000  tp, its sell first                 | 1.502 A    10  5.09x | we buy at 1.518x, sell at 2.07x
+   18 28 02:27:39 w9XZuzKe time        +0.0087 |  -0.0216  -0.0216  time (its 30-minute sell)          | 1.504 B  1800  1.04x | we buy at 1.030x, sell at 1.04x
+   19 28 02:41:16 9hhXcHT9 its_sell    +0.1424 |  +0.1313  +0.1313  its early sell, we follow          | 1.502 A   908  1.37x | we buy at 1.039x, sell at 1.22x
+   20 28 06:49:59 3j9ex53k its_sell    +0.1429 |  +0.1330  +0.1330  its early sell, we follow          | 1.511 B  1360  1.38x | we buy at 1.058x, sell at 1.24x
+   21 28 08:40:06 EwsKTHxB price limit 1.321x        0 |  -0.3561  +0.0000  its early sell, we follow          | 1.502 A    26  0.95x | we buy at 1.321x, sell at 0.86x
+   22 28 13:31:34 9ENc9LwF its_sell    -0.1874 |  -0.1839  -0.1839  its early sell, we follow          | 1.509 B    12  0.97x | we buy at 1.112x, sell at 0.93x
+   closed in paper and modelled: 21, paper +2.4666, model +2.8722; model with the price limit over every row +2.8722

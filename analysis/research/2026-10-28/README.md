@@ -42,5 +42,16 @@ SCAN_SOL=1 cargo run -p rugsnipe-long --example scan -- RPC_URL OUTDIR > scan.ou
 - ChonQdJ8 (paper #5): wallet 4 sold everything 7 s after buying, losing 10% itself; the copy sold behind it as built.
 - `fetch/w4fetch.py`: Oct 27 09:00 → 13:00 UTC, the fra1 paper check (157 transactions, PePEwjLD the only qualifying buy).
 
-A note on the parser: a first hand-written parser here missed most transactions routed through `FLASHX8D...`; every
-number above comes from the bot's own `TxLite` parser (`scan.rs`, `curve_path.rs`).
+## `fresh/`, `more/`, `wallet/`: the Oct 28 evening rework (`07-rework-2026-10-28/`)
+
+- `fresh/`: the 8-day study re-run on the data extended to Oct 28 14:54 UTC with a third period P3 (Oct 27 00:20 →):
+  wallet 4's result and rule on P3, the long copy's rule on P3, paper against the model coin by coin, the graduated
+  coins. Data: `data/datasets/fresh3.tar.xz`.
+- `more/`: the trades the bot skips (parts B, C, D, E: can they be taken?) and copying part A better (its early sells,
+  stakes by route, floats, 3-hop routes, filters, partial exits, the entry limit, speed). Data: `data/datasets/more.tar.xz`.
+- `wallet/`: wallet 4 on chain (funding, the predecessor wallet, the privacy pool, neighbours, creators, infrastructure);
+  the report is `07-rework-2026-10-28/wallet-check.md`. Data: `data/datasets/w4wallet.tar.xz`.
+
+A note on the parser: a first hand-written parser here missed most transactions routed through `FLASHX8D...` (Axiom's
+router, used by other traders on these coins, never by wallet 4: `wallet/`); every number above comes from the bot's own
+`TxLite` parser (`scan.rs`, `curve_path.rs`).

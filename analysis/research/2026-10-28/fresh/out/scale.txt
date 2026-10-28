@@ -1,0 +1,30 @@
+stake 1.0 model q its exits see our tokens True haircut 0%: its TP earlier by our lift on 41
+   at most 3 open: P1 137 +6.74 (+4.77)  P2 134 +8.84 (+6.19)  P3 25 -2.02 (-3.74)
+   at most 4 open: P1 147 +8.43 (+6.46)  P2 142 +10.43 (+7.77)  P3 25 -2.02 (-3.74)
+   at most 5 open: P1 148 +8.39 (+6.43)  P2 144 +10.07 (+7.41)  P3 25 -2.02 (-3.74)
+   at most 99 open: P1 148 +8.39 (+6.43)  P2 145 +9.83 (+7.17)  P3 25 -2.02 (-3.74)
+stake 1.5 model q its exits see our tokens True haircut 0%: its TP earlier by our lift on 44
+   at most 3 open: P1 137 +10.92 (+8.04)  P2 134 +14.42 (+10.51)  P3 25 -2.65 (-5.17)
+   at most 4 open: P1 147 +13.50 (+10.63)  P2 142 +16.84 (+12.92)  P3 25 -2.65 (-5.17)
+   at most 5 open: P1 148 +13.46 (+10.59)  P2 144 +16.34 (+12.42)  P3 25 -2.65 (-5.17)
+   at most 99 open: P1 148 +13.46 (+10.59)  P2 145 +16.00 (+12.08)  P3 25 -2.65 (-5.17)
+stake 2.0 model q its exits see our tokens True haircut 0%: its TP earlier by our lift on 46
+   at most 3 open: P1 137 +14.30 (+10.56)  P2 134 +18.98 (+13.87)  P3 25 -3.31 (-6.58)
+   at most 4 open: P1 147 +17.71 (+13.97)  P2 142 +22.16 (+17.04)  P3 25 -3.31 (-6.58)
+   at most 5 open: P1 148 +17.66 (+13.92)  P2 144 +21.53 (+16.41)  P3 25 -3.31 (-6.58)
+   at most 99 open: P1 148 +17.66 (+13.92)  P2 145 +21.10 (+15.97)  P3 25 -3.31 (-6.58)
+stake 3.0 model q its exits see our tokens True haircut 0%: its TP earlier by our lift on 58
+   at most 3 open: P1 137 +18.66 (+13.32)  P2 134 +26.05 (+18.70)  P3 25 -4.98 (-9.33)
+   at most 4 open: P1 147 +23.35 (+18.01)  P2 142 +30.61 (+23.25)  P3 25 -4.98 (-9.33)
+   at most 5 open: P1 148 +23.29 (+17.95)  P2 144 +29.71 (+22.36)  P3 25 -4.98 (-9.33)
+   at most 99 open: P1 148 +23.29 (+17.95)  P2 145 +29.10 (+21.74)  P3 25 -4.98 (-9.33)
+stake 5.0 model q its exits see our tokens True haircut 0%: its TP earlier by our lift on 68
+   at most 3 open: P1 137 +3.86 (-3.33)  P2 134 +25.58 (+15.62)  P3 25 -10.99 (-15.32)
+   at most 4 open: P1 147 +7.41 (+0.22)  P2 142 +29.24 (+19.28)  P3 25 -10.99 (-15.32)
+   at most 5 open: P1 148 +7.31 (+0.12)  P2 144 +27.87 (+17.92)  P3 25 -10.99 (-15.32)
+   at most 99 open: P1 148 +7.31 (+0.12)  P2 145 +26.92 (+16.96)  P3 25 -10.99 (-15.32)
+stake 1.0 model q its exits see our tokens True haircut 5%: its TP earlier by our lift on 41
+   at most 3 open: P1 137 +3.19 (+1.43)  P2 134 +5.90 (+3.48)  P3 25 -2.81 (-4.33)
+   at most 4 open: P1 147 +4.52 (+2.75)  P2 142 +7.17 (+4.75)  P3 25 -2.81 (-4.33)
+   at most 5 open: P1 148 +4.48 (+2.72)  P2 144 +6.81 (+4.38)  P3 25 -2.81 (-4.33)
+   at most 99 open: P1 148 +4.48 (+2.72)  P2 145 +6.57 (+4.14)  P3 25 -2.81 (-4.33)
