@@ -45,3 +45,45 @@ bash run.sh $W score          # ledger, groups, trips, byquote, exitrule, behave
 Checked on wallet 4's own data (`SP=.../fresh3 ROUTECLS=wallet4`): `grid.py cap q 1 1.45 9` at 4 open gives P1 +5.19
 (+3.22) 153, P2 +12.27 (+9.62) 161, P3 −2.98 (−4.70) 30, the fresh README's "1.45+ floor" row exactly; `marks.py` gives
 its P3 +82.00 (+58.80) and the early-sale table (3.5% / 13.6% / 49.0%) as published (`out/H9kuqGKN_*.txt`).
+
+## Fetch (Oct 28, 22:51-23:30 UTC)
+
+`sigs.py WALLET 1792368000` (Oct 19 00:00 UTC) on every candidate; all four were fetched in full, Oct 19 to about
+23:00 UTC Oct 28 (none is "far more" than wallet 4's 20,476 signatures in transactions it landed):
+
+| wallet | signatures | failed | landed (fetched by pull.py) |
+|---|---|---|---|
+| 6anjqMeW | 30,413 | 2,551 | 27,862 |
+| AMDEmVoc | 16,436 | 424 | 16,012 |
+| Fhbh1DTU | 182,408 | 155,007 | 27,401 |
+| dKMjeGJ4 | 52,169 | 18,377 | 33,792 |
+| (wallet 4, fresh3, to Oct 28 14:54) | 20,476 | 495 | 19,981 |
+
+Throughput was about 60 transactions a second over 12 fetch processes (the session's HTTPS proxy is the limit).
+
+## The marks (how each column is measured)
+
+1. **Big other-token launch buys**: its first buys of pump coins priced in another token, by the SOL value
+   `ledger.py` gives the buy (a quote token paid is valued at its price then), per day of P1 / P2 / P3, at 1.45+ SOL
+   (0.5+ in brackets); how many came at the coin's create slot or the next (`create.py`); the quote tokens (`qm`).
+2. **Its rule**: its one-buy one-sell curve trips on those coins (`exitrule.py`, `behave.py`): the hold, the price
+   multiple at its sale ((vt after its buy / vt before its sale)²), the share held to 1,790 s or more (wallet 4's
+   30-minute timer).
+3. **Early sales** (`early.py`): of its 1.45+ SOL one-buy one-sell trips, the share sold before 1,790 s between 0.75x
+   and 2.4x (neither wallet 4's take profit, nor its stop, nor its timer). These are the trips our copy ends behind.
+4. **Lands**: failed signatures / (failed + landed transactions it signed). Wallet 4's own page counts failed / all
+   signatures (2.4%); both are in `out/<w8>_marks.txt`.
+5. **Routable**: share of its 1.45+ (0.5+) first buys whose curve quote `route_q.py` puts in A, B or C.
+6. **Its own result** (`ledger.py`, every token, by the period of its first buy), and without the period's best 2.
+7. **Our copy** (`grid.py`, routable, 1.45-9 SOL, 1 SOL a copy, at most 4 open, TP 2.0 / SL 0.8 / 1,790 s, q + lift,
+   landing at its slot + 1; and + 3 from `grid.py land`), P1 / P2 / P3, (without the best 2), copies.
+8. **The frenzy**: landed transactions on the coin's curve after its buy in its slot and the next (median), on its
+   1.45+ SOL trips of coins priced in another token (`full_paths.py`'s n01; wallet 4: `frenzy.py`).
+
+## The table
+
+Wallet 4's row is its own data (`fresh3`, Oct 19 → Oct 28 14:54 UTC) through the same scripts (`out/H9kuqGKN_*.txt`):
+`marks.py` with its own route class (`ROUTECLS=wallet4`), `grid.py cap|land q 1 1.45 9` at 4 open, `frenzy.py`. Its
+create+0/+1 share is from `07-rework-2026-10-28/wallet-check.md` §6 (47 of 47 measured coins at the create slot or the
+next) and `../../../2026-10-28/more/` (age.py: 322 of 323 big buys within 2 s of the create); `create.py` was not re-run
+on it.

@@ -1,0 +1,26 @@
+AMDEmVoc: 1896 curves traded, 297 quote tokens
+   pumpCmXq  curves   233  canonical pool vs wSOL False  vs WBTC False  -> E
+   CARDSccU  curves   118  canonical pool vs wSOL False  vs WBTC False  -> E
+   SPCXxcqX  curves    95  canonical pool vs wSOL False  vs WBTC False  -> E
+   3NZ9JMVB  curves    93  canonical pool vs wSOL False  vs WBTC False  -> C
+   C5xph2yL  curves    92  canonical pool vs wSOL False  vs WBTC True  -> B
+   DJTu7vi8  curves    71  canonical pool vs wSOL False  vs WBTC False  -> E
+   TTWofwAg  curves    67  canonical pool vs wSOL False  vs WBTC False  -> E
+   WXMRyRZh  curves    57  canonical pool vs wSOL False  vs WBTC False  -> E
+   A7bdiYdS  curves    56  canonical pool vs wSOL False  vs WBTC False  -> E
+   Pren1FvF  curves    40  canonical pool vs wSOL False  vs WBTC False  -> E
+   NTRNDMqQ  curves    32  canonical pool vs wSOL True  vs WBTC False  -> A
+   Xsc9qvGR  curves    31  canonical pool vs wSOL False  vs WBTC False  -> E
+   DoGEV7LA  curves    31  canonical pool vs wSOL False  vs WBTC False  -> E
+   2BJDwUdM  curves    28  canonical pool vs wSOL True  vs WBTC False  -> A
+   3LPTanzy  curves    25  canonical pool vs wSOL True  vs WBTC False  -> A
+   PreweJYE  curves    24  canonical pool vs wSOL False  vs WBTC False  -> E
+   EPjFWdd5  curves    23  canonical pool vs wSOL False  vs WBTC False  -> E
+   98sMhvDw  curves    21  canonical pool vs wSOL False  vs WBTC False  -> E
+   H74CYmXg  curves    19  canonical pool vs wSOL True  vs WBTC False  -> A
+   XsoCS1Tf  curves    17  canonical pool vs wSOL False  vs WBTC False  -> E
+   6p6xgHyF  curves    16  canonical pool vs wSOL False  vs WBTC False  -> E
+   XsDoVfqe  curves    15  canonical pool vs wSOL False  vs WBTC False  -> E
+   9gexoGn8  curves    14  canonical pool vs wSOL False  vs WBTC False  -> E
+   8idEA8Qo  curves    14  canonical pool vs wSOL True  vs WBTC False  -> A
+   6UpQcMAb  curves    13  canonical pool vs wSOL False  vs WBTC False  -> E

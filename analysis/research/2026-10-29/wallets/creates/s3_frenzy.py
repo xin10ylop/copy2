@@ -5,7 +5,7 @@
 # 2,241 hit its 8-page cap); this one costs one call whatever the coin did later.
 #   python3 -I s3_frenzy.py [THREADS=16]  ->  OUT/s3_coins.json {mint: row}; OUT/s3_sigs/<mint>.json (landed sigs, slots +0..)
 import sys, os, time, bisect, collections
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import crc
 TH = int(sys.argv[1]) if len(sys.argv) > 1 else 16
@@ -36,9 +36,9 @@ def one(x):
                    s0=by.get(0, 0), s1=by.get(1, 0), s2=by.get(2, 0), s3=by.get(3, 0))
 t0 = time.time(); n = 0
 with ThreadPoolExecutor(TH) as ex:
-    for m, row in ex.map(one, coins):
-        have[m] = row; n += 1
-        if n % 1000 == 0: print(time.strftime("%H:%M:%S"), n, "/", len(coins), f"{n/(time.time()-t0):.0f}/s", flush=True); crc.jdump(have, op)
+    for f in as_completed([ex.submit(one, x) for x in coins]):
+        m, row = f.result(); have[m] = row; n += 1
+        if n % 500 == 0: print(time.strftime("%H:%M:%S"), n, "/", len(coins), f"{n/(time.time()-t0):.0f}/s", flush=True); crc.jdump(have, op)
 crc.jdump(have, op)
 rows = [have[r["mint"]] for _, r in coins]; ok = [x for x in rows if "err" not in x]
 fr = [x for x in ok if x["s0"] + x["s1"] + x["s2"] >= 4]

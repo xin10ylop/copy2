@@ -15,7 +15,7 @@ ct = [c[0] for c in closed]
 for m, r in R.items():
     b = T[m]["tr"][0]
     k = bisect.bisect_left(ct, b["bt"]); last = [c[1] for c in closed[max(0, k - 20):k]]
-    rows.append(dict(kind=r["kind"][6:], per=per(b["bt"]), tp=r["marg"] >= 2.4, net=r["net"], sol=b["v"] or 0,
+    rows.append(dict(kind=r["kind"][6:], per=per(b["bt"]), tp=r["marg"] >= 2.4, net=r["net"] or 0, sol=b["v"] or 0,   # score: net "or 0" (no ledger entry)
                      tip=b["tip"], ix=b["ix"], quote=Q.get(m, "via SOL") if "other" in r["kind"] else "SOL",
                      sold=(1_073_000_191e6 - (b["vt"] + b["tok"])) / 1e12, hour=datetime.datetime.fromtimestamp(b["bt"], datetime.timezone.utc).hour,
                      streak=sum(last), m=m))

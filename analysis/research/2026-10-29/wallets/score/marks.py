@@ -40,6 +40,7 @@ if not QM and os.path.exists(f"{H}_quote.json"):       # wallet 4's old rows hav
     _Q = json.load(open(f"{H}_quote.json"))
     def qname(m): return _Q.get(m, "via SOL only")
 CR = json.load(open(f"{H}_create.json")) if os.path.exists(f"{H}_create.json") else {}
+M = dict(w=W, floor=FLOOR, days=DAYS)          # the key figures, for row.py
 print(f"== {W}  rows {len(rows)}, last row {datetime.datetime.fromtimestamp(end, datetime.timezone.utc):%m-%d %H:%M} UTC, "
       f"days P1 {DAYS['P1']:.2f} P2 {DAYS['P2']:.2f} P3 {DAYS['P3']:.2f}")
 # 1
@@ -54,9 +55,12 @@ for lo in (FLOOR, 0.5):
         meas = [x for x in xs if CR.get(x["m"]) and CR[x["m"]][0] is not None]
         c01 = sum(1 for x in meas if x["tr"][0]["s"] - CR[x["m"]][0] <= 1)
         c2s = sum(1 for x in meas if CR[x["m"]][1] and x["tr"][0]["bt"] - CR[x["m"]][1] <= 2)
+        M[f"m1_{lo}_{p}"] = dict(n=len(xs), day=len(xs) / DAYS[p], meas=len(meas), c01=c01, c2s=c2s, sol=len(sol))
         print(f"   {lo}+ SOL {p}: {len(xs):5d} coins, {len(xs) / DAYS[p]:6.1f} a day;  create+0/+1 {c01} of {len(meas)} measured"
               f" ({100 * c01 / max(len(meas), 1):.0f}%), {c01 / DAYS[p]:.1f} a day; within 2 s {c2s};  SOL-priced {lo}+: {len(sol)}")
     xs = [x for x in oq if (x["tr"][0]["v"] or 0) >= lo]
+    M[f"m1_{lo}_quotes"] = collections.Counter(qname(x["m"]) for x in xs).most_common(6)
+    M[f"m5_{lo}"] = dict(n=len(xs), abc=sum(cls(x) in "ABC" for x in xs), cls=dict(collections.Counter(cls(x) for x in xs)))
     print(f"   {lo}+ quote mix: " + "  ".join(f"{k} {v}" for k, v in collections.Counter(qname(x["m"]) for x in xs).most_common(10)))
     print(f"   {lo}+ route class (route_q): " + "  ".join(f"{k} {v}" for k, v in sorted(collections.Counter(cls(x) for x in xs).items()))
           + f"   routable (A B C) {sum(cls(x) in 'ABC' for x in xs)} of {len(xs)} ({100 * sum(cls(x) in 'ABC' for x in xs) / max(len(xs), 1):.0f}%)")
@@ -67,6 +71,8 @@ for lo, name in ((0, "all sizes"), (FLOOR, f"{FLOOR}+ SOL")):
     rs = [r for r in R if r["kind"] == "pump, other quote" and (r["buy_sol"] or 0) >= lo]
     if not rs: print(f"   {name}: none"); continue
     secs = [r["sec"] for r in rs]
+    M[f"m2_{lo}"] = dict(n=len(rs), sec=q(secs, nd=0), t1790=sum(s >= 1790 for s in secs), marg=q([r["marg"] for r in rs]),
+                         tp24=sum(r["marg"] >= 2.4 for r in rs), sl75=sum(r["marg"] <= 0.75 for r in rs))
     mode = collections.Counter(min(s // 10 * 10, 99990) for s in secs if s >= 3).most_common(3)
     md = mode[0][0] if mode else 0
     at = sum(1 for s in secs if md - 10 <= s <= md + 20)
@@ -88,9 +94,11 @@ if os.path.exists(f"{H}_early.json"):
     print(f"\n3. early sales, {FLOOR}+ SOL one-buy one-sell trips (early.py)")
     for p in ("P1", "P2", "P3"):
         xs = [r for r in E if r["per"] == p]; c = collections.Counter(r["how"] for r in xs)
+        M[f"m3_{p}"] = dict(n=len(xs), early=c["early"], tp=c["tp"], stop=c["stop"], time=c["time"])
         print(f"   {p} {len(xs)}: tp {c['tp']} stop {c['stop']} time {c['time']} early {c['early']} ({100 * c['early'] / max(len(xs), 1):.1f}%)")
 # 4
 fail = sum(1 for s in sigs if s[3]); own = sum(1 for r in rows if r["signer"])
+M["m4"] = dict(sigs=len(sigs), fail=fail, own=own)
 print(f"\n4. signatures {len(sigs)}: failed {fail}; landed {len(sigs) - fail}, of which it signed {own}; failed / (failed + its landed) "
       f"{100 * fail / max(fail + own, 1):.1f}%  (failed / all {100 * fail / max(len(sigs), 1):.1f}%)")
 for p in ("P1", "P2", "P3"):
@@ -103,6 +111,7 @@ for p in ("P1", "P2", "P3"):
     for name, sel in (("all tokens", lambda x: True), ("pump, other quote", lambda x: x["kind"] == "pump, other quote"),
                       ("pump, SOL quote", lambda x: x["kind"] == "pump, SOL quote")):
         v = sorted((x["net"] for x in K if per(x["first"]) == p and sel(x)), reverse=True)
+        M[f"m6_{p}_{name}"] = (len(v), sum(v), sum(v[2:]))
         print(f"   {p} {name:18s} {len(v):5d} tokens  {sum(v):+8.2f} ({sum(v[2:]):+8.2f})")
 # 8
 FP = json.load(open(f"{H}_fpaths.json")) if os.path.exists(f"{H}_fpaths.json") else {}
@@ -114,6 +123,8 @@ for m, v in FP.items():
     b = x["tr"][0]
     if v.get("n01") is not None: n01.append(v["n01"])
     if "path" in v: pth.append(sum(1 for r in v["path"] if (r[0], r[1]) > (b["s"], b["i"] or 0) and r[0] <= b["s"] + 1))
+M["m8"] = dict(n01=st.median(n01) if n01 else None, n=len(n01), q=q(n01, (25, 50, 75), 0), path=st.median(pth) if pth else None)
+json.dump(M, open(f"{H}_marks{'' if FLOOR == 1.45 else '_' + str(FLOOR)}.json" if not os.environ.get("ROUTECLS") else os.devnull, "w"))
 print(f"\n8. after its {FLOOR}+ SOL buys (coins priced in another token, full_paths): curve transactions in its slot after it and the next:"
       f" median {st.median(n01) if n01 else None} (p25..p75 {q(n01, (25, 50, 75), 0)}, n {len(n01)});"
       f" curve trades on the recorded path, same slots: median {st.median(pth) if pth else None} (p25..p75 {q(pth, (25, 50, 75), 0)}, n {len(pth)})")

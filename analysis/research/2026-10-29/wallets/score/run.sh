@@ -2,6 +2,7 @@
 # Scores one wallet with the per-wallet pipeline (README.md "Run order"). Outputs in out/<w8>_<step>.txt.
 #   bash run.sh WALLET fetch      sigs + sharded pull (Oct 19 00:00 UTC to now; T0 overrides the start)
 #   bash run.sh WALLET score      every step after the fetch (create.py and full_paths.py fetch from Triton too)
+#   bash run.sh WALLET band LO    the copy from its own size LO (routable, coins priced in another token)
 set -e
 cd "$(dirname "$0")"
 W=$1; w=${W:0:8}; export W
@@ -22,7 +23,16 @@ score)
   python3 -I route_q.py $W > out/${w}_route_q.txt
   python3 -I early.py 1.45 > out/${w}_early.txt
   python3 -I create.py $W 0.5 > out/${w}_create.log
-  python3 -I full_paths.py $W 1.45 > out/${w}_fpaths.log
+  KINDS="pump, other quote" python3 -I full_paths.py $W 1.45 > out/${w}_fpaths.log
   python3 -I marks.py $W > out/${w}_marks.txt
   for g in cap land tp mix; do CAP=4 python3 -I grid.py $g q 1 1.45 9 > out/${w}_grid_$g.txt; done ;;
+band)
+  # its own size when it rarely buys 1.45+: full paths of its routable one-buy one-sell trips from LO SOL (coins priced in
+  # another token), then the same grid from that floor
+  LO=$3
+  KINDS="pump, other quote" ROUTES=ABC python3 -I full_paths.py $W $LO > out/${w}_fpaths_$LO.log
+  for g in cap land tp mix; do CAP=4 python3 -I grid.py $g q 1 $LO 9 > out/${w}_grid_${g}_$LO.txt; done
+  python3 -I early.py $LO > out/${w}_early_$LO.txt          # rewrites <w8>_early.json at this floor (marks.py reads it)
+  python3 -I marks.py $W $LO > out/${w}_marks_$LO.txt
+  python3 -I early.py 1.45 > /dev/null ;;                   # back to the 1.45 file
 esac

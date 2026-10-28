@@ -61,7 +61,10 @@ for u in users:
 op = crc.OUT + "/s6_holds.json"; out = collections.defaultdict(dict)
 print(time.strftime("%H:%M:%S"), len(users), "wallets,", len(jobs), "coins", flush=True)
 with ThreadPoolExecutor(TH) as ex:
-    for u, m, r in ex.map(lambda j: (lambda: one(j))() if True else None, jobs):
+    def safe(j):
+        try: return one(j)
+        except Exception as e: return j[0], j[1], dict(err=crc.red(e)[:120])
+    for u, m, r in ex.map(safe, jobs):
         out[u][m] = r
 crc.jdump(out, op)
 now = max(K[m]["bt"] for m in K if "bt" in K[m])

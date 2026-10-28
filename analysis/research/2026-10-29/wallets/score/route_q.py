@@ -50,6 +50,15 @@ else:
         return "A" if w else "B" if b else "E"
 if __name__ == "__main__":
     qs = collections.Counter(COIN_Q.values())
+    from concurrent.futures import ThreadPoolExecutor
+    import tri
+    todo = [q for q in qs if q not in POOLS and q not in (WSOL, WBTC)]
+    def fetch(q):
+        return q, [bool((tri.rpc("getAccountInfo", [canonical(q, a), {"encoding": "base64", "dataSlice": {"offset": 0, "length": 8}}]) or {}).get("value"))
+                   for a in (WSOL, WBTC)]
+    with ThreadPoolExecutor(16) as ex:
+        for q, v in ex.map(fetch, todo): POOLS[q] = v
+    json.dump(POOLS, open(PF, "w"))
     for q in qs: pools(q)
     print(f"{W[:8]}: {len(COIN_Q)} curves traded, {len(qs)} quote tokens")
     for q, n in qs.most_common(25):

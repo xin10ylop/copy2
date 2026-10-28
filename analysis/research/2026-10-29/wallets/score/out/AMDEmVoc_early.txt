@@ -1,0 +1,35 @@
+
+== its one-buy one-sell trips, 1.45+ SOL, other quote, all: how it sold   [n: tp / stop / time / early (share)]
+   P1    1:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early   1 (100.0%)   its net   -0.27  (early sells  -0.27)
+   P2    0:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early   0 ( 0.0%)   its net   +0.00  (early sells  +0.00)
+   P3    0:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early   0 ( 0.0%)   its net   +0.00  (early sells  +0.00)
+
+== its one-buy one-sell trips, 1.45+ SOL, other quote, routable (route class A, B, C): how it sold   [n: tp / stop / time / early (share)]
+   P1    0:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early   0 ( 0.0%)   its net   +0.00  (early sells  +0.00)
+   P2    0:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early   0 ( 0.0%)   its net   +0.00  (early sells  +0.00)
+   P3    0:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early   0 ( 0.0%)   its net   +0.00  (early sells  +0.00)
+
+== the early sells (1.45+ SOL, other quote, all routes): p10 p25 p50 p75 p90
+   P1 1: seconds held [9, 9, 9, 9, 9]  multiple at its sale [0.89, 0.89, 0.89, 0.89, 0.89]  SOL value multiple [0.83, 0.83, 0.83, 0.83, 0.83]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 1  10-60 s 0  1-5 min 0  5-15 min 0  15-30 min 0
+      multiple: 0.75-1.0x 1  1.0-1.5x 0  1.5-2.0x 0  2.0-2.4x 0   won 0
+      quote: via SOL only 1   route class: E 1
+      for scale, time: 0 quote 
+      for scale, tp: 0 quote 
+   P2 0: seconds held []  multiple at its sale []  SOL value multiple []  share of its tokens sold []
+      held: <10 s 0  10-60 s 0  1-5 min 0  5-15 min 0  15-30 min 0
+      multiple: 0.75-1.0x 0  1.0-1.5x 0  1.5-2.0x 0  2.0-2.4x 0   won 0
+      quote:    route class: 
+      for scale, time: 0 quote 
+      for scale, tp: 0 quote 
+   P3 0: seconds held []  multiple at its sale []  SOL value multiple []  share of its tokens sold []
+      held: <10 s 0  10-60 s 0  1-5 min 0  5-15 min 0  15-30 min 0
+      multiple: 0.75-1.0x 0  1.0-1.5x 0  1.5-2.0x 0  2.0-2.4x 0   won 0
+      quote:    route class: 
+      for scale, time: 0 quote 
+      for scale, tp: 0 quote 
+
+== every coin first bought for 1.45+ SOL (other quote), any number of trades: its first curve sale
+   P1 1 coins: early first sale, sold all 1  trades: 1 buy 1 sell 1   early first sale 1 (100.0%)
+   P2 1 coins: 4 buys 4 sells 1  early first sale, sold all 1   early first sale 1 (100.0%)
+   P3 0 coins:    early first sale 0 (0.0%)

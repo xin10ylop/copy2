@@ -27,7 +27,7 @@ for m, L in TR.items():
         sg, sl, d, idx, fp, u, buy, tok, qa, vq, vt, ix, dsol, fee, ntop = x
         if buy and ix == "multi_hop_swap" and fp == u and qa and dsol is not None:
             spent = -(dsol + (fee or 0))
-            eq = qa * 30e9 / (vq - qa) if False else qa * pq[q]
+            eq = qa * pq[q]
             if spent > 0.05e9 and eq > 0.05e9: chk[q].append(spent / eq)
 corr = {q: st.median(v) for q, v in chk.items() if len(v) >= 5}
 def lam(q, qa): return qa * pq[q] * corr.get(q, 1.0) if qa else 0
@@ -47,7 +47,7 @@ for m, L in TR.items():
         # trades by others in the two slots after this buy (its own slot after it, +1, +2)
         fol = sum(1 for y in tr[i + 1:] if y[1] <= sl + 2 and y[5] != u)
         fol_b = sum(1 for y in tr[i + 1:] if y[1] <= sl + 2 and y[5] != u and y[6])
-        nb_before = sum(1 for y in tr[:i] if y[6] and y[5] != dev)
+        nb_before = len({y[5] for y in tr[:i] if y[6] and y[5] not in (dev, u)})   # distinct earlier buyers, dev excluded
         c = P[u]["coins"].setdefault(m, dict(sol=0.0, d=d, slot=sl, idx=idx, sig=sg, fol=fol, fol_b=fol_b, rank=nb_before + 1,
                                              q=qn(q), ix=ix, bt=r["bt"], fp=fp))
         c["sol"] += lam(q, qa) / 1e9; P[u]["n_buys"] += 1
