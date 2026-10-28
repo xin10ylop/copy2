@@ -84,9 +84,9 @@ def decode_trade(d):
     r = R(d); e = dict(mint=r.pk(), sol=r.u64(), tok=r.u64(), is_buy=r.u8() == 1, user=r.pk(), ts=r.i64(), vsol=r.u64(), vtok=r.u64())
     try:
         e["rsol"] = r.opt(r.u64); e["rtok"] = r.opt(r.u64); r.opt(r.pk); e["fee_bps"] = r.opt(r.u64); e["fee"] = r.opt(r.u64)
-        r.opt(r.pk); r.opt(r.u64); r.opt(r.u64); r.opt(r.u8); r.opt(r.u64); r.opt(r.u64); r.opt(r.u64); r.opt(r.i64)
+        r.opt(r.pk); r.opt(r.u64); e["creator_fee"] = r.opt(r.u64); r.opt(r.u8); r.opt(r.u64); r.opt(r.u64); r.opt(r.u64); r.opt(r.i64)
         e["ix"] = r.opt(r.st); r.opt(r.u8)
-        for _ in range(4): r.opt(r.u64)                       # cashback bps, cashback, buyback bps, buyback fee
+        r.opt(r.u64); e["cashback"] = r.opt(r.u64); r.opt(r.u64); e["buyback_fee"] = r.opt(r.u64)
         if r.left() > 0: n = r.u32(); r.o += 34 * n           # shareholders
         e["quote_mint"] = r.opt(r.pk); e["quote_amount"] = r.opt(r.u64); e["vquote"] = r.opt(r.u64); e["rquote"] = r.opt(r.u64)
     except Exception:

@@ -1,8 +1,10 @@
 # Step 4: for every frenzy coin of step 3 (>= MINTX landed transactions in its create slot +0..+2), fetch its landed
 # transactions in slots +0..+3 (+3 so a +1 buy has its two following slots) and decode the pump TradeEvents of the coin.
 #   python3 -I s4_trades.py [THREADS=48] [MINTX=4]  ->  OUT/s4_trades.json {mint: [trade, ...]}
-# trade = [sig, slot, dslot, idx, fee_payer, user, is_buy, tok, quote_amount, vquote, vtok, ix, payer_sol_delta, fee, n_top_ix]
-#   payer_sol_delta = post - pre lamports of the fee payer (includes the fee); used to price quote tokens (s5).
+# trade = [sig, slot, dslot, idx, fee_payer, user, is_buy, tok, quote_amount, vquote, vtok, ix, payer_sol_delta, fee, n_top_ix,
+#          user_wsol_delta, user_quote_delta, n_trades_of_user_in_tx]
+#   payer_sol_delta = post - pre lamports of the fee payer (includes the fee); the user's WSOL and quote-token changes
+#   (token accounts it owns); all used to price quote tokens in SOL (s5).
 import sys, os, time
 from concurrent.futures import ThreadPoolExecutor
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -24,11 +26,21 @@ def one(j):
     ks = crc.keys_of(t); meta = t.get("meta") or {}
     dsol = (meta.get("postBalances") or [0])[0] - (meta.get("preBalances") or [0])[0]
     ntop = len(t["transaction"]["message"]["instructions"])
+    def tdelta(owner, mint):
+        v = 0
+        for b in meta.get("preTokenBalances") or []:
+            if b.get("owner") == owner and b.get("mint") == mint: v -= int(b["uiTokenAmount"]["amount"])
+        for b in meta.get("postTokenBalances") or []:
+            if b.get("owner") == owner and b.get("mint") == mint: v += int(b["uiTokenAmount"]["amount"])
+        return v
+    q = fr[m]["quote"]; ev = crc.events(t)
     out = []
-    for k, e in crc.events(t):
+    for k, e in ev:
         if k == "trade" and e["mint"] == m:
+            nu = sum(1 for k2, e2 in ev if k2 == "trade" and e2["user"] == e["user"])
             out.append([sg, t["slot"], d, t.get("transactionIndex"), ks[0], e["user"], e["is_buy"], e["tok"], e.get("quote_amount"),
-                        e.get("vquote"), e["vtok"], e.get("ix"), dsol, meta.get("fee"), ntop])
+                        e.get("vquote"), e["vtok"], e.get("ix"), dsol, meta.get("fee"), ntop,
+                        tdelta(e["user"], crc.WSOL), tdelta(e["user"], q), nu])
     return m, out
 res = {m: [] for m in fr}; t0 = time.time(); n = 0
 with ThreadPoolExecutor(TH) as ex:
