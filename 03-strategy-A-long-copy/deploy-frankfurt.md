@@ -180,6 +180,13 @@ the WBTC float, pool+curve, a direct curve buy of a WBTC-quoted coin). Wallet 4 
 after 23:00 UTC, its usual night pace; 3 copyable buys in 7 hours. The WBTC float (0.33 SOL after a position takes
 0.5) skipped one WBTC-routed buy (`float under the stake`); a `float buy 0.7` would cover two at once.
 
+**Oct 29 08:21 UTC (10:21 Beirut): the stake raised to 1 SOL, three at once, daily stop 3.0 SOL** (the owner's decision at
+13 closed, +1.39, positive without the best 2; the plan said 40 closed). 1.0 SOL more from Phantom (3.2 SOL put in since
+Oct 28), `float buy 3NZ9... 0.7` (87,674 units, landed in slot 462811572; the float 177,315 units, about 1.4 SOL), the
+restart's journal: `long start: mode On ... stake 1 SOL ... max_open 3`, `long wallet ... SOL 3.1740 floats [3NZ9JMVB
+177315]`, `long feed connected`. Exposure: up to 3 SOL open, a stop-out about 0.35 SOL, new buys stop at −3 SOL realized
+in a UTC day.
+
 **Oct 28 22:33 and 22:39 UTC: the first two 0.5 SOL buys refused on chain** (Fawdfdv9: our buy at its slot +1, position
 4 of the block, 2 trades of the coin between, refused by 0.2%; 2HuAFrTr: its slot, 5 trades between, price 1.36x,
 refused by 8.2%; `ExceededSlippage` both, 0.0004 SOL each). The first one showed the floor was not the tested rule: the

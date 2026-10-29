@@ -3,9 +3,10 @@
 ## What this repo is
 
 The wallet-4 half of the rugsnipe project. Wallet 4 = `H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg`.
-- **Strategy A, the long copy:** `crates/rugsnipe-long`. It runs **with real money: 0.5 SOL a copy, 3 open, daily
-  stop 1.0 SOL** (wallet `E7KX1hcM...`, 2.5 SOL in it) on the owner's Frankfurt box (`fra-long`, Cherry Cloud VDS 2,
-  user `ops`) since Oct 28 22:04 UTC, after 0.1 SOL from 18:34 (6 closed, 4 won, +0.3146) and paper from 17:58.
+- **Strategy A, the long copy:** `crates/rugsnipe-long`. It runs **with real money: 1 SOL a copy, 3 open, daily
+  stop 3.0 SOL** (wallet `E7KX1hcM...`, about 4.6 SOL in it) on the owner's Frankfurt box (`fra-long`, Cherry Cloud
+  VDS 2, user `ops`) since Oct 29 08:21 UTC, after 0.5 SOL from Oct 28 22:04 (7 closed, +1.08), 0.1 SOL from 18:34
+  (6 closed, +0.3146) and paper from 17:58.
   Ohio and fra1 are terminated.
 - **Strategy D, the launch copy:** the hot copy bot `crates/rugsnipe`, with a `copy_more` entry. It is stopped.
 
@@ -106,9 +107,9 @@ bash data/datasets/unpack.sh h9long     # one archive
    landed first try, one buy refused by the premium floor, journal = chain on every trade;
    `03-strategy-A-long-copy/deploy-frankfurt.md` §6). Still unseen: a coin that graduates while we hold it (the pool
    sell is simulated only). **Since 22:04 UTC: 0.5 SOL × 3, daily stop 1.0** (the owner's call; the plan said 0.3 × 3).
-3. **The deciding days run at 0.5 SOL × 3** (one box runs one bot, so no paper beside it): positive without the best 2
-   over 40 closed copies, wallet 4 at 25+ copyable buys a day (about 2 an hour on Oct 28 evening), its early-sale
-   rate. Then 1 SOL × 3 only if that holds. Check every trade on chain as `deploy-frankfurt.md` §6 does; the
+3. **1 SOL × 3 since Oct 29 08:21 UTC** (the owner's call at 13 closed, +1.39, positive without the best 2; the plan
+   said 40). Watch daily: the book without the best 2, wallet 4's copyable buys a day (2 an hour by evening, 1 every
+   2 hours at night on Oct 28-29), its early-sale rate; stop at once if it goes quiet 3 hours or sends 10+ SOL out. Check every trade on chain as `deploy-frankfurt.md` §6 does; the
    backtest under the live conditions is `analysis/research/2026-10-28/fresh/land_cond.py`.
 4. Not built: an alarm when wallet 4 goes quiet or sends SOL out (its predecessor was emptied in one evening); a
    successor scan by its fingerprint (`07-rework-2026-10-28/wallet-check.md` §7); 3-hop routes via a v0 transaction
