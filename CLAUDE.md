@@ -3,11 +3,11 @@
 ## What this repo is
 
 The wallet-4 half of the rugsnipe project. Wallet 4 = `H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg`.
-- **Strategy A, the long copy:** `crates/rugsnipe-long`. It runs **with real money: 1 SOL a copy, 3 open, daily
-  stop 3.0 SOL** (wallet `E7KX1hcM...`, about 4.6 SOL in it) on the owner's Frankfurt box (`fra-long`, Cherry Cloud
-  VDS 2, user `ops`) since Oct 29 08:21 UTC, after 0.5 SOL from Oct 28 22:04 (7 closed, +1.08), 0.1 SOL from 18:34
-  (6 closed, +0.3146) and paper from 17:58.
-  Ohio and fra1 are terminated.
+- **Strategy A, the long copy:** `crates/rugsnipe-long`. **Stopped on Oct 29 ~13:40 UTC: Cherry deleted the hourly
+  Frankfurt box (`fra-long`) for a zero balance, and the wallet's only key file with it; 4.5 SOL at `E7KX1hcM...` are
+  lost** (`03-strategy-A-long-copy/deploy-frankfurt.md`, top). It had run live Oct 28 18:34 to Oct 29 11:52 UTC at 0.1,
+  0.5 and 1 SOL: 13 closed, 7 won, +1.39 SOL before the 1 SOL hours. Ohio and fra1 are terminated too. **Any new box:
+  monthly billing or auto-recharge, the wallet file copied off with scp before any SOL goes in.**
 - **Strategy D, the launch copy:** the hot copy bot `crates/rugsnipe`, with a `copy_more` entry. It is stopped.
 
 Read `README.md` (status, A-Z index), then `02-decomposition/` (why A and not the rest), then the strategy folder you work

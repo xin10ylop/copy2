@@ -1,5 +1,21 @@
 # Strategy A: running it on the Frankfurt box (`fra-long`)
 
+**Oct 29, about 13:40 UTC: the box was deleted by Cherry Servers, and the wallet with it.** The server was on hourly
+billing with a few euros of credit and no auto-recharge; when the balance reached zero Cherry suspended and then
+permanently wiped the server the same day (their chat support, Oct 29: "once the server is wiped its data can no longer
+be recovered"; three emails were sent: low balance, balance at zero, termination). The wallet's key file existed only on
+that disk, never copied off (the copy was offered on Oct 28 and called optional). **3.13 SOL and 1.4 SOL of WBTC at
+`E7KX1hcM...` are unreachable for good.** Checked afterwards, all empty: the owner's Mac (shell history, iTerm logs,
+Terminal saved state), the repo, the journal, the installer and keygen code (the secret was never printed), Cherry's
+backups (VM Backups is a paid product, Lithuania-region only, never enabled), the recovery firms (all need a file, a
+drive, a partial phrase or a password). The bot had made +1.39 SOL in its 11 hours at 0.1 and 0.5 SOL and about −0.05
+in the 3.5 hours at 1 SOL before the box died (the last transaction 11:52 UTC; no position was open).
+
+**Rules for the next box, not optional:** monthly billing, or hourly with auto-recharge and a balance alert; the wallet
+file copied to the owner's machine with `scp` right after `keygen`, before any SOL is sent, and never shown on a screen;
+the box is never the only copy of anything; the Triton token and Nozomi key rotated after the loss (both were on the
+wiped disk). The rest of this page describes the setup as it was.
+
 In short: the long copy runs in paper mode on a Cherry Servers Frankfurt virtual server since **Oct 28 17:58 UTC**
 (19:58 Beirut time), on this repo's branch (`claude/magical-einstein-k78idp`, the hardened code), with the Triton gRPC
 feed and Nozomi `fra2` configured, `follow_its_sell = false`, and **no wallet** (nothing can be sent). It is the only
