@@ -143,6 +143,15 @@ is about (`07-rework-2026-10-28/README.md` §5).
 | 5 | 6TrDECwR | SOL | 462618422, 442 | +1 slot, position 51 | 3 | +17.9% | stop 0.78x, 205 s (peak 1.63x) | −0.0334 |
 | 6 | JAckzYTT | SOL | 462623753, 287 | same slot, 455 | 5 | +1.5% | take profit 2.06x, 588 s | +0.1074 |
 | 7 | E61exR62 | SOL | 462633652, 34 | same slot, 141 | 13 | (under 25%) | stop, 4 s (18 slots) | −0.0366 |
+| 8 | Fawdfdv9 (0.5 SOL from here) | SOL | 462646439, 180 | +1 slot, 4 | 2 | 1.253x: refused by the old floor (0.2%) | | −0.0004 |
+| 9 | 2HuAFrTr | SOL | 462648378, 135 | same slot, 235 | 5 | 1.36x: refused | | −0.0004 |
+| 10 | 96jEWfbD (the fixed floor from here) | SOL | 462657546, 258 | +1 slot, 217 | 4 | +11.6% | stop 0.77x, 51 s (peak 1.54x) | −0.1392 |
+| 11 | DyNxDFcT | pool+curve | 462662465, 105 | +1 slot, 34 | 2 | +7.9% | take profit 2.02x, 58 s | +0.4683 |
+| 12 | QkhZhyUK | WBTC | 462664317, 14 | same slot, 94 | 4 | +9.8% | timer at 1.08x (peak 1.21x) | −0.0136 |
+| 14 | 6xQijdyc | WBTC | 462666xxx | (13: a skip, float under the stake) | | +9.4% | timer at 1.03x (peak 1.24x) | −0.0385 |
+| 15 | AVsYL8K3 | curve (WBTC quote, 1 hop) | 462728771, 140 | +1 slot, 220 | 7 | +16.4% | timer at 0.97x (peak 1.11x) | −0.0769 |
+| 16 | 7YLdWetK | SOL | 462742123, 242 | +1 slot, 117 | 4 | +11.5% | take profit 2.02x, 9 s | +0.4780 |
+| 17 | FqDzSqvf | SOL | 462759986, 145 | +1 slot, 259 | 2 | +17.5% | take profit 2.02x, 216 s | +0.3995 |
 
 Six sends, all `sent in 3-6 ms; seen at its slot +0`; four landed in its slot, two in the next (both times its buy sat
 near the end of its block); every sell landed on the first try; no `sell-failed`, `WARNING` or `CRITICAL`. The journal's
@@ -163,6 +172,13 @@ SOL ... max_open 3`, `long wallet ... SOL 1.6765 floats [3NZ9JMVB 104811 (0.832 
 wallet then held 2.508 SOL in all, every lamport accounted for on chain (`getSignaturesForAddress` over its 21
 transactions: 2.2 in, 0.6567 into the two float swaps and their costs, +0.3143 from the seven trades, three dust
 transfers from a stranger).
+
+**The first night at 0.5 SOL × 3 (Oct 28 22:04 to Oct 29 05:21 UTC), every trade checked on chain:** 7 closed, 3 take
+profits (+1.35), 1 stop (−0.14), 3 timers (−0.13): **+1.08 SOL**; the book since the start 13 closed, 7 won, **+1.39 SOL**,
+the wallet 2.874 SOL + 0.33 SOL of WBTC against 2.2 put in. Every route type has now run live (copied from wSOL and from
+the WBTC float, pool+curve, a direct curve buy of a WBTC-quoted coin). Wallet 4 slowed to 30-60 transactions an hour
+after 23:00 UTC, its usual night pace; 3 copyable buys in 7 hours. The WBTC float (0.33 SOL after a position takes
+0.5) skipped one WBTC-routed buy (`float under the stake`); a `float buy 0.7` would cover two at once.
 
 **Oct 28 22:33 and 22:39 UTC: the first two 0.5 SOL buys refused on chain** (Fawdfdv9: our buy at its slot +1, position
 4 of the block, 2 trades of the coin between, refused by 0.2%; 2HuAFrTr: its slot, 5 trades between, price 1.36x,
