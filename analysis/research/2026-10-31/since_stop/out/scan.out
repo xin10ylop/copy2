@@ -1,0 +1,650 @@
+7100 parsed, 0 not
+462579900 FUN1RZrj 1.501 SOL from 3NZ9JMVB quote C5xph2yL jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL
+462589767 4s99TAqz unpriced: paid in DoGEV7LA
+462590138 6AQ83QT2 unpriced: paid in DoGEV7LA
+462592485 E3hauBDZ 1.500 SOL from So111111 quote DUKEjskP jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: DUKEjskPBoszW4xEowcSWptekuUZpwLFv6nTt5Cm
+462594566 EMJs7igZ 1.500 SOL from So111111 quote CSRRgTwf jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: CSRRgTwf9o5KLgguS2M16aEAhV5PUUzfshrAAQ8o
+462597248 FkQwjiqy unpriced: paid in A7bdiYdS
+462600870 GhosTJnW unpriced: paid in WXMRyRZh
+462601896 AGjRgi9F 1.502 SOL from NVDAVuiB quote NVDAVuiB jupiter true: no route: NoAnchor(NVDAVuiB7hwd3m5Wa1JuHNovPaPG6BH1QNztbKFxNjv)
+462602975 B2LnDGvH unpriced: paid in SPCXxcqX
+462605259 BH5sDQy9 unpriced: paid in DJTu7vi8
+462606495 4rcnRyQy unpriced: paid in 6UpQcMAb
+462606663 GUcG2eK2 1.512 SOL from 3NZ9JMVB quote C5xph2yL jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL
+462607794 EcqinYgD unpriced: paid in 6UpQcMAb
+462608049 7NfbvAxQ 1.499 SOL from XsoCS1Tf quote XsoCS1Tf jupiter true: no route: NoAnchor(XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W)
+462615551 DxXJjXjS unpriced: paid in Xsc9qvGR
+462615954 CP8U3z1J unpriced: paid in 98sMhvDw
+462618422 6TrDECwR 1.500 SOL from So111111 quote DUKEjskP jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: DUKEjskPBoszW4xEowcSWptekuUZpwLFv6nTt5Cm
+462619356 DaL9WdYD unpriced: paid in TTWofwAg
+462622368 Ei5j2rKC unpriced: paid in TTWofwAg
+462623753 JAckzYTT 1.500 SOL from So111111 quote NTRNDMqQ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: NTRNDMqQSiwEC2jJs3wJiZS6bpGYQJtMNQJgiX3W
+462623795 2E1CvKDe unpriced: paid in pumpCmXq
+462628879 9w2wQsLJ unpriced: paid in pumpCmXq
+462629318 CcySt6V6 unpriced: paid in pumpCmXq
+462629478 7ReiooRY unpriced: paid in pumpCmXq
+462632362 E3p1NcWo unpriced: paid in 6UpQcMAb
+462632455 25aKnGcn unpriced: paid in TTWofwAg
+462633652 E61exR62 1.500 SOL from So111111 quote NTRNDMqQ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: NTRNDMqQSiwEC2jJs3wJiZS6bpGYQJtMNQJgiX3W
+462633730 HnUoq1Tv unpriced: paid in SPCXxcqX
+462638853 7GGEe51C unpriced: paid in SPCXxcqX
+462639951 ou6svLa6 unpriced: paid in WXMRyRZh
+462641573 4az6QkWB 1.501 SOL from DJTu7vi8 quote DJTu7vi8 jupiter true: no route: NoAnchor(DJTu7vi8norVzdVAffgvb39VP7wjKeTsgaMBJrzfxvoF)
+462642971 DrZ8Kk6Q unpriced: paid in DJTu7vi8
+462643627 AwSQafd8 1.511 SOL from SNAPcESr quote SNAPcESr jupiter true: no route: NoAnchor(SNAPcESrvnH8yUdgeMF6xm1hym9b6hW6s8YeqeHdZFz)
+462646252 8j8okDPc unpriced: paid in pumpCmXq
+462646439 Fawdfdv9 1.458 SOL from So111111 quote 8EzagXsp jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: 8EzagXspppz7uurbQGQ33R3dwqJL5y8e8Q3txxRN
+462648217 7vr5z9hL unpriced: paid in WXMRyRZh
+462648378 2HuAFrTr 1.460 SOL from So111111 quote 8EzagXsp jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: 8EzagXspppz7uurbQGQ33R3dwqJL5y8e8Q3txxRN
+462648544 3VG7yzBp unpriced: paid in WXMRyRZh
+462648729 GCWQEeuT unpriced: paid in WXMRyRZh
+462648943 EXMqxx6S unpriced: paid in WXMRyRZh
+462649235 4yFh765U unpriced: paid in WXMRyRZh
+462649505 73DGu2JY unpriced: paid in WXMRyRZh
+462650035 ETh5qRwN unpriced: paid in 7vfCXTUX
+462657546 96jEWfbD 1.500 SOL from So111111 quote 8Jx8AAHj jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: 8Jx8AAHj86wbQgUTjGuj6GTTL5Ps3cqxKRTvpaJA
+462660219 E5U53c2Q unpriced: paid in pumpCmXq
+462662465 DyNxDFcT 1.501 SOL from DNhQZ1CE quote DNhQZ1CE jupiter true: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: DNhQZ1CE9qZ2FNrVhsCXwQJ2vZG8ufZkcYakTS5J
+462664317 QkhZhyUK 1.505 SOL from 3NZ9JMVB quote C5xph2yL jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL
+462664382 BQnbh33u unpriced: paid in pumpCmXq
+462664695 2K5Mvygd 1.505 SOL from 3NZ9JMVB quote HytpiyuR jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: HytpiyuR3sVXGB5UqoqrnThCPH2X1tWVm5neep3
+462667235 GsZNMN3T unpriced: paid in pumpCmXq
+462669938 2jLHY7jt unpriced: paid in pumpCmXq
+462675723 6xQijdyc 1.503 SOL from 3NZ9JMVB quote C5xph2yL jupiter true: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL
+462676043 4WTGWUhi unpriced: paid in pumpCmXq
+462678024 HksvcRB9 unpriced: paid in TTWofwAg
+462683680 9JqdkhEU unpriced: paid in DoGEV7LA
+462686787 5th4xUZ4 unpriced: paid in pumpCmXq
+462687181 CiTLA8mD unpriced: paid in DJTu7vi8
+462687531 93y1cv4Y 1.502 SOL from Xs8S1uUs quote Xs8S1uUs jupiter true: no route: NoAnchor(Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ)
+462689961 G7RYDxbH unpriced: paid in pumpCmXq
+462699168 ECAPAVGN unpriced: paid in SPCXxcqX
+462701379 5koaGkAs 1.497 SOL from XsP7xzNP quote XsP7xzNP jupiter true: no route: NoAnchor(XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ)
+462707833 GmHjQKKN unpriced: paid in Xsa62P5m
+462711835 3zh1fiaU 1.499 SOL from A7bdiYdS quote A7bdiYdS jupiter true: no route: NoAnchor(A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS)
+462717369 BmRHRoQL unpriced: paid in SPCXxcqX
+462721103 33U6qFMS unpriced: paid in A7bdiYdS
+462729803 SPEDkt5i 1.499 SOL from XsoCS1Tf quote XsoCS1Tf jupiter true: no route: NoAnchor(XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W)
+462742123 7YLdWetK 1.496 SOL from So111111 quote HgTGdc29 jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: HgTGdc29D5bDMrDvsCLnorxz899VyDj7ZN7FPa6v
+462759037 52hVr91o unpriced: paid in Xsa62P5m
+462759986 FqDzSqvf 1.500 SOL from So111111 quote NTRNDMqQ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: NTRNDMqQSiwEC2jJs3wJiZS6bpGYQJtMNQJgiX3W
+462761107 FxHnWVWr 1.504 SOL from 6GmAFSYs quote 6GmAFSYs jupiter true: no route: NoAnchor(6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx)
+462763672 8LCg8uPp unpriced: paid in Xsa62P5m
+462770244 2kRTnfHG unpriced: paid in Xsa62P5m
+462784211 E7MeSByw unpriced: paid in pumpCmXq
+462791250 2vtJZ8J5 unpriced: paid in pumpCmXq
+462798130 GwC93ekZ unpriced: paid in pumpCmXq
+462805602 6i4hUaRB unpriced: paid in pumpCmXq
+462817735 4Gysk6s8 unpriced: paid in pumpCmXq
+462827815 iNE6pSzD 1.500 SOL from So111111 quote NTRNDMqQ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: NTRNDMqQSiwEC2jJs3wJiZS6bpGYQJtMNQJgiX3W
+462840672 HotHTmeY 1.500 SOL from So111111 quote NTRNDMqQ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: NTRNDMqQSiwEC2jJs3wJiZS6bpGYQJtMNQJgiX3W
+462850308 ZUsqko3E unpriced: paid in pumpCmXq
+462850779 JEWNWq3A 1.516 SOL from pumpCmXq quote pumpCmXq jupiter true: no route: NoAnchor(pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn)
+462857859 3ivWShBn unpriced: paid in SPCXxcqX
+462862476 3NWyukFy 1.500 SOL from So111111 quote NTRNDMqQ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: NTRNDMqQSiwEC2jJs3wJiZS6bpGYQJtMNQJgiX3W
+462871737 21Qd6aeN unpriced: paid in pumpCmXq
+462881627 GifGTaKG unpriced: paid in SPCXxcqX
+462887121 GLMAgxCn unpriced: paid in 98sMhvDw
+462888210 HypE7Mrn unpriced: paid in 98sMhvDw
+462888210 5GwVgFdN unpriced: paid in 98sMhvDw
+462888218 FGreMDB2 unpriced: paid in SPCXxcqX
+462895533 46xFkoCd unpriced: paid in 98sMhvDw
+462897325 4EB9Jdfd unpriced: paid in 98sMhvDw
+462900410 GqeZzaUV unpriced: paid in 98sMhvDw
+462900842 BNHL9Dk6 unpriced: paid in 98sMhvDw
+462902118 FWWDE2wb unpriced: paid in 98sMhvDw
+462905018 7LvoJNjh unpriced: paid in 98sMhvDw
+462905074 5qygLBM5 unpriced: paid in 98sMhvDw
+462910041 CrVAMzJu unpriced: paid in 98sMhvDw
+462911036 Azt8D8RN 1.478 SOL from 3NZ9JMVB quote 3NZ9JMVB jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Curve, base_mint: Azt8D8RNgBN4MDXcD8K59xWpZkzpt1AKyNBFkV
+462911592 4szM9uzo unpriced: paid in pumpCmXq
+462914920 4TZwTQNH unpriced: paid in 98sMhvDw
+462916821 ELJYNgui 1.495 SOL from Xsc9qvGR quote Xsc9qvGR jupiter true: no route: NoAnchor(Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh)
+462919766 G1uBwoi3 unpriced: paid in 98sMhvDw
+462921473 5DAqRe7F unpriced: paid in 98sMhvDw
+462921703 A49FJrFQ unpriced: paid in XsDoVfqe
+462924131 EEe3HVtt unpriced: paid in 98sMhvDw
+462928908 HahSEykT unpriced: paid in 98sMhvDw
+462929032 G6ogdG8U unpriced: paid in 98sMhvDw
+462930323 67gcyKA8 unpriced: paid in SPCXxcqX
+462930768 242o7PJn unpriced: paid in 98sMhvDw
+462931649 5ZfZomWB unpriced: paid in 98sMhvDw
+462932723 4gfuCAdf unpriced: paid in 98sMhvDw
+462933160 AVkf1j6E unpriced: paid in 98sMhvDw
+462934122 5DhsQg2P unpriced: paid in 98sMhvDw
+462934710 G13SxZmL unpriced: paid in 98sMhvDw
+462934801 v6eQuqXs unpriced: paid in 98sMhvDw
+462934975 LZKW4Hck unpriced: paid in pumpCmXq
+462936090 6cdMgXSL unpriced: paid in 98sMhvDw
+462936343 EjciUVRp 1.501 SOL from TTWofwAg quote TTWofwAg jupiter true: no route: NoAnchor(TTWofwAge91oFhZs7kpQdyrVRkmevgM88xijGvQFbKo)
+462936493 Eubmoa7r unpriced: paid in 98sMhvDw
+462936699 59misx4K unpriced: paid in 98sMhvDw
+462936996 5JJ8VMB1 unpriced: paid in 98sMhvDw
+462938122 9udGTz5K unpriced: paid in SPCXxcqX
+462939631 66XAgVbd unpriced: paid in 98sMhvDw
+462940499 BC9U65MQ unpriced: paid in 98sMhvDw
+462942048 DW8G5pH7 unpriced: paid in 98sMhvDw
+462944507 GLp1W6cw 1.496 SOL from HiMSSzzw quote HiMSSzzw jupiter true: no route: NoAnchor(HiMSSzzwkZkrXJ4PGVJRdtfLaANeAztjjcgk5Dxe7Lwx)
+462947393 DKKQpbrz unpriced: paid in 98sMhvDw
+462949143 eSSezm2z unpriced: paid in 98sMhvDw
+462950068 5FS8C7g7 unpriced: paid in 98sMhvDw
+462953322 YYRzXcwT 1.490 SOL from Xsv9hRk1 quote Xsv9hRk1 jupiter true: no route: NoAnchor(Xsv9hRk1z5ystj9MhnA7Lq4vjSsLwzL2nxrwmwtD3re)
+462953668 HYPeoASE 1.491 SOL from So111111 quote NTRNDMqQ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: NTRNDMqQSiwEC2jJs3wJiZS6bpGYQJtMNQJgiX3W
+462953974 HypEYrfB unpriced: paid in 98sMhvDw
+462955088 6CiC6VWc unpriced: paid in 98sMhvDw
+462955397 GiqET2x2 unpriced: paid in 98sMhvDw
+462955497 QPBe1EGE unpriced: paid in 98sMhvDw
+462955638 8WXcYKr9 unpriced: paid in 98sMhvDw
+462955968 FczvquZy unpriced: paid in 98sMhvDw
+462956291 DPoxk2LB unpriced: paid in 98sMhvDw
+462956469 8ToCAhXL unpriced: paid in 98sMhvDw
+462956500 5ADxPT2r unpriced: paid in 98sMhvDw
+462956722 HYLjJRfc unpriced: paid in 98sMhvDw
+462958031 Hh75XVgo 1.500 SOL from So111111 quote BqQGcZAf jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: BqQGcZAfXwu2VfzMLnRAFYwtsbZxTHJNXVV74yVZ
+462958814 26bKcdvZ unpriced: paid in 98sMhvDw
+462959322 kTBuVrPF 1.498 SOL from 7vfCXTUX quote 7vfCXTUX jupiter true: no route: NoAnchor(7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs)
+462961154 jMbvKmLF unpriced: paid in 98sMhvDw
+462961418 BgKeVdzm unpriced: paid in 98sMhvDw
+462961644 DmvASCsZ unpriced: paid in 98sMhvDw
+462963621 C9eBq1Hb unpriced: paid in 98sMhvDw
+462964672 BwR2cASu unpriced: paid in 98sMhvDw
+462965012 2kBSSkMM unpriced: paid in 98sMhvDw
+462965460 5M3RHZU1 unpriced: paid in 98sMhvDw
+462966168 2zsohkCz unpriced: paid in 98sMhvDw
+462966382 HyPESTUw unpriced: paid in 98sMhvDw
+462966972 2THhqMFZ unpriced: paid in 98sMhvDw
+462966975 8Q3Wr8cW unpriced: paid in 98sMhvDw
+462967163 6K1JFJ6S unpriced: paid in 98sMhvDw
+462968393 GAfwEwiP unpriced: paid in 98sMhvDw
+462970329 61msYQCL 1.502 SOL from CEQnejxG quote CEQnejxG jupiter true: no route: NoAnchor(CEQnejxG1FPzMS6UiLbcxNiMKrZM3x6GTZucpJoSeByy)
+462970957 HyPC8bkQ unpriced: paid in 98sMhvDw
+462971533 8EDbFXgV unpriced: paid in pumpCmXq
+462972239 Av2bXVmj unpriced: paid in 98sMhvDw
+462973995 A88nBBs3 unpriced: paid in 98sMhvDw
+462975071 39efujnn unpriced: paid in 98sMhvDw
+462975080 Aac9PLYA 1.508 SOL from AMC1qwR9 quote AMC1qwR9 jupiter true: no route: NoAnchor(AMC1qwR9KhiyrQBRPrxnfo4JfMeMZqEBvt5tgTytNNoc)
+462975513 Eseh4Q9h unpriced: paid in 98sMhvDw
+462975694 GrP9Ej7F unpriced: paid in pumpCmXq
+462975840 A7sLW7be unpriced: paid in SPCXxcqX
+462977830 9yQy1AAh unpriced: paid in 98sMhvDw
+462978738 5Vdezmkz unpriced: paid in 98sMhvDw
+462981215 7vuZmSs1 unpriced: paid in 98sMhvDw
+462981230 AKpEGq8M unpriced: paid in 98sMhvDw
+462982069 ButtCxjF unpriced: paid in XsDoVfqe
+462982228 FcPZ8pe7 unpriced: paid in 98sMhvDw
+462982340 88V4uJSC 1.509 SOL from CARDSccU quote CARDSccU jupiter true: no route: NoAnchor(CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp)
+462984288 YjwWU6GK unpriced: paid in 98sMhvDw
+462984499 2iCThp4h unpriced: paid in 98sMhvDw
+462986013 HSvTU9GR unpriced: paid in 98sMhvDw
+462988055 HUre6cio unpriced: paid in 98sMhvDw
+462989873 D4dPHw84 unpriced: paid in 98sMhvDw
+462990819 7HJPDRM3 unpriced: paid in 98sMhvDw
+462991039 5sxCjaPS unpriced: paid in 98sMhvDw
+462992484 9SSPkhY2 unpriced: paid in 98sMhvDw
+462992658 7Pti8RvC unpriced: paid in 98sMhvDw
+462992837 E3mrbttE unpriced: paid in CARDSccU
+462993913 5YdLMaLZ unpriced: paid in 98sMhvDw
+462993929 qZkSwSaN unpriced: paid in pumpCmXq
+462994106 84kAe67w unpriced: paid in CARDSccU
+462994209 5Ydz6PJa unpriced: paid in 98sMhvDw
+462994586 C8u1BxK4 unpriced: paid in CARDSccU
+462994935 2K3V4j6Y unpriced: paid in 98sMhvDw
+462995169 AU9UdTtd unpriced: paid in 98sMhvDw
+462995331 84zRC3x7 unpriced: paid in CARDSccU
+462997011 7BV16JTQ unpriced: paid in CARDSccU
+462997441 AaNPc8Px unpriced: paid in CARDSccU
+462997477 2V5DMeS9 unpriced: paid in 98sMhvDw
+462998062 HTCSknFH unpriced: paid in 98sMhvDw
+462998190 7JaaygXH unpriced: paid in 98sMhvDw
+462998325 DzDmv1Th unpriced: paid in CARDSccU
+462998398 5YtkDJPc unpriced: paid in 98sMhvDw
+462999078 jBA1eZg6 unpriced: paid in 98sMhvDw
+463000904 ALhi4cKq unpriced: paid in CARDSccU
+463001982 BETgDLRh unpriced: paid in CARDSccU
+463002558 DFZ5cuVe unpriced: paid in 98sMhvDw
+463002863 4yBA5rvW unpriced: paid in 98sMhvDw
+463003325 3RSL8vga unpriced: paid in 98sMhvDw
+463004192 9TMusMXC unpriced: paid in 98sMhvDw
+463004453 B5c9x1mx unpriced: paid in 98sMhvDw
+463004530 39Gh6Mqi unpriced: paid in CARDSccU
+463005030 22Thshhs unpriced: paid in 98sMhvDw
+463005323 BpPi6NaC unpriced: paid in 98sMhvDw
+463005414 EHtjF7Tm unpriced: paid in CARDSccU
+463006081 9Afz4uEZ 1.485 SOL from WXMRyRZh quote WXMRyRZh jupiter true: no route: NoAnchor(WXMRyRZhsa19ety5erZhHg4N3xj3EVN92u94422teJp)
+463006772 AxK1NUqK unpriced: paid in XsDoVfqe
+463007183 33hGoYmx unpriced: paid in CARDSccU
+463008854 4J1Ev3Hx unpriced: paid in 98sMhvDw
+463009915 8o1vG3ta unpriced: paid in 98sMhvDw
+463011556 9DYFUbFR unpriced: paid in SPCXxcqX
+463011784 2pgWcB3k unpriced: paid in Xs8S1uUs
+463011823 9vDg7CDG unpriced: paid in 98sMhvDw
+463011870 ANTAF1tL unpriced: paid in 98sMhvDw
+463012255 7NjZv6ga unpriced: paid in 98sMhvDw
+463012590 EMmQfLZE unpriced: paid in 98sMhvDw
+463013393 By1Nd4iQ unpriced: paid in pumpCmXq
+463014246 Fc1juGfe unpriced: paid in SQQQAa3g
+463015549 JtZJ9xxx unpriced: paid in 98sMhvDw
+463015653 7KWFsCcB unpriced: paid in 98sMhvDw
+463015862 8bWdJSd5 1.496 SOL from SPCXxcqX quote SPCXxcqX jupiter true: no route: NoAnchor(SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb)
+463015989 vHJY7Du8 unpriced: paid in 98sMhvDw
+463019014 6eA6BXaj unpriced: paid in TTWofwAg
+463021174 2hL97gmC unpriced: paid in 98sMhvDw
+463022314 8bbpPt3f unpriced: paid in WXMRyRZh
+463022385 3sasoSFN unpriced: paid in XsoCS1Tf
+463022461 9nYxiPGS unpriced: paid in WXMRyRZh
+463022681 28YLrmCZ 1.500 SOL from So111111 quote NTRNDMqQ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: NTRNDMqQSiwEC2jJs3wJiZS6bpGYQJtMNQJgiX3W
+463022812 6DZxHDXd unpriced: paid in SPCXxcqX
+463023638 Eqgawxtr unpriced: paid in 98sMhvDw
+463024907 E6MBH7YN 1.456 SOL from 3NZ9JMVB quote C5xph2yL jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL
+463024982 Ao9SNT8z unpriced: paid in WXMRyRZh
+463025096 DgdkiJWP unpriced: paid in SQQQAa3g
+463028253 DPu3FTk6 1.500 SOL from So111111 quote NTRNDMqQ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: NTRNDMqQSiwEC2jJs3wJiZS6bpGYQJtMNQJgiX3W
+463028455 BiSaNQBR unpriced: paid in WXMRyRZh
+463031417 5ePqiqgg unpriced: paid in 98sMhvDw
+463034301 EZ7kcjRT 1.498 SOL from EPjFWdd5 quote EPjFWdd5 jupiter true: no route: NoAnchor(EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v)
+463035334 E2gNnQPv unpriced: paid in WXMRyRZh
+463040016 2JNcrHqc unpriced: paid in 98sMhvDw
+463040749 BwW3Ckbg 1.500 SOL from XspzcW1P quote XspzcW1P jupiter true: no route: NoAnchor(XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX)
+463044506 9wz4TH87 unpriced: paid in PEPEqnuu
+463044901 HthQDd3A unpriced: paid in WXMRyRZh
+463045986 5g62Zk8D unpriced: paid in PEPEqnuu
+463047194 Eiek7qpL unpriced: paid in PEPEqnuu
+463047339 5cdxR2MT unpriced: paid in TTWofwAg
+463047751 2zbMbS5Q unpriced: paid in EPjFWdd5
+463049252 D3yR8P8G unpriced: paid in 98sMhvDw
+463050343 J12nyKBs unpriced: paid in PEPEqnuu
+463051097 HKKpq1W3 unpriced: paid in SPCXxcqX
+463051959 D3L6nhzN unpriced: paid in 98sMhvDw
+463052579 7Y5Y13wk unpriced: paid in EPjFWdd5
+463052950 6unRtyaV unpriced: paid in 98sMhvDw
+463057665 63oP9jBb unpriced: paid in pumpCmXq
+463063309 8p51fvM5 unpriced: paid in 98sMhvDw
+463065295 Cs4JoMFV unpriced: paid in SPCXxcqX
+463068431 G4GhXsbC 1.481 SOL from A7bdiYdS quote A7bdiYdS jupiter true: no route: NoAnchor(A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS)
+463069674 DXRFhw3Q unpriced: paid in 98sMhvDw
+463069726 5xisvatF unpriced: paid in 98sMhvDw
+463069945 2PnMNCad unpriced: paid in SQQQAa3g
+463076129 DgjHHhBo unpriced: paid in 98sMhvDw
+463083869 EEEVYgMs 1.504 SOL from 3NZ9JMVB quote C5xph2yL jupiter true: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL
+463086156 B2ivZ2qM 1.500 SOL from So111111 quote 7SL2VnfY jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: 7SL2VnfYsChvog5oQY9Nmtqu1wceaMiQzWoqoLQp
+463088908 DRipbaMj unpriced: paid in EPjFWdd5
+463090685 ZErovZEu unpriced: paid in A7bdiYdS
+463098023 31FZ9fnK unpriced: paid in 98sMhvDw
+463099961 6UoQRVwN unpriced: paid in 98sMhvDw
+463105949 ErSJ14xH unpriced: paid in 98sMhvDw
+463108444 GQ3X1eGg unpriced: paid in 98sMhvDw
+463111601 ACoBYa4C 1.500 SOL from So111111 quote 2RyCCRen jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: 2RyCCRenDtquADusNUfwFpvTaDkam82imh46SL2m
+463112110 EXvMMxrR unpriced: paid in 98sMhvDw
+463113767 E1cDjAH5 unpriced: paid in pumpCmXq
+463117918 LTAKf6BH unpriced: paid in SQQQAa3g
+463123052 2XTdt1bh unpriced: paid in SQQQAa3g
+463125200 C6NniJqU 1.495 SOL from RACEyWiM quote EFn88Cii jupiter true: no route: TooLong(3)
+463126478 62mKGg67 unpriced: paid in 98sMhvDw
+463128508 FaKEcawG unpriced: paid in 98sMhvDw
+463128939 A8XE7fW3 unpriced: paid in 98sMhvDw
+463131943 8XwEWPJx unpriced: paid in SPCXxcqX
+463133659 Fund2F5s 1.500 SOL from So111111 quote NTRNDMqQ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: NTRNDMqQSiwEC2jJs3wJiZS6bpGYQJtMNQJgiX3W
+463135935 5hF28Mf6 unpriced: paid in 98sMhvDw
+463137522 EATo8iy4 unpriced: paid in pumpCmXq
+463141506 GQUKDZib unpriced: paid in WXMRyRZh
+463145830 CjU7UcyP 1.494 SOL from 98sMhvDw quote 98sMhvDw jupiter true: no route: NoAnchor(98sMhvDwXj1RQi5c5Mndm3vPe9cBqPrbLaufMXFNMh5g)
+463146366 FV9sG7Yh unpriced: paid in PEPEqnuu
+463146633 H4RCu3SU unpriced: paid in 98sMhvDw
+463165852 H1unvm4J unpriced: paid in 98sMhvDw
+463176000 6JxKq6cF unpriced: paid in pumpCmXq
+463179088 6kZbLXri unpriced: paid in 98sMhvDw
+463183425 3yRD5rsb 1.504 SOL from 98sMhvDw quote 98sMhvDw jupiter true: no route: NoAnchor(98sMhvDwXj1RQi5c5Mndm3vPe9cBqPrbLaufMXFNMh5g)
+463192121 sipqQPQ1 unpriced: paid in 98sMhvDw
+463197975 EMDLj6MH unpriced: paid in 98sMhvDw
+463199111 EgSJTKU5 1.503 SOL from A7bdiYdS quote A7bdiYdS jupiter true: no route: NoAnchor(A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS)
+463200153 DruvD3Rh unpriced: paid in PEPEqnuu
+463204440 BURGrae4 1.500 SOL from So111111 quote NTRNDMqQ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: NTRNDMqQSiwEC2jJs3wJiZS6bpGYQJtMNQJgiX3W
+463219170 R6rub3HC unpriced: paid in 98sMhvDw
+463220681 BN4Z5Ntn unpriced: paid in WXMRyRZh
+463222065 73wQyWB7 unpriced: paid in pumpCmXq
+463228875 BFjXK97Z unpriced: paid in 98sMhvDw
+463230004 owLsYruc 1.500 SOL from So111111 quote NTRNDMqQ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: NTRNDMqQSiwEC2jJs3wJiZS6bpGYQJtMNQJgiX3W
+463237510 8e9GyB1P unpriced: paid in 98sMhvDw
+463246894 9xcxVzWt unpriced: paid in SPCXxcqX
+463248969 ExbfdSkJ unpriced: paid in WXMRyRZh
+463253125 DFA6iw5p 1.507 SOL from CYPHuMmC quote CYPHuMmC jupiter true: no route: NoAnchor(CYPHuMmCL1GxJWa2tsPhLKykC7GrHJTCHwbXD4g5uawK)
+463258574 G2gzAYaU unpriced: paid in SPCXxcqX
+463259977 E8wb5rFp unpriced: paid in SPCXxcqX
+463263979 7ABbd8uo unpriced: paid in pumpCmXq
+463269976 GSBSirdT unpriced: paid in 98sMhvDw
+463277696 C3bVAZLp unpriced: paid in SPCXxcqX
+463279926 5hYaLP5R unpriced: paid in SPCXxcqX
+463282870 4uWBFvc4 1.489 SOL from 3NZ9JMVB quote C5xph2yL jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL
+463283281 7bPomKxx unpriced: paid in SPCXxcqX
+463288221 HgwEKrHk unpriced: paid in SPCXxcqX
+463288344 CFDzJxLh unpriced: paid in SPCXxcqX
+463297926 8Y5H7f7E unpriced: paid in 98sMhvDw
+463301883 EEDvQduJ unpriced: paid in 98sMhvDw
+463302469 CfiiAL4K unpriced: paid in 98sMhvDw
+463307565 HmMTLqTn unpriced: paid in 98sMhvDw
+463312446 Phat7kQ6 1.473 SOL from 3NZ9JMVB quote C5xph2yL jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL
+463312973 HBtH4sXU unpriced: paid in 98sMhvDw
+463318227 CEnYbJUW 1.471 SOL from 3NZ9JMVB quote C5xph2yL jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL
+463326619 Gbv3EZMJ unpriced: paid in pumpCmXq
+463333801 Cg69qXGc unpriced: paid in 98sMhvDw
+463333865 BmC88sq9 unpriced: paid in 98sMhvDw
+463334752 HkNAEQFj unpriced: paid in 98sMhvDw
+463335605 5CVbR4Pr unpriced: paid in 98sMhvDw
+463338103 Grjr7Jwc unpriced: paid in SPCXxcqX
+463341609 AupsMGGG unpriced: paid in 98sMhvDw
+463344157 C3qqrds8 unpriced: paid in CARDSccU
+463346077 CDfUuv5p unpriced: paid in WXMRyRZh
+463346502 cZ6jHEpK 1.497 SOL from Xsv9hRk1 quote Xsv9hRk1 jupiter true: no route: NoAnchor(Xsv9hRk1z5ystj9MhnA7Lq4vjSsLwzL2nxrwmwtD3re)
+463346545 3bSj9x9A unpriced: paid in CARDSccU
+463346778 AobUjTvW 1.548 SOL from Cm6fNnMk quote Cm6fNnMk jupiter true: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: Cm6fNnMk7NfzStP9CZpsQA2v3jjzbcYGAxdJySmH
+463347051 7bRahraQ unpriced: paid in 98sMhvDw
+463348172 DT564us6 1.453 SOL from XsCPL9dN quote XsCPL9dN jupiter true: no route: NoAnchor(XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN)
+463349125 84g25bwH unpriced: paid in CYPHuMmC
+463349381 GCEHwMEU unpriced: paid in CARDSccU
+463350061 F8965aSY unpriced: paid in CARDSccU
+463351401 3RcctNPs unpriced: paid in SPCXxcqX
+463351888 2qXRkhLK unpriced: paid in CARDSccU
+463351893 8kYJNBjd unpriced: paid in 98sMhvDw
+463352174 DsBn5ftx unpriced: paid in 98sMhvDw
+463352190 6XpUmqEq unpriced: paid in WXMRyRZh
+463352619 34MzcMaD unpriced: paid in CARDSccU
+463352783 672kt61y unpriced: paid in pumpCmXq
+463353733 EXV8oRAx unpriced: paid in PEPEqnuu
+463354499 138jTtVP unpriced: paid in CARDSccU
+463354970 nRvphSoN 1.500 SOL from So111111 quote BLN4c4FE jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: BLN4c4FERWn8pf3PysRDapSKzB5JoHx9HbaxjYkE
+463355168 iZgnrnCz unpriced: paid in CARDSccU
+463355860 2JtnqaJ1 unpriced: paid in 98sMhvDw
+463356038 725N7GSq unpriced: paid in XsoCS1Tf
+463356896 ZzSkbEk2 unpriced: paid in XsoCS1Tf
+463357853 EJrduDyi unpriced: paid in 98sMhvDw
+463358229 5a3217JA unpriced: paid in CARDSccU
+463358355 2vgoeYzx unpriced: paid in CARDSccU
+463358575 J7ssMbFw unpriced: paid in XsoCS1Tf
+463359021 4WDqd5yQ unpriced: paid in Xsc9qvGR
+463359101 9fH5Gobm unpriced: paid in 98sMhvDw
+463359461 7eQagAYS unpriced: paid in 98sMhvDw
+463359684 2Bdhb566 unpriced: paid in CARDSccU
+463360985 BA58ueSR unpriced: paid in CARDSccU
+463361171 67sEd5aM unpriced: paid in pumpCmXq
+463362035 722beNwy unpriced: paid in XsoCS1Tf
+463362715 3bkTVdNV unpriced: paid in CARDSccU
+463363048 ghozeJST unpriced: paid in A7bdiYdS
+463363562 AxCSXfVu unpriced: paid in WXMRyRZh
+463364430 FVby3wEj unpriced: paid in pumpCmXq
+463364785 2ivtKH8D unpriced: paid in CARDSccU
+463365416 3eLtKo1S unpriced: paid in 98sMhvDw
+463365541 8ZPSv9dy unpriced: paid in CARDSccU
+463365605 T8FyxMuF unpriced: paid in 98sMhvDw
+463366474 Bh6CGttg unpriced: paid in XsoCS1Tf
+463367385 G7Bgf5Pi unpriced: paid in CYPHuMmC
+463367710 8Jnsq4Ax unpriced: paid in SPCXxcqX
+463367748 3514qM1g unpriced: paid in CARDSccU
+463368122 13V6zBGR unpriced: paid in XsoCS1Tf
+463370511 fiRjJPp5 unpriced: paid in CARDSccU
+463370684 FQyUW3Kz unpriced: paid in 98sMhvDw
+463371396 AZDSrq9g unpriced: paid in Xsc9qvGR
+463372412 2SSwvMgd unpriced: paid in CARDSccU
+463372571 BtZYkV5J 1.499 SOL from SKHYhSju quote SKHYhSju jupiter true: no route: NoAnchor(SKHYhSjuRWHgikq8eRKbtBbpABgJSkd7ytQV14i9EQ3)
+463372879 HsKa3L91 unpriced: paid in 98sMhvDw
+463373190 EANusDsW 1.498 SOL from MUxEsUKS quote MUxEsUKS jupiter true: no route: NoAnchor(MUxEsUKSMACyw5fZf68wxf5FLnZVhtU9CwH8uNNGay1)
+463373255 2NoERe8U unpriced: paid in CARDSccU
+463374185 13a2dx5m unpriced: paid in CARDSccU
+463374487 Bxqm9DnC unpriced: paid in XsoCS1Tf
+463375285 F13oSBnv unpriced: paid in CARDSccU
+463376124 6ThaFwrF unpriced: paid in CARDSccU
+463376414 3D1W9Kui unpriced: paid in CARDSccU
+463377345 GyrDKG88 unpriced: paid in CARDSccU
+463377876 3SDVAmKt unpriced: paid in 98sMhvDw
+463378609 EWv9xGBh unpriced: paid in CARDSccU
+463378851 7fmvtfdA unpriced: paid in DJTu7vi8
+463379192 74LQsAHs unpriced: paid in 98sMhvDw
+463380412 CKUGAzjb unpriced: paid in CARDSccU
+463380457 9FRMLEnv unpriced: paid in SPCXxcqX
+463381545 9BnWAdXe unpriced: paid in CARDSccU
+463382846 Gsf4UMqD unpriced: paid in Xsf9mBkt
+463383569 9UREu29f unpriced: paid in CARDSccU
+463384921 GKuRWZzE unpriced: paid in Xsf9mBkt
+463384946 CYD13S4n unpriced: paid in 98sMhvDw
+463385291 HcddGjHL unpriced: paid in Xsc9qvGR
+463387628 8e5z12kE unpriced: paid in 98sMhvDw
+463387728 GBqaP5Pk unpriced: paid in CARDSccU
+463388655 8zj1qiWW unpriced: paid in A7bdiYdS
+463388707 9kD8YiAB unpriced: paid in CARDSccU
+463389775 533qouNg unpriced: paid in CARDSccU
+463390813 FkdPYXo2 unpriced: paid in SPCXxcqX
+463390936 3x4ZnKvH unpriced: paid in Xsf9mBkt
+463392984 DD73dDrW unpriced: paid in A7bdiYdS
+463394478 9PFMuqNS 1.466 SOL from 3NZ9JMVB quote C5xph2yL jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL
+463395133 acXtNeqE unpriced: paid in Xsf9mBkt
+463395562 483RXaEw unpriced: paid in CARDSccU
+463396315 CcMGHCyZ 1.498 SOL from XsueG8Bt quote XsueG8Bt jupiter true: no route: NoAnchor(XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1)
+463396335 BhoStRvv unpriced: paid in CARDSccU
+463396601 FUkU9VBp 1.500 SOL from So111111 quote H74CYmXg jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: H74CYmXgMkYHYuSRsZt6RJb4NYp2u72Vw8BS5huA
+463396762 9dwWNGfz unpriced: paid in CARDSccU
+463397692 AUoQhX1r unpriced: paid in Xsf9mBkt
+463397887 J8tsHhWB unpriced: paid in MUxEsUKS
+463398309 4iSDfmwA unpriced: paid in 98sMhvDw
+463398333 7roLGJaV unpriced: paid in CARDSccU
+463399736 2QgRmwwq unpriced: paid in CARDSccU
+463399955 6ZStQ2W2 unpriced: paid in Xsf9mBkt
+463401009 ArcufE5G unpriced: paid in Xsf9mBkt
+463401089 FccKsXJ3 unpriced: paid in MUxEsUKS
+463401554 4HBBXcUo unpriced: paid in 98sMhvDw
+463401962 9R1oxjkb unpriced: paid in CARDSccU
+463402508 AzZU7Aeb unpriced: paid in 98sMhvDw
+463402672 GP3dnzBg unpriced: paid in Xsf9mBkt
+463402967 DAodTsJs unpriced: paid in EPjFWdd5
+463404427 3Qud5fYv unpriced: paid in SPCXxcqX
+463404641 A2qym6hf unpriced: paid in CARDSccU
+463405141 EfEjnNFg unpriced: paid in CARDSccU
+463406129 AmgMHh5o unpriced: paid in CARDSccU
+463406494 Ajs7DgFS unpriced: paid in pumpCmXq
+463407615 CLqcb8C9 unpriced: paid in CARDSccU
+463408034 H47xBMHn unpriced: paid in pumpCmXq
+463408404 8JrbWJeg unpriced: paid in XsoCS1Tf
+463408793 GucwcUUG unpriced: paid in CARDSccU
+463409921 5zdTRmcL unpriced: paid in CARDSccU
+463410129 Ajqkb65e unpriced: paid in pumpCmXq
+463412967 8mJzMTvh unpriced: paid in pumpCmXq
+463413058 3yHrG9LU unpriced: paid in pumpCmXq
+463413292 GtHyF8jV unpriced: paid in CARDSccU
+463413853 BFgbkTzN unpriced: paid in pumpCmXq
+463413929 GRsbCkDN unpriced: paid in CARDSccU
+463414155 6Xpefpc8 unpriced: paid in pumpCmXq
+463414352 EgneWE3U unpriced: paid in CARDSccU
+463415044 sqPvGbjM unpriced: paid in pumpCmXq
+463415382 BN8wQpXN unpriced: paid in XsoCS1Tf
+463416368 FuYKgMkh unpriced: paid in CARDSccU
+463417165 6QQGNyXn unpriced: paid in pumpCmXq
+463417348 4QRSjsm4 1.500 SOL from 98sMhvDw quote 98sMhvDw jupiter true: no route: NoAnchor(98sMhvDwXj1RQi5c5Mndm3vPe9cBqPrbLaufMXFNMh5g)
+463418107 JEBKRVCR unpriced: paid in XsoCS1Tf
+463418371 23Qv2Cu3 unpriced: paid in pumpCmXq
+463418618 2Ay6a81r unpriced: paid in pumpCmXq
+463418717 7VQPL6YG unpriced: paid in CARDSccU
+463418719 DLoGc4of unpriced: paid in DJTu7vi8
+463419255 FQcdwaAR unpriced: paid in pumpCmXq
+463419513 CqpqwJe7 unpriced: paid in pumpCmXq
+463420040 6Aw995Dy unpriced: paid in pumpCmXq
+463420365 AzZWm1rz unpriced: paid in CARDSccU
+463421051 3PmqVmdF unpriced: paid in MUxEsUKS
+463424579 7iBU2nH4 unpriced: paid in pumpCmXq
+463425122 4WeXxNmA unpriced: paid in pumpCmXq
+463425389 9enRMnRg unpriced: paid in pumpCmXq
+463425903 4NyRyGt5 unpriced: paid in pumpCmXq
+463426791 FLV2nGFZ unpriced: paid in pumpCmXq
+463427534 59jY7zuZ unpriced: paid in SPCXxcqX
+463428266 FreEeqBk 1.505 SOL from XsDoVfqe quote XsDoVfqe jupiter true: no route: NoAnchor(XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB)
+463429323 5LQLoChq unpriced: paid in pumpCmXq
+463430450 C8gVkC8F unpriced: paid in 98sMhvDw
+463430468 54c5B7cB unpriced: paid in 98sMhvDw
+463431051 DmbY4YX2 unpriced: paid in 98sMhvDw
+463431063 3VPUrmfE unpriced: paid in SPCXxcqX
+463433488 HYzL13x2 unpriced: paid in SPCXxcqX
+463433976 7mvNSHtT unpriced: paid in pumpCmXq
+463435205 4YRk8kGW unpriced: paid in pumpCmXq
+463435205 7xgsuJYw unpriced: paid in pumpCmXq
+463436855 HtdVMb6y unpriced: paid in pumpCmXq
+463445592 AaYANATm unpriced: paid in pumpCmXq
+463446054 A6gXSX5E unpriced: paid in XsbEhLAt
+463446334 9sxFaAqA unpriced: paid in pumpCmXq
+463446733 72hzHPcE unpriced: paid in 98sMhvDw
+463447112 5aMfqA6V unpriced: paid in XsbEhLAt
+463447503 9rSebKRt unpriced: paid in XsbEhLAt
+463448772 i2FddFoP unpriced: paid in XsbEhLAt
+463449004 CkjaCCrr unpriced: paid in XsbEhLAt
+463450423 5uHPBfzZ unpriced: paid in XsbEhLAt
+463450561 57jVfZ32 unpriced: paid in 98sMhvDw
+463450610 ZVHa9NEn unpriced: paid in XsbEhLAt
+463450779 CCkXX5Jp unpriced: paid in WXMRyRZh
+463450853 bx1DNGSM unpriced: paid in XsbEhLAt
+463451939 BfHyEVWb unpriced: paid in XsbEhLAt
+463453449 8es2hbrn unpriced: paid in XsbEhLAt
+463454171 5cfri94g unpriced: paid in XsbEhLAt
+463455572 8RLxFHhi unpriced: paid in XsbEhLAt
+463455711 9JE8sbZ7 unpriced: paid in XsbEhLAt
+463456131 DHNGta9U unpriced: paid in XsbEhLAt
+463457240 DmKYCo4x unpriced: paid in XsbEhLAt
+463457350 DYnjq6u9 unpriced: paid in XsbEhLAt
+463459541 FUvcTBU4 unpriced: paid in pumpCmXq
+463461217 FU8HvpNT unpriced: paid in XsbEhLAt
+463461254 AApLuUwr unpriced: paid in XsbEhLAt
+463462449 3bzTSmVr unpriced: paid in 98sMhvDw
+463462670 JBMd6Wn6 unpriced: paid in XsbEhLAt
+463463771 6E6f9pVk unpriced: paid in XsbEhLAt
+463464789 6wLuiPBU unpriced: paid in XsbEhLAt
+463464996 J7k7Ha4L unpriced: paid in pumpCmXq
+463465134 HaNDxQFR 1.500 SOL from So111111 quote NTRNDMqQ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: NTRNDMqQSiwEC2jJs3wJiZS6bpGYQJtMNQJgiX3W
+463465301 9Y9dnvaG unpriced: paid in SPCXxcqX
+463465485 H9h8oN1N unpriced: paid in pumpCmXq
+463466197 AUGFTUjr unpriced: paid in pumpCmXq
+463467793 9t4JYVrN unpriced: paid in XsbEhLAt
+463469390 4Qme1V41 unpriced: paid in pumpCmXq
+463469630 ATSjDjKU unpriced: paid in XsbEhLAt
+463469846 7RH2pH3m unpriced: paid in MUxEsUKS
+463470174 BijvYqud unpriced: paid in 98sMhvDw
+463470335 7Ny6TsyK unpriced: paid in XsbEhLAt
+463470638 9oaZtkz5 unpriced: paid in 98sMhvDw
+463473135 6JczrAYu unpriced: paid in XsbEhLAt
+463474309 2dmmwpCK unpriced: paid in XsbEhLAt
+463474797 7y3u3a7M 1.486 SOL from 3NZ9JMVB quote C5xph2yL jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL
+463475247 4JMiqwfW unpriced: paid in XsbEhLAt
+463475755 7y2BAq9p unpriced: paid in XsbEhLAt
+463476323 GENJNijy 1.487 SOL from 3NZ9JMVB quote C5xph2yL jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL
+463477087 3H3NFUCs unpriced: paid in XsbEhLAt
+463477961 Bp5XGXVo unpriced: paid in XsbEhLAt
+463478130 BoGEgy2x unpriced: paid in XsbEhLAt
+463479204 3Joiuia4 unpriced: paid in XsbEhLAt
+463480898 7Zgx2fQH unpriced: paid in XsbEhLAt
+463481253 4ED4ucTm unpriced: paid in XsbEhLAt
+463481887 Czn111cd unpriced: paid in pumpCmXq
+463482603 GjEwYiz9 unpriced: paid in XsbEhLAt
+463483255 By9rtvGo unpriced: paid in XsbEhLAt
+463484062 9KrwK4qz unpriced: paid in A7bdiYdS
+463484639 F5yFYLAB unpriced: paid in XsbEhLAt
+463485099 2MtfMrrT unpriced: paid in XsbEhLAt
+463485319 3JbUxZ3a unpriced: paid in WXMRyRZh
+463485550 EFKnnnm2 unpriced: paid in pumpCmXq
+463487031 Dr5rSv4x unpriced: paid in XsbEhLAt
+463488976 3uMGpFz7 unpriced: paid in EPjFWdd5
+463489296 GmdUnab3 unpriced: paid in XsbEhLAt
+463489591 BgLdVmWz unpriced: paid in WXMRyRZh
+463492930 BKZMtcWe unpriced: paid in XsbEhLAt
+463494101 7sM3DgDB unpriced: paid in XsbEhLAt
+463494356 HAW51jvL unpriced: paid in 98sMhvDw
+463495330 D9ggKimc unpriced: paid in XsbEhLAt
+463495378 7cESyvBD unpriced: paid in XsbEhLAt
+463495836 Ab4dp2zd unpriced: paid in XsbEhLAt
+463498195 EmExxXDj unpriced: paid in XsbEhLAt
+463500446 9c5Cb2sd unpriced: paid in XsbEhLAt
+463501307 GEPcbgiv unpriced: paid in SPCXxcqX
+463501430 BJXzpjYH unpriced: paid in DJTu7vi8
+463502848 HibxpqB6 unpriced: paid in XsbEhLAt
+463506391 ERLYkWJy unpriced: paid in XsbEhLAt
+463506916 8yKy63Um unpriced: paid in SPCXxcqX
+463507282 CY3jpKdt unpriced: paid in SPCXxcqX
+463509098 42XwBDNa 1.500 SOL from So111111 quote EkcTa8n1 jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: EkcTa8n14fXcHdfvZqCg72cTCutJnnKb19vcHwKT
+463512371 2giDCipo unpriced: paid in DJTu7vi8
+463518367 6hhpLMF2 1.491 SOL from 3NZ9JMVB quote C5xph2yL jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL
+463519387 CJK6mE3F 1.501 SOL from XsbEhLAt quote 66auXVTR jupiter true: no route: TooLong(3)
+463520184 FBK7A7YT unpriced: paid in XsbEhLAt
+463520283 2UhAB73E unpriced: paid in DJTu7vi8
+463523728 omsNfMWa unpriced: paid in 98sMhvDw
+463523779 4BErBgFN unpriced: paid in XsbEhLAt
+463526985 3WPodVmd unpriced: paid in SPCXxcqX
+463529346 okJ4nQ9m unpriced: paid in Xsc9qvGR
+463532938 G6SSg3GL unpriced: paid in 98sMhvDw
+463536822 gtavimsd unpriced: paid in TTWofwAg
+463537350 4xRe463r unpriced: paid in pumpCmXq
+463537817 5sy1Qi22 unpriced: paid in XsbEhLAt
+463542135 a4cbF6Fv unpriced: paid in pumpCmXq
+463543485 B2GueYED 1.500 SOL from So111111 quote GSp4qePZ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: GSp4qePZUHBtt5f4gE6AsRC9JUUqeZEJLeN2JZxL
+463543561 AC1oG6JH unpriced: paid in SPCXxcqX
+463543953 AB1R2fdr unpriced: paid in DJTu7vi8
+463546274 J6XjSBty 1.498 SOL from pumpCmXq quote pumpCmXq jupiter true: no route: NoAnchor(pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn)
+463547998 7wjBDmUq unpriced: paid in pumpCmXq
+463549005 GgXM8pTs unpriced: paid in SPCXxcqX
+463549457 Ensu5a32 unpriced: paid in pumpCmXq
+463550347 FAwV9tGu unpriced: paid in 98sMhvDw
+463550593 5e1SR3Do unpriced: paid in 98sMhvDw
+463552163 CUJwoqYW unpriced: paid in TTWofwAg
+463558045 GnPdMyEp 1.505 SOL from HiMSSzzw quote HiMSSzzw jupiter true: no route: NoAnchor(HiMSSzzwkZkrXJ4PGVJRdtfLaANeAztjjcgk5Dxe7Lwx)
+463566423 22cuxv5y unpriced: paid in pumpCmXq
+463570778 76c2GqLf unpriced: paid in WXMRyRZh
+463572411 BQqP9fGm unpriced: paid in A7bdiYdS
+463575758 9oB9zrav unpriced: paid in 98sMhvDw
+463577189 GvW8vQAZ unpriced: paid in pumpCmXq
+463582811 2fcJo6dt 1.482 SOL from 3NZ9JMVB quote HytpiyuR jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: HytpiyuR3sVXGB5UqoqrnThCPH2X1tWVm5neep3
+463582979 2pDkdMYC 1.482 SOL from 3NZ9JMVB quote HytpiyuR jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: HytpiyuR3sVXGB5UqoqrnThCPH2X1tWVm5neep3
+463584873 Fcx7Y6bb unpriced: paid in HiMSSzzw
+463587215 Bb8z8QJo unpriced: paid in pumpCmXq
+463587215 5Gm1HUx5 unpriced: paid in pumpCmXq
+463591296 672NNj3P unpriced: paid in WXMRyRZh
+463599677 9MS4wJS5 unpriced: paid in SPCXxcqX
+463600974 Hrd4Q1W8 unpriced: paid in 98sMhvDw
+463601789 ECEZXtHk 1.501 SOL from XsDoVfqe quote XsDoVfqe jupiter true: no route: NoAnchor(XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB)
+463603802 997GSEnn unpriced: paid in XsDoVfqe
+463603924 qDU6fi87 unpriced: paid in WXMRyRZh
+463605203 U6A3pX8n unpriced: paid in WXMRyRZh
+463606763 Dm4hMN9j unpriced: paid in DJTu7vi8
+463614518 3WgtCEGL 1.476 SOL from 3NZ9JMVB quote C5xph2yL jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL
+463616036 Hc3HM3He unpriced: paid in 98sMhvDw
+463621777 98T5kkEX unpriced: paid in WXMRyRZh
+463624759 Ghu2ddY9 unpriced: paid in pumpCmXq
+463625177 6haVDNMi unpriced: paid in WXMRyRZh
+463629823 BH4SwcKU unpriced: paid in XsbEhLAt
+463632907 6wtfpVjz 1.500 SOL from So111111 quote H74CYmXg jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: H74CYmXgMkYHYuSRsZt6RJb4NYp2u72Vw8BS5huA
+463636400 CEwESmPY unpriced: paid in WXMRyRZh
+463669612 C8JQjrfR unpriced: paid in XsDoVfqe
+463673630 GEFEYYrn unpriced: paid in XsbEhLAt
+463676262 EDwEugaS unpriced: paid in pumpCmXq
+463681097 8HWtyV3b unpriced: paid in pumpCmXq
+463691538 nyhMhnqS unpriced: paid in pumpCmXq
+463692083 6opTW2iy unpriced: paid in pumpCmXq
+463692772 BdmvzUoK unpriced: paid in pumpCmXq
+463693034 GooD8Bx9 1.500 SOL from So111111 quote NTRNDMqQ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: NTRNDMqQSiwEC2jJs3wJiZS6bpGYQJtMNQJgiX3W
+463694087 6n3kqX8z unpriced: paid in 98sMhvDw
+463694248 HS9taV1p unpriced: paid in SPCXxcqX
+463695183 6TNHHvQ8 1.462 SOL from 3NZ9JMVB quote C5xph2yL jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL
+463698383 J9xypura unpriced: paid in SPCXxcqX
+463698742 9nAY4fz3 unpriced: paid in pumpCmXq
+463708649 ExNGbKKh unpriced: paid in SPCXxcqX
+463710415 CocaS9fD 1.500 SOL from So111111 quote NTRNDMqQ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: NTRNDMqQSiwEC2jJs3wJiZS6bpGYQJtMNQJgiX3W
+463714082 BGgykmtT unpriced: paid in SPCXxcqX
+463721274 CTmUrN9v 1.474 SOL from 3NZ9JMVB quote C5xph2yL jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL
+463721599 GHoSBeo1 unpriced: paid in pumpCmXq
+463723354 DRB1egxf unpriced: paid in DoGEV7LA
+463723742 FvgpH1MJ unpriced: paid in SPCXxcqX
+463730691 6QtcpEf2 unpriced: paid in DoGEV7LA
+463731621 BtRC1eXm unpriced: paid in 98sMhvDw
+463732691 BcZiwzk3 unpriced: paid in XsbEhLAt
+463737794 BoopEp71 1.498 SOL from 2zMMhcVQ quote 2zMMhcVQ jupiter true: no route: NoAnchor(2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv)
+463739822 Ffx6BPcC 1.491 SOL from So111111 quote GSp4qePZ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: GSp4qePZUHBtt5f4gE6AsRC9JUUqeZEJLeN2JZxL
+463740695 B1opXDK2 unpriced: paid in XsbEhLAt
+463743717 5afzD6Cx 1.474 SOL from 3NZ9JMVB quote C5xph2yL jupiter false: ROUTABLE Plan { route: Route { input: 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh, hops: [Hop { venue: Pool, base_mint: C5xph2yL6gMdxmuLGxJBkGpmuDFfyi5fqkBNhvL
+463746711 FjBSgVD1 1.500 SOL from So111111 quote GSp4qePZ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: GSp4qePZUHBtt5f4gE6AsRC9JUUqeZEJLeN2JZxL
+463747370 DHgDG6Vo unpriced: paid in 98sMhvDw
+463750470 3EE2F9xz unpriced: paid in SPCXxcqX
+463751070 9ZwjBh2r unpriced: paid in 98sMhvDw
+463751345 BeWf2rEb unpriced: paid in 98sMhvDw
+463753469 6vYELxZD unpriced: paid in SPCXxcqX
+7100 transactions: SOL-priced buys 536, sells 1438, other-quote buys under 1.45 SOL 293, unpriced 553

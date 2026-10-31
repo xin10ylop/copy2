@@ -1,0 +1,70 @@
+== the model against the bot's real trades (Beirut time; net % of the stake)
+coin      bought      stake    real   model  model exit
+FUN1RZrj  10-28 20:35   0.1  +92.7%  +72.7%  tp in 1.13x out 2.15x
+E3hauBDZ  10-28 21:20   0.1  refus.   -0.4%  refused in 1.75x out 0.00x
+EMJs7igZ  10-28 21:28   0.1 +102.8%  +80.1%  tp in 1.08x out 2.15x
+GUcG2eK2  10-28 22:11   0.1  +81.8%  +76.8%  tp in 1.17x out 2.20x
+6TrDECwR  10-28 22:53   0.1  -33.4%  -37.3%  stop in 1.14x out 0.78x
+JAckzYTT  10-28 23:12   0.1 +107.4%  +71.6%  tp in 1.06x out 2.00x
+E61exR62  10-28 23:47   0.1  -36.6%  -42.2%  stop in 1.14x out 0.74x
+Fawdfdv9  10-29 00:33   0.5  refus. +102.5%  tp in 1.09x out 2.30x
+2HuAFrTr  10-29 00:39   0.5  refus.  -32.3%  time in 1.20x out 0.81x
+96jEWfbD  10-29 01:12   0.5  -27.8%  -25.5%  stop in 1.03x out 0.77x
+DyNxDFcT  10-29 01:30   0.5  +93.7%  +74.8%  tp in 1.06x out 2.01x
+QkhZhyUK  10-29 01:36   0.5   -2.7%  -17.2%  time in 1.22x out 1.08x
+2K5Mvygd  10-29 01:38   1.0    1SOL  -24.7%  time in 1.23x out 0.98x
+6xQijdyc  10-29 02:17   0.5   -7.7%  -12.2%  time in 1.09x out 1.03x
+7YLdWetK  10-29 06:13   0.5  +95.6%  +81.2%  tp in 1.13x out 2.09x
+FqDzSqvf  10-29 07:17   0.5  +79.9%  +68.8%  tp in 1.11x out 2.02x
+iNE6pSzD  10-29 11:18   1.0    1SOL   -0.0%  refused in 1.27x out 0.00x
+HotHTmeY  10-29 12:04   1.0    1SOL  -15.4%  time in 1.15x out 1.03x
+3NWyukFy  10-29 13:22   1.0    1SOL   -9.4%  time in 1.13x out 1.11x
+   model minus real on 12 closed trades: median -12.8 points, mean -12.9
+
+== since the stop, 1 SOL a copy, landing 4 trades after its buy: 36 copies, NET +0.92 SOL (without the best 2: -0.70); exits {'time': 15, 'tp': 8, 'refused': 5, 'stop': 8}
+   by day (Beirut): 10-29 6 -0.23  10-30 13 +1.48  10-31 17 -0.34
+   Azt8D8RN  10-29 16:15 1.48 SOL time      in 1.03x out 0.92x peak 1.03x held  1800s net -0.138
+   HYPeoASE  10-29 18:47 1.49 SOL tp        in 1.06x out 1.93x peak 2.09x held    28s net +0.689
+   Hh75XVgo  10-29 19:02 1.50 SOL refused   in 1.42x out 0.00x peak 0.00x held     0s net -0.000
+   28YLrmCZ  10-29 22:53 1.50 SOL stop      in 1.04x out 0.81x peak 1.56x held    99s net -0.275
+   E6MBH7YN  10-29 23:01 1.46 SOL time      in 1.04x out 0.98x peak 1.30x held  1800s net -0.126
+   DPu3FTk6  10-29 23:13 1.50 SOL stop      in 1.08x out 0.71x peak 1.34x held    11s net -0.381
+   EEEVYgMs  10-30 02:32 1.50 SOL time      in 1.07x out 0.92x peak 1.25x held  1829s net -0.208
+   B2ivZ2qM  10-30 02:40 1.50 SOL time      in 1.04x out 0.98x peak 1.56x held   808s net -0.133
+   ACoBYa4C  10-30 04:10 1.50 SOL tp        in 1.06x out 2.13x peak 2.09x held   636s net +0.808
+   Fund2F5s  10-30 05:29 1.50 SOL time      in 1.07x out 0.84x peak 1.07x held  1800s net -0.264
+   BURGrae4  10-30 09:41 1.50 SOL stop      in 1.02x out 0.81x peak 1.03x held     5s net -0.258
+   owLsYruc  10-30 11:12 1.50 SOL time      in 1.05x out 0.85x peak 1.05x held  1800s net -0.249
+   4uWBFvc4  10-30 14:20 1.49 SOL time      in 1.04x out 0.98x peak 1.10x held  1800s net -0.127
+   Phat7kQ6  10-30 16:05 1.47 SOL tp        in 1.05x out 2.02x peak 2.01x held   269s net +0.771
+   CEnYbJUW  10-30 16:26 1.47 SOL tp        in 1.07x out 1.97x peak 2.00x held    83s net +0.664
+   AobUjTvW  10-30 18:07 1.55 SOL refused   in 1.33x out 0.00x peak 0.00x held     0s net -0.000
+   nRvphSoN  10-30 18:36 1.50 SOL stop      in 0.97x out 0.85x peak 1.72x held    47s net -0.153
+   9PFMuqNS  10-30 20:58 1.47 SOL tp        in 1.02x out 2.00x peak 2.04x held   102s net +0.780
+   FUkU9VBp  10-30 21:05 1.50 SOL time      in 1.03x out 0.96x peak 1.04x held  1924s net -0.147
+   HaNDxQFR  10-31 01:10 1.50 SOL tp        in 1.12x out 2.03x peak 2.00x held    77s net +0.684
+   7y3u3a7M  10-31 01:45 1.49 SOL time      in 1.05x out 0.98x peak 1.27x held   754s net -0.132
+   GENJNijy  10-31 01:50 1.49 SOL time      in 1.07x out 0.93x peak 1.25x held   693s net -0.203
+   42XwBDNa  10-31 03:47 1.50 SOL tp        in 1.08x out 2.12x peak 2.06x held   471s net +0.802
+   6hhpLMF2  10-31 04:21 1.49 SOL time      in 1.03x out 0.94x peak 1.07x held   713s net -0.153
+   B2GueYED  10-31 05:50 1.50 SOL refused   in 1.27x out 0.00x peak 0.00x held     0s net -0.000
+   2fcJo6dt  10-31 08:11 1.48 SOL tp        in 1.17x out 2.13x peak 2.04x held     3s net +0.636
+   2pDkdMYC  10-31 08:11 1.48 SOL refused   in 1.33x out 0.00x peak 0.00x held     0s net -0.000
+   3WgtCEGL  10-31 10:04 1.48 SOL time      in 1.03x out 0.96x peak 1.07x held   711s net -0.131
+   6wtfpVjz  10-31 11:10 1.50 SOL time      in 1.03x out 0.94x peak 1.05x held   748s net -0.144
+   GooD8Bx9  10-31 14:44 1.50 SOL stop      in 1.16x out 0.76x peak 1.16x held   600s net -0.354
+   6TNHHvQ8  10-31 14:51 1.46 SOL time      in 1.06x out 1.23x peak 1.59x held  1793s net +0.054
+   CocaS9fD  10-31 15:46 1.50 SOL stop      in 1.14x out 0.75x peak 1.18x held   472s net -0.351
+   CTmUrN9v  10-31 16:25 1.47 SOL time      in 1.08x out 0.93x peak 1.19x held  1703s net -0.192
+   Ffx6BPcC  10-31 17:31 1.49 SOL stop      in 1.20x out 0.63x peak 1.33x held    13s net -0.507
+   5afzD6Cx  10-31 17:45 1.47 SOL stop      in 1.07x out 0.75x peak 1.10x held   986s net -0.343
+   FjBSgVD1  10-31 17:56 1.50 SOL refused   in 1.44x out 0.00x peak 0.00x held     0s net -0.000
+
+== since the stop, 1 SOL a copy, landing slot+1: 36 copies, NET +2.60 SOL (without the best 2: +0.92); exits {'time': 16, 'tp': 10, 'refused': 2, 'stop': 8}
+   by day (Beirut): 10-29 6 -0.24  10-30 13 +1.43  10-31 17 +1.41
+
+== since the stop, 1 SOL a copy, landing 2 trades after its buy: 36 copies, NET +2.56 SOL (without the best 2: +0.89); exits {'time': 16, 'tp': 10, 'refused': 2, 'stop': 8}
+   by day (Beirut): 10-29 6 -0.16  10-30 13 +1.43  10-31 17 +1.29
+
+== since the stop, 1 SOL a copy, landing 7 trades after its buy: 36 copies, NET +0.56 SOL (without the best 2: -0.99); exits {'time': 14, 'tp': 8, 'refused': 7, 'stop': 7}
+   by day (Beirut): 10-29 6 -0.42  10-30 13 +1.43  10-31 17 -0.46
