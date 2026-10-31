@@ -164,10 +164,18 @@ is about (`07-rework-2026-10-28/README.md` §5).
 | 10 | 96jEWfbD (the fixed floor from here) | SOL | 462657546, 258 | +1 slot, 217 | 4 | +11.6% | stop 0.77x, 51 s (peak 1.54x) | −0.1392 |
 | 11 | DyNxDFcT | pool+curve | 462662465, 105 | +1 slot, 34 | 2 | +7.9% | take profit 2.02x, 58 s | +0.4683 |
 | 12 | QkhZhyUK | WBTC | 462664317, 14 | same slot, 94 | 4 | +9.8% | timer at 1.08x (peak 1.21x) | −0.0136 |
-| 14 | 6xQijdyc | WBTC | 462666xxx | (13: a skip, float under the stake) | | +9.4% | timer at 1.03x (peak 1.24x) | −0.0385 |
+| 14 | 6xQijdyc (13 was a skip: float under the stake) | WBTC | (sold slot 462684078) | | | +9.4% | timer at 1.03x (peak 1.24x) | −0.0385 |
 | 15 | AVsYL8K3 | curve (WBTC quote, 1 hop) | 462728771, 140 | +1 slot, 220 | 7 | +16.4% | timer at 0.97x (peak 1.11x) | −0.0769 |
 | 16 | 7YLdWetK | SOL | 462742123, 242 | +1 slot, 117 | 4 | +11.5% | take profit 2.02x, 9 s | +0.4780 |
 | 17 | FqDzSqvf | SOL | 462759986, 145 | +1 slot, 259 | 2 | +17.5% | take profit 2.02x, 216 s | +0.3995 |
+| 18 | iNE6pSzD (1 SOL from here) | SOL | bought slot 462827815, 09:18:39 UTC | | | | timer, sold 09:48:30 (slot 462836209) | +0.0142 |
+| 19 | HotHTmeY | SOL | bought slot 462840672, 10:04:26 UTC | | | | timer, sold 10:34:16 (slot 462849042) | −0.0424 |
+| 20 | 3NWyukFy | SOL | bought slot 462862476, 11:22:10 UTC | | | | timer, sold 11:52:00 (slot 462870833) | −0.0190 |
+
+Trades 18-20 are rebuilt from the wallet's own transactions (SOL in and out per coin, `getTransaction`), since no
+journal paste exists after 10:21 Beirut on Oct 29; their landing positions were not checked. **The whole live run,
+Oct 28 18:34 to Oct 29 11:52 UTC: 16 closed, 7 won, 3 refused, +1.3459 SOL** (+0.3146 at 0.1, +1.0776 at 0.5,
+−0.0472 at 1 SOL); every trade's net equals the chain. The box was deleted about two hours after the last sale.
 
 Six sends, all `sent in 3-6 ms; seen at its slot +0`; four landed in its slot, two in the next (both times its buy sat
 near the end of its block); every sell landed on the first try; no `sell-failed`, `WARNING` or `CRITICAL`. The journal's
