@@ -1,0 +1,58 @@
+# rugsnipe-copier -- hot role. Copies several wallets on any venue Jupiter routes: wallet 4's
+# part B (pump coins priced in tokens rugsnipe-long cannot route; 2.0x / 0.8x / 29:50) and the
+# other wallets in copier.toml. docs/21-copier.md.
+#
+# Its own wallet (/etc/rugsnipe/keys/copier-wallet.json, from `rugsnipe-long keygen`), its own
+# state (/var/lib/rugsnipe-copier: copier.jsonl, state.json, KILL). It reads the hot unit's
+# config for the gRPC feed and the Jito sender, and the same api-keys file. Paper while
+# mode = "log". Stop new buys: touch /var/lib/rugsnipe-copier/KILL (exits continue);
+# `rugsnipe-long copy-status --config /etc/rugsnipe/copier.toml` shows the book.
+[Unit]
+Description=rugsnipe copier (several wallets, any venue, through Jupiter)
+Documentation=file:/opt/rugsnipe/src/docs/21-copier.md
+PartOf=rugsnipe.target
+Wants=network-online.target
+After=network-online.target time-sync.target chrony.service
+ConditionPathExists=/etc/rugsnipe/copier.toml
+StartLimitIntervalSec=300
+StartLimitBurst=20
+
+[Service]
+Type=simple
+User=rugsnipe
+Group=rugsnipe
+StateDirectory=rugsnipe-copier
+StateDirectoryMode=0750
+WorkingDirectory=/var/lib/rugsnipe-copier
+Environment=RUST_BACKTRACE=1
+ExecStart=/opt/rugsnipe/bin/rugsnipe-long copy --config /etc/rugsnipe/copier.toml
+Restart=always
+RestartSec=2
+TimeoutStopSec=10
+UMask=0027
+LimitNOFILE=65536
+# Credentials: copied by PID 1 from /etc/rugsnipe/keys into $CREDENTIALS_DIRECTORY (the service
+# user never reads /etc/rugsnipe/keys); ABSENT is the fallback when a file is missing.
+LoadCredential=api-keys:/etc/rugsnipe/keys/api-keys.toml
+SetCredential=api-keys:ABSENT
+LoadCredential=copier-wallet:/etc/rugsnipe/keys/copier-wallet.json
+SetCredential=copier-wallet:ABSENT
+# hardening
+CapabilityBoundingSet=
+AmbientCapabilities=
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+SystemCallArchitectures=native
+ReadWritePaths=/var/lib/rugsnipe-copier
+
+[Install]
+WantedBy=rugsnipe.target

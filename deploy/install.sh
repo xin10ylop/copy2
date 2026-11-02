@@ -103,7 +103,8 @@ RUST_BINS=(rugsnipe-hot rugsnipe-guard rugsnipe-keeper rugsnipe-ctl rugsnipe-rep
 
 if [ "$ROLE" = hot ]; then
   UNITS=(rugsnipe-keeper.service rugsnipe-guard.service rugsnipe-hot.service rugsnipe-tune.service shredstream-proxy.service
-         rugsnipe-operators.service rugsnipe-operators.timer rugsnipe-paper-wide.service rugsnipe-long.service)
+         rugsnipe-operators.service rugsnipe-operators.timer rugsnipe-paper-wide.service rugsnipe-long.service
+         rugsnipe-copier.service)
   ENABLE_UNITS=(rugsnipe-keeper.service rugsnipe-guard.service rugsnipe-hot.service rugsnipe-operators.timer rugsnipe.target)
 else
   UNITS=(rugsnipe-collector.service rugsnipe-discover.service rugsnipe-discover.timer)
@@ -464,6 +465,15 @@ if [ "$ROLE" = hot ]; then
   else
     put_file "$ETC/long.toml" 0640 "root:$SVC_USER" < "$REPO/config/long.example.toml"
     [ "$DRY_RUN" = 1 ] || log "config: created $ETC/long.toml from config/long.example.toml (mode = log: paper)"
+  fi
+  # the copier's (docs/21), the same way
+  if [ -f "$ETC/copier.toml" ]; then
+    log "config: $ETC/copier.toml exists; not overwritten"
+    run chown "root:$SVC_USER" "$ETC/copier.toml"
+    run chmod 0640 "$ETC/copier.toml"
+  else
+    put_file "$ETC/copier.toml" 0640 "root:$SVC_USER" < "$REPO/config/copier.example.toml"
+    [ "$DRY_RUN" = 1 ] || log "config: created $ETC/copier.toml from config/copier.example.toml (mode = log: paper)"
   fi
 fi
 
