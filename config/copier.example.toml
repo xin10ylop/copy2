@@ -1,0 +1,87 @@
+# /etc/rugsnipe/copier.toml: the copier (`rugsnipe-long copy`, docs/21-copier.md).
+# Copies several wallets on any venue Jupiter routes (pump curve, PumpSwap, Meteora DBC and DAMM v2, Raydium LaunchLab
+# and CPMM ...). Here: wallet 4's part B (its pump coins priced in a token with no route for rugsnipe-long: PUMP, CARDS,
+# TTWO, USDC ...). Wallet 4's part A stays in rugsnipe-long (`run`, long.toml): faster, and the copier skips those
+# coins itself. More wallets are more [[target]] blocks (a template at the end).
+#
+# These are the first-test stakes: a tenth of the backtests'.
+
+# log = paper (fills at a live Jupiter quote, nothing sent); on = real swaps from the copier wallet; off = nothing.
+mode = "log"
+
+# chain reads, statuses, sendTransaction: a line of the api-keys file (never the URL with its key here)
+rpc_url = "cred:RPC_URL"
+# the gRPC feed ([feeds] grpc) and the senders ([senders] jito, which must be enabled there) come from the hot config
+hot_config = "/etc/rugsnipe/rugsnipe.toml"
+api_keys = "/etc/rugsnipe/keys/api-keys.toml"
+# its own wallet (`rugsnipe-long keygen --out /etc/rugsnipe/keys/copier-wallet.json`); the unit hands it over as the
+# `copier-wallet` credential
+wallet_file = "/etc/rugsnipe/keys/copier-wallet.json"
+
+# Jupiter's free API (no key); it refuses bursts, so calls are spaced and value polls give way to buys and sells
+jupiter = "https://lite-api.jup.ag/swap/v1"
+price_api = "https://lite-api.jup.ag/price/v3"
+jupiter_gap_ms = 350
+
+# slippage Jupiter may take: a buy behind a big buy moves fast; a sell must land
+buy_slippage_bps = 2000
+sell_slippage_bps = 5000
+# Jupiter adds this tip to a Jito tip account inside the swap; the swap goes to our RPC and to Jito (the only sender
+# that takes a Jito tip). senders = [] with jito_tip_lamports = 0: our RPC only, a priority fee up to
+# priority_max_lamports instead.
+jito_tip_lamports = 1000000
+priority_max_lamports = 1000000
+senders = ["jito"]
+# a sent swap is waited for this long, then until its blockhash expires (never given up while it can still land)
+confirm_s = 40
+# paper: what one side's transaction costs (base fee, tip, priority)
+paper_side_cost_lamports = 1100000
+
+# no new buys once today's (UTC) realized result is at or below -daily_stop_sol (exits continue)
+daily_stop_sol = 0.5
+# SOL kept in the wallet after a buy (fees, rent)
+min_wallet_sol = 0.05
+# open positions at once, every wallet together
+max_open = 6
+# how often a position with a take profit or a stop is valued (a Jupiter sell quote each time; 3 open = 36 a minute)
+poll_ms = 5000
+
+journal = "/var/lib/rugsnipe-copier/copier.jsonl"
+state = "/var/lib/rugsnipe-copier/state.json"
+# touch this file: no new buys (exits continue)
+kill_file = "/var/lib/rugsnipe-copier/KILL"
+
+# Wallet 4's part B: its buys of 1.45 SOL or more of pump coins priced in a token rugsnipe-long cannot route; the long
+# copy's exits (take profit 2.0x, stop 0.8x of its buy price, 29:50, right behind its own sale). At 1 SOL a tenth.
+[[target]]
+name = "w4b"
+wallet = "H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg"
+coins = "pump_unroutable"
+min_sol = 1.45
+stake_sol = 0.1
+take_profit = 2.0
+stop = 0.8
+exit_basis = "its"
+# no buy when the quote prices the coin more than 30% over its buy price. The long copy refuses 25% over the price its
+# buy left (long.toml max_premium); its average price sits under that by its own impact (a 1.5 SOL buy on a curve of
+# 30-80 virtual SOL: 2-5%), so 1.25 x 1.02-1.05 = 1.28-1.31 over its average is the same limit.
+max_premium = 0.3
+max_hold_s = 1790
+follow_sell = true
+max_open = 3
+# quote tokens never copied (none yet)
+quotes_deny = []
+
+# Another wallet: its rule comes from its own study (a target's every key is above; its wallet and rule stay out of
+# this public repo when its study says so).
+# [[target]]
+# name = "w2"
+# wallet = "..."
+# coins = "any"            # any coin it buys, on any venue Jupiter routes
+# min_sol = 5.0            # its buy, valued in SOL (its whole SOL change, fees included)
+# max_premium = 0          # no cap on our price over its price (0 = off)
+# stake_frac = 0.1         # our buy: this share of its buy ...
+# stake_cap_sol = 0.3      # ... capped here (or stake_sol = a fixed size)
+# max_hold_s = 300
+# follow_sell = true
+# max_open = 3

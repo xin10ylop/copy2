@@ -39,6 +39,8 @@ pub struct FeedCfg {
     pub url: String,
     pub x_token: Option<String>,
     pub copied: Pubkey,
+    /// More copied wallets on the same filter (the copier's targets).
+    pub more: Vec<Pubkey>,
     /// Our wallet (`None` in paper without one: nothing of ours to see).
     pub ours: Option<Pubkey>,
 }
@@ -72,10 +74,9 @@ pub fn request(cfg: &FeedCfg, mints: &BTreeSet<Pubkey>) -> SubscribeRequest {
         ..Default::default()
     };
     let mut transactions = HashMap::new();
-    transactions.insert(
-        "copied".to_string(),
-        f(vec![cfg.copied.to_string()], Some(false)),
-    );
+    let mut copied = vec![cfg.copied.to_string()];
+    copied.extend(cfg.more.iter().map(|m| m.to_string()));
+    transactions.insert("copied".to_string(), f(copied, Some(false)));
     if let Some(o) = cfg.ours {
         transactions.insert("ours".to_string(), f(vec![o.to_string()], None));
     }
@@ -251,12 +252,21 @@ mod tests {
             url: String::new(),
             x_token: None,
             copied: Pubkey::new_from_array([1; 32]),
+            more: vec![Pubkey::new_from_array([4; 32])],
             ours: Some(Pubkey::new_from_array([2; 32])),
         };
         let mut mints = BTreeSet::new();
         mints.insert(Pubkey::new_from_array([3; 32]));
         let r = request(&cfg, &mints);
         assert_eq!(r.transactions["copied"].failed, Some(false));
+        // the copier's wallets share the copied filter
+        assert_eq!(
+            r.transactions["copied"].account_include,
+            vec![
+                Pubkey::new_from_array([1; 32]).to_string(),
+                Pubkey::new_from_array([4; 32]).to_string()
+            ]
+        );
         assert_eq!(r.transactions["mints"].failed, Some(false));
         assert_eq!(r.transactions["ours"].failed, None, "both, not failed only");
         assert_eq!(r.transactions["ours"].vote, Some(false));
