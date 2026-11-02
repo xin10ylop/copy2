@@ -8,6 +8,15 @@
 //!     `--chain`: the wallet's SOL and floats.
 //! rugsnipe-long float buy MINT SOL | float sell MINT all|AMOUNT [--config ...]
 //!     Buy or sell a float through Jupiter from the long wallet.
+//! rugsnipe-long copy [--config /etc/rugsnipe/copier.toml]
+//!     The copier (docs/21): several wallets' buys on any venue through
+//!     Jupiter (wallet 4's part B, other wallets); mode log (paper) or on.
+//! rugsnipe-long copy-status [--config ...] [--tz +0200] [--last 15]
+//!     The copier's result by wallet (today, all), open positions, the last closed.
+//! rugsnipe-long copy-replay --config ... --rpc URL [--tick-s 30] SIG...
+//!     Paper only: the given transactions of the copied wallets through the
+//!     copier, at live Jupiter quotes, then its exits ticked for a while (a
+//!     check of the whole path without the gRPC feed).
 //! rugsnipe-long keygen --out /etc/rugsnipe/keys/long-wallet.json
 //!     A new wallet for the long copy (JSON keypair, 0400; prints the address).
 //! rugsnipe-long simulate --rpc URL --tx SIG [--user PUBKEY] [--sol 0.02] [--float MINT]...
@@ -51,7 +60,10 @@ fn main() {
         Some("status") => status(&args[1..]),
         Some("float") => float(&args[1..]),
         Some("keygen") => keygen(&args[1..]),
-        _ => Err("usage: rugsnipe-long run|status|float buy MINT SOL|float sell MINT all|AMOUNT|simulate ... (see --help in the source docs)".into()),
+        Some("copy") => copy_run(&args[1..]),
+        Some("copy-status") => copy_status(&args[1..]),
+        Some("copy-replay") => copy_replay(&args[1..]),
+        _ => Err("usage: rugsnipe-long run|status|copy|copy-status|float buy MINT SOL|float sell MINT all|AMOUNT|simulate ... (see --help in the source docs)".into()),
     };
     if let Err(e) = r {
         eprintln!("rugsnipe-long: {e}");
@@ -515,6 +527,7 @@ fn run(args: &[String]) -> Result<(), String> {
             url,
             x_token,
             copied: copy,
+            more: vec![],
             ours: (me != Pubkey::default()).then_some(me),
         },
         tx,
@@ -860,6 +873,260 @@ fn keygen(args: &[String]) -> Result<(), String> {
     println!("{pubkey}");
     eprintln!(
         "wrote {out} (0400). Fund this address with SOL; keep a copy of the file somewhere safe."
+    );
+    Ok(())
+}
+
+// ---------------------------------------------------------------- copier
+
+fn copy_cfg(args: &[String]) -> Result<rugsnipe_long::copier::CopierCfg, String> {
+    let p = arg(args, "--config").unwrap_or("/etc/rugsnipe/copier.toml".into());
+    let text = std::fs::read_to_string(&p).map_err(|e| format!("{p}: {e}"))?;
+    rugsnipe_long::copier::CopierCfg::from_toml_str(&text)
+}
+
+/// The hot config's gRPC feed: its URL and token.
+fn grpc_of(
+    hot: &rugsnipe_core::config::Config,
+    k: &rugsnipe_tx::senders::ApiKeys,
+    file: &str,
+) -> Result<(String, Option<String>), String> {
+    if !hot.feeds.grpc.enabled || hot.feeds.grpc.url.is_empty() {
+        return Err(format!("{file}: [feeds] grpc is not enabled"));
+    }
+    let url = keys::resolve_url(k, &hot.feeds.grpc.url)?;
+    let x = if hot.feeds.grpc.x_token.is_empty() {
+        None
+    } else {
+        Some(
+            k.get(&hot.feeds.grpc.x_token)
+                .ok_or_else(|| format!("feeds.grpc.x_token {:?} not in the api-keys file", hot.feeds.grpc.x_token))?
+                .to_string(),
+        )
+    };
+    Ok((url, x))
+}
+
+fn copy_run(args: &[String]) -> Result<(), String> {
+    use rugsnipe_long::copier::{Copier, Exec, LiveExec, PaperExec};
+    let cfg = copy_cfg(args)?;
+    let text = std::fs::read_to_string(&cfg.hot_config).map_err(|e| format!("{}: {e}", cfg.hot_config))?;
+    let hot = rugsnipe_core::config::Config::from_toml_str(&text).map_err(|e| format!("{}: {e}", cfg.hot_config))?;
+    let k = keys::api_keys(&cfg.api_keys)?;
+    if cfg.rpc_url.is_empty() {
+        return Err("copier.toml: rpc_url is empty (a URL or cred:NAME)".into());
+    }
+    let rpc_url = keys::resolve_url(&k, &cfg.rpc_url)?;
+    let (url, x_token) = grpc_of(&hot, &k, &cfg.hot_config)?;
+    let wallets = cfg.wallets();
+    let (exec, me): (Box<dyn Exec>, String) = match cfg.mode {
+        Mode::On => {
+            let signer = keys::copier_wallet(&cfg.wallet_file)
+                .map_err(|e| format!("mode on needs the copier wallet: {e}"))?;
+            let me = signer.pubkey().to_string();
+            let out = if cfg.senders.is_empty() {
+                None
+            } else {
+                Some(Out::build(&hot, &k, &cfg.senders)?)
+            };
+            (Box::new(LiveExec::new(Rpc::new(&rpc_url), signer, out, cfg.clone())), me)
+        }
+        Mode::Log => (Box::new(PaperExec::new(Rpc::new(&rpc_url), cfg.clone())), "paper".into()),
+        Mode::Off => return Err("copier.toml: mode off".into()),
+    };
+    let mut cp = Copier::new(cfg.clone(), exec)?;
+    let n = cp.load_state()?;
+    let rules: Vec<String> = cfg
+        .targets
+        .iter()
+        .map(|t| {
+            format!(
+                "{} {} {:?} its buy >= {} SOL, stake {} (frac {} cap {}), tp {} stop {} hold {} s, follow its sale {}, max_open {}",
+                t.name, &t.wallet[..8], t.coins, t.min_sol, t.stake_sol, t.stake_frac, t.stake_cap_sol,
+                t.take_profit, t.stop, t.max_hold_s, t.follow_sell, t.max_open
+            )
+        })
+        .collect();
+    println!(
+        "copier start: mode {:?} wallet {me} open {n} daily stop {} SOL, max_open {} | {} | senders {:?} + rpc | feed {}",
+        cfg.mode,
+        cfg.daily_stop_sol,
+        cfg.max_open,
+        rules.join(" | "),
+        cfg.senders,
+        keys::redact(&url)
+    );
+    let (tx, rx) = std::sync::mpsc::channel();
+    let _h = feed::spawn(
+        feed::FeedCfg {
+            url,
+            x_token,
+            copied: wallets[0],
+            more: wallets[1..].to_vec(),
+            ours: None,
+        },
+        tx,
+    );
+    // no buys until the feed says it is up
+    cp.feed_up = false;
+    loop {
+        match rx.recv_timeout(Duration::from_millis(500)) {
+            Ok(feed::FeedMsg::Tx(feed::Src::Copied, t)) => cp.on_tx(&t),
+            Ok(feed::FeedMsg::Up(u)) => cp.set_feed(u),
+            Ok(_) => {}
+            Err(std::sync::mpsc::RecvTimeoutError::Timeout) => {}
+            Err(std::sync::mpsc::RecvTimeoutError::Disconnected) => {
+                return Err("copier: the feed thread ended".into())
+            }
+        }
+        cp.on_tick();
+    }
+}
+
+fn copy_status(args: &[String]) -> Result<(), String> {
+    use std::collections::BTreeMap;
+    let cfg = copy_cfg(args)?;
+    let off = tz_offset(args);
+    let last: usize = arg(args, "--last").and_then(|x| x.parse().ok()).unwrap_or(15);
+    let text = std::fs::read_to_string(&cfg.journal).unwrap_or_default();
+    let now = now_ms();
+    let day = |ms: u64| ((ms / 1000) as i64 + off).div_euclid(86_400);
+    let today = day(now);
+    #[derive(Default)]
+    struct Agg {
+        buys: u32,
+        failed: u32,
+        closed: u32,
+        won: u32,
+        net: i64,
+        closed_today: u32,
+        net_today: i64,
+    }
+    let mut by: BTreeMap<(String, bool), Agg> = BTreeMap::new();
+    let mut sells = vec![];
+    for line in text.lines() {
+        let Ok(v) = serde_json::from_str::<serde_json::Value>(line) else { continue };
+        let key = (v["target"].as_str().unwrap_or("-").to_string(), v["paper"].as_bool().unwrap_or(true));
+        let ts = v["ts"].as_u64().unwrap_or(0);
+        match v["ev"].as_str() {
+            Some("buy") => by.entry(key).or_default().buys += 1,
+            Some("buy-failed") => by.entry(key).or_default().failed += 1,
+            Some("sell") => {
+                let a = by.entry(key).or_default();
+                let net = v["net"].as_i64().unwrap_or(0);
+                a.closed += 1;
+                a.net += net;
+                if net > 0 {
+                    a.won += 1;
+                }
+                if day(ts) == today {
+                    a.closed_today += 1;
+                    a.net_today += net;
+                }
+                sells.push(v);
+            }
+            _ => {}
+        }
+    }
+    println!("copier ({:?}), times at UTC{:+}h", cfg.mode, off / 3600);
+    println!("  {:<12} {:<5} {:>5} {:>6} {:>7} {:>5} {:>10} {:>7} {:>10}", "wallet", "kind", "buys", "failed", "closed", "won", "net SOL", "today", "today SOL");
+    for ((t, paper), a) in &by {
+        println!(
+            "  {:<12} {:<5} {:>5} {:>6} {:>7} {:>5} {:>+10.4} {:>7} {:>+10.4}",
+            t,
+            if *paper { "paper" } else { "real" },
+            a.buys,
+            a.failed,
+            a.closed,
+            a.won,
+            a.net as f64 / 1e9,
+            a.closed_today,
+            a.net_today as f64 / 1e9
+        );
+    }
+    if let Ok(st) = std::fs::read_to_string(&cfg.state) {
+        if let Ok(book) = serde_json::from_str::<Vec<rugsnipe_long::copier::Pos>>(&st) {
+            let open: Vec<_> = book.iter().filter(|p| p.open()).collect();
+            println!("  open now: {}", open.len());
+            for p in open {
+                println!(
+                    "    #{} {} {} since {} ({} s), cost {:.4} SOL, last value {}{}",
+                    p.id,
+                    p.target,
+                    &p.mint[..8],
+                    hhmm(p.opened_ms, off),
+                    now.saturating_sub(p.opened_ms) / 1000,
+                    p.cost as f64 / 1e9,
+                    p.last_value.map(|v| format!("{:.4} SOL", v as f64 / 1e9)).unwrap_or("-".into()),
+                    p.exit.as_ref().map(|r| format!(", selling ({r}, {} tries)", p.tries)).unwrap_or_default()
+                );
+            }
+        }
+    }
+    println!("  last {} closed:", last.min(sells.len()));
+    for v in sells.iter().rev().take(last) {
+        println!(
+            "    {} {} {} {} held {} s, cost {:.4} back {:.4} net {:+.4} SOL ({})",
+            hhmm(v["ts"].as_u64().unwrap_or(0), off),
+            v["target"].as_str().unwrap_or("-"),
+            &v["mint"].as_str().unwrap_or("-")[..8.min(v["mint"].as_str().unwrap_or("-").len())],
+            v["reason"].as_str().unwrap_or("-"),
+            v["held_s"].as_u64().unwrap_or(0),
+            v["cost"].as_u64().unwrap_or(0) as f64 / 1e9,
+            v["proceeds"].as_u64().unwrap_or(0) as f64 / 1e9,
+            v["net"].as_i64().unwrap_or(0) as f64 / 1e9,
+            v["route"].as_str().unwrap_or("-")
+        );
+    }
+    Ok(())
+}
+
+fn copy_replay(args: &[String]) -> Result<(), String> {
+    use rugsnipe_long::copier::{Copier, PaperExec};
+    let mut cfg = copy_cfg(args)?;
+    cfg.mode = Mode::Log;
+    let url = match arg(args, "--rpc") {
+        Some(u) if u.starts_with('@') => std::fs::read_to_string(&u[1..])
+            .map_err(|e| format!("{}: {e}", &u[1..]))?
+            .trim()
+            .to_string(),
+        Some(u) => u,
+        None => cfg.rpc_url.clone(),
+    };
+    if !url.starts_with("http") {
+        return Err("copy-replay: --rpc URL (or @file holding it)".into());
+    }
+    let tick_s: u64 = arg(args, "--tick-s").and_then(|x| x.parse().ok()).unwrap_or(30);
+    // the signatures: every argument that is not a flag or a flag's value
+    let mut sigs = vec![];
+    let mut i = 0;
+    while i < args.len() {
+        if args[i].starts_with("--") {
+            i += 2;
+            continue;
+        }
+        sigs.push(args[i].clone());
+        i += 1;
+    }
+    let rpc = Rpc::new(&url);
+    let mut cp = Copier::new(cfg.clone(), PaperExec::new(Rpc::new(&url), cfg.clone()))?;
+    cp.load_state()?;
+    for s in &sigs {
+        let v = rpc.transaction(s)?;
+        let t = TxLite::from_rpc_json(&v)?;
+        println!("replay {} slot {} signer {}", &s[..12.min(s.len())], t.slot, t.signer().map(|p| p.to_string()).unwrap_or_default());
+        cp.on_tx(&t);
+        cp.on_tick();
+    }
+    let end = now_ms() + tick_s * 1000;
+    while now_ms() < end && cp.open_count(None) > 0 {
+        std::thread::sleep(Duration::from_millis(500));
+        cp.on_tick();
+    }
+    println!(
+        "replay done: {} open, today's result {:+.4} SOL (paper)",
+        cp.open_count(None),
+        cp.day_net() as f64 / 1e9
     );
     Ok(())
 }

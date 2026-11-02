@@ -13,9 +13,11 @@
 
 pub mod chain;
 pub mod config;
+pub mod copier;
 pub mod detect;
 pub mod engine;
 pub mod feed;
+pub mod jup;
 pub mod keys;
 pub mod oracle;
 pub mod pos;

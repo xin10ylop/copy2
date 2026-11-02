@@ -177,6 +177,15 @@ impl Rpc {
         Ok((h, v["value"]["lastValidBlockHeight"].as_u64().unwrap_or(0)))
     }
 
+    /// The confirmed block height (a blockhash is good while this is at or
+    /// under its `lastValidBlockHeight`).
+    pub fn block_height(&self) -> Result<u64, String> {
+        let v = self
+            .rpc
+            .call("getBlockHeight", json!([{"commitment": "confirmed"}]))?;
+        v.as_u64().ok_or_else(|| "getBlockHeight".into())
+    }
+
     /// `getTransaction` (`encoding = "json"`).
     pub fn transaction(&self, sig: &str) -> Result<Value, String> {
         let v = self.rpc.call(
