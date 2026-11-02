@@ -1,0 +1,15 @@
+== W, ours|1.0, own fill draw: by day (UTC) -- all / wallet 4 picked / wallet 4 skipped
+  10-19   349  +11.55  |    74   +7.29  |   275   +4.26
+  10-20   218   +1.29  |    60   +7.92  |   158   -6.63
+  10-21   271   -6.84  |    70   +4.09  |   201  -10.93
+  10-22   232   +9.26  |    84   +8.16  |   148   +1.10
+  10-23   191   +4.59  |    60   +4.68  |   131   -0.09
+  10-24   264   +0.17  |    76   +2.25  |   188   -2.07
+  10-25   381  +20.29  |    77  +20.00  |   304   +0.29
+  10-26   186   -0.07  |    36   +1.42  |   150   -1.49
+by part and period: n, total, picks among them
+  notrandom.fun host               P1   191  +12.88  picks 114
+  notrandom.fun host               P2   180  +25.55  picks 96
+  first create in 24 h, fee > 0    P1   879   +2.37  picks 174
+  first create in 24 h, fee > 0    P2   842   -0.57  picks 153
+by route class: {'P1 A': '722 +2.29', 'P1 B': '56 +6.97', 'P1 C': '292 +5.99', 'P2 A': '450 +10.72', 'P2 B': '329 +18.76', 'P2 C': '243 -4.50'}
