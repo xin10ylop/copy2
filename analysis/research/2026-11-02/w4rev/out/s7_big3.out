@@ -1,0 +1,37 @@
+target big, depth 3, min leaf 40; P1 8240 coins, 156 positive; P2 7389 coins, 161 positive
+|--- host=meta.notrandom.fun <= 0.500
+|   |--- progs=6EF8rr+AToken+Comput <= 0.500
+|   |   |--- progs=6EF8rr+AToken <= 0.500
+|   |   |   |--- weights: [6208.000, 7.000] class: 0
+|   |   |--- progs=6EF8rr+AToken >  0.500
+|   |   |   |--- weights: [1099.000, 47.000] class: 0
+|   |--- progs=6EF8rr+AToken+Comput >  0.500
+|   |   |--- cre_is_user <= 0.500
+|   |   |   |--- weights: [200.000, 46.000] class: 0
+|   |   |--- cre_is_user >  0.500
+|   |   |   |--- weights: [439.000, 2.000] class: 0
+|--- host=meta.notrandom.fun >  0.500
+|   |--- prior <= 10.500
+|   |   |--- dev_sol <= 0.580
+|   |   |   |--- weights: [31.000, 9.000] class: 0
+|   |   |--- dev_sol >  0.580
+|   |   |   |--- weights: [28.000, 41.000] class: 1
+|   |--- prior >  10.500
+|   |   |--- dev_sol <= 0.118
+|   |   |   |--- weights: [43.000, 0.000] class: 0
+|   |   |--- dev_sol >  0.118
+|   |   |   |--- weights: [36.000, 4.000] class: 0
+
+leaf   P1 n   P1 pos  P1 rate |  P2 n  P2 pos  P2 rate
+   3   6215       7     0.1% |  4652     19     0.4%
+   4   1146      47     4.1% |  1773     62     3.5%
+   6    246      46    18.7% |   223     30    13.5%
+   7    441       2     0.5% |   561      8     1.4%
+  10     40       9    22.5% |    56     13    23.2%
+  11     69      41    59.4% |    36     20    55.6%
+  13     43       0     0.0% |    49      2     4.1%
+  14     40       4    10.0% |    39      7    17.9%
+rule = leaves with P1 rate >= 50%: P1 passes 69, picks 41 of 156: precision 59.4%, recall 26.3%  |  P2 passes 36, picks 20 of 161: precision 55.6%, recall 12.4%
+rule = leaves with P1 rate >= 30%: P1 passes 69, picks 41 of 156: precision 59.4%, recall 26.3%  |  P2 passes 36, picks 20 of 161: precision 55.6%, recall 12.4%
+rule = leaves with P1 rate >= 20%: P1 passes 109, picks 50 of 156: precision 45.9%, recall 32.1%  |  P2 passes 92, picks 33 of 161: precision 35.9%, recall 20.5%
+rule = leaves with P1 rate >= 10%: P1 passes 395, picks 100 of 156: precision 25.3%, recall 64.1%  |  P2 passes 354, picks 70 of 161: precision 19.8%, recall 43.5%

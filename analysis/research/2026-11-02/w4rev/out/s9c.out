@@ -1,0 +1,5 @@
+W   passes   828 of 5487; wallet 4 launch picks: 247 of 385 (precision 29.8%, recall 64.2%); 1.45+: 43 of 68 (precision 5.2%, recall 63.2%)
+W1  passes    59 of 5487; wallet 4 launch picks: 47 of 385 (precision 79.7%, recall 12.2%); 1.45+: 12 of 68 (precision 20.3%, recall 17.6%)
+N   passes   189 of 5487; wallet 4 launch picks: 86 of 385 (precision 45.5%, recall 22.3%); 1.45+: 18 of 68 (precision 9.5%, recall 26.5%)
+baseline 581; wallet 4 picks among them 49
+1308 coins for the tapes, 820 new
