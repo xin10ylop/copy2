@@ -51,8 +51,11 @@ state = "/var/lib/rugsnipe-copier/state.json"
 # touch this file: no new buys (exits continue)
 kill_file = "/var/lib/rugsnipe-copier/KILL"
 
-# Wallet 4's part B: its buys of 1.45 SOL or more of pump coins priced in a token rugsnipe-long cannot route; the long
-# copy's exits (take profit 2.0x, stop 0.8x of its buy price, 29:50, right behind its own sale). At 1 SOL a tenth.
+# Wallet 4's part B: its buys of 1.45 SOL or more of pump coins priced in a token rugsnipe-long cannot route. Exits as
+# in the study that scored this route (analysis/research/2026-11-02/w4revB, its own picks through Jupiter): 2.0x / 0.8x
+# of our own price, 30 min (29:50 here); not behind its own sale and no premium cap (the study had neither). That study:
+# +35.32 / +4.88 (+2.68 without the best 2) / +8.08 (-6.05) at 1 SOL on Oct 19-22 / 23-26 / Oct 27 - Nov 1: weak.
+# A mechanics test at a tenth.
 [[target]]
 name = "w4b"
 wallet = "H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg"
@@ -61,13 +64,9 @@ min_sol = 1.45
 stake_sol = 0.1
 take_profit = 2.0
 stop = 0.8
-exit_basis = "its"
-# no buy when the quote prices the coin more than 30% over its buy price. The long copy refuses 25% over the price its
-# buy left (long.toml max_premium); its average price sits under that by its own impact (a 1.5 SOL buy on a curve of
-# 30-80 virtual SOL: 2-5%), so 1.25 x 1.02-1.05 = 1.28-1.31 over its average is the same limit.
-max_premium = 0.3
+exit_basis = "ours"
 max_hold_s = 1790
-follow_sell = true
+follow_sell = false
 max_open = 3
 # quote tokens never copied (none yet)
 quotes_deny = []
