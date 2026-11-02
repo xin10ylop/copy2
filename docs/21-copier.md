@@ -48,13 +48,15 @@ cools down for 10 s. Value polls give way during the cool-down; buys and sells r
 
 | Target | Rule | Stake |
 |---|---|---|
-| `w4b`: wallet 4's part B | its 1.45+ SOL buys of `pump_unroutable` coins; take profit 2.0x, stop 0.8x of its price, 1790 s, behind its sale; no buy 30% over its price | 0.1 SOL, 3 open |
+| `w4b`: wallet 4's part B | its 1.45+ SOL buys of `pump_unroutable` coins; take profit 2.0x, stop 0.8x of our own price, 1790 s; not behind its sale, no premium cap | 0.1 SOL, 3 open |
 | Others | one `[[target]]` each, from that wallet's own study. A template is at the end of the file. A wallet whose study is private keeps its block in its private repo; it is added on the box. | |
 
-- `max_premium = 0.3` on `w4b` matches the long copy's limit.
-  - The long copy refuses a fill 25% over the price wallet 4's buy left (`long.toml`, `max_premium`).
-  - Its average price sits below that price by its own impact: 2-5% for a 1.5 SOL buy on a curve of 30-80 virtual SOL.
-  - So the long copy's limit is 1.25 × 1.02-1.05 = 1.28-1.31 times its average price, about 0.3.
+- `w4b` runs exactly the model that scored this route (§6): exits on our own price, no premium cap, not following its
+  sale.
+- `max_premium` exists for a target whose levels are on its price (`exit_basis = "its"`, the long copy's way). There, a
+  fill far above its price would start at or past the take profit. The long copy refuses 25% over the price its buy
+  left. Its average price sits under that by its own impact: 2-5% for a 1.5 SOL buy on a curve of 30-80 virtual SOL.
+  So 0.3 over its average is the same limit.
 - The whole book is capped by `max_open = 6` and `daily_stop_sol = 0.5`.
 
 ## 4. Commands
@@ -75,7 +77,8 @@ What the replay showed:
 - A 5.046 SOL DBC buy was skipped under a 5.1 floor.
 - A 10.1 SOL pump buy was copied at 0.3 SOL.
 - Wallet 4's part-B buy was routed through 3 hops and copied at 0.1 SOL.
-- That position's stop fired at once, which is correct: the coin had fallen far under wallet 4's price since its buy.
+- That position's stop fired at once, which is correct. Its levels were then on wallet 4's price, and the coin had
+  fallen far under it since its buy.
 
 ## 5. On a box
 
@@ -109,21 +112,26 @@ restarted. To go live, set `mode = "on"` once the paper journal looks right, the
 
 ## 6. What it is worth, and what is not known
 
-**Wallet 4's part B has not been backtested through the copier's route.** The evidence so far (`02-decomposition/`,
-`analysis/research/2026-10-28/more/` §A) priced it as if we held each quote token at no risk:
+**Wallet 4's part B, copied through Jupiter, is weak** (`analysis/research/2026-11-02/w4revB/`, Nov 2). The study
+bought wallet 4's own part-B launch picks one transaction SOL → quote → coin. It filled a slot or two after the create,
+with the measured Jupiter cost and exits of 2.0x / 0.8x of our price within 30 min, at 1 SOL:
 
-| Period | Result |
-|---|---|
-| Oct 19-22 | +24.63 on 189 copies |
-| Oct 23-27 | +0.43 on 94 (PUMP −1.32) |
-| Oct 27-28 | +4.85 on 17 (+2.65 without the best 2) |
+| Its 1.45+ SOL picks | Total | Without the best 2 |
+|---|---|---|
+| Oct 19-22 (242) | +35.32 | — |
+| Oct 23-26 (126) | +4.88 | +2.68 |
+| Oct 27 - Nov 1 (103, from 15 sampled trades) | +8.08 | **−6.05** |
 
-The same buys counted by route (305 that need Jupiter: direct buys of other quotes, PUMP floats, 3+ hops) made
-+28.57 on Oct 19-22 and +3.06 (+0.41 without the best 2) on Oct 23-27 (h9long README).
+It is positive in total in each period but negative without the best 2 on the freshest one. Holding the quote token
+instead (fills a slot sooner) did better: +48.78 / +12.07 (+9.89) / +16.55 (+2.31). **Landing a slot later costs most
+of the result.** The copier lands no sooner than the study's Jupiter model: it reacts to wallet 4's buy, which itself
+lands in the create slot or the next.
 
-**It fell apart after Oct 22.** The copier also pays one more hop each way than "held at no risk": SOL to the quote
-token, about 0.3% a hop. A separate study (Nov 2) is scoring part B through Jupiter's actual routes. Until it reports,
-treat `w4b` as a mechanics test at 0.1 SOL, not as an edge.
+The same study found **no rule to pick part-B launches ourselves.** Every create-time rule loses on Oct 19-22. The one
+rotation rule that passed Oct 23-26 loses on Oct 27 - Nov 1 (−5.63 and −31.65).
+
+So `w4b` is **a mechanics test at 0.1 SOL, not an edge.** Earlier figures priced part B as if we held each quote at no
+risk (`02-decomposition/`, `analysis/research/2026-10-28/more/` §A): +24.63 on Oct 19-22, then +0.43 on Oct 23-27.
 
 **Speed.** The copier asks Jupiter for a quote and a swap over HTTP before it sends, which the long copy does not.
 Expect it to land later than the long copy's 47% in its slot and 53% the next (copy2, 15 sends). A wallet's study must

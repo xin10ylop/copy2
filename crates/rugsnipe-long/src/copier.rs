@@ -1493,8 +1493,9 @@ max_hold_s = 1790
         let c = CopierCfg::from_toml_str(include_str!("../../../config/copier.example.toml")).unwrap();
         assert_eq!(c.mode, Mode::Log);
         let b = &c.targets[0];
-        assert_eq!((b.name.as_str(), b.coins, b.exit_basis), ("w4b", Coins::PumpUnroutable, Basis::Its));
-        assert_eq!((b.min_sol, b.take_profit, b.stop, b.max_hold_s, b.max_premium), (1.45, 2.0, 0.8, 1790, 0.3));
+        assert_eq!((b.name.as_str(), b.coins, b.exit_basis), ("w4b", Coins::PumpUnroutable, Basis::Ours));
+        assert_eq!((b.min_sol, b.take_profit, b.stop, b.max_hold_s, b.max_premium), (1.45, 2.0, 0.8, 1790, 0.0));
+        assert!(!b.follow_sell, "the scored model did not follow its sale");
         assert_eq!(b.stake(1_500_000_000), 100_000_000);
         assert_eq!(c.wallets().len(), 1);
         // the commented template, filled in, is a valid target

@@ -21,8 +21,9 @@ terminated that evening), then the 0.1 SOL test, then decide.
 **Nov 2: the copier** ([`docs/21-copier.md`](docs/21-copier.md), `rugsnipe-long copy`). It copies several wallets on
 any venue through Jupiter, so wallet 4's part B (pump coins priced in PUMP, CARDS, USDC ...) is tradeable now. So are
 other wallets' coins on Meteora and Raydium. Code, tests, the unit and a paper replay are done. **Nothing has run on a
-box** (none exists since Oct 29). Part B through Jupiter's routes is not backtested yet. Its config at the first-test
-stakes is a tenth of the backtests': 0.1 SOL × 3.
+box** (none exists since Oct 29). Part B copied through Jupiter is weak (`analysis/research/2026-11-02/`): +4.88 on
+Oct 23-26, +8.08 on Oct 27 - Nov 1, −6.05 without the best 2. It runs as a mechanics test at 0.1 SOL × 3. The same study
+found no rule to pick part-A or part-B launches ourselves.
 
 
 | | Strategy A: the long copy | Strategy D: the launch copy |
