@@ -18,6 +18,12 @@ path; **fixed, tested, and simulated on mainnet**. Part B cannot be routed throu
 more days of paper with the hardened bot on a €59/month Frankfurt box (running since Oct 28 17:58 UTC; Ohio was
 terminated that evening), then the 0.1 SOL test, then decide.
 
+**Nov 2: the copier** ([`docs/21-copier.md`](docs/21-copier.md), `rugsnipe-long copy`). It copies several wallets on
+any venue through Jupiter, so wallet 4's part B (pump coins priced in PUMP, CARDS, USDC ...) is tradeable now. So are
+other wallets' coins on Meteora and Raydium. Code, tests, the unit and a paper replay are done. **Nothing has run on a
+box** (none exists since Oct 29). Part B through Jupiter's routes is not backtested yet. Its config at the first-test
+stakes is a tenth of the backtests': 0.1 SOL × 3.
+
 
 | | Strategy A: the long copy | Strategy D: the launch copy |
 |---|---|---|
