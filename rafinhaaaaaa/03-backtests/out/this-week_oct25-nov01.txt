@@ -1,0 +1,17 @@
+== Hn6vBWWySnxA8XjxRQDEmZEuH5QL7KqosnJGcLcUzFJ6: 33 trips priced with a path (P1 17, P2 16); its P1 first sales 17; dropped as keyed on a quote token: []
+   its timer None (2 of 17); before it (17): its take profit None (2 in the modal bin); its stop None (1); winning first sales p25/50/75 [1.56, 1.93, 2.93]
+   picked on P1: its buy >= 5.10 SOL; stake its size; TP - stop - timer 300 s; behind its first sale
+   K=2: P1 +14.14 (8)  P2 +32.19 (9)  P2 without best 2 +3.39  | at 0.003 a round trip: P2 +32.19
+   same rule, entry K=1: P1 +14.34 (8)  P2 +33.84 (9)  P2 w/o 2 +4.68
+   same rule, entry K=4: P1 +15.97 (8)  P2 +29.58 (9)  P2 w/o 2 +1.03
+   same rule, entry K=7: P1 +19.31 (8)  P2 +23.76 (8)  P2 w/o 2 -1.70
+   mirror its sales at 1 SOL as rescore2 sums it (K=2): P1 -0.15  P2 +13.51;  K=4: P1 -1.21  P2 +11.81
+   mirror fixed (fractions capped at our position, chain multiples, broken legs dropped), 1 SOL, K=2: P1 +0.14 (17)  P2 +13.62 (16) w/o 2 +1.58;  K=4: P1 -0.90  P2 +11.97 w/o 2 +0.01
+   model checks: broken legs (base < 0.2 or impact > 1 per SOL) 0; trips whose sale fractions add past 1 (re-buys) 0
+   paths: 29 chain, 4 candles
+   best per filter (P1 pick -> P2, w/o best 2):
+     all                    TP 3.0 stop - timer 300 stake its size: P1 +11.14 (17) -> P2 +32.39 (16) w/o 2 +4.77
+     quote SOL              TP 3.0 stop - timer 300 stake its size: P1 +10.86 (12) -> P2 +33.74 (15) w/o 2 +6.12
+     its buy >= 5.10 SOL    TP - stop - timer 300 stake its size: P1 +14.14 (8) -> P2 +32.19 (9) w/o 2 +3.39
+     its buy >= 1.45 SOL    TP - stop - timer 300 stake its size: P1 +11.11 (16) -> P2 +31.67 (16) w/o 2 +2.87
+   copy2's strategy-A rule (1.45+ SOL, token quote, TP 2.0 stop 0.8 timer 1790 s, 1.0 SOL): P1 +0.45 (5) P2 -0.41 (1) w/o 2 +0.00
