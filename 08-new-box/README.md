@@ -1,0 +1,253 @@
+# 08. The new box: wallet 4's part A and Rafinhaaaaaa, 4 SOL
+
+Prepared Nov 3, 2026. **Nothing is running yet.** No box has existed since Cherry deleted `fra-long` on Oct 29
+(`../03-strategy-A-long-copy/deploy-frankfurt.md`, top). This page is the whole path from an empty server to live
+trading. Each step is one block to paste, and it says what it should print. Times are UTC unless marked; Beirut = UTC+2.
+
+## 1. What runs, and with how much
+
+| | Bot 1: the long copy | Bot 2: the copier |
+|---|---|---|
+| Copies | wallet 4's 1.45+ SOL buys of coins priced in other tokens that pump routes (part A) | Rafinhaaaaaa's 5.1+ SOL buys, on any venue |
+| Unit | `rugsnipe-long` (`rugsnipe-long run`) | `rugsnipe-copier` (`rugsnipe-long copy`) |
+| Config | `/etc/rugsnipe/long.toml` | `/etc/rugsnipe/copier.toml` |
+| Wallet | `/etc/rugsnipe/keys/long-wallet.json` | `/etc/rugsnipe/keys/copier-wallet.json` |
+| Stake, open at once | 1 SOL, 2 | 1 SOL, 1 |
+| Daily stop | 1.0 SOL | 0.5 SOL |
+| SOL to put in | **2.8**, of which about 1.0 goes into the WBTC float (some of its coins are bought with WBTC) | **1.2** |
+| Docs | `../docs/20-long-copy.md`, `../03-strategy-A-long-copy/` | `../docs/21-copier.md`, `../rafinhaaaaaa/` |
+
+**Two wallets.** Each bot trades from its own wallet, and SOL does not move between them by itself.
+
+**What to expect, per day at these stakes:**
+
+| | Backtest | Per day | Without the 2 best trades |
+|---|---|---|---|
+| Rafinhaaaaaa, 1 SOL, Oct 4-25 (out of sample) | +14.91 on 35 | +0.71 | +0.32 |
+| Rafinhaaaaaa, 1 SOL, Oct 25 - Nov 1 | +16.45 on 19 | +2.35 | +0.96 |
+| Part A, 1 SOL, 2 open, Oct 19-27 (`config/long.example.toml`, the `max_open` grid) | +6.5 and +8.1 over 9 days | +1.6 | — |
+| Part A after wallet 4 changed on Oct 27 | −2.02 on Oct 27-28 (4 open, `../07-rework-2026-10-28/`); live +1.345 on 16, Oct 28-29 | about 0 to +1 | — |
+
+Expect the low half: part A's flow has halved since Oct 27 (7-18 copyable buys a day,
+`../analysis/research/2026-11-02/w4rev/`). Sources for Rafinhaaaaaa: `../rafinhaaaaaa/03-backtests/README.md` §4.
+
+## 2. The rules from Oct 29 (not optional)
+
+- **Billing:** monthly billing, or hourly with auto-recharge and a balance alert.
+- **Copy each wallet file off the box before any SOL goes in** (§6). The box is never the only copy of anything.
+- **Use new keys:** the Triton token and the Nozomi key were on the wiped disk, and the Triton token was also pasted in
+  chat on Oct 28. Rotate both in their dashboards before step 5.
+- **`rugsnipe-hot` is installed by the role, but it is never enabled on this box.**
+
+## 3. The server
+
+The same plan as `fra-long`: Cherry Servers **Cloud VDS 2 (Gen 2)**, `G2-4-16gb-100nv-ded`, Frankfurt, €59 a month
+(`../03-strategy-A-long-copy/deploy-frankfurt.md` §1). It is 0.17-0.45 ms from Jito, Nozomi and Triton. Then follow
+that page's §2 steps 1-3:
+
+1. Root password and full upgrade.
+2. The four pings: every average must be under 1 ms.
+3. An `ops` user with SSH-key login only.
+
+From here on, every block runs on the box as `ops`.
+
+## 4. Code and install (on the box)
+
+```
+git clone -b claude/magical-einstein-k78idp https://github.com/xin10ylop/copy2.git ~/rugsnipe
+cd ~/rugsnipe && git log --oneline -1
+sudo bash deploy/install.sh --role hot --dry-run
+sudo bash deploy/install.sh --role hot --force
+```
+
+- **`git log`:** prints the branch's latest commit.
+- **The dry run:** lists `rugsnipe-long.service` and `rugsnipe-copier.service`.
+- **The install** takes about 2 minutes and ends without an error. It logs
+  `config: created /etc/rugsnipe/long.toml ... (mode = log: paper)` and the same line for `copier.toml`.
+- **Both configs start in paper.**
+
+## 5. Keys and the hot config (on the box)
+
+```
+sudo nano /etc/rugsnipe/keys/api-keys.toml
+sudo chmod 0400 /etc/rugsnipe/keys/api-keys.toml
+sudo nano /etc/rugsnipe/rugsnipe.toml
+```
+
+**`api-keys.toml`:** three lines, typed in from the dashboards. Never paste them in a chat.
+
+```
+GRPC_TOKEN = "..."   # the Triton gRPC token
+NOZOMI_KEY = "..."
+RPC_URL = "..."      # the Triton RPC URL with its token
+```
+
+**`rugsnipe.toml`:** set these three lines, under `[feeds]` and `[senders]`:
+
+```
+grpc = { enabled = true, url = "https://riptide.rpcpool.com", x_token = "GRPC_TOKEN", stale_ms = 2_000, bundle_run = true }
+nozomi = { enabled = true, url = "http://fra2.nozomi.temporal.xyz", key = "NOZOMI_KEY", min_tip = 1_000_000 }
+jito = { enabled = true, regions = ["frankfurt", "amsterdam"], max_rps = 1 }
+```
+
+The long copy sends through Nozomi. The copier sends through Jito, because Jupiter's swap carries a Jito tip; it needs no
+key. Check:
+
+```
+sudo grep -nE '^(grpc|nozomi|jito) = ' /etc/rugsnipe/rugsnipe.toml
+```
+
+This prints the three lines, each with `enabled = true`.
+
+## 6. The two wallets, copied off before any SOL (box, then your computer)
+
+On the box:
+
+```
+sudo /opt/rugsnipe/bin/rugsnipe-long keygen --out /etc/rugsnipe/keys/long-wallet.json
+sudo /opt/rugsnipe/bin/rugsnipe-long keygen --out /etc/rugsnipe/keys/copier-wallet.json
+sudo install -m 0600 -o ops /etc/rugsnipe/keys/long-wallet.json /etc/rugsnipe/keys/copier-wallet.json ~/
+ls -l ~/long-wallet.json ~/copier-wallet.json
+```
+
+- **Each `keygen`** prints one address and nothing else. Write both addresses down: one long wallet, one copier wallet.
+- **`ls`** shows two files, owned by `ops`, `-rw-------`.
+
+On your computer (Terminal, not the box). Replace `BOX` with the box's address:
+
+```
+mkdir -p ~/rugsnipe-wallets && chmod 700 ~/rugsnipe-wallets
+scp ops@BOX:long-wallet.json ops@BOX:copier-wallet.json ~/rugsnipe-wallets/
+ls -l ~/rugsnipe-wallets
+```
+
+`ls` shows the two files. Keep a second copy, such as an encrypted USB stick or a password manager's file vault. Never
+open or print them.
+
+Back on the box, delete the home copies:
+
+```
+rm ~/long-wallet.json ~/copier-wallet.json
+```
+
+## 7. The plan's settings, then paper for a day (on the box)
+
+```
+sudo sed -i -E 's/^max_open[[:space:]]*=.*/max_open = 2/; s/^daily_stop_sol[[:space:]]*=.*/daily_stop_sol = 1.0/; s/^cu_limit[[:space:]]*=.*/cu_limit = 200000/; s/^follow_its_sell[[:space:]]*=.*/follow_its_sell = false/' /etc/rugsnipe/long.toml
+sudo grep -nE '^(mode|stake_sol|max_open|daily_stop_sol|cu_limit|follow_its_sell) ' /etc/rugsnipe/long.toml
+sudo grep -nE '^(mode|daily_stop_sol|senders|jito_tip_lamports|name|min_sol|stake_sol|max_open) ' /etc/rugsnipe/copier.toml
+sudo systemctl enable --now rugsnipe-long rugsnipe-copier
+sleep 20; sudo journalctl -u rugsnipe-long -u rugsnipe-copier -n 12 --no-pager
+```
+
+**The long config** (first grep):
+
+| Key | Should read |
+|---|---|
+| `mode` | `"log"` |
+| `stake_sol` | `1.0` |
+| `max_open` | `2` |
+| `daily_stop_sol` | `1.0` |
+| `cu_limit` | `200000` |
+| `follow_its_sell` | `false` |
+
+`cu_limit` and `follow_its_sell` are as `fra-long` ran them.
+
+**The copier config** (second grep):
+
+| Key | Should read |
+|---|---|
+| `mode` | `"log"` |
+| `daily_stop_sol` | `0.5` |
+| `senders` | `["jito"]` |
+| `jito_tip_lamports` | `1000000` |
+| `max_open` (all wallets) | `6` |
+| target | `name = "rafinha"`, `min_sol = 5.1`, `stake_sol = 1.0`, `max_open = 1` |
+
+**The journal** ends with these lines:
+
+- `long start: mode Log ... stake 1 SOL ... max_open 2 ...`
+- `long feed connected`
+- `copier start: mode Log ...`
+- `copier feed {"up":true}`
+
+An empty hour after that is normal.
+
+**Read it during the day:**
+
+```
+sudo /opt/rugsnipe/bin/rugsnipe-long status --config /etc/rugsnipe/long.toml --tz +0200
+sudo /opt/rugsnipe/bin/rugsnipe-long copy-status --config /etc/rugsnipe/copier.toml --tz +0200
+```
+
+Paste both after about a day. I check every paper trade against the chain and against the model, then we go live.
+
+## 8. Going live (when you say so)
+
+**Step 1: fund the wallets, and fill the WBTC float.** Send **2.8 SOL** to the long wallet and **1.2 SOL** to the copier
+wallet from Phantom. Then on the box:
+
+```
+sudo /opt/rugsnipe/bin/rugsnipe-long status --config /etc/rugsnipe/long.toml --chain
+sudo /opt/rugsnipe/bin/rugsnipe-long float buy 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh 1.0 --config /etc/rugsnipe/long.toml
+sudo /opt/rugsnipe/bin/rugsnipe-long status --config /etc/rugsnipe/long.toml --chain
+```
+
+- The first `status` shows `wallet 2.8000 SOL`.
+- The float buy lands one Jupiter swap.
+- The second `status` shows about 1.8 SOL plus the float, about 1.0 SOL of WBTC.
+
+**Step 2: the first live hours at a small stake.** This is a new box and the copier's first real money, so the first
+trades are small: long 0.1 SOL, copier 0.3 SOL. I check each trade on chain, as `deploy-frankfurt.md` §6 did.
+
+```
+sudo sed -i -E 's/^mode[[:space:]]*=.*/mode = "on"/; s/^stake_sol[[:space:]]*=.*/stake_sol = 0.1/' /etc/rugsnipe/long.toml
+sudo sed -i -E 's/^mode[[:space:]]*=.*/mode = "on"/; s/^stake_sol[[:space:]]*=.*/stake_sol = 0.3/' /etc/rugsnipe/copier.toml
+sudo grep -nE '^(mode|stake_sol) ' /etc/rugsnipe/long.toml /etc/rugsnipe/copier.toml
+sudo systemctl restart rugsnipe-long rugsnipe-copier
+sleep 20; sudo journalctl -u rugsnipe-long -u rugsnipe-copier -n 12 --no-pager
+```
+
+- The grep shows `mode = "on"` in both files, `stake_sol = 0.1` in the long config and `stake_sol = 0.3` in the copier
+  config.
+- The journal shows `long start: mode On wallet ... stake 0.1 SOL` and
+  `copier start: mode On wallet ... senders ["jito"] + rpc`.
+- The copier's `copier start` line also lists Rafinhaaaaaa's target with its stake.
+
+**Step 3: the plan's stake (1 SOL each), after the first few trades check out on chain.**
+
+```
+sudo sed -i -E 's/^stake_sol[[:space:]]*=.*/stake_sol = 1.0/' /etc/rugsnipe/long.toml /etc/rugsnipe/copier.toml
+sudo grep -nE '^stake_sol ' /etc/rugsnipe/long.toml /etc/rugsnipe/copier.toml
+sudo systemctl restart rugsnipe-long rugsnipe-copier
+```
+
+The grep shows `stake_sol = 1.0` twice. Open positions survive a restart.
+
+## 9. Every day, and when to stop
+
+- **Paste both `status` blocks of §7 once a day.** I check every trade on chain.
+- **Stop new buys** (exits continue):
+
+  ```
+  sudo touch /var/lib/rugsnipe-long/KILL /var/lib/rugsnipe-copier/KILL
+  ```
+
+  Remove the files to resume.
+- **Stop at once if:**
+  - wallet 4 goes quiet for 3 hours, or sends 10+ SOL out (`../07-rework-2026-10-28/README.md` §6);
+  - a real sale fails to land;
+  - the chain disagrees with the journal.
+- **Rafinhaaaaaa: re-score it every week.** Stop it if a week turns negative without the best 2.
+- **After a crash loop:** run `sudo systemctl reset-failed rugsnipe-long rugsnipe-copier` before a restart.
+- **The configs are root-only.** Use `sudo grep` on `/etc/rugsnipe`, never a bare `grep`.
+
+## 10. What changes on the box when the code changes
+
+```
+cd ~/rugsnipe && git pull -q --ff-only origin claude/magical-einstein-k78idp && git log --oneline -1
+sudo bash deploy/install.sh --role hot --force
+sudo systemctl restart rugsnipe-long rugsnipe-copier
+```
+
+The installer never overwrites `/etc/rugsnipe/*.toml`. A changed default must be edited into the box's file as well.

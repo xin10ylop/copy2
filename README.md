@@ -1,13 +1,35 @@
-# copy2: wallet 4 (H9kuqGKN): the long copy (A) and the launch copy (D)
+# copy2: the wallets we copy, and the bots that copy them
 
-Everything about copying **wallet 4**, `H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg`, in one place: who it is, where its
-money comes from, what we can and can't trade and why, the two strategies built on it, every backtest, the live and
-paper results, the code, and how to run it. Operator 1 ("him", AHwJSnFN) and the other copied wallets are in the
-**copy1** repo. Both repos carry the same code snapshot (`xin10ylop/rugsnipe` at `7184554`, Oct 28).
+Two copied wallets, kept apart, and the shared code:
+
+| | Wallet | Bot | Where |
+|---|---|---|---|
+| **Wallet 4** | `H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg` | part A: the long copy (`rugsnipe-long run`); part B: the copier, off | folders `01`-`07` below |
+| **Rafinhaaaaaa** | `Hn6vBWWySnxA8XjxRQDEmZEuH5QL7KqosnJGcLcUzFJ6` | the copier (`rugsnipe-long copy`) | [`rafinhaaaaaa/`](rafinhaaaaaa/README.md) |
+| Both, on one box | | | [`08-new-box/`](08-new-box/README.md): the 4 SOL plan, from an empty server to live |
+
+Code: `crates/rugsnipe-long/` (the long copy, docs/20; the copier, [`docs/21-copier.md`](docs/21-copier.md)), with
+`deploy/` and `config/`. Operator 1 ("him", AHwJSnFN) and the other copied wallets are in the **copy1** repo. Both
+repos started from the same code snapshot (`xin10ylop/rugsnipe` at `7184554`, Oct 28). The box builds from this repo's
+branch `claude/magical-einstein-k78idp`.
 
 **Agents: read [`CLAUDE.md`](CLAUDE.md) first.**
 
-## Where things stand (Oct 28, evening)
+## Where things stand (Nov 3)
+
+**Nothing runs; no box exists since Oct 29.** The plan for the next box ([`08-new-box/`](08-new-box/README.md)) is
+4 SOL in two wallets. Its backtests give about +0.7 to +3.5 SOL a day (§1 there); expect the low half.
+
+| Bot | Copies | Stake | Open at once |
+|---|---|---|---|
+| The long copy | wallet 4's part A | 1 SOL | 2 |
+| The copier | Rafinhaaaaaa | 1 SOL | 1 |
+
+It is prepared, not started: paper first, then the first live hours at 0.1 / 0.3 SOL.
+
+## Wallet 4
+
+### Where things stood (Oct 28, evening)
 
 **Re-examined on Oct 28** ([`07-rework-2026-10-28/`](07-rework-2026-10-28/README.md)): wallet 4 still makes money (+82 SOL
 in the 38 hours to Oct 28 14:54 UTC) and is one bot with no siblings, but it **changed its rule on Oct 27** (early sales
@@ -22,7 +44,7 @@ terminated that evening), then the 0.1 SOL test, then decide.
 any venue through Jupiter, so wallet 4's part B (pump coins priced in PUMP, CARDS, USDC ...) is tradeable now. So are
 other wallets' coins on Meteora and Raydium. Code, tests, the unit and a paper replay are done. **Nothing has run on a
 box** (none exists since Oct 29). Part B copied through Jupiter is weak (`analysis/research/2026-11-02/`): +4.88 on
-Oct 23-26, +8.08 on Oct 27 - Nov 1, −6.05 without the best 2. It runs as a mechanics test at 0.1 SOL × 3. The same study
+Oct 23-26, +8.08 on Oct 27 - Nov 1, −6.05 without the best 2. It is off in the 4 SOL plan (`config/copier.example.toml`). The same study
 found no rule to pick part-A or part-B launches ourselves.
 
 
@@ -66,7 +88,9 @@ found no rule to pick part-A or part-B launches ourselves.
 | `docs/` | the project's original docs: 00-08 (background, mechanics, speed, architecture, deploy, runbook), 19 (copy targets; §11 found wallet 4, §13 strategy D), **20 (the long copy)**, `docs/research/` (the early research), `docs/PROJECT-README.md` (the original repo README) |
 | `analysis/research/` | the studies: `2026-10-26/h9/` (D), `2026-10-26/wallets2/` (the search), `2026-10-27/h9long/` (A, 8 days), `2026-10-27/refused/` (refused copies), `2026-10-28/` (decomposition of check.sh's window, the paper chain check, single coins; **`fresh/`** the study on Oct 27-28 data, **`more/`** the skipped trades and copying better, **`wallet/`** the wallet check) |
 | `data/datasets/` | the fetched data behind the studies, compressed; see CLAUDE.md "Datasets" |
-| `crates/`, `deploy/`, `config/` | the code (Rust workspace), install and units, config templates |
+| [`08-new-box/`](08-new-box/README.md) | **the next box**: both bots, 4 SOL, every step from an empty server to live |
+| [`rafinhaaaaaa/`](rafinhaaaaaa/README.md) | **the second copied wallet**: who it is, its rules, its backtests, the analysis pipeline, its data |
+| `crates/`, `deploy/`, `config/` | the code (Rust workspace), install and units, config templates (`long.example.toml` the long copy, `copier.example.toml` the copier) |
 
 ## The words used
 
