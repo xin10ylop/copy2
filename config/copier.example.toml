@@ -1,10 +1,10 @@
 # /etc/rugsnipe/copier.toml: the copier (`rugsnipe-long copy`, docs/21-copier.md).
 # Copies several wallets on any venue Jupiter routes (pump curve, PumpSwap, Meteora DBC and DAMM v2, Raydium LaunchLab
-# and CPMM ...). Here: wallet 4's part B (its pump coins priced in a token with no route for rugsnipe-long: PUMP, CARDS,
-# TTWO, USDC ...). Wallet 4's part A stays in rugsnipe-long (`run`, long.toml): faster, and the copier skips those
-# coins itself. More wallets are more [[target]] blocks (a template at the end).
+# and CPMM ...). Here: Rafinhaaaaaa (rafinhaaaaaa/), and wallet 4's part B, off. Wallet 4's part A stays in
+# rugsnipe-long (`run`, long.toml): faster, and the copier would skip those coins itself.
 #
-# These are the first-test stakes: a tenth of the backtests'.
+# The stakes are the 4 SOL plan's (08-new-box/): Rafinhaaaaaa at 1 SOL, one position at a time; this wallet holds about
+# 1.2 SOL. The installer copies this file once, in paper; 08-new-box/ says what to change to go live.
 
 # log = paper (fills at a live Jupiter quote, nothing sent); on = real swaps from the copier wallet; off = nothing.
 mode = "log"
@@ -51,36 +51,35 @@ state = "/var/lib/rugsnipe-copier/state.json"
 # touch this file: no new buys (exits continue)
 kill_file = "/var/lib/rugsnipe-copier/KILL"
 
-# Wallet 4's part B: its buys of 1.45 SOL or more of pump coins priced in a token rugsnipe-long cannot route. Exits as
-# in the study that scored this route (analysis/research/2026-11-02/w4revB, its own picks through Jupiter): 2.0x / 0.8x
-# of our own price, 30 min (29:50 here); not behind its own sale and no premium cap (the study had neither). That study:
-# +35.32 / +4.88 (+2.68 without the best 2) / +8.08 (-6.05) at 1 SOL on Oct 19-22 / 23-26 / Oct 27 - Nov 1: weak.
-# A mechanics test at a tenth.
+# Rafinhaaaaaa (rafinhaaaaaa/): its buys of 5.1 SOL or more, valued as its whole SOL change (fees and tip included: its
+# tiers read about 3.0 / 5.0 / 5.1 / 10.1, so 5.1 leaves its 5.0 tier out); any venue; sold 300 s after our buy or right
+# behind its own first sale; no take profit, no stop, no premium cap (the backtest had none). At 1 SOL, out of sample
+# Oct 4-25: +14.91 on 35 (+6.75 without the best 2), rafinhaaaaaa/03-backtests/README.md section 4. Its copies rarely
+# overlap (3 of 37 within our 300 s), so one position at a time.
 [[target]]
-name = "w4b"
-wallet = "H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg"
-coins = "pump_unroutable"
-min_sol = 1.45
-stake_sol = 0.1
-take_profit = 2.0
-stop = 0.8
-exit_basis = "ours"
-max_hold_s = 1790
-follow_sell = false
-max_open = 3
-# quote tokens never copied (none yet)
-quotes_deny = []
+name = "rafinha"
+wallet = "Hn6vBWWySnxA8XjxRQDEmZEuH5QL7KqosnJGcLcUzFJ6"
+coins = "any"
+min_sol = 5.1
+stake_sol = 1.0
+max_hold_s = 300
+follow_sell = true
+max_open = 1
 
-# Another wallet: its rule comes from its own study (a target's every key is above; its wallet and rule stay out of
-# this public repo when its study says so).
+# Wallet 4's part B: OFF. Its buys of 1.45 SOL or more of pump coins priced in a token rugsnipe-long cannot route. The
+# study that scored this route (analysis/research/2026-11-02/w4revB, its own picks through Jupiter, 1 SOL) made
+# +35.32 / +4.88 (+2.68 without the best 2) / +8.08 (-6.05) on Oct 19-22 / 23-26 / Oct 27 - Nov 1: about nothing.
+# To run it as a test of the route, remove the leading "# " from the block (its exits are the study's: 2.0x / 0.8x of
+# our own price, 30 min, not behind its sale, no premium cap).
 # [[target]]
-# name = "w2"
-# wallet = "..."
-# coins = "any"            # any coin it buys, on any venue Jupiter routes
-# min_sol = 5.0            # its buy, valued in SOL (its whole SOL change, fees included)
-# max_premium = 0          # no cap on our price over its price (0 = off)
-# stake_frac = 0.1         # our buy: this share of its buy ...
-# stake_cap_sol = 0.3      # ... capped here (or stake_sol = a fixed size)
-# max_hold_s = 300
-# follow_sell = true
+# name = "w4b"
+# wallet = "H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg"
+# coins = "pump_unroutable"
+# min_sol = 1.45
+# stake_sol = 0.1
+# take_profit = 2.0
+# stop = 0.8
+# exit_basis = "ours"
+# max_hold_s = 1790
+# follow_sell = false
 # max_open = 3

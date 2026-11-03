@@ -1489,26 +1489,29 @@ max_hold_s = 1790
     }
 
     #[test]
-    fn the_example_config_loads_with_the_first_test_stakes() {
-        let c = CopierCfg::from_toml_str(include_str!("../../../config/copier.example.toml")).unwrap();
+    fn the_example_config_loads_with_the_4_sol_plan() {
+        let text = include_str!("../../../config/copier.example.toml");
+        let c = CopierCfg::from_toml_str(text).unwrap();
         assert_eq!(c.mode, Mode::Log);
-        let b = &c.targets[0];
-        assert_eq!((b.name.as_str(), b.coins, b.exit_basis), ("w4b", Coins::PumpUnroutable, Basis::Ours));
-        assert_eq!((b.min_sol, b.take_profit, b.stop, b.max_hold_s, b.max_premium), (1.45, 2.0, 0.8, 1790, 0.0));
-        assert!(!b.follow_sell, "the scored model did not follow its sale");
-        assert_eq!(b.stake(1_500_000_000), 100_000_000);
-        assert_eq!(c.wallets().len(), 1);
-        // the commented template, filled in, is a valid target
-        let tpl: String = include_str!("../../../config/copier.example.toml")
-            .split("# [[target]]")
+        assert_eq!(c.targets.len(), 1, "part B is commented out");
+        let r = &c.targets[0];
+        assert_eq!((r.name.as_str(), r.coins, r.min_sol, r.max_hold_s), ("rafinha", Coins::Any, 5.1, 300));
+        assert_eq!((r.stake(5_100_000_000), r.max_open, r.follow_sell), (1_000_000_000, 1, true));
+        assert_eq!((r.take_profit, r.stop, r.max_premium), (0.0, 0.0, 0.0));
+        // part B's block, uncommented, is a valid target with the scored exits
+        let b: String = text
+            .split("# [[target]]\n# name = \"w4b\"")
             .nth(1)
             .unwrap()
             .lines()
-            .map(|l| l.strip_prefix("# ").unwrap_or(l).replace("\"...\"", &format!("\"{W2}\"")))
+            .map(|l| l.strip_prefix("# ").unwrap_or(l))
             .collect::<Vec<_>>()
             .join("\n");
-        let c2 = CopierCfg::from_toml_str(&format!("[[target]]{tpl}")).unwrap();
-        assert_eq!(c2.targets[0].stake(5_100_000_000), 300_000_000);
+        let c2 = CopierCfg::from_toml_str(&format!("[[target]]\nname = \"w4b\"{b}")).unwrap();
+        let w = &c2.targets[0];
+        assert_eq!((w.coins, w.exit_basis, w.follow_sell), (Coins::PumpUnroutable, Basis::Ours, false));
+        assert_eq!((w.min_sol, w.take_profit, w.stop, w.max_hold_s), (1.45, 2.0, 0.8, 1790));
+        assert_eq!(w.stake(1_500_000_000), 100_000_000);
     }
 
     #[test]

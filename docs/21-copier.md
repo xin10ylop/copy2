@@ -44,20 +44,23 @@ cools down for 10 s. Value polls give way during the cool-down; buys and sells r
 
 ## 3. Its config
 
-`config/copier.example.toml` is commented line by line. It has the first-test stakes, a tenth of the backtests':
+`config/copier.example.toml` is commented line by line. It holds the 4 SOL plan's stakes (`08-new-box/`):
 
 | Target | Rule | Stake |
 |---|---|---|
-| `w4b`: wallet 4's part B | its 1.45+ SOL buys of `pump_unroutable` coins; take profit 2.0x, stop 0.8x of our own price, 1790 s; not behind its sale, no premium cap | 0.1 SOL, 3 open |
-| Others | one `[[target]]` each, from that wallet's own study. A template is at the end of the file. A wallet whose study is private keeps its block in its private repo; it is added on the box. | |
+| `rafinha`: Rafinhaaaaaa (`rafinhaaaaaa/`) | its 5.1+ SOL buys, any venue; 300 s after our buy or right behind its first sale; no take profit, no stop, no premium cap | **1 SOL, 1 open** |
+| `w4b`: wallet 4's part B | **off** (commented out). Its 1.45+ SOL buys of `pump_unroutable` coins; take profit 2.0x, stop 0.8x of our own price, 1790 s; not behind its sale, no premium cap | 0.1 SOL, 3 open, if turned on |
 
-- `w4b` runs exactly the model that scored this route (§6): exits on our own price, no premium cap, not following its
-  sale.
+- **More wallets:** one more `[[target]]` each, from that wallet's own study.
+- **`rafinha`:** its copies rarely overlap (3 of its 37 buys of 5.1+ SOL over Oct 4-25 came within another copy's
+  300 s), so one position at a time loses almost nothing (`rafinhaaaaaa/03-backtests/README.md` §4).
+- **`w4b`:** runs exactly the model that scored this route (§6): exits on our own price, no premium cap, not
+  following its sale. It makes about nothing, so it stays off.
 - `max_premium` exists for a target whose levels are on its price (`exit_basis = "its"`, the long copy's way). There, a
   fill far above its price would start at or past the take profit. The long copy refuses 25% over the price its buy
   left. Its average price sits under that by its own impact: 2-5% for a 1.5 SOL buy on a curve of 30-80 virtual SOL.
   So 0.3 over its average is the same limit.
-- The whole book is capped by `max_open = 6` and `daily_stop_sol = 0.5`.
+- The whole book is capped by `max_open = 6` and `daily_stop_sol = 0.5`; the wallet holds about 1.2 SOL.
 
 ## 4. Commands
 
@@ -69,7 +72,7 @@ rugsnipe-long copy-replay --config FILE --rpc URL|@FILE --tick-s 30 SIG...   # p
 
 `copy-status` prints each wallet's buys, failed buys, closed trades, wins, net SOL and today's result. Then it lists the
 open positions and the last closed trades, in the given time zone. A paper replay of the final code ran on Nov 2,
-01:40 UTC, with the box's config: the example file plus one private target. Its prices were those of Nov 2, not the
+01:40 UTC, with Rafinhaaaaaa at 0.3 SOL and part B at 0.1 SOL. Its prices were those of Nov 2, not the
 trades' own days.
 
 What the replay showed:
@@ -106,9 +109,9 @@ Never print the file.
 The long copy and the copier each open their own gRPC stream on the same feed. Check that the feed plan allows two
 streams.
 
-Other wallets' private `[[target]]` blocks are appended to `/etc/rugsnipe/copier.toml` by hand, and the service is then
-restarted. To go live, set `mode = "on"` once the paper journal looks right, then
-`sudo systemctl restart rugsnipe-copier`. To stop new buys: `sudo touch /var/lib/rugsnipe-copier/KILL`.
+To go live, set `mode = "on"` once the paper journal looks right, then `sudo systemctl restart rugsnipe-copier`. The
+full path for the new box, with both bots and the first small-stake hours, is `08-new-box/`. To stop new buys:
+`sudo touch /var/lib/rugsnipe-copier/KILL`.
 
 ## 6. What it is worth, and what is not known
 
