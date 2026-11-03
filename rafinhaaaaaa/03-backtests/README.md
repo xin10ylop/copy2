@@ -87,3 +87,6 @@ growing at 3-4 SOL and falls after 5:
 The model charges our own price impact on the buy but not on the sale, so big stakes look better here than they would
 be. **3 SOL is the largest stake to use** (the pick on days 1-4 was its size capped at 3). This week (Oct 25 - Nov 1,
 partly the week the rule was picked on) keeps rising to 10 SOL, on 19 trades.
+
+Small stakes (`out/stakes_small_nov03.txt`, 0.003 SOL a round trip): 0.05 SOL makes +0.71 on 35 out of sample (+0.30
+without the best 2), +0.79 on 19 this week; 0.1 SOL makes +1.51 (+0.69) and +1.64.
