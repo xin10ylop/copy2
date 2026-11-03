@@ -68,3 +68,22 @@ The picked rule with the stake fixed instead of its size (`out/stakes_fixed_nov0
 
 Its copies rarely overlap: of its 37 buys of 5.1+ SOL over Oct 4-25, 3 had another inside our 300 s; this week 1 of 19;
 never more than 2 open at once. One position at a time loses almost nothing.
+
+## 5. How big a stake (Nov 3)
+
+The same rule at 3-10 SOL (`out/stakes_large_nov03.txt`). Out of sample (Oct 4-25), without the best 2, the result stops
+growing at 3-4 SOL and falls after 5:
+
+| Stake | Oct 4-25, K = 2 | without the best 2 | K = 4, without the best 2 |
+|---|---|---|---|
+| 1 SOL | +14.91 | +6.75 | +5.33 |
+| 2 SOL | +27.44 | +11.47 | +8.78 |
+| **3 SOL** | **+37.67** | **+14.23** | **+10.40** |
+| 4 SOL | +45.79 | +15.18 | +10.33 |
+| 5 SOL | +51.93 | +14.45 | +8.70 |
+| 7 SOL | +58.88 | +8.42 | +1.15 |
+| 10 SOL | +57.63 | −10.58 | −21.91 |
+
+The model charges our own price impact on the buy but not on the sale, so big stakes look better here than they would
+be. **3 SOL is the largest stake to use** (the pick on days 1-4 was its size capped at 3). This week (Oct 25 - Nov 1,
+partly the week the rule was picked on) keeps rising to 10 SOL, on 19 trades.
