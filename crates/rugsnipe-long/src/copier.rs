@@ -830,6 +830,14 @@ impl<E: Exec> Copier<E> {
             .filter(|p| p.open() || p.closed_ms.map(|c| c / DAY_MS) == Some(today))
             .collect();
         self.next_id = self.book.iter().map(|p| p.id).max().unwrap_or(0) + 1;
+        // back to paper with real coins still held: paper would "sell" them at a quote and leave them in the wallet
+        let real = self.book.iter().filter(|p| p.open() && !p.paper).count();
+        if self.exec.paper() && real > 0 {
+            return Err(format!(
+                "{}: {real} real position(s) still open; run mode on until they close, or sell them by hand",
+                self.cfg.state
+            ));
+        }
         Ok(self.book.iter().filter(|p| p.open()).count())
     }
 
@@ -848,7 +856,9 @@ impl<E: Exec> Copier<E> {
     fn log(&mut self, ev: &str, mut v: Value) {
         v["ts"] = json!(self.exec.now_ms());
         v["ev"] = json!(ev);
-        v["paper"] = json!(self.exec.paper());
+        if v.get("paper").is_none() {
+            v["paper"] = json!(self.exec.paper());
+        }
         if !self.cfg.journal.is_empty() {
             if let Ok(mut f) = std::fs::OpenOptions::new()
                 .create(true)
@@ -866,20 +876,25 @@ impl<E: Exec> Copier<E> {
         self.lines.push(v);
     }
 
-    /// Today's (UTC) closed result, lamports.
+    /// Today's (UTC) closed result, lamports; paper and real apart (the
+    /// mode's own kind counts, so paper trades from before a switch to mode
+    /// on never trip the real daily stop).
     pub fn day_net(&self) -> i64 {
         let today = self.exec.now_ms() / DAY_MS;
+        let paper = self.exec.paper();
         self.book
             .iter()
-            .filter(|p| p.closed_ms.map(|c| c / DAY_MS) == Some(today))
+            .filter(|p| p.paper == paper && p.closed_ms.map(|c| c / DAY_MS) == Some(today))
             .filter_map(|p| p.net())
             .sum()
     }
 
+    /// Open positions of the mode's own kind (paper or real).
     pub fn open_count(&self, target: Option<&str>) -> usize {
+        let paper = self.exec.paper();
         self.book
             .iter()
-            .filter(|p| p.open() && target.is_none_or(|t| p.target == t))
+            .filter(|p| p.open() && p.paper == paper && target.is_none_or(|t| p.target == t))
             .count()
     }
 
@@ -951,7 +966,7 @@ impl<E: Exec> Copier<E> {
             Some("killed")
         } else if !self.feed_up {
             Some("feed-down")
-        } else if self.book.iter().any(|p| p.open() && p.mint == ms) {
+        } else if self.book.iter().any(|p| p.open() && p.paper == self.exec.paper() && p.mint == ms) {
             Some("held")
         } else if self.open_count(Some(name)) >= t.max_open {
             Some("max-open")
@@ -1092,6 +1107,34 @@ impl<E: Exec> Copier<E> {
         };
         self.book[k].exit = Some(reason.to_string());
         let tokens = self.book[k].tokens;
+        if self.book[k].paper && !self.exec.paper() {
+            // a paper position from before the switch to mode on: the wallet never held it, so it closes as paper
+            // at a sell quote and is never sold
+            match self.exec.value(&mint, tokens) {
+                Some(v) => {
+                    let p = &mut self.book[k];
+                    p.closed_ms = Some(now);
+                    p.proceeds = Some(v.saturating_sub(self.cfg.paper_side_cost_lamports));
+                    p.sell_sig = Some("paper".into());
+                    let net = p.net().unwrap_or(0);
+                    let v = json!({ "id": p.id, "target": p.target, "mint": p.mint, "reason": reason, "cost": p.cost,
+                                    "proceeds": p.proceeds, "net": net, "held_s": (now - p.opened_ms) / 1000,
+                                    "sig": "paper", "route": "paper, closed at a quote in mode on", "tries": p.tries,
+                                    "paper": true });
+                    self.log("sell", v);
+                }
+                None => {
+                    let p = &mut self.book[k];
+                    p.tries += 1;
+                    p.next_try_ms = now + (2_000 * p.tries as u64).min(30_000);
+                    let v = json!({ "id": p.id, "target": p.target, "mint": p.mint, "reason": reason, "tries": p.tries,
+                                    "why": "no quote to close the paper position", "paper": true });
+                    self.log("sell-failed", v);
+                }
+            }
+            self.save();
+            return;
+        }
         match self.exec.sell(&mint, &program, tokens) {
             Ok(f) => {
                 let p = &mut self.book[k];
@@ -1213,6 +1256,7 @@ mod tests {
 
     #[derive(Default)]
     struct Fake {
+        live: bool,
         now: u64,
         values: HashMap<Pubkey, u64>,
         routable: HashSet<Pubkey>,
@@ -1225,7 +1269,7 @@ mod tests {
             self.now
         }
         fn paper(&self) -> bool {
-            true
+            !self.live
         }
         fn buy(&mut self, mint: &Pubkey, _: &Pubkey, lamports: u64, min_tokens: u64) -> Result<Fill, String> {
             if lamports * 10 < min_tokens {
@@ -1485,6 +1529,38 @@ max_hold_s = 1790
         e2.exec.now = 300_000;
         e2.on_tick();
         assert!(!e2.book[0].open());
+        let _ = std::fs::remove_file(dir);
+    }
+
+    #[test]
+    fn after_the_switch_to_mode_on_a_paper_position_closes_as_paper_and_blocks_nothing() {
+        let dir = std::env::temp_dir().join(format!("copier-switch-{}", std::process::id()));
+        let mut c = cfg();
+        c.state = dir.to_string_lossy().into_owned();
+        c.targets[0].max_open = 1;
+        let mut e = Copier::new(c.clone(), Fake::default()).unwrap();
+        e.on_buy(0, buy(DBC_COIN, 5_200_000_000), "x"); // paper
+        // mode on: the paper position is loaded, but neither the cap nor the daily stop counts it
+        let mut live = Copier::new(c.clone(), Fake { live: true, ..Fake::default() }).unwrap();
+        assert_eq!(live.load_state().unwrap(), 1);
+        assert_eq!(live.open_count(Some("w2")), 0);
+        let other = "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU";
+        live.on_buy(0, buy(other, 5_200_000_000), "y");
+        assert_eq!(live.exec.buys.len(), 1, "the real buy is not held back by the paper one");
+        // its timer: the paper one closes at a quote, never through a real sale
+        live.exec.values.insert(pk(DBC_COIN), 250_000_000);
+        live.exec.values.insert(pk(other), 300_000_000);
+        live.exec.now = 300_000;
+        live.on_tick();
+        assert!(!live.book[0].open() && live.book[0].paper);
+        assert_eq!(live.exec.sells, vec![pk(other)], "only the real position is sold");
+        let closed = live.lines.iter().find(|l| l["ev"] == "sell" && l["mint"] == DBC_COIN).unwrap();
+        assert_eq!(closed["paper"], true);
+        // back to paper while the real one is open: refused (here it closed, so a new real one is opened by hand)
+        let _ = std::fs::remove_file(&dir);
+        let mut live2 = Copier::new(c.clone(), Fake { live: true, ..Fake::default() }).unwrap();
+        live2.on_buy(0, buy(other, 5_200_000_000), "z");
+        assert!(Copier::new(c, Fake::default()).unwrap().load_state().is_err());
         let _ = std::fs::remove_file(dir);
     }
 

@@ -33,6 +33,7 @@ Wallet 4's **part A** stays in the long copy: it is faster there, and the copier
 | Sell retries | A sale that fails is retried, with gaps of 2 s × tries up to 30 s, until it lands. A sale first checks the tokens we actually hold. |
 | Book | Every event is a JSON line in `journal`. Open positions and today's closed ones are in `state`, so a restart picks them up. |
 | Guards | `daily_stop_sol` (today's realized UTC result); `max_open` per wallet and for all wallets together; no second position in a coin we hold; `min_wallet_sol` kept back; the `kill_file`. Exits always continue. |
+| Paper and real apart | The caps, the held-coin check and the daily stop count only the mode's own kind. A paper position left from before the switch to `mode = "on"` closes as paper at a sell quote, never through a real sale. Starting in paper while real positions are still open is refused: paper would "sell" real coins and leave them in the wallet. |
 
 **One sender.** The swap goes to our RPC and to Jito only, and it is one signed transaction, so it can land only once.
 The tip Jupiter adds goes to a Jito tip account, so no other sender would accept it; the config refuses any other
