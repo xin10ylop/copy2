@@ -18,6 +18,10 @@ a time** (the 4 SOL plan, [`../08-new-box/`](../08-new-box/README.md)).
   The copier waits 0.35 s for Jupiter before it sends, so the first live hours must show where it lands.
 - **Nov 1-4 was about flat:** 8 copies, +0.18 at slot +1.
 - **The copier's live code:** three bugs found by a review are fixed.
+- **Nov 4 evening, a second wallet** ([`04-check-nov04/wallets.md`](04-check-nov04/wallets.md)): the main wallet still
+  trades and holds 461 SOL + about 8,523 USDC. But `BwBWFMFX...`, funded from its money on Nov 3, started trading at
+  20:15 UTC with its exact setup (5.05 SOL buys, Axiom, 0.045 tip). One coin so far; check again before adding it
+  as a second `[[target]]`.
 
 Everything about this wallet is in this folder; the rest of the repo is wallet 4 (folders `01`-`07`) and the shared
 code. It was studied in a separate private repo (copy3) and moved here on Nov 3; the owner chose to keep this repo
