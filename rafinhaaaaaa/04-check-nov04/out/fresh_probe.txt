@@ -1,0 +1,169 @@
+Jupiter quotes on coins 2-20 s after their first pool (Nov 4, 18:00-18:04 UTC, from this session): 166 asked; 151 answered; 151 with a route; Counter({200: 151, 429: 12, 400: 3})
+quote latency p50 0.168 s, max 0.415 s; youngest routed 2.3 s
+
+{'mint': '6Tx28YBoAcsmHpnqEQLtU92ZujLKp2ABCCgSLpA5pump', 'launchpad': 'pump.fun', 'age_at_quote': 7.0, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395314, 'lat': 0.159}
+{'mint': '5eD5KNwZe4CWNJtvUrnCoraH3G3nxa8eruz8nfFpump', 'launchpad': 'pump.fun', 'age_at_quote': 13.0, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395319, 'lat': 0.151}
+{'mint': 'kQdbjHpduUYQrBAF45ss4tgHsZrvNUjUvTnyTkDpump', 'launchpad': 'pump.fun', 'age_at_quote': 16.0, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395324, 'lat': 0.144}
+{'mint': 'BmEqTHNib1f1y1Aco2ZqVdX5Nkdauavy9npZdw2mxQzd', 'launchpad': 'pump.fun', 'age_at_quote': 17.1, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395330, 'lat': 0.147}
+{'mint': '9Fo9ur68kWuSFFAVbTVJqZsET1DQFXuz3nP2TFaGnxF3', 'launchpad': 'pump.fun', 'age_at_quote': 3.4, 'http': 200, 'route': ['Whirlpool', 'Manifest', 'Pump.fun'], 'ctx': 465395340, 'lat': 0.168}
+{'mint': '7hZZ6aGGntUgm3dVdHGSTFFAmNqLKe7bs68hoE2uQmfa', 'launchpad': 'pump.fun', 'age_at_quote': 4.5, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395345, 'lat': 0.164}
+{'mint': '2EgbKG65wiV8Wk6Wb6bXVvFGLonRAuaVk3TYCuKWpump', 'launchpad': 'pump.fun', 'age_at_quote': 6.6, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395351, 'lat': 0.217}
+{'mint': 'LDQKUqZuh1PbmQfUBVrHRiNVLu6R1PpJEPotkLZpump', 'launchpad': 'pump.fun', 'age_at_quote': 8.7, 'http': 200, 'route': ['Manifest', 'Pump.fun'], 'ctx': 465395355, 'lat': 0.177}
+{'mint': 'D3hp8XMMffUGYQ3JLnQB7NHWxKbW8uQBUaXUZkvRpump', 'launchpad': 'pump.fun', 'age_at_quote': 9.8, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395361, 'lat': 0.168}
+{'mint': '2u6eUnjrMsTwg3R9DuXyu5nnTBNwtFBcLYUbVBwZpump', 'launchpad': 'pump.fun', 'age_at_quote': 10.9, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395366, 'lat': 0.156}
+{'mint': 'D7wXNfUJ3Mm5mariTtcb1RxZGCTiQ66N635jJLe54Kbj', 'launchpad': 'pump.fun', 'age_at_quote': 16.0, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395371, 'lat': 0.154}
+{'mint': '55aCaokNczUVXPhj2isbMdD21JPoXpU3zPAasTZGpump', 'launchpad': 'pump.fun', 'age_at_quote': 17.0, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395376, 'lat': 0.149}
+{'mint': '7b7m2i6oh5KT5SJ7mhU44Eh6MhuU2GoeUuGSCaqzPf6S', 'launchpad': 'pump.fun', 'age_at_quote': 19.1, 'http': 200, 'route': ['PancakeSwap', 'Pump.fun'], 'ctx': 465395380, 'lat': 0.151}
+{'mint': 'GXJznS22HVkWRXY7THD7JxZpNWnTSYBPctRKWiiXgG4f', 'launchpad': None, 'age_at_quote': 3.4, 'http': 200, 'route': ['Pump.fun Amm'], 'ctx': 465395391, 'lat': 0.133}
+{'mint': '7xbDh2PaFCQA59a7YzcsPkqAH4sQAxAHir6KYVcys69w', 'launchpad': 'pump.fun', 'age_at_quote': 4.4, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395396, 'lat': 0.147}
+{'mint': '8wK5KoqMbWtwHmZCXnyTQQ5aDfuEkLmEQMURHzzLpump', 'launchpad': 'pump.fun', 'age_at_quote': 6.6, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395400, 'lat': 0.168}
+{'mint': '7m3fyaoh3iWbhGxX7r6Dtz1xqA4Rc2LGfPQcPWwohYLn', 'launchpad': 'pump.fun', 'age_at_quote': 7.7, 'http': 200, 'route': ['BisonFi', 'ZeroFi', 'Pump.fun'], 'ctx': 465395406, 'lat': 0.169}
+{'mint': '5SkF2VTCp7rGQsZ8zGok6udgn8XVbBuHiPGWxGeUpump', 'launchpad': 'pump.fun', 'age_at_quote': 8.8, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395411, 'lat': 0.162}
+{'mint': '5ZXvCZj7Ybki2ZGcYt8U7SEBpiorrKdXXKGxqf7n67Uy', 'launchpad': 'pump.fun', 'age_at_quote': 11.9, 'http': 429, 'route': None, 'ctx': None, 'lat': 0.16}
+{'mint': 'BGzmgmdpxtjMEg8BGzNx465qmiCaxKFsP59GqxJPpump', 'launchpad': 'pump.fun', 'age_at_quote': 14.0, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395421, 'lat': 0.169}
+{'mint': 'qsG73KwTZhovG77DpmyeAeDp53zSMzE4iDq3de2pump', 'launchpad': 'pump.fun', 'age_at_quote': 6.2, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395431, 'lat': 0.186}
+{'mint': 'RxjBh231YnS7MGSuhVmANKVQX3J5UJy57VUJmmbpump', 'launchpad': 'pump.fun', 'age_at_quote': 8.3, 'http': 429, 'route': None, 'ctx': None, 'lat': 0.147}
+{'mint': '5BZ8UeJNSvS3wrSD47KoQQdVqymnqPabmn3MBW9Vpump', 'launchpad': 'pump.fun', 'age_at_quote': 9.4, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395441, 'lat': 0.185}
+{'mint': 'Hp8aRhexeNP25rBoEaiDvDSZWZPn8fNcKfaNd47opump', 'launchpad': 'pump.fun', 'age_at_quote': 7.6, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395451, 'lat': 0.174}
+{'mint': '2TkqMpwNTMFJLcouNwqaaK8kiixwTLJb8x8Y7suLoJbN', 'launchpad': 'pump.fun', 'age_at_quote': 8.9, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395456, 'lat': 0.386}
+{'mint': 'J1nyjuQtTwhB7EDBHeiNdZ5KDEKHxzWQnZbdP9jypump', 'launchpad': 'pump.fun', 'age_at_quote': 11.0, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395459, 'lat': 0.165}
+{'mint': 'A9DBh2ZEaRLB9y5Z88baxLjxbt9ttQhcrAZYrmjYpump', 'launchpad': 'pump.fun', 'age_at_quote': 11.9, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395465, 'lat': 0.153}
+{'mint': 'FcTAFmo7eK1E2H2uWLpoRkP3FEzkiBKAJSzFYaQ2VrJh', 'launchpad': 'pump.fun', 'age_at_quote': 14.0, 'http': 200, 'route': ['GoonFi V2', 'Manifest', 'Pump.fun'], 'ctx': 465395469, 'lat': 0.169}
+{'mint': '3vB19aMngVEcaUFk7kcpBkcK4YCSJLxdULydCzMnpump', 'launchpad': 'pump.fun', 'age_at_quote': 16.1, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395474, 'lat': 0.171}
+{'mint': '2uFBYfv8fLhDEmx1NCsbbTuVbFhrxAUiBN623TsinRTM', 'launchpad': None, 'age_at_quote': 5.3, 'http': 200, 'route': ['Meteora DLMM', 'Meteora DAMM v2'], 'ctx': 465395483, 'lat': 0.167}
+{'mint': 'Eu9M3SedMaTY8x6KCgacUEyD5eFL9ftxffpjbLd8JRyV', 'launchpad': 'pump.fun', 'age_at_quote': 7.4, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395488, 'lat': 0.168}
+{'mint': 'Ayin6kKbPsi4DV3rZr47q6DN7VjHMjXTnZaRJrxjpump', 'launchpad': 'pump.fun', 'age_at_quote': 8.5, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395493, 'lat': 0.175}
+{'mint': 'EAdzR1NKPxtLPzhaqZhBb2q6aK9fqQfebqqpMaE2pump', 'launchpad': 'pump.fun', 'age_at_quote': 12.7, 'http': 429, 'route': None, 'ctx': None, 'lat': 0.257}
+{'mint': '7rmaRxGjPDUS31CddAJzDJkrgEzxWiwrM6YFZLpJ1skh', 'launchpad': 'pump.fun', 'age_at_quote': 14.8, 'http': 200, 'route': ['1DEX', 'GoonFi V2', 'Pump.fun'], 'ctx': 465395503, 'lat': 0.158}
+{'mint': '2y4YCDW2goEUTypP2CDDGjX6kWSPGRo5KjYoCcf6pump', 'launchpad': 'pump.fun', 'age_at_quote': 15.9, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395508, 'lat': 0.248}
+{'mint': '2KTF8MDSK37VFsFYkS2ngSthY5wmzezJJbVMRfCvpump', 'launchpad': 'pump.fun', 'age_at_quote': 17.0, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395512, 'lat': 0.172}
+{'mint': '9H6WkjjaeZAKCuQQSK8v95ZEDmicVZ43wD4Daj3jpump', 'launchpad': 'pump.fun', 'age_at_quote': 20.0, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395518, 'lat': 0.154}
+{'mint': '34yjysiTQXAop7Ls7XMexQyjQGG7axBcNTudyKUZA9ov', 'launchpad': None, 'age_at_quote': 3.2, 'http': 200, 'route': ['Meteora DAMM v2'], 'ctx': 465395528, 'lat': 0.136}
+{'mint': 'ARtqLoiWBpSZZ9WnwiF7ioAVfZLefz4fCDGgmeE8pump', 'launchpad': 'pump.fun', 'age_at_quote': 5.2, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395533, 'lat': 0.13}
+{'mint': 'D6NFttnDKKJkBLRSweU5bf9ncFMrhJw3FUA4S8gbpump', 'launchpad': 'pump.fun', 'age_at_quote': 11.3, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395538, 'lat': 0.136}
+{'mint': 'ABtmuRoPQDiG3YfHXqDwZpzCawMriu43R3y499jPpump', 'launchpad': 'pump.fun', 'age_at_quote': 12.4, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395543, 'lat': 0.153}
+{'mint': '7EkDbkFy9jVL2GUA7ayK3GXLoFj4mWisjgLmzutwpump', 'launchpad': 'pump.fun', 'age_at_quote': 14.6, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395549, 'lat': 0.163}
+{'mint': 'GNJHeYhbRW4yYVP3PhtGiYQhvczL5qfBvKM4Wyuo1RA8', 'launchpad': 'pump.fun', 'age_at_quote': 16.7, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395554, 'lat': 0.173}
+{'mint': 'BcVoJnRb7rwduUFyDDuy5fpF7py63B39VepmCH5Rpump', 'launchpad': 'pump.fun', 'age_at_quote': 18.8, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395559, 'lat': 0.172}
+{'mint': '6BgxQkoieYzkRPfdwze2jW5YxgHBe9SareLJieN5pump', 'launchpad': 'pump.fun', 'age_at_quote': 19.9, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395564, 'lat': 0.169}
+{'mint': '7STW8A5vMWbAoeQPNh3VEFiP9EsPbSZgBWWRx1a3uMVa', 'launchpad': None, 'age_at_quote': 4.1, 'http': 429, 'route': None, 'ctx': None, 'lat': 0.154}
+{'mint': 'EyFjomFCEt1JuaMuRvzLKA1owRLub6xgdbRpiyiepump', 'launchpad': 'pump.fun', 'age_at_quote': 8.2, 'http': 429, 'route': None, 'ctx': None, 'lat': 0.153}
+{'mint': '9g3akiCrdzQfX92EfgsdRm2JwXho2BVgKPWukETepump', 'launchpad': 'pump.fun', 'age_at_quote': 4.6, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395604, 'lat': 0.198}
+{'mint': '43AU6ZLNzJFvMMzL7znswrdrfPLTRQGCGVWjetmuGrXC', 'launchpad': 'pump.fun', 'age_at_quote': 8.7, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395609, 'lat': 0.167}
+{'mint': 'DKj3m5zrWzTxQBGq7Z6U8abXDEZPXK7g5KFGs7Vkpump', 'launchpad': 'pump.fun', 'age_at_quote': 4.0, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395625, 'lat': 0.176}
+{'mint': 'AH16ok1jMVdSBeZP4bM5qeoCzMGPK1HkWnmUDMbvpump', 'launchpad': 'pump.fun', 'age_at_quote': 6.0, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395630, 'lat': 0.154}
+{'mint': '8wKLwAsGupdjzNMWoadkBBqAxq1N5DqV2eZNMNfWpump', 'launchpad': 'pump.fun', 'age_at_quote': 8.1, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395636, 'lat': 0.185}
+{'mint': 'GZFXBVHoknKVii65rceCQVawLWJ12P4miLDnu9HfgauY', 'launchpad': 'stonkfun', 'age_at_quote': 11.3, 'http': 200, 'route': ['Meteora DLMM', 'Raydium Launchlab'], 'ctx': 465395642, 'lat': 0.167}
+{'mint': 'HM15kZA2TsZ8bHya3c869MdCXEn4RudhHZWs4yxfMLxr', 'launchpad': 'pump.fun', 'age_at_quote': 2.5, 'http': 200, 'route': ['1DEX', 'Whirlpool', 'Pump.fun'], 'ctx': 465395653, 'lat': 0.256}
+{'mint': 'Gt5E6A3FDhUFMhbBor4FcrEj3fZJHq9GVRLLsQ9Ypump', 'launchpad': 'pump.fun', 'age_at_quote': 3.6, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395657, 'lat': 0.168}
+{'mint': 'CQzstydG9uHNmgeziiYmhe5j6aUySSAgoTnYPkvhpump', 'launchpad': 'pump.fun', 'age_at_quote': 5.6, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395662, 'lat': 0.168}
+{'mint': '6LCnwwyRdoLwbfSPrxbUXpZ2WXQuDZeDpLQQB8j7fm7q', 'launchpad': 'pump.fun', 'age_at_quote': 6.8, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395667, 'lat': 0.188}
+{'mint': '8QZTkRbEb5dULh6cAgCUkAeDkEwhRLvMEaRZxWLypump', 'launchpad': 'pump.fun', 'age_at_quote': 11.9, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395672, 'lat': 0.162}
+{'mint': 'DZNHrtLKLSaqVoc21wuC8YUCAw8wcAiyGbdQ75VKGXKo', 'launchpad': 'pump.fun', 'age_at_quote': 6.1, 'http': 429, 'route': None, 'ctx': None, 'lat': 0.18}
+{'mint': '8Ec14EdXksXBEHknpd9tvgXvFRvGvddD16HwGsXjpump', 'launchpad': 'pump.fun', 'age_at_quote': 7.1, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395687, 'lat': 0.166}
+{'mint': '7xgzne3MAXYYxJMrwph2pEFJYvMJRuJdYxyGsGwPUw6w', 'launchpad': None, 'age_at_quote': 9.4, 'http': 200, 'route': ['Pump.fun Amm'], 'ctx': 465395693, 'lat': 0.378}
+{'mint': 'BFJPCjdv1wznACKz7MUitVeeKbUL4vTqVMN9FjbApump', 'launchpad': 'pump.fun', 'age_at_quote': 11.5, 'http': 200, 'route': ['Manifest', 'Pump.fun'], 'ctx': 465395697, 'lat': 0.166}
+{'mint': '6rrfGGeTXkv7mr9jQv6bsmgx2BTpb8v8zqdowU4Apump', 'launchpad': 'pump.fun', 'age_at_quote': 4.8, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395717, 'lat': 0.15}
+{'mint': '3JGB3GK5bvC5XHoqzpewJ8y589xDFXvbJcsZp1sNpump', 'launchpad': 'pump.fun', 'age_at_quote': 6.8, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395723, 'lat': 0.162}
+{'mint': 'GoNHMEocbd2UUPXZwu1Qz1nPFhuz1YWwZMHVgCtPpump', 'launchpad': 'pump.fun', 'age_at_quote': 10.9, 'http': 429, 'route': None, 'ctx': None, 'lat': 0.177}
+{'mint': '8FDR4qLutA7t9JpVDTyrPtogQNYygPYhkYavT56upump', 'launchpad': 'pump.fun', 'age_at_quote': 14.1, 'http': 429, 'route': None, 'ctx': None, 'lat': 0.179}
+{'mint': '2zc9F8dPHD6V67h6H88BQpnbMfeSuKdcJR2FXQgUpump', 'launchpad': 'pump.fun', 'age_at_quote': 4.3, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395742, 'lat': 0.144}
+{'mint': '25zGqymenZroo5gYBjLooRseXjimSFNhYFd59FeL5off', 'launchpad': None, 'age_at_quote': 5.3, 'http': 200, 'route': ['Meteora DAMM v2'], 'ctx': 465395747, 'lat': 0.172}
+{'mint': '3APcaJhu82mPVB8KzjBQo8oBkd5vYJas6p8AawNHpump', 'launchpad': 'pump.fun', 'age_at_quote': 8.4, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395752, 'lat': 0.158}
+{'mint': 'G6afL77tAhupky7DaM7tYuegRB1m5WYbwtiyk48zpump', 'launchpad': 'pump.fun', 'age_at_quote': 10.5, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395756, 'lat': 0.154}
+{'mint': 'GPH5SUi2XiYa7QmMXNSDUi8QFzeYHrTgj55R8iFrpump', 'launchpad': 'pump.fun', 'age_at_quote': 2.8, 'http': 400, 'route': None, 'ctx': None, 'lat': 0.169}
+{'mint': '4RNrQT4eWhuSrF5kuPogRnTF5px3oVpmovAWKYmhpump', 'launchpad': 'pump.fun', 'age_at_quote': 4.8, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395773, 'lat': 0.152}
+{'mint': '9r9KrjsGmvanPc6rCJn7TUm8P1thePuBP9TDLHrfHcyz', 'launchpad': 'pump.fun', 'age_at_quote': 7.9, 'http': 200, 'route': ['GoonFi V2', 'TesseraV', 'Pump.fun'], 'ctx': 465395778, 'lat': 0.171}
+{'mint': '8YkDBgGcv3DBeBAycvfeyPnXH8o9pnDKrjFw5Rv5pump', 'launchpad': 'pump.fun', 'age_at_quote': 5.3, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395803, 'lat': 0.169}
+{'mint': '2LTfQnMA2Q8Afvi9MnS5izx5QDi1tXZiVBSeceGAj9QK', 'launchpad': 'pump.fun', 'age_at_quote': 6.5, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395809, 'lat': 0.235}
+{'mint': '9HMKDv3sJ6duTgfJqQzNLVwfSJCVeFUX7gwyM5YCpump', 'launchpad': 'pump.fun', 'age_at_quote': 8.6, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395814, 'lat': 0.166}
+{'mint': '5qRwoCLW29pfJyhp7MrwBJRcEqjeoZEuQCVF2Zjfpump', 'launchpad': 'pump.fun', 'age_at_quote': 9.6, 'http': 200, 'route': ['Raydium CLMM', 'Pump.fun'], 'ctx': 465395819, 'lat': 0.175}
+{'mint': 'r3uMFQkqAiiJnjvXYZiUBPDqYsoZVN2nE9PvYGrWmqX', 'launchpad': 'pump.fun', 'age_at_quote': 7.1, 'http': 200, 'route': ['GoonFi V2', 'Manifest', 'Pump.fun'], 'ctx': 465395829, 'lat': 0.383}
+{'mint': 'GFgMZeTmZy29b2VT3nSjmSXvo72kj48u31nZP1s6pump', 'launchpad': 'pump.fun', 'age_at_quote': 9.1, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395833, 'lat': 0.169}
+{'mint': 'AVP7SxtVc948CBMUtd6JCe1zwnke1BvFjTj8inDo5Z27', 'launchpad': 'pump.fun', 'age_at_quote': 11.2, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395839, 'lat': 0.391}
+{'mint': '4D5wJ2m39XUxixu9QxwYcKMJQCKUNjDHE81iUD1eydWb', 'launchpad': None, 'age_at_quote': 16.4, 'http': 200, 'route': ['Whirlpool'], 'ctx': 465395844, 'lat': 0.192}
+{'mint': '9Lw1MTucpT3dapQng4QNv8U2xnEKT3vWjgqBdSVApump', 'launchpad': 'pump.fun', 'age_at_quote': 6.6, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395855, 'lat': 0.397}
+{'mint': '7m8fbHMZNda6Xn9BPzLowHd85yNvkoMmeWKAPShjpump', 'launchpad': 'pump.fun', 'age_at_quote': 9.6, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395859, 'lat': 0.138}
+{'mint': '2eohF49RBcnRWaNTYCAL2L7tQnPrDUcZSLzZAGWBpump', 'launchpad': 'pump.fun', 'age_at_quote': 4.0, 'http': 200, 'route': ['GoonFi V2', 'GoonFi V2', 'Pump.fun'], 'ctx': 465395889, 'lat': 0.151}
+{'mint': '4gHFbTygrzLshQjecxutwqaMavQnMDN57esw9FZepump', 'launchpad': 'pump.fun', 'age_at_quote': 6.1, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395894, 'lat': 0.147}
+{'mint': 'Bg16U2KRsUv4JJyPxa4Qko87cuGMeABfG1FfEjhZpump', 'launchpad': 'pump.fun', 'age_at_quote': 8.2, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395899, 'lat': 0.173}
+{'mint': 'XWCUEF37bt4SgsgFyubzjwoXGdDn1NnWXnQz5giCut8', 'launchpad': 'pump.fun', 'age_at_quote': 4.6, 'http': 200, 'route': ['TesseraV', 'GoonFi V2', 'Pump.fun'], 'ctx': 465395915, 'lat': 0.184}
+{'mint': '98h6YARoE8apKAGxwT83Anbrc6tQAAC6aG51K6p1pump', 'launchpad': 'pump.fun', 'age_at_quote': 5.6, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395921, 'lat': 0.183}
+{'mint': '8eDZrCgqRGAU5snXVzHa2rWKiKRFjESrUshBw7W2pump', 'launchpad': 'pump.fun', 'age_at_quote': 6.7, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395926, 'lat': 0.174}
+{'mint': 'Dp2S24LYqqDeCRQaF7EqwB7Zsmzmzh8riKjCZA8W1aSJ', 'launchpad': 'pump.fun', 'age_at_quote': 8.8, 'http': 200, 'route': ['Whirlpool', 'Pump.fun'], 'ctx': 465395931, 'lat': 0.183}
+{'mint': 'FyPAW1f66UMWvDJ5czXfK9sUEzmdi58Fui8kNzKCpump', 'launchpad': 'pump.fun', 'age_at_quote': 10.9, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395937, 'lat': 0.172}
+{'mint': 'EKtkXxXsWH8nsRpavM1RfmpWk8uxnkdqokMkcwKhpump', 'launchpad': 'pump.fun', 'age_at_quote': 12.0, 'http': 200, 'route': ['Whirlpool', 'Pump.fun'], 'ctx': 465395942, 'lat': 0.172}
+{'mint': 'FRRo2U7CekyAJvic6724ihS6YUFQd9ANwUwjZprpQBeY', 'launchpad': 'stonkfun', 'age_at_quote': 7.3, 'http': 200, 'route': ['Raydium Launchlab'], 'ctx': 465395952, 'lat': 0.242}
+{'mint': 'ErGa7LXupiMQVzPcvKbFbeHqBBHFXcfZX298mRHTpump', 'launchpad': 'pump.fun', 'age_at_quote': 8.4, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395956, 'lat': 0.174}
+{'mint': 'DzqUjiJ4G4Ln7wZA9HE2HwGEuGYX8X7AHpK81MEvpump', 'launchpad': 'pump.fun', 'age_at_quote': 5.6, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395967, 'lat': 0.173}
+{'mint': 'YKUf6r2u2CybAH3KxQwzqSPaxWZRs1MKKCmmNE8U9e3', 'launchpad': 'pump.fun', 'age_at_quote': 3.9, 'http': 200, 'route': ['Whirlpool', 'Pump.fun'], 'ctx': 465395987, 'lat': 0.154}
+{'mint': '9XWU4rJGZWEkTakZcoLBi6R4jhyRtXV6ZMuKWQrkpump', 'launchpad': 'pump.fun', 'age_at_quote': 5.0, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395993, 'lat': 0.17}
+{'mint': 'bbDn91XpzcAtbqC9QLk8o5nXQcef28GoVwjMPHjpump', 'launchpad': 'pump.fun', 'age_at_quote': 8.1, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465395997, 'lat': 0.165}
+{'mint': 'DcB4ZMx6jd9nJmCUvq6N8EbH3yruQSUTYbYsbCtupump', 'launchpad': 'pump.fun', 'age_at_quote': 9.2, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396003, 'lat': 0.165}
+{'mint': '7U2nJYsGKBKqobmLSCrTW6rb3WEjqwHk1HZYzETZpump', 'launchpad': 'pump.fun', 'age_at_quote': 11.3, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396008, 'lat': 0.153}
+{'mint': 'FcPFPnsMxnpWbvo7zmn47FCRWZgwaQS4DRgjWU8SiFMA', 'launchpad': None, 'age_at_quote': 7.6, 'http': 200, 'route': ['Raydium CP'], 'ctx': 465396019, 'lat': 0.183}
+{'mint': '9rj8PGUjoqQ6S9RoBVaN86PihqqzqC6iBLcmS7N7pump', 'launchpad': 'pump.fun', 'age_at_quote': 9.6, 'http': 429, 'route': None, 'ctx': None, 'lat': 0.158}
+{'mint': '5DioA2e1qXbM7xrn6cXDkQibTpG9K3qqT9i4QUopump', 'launchpad': 'pump.fun', 'age_at_quote': 10.7, 'http': 200, 'route': ['Manifest', 'Pump.fun'], 'ctx': 465396029, 'lat': 0.15}
+{'mint': '2GDf3sDzsBM7KDvBSpEM7jT8ArpDCQTA7bBh3kfZrdeM', 'launchpad': None, 'age_at_quote': 11.8, 'http': 200, 'route': ['Pump.fun Amm'], 'ctx': 465396033, 'lat': 0.166}
+{'mint': 'CFhNWfvT2m8YSv5HqLBdhE373PxqHDUECVR429F8JUTZ', 'launchpad': 'pump.fun', 'age_at_quote': 5.0, 'http': 200, 'route': ['Manifest', 'Pump.fun'], 'ctx': 465396043, 'lat': 0.169}
+{'mint': 'WN5NEwaDX2s7QUJfpNsYvVQtFZ8DLDVRberVAFopump', 'launchpad': 'pump.fun', 'age_at_quote': 2.3, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396058, 'lat': 0.163}
+{'mint': '9fNC3fpqbBZpZRhY4bqweXHP9WT11QyVW2rF1kfypump', 'launchpad': 'pump.fun', 'age_at_quote': 3.4, 'http': 200, 'route': ['GoonFi V2', 'Manifest', 'Pump.fun'], 'ctx': 465396064, 'lat': 0.171}
+{'mint': '3ryDpyfpKAw9y8Tp3dmfdtWMHj8cekU59q5Dbuatpump', 'launchpad': 'pump.fun', 'age_at_quote': 4.5, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396068, 'lat': 0.153}
+{'mint': 'FEZng2asYGnAQzvnZmJ69gxa251ZreDBgb4Fif96pump', 'launchpad': 'pump.fun', 'age_at_quote': 6.6, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396073, 'lat': 0.186}
+{'mint': '9cFQigC9TgB1eXfkwuNgsqPHPJ2DwZ2L3ukyAueR4BpX', 'launchpad': 'pump.fun', 'age_at_quote': 7.7, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396078, 'lat': 0.163}
+{'mint': 'DjuBCfAnZrk3yvqt5uLGPhsVKrDstgim39b2PNj7YCMV', 'launchpad': 'stonkfun', 'age_at_quote': 9.8, 'http': 200, 'route': ['BisonFi', 'Whirlpool', 'Raydium Launchlab'], 'ctx': 465396084, 'lat': 0.157}
+{'mint': '6XV7iDL9WqcT79PS24pQtbJp1gEbwCSVZHZytVjrpf2B', 'launchpad': 'pump.fun', 'age_at_quote': 11.9, 'http': 200, 'route': ['BisonFi', 'TesseraV', 'Pump.fun'], 'ctx': 465396089, 'lat': 0.17}
+{'mint': '2wtWcSZAx9zutCdwgpkDXARpxaokCqNE9ngriXXo1cfV', 'launchpad': 'pump.fun', 'age_at_quote': 13.0, 'http': 200, 'route': ['TesseraV', 'GoonFi V2', 'Pump.fun'], 'ctx': 465396094, 'lat': 0.156}
+{'mint': 'J3hNMppEGQvdG73ZGEsPbsR3TbqhftjNr5DZoyrkpump', 'launchpad': 'pump.fun', 'age_at_quote': 15.3, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396101, 'lat': 0.381}
+{'mint': 'HGNrRHbipQAPdqox239NiqdyTb8puq1PccGzaZuopump', 'launchpad': 'pump.fun', 'age_at_quote': 16.4, 'http': 429, 'route': None, 'ctx': None, 'lat': 0.147}
+{'mint': 'DzhvH3fPK6GzWGuU6u2d1S63Q9r2ELmkWCfqB523pump', 'launchpad': 'pump.fun', 'age_at_quote': 17.5, 'http': 200, 'route': ['Manifest', 'Pump.fun'], 'ctx': 465396111, 'lat': 0.327}
+{'mint': '9b467i8HSKG5kVFb43BaJVHPgzPBQ8a2FoC2sZKW8kWY', 'launchpad': 'pump.fun', 'age_at_quote': 18.5, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396115, 'lat': 0.139}
+{'mint': '42qKoGmEPTRJsa5jWrYwpydL8RkBwMvg2ykYVoerpump', 'launchpad': 'pump.fun', 'age_at_quote': 19.5, 'http': 200, 'route': ['PancakeSwap', 'Pump.fun Amm'], 'ctx': 465396120, 'lat': 0.137}
+{'mint': 'DEaFcmpKx7zEwEqayq32Cb6BxroTg8J5BY6NG2TPbYFr', 'launchpad': 'pump.fun', 'age_at_quote': 5.1, 'http': 200, 'route': ['PancakeSwap', 'Pump.fun'], 'ctx': 465396144, 'lat': 0.192}
+{'mint': 'EPZGy65L5a9Q5fstunBQGbS7uHYTMsGuaRqsCyDApump', 'launchpad': 'pump.fun', 'age_at_quote': 10.3, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396149, 'lat': 0.206}
+{'mint': '6DoHbxdvaKwA7CkLTXj964YD2aLmPa1FzwjHJz5qCVCy', 'launchpad': 'pump.fun', 'age_at_quote': 11.3, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396154, 'lat': 0.171}
+{'mint': 'F5PFR87b78BwDjjVqcK8V5cxifoKTYHbU41Edn83pump', 'launchpad': 'pump.fun', 'age_at_quote': 14.4, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396160, 'lat': 0.183}
+{'mint': 'Gv4xeVvG82fgNvpBbjB479kNwHAWYdCYwWMHti3YJbZD', 'launchpad': 'stonkfun', 'age_at_quote': 16.5, 'http': 200, 'route': ['Raydium Launchlab'], 'ctx': 465396165, 'lat': 0.177}
+{'mint': '9nP3JymjqXdvT3JfTSaMs88j4dG6K2jCJQ3Do8Je9jbA', 'launchpad': 'pump.fun', 'age_at_quote': 18.6, 'http': 200, 'route': ['TesseraV', 'Whirlpool', 'Pump.fun'], 'ctx': 465396170, 'lat': 0.147}
+{'mint': '9Y146AVtf8DD4X1vra4DeB1UR3DFUgNi6Lj6qAptpump', 'launchpad': 'pump.fun', 'age_at_quote': 4.9, 'http': 429, 'route': None, 'ctx': None, 'lat': 0.155}
+{'mint': '3uqXD46mdVctE12GyijafVT7GHfU8zvNJQcKUAN2pump', 'launchpad': 'pump.fun', 'age_at_quote': 5.9, 'http': 400, 'route': None, 'ctx': None, 'lat': 0.172}
+{'mint': 'ARdH41Z5wDKdEma5V1His659C5XzQX3MDKyuLxywA9k1', 'launchpad': 'pump.fun', 'age_at_quote': 8.1, 'http': 200, 'route': ['Whirlpool', 'TesseraV', 'Pump.fun'], 'ctx': 465396193, 'lat': 0.228}
+{'mint': '5bEKxY2BUHsEtXg9LdtzCABxaUAeAntZ5nk151Xe1PyD', 'launchpad': 'pump.fun', 'age_at_quote': 9.2, 'http': 200, 'route': ['Meteora DLMM', 'Pump.fun'], 'ctx': 465396197, 'lat': 0.17}
+{'mint': '7sJhjKyt8zJDLwWaUfCQw7ZswcRoVKu4gs5Z8q22czw4', 'launchpad': 'pump.fun', 'age_at_quote': 11.2, 'http': 200, 'route': ['Meteora DLMM', 'Pump.fun'], 'ctx': 465396201, 'lat': 0.187}
+{'mint': '6ivB3yh3Hxd2DC8zEj5aLJ51x7QgF8LgR37hYKQtpump', 'launchpad': 'pump.fun', 'age_at_quote': 12.3, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396207, 'lat': 0.146}
+{'mint': '5hKFumhLuoUQfpDBpisgXcGPkoQWh2nVwyyTyEhvpump', 'launchpad': 'pump.fun', 'age_at_quote': 13.4, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396212, 'lat': 0.141}
+{'mint': 'H4Lt5T4hjkhsy1fc7v9HvucwY4puxrrJQFSnz3sapump', 'launchpad': 'pump.fun', 'age_at_quote': 15.5, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396217, 'lat': 0.18}
+{'mint': 'EXVDmtUQ4zUYs7bGshPekznDCTTQhfHX2t8U8UJM37VV', 'launchpad': 'pump.fun', 'age_at_quote': 16.6, 'http': 200, 'route': ['BisonFi', 'Manifest', 'Pump.fun'], 'ctx': 465396223, 'lat': 0.147}
+{'mint': '39uvjwxpGRWwZakxpJb4xQmDAYNowkgNK9Tgra2qHwHH', 'launchpad': 'pump.fun', 'age_at_quote': 2.9, 'http': 200, 'route': ['Manifest', 'Pump.fun'], 'ctx': 465396234, 'lat': 0.187}
+{'mint': '9R7pU8uL2Ru3iGxVJY4NXzWmrSPxNoqujpJyHZ5Mpump', 'launchpad': 'pump.fun', 'age_at_quote': 5.9, 'http': 200, 'route': ['Meteora DLMM', 'Pump.fun'], 'ctx': 465396238, 'lat': 0.169}
+{'mint': 'DPuNTEzGZ6mrBsvtU7v3hMrsDVmhH8yPG9AMqwAPpump', 'launchpad': 'pump.fun', 'age_at_quote': 9.0, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396242, 'lat': 0.191}
+{'mint': '5Uev84SzzAMJhmQqPqCE6vR9pTV6TkzrJMXcumYepump', 'launchpad': 'pump.fun', 'age_at_quote': 10.1, 'http': 200, 'route': ['Manifest', 'Pump.fun'], 'ctx': 465396246, 'lat': 0.149}
+{'mint': '2TGzNC1WWeBuzq67v7a7GWQ5jAc2EzbsBi83n3rrNCeK', 'launchpad': 'pump.fun', 'age_at_quote': 11.2, 'http': 200, 'route': ['Meteora DLMM', 'Pump.fun'], 'ctx': 465396251, 'lat': 0.165}
+{'mint': '9FbTG1gB7LCFMay1SSGGDvBLXmFJLV7WUCa7mDzcJz5z', 'launchpad': 'pump.fun', 'age_at_quote': 13.3, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396256, 'lat': 0.167}
+{'mint': 'FVoNX6AXmJKs17Yq2uCaKs6j9qhdPGAZZCCnSmScpump', 'launchpad': 'pump.fun', 'age_at_quote': 17.4, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396261, 'lat': 0.15}
+{'mint': '8wM321JLoBfFHHp5PTYkj5DQCivzVCvs5Kjyxi9cpump', 'launchpad': 'pump.fun', 'age_at_quote': 7.6, 'http': 200, 'route': ['Meteora DLMM', 'Pump.fun'], 'ctx': 465396271, 'lat': 0.161}
+{'mint': 'EVjyQPyETtGsBz2X1RZj4LnyEyrucD9E9M5Fq6vxS1xW', 'launchpad': None, 'age_at_quote': 9.7, 'http': 200, 'route': ['Meteora DAMM v2'], 'ctx': 465396276, 'lat': 0.163}
+{'mint': 'Ug3UZpCZR9w2g9PVcUWthFwjpxeVVE8J33YhueV8vDp', 'launchpad': 'pump.fun', 'age_at_quote': 12.8, 'http': 200, 'route': ['Raydium CLMM', 'Pump.fun'], 'ctx': 465396282, 'lat': 0.147}
+{'mint': '4yjvoVxMhzqasrNDi2jpskNSvNQn1uddNzp38reGMdqR', 'launchpad': 'met-dbc', 'age_at_quote': 13.9, 'http': 200, 'route': ['Dynamic Bonding Curve'], 'ctx': 465396286, 'lat': 0.167}
+{'mint': 'BEzf8WdcFCVn6mg2sLdM4UKur1w2biLiWNKb9PRdURCy', 'launchpad': 'met-dbc', 'age_at_quote': 6.2, 'http': 429, 'route': None, 'ctx': None, 'lat': 0.172}
+{'mint': '7BCJXaBExnbFMinQu4UfCDtnNzKSvBQuc4FZWz9YqcFV', 'launchpad': 'pump.fun', 'age_at_quote': 7.4, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396302, 'lat': 0.364}
+{'mint': '3WHhRaQrzVHKJd68w5ULTfdUdCsCnx1w6417ST7vpump', 'launchpad': 'pump.fun', 'age_at_quote': 8.8, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396307, 'lat': 0.415}
+{'mint': 'HYNtMqiMsvkaUrCPHK5zxtzCoJRHnvTFCQAbLP4Zpump', 'launchpad': 'pump.fun', 'age_at_quote': 11.7, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396311, 'lat': 0.203}
+{'mint': 'H1GT3fJNtANWtHoZPsK4VVfckZkTK2bjcRPbabUWCPVa', 'launchpad': None, 'age_at_quote': 15.6, 'http': 400, 'route': None, 'ctx': None, 'lat': 0.19}
+{'mint': '7nyEMb3pbaX8rofHb6BeMdmBL448n6cPBHbBxw6Gpump', 'launchpad': 'pump.fun', 'age_at_quote': 16.7, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396321, 'lat': 0.165}
+{'mint': '5RkoDit4E68C2xay776UAxcGjaR895W22KskThkM4mdm', 'launchpad': None, 'age_at_quote': 17.7, 'http': 200, 'route': ['Meteora DAMM v2'], 'ctx': 465396327, 'lat': 0.179}
+{'mint': '22nxDC7RRonaN2rPNATjqQaWh1BG6KMd3cm6a2azuNpr', 'launchpad': 'pump.fun', 'age_at_quote': 18.8, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396332, 'lat': 0.165}
+{'mint': '8wPieQuiqKa7PSZKn4MxFthBLrytAsmDQMoxgaNGpump', 'launchpad': 'pump.fun', 'age_at_quote': 8.0, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396343, 'lat': 0.151}
+{'mint': '8nxq883obWohbrQWZMzcgqDqU1T4q1F3aa1XmgSmpump', 'launchpad': 'pump.fun', 'age_at_quote': 5.3, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396353, 'lat': 0.175}
+{'mint': 'Dsx9gcHsL1PWW6frUVZTgqVtu3soZai7cyJyQGK36n8M', 'launchpad': 'pump.fun', 'age_at_quote': 3.6, 'http': 200, 'route': ['PancakeSwap', 'Pump.fun'], 'ctx': 465396369, 'lat': 0.173}
+{'mint': 'DbHAy5FBwufVZyQjxneTC5VegJRfihZ1G4REnzd1zoNA', 'launchpad': 'pump.fun', 'age_at_quote': 4.6, 'http': 200, 'route': ['PancakeSwap', 'Pump.fun'], 'ctx': 465396375, 'lat': 0.168}
+{'mint': 'DFMRESzphX29E6PUbynChbRqQ9bVadxLzvKDMYM4pump', 'launchpad': 'pump.fun', 'age_at_quote': 6.7, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396380, 'lat': 0.177}
+{'mint': 'Hoy9FRJiyDDgPqnwVbVUbowAkjvDgWdUcFto1uEJA8vn', 'launchpad': 'pump.fun', 'age_at_quote': 8.8, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396385, 'lat': 0.171}
+{'mint': 'C5hmZps6qPMXAiuFfgHkymiugdtSmGLAKCKan8kBpump', 'launchpad': 'pump.fun', 'age_at_quote': 9.9, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396391, 'lat': 0.177}
+{'mint': '7NNZyZuBApHii5CfLZw7oVcrZP8GN7vVBLem6sJcX4Ly', 'launchpad': 'pump.fun', 'age_at_quote': 11.0, 'http': 200, 'route': ['Whirlpool', 'GoonFi V2', 'Pump.fun'], 'ctx': 465396396, 'lat': 0.146}
+{'mint': '3xt9Tr3ByR3mSdPpCuz3wTdGxpgwoF3uUdcdw3aEpump', 'launchpad': 'pump.fun', 'age_at_quote': 12.2, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396402, 'lat': 0.22}
+{'mint': '29Hp7yfYYkUa6geXnTUTQPbX8cXrTRh3irPvrsnnpump', 'launchpad': 'pump.fun', 'age_at_quote': 13.3, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396407, 'lat': 0.151}
+{'mint': 'B1iuMHkUeSk5nb8PAW7qdGTF2YrPmRMLntXKL7ecRC4F', 'launchpad': 'pump.fun', 'age_at_quote': 15.3, 'http': 200, 'route': ['TesseraV', 'GoonFi V2', 'Pump.fun'], 'ctx': 465396412, 'lat': 0.151}
+{'mint': '9EhcMGUfzoUaw8JJjWiXPq8iNBzmn5bWVhsnkrW8pump', 'launchpad': 'pump.fun', 'age_at_quote': 16.4, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396417, 'lat': 0.169}
+{'mint': '96SAtxZahZUhvPbmi4cQFPLRbdZ1Kj7sAvuDgEZppump', 'launchpad': 'pump.fun', 'age_at_quote': 17.5, 'http': 200, 'route': ['Meteora DLMM', 'Pump.fun'], 'ctx': 465396421, 'lat': 0.147}
+{'mint': 'G2bW3zsQ4GReuASJt4ESf4r1J1zmUbqyttVW6DEtpump', 'launchpad': 'pump.fun', 'age_at_quote': 19.6, 'http': 200, 'route': ['Pump.fun'], 'ctx': 465396426, 'lat': 0.175}

@@ -4,10 +4,20 @@ Wallet `Hn6vBWWySnxA8XjxRQDEmZEuH5QL7KqosnJGcLcUzFJ6` (pump.fun username **Rafin
 Found on the copy-trading app's leaderboard the owner pasted on Oct 31 (+$135.7k realized over 30 days, ROI +131%,
 121 trades, 30 s holds); resolved to its wallet through its pump.fun profile page.
 
-**Status (Nov 3): qualified by the backtest on all its venues; not run yet.** The copier (`rugsnipe-long copy`,
+**Status (Nov 4): qualified, not run yet; how fast the copier lands decides it.** The copier (`rugsnipe-long copy`,
 [`../docs/21-copier.md`](../docs/21-copier.md)) trades every venue it uses, through Jupiter. Its `[[target]]` is in
-[`../config/copier.example.toml`](../config/copier.example.toml): **1 SOL, one position at a time** (the 4 SOL plan,
-[`../08-new-box/`](../08-new-box/README.md)).
+[`../config/copier.example.toml`](../config/copier.example.toml): **its buys of 5.0 SOL or more, 1 SOL, one position at
+a time** (the 4 SOL plan, [`../08-new-box/`](../08-new-box/README.md)).
+
+**Nov 4 check** ([`04-check-nov04/`](04-check-nov04/README.md)):
+
+- **Still trading:** +57.0 SOL by its own fills on 12 coins since Nov 1.
+- **The floor moves from 5.1 to 5.0 SOL:** the old floor was picking its 5 SOL buys by its tip.
+- **Our landing decides it.** Out of sample (Oct 4-25), with our buy at the end of the slot after its buy, it makes
+  +11.48 SOL on 45 trades, +3.32 without the best 2. Two slots after: +5.66, and −2.33 without the best 2.
+  The copier waits 0.35 s for Jupiter before it sends, so the first live hours must show where it lands.
+- **Nov 1-4 was about flat:** 8 copies, +0.18 at slot +1.
+- **The copier's live code:** three bugs found by a review are fixed.
 
 Everything about this wallet is in this folder; the rest of the repo is wallet 4 (folders `01`-`07`) and the shared
 code. It was studied in a separate private repo (copy3) and moved here on Nov 3; the owner chose to keep this repo

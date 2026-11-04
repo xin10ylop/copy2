@@ -49,12 +49,15 @@ cools down for 10 s. Value polls give way during the cool-down; buys and sells r
 
 | Target | Rule | Stake |
 |---|---|---|
-| `rafinha`: Rafinhaaaaaa (`rafinhaaaaaa/`) | its 5.1+ SOL buys, any venue; 300 s after our buy or right behind its first sale; no take profit, no stop, no premium cap | **1 SOL, 1 open** |
+| `rafinha`: Rafinhaaaaaa (`rafinhaaaaaa/`) | its 5.0+ SOL buys (its 5 and 10 SOL swaps, whatever its tip; Nov 4), any venue; 300 s after our buy or right behind its first sale; no take profit, no stop, no premium cap | **1 SOL, 1 open** |
 | `w4b`: wallet 4's part B | **off** (commented out). Its 1.45+ SOL buys of `pump_unroutable` coins; take profit 2.0x, stop 0.8x of our own price, 1790 s; not behind its sale, no premium cap | 0.1 SOL, 3 open, if turned on |
 
 - **More wallets:** one more `[[target]]` each, from that wallet's own study.
-- **`rafinha`:** its copies rarely overlap (3 of its 37 buys of 5.1+ SOL over Oct 4-25 came within another copy's
-  300 s), so one position at a time loses almost nothing (`rafinhaaaaaa/03-backtests/README.md` §4).
+- **`rafinha`:** no copy of its 5.0+ buys overlaps another once ours sells behind its first sale (Oct 4 - Nov 4), so
+  one position at a time loses nothing. The floor was 5.1 until Nov 4. Its 5 SOL swaps read 5.05 with its 0.045 SOL
+  tip and 5.10 with its 0.1 tip, so 5.1 was a tip filter (`rafinhaaaaaa/04-check-nov04/`).
+- **Its result depends on where the copier lands** (`rafinhaaaaaa/04-check-nov04/`, the landing table): at the end of
+  the slot after its buy it holds; two slots after, it is luck. The journal's `lag_slots` shows where it lands.
 - **`w4b`:** runs exactly the model that scored this route (§6): exits on our own price, no premium cap, not
   following its sale. It makes about nothing, so it stays off.
 - `max_premium` exists for a target whose levels are on its price (`exit_basis = "its"`, the long copy's way). There, a

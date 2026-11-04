@@ -54,16 +54,18 @@ state = "/var/lib/rugsnipe-copier/state.json"
 # touch this file: no new buys (exits continue)
 kill_file = "/var/lib/rugsnipe-copier/KILL"
 
-# Rafinhaaaaaa (rafinhaaaaaa/): its buys of 5.1 SOL or more, valued as its whole SOL change (fees and tip included: its
-# tiers read about 3.0 / 5.0 / 5.1 / 10.1, so 5.1 leaves its 5.0 tier out); any venue; sold 300 s after our buy or right
+# Rafinhaaaaaa (rafinhaaaaaa/): its buys of 5.0 SOL or more, valued as its whole SOL change (fees and tip included). Its
+# swaps are 3, 5 or 10 SOL; with its 0.045 SOL tip a 5 SOL swap reads 5.05, with its 0.1 tip 5.10, so the old 5.1 floor
+# kept or dropped its 5 SOL buys by its tip (Nov 4: rafinhaaaaaa/04-check-nov04/); any venue; sold 300 s after our buy or right
 # behind its own first sale; no take profit, no stop, no premium cap (the backtest had none). At 1 SOL, out of sample
-# Oct 4-25: +14.91 on 35 (+6.75 without the best 2), rafinhaaaaaa/03-backtests/README.md section 4. Its copies rarely
-# overlap (3 of 37 within our 300 s), so one position at a time.
+# Oct 4-25, our buy at the end of the slot after its buy: +11.48 on 45 (+3.32 without the best 2); two slots after:
+# +5.66 (-2.33). Where the copier lands decides it (rafinhaaaaaa/04-check-nov04/). No copy overlaps another once
+# ours sells behind its first sale, so one position at a time.
 [[target]]
 name = "rafinha"
 wallet = "Hn6vBWWySnxA8XjxRQDEmZEuH5QL7KqosnJGcLcUzFJ6"
 coins = "any"
-min_sol = 5.1
+min_sol = 5.0
 stake_sol = 1.0
 max_hold_s = 300
 follow_sell = true

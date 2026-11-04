@@ -1776,7 +1776,7 @@ max_hold_s = 1790
         assert_eq!(c.mode, Mode::Log);
         assert_eq!(c.targets.len(), 1, "part B is commented out");
         let r = &c.targets[0];
-        assert_eq!((r.name.as_str(), r.coins, r.min_sol, r.max_hold_s), ("rafinha", Coins::Any, 5.1, 300));
+        assert_eq!((r.name.as_str(), r.coins, r.min_sol, r.max_hold_s), ("rafinha", Coins::Any, 5.0, 300));
         assert_eq!((r.stake(5_100_000_000), r.max_open, r.follow_sell), (1_000_000_000, 1, true));
         assert_eq!((r.take_profit, r.stop, r.max_premium), (0.0, 0.0, 0.0));
         // part B's block, uncommented, is a valid target with the scored exits
