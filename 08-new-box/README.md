@@ -26,6 +26,7 @@ trading. Each step is one block to paste, and it says what it should print. Time
 | Rafinhaaaaaa, 1 SOL, Oct 4-25 (out of sample) | +14.91 on 35 | +0.71 | +0.32 |
 | Rafinhaaaaaa, 1 SOL, Oct 25 - Nov 1 | +16.45 on 19 | +2.35 | +0.96 |
 | Part A, 1 SOL, 2 open, Oct 19-27 (`config/long.example.toml`, the `max_open` grid) | +6.5 and +8.1 over 9 days | +1.6 | — |
+| Part A, 1 SOL, 2 open, Oct 29 - Nov 4 (5.9 days, the model, `../analysis/research/2026-10-31/since_stop/`) | +1.79 with the 0.8 stop; **+6.92 with no stop** | +0.3; **+1.2** | about −0.2 as built; +2.2 with no stop (by half) |
 | Part A after wallet 4 changed on Oct 27 | −2.02 on Oct 27-28 (4 open, `../07-rework-2026-10-28/`); live +1.345 on 16, Oct 28-29 | about 0 to +1 | — |
 
 Expect the low half: part A's flow has halved since Oct 27 (7-18 copyable buys a day,
@@ -133,8 +134,8 @@ rm ~/long-wallet.json ~/copier-wallet.json
 ## 7. The plan's settings, then paper for a day (on the box)
 
 ```
-sudo sed -i -E 's/^max_open[[:space:]]*=.*/max_open = 2/; s/^daily_stop_sol[[:space:]]*=.*/daily_stop_sol = 1.0/; s/^cu_limit[[:space:]]*=.*/cu_limit = 200000/; s/^follow_its_sell[[:space:]]*=.*/follow_its_sell = false/' /etc/rugsnipe/long.toml
-sudo grep -nE '^(mode|stake_sol|max_open|daily_stop_sol|cu_limit|follow_its_sell) ' /etc/rugsnipe/long.toml
+sudo sed -i -E 's/^max_open[[:space:]]*=.*/max_open = 2/; s/^daily_stop_sol[[:space:]]*=.*/daily_stop_sol = 1.0/; s/^cu_limit[[:space:]]*=.*/cu_limit = 200000/; s/^follow_its_sell[[:space:]]*=.*/follow_its_sell = false/; s/^stop[[:space:]]*=.*/stop = 0.0/' /etc/rugsnipe/long.toml
+sudo grep -nE '^(mode|stake_sol|max_open|daily_stop_sol|cu_limit|follow_its_sell|stop) ' /etc/rugsnipe/long.toml
 sudo grep -nE '^(mode|daily_stop_sol|senders|jito_tip_lamports|name|min_sol|stake_sol|max_open) ' /etc/rugsnipe/copier.toml
 sudo systemctl enable --now rugsnipe-long rugsnipe-copier
 sleep 20; sudo journalctl -u rugsnipe-long -u rugsnipe-copier -n 12 --no-pager
@@ -150,8 +151,12 @@ sleep 20; sudo journalctl -u rugsnipe-long -u rugsnipe-copier -n 12 --no-pager
 | `daily_stop_sol` | `1.0` |
 | `cu_limit` | `200000` |
 | `follow_its_sell` | `false` |
+| `stop` | `0.0` (no stop, since Nov 4) |
 
-`cu_limit` and `follow_its_sell` are as `fra-long` ran them.
+`cu_limit` and `follow_its_sell` are as `fra-long` ran them. **`stop = 0.0`** turns the 0.8 stop off (it needs the
+code from Nov 4, `stop = 0 means no stop`): since Oct 30 wallet 4 sells most of its big buys early, and the stop sold
+into its sale. Oct 29 - Nov 4 at 1 SOL × 2, landing 4 trades behind it: +1.79 SOL with the stop, +6.92 without;
+better at every landing and in both halves, neutral on Oct 19-28 (`../analysis/research/2026-10-31/since_stop/`).
 
 **The copier config** (second grep):
 

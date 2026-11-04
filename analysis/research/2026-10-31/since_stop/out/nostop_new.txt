@@ -5,3 +5,9 @@ landing 4  as built (stop 0.8)  total  +1.79  first half  +0.46 ( -1.15)  second
 landing 4  no stop              total  +6.26  first half  +1.27 ( -0.34)  second half  +4.99 ( +2.64)  worst trades [-0.79, -0.76, -0.66]  worst day -1.30
 landing 7  as built (stop 0.8)  total  -0.21  first half  -0.07 ( -1.61)  second half  -0.14 ( -2.01)  worst trades [-0.41, -0.41, -0.39]  worst day -1.73
 landing 7  no stop              total  +3.91  first half  -0.00 ( -1.80)  second half  +3.92 ( +1.71)  worst trades [-0.8, -0.67, -0.64]  worst day -1.94
+max_open 2, landing 2, stop 0.8: total  +3.14 on 92  first half  +2.12 ( +0.46)  second half  +1.02 ( -0.82)
+max_open 2, landing 2, no stop : total  +7.68 on 90  first half  +2.89 ( +1.22)  second half  +4.79 ( +2.56)
+max_open 2, landing 4, stop 0.8: total  +1.79 on 92  first half  +0.46 ( -1.15)  second half  +1.33 ( -0.70)
+max_open 2, landing 4, no stop : total  +6.92 on 90  first half  +1.93 ( +0.32)  second half  +4.99 ( +2.64)
+max_open 2, landing 7, stop 0.8: total  -0.21 on 92  first half  -0.07 ( -1.61)  second half  -0.14 ( -2.01)
+max_open 2, landing 7, no stop : total  +4.59 on 91  first half  +0.67 ( -1.13)  second half  +3.92 ( +1.71)

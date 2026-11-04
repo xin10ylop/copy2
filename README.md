@@ -27,6 +27,12 @@ branch `claude/magical-einstein-k78idp`.
 
 It is prepared, not started: paper first, then the first live hours at 0.1 / 0.3 SOL.
 
+**Nov 4, wallet 4 since the box died** ([`analysis/research/2026-10-31/since_stop/`](analysis/research/2026-10-31/since_stop/README.md)):
+it changed its rule again (the 30-minute timer is gone, early sales on two thirds of its big buys), took 510 SOL of
+profit on Oct 30 and kept trading (balance 114 → 393 SOL by Nov 4). The long copy as built would have made +1.79 SOL in
+5.9 days at 1 SOL × 2, about zero without the best 2; **with no stop, +6.92**, better at every landing and in both
+halves. The plan's long config now sets `stop = 0.0` (the code allows it since Nov 4).
+
 ## Wallet 4
 
 ### Where things stood (Oct 28, evening)
