@@ -1,0 +1,24 @@
+3053 other-quote buys; at launch (+0/+1) 3028
+class  launch  1.45+  count  its net
+  A  False  False      1     -0.10
+  A  False  True       3     +1.37
+  A  True   False    257    +39.71
+  A  True   True     189    +51.01
+  B  False  False      2     -0.05
+  B  False  True       2     +0.05
+  B  True   False    153     +8.91
+  B  True   True      99    +29.24
+  C  False  False      1     -0.05
+  C  True   False    114     +6.36
+  C  True   True      29    +18.38
+  E  False  False     13     -3.05
+  E  False  True       3     +1.76
+  E  True   False   1816     +8.18
+  E  True   True     371   +116.30
+routable.json class (its own route) vs quote class: [(('A', 'A'), 179), (('B', 'B'), 91), (('C', 'C'), 20), (('D', 'A'), 3), (('E', 'E'), 305)]
+routable or not agrees on 598 of 598
+routable launch picks by day: [('10-19', 98), ('10-20', 78), ('10-21', 101), ('10-22', 111), ('10-23', 95), ('10-24', 162), ('10-25', 129), ('10-26', 66), ('10-27', 1)]
+  of which 1.45+: [('10-19', 36), ('10-20', 34), ('10-21', 38), ('10-22', 48), ('10-23', 45), ('10-24', 37), ('10-25', 59), ('10-26', 20)]
+quotes of routable launch picks: [(('C5xph2yL', 'B'), 235), (('NTRNDMqQ', 'A'), 148), (('3NZ9JMVB', 'C'), 143), (('CSocnzcR', 'A'), 54), (('H74CYmXg', 'A'), 27), (('EwX2T1p2', 'A'), 11), (('3LPTanzy', 'A'), 9), (('Ce2gx9KG', 'A'), 8), (('8idEA8Qo', 'A'), 8), (('6KEiPuRt', 'A'), 6), (('SAtoZGJk', 'B'), 5), (('5tCju6YN', 'A'), 5), (('Ai66LHZG', 'A'), 5), (('6FhVPctY', 'A'), 5), (('CMo7GfUh', 'A'), 5), (('7SL2VnfY', 'A'), 5), (('F9Yz51QZ', 'A'), 5), (('2wMTr4Zt', 'A'), 5), (('7VertkgF', 'A'), 4), (('8hnMfF4X', 'A'), 4)]
+quote count among routable picks: 128
+buy size tiers (routable launch): [(0.2, 19), (0.3, 12), (0.4, 4), (0.5, 4), (0.6, 6), (0.7, 28), (0.8, 48), (0.9, 166), (1.0, 36), (1.1, 119), (1.2, 27), (1.3, 25), (1.4, 30), (1.5, 317)]

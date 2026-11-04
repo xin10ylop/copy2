@@ -1,8 +1,19 @@
-# CLAUDE.md: guide for agents working in copy2 (wallet 4)
+# CLAUDE.md: guide for agents working in copy2 (wallet 4, Rafinhaaaaaa)
 
 ## What this repo is
 
-The wallet-4 half of the rugsnipe project. Wallet 4 = `H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg`.
+Two copied wallets, kept apart, and the bots that copy them:
+- **Wallet 4** = `H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg`: folders `01`-`07`, `docs/20`, most of `analysis/research/`.
+- **Rafinhaaaaaa** = `Hn6vBWWySnxA8XjxRQDEmZEuH5QL7KqosnJGcLcUzFJ6`: everything in `rafinhaaaaaa/` (moved in from the
+  private copy3 on Nov 3; the owner chose to keep this repo public, so its wallet and rule are public). It is copied by
+  **the copier** (`rugsnipe-long copy`, `crates/rugsnipe-long/src/copier.rs` + `jup.rs`, `docs/21-copier.md`,
+  `config/copier.example.toml`, unit `rugsnipe-copier`), which trades any venue through Jupiter.
+- **The next box** (`08-new-box/`): both bots, 4 SOL. The long copy runs wallet 4's part A at 1 SOL with 2 open. The
+  copier runs Rafinhaaaaaa at 1 SOL with 1 open. Prepared Nov 3, not started; the owner says when to deploy live.
+- Keep them apart: a wallet's study, docs and data go in its own folder; shared code stays in `crates/`, `deploy/`,
+  `config/`, `docs/`.
+
+Wallet 4's strategies:
 - **Strategy A, the long copy:** `crates/rugsnipe-long`. **Stopped on Oct 29 ~13:40 UTC: Cherry deleted the hourly
   Frankfurt box (`fra-long`) for a zero balance, and the wallet's only key file with it; 4.5 SOL at `E7KX1hcM...` are
   lost** (`03-strategy-A-long-copy/deploy-frankfurt.md`, top). It had run live Oct 28 18:34 to Oct 29 11:52 UTC at 0.1,
@@ -18,7 +29,8 @@ on. The original project docs are in `docs/` (00-08 background, 19, 20). The sis
 snapshot at `7184554` (Oct 28); **since Oct 28 evening this repo's `crates/rugsnipe-long` is ahead of upstream** (the
 hardening, `07-rework-2026-10-28/`). The Frankfurt box builds from this repo and branch (`~/rugsnipe` on it is a clone
 of `claude/magical-einstein-k78idp`). A code change meant to run on the box goes here, then
-`03-strategy-A-long-copy/deploy-frankfurt.md` §3 on the box.
+`03-strategy-A-long-copy/deploy-frankfurt.md` §3 on the box. **The next box builds from the same branch**
+(`08-new-box/` §4). The branch `copier` is the copier's first push, now merged into it.
 
 ## The owner and how to work with them
 
@@ -50,7 +62,7 @@ of `claude/magical-einstein-k78idp`). A code change meant to run on the box goes
 
 ```
 cargo build --release -p rugsnipe-long          # toolchain pinned in rust-toolchain.toml
-cargo test -p rugsnipe-long                     # 17 engine tests + 17 library tests
+cargo test -p rugsnipe-long                     # 17 engine tests + 43 library tests (20 of them the copier's)
 cargo run --release -p rugsnipe-long -- simulate --rpc RPC_URL --tx SIG --user WALLET --sol 0.1 --buyback 3 --close   # our buy + round trip, simulated
 cargo run --release -p rugsnipe-long -- simulate-sell --rpc RPC_URL --mint MINT --quote QUOTE --user HOLDER --graduated --close
 cargo test -p pump-codec                        # the route codec (multihop fixtures byte-equal to wallet 4's own)
@@ -83,6 +95,9 @@ bash data/datasets/unpack.sh h9long     # one archive
 - **Keys are not included.** `month/tri.py` reads a Triton URL from `month/.triton_url`, and `rivalpnl/common.py` a
   Helius key from `live/rivals2.py`. To fetch anew, supply your own. Cached responses (`month/tricache/` ...) let many
   scripts rerun offline. The Oct 28 fetchers (copy2 `analysis/research/2026-10-28/fetch/`) use the public RPC.
+- **Rafinhaaaaaa:** its data is plain JSON in `rafinhaaaaaa/data/` (about 0.8 MB), and its pipeline is in
+  `rafinhaaaaaa/analysis/final/`. The pipeline needs `GMGN_API_KEY` from the environment, and it hard-codes the Nov 1
+  scratchpad paths (`rafinhaaaaaa/README.md`, end).
 
 ## Conventions
 

@@ -1,0 +1,33 @@
+target pick, depth 3, min leaf 40; P1 8240 coins, 388 positive; P2 7389 coins, 452 positive
+|--- host=meta.notrandom.fun <= 0.500
+|   |--- prior24 <= 0.500
+|   |   |--- cfee=0 <= 0.500
+|   |   |   |--- weights: [705.000, 175.000] class: 0
+|   |   |--- cfee=0 >  0.500
+|   |   |   |--- weights: [988.000, 25.000] class: 0
+|   |--- prior24 >  0.500
+|   |   |--- gap <= 5635.000
+|   |   |   |--- weights: [5134.000, 37.000] class: 0
+|   |   |--- gap >  5635.000
+|   |   |   |--- weights: [947.000, 37.000] class: 0
+|--- host=meta.notrandom.fun >  0.500
+|   |--- dev_tok <= 0.005
+|   |   |--- weights: [49.000, 25.000] class: 0
+|   |--- dev_tok >  0.005
+|   |   |--- slen <= 4.500
+|   |   |   |--- weights: [14.000, 26.000] class: 1
+|   |   |--- slen >  4.500
+|   |   |   |--- weights: [15.000, 63.000] class: 1
+
+leaf   P1 n   P1 pos  P1 rate |  P2 n  P2 pos  P2 rate
+   3    880     175    19.9% |   842    153    18.2%
+   4   1013      25     2.5% |   917     28     3.1%
+   6   5171      37     0.7% |  4439    119     2.7%
+   7    984      37     3.8% |  1011     56     5.5%
+   9     74      25    33.8% |    90     48    53.3%
+  11     40      26    65.0% |    51     24    47.1%
+  12     78      63    80.8% |    39     24    61.5%
+rule = leaves with P1 rate >= 50%: P1 passes 118, picks 89 of 388: precision 75.4%, recall 22.9%  |  P2 passes 90, picks 48 of 452: precision 53.3%, recall 10.6%
+rule = leaves with P1 rate >= 30%: P1 passes 192, picks 114 of 388: precision 59.4%, recall 29.4%  |  P2 passes 180, picks 96 of 452: precision 53.3%, recall 21.2%
+rule = leaves with P1 rate >= 20%: P1 passes 192, picks 114 of 388: precision 59.4%, recall 29.4%  |  P2 passes 180, picks 96 of 452: precision 53.3%, recall 21.2%
+rule = leaves with P1 rate >= 10%: P1 passes 1072, picks 289 of 388: precision 27.0%, recall 74.5%  |  P2 passes 1022, picks 249 of 452: precision 24.4%, recall 55.1%

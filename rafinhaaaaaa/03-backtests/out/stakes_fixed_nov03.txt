@@ -1,0 +1,41 @@
+# its 5.1+ SOL buys, 300 s, behind its sale; the stake fixed (sim_g1.py, FIXRULE="buy>=5.10|None|None|300|STAKE"), run Nov 3
+== Oct 04-25 stake 0.5
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 0.5) on every trip, K=2: +7.73 (35) without best 2 +3.60; a trip median -0.091
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 0.5) on every trip, K=1: +9.59 (35) without best 2 +5.24; a trip median -0.058
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 0.5) on every trip, K=4: +7.13 (35) without best 2 +2.87; a trip median -0.091
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 0.5) on every trip, K=7: +6.96 (35) without best 2 +2.77; a trip median -0.050
+== Oct 04-25 stake 1.0
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=2: +14.91 (35) without best 2 +6.75; a trip median -0.183
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=1: +18.55 (35) without best 2 +9.96; a trip median -0.118
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=4: +13.74 (35) without best 2 +5.33; a trip median -0.200
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=7: +13.41 (35) without best 2 +5.13; a trip median -0.122
+== Oct 04-25 stake 2.0
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 2.0) on every trip, K=2: +27.44 (35) without best 2 +11.47; a trip median -0.381
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 2.0) on every trip, K=1: +34.42 (35) without best 2 +17.63; a trip median -0.274
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 2.0) on every trip, K=4: +25.23 (35) without best 2 +8.78; a trip median -0.477
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 2.0) on every trip, K=7: +24.55 (35) without best 2 +8.36; a trip median -0.336
+== Oct 04-25 stake its size
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake its size) on every trip, K=2: +37.67 (35) without best 2 +14.23; a trip median -0.598
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake its size) on every trip, K=1: +47.73 (35) without best 2 +23.10; a trip median -0.484
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake its size) on every trip, K=4: +34.53 (35) without best 2 +10.40; a trip median -0.825
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake its size) on every trip, K=7: +33.52 (35) without best 2 +9.77; a trip median -0.634
+== this week Oct 25-Nov 01 stake 0.5
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 0.5) on every trip, K=2: +8.33 (19) without best 2 +3.44; a trip median +0.278
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 0.5) on every trip, K=1: +8.75 (19) without best 2 +3.81; a trip median +0.278
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 0.5) on every trip, K=4: +8.04 (19) without best 2 +2.73; a trip median +0.247
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 0.5) on every trip, K=7: +7.50 (18) without best 2 +1.64; a trip median +0.042
+== this week Oct 25-Nov 01 stake 1.0
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=2: +16.45 (19) without best 2 +6.71; a trip median +0.558
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=1: +17.29 (19) without best 2 +7.42; a trip median +0.558
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=4: +15.89 (19) without best 2 +5.35; a trip median +0.481
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=7: +14.81 (18) without best 2 +3.18; a trip median +0.078
+== this week Oct 25-Nov 01 stake 2.0
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 2.0) on every trip, K=2: +31.93 (19) without best 2 +12.59; a trip median +1.119
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 2.0) on every trip, K=1: +33.56 (19) without best 2 +13.98; a trip median +1.119
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 2.0) on every trip, K=4: +30.87 (19) without best 2 +10.12; a trip median +0.907
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake 2.0) on every trip, K=7: +28.73 (18) without best 2 +5.82; a trip median +0.121
+== this week Oct 25-Nov 01 stake its size
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake its size) on every trip, K=2: +46.45 (19) without best 2 +17.65; a trip median +1.681
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake its size) on every trip, K=1: +48.83 (19) without best 2 +19.67; a trip median +1.681
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake its size) on every trip, K=4: +44.95 (19) without best 2 +14.28; a trip median +1.278
+FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake its size) on every trip, K=7: +41.78 (18) without best 2 +7.92; a trip median +0.129

@@ -310,6 +310,10 @@ in every row above; the live bot holds instead, which `more/` D-v puts at −0.5
 | 1 SOL × 3, the live costs | slot +1 | +8.03 (+6.00) | +16.75 (+13.89) | +0.51 (−1.44) |
 | same | its slot, 100 / 30 positions | +13.51 / +16.41 | +18.71 / +20.15 | +2.89 / +3.13 (+0.66 / +0.90) |
 
+Nov 3 (`out/land_cond_nov03.txt`, the live costs, 2 open as in the 4 SOL plan): 0.05 SOL × 2 makes +0.18 to +0.44 on P1,
++0.41 to +0.50 on P2, −0.04 to +0.08 on P3 (slot +1 to its slot 100 positions behind); 0.1 SOL × 2 +0.70 to +1.21,
++1.19 to +1.38, +0.01 to +0.24; 1 SOL × 2 +8.84 to +13.67, +13.84 to +15.62, +0.61 to +2.80.
+
 The first evening live (Oct 28 18:34-21:32 UTC, 0.1 SOL × 1, 4 of 6 buys in its slot 5-7 trades behind its buy) made
 +0.35 on 5 closed: the model's P3 pace at that size is about +0.1 a day, so the evening was a hot stretch, in the
 direction the model gives once the landing and the costs are the real ones. The published −0.51 is the same data with

@@ -1,0 +1,7 @@
+== Hn6vBWWySnxA8XjxRQDEmZEuH5QL7KqosnJGcLcUzFJ6: 90 trips priced with a path (P1 35, P2 55); its P1 first sales 35; dropped as keyed on a quote token: []
+   its timer None (3 of 35); before it (35): its take profit None (3 in the modal bin); its stop None (2); winning first sales p25/50/75 [1.27, 1.55, 2.83]
+   FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake its size) on every trip, K=2: +37.67 (35) without best 2 +14.23; a trip median -0.598
+   FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake its size) on every trip, K=1: +47.73 (35) without best 2 +23.10; a trip median -0.484
+   FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake its size) on every trip, K=4: +34.53 (35) without best 2 +10.40; a trip median -0.825
+   FIXED RULE (its buy >= 5.10 SOL (fixed); TP None stop None timer 300.0; stake its size) on every trip, K=7: +33.52 (35) without best 2 +9.77; a trip median -0.634
+   by week (K=2): week 1: +27.89 (23)  week 2: +9.79 (12)

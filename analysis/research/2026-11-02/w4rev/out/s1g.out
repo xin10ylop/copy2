@@ -1,0 +1,9 @@
+routable creates Oct 19-26 by class: {'A': 10202, 'C': 2970, 'B': 2457}
+its other-quote launch buys in the create slot: 1739 of 3028 (57.4%)
+rule W P1: passes 1072 of 8240 (13.0%)
+rule W P2: passes 1022 of 7389 (13.8%)
+rule WF P3: passes 828 of 5487 (15.1%)
+W P1 ours 1 SOL: F0 +29.18, F1 -0.10, F0 - F1 +29.28
+W P2 ours 1 SOL: F0 +37.17, F1 +15.01, F0 - F1 +22.16
+W P3 ours 1 SOL: F0 +30.13, F1 +4.04, F0 - F1 +26.09
+coins whose simulation failed: 3 ['6BHNfEiNZsFECyMKenGshXsgqTsbmrmn9LRy3HDfpump', 'C1UJeifQgb1hAoG6JMhbfFATCw2PRw8765cT7nP4pump', 'kfc9k8ydwhjNLzchwcoC7mKtbEsLDfnL7QZ2f7DbeE5']

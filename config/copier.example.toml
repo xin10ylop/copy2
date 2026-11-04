@@ -1,0 +1,85 @@
+# /etc/rugsnipe/copier.toml: the copier (`rugsnipe-long copy`, docs/21-copier.md).
+# Copies several wallets on any venue Jupiter routes (pump curve, PumpSwap, Meteora DBC and DAMM v2, Raydium LaunchLab
+# and CPMM ...). Here: Rafinhaaaaaa (rafinhaaaaaa/), and wallet 4's part B, off. Wallet 4's part A stays in
+# rugsnipe-long (`run`, long.toml): faster, and the copier would skip those coins itself.
+#
+# The stakes are the 4 SOL plan's (08-new-box/): Rafinhaaaaaa at 1 SOL, one position at a time; this wallet holds about
+# 1.2 SOL. The installer copies this file once, in paper; 08-new-box/ says what to change to go live.
+
+# log = paper (fills at a live Jupiter quote, nothing sent); on = real swaps from the copier wallet; off = nothing.
+mode = "log"
+
+# chain reads, statuses, sendTransaction: a line of the api-keys file (never the URL with its key here)
+rpc_url = "cred:RPC_URL"
+# the gRPC feed ([feeds] grpc) and the senders ([senders] jito, which must be enabled there) come from the hot config
+hot_config = "/etc/rugsnipe/rugsnipe.toml"
+api_keys = "/etc/rugsnipe/keys/api-keys.toml"
+# its own wallet (`rugsnipe-long keygen --out /etc/rugsnipe/keys/copier-wallet.json`); the unit hands it over as the
+# `copier-wallet` credential
+wallet_file = "/etc/rugsnipe/keys/copier-wallet.json"
+
+# Jupiter's free API (no key); it refuses bursts, so calls are spaced and value polls give way to buys and sells
+jupiter = "https://lite-api.jup.ag/swap/v1"
+price_api = "https://lite-api.jup.ag/price/v3"
+jupiter_gap_ms = 350
+
+# slippage Jupiter may take: a buy behind a big buy moves fast; a sell must land
+buy_slippage_bps = 2000
+sell_slippage_bps = 5000
+# Jupiter adds this tip to a Jito tip account inside the swap; the swap goes to our RPC and to Jito (the only sender
+# that takes a Jito tip). senders = [] with jito_tip_lamports = 0: our RPC only, a priority fee up to
+# priority_max_lamports instead.
+jito_tip_lamports = 1000000
+priority_max_lamports = 1000000
+senders = ["jito"]
+# a sent swap is waited for this long, then until its blockhash expires (never given up while it can still land)
+confirm_s = 40
+# paper: what one side's transaction costs (base fee, tip, priority)
+paper_side_cost_lamports = 1100000
+
+# no new buys once today's (UTC) realized result is at or below -daily_stop_sol (exits continue)
+daily_stop_sol = 0.5
+# SOL kept in the wallet after a buy (fees, rent)
+min_wallet_sol = 0.05
+# open positions at once, every wallet together
+max_open = 6
+# how often a position with a take profit or a stop is valued (a Jupiter sell quote each time; 3 open = 36 a minute)
+poll_ms = 5000
+
+journal = "/var/lib/rugsnipe-copier/copier.jsonl"
+state = "/var/lib/rugsnipe-copier/state.json"
+# touch this file: no new buys (exits continue)
+kill_file = "/var/lib/rugsnipe-copier/KILL"
+
+# Rafinhaaaaaa (rafinhaaaaaa/): its buys of 5.1 SOL or more, valued as its whole SOL change (fees and tip included: its
+# tiers read about 3.0 / 5.0 / 5.1 / 10.1, so 5.1 leaves its 5.0 tier out); any venue; sold 300 s after our buy or right
+# behind its own first sale; no take profit, no stop, no premium cap (the backtest had none). At 1 SOL, out of sample
+# Oct 4-25: +14.91 on 35 (+6.75 without the best 2), rafinhaaaaaa/03-backtests/README.md section 4. Its copies rarely
+# overlap (3 of 37 within our 300 s), so one position at a time.
+[[target]]
+name = "rafinha"
+wallet = "Hn6vBWWySnxA8XjxRQDEmZEuH5QL7KqosnJGcLcUzFJ6"
+coins = "any"
+min_sol = 5.1
+stake_sol = 1.0
+max_hold_s = 300
+follow_sell = true
+max_open = 1
+
+# Wallet 4's part B: OFF. Its buys of 1.45 SOL or more of pump coins priced in a token rugsnipe-long cannot route. The
+# study that scored this route (analysis/research/2026-11-02/w4revB, its own picks through Jupiter, 1 SOL) made
+# +35.32 / +4.88 (+2.68 without the best 2) / +8.08 (-6.05) on Oct 19-22 / 23-26 / Oct 27 - Nov 1: about nothing.
+# To run it as a test of the route, remove the leading "# " from the block (its exits are the study's: 2.0x / 0.8x of
+# our own price, 30 min, not behind its sale, no premium cap).
+# [[target]]
+# name = "w4b"
+# wallet = "H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg"
+# coins = "pump_unroutable"
+# min_sol = 1.45
+# stake_sol = 0.1
+# take_profit = 2.0
+# stop = 0.8
+# exit_basis = "ours"
+# max_hold_s = 1790
+# follow_sell = false
+# max_open = 3

@@ -32,6 +32,12 @@ pub fn wallet(fallback: &str) -> Result<HotSigner, String> {
     HotSigner::load_file(&p).map_err(|e| format!("{}: {e}", p.display()))
 }
 
+/// The copier's wallet (its own credential, `copier-wallet`).
+pub fn copier_wallet(fallback: &str) -> Result<HotSigner, String> {
+    let p = cred("copier-wallet").unwrap_or_else(|| PathBuf::from(fallback));
+    HotSigner::load_file(&p).map_err(|e| format!("{}: {e}", p.display()))
+}
+
 /// A URL that may be `cred:NAME`.
 pub fn resolve_url(keys: &ApiKeys, url: &str) -> Result<String, String> {
     match url.strip_prefix("cred:").map(str::trim) {
