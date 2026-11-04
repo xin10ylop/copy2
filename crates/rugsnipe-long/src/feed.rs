@@ -8,7 +8,7 @@ use crate::txlite::TxLite;
 use futures_util::{SinkExt, StreamExt};
 use pump_codec::Pubkey;
 use std::collections::{BTreeSet, HashMap};
-use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
 use std::sync::mpsc;
 use std::sync::Arc;
 use std::time::Duration;
@@ -24,6 +24,14 @@ pub enum Src {
     Copied,
     Ours,
     Mint,
+}
+
+/// The newest slot the feed has seen (its slot updates and transactions), read without the channel: a consumer that
+/// fell behind its queue (the copier, blocked on a swap) can tell how old a queued transaction is.
+pub static LATEST_SLOT: AtomicU64 = AtomicU64::new(0);
+
+pub fn latest_slot() -> u64 {
+    LATEST_SLOT.load(Ordering::Relaxed)
 }
 
 #[derive(Debug)]
@@ -198,12 +206,14 @@ async fn session(
                                 Src::Mint
                             };
                             if let Some(x) = TxLite::from_grpc(&t) {
+                                LATEST_SLOT.fetch_max(x.slot, Ordering::Relaxed);
                                 if out.send(FeedMsg::Tx(src, Box::new(x))).is_err() {
                                     return Ok(());
                                 }
                             }
                         }
                         Some(UpdateOneof::Slot(s)) => {
+                            LATEST_SLOT.fetch_max(s.slot, Ordering::Relaxed);
                             let _ = out.send(FeedMsg::Slot(s.slot));
                         }
                         Some(UpdateOneof::Ping(_)) => {

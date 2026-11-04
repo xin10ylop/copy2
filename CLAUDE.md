@@ -62,7 +62,7 @@ of `claude/magical-einstein-k78idp`). A code change meant to run on the box goes
 
 ```
 cargo build --release -p rugsnipe-long          # toolchain pinned in rust-toolchain.toml
-cargo test -p rugsnipe-long                     # 17 engine tests + 43 library tests (20 of them the copier's)
+cargo test -p rugsnipe-long                     # 17 engine tests + 46 library tests (23 of them the copier's)
 cargo run --release -p rugsnipe-long -- simulate --rpc RPC_URL --tx SIG --user WALLET --sol 0.1 --buyback 3 --close   # our buy + round trip, simulated
 cargo run --release -p rugsnipe-long -- simulate-sell --rpc RPC_URL --mint MINT --quote QUOTE --user HOLDER --graduated --close
 cargo test -p pump-codec                        # the route codec (multihop fixtures byte-equal to wallet 4's own)

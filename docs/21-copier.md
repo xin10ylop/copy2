@@ -29,10 +29,10 @@ Wallet 4's **part A** stays in the long copy: it is faster there, and the copier
 | Exits, first one wins | `max_hold_s` after our buy; right behind its own first sale of the coin (`follow_sell`); a take profit or a stop. |
 | TP and stop | Our tokens are valued with a Jupiter sell quote every `poll_ms`. The levels are multiples of its buy price (`exit_basis = "its"`, the long copy's way) or of what we paid (`"ours"`). |
 | Paper (`mode = "log"`) | Fills at a live Jupiter quote and charges `paper_side_cost_lamports` a side. |
-| Live (`mode = "on"`) | Asks Jupiter for the swap with a Jito tip inside, signs it and sends the same transaction to our RPC and to Jito. It waits until the swap lands or its blockhash expires, then books the chain's own SOL and token changes. |
-| Sell retries | A sale that fails is retried, with gaps of 2 s × tries up to 30 s, until it lands. A sale first checks the tokens we actually hold. |
-| Book | Every event is a JSON line in `journal`. Open positions and today's closed ones are in `state`, so a restart picks them up. |
-| Guards | `daily_stop_sol` (today's realized UTC result); `max_open` per wallet and for all wallets together; no second position in a coin we hold; `min_wallet_sol` kept back; the `kill_file`. Exits always continue. |
+| Live (`mode = "on"`) | Asks Jupiter for the swap with a Jito tip inside, right after its quote (no gap between the two). A swap is refused when Jupiter's own simulation failed or when we are not its fee payer. It signs the swap and sends the same transaction to our RPC and to Jito, again every 2 s until it lands. It waits for the **confirmed** status (a processed one can be dropped with its fork) or for its blockhash to expire, then books the chain's own SOL and token changes. A buy that is confirmed but can't be read, or whose status the RPC can't give, is booked from the wallet's balance of the coin, with the cost estimated. It is never dropped: an unbooked buy would leave coins that are never sold. |
+| Sell retries | A sale that fails is retried, with gaps of 2 s × tries up to 30 s, until it lands. A sale first checks the tokens we actually hold. A zero read is read again at the confirmed commitment (a processed read can hit a node a few slots behind). Then our own recent transactions are searched for a sale that landed while its wait ended in an error, before the position closes with nothing back. After 20 failed tries (about 10 min) the position is **stuck**: it is retried every 5 min, its `max_open` slot is freed, the daily stop counts it as lost, and the journal says `sell-stuck` once. |
+| Book | Every event is a JSON line in `journal`. Buys and sales carry its slot and ours (`its_slot`, `our_slot`, `lag_slots`; paper: the slot our quote was priced on, live: the slot ours landed in). Open positions and today's closed ones are in `state`, so a restart picks them up; a failed write of it is printed (`STATE NOT SAVED`). |
+| Guards | `daily_stop_sol` (today's realized UTC result, stuck positions as lost); `max_open` per wallet and for all wallets together; no second position in a coin we hold; `min_wallet_sol` kept back; the `kill_file`; a buy seen more than `max_lag_slots` (10, about 4 s) behind the feed's newest slot is skipped as `stale` (the copier fell behind its queue while a swap waited, and its sale may already have come). Exits always continue. |
 | Paper and real apart | The caps, the held-coin check and the daily stop count only the mode's own kind. A paper position left from before the switch to `mode = "on"` closes as paper at a sell quote, never through a real sale. Starting in paper while real positions are still open is refused: paper would "sell" real coins and leave them in the wallet. |
 
 **One sender.** The swap goes to our RPC and to Jito only, and it is one signed transaction, so it can land only once.
@@ -68,7 +68,7 @@ cools down for 10 s. Value polls give way during the cool-down; buys and sells r
 ```
 rugsnipe-long copy --config /etc/rugsnipe/copier.toml          # the service runs this
 rugsnipe-long copy-status --config /etc/rugsnipe/copier.toml --tz +0200 --last 15
-rugsnipe-long copy-replay --config FILE --rpc URL|@FILE --tick-s 30 SIG...   # paper: replay its transactions now
+rugsnipe-long copy-replay --config FILE --rpc URL|@FILE --tick-s 30 [--journal FILE] SIG...   # paper: replay its transactions now
 ```
 
 `copy-status` prints each wallet's buys, failed buys, closed trades, wins, net SOL and today's result. Then it lists the
@@ -144,7 +144,16 @@ hold up a few trades later than K = 2 before it goes here.
 ## 7. Known limits
 
 - **It is one thread.** While a swap is waiting to land (usually 1-2 s, at most until its blockhash expires, about
-  60-90 s), feed events queue. A sale of the copied wallet seen in that time is acted on late.
+  60-90 s), feed events queue. A sale of the copied wallet seen in that time is acted on late; a buy seen that late
+  is skipped (`stale`).
+- **The wallet's balance is a stop too.** A buy needs the stake + `min_wallet_sol` + the tip. A wallet funded with
+  1.2 SOL for 1 SOL stakes stops buying after about −0.15 SOL in all, long before the 0.5 daily stop. Fund it with
+  the stake + the daily stop + 0.1 at least.
+- **Rent:** each coin's token account (about 0.002 SOL) is paid in the buy and not closed after the sale. It is
+  booked as cost.
+- **Jupiter does not trade every coin:** Token-2022 coins with a transfer hook, and dead coins, come back
+  `TOKEN_NOT_TRADABLE` (2 of its 12 coins of Nov 1-4, asked hours later; neither was a 5.0+ copy). That buy is
+  journaled as failed.
 - **A crash between the send and the book** leaves the position unbooked. The journal shows the buy without a
   position. Check the wallet for that coin and sell it by hand.
 - **Paper is pessimistic on thin pools.** A paper sale is quoted without our own buy's tokens in the pool.
@@ -154,7 +163,7 @@ hold up a few trades later than K = 2 before it goes here.
 
 ## 8. Tests
 
-`cargo test -p rugsnipe-long` (42 library tests, 20 of them the copier's; 16 engine tests). The detection tests run
+`cargo test -p rugsnipe-long` (46 library tests, 23 of them the copier's and 6 Jupiter's; 17 engine tests). The detection tests run
 on real transactions. One is wallet 4's part-B buy and its sale back into PUMP. The other four are a SOL-coin wallet's
 buys and sale on DBC, LaunchLab and the pump curve; they are made anonymous (`tests/fixtures/w2_*.json`: the wallet,
 its accounts, the coins and the signatures are stand-ins).
@@ -171,6 +180,8 @@ The engine tests cover:
 - `max_open`, a held coin and the daily stop;
 - feed down;
 - the kill file;
+- a buy seen after the queue fell behind (stale);
+- a sale that keeps failing (stuck: its slot freed, counted as lost, still retried);
 - a restart;
 - config refusals;
 - the example config.

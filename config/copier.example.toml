@@ -34,6 +34,9 @@ priority_max_lamports = 1000000
 senders = ["jito"]
 # a sent swap is waited for this long, then until its blockhash expires (never given up while it can still land)
 confirm_s = 40
+# a buy of the copied wallet seen more than this many slots (about 0.4 s each) behind the feed's newest slot is not
+# copied: the copier fell behind its queue while a swap waited, and its sale may already have come (0 = no check)
+max_lag_slots = 10
 # paper: what one side's transaction costs (base fee, tip, priority)
 paper_side_cost_lamports = 1100000
 

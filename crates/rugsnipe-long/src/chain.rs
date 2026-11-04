@@ -248,6 +248,58 @@ impl Rpc {
             .collect())
     }
 
+    /// Signature statuses with their commitment: `Some(Ok((slot, true)))` landed and confirmed (or finalized),
+    /// `Some(Ok((slot, false)))` only processed (it can still be dropped with its fork), `Some(Err(e))` landed and
+    /// failed (with its commitment), `None` not seen.
+    pub fn statuses_conf(&self, sigs: &[String]) -> Result<Vec<Option<Result<(u64, bool), (String, bool)>>>, String> {
+        let v = self.rpc.call("getSignatureStatuses", json!([sigs, {"searchTransactionHistory": true}]))?;
+        Ok(v["value"]
+            .as_array()
+            .ok_or("statuses")?
+            .iter()
+            .map(|s| {
+                if s.is_null() {
+                    return None;
+                }
+                let conf = matches!(s["confirmationStatus"].as_str(), Some("confirmed" | "finalized"));
+                if s["err"].is_null() {
+                    Some(Ok((s["slot"].as_u64().unwrap_or(0), conf)))
+                } else {
+                    Some(Err((s["err"].to_string(), conf)))
+                }
+            })
+            .collect())
+    }
+
+    /// `owner`'s most recent signatures (newest first, failed ones left out).
+    pub fn recent_signatures(&self, owner: &Pubkey, limit: usize) -> Result<Vec<String>, String> {
+        let v = self.rpc.call(
+            "getSignaturesForAddress",
+            json!([owner.to_string(), {"limit": limit, "commitment": "confirmed"}]),
+        )?;
+        Ok(v.as_array()
+            .ok_or("getSignaturesForAddress")?
+            .iter()
+            .filter(|s| s["err"].is_null())
+            .filter_map(|s| s["signature"].as_str().map(|x| x.to_string()))
+            .collect())
+    }
+
+    /// The raw amount in `owner`'s ATA of `mint` at the confirmed commitment (0 when missing): a processed read can
+    /// hit a node a few slots behind.
+    pub fn token_balance_confirmed(&self, owner: &Pubkey, mint: &Pubkey, program: &Pubkey) -> Result<u64, String> {
+        let ata = pump_codec::pda::associated_token_address(owner, mint, program);
+        let v = self.rpc.call(
+            "getMultipleAccounts",
+            json!([[ata.to_string()], {"encoding": "base64", "commitment": "confirmed"}]),
+        )?;
+        let a = &v["value"][0];
+        if a.is_null() {
+            return Ok(0);
+        }
+        Ok(a["data"][0].as_str().map(|d| token_amount(&b64(d))).unwrap_or(0))
+    }
+
     /// The raw amount in `owner`'s ATA of `mint` (0 when missing).
     pub fn token_balance(
         &self,
