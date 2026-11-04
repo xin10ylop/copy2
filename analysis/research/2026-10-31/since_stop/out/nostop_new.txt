@@ -1,0 +1,7 @@
+92 routable buys since the stop (45 to Nov 1 00:00 Beirut, 47 after); 1 SOL, max_open 3, landing 4
+landing 2  as built (stop 0.8)  total  +3.14  first half  +2.12 ( +0.46)  second half  +1.02 ( -0.82)  worst trades [-0.47, -0.43, -0.36]  worst day -1.54
+landing 2  no stop              total  +7.79  first half  +3.00 ( +1.33)  second half  +4.79 ( +2.56)  worst trades [-0.77, -0.65, -0.63]  worst day -1.80
+landing 4  as built (stop 0.8)  total  +1.79  first half  +0.46 ( -1.15)  second half  +1.33 ( -0.70)  worst trades [-0.51, -0.46, -0.41]  worst day -1.66
+landing 4  no stop              total  +6.26  first half  +1.27 ( -0.34)  second half  +4.99 ( +2.64)  worst trades [-0.79, -0.76, -0.66]  worst day -1.30
+landing 7  as built (stop 0.8)  total  -0.21  first half  -0.07 ( -1.61)  second half  -0.14 ( -2.01)  worst trades [-0.41, -0.41, -0.39]  worst day -1.73
+landing 7  no stop              total  +3.91  first half  -0.00 ( -1.80)  second half  +3.92 ( +1.71)  worst trades [-0.8, -0.67, -0.64]  worst day -1.94

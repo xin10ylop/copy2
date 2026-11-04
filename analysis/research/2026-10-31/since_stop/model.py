@@ -100,7 +100,7 @@ def path(r):
         if b: order.update({sg: (s, i) for i, sg in enumerate(b["signatures"])})
     tr.sort(key=lambda e: order.get(e["sig"], (e["slot"], 10**6)))
     return m, tr
-def model(r, m, tr, stake, n):
+def model(r, m, tr, stake, n, tp=2.0, sl=0.8, hold=1790, follow=False, pmax=1.25):
     k = next((i for i, e in enumerate(tr) if e["user"] == W4 and e["buy"] and e["slot"] == r["slot"]), None)
     if k is None: return dict(note="its buy not found")
     its = tr[k]; vta = its["vt"]; t0 = its["t"]
@@ -110,17 +110,18 @@ def model(r, m, tr, stake, n):
     else:
         j = min(k + n, len(tr) - 1)
     ent = tr[j]; px_in = (vta / ent["vt"]) ** 2
-    if px_in > 1.25: return dict(exit="refused", px_in=px_in, net=-0.0004)
+    if px_in > pmax: return dict(exit="refused", px_in=px_in, net=-0.0004)
     Q = stake * 1e9 * (1 - 0.003) / rate; net_in = Q * 1e4 / (1e4 + ent["bps"])
     tok = ent["vt"] - ent["vt"] * ent["vq"] / (ent["vq"] + net_in)
     ex, why, peak = None, "time", px_in
     for i in range(j + 1, len(tr)):
         e = tr[i]; px = (vta / e["vt"]) ** 2; peak = max(peak, px)
         if e.get("real") == 0: why, ex = "graduated", i; break
-        if px >= 2.0: why, ex = "tp", min(i + 1, len(tr) - 1); break
-        if px <= 0.8: why, ex = "stop", min(i + 1, len(tr) - 1); break
-        if e["t"] - t0 >= 1790: why, ex = "time", i; break
-    if ex is None: ex = len(tr) - 1; why = "time" if tr[-1]["t"] - t0 < 1790 else why
+        if follow and e["user"] == W4 and not e["buy"]: why, ex = "its_sell", min(i + 1, len(tr) - 1); break
+        if tp and px >= tp: why, ex = "tp", min(i + 1, len(tr) - 1); break
+        if sl and px <= sl: why, ex = "stop", min(i + 1, len(tr) - 1); break
+        if e["t"] - t0 >= hold: why, ex = "time", i; break
+    if ex is None: ex = len(tr) - 1
     x = tr[ex]; vq_r = x["vq"] + net_in; vt_r = x["vt"] * x["vq"] / vq_r
     out = (vq_r - vt_r * vq_r / (vt_r + tok)) * (1 - x["bps"] / 1e4)
     sol = out * rate * (1 - 0.003) / 1e9

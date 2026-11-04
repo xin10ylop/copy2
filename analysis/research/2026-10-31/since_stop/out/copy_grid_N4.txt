@@ -1,0 +1,25 @@
+92 routable buys since the stop (45 to Nov 1 00:00 Beirut, 47 after); 1 SOL, max_open 3, landing 4
+
+== AS BUILT (tp 2.0, stop 0.8, 1790 s, hold through its sale): 92 copies, NET +1.79 SOL, without the best 2 -0.24; exits {'time': 34, 'tp': 21, 'refused': 8, 'stop': 29}
+   by day: 10-29 6 -0.23  10-30 13 +1.48  10-31 26 -0.79  11-01 19 +2.60  11-02 10 -1.66  11-03 10 -1.05  11-04 8 +1.44
+
+== the same, but sell behind its sale (follow_its_sell = true): 92 copies, NET +0.77 SOL, without the best 2 -1.26; exits {'its_sell': 42, 'tp': 18, 'refused': 8, 'stop': 23, 'time': 1}
+   by day: 10-29 6 -0.12  10-30 13 +1.68  10-31 26 -0.92  11-01 19 +2.66  11-02 10 -1.36  11-03 10 -1.05  11-04 8 -0.11
+
+== the exit grid (384 variants): picked on the first half without its best 2, scored on the second
+     tp stop  hold follow pmax | first half: n, net (w/o best 2) | second half: n, net (w/o best 2)
+    2.0 None   300  False 1.25 |  45  +2.83 ( +1.28) |  47  +2.66 ( +0.63)
+    2.0 None   300  False 1.15 |  45  +2.37 ( +0.81) |  47  +3.63 ( +1.60)
+    1.5 None   120  False 1.15 |  45  +1.77 ( +0.65) |  47  +2.30 ( +0.97)
+    2.5 None   300  False 1.25 |  45  +2.86 ( +0.57) |  47  +4.39 ( +1.81)
+    2.0 None   300   True 1.15 |  45  +2.12 ( +0.57) |  47  +2.30 ( +0.27)
+    1.5 None   300   True 1.15 |  45  +1.68 ( +0.57) |  47  -0.32 ( -1.62)
+    1.5 None   120   True 1.15 |  45  +1.66 ( +0.55) |  47  +1.17 ( -0.13)
+    1.5 None   120  False 1.25 |  45  +1.66 ( +0.55) |  47  +1.68 ( +0.35)
+    2.0  0.7   300   True 1.15 |  45  +2.06 ( +0.51) |  47  +1.86 ( -0.17)
+    1.5  0.7   300   True 1.15 |  45  +1.62 ( +0.51) |  47  -0.28 ( -1.58)
+    1.5 None   300  False 1.25 |  45  +1.57 ( +0.46) |  47  +0.06 ( -1.27)
+    1.5 None   300  False 1.15 |  45  +1.56 ( +0.45) |  47  +1.06 ( -0.27)
+   ... as built:
+    2.0  0.8  1790  False 1.25 |  45  +0.46 ( -1.15) |  47  +1.33 ( -0.70)
+   second half positive without its best 2: 113 of 384 variants; best second half:     2.5 None  1790  False 1.15 |  45  +1.50 ( -0.98) |  47  +8.88 ( +5.61)

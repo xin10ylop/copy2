@@ -1,0 +1,25 @@
+92 routable buys since the stop (45 to Nov 1 00:00 Beirut, 47 after); 1 SOL, max_open 3, landing 2
+
+== AS BUILT (tp 2.0, stop 0.8, 1790 s, hold through its sale): 92 copies, NET +3.14 SOL, without the best 2 +1.28; exits {'time': 36, 'tp': 22, 'refused': 6, 'stop': 28}
+   by day: 10-29 6 -0.16  10-30 13 +1.43  10-31 26 +0.86  11-01 19 +2.12  11-02 10 -0.89  11-03 10 -1.54  11-04 8 +1.33
+
+== the same, but sell behind its sale (follow_its_sell = true): 92 copies, NET +2.01 SOL, without the best 2 +0.17; exits {'its_sell': 44, 'tp': 19, 'refused': 6, 'stop': 22, 'time': 1}
+   by day: 10-29 6 -0.05  10-30 13 +1.62  10-31 26 +0.52  11-01 19 +2.24  11-02 10 -0.59  11-03 10 -1.54  11-04 8 -0.19
+
+== the exit grid (384 variants): picked on the first half without its best 2, scored on the second
+     tp stop  hold follow pmax | first half: n, net (w/o best 2) | second half: n, net (w/o best 2)
+    2.5 None  1790  False 1.15 |  45  +5.37 ( +2.80) |  47  +7.36 ( +4.29)
+    2.5 None  1790  False 1.25 |  45  +5.19 ( +2.63) |  47  +8.04 ( +4.96)
+    2.5  0.7  1790  False 1.15 |  45  +5.09 ( +2.53) |  47  +5.76 ( +2.68)
+    2.0 None   300  False 1.15 |  45  +4.00 ( +2.40) |  47  +2.62 ( +0.78)
+    2.5  0.7  1790   True 1.15 |  45  +4.89 ( +2.39) |  47  +0.93 ( -1.45)
+    2.5  0.7  1790  False 1.25 |  45  +4.92 ( +2.35) |  47  +6.43 ( +3.35)
+    2.5  0.9  1790  False 1.15 |  45  +4.76 ( +2.19) |  47  +3.30 ( +0.93)
+    2.0 None   300  False 1.25 |  45  +3.77 ( +2.17) |  47  +2.91 ( +1.07)
+    2.5  0.7  1790   True 1.25 |  45  +4.65 ( +2.16) |  47  +1.34 ( -1.04)
+    2.5 None  1790   True 1.15 |  45  +4.64 ( +2.15) |  47  +1.28 ( -1.10)
+    2.5  0.9  1790  False 1.25 |  45  +4.71 ( +2.14) |  47  +3.98 ( +1.60)
+    2.5 None   300  False 1.15 |  45  +4.43 ( +2.04) |  47  +4.21 ( +1.83)
+   ... as built:
+    2.0  0.8  1790  False 1.25 |  45  +2.12 ( +0.46) |  47  +1.02 ( -0.82)
+   second half positive without its best 2: 81 of 384 variants; best second half:     2.5 None  1790  False 1.25 |  45  +5.19 ( +2.63) |  47  +8.04 ( +4.96)
