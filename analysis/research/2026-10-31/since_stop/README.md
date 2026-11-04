@@ -45,3 +45,11 @@ python3 -I nostop_new.py SPD > out/nostop_new.txt
 (cd ../../2026-10-28/fresh && CAP=3 NOT=AvcwGFaF,2FSWwQwj GRAD=1 python3 -I ../../2026-10-31/since_stop/nostop_old.py)
 ```
 `SPD` = a scratchpad folder; `prices.json` = WBTC at 7,950 lamports a unit.
+
+## The trips where it sells first (`out/after_its_sale.txt`, Nov 4)
+
+At 1 SOL × 2, landing 4, no stop (the plan): it sold while we still held on 51 of 90 trips; those 51 made −5.97 SOL
+together (median −0.195, worst −0.79, 12 won; 45 ended on our timer, 6 still reached 2.0x). The other 39, where the coin
+hit 2.0x before its sale, made the profit. Selling right behind its sale instead (`follow_its_sell = true`, no stop)
+totals +2.19 against +6.92: our sell lands after its own and its copiers', and the 6 coins that reached 2.0x after its
+sale are cut. With the 0.8 stop the 29 such trips lost −0.94, but the stop costs more elsewhere (+1.79 in all).

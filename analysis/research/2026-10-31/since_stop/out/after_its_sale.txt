@@ -1,0 +1,10 @@
+1 SOL, max_open 2, landing 4, Oct 29 13:52 - Nov 4 16:11 Beirut (92 routable buys)
+
+== hold to our exits, no stop (the plan): total +6.92 SOL on 90
+   he sold first on 51 trips: they made -5.97 together, median -0.195, worst -0.79, best +1.25; won 12 of 51; how they ended {'time': 45, 'tp': 6}
+
+== sell right behind his sale, no stop: total +2.19 SOL on 92
+   he sold first on 20 trips: they made -3.13 together, median -0.153, worst -0.53, best +0.44; won 3 of 20; how they ended {'its_sell': 20}
+
+== hold to our exits, 0.8 stop (as built): total +1.79 SOL on 92
+   he sold first on 29 trips: they made -0.94 together, median -0.144, worst -0.35, best +0.90; won 8 of 29; how they ended {'time': 24, 'tp': 3, 'stop': 2}
