@@ -103,6 +103,10 @@ within a slot** (`exits_pess.py`):
   against 3.5% on Oct 19-22, and on Oct 27-28 holding to our exits scored +3.10 against -0.51 behind it, on Oct
   19-27 about even (`analysis/research/2026-10-28/more/`). `float_stake_sol` stakes more on WBTC-routed copies
   (about +0.12 SOL a copy against +0.02 from wSOL).
+- **`stop = 0` means no stop** (Nov 4): the trip ends at the take profit or the hold. Since Oct 30 wallet 4 has dropped
+  its 30-minute timer and sells two thirds of its big buys early, and the 0.8 stop sold into its sale; over Oct 29 - Nov 4
+  at 1 SOL × 3 the copy makes +1.79 with the stop and +6.26 without, better at every landing and in both halves, and
+  neutral on Oct 19-28 (`analysis/research/2026-10-31/since_stop`). The worst single trip grows from −0.5 to −0.8.
 - **Accounting is chain-true:** a position's result is the sum of our wallet's lamport changes over its transactions,
   plus a float's token change at the oracle price. Paper (`mode = "log"`) prices the same decisions on the live curve.
 - **Measured on mainnet** (simulation from our wallet, a 2-hop wSOL route): buy 1,088 bytes, 166k compute units; buy

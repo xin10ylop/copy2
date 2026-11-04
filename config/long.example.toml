@@ -13,6 +13,9 @@ min_sol = 1.45
 stake_sol = 1.0
 # the curve price against the price its buy left, without our own tokens
 take_profit = 2.0
+# 0 = no stop (the trip ends at the take profit or the hold). Since Nov 2026 wallet 4 sells most coins early and
+# the 0.8 stop sold into its sale: Oct 29 - Nov 4, 1 SOL x 3, +1.79 with 0.8, +6.26 with none; neutral on Oct 19-28
+# (analysis/research/2026-10-31/since_stop)
 stop = 0.8
 # it sells at 1800 s after its buy
 max_hold_s = 1790

@@ -159,8 +159,10 @@ impl LongCfg {
         if !(self.take_profit > 1.0 && self.take_profit < 100.0) {
             return bad("take_profit must be above 1");
         }
-        if !(self.stop > 0.0 && self.stop < 1.0) {
-            return bad("stop must be in (0, 1)");
+        // 0 = no stop: the trip ends at the take profit or the hold (2026-11-04: since wallet 4 dropped its
+        // timer and sells early, the 0.8 stop sold into its own sale; analysis/research/2026-10-31/since_stop)
+        if !(self.stop >= 0.0 && self.stop < 1.0) {
+            return bad("stop must be in [0, 1); 0 = no stop");
         }
         if !(0.0..=1.0).contains(&self.max_premium) {
             return bad("max_premium must be in [0, 1]");
@@ -227,6 +229,8 @@ mod tests {
         assert_eq!(c.mode, Mode::On);
         assert_eq!(c.max_open, 2);
         assert!(LongCfg::from_toml_str("stop = 1.2").is_err());
+        assert!(LongCfg::from_toml_str("stop = 0.0").is_ok());
+        assert!(LongCfg::from_toml_str("stop = -0.1").is_err());
         assert!(LongCfg::from_toml_str("mode = \"on\"\nbuy_senders = [\"a\", \"b\"]").is_err());
         // an empty list would mean every enabled sender: several buys
         assert!(LongCfg::from_toml_str("mode = \"on\"\nbuy_senders = []").is_err());

@@ -131,6 +131,22 @@ fn stop_closes_with_a_loss_and_time_after_the_hold() {
     assert_eq!(e.book.positions[0].state, State::Selling);
 }
 
+/// `stop = 0` is no stop: a coin at a third of its price is held, and the
+/// hold still ends the trip (2026-11-04: wallet 4 sells early now, and the
+/// 0.8 stop sold into its sale; since_stop/nostop_new.py).
+#[test]
+fn no_stop_holds_through_a_drop_until_the_hold() {
+    let mut e = opened("nostop");
+    e.cfg.stop = 0.0;
+    price_to(&mut e, 0.3);
+    e.on_tick(now_ms());
+    assert_eq!(e.book.positions[0].state, State::Open);
+    assert_eq!(e.book.positions[0].reason, None);
+    let seen = e.book.positions[0].seen_ms;
+    e.on_tick(seen + 1_790_000);
+    assert_eq!(e.book.positions[0].reason, Some(Reason::Time));
+}
+
 /// A paper sell is priced on the curve at the end of the slot after the
 /// trade that fired it, not on that trade's own state: a real sell lands a
 /// slot later, and on a frenzy coin the price has moved by then.

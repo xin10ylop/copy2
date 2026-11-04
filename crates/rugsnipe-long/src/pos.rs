@@ -279,7 +279,7 @@ pub fn exit_due(
     let px = p.price();
     if px >= take_profit {
         Some(Reason::Tp)
-    } else if px <= stop && px > 0.0 {
+    } else if stop > 0.0 && px <= stop && px > 0.0 {
         Some(Reason::Stop)
     } else if now_ms.saturating_sub(p.seen_ms) >= max_hold_s * 1000 {
         Some(Reason::Time)
