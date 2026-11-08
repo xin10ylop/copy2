@@ -1,0 +1,15 @@
+first buy UTC coin     venue                        1st SOL buys  in SOL out SOL     net     x 1st sale s sales
+11-04 18:29  HEb2dwDN Raydium CPMM                   10.10    1   10.10    2.85   -7.26  0.28        44     1
+11-04 18:52  BpWuEs3x Meteora DBC                    10.10    2   10.35   14.59   +4.24  1.41      4723     1
+11-04 18:58  AT9oSH2M Meteora DBC                     3.05    1    3.05    3.01   -0.04  0.99      3808     1
+11-05 16:47  C57Woifm Raydium LaunchLab               6.10    2    7.15    6.36   -0.79  0.89       314     1
+11-05 16:56  2HtyE1W7 PumpSwap                       10.05    2   20.09   19.45   -0.64  0.97       115     2
+11-05 18:05  3BcBgq4z Meteora DBC                     3.10    1    3.10    5.44   +2.34  1.75         5     1
+11-05 18:06  D6EPcNsX pump curve                      6.10    1    6.10   15.75   +9.65  2.58        20     7
+11-05 20:28  38bXdDFT Raydium LaunchLab               2.05    1    2.05    3.23   +1.18  1.58         1     1
+11-05 21:25  DhAAWVBR pump curve                      2.54    1    2.54    3.39   +0.86  1.34      9530     1
+11-06 03:59  DJGCjps5                                -0.00    1    0.00    0.00   +0.00  0.00         -     0
+11-06 20:05  8FTjPmmr Meteora DLMM/pump curve         3.02    1    3.02    4.06   +1.04  1.34         1     1
+11-06 20:26  A8GcRwoR Meteora DBC                     6.02    1    6.02    5.28   -0.74  0.88       656     1
+11-06 21:52  DGuudmnJ pump curve                     -0.00   10    0.00    0.00   +0.00  0.00         -     0
+{('5.1+', 'n'): 6.0, ('5.1+', 'net'): 4.46, ('3-5.1', 'n'): 3.0, ('3-5.1', 'net'): 3.33, ('<2.9', 'n'): 4.0, ('<2.9', 'net'): 2.04}
