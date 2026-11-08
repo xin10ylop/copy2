@@ -18,7 +18,7 @@ for k, (m, tr) in P.items():
     cls = "tp" if px >= 2.4 else "stop" if px <= 0.75 else "timer" if 1780 <= dt <= 1870 else "early" if dt < 1780 else "late"
     sold = sum(e["tok"] for _, e in sells); its = (sum(e["q"] for _, e in sells) - b["q"]) / b["q"]
     out.append(dict(day=day(r["t"]), cls=cls, px=px, dt=dt, full=sold >= 0.99 * b["tok"], its=its))
-print(f"{len(out)} routable trips of wallet 4, Oct 28 20:34 to Nov 4 16:11 Beirut")
+print(f"{len(out)} routable trips of wallet 4 since Oct 28 20:34 Beirut")
 by = collections.defaultdict(list)
 for o in out: by[o["day"]].append(o)
 print(f"{'day':6s} {'trips':>5s} {'tp':>4s} {'stop':>4s} {'timer':>5s} {'early':>5s} {'none':>4s}  early: median price, median s   its own result per trip (quote)")
