@@ -1,0 +1,25 @@
+== Nov 4 18:05 -> Nov 8 16:33 UTC, floor 5.00 
+   FIXED RULE (its buy >= 5.00 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=2: -0.16 (7) without best 2 -1.47; a trip median -0.142
+   FIXED RULE (its buy >= 5.00 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=4: -0.52 (7) without best 2 -1.56; a trip median -0.131
+   FIXED RULE (its buy >= 5.00 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=7: -0.68 (7) without best 2 -1.62; a trip median -0.135
+   FIXED RULE (its buy >= 5.00 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=slot+0: -0.40 (7) without best 2 -1.54; a trip median -0.135
+   FIXED RULE (its buy >= 5.00 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=slot+1: -0.97 (7) without best 2 -1.78; a trip median -0.141
+   FIXED RULE (its buy >= 5.00 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=slot+2: -1.06 (7) without best 2 -1.84; a trip median -0.200
+   FIXED RULE (its buy >= 5.00 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=slot+3: -0.78 (6) without best 2 -1.54; a trip median -0.161
+== Nov 4 18:05 -> Nov 8 16:33 UTC, floor 5.00 (same trips at every landing)
+   FIXED RULE (its buy >= 5.00 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=2: +0.05 (6) without best 2 -1.26; a trip median -0.086
+   FIXED RULE (its buy >= 5.00 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=4: -0.31 (6) without best 2 -1.35; a trip median -0.106
+   FIXED RULE (its buy >= 5.00 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=7: -0.45 (6) without best 2 -1.40; a trip median -0.108
+   FIXED RULE (its buy >= 5.00 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=slot+0: -0.17 (6) without best 2 -1.31; a trip median -0.064
+   FIXED RULE (its buy >= 5.00 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=slot+1: -0.68 (6) without best 2 -1.49; a trip median -0.122
+   FIXED RULE (its buy >= 5.00 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=slot+2: -0.75 (6) without best 2 -1.54; a trip median -0.161
+   FIXED RULE (its buy >= 5.00 SOL (fixed); TP None stop None timer 300.0; stake 1.0) on every trip, K=slot+3: -0.78 (6) without best 2 -1.54; a trip median -0.161
+
+per coin (fixed rule, 1 SOL): 2 trades behind / end of its slot / slot +1 / +2 / +3
+HEb2dwDN 10.10 K2 / slot+0..3: -0.728 -0.747 -0.756 -0.755 -0.755
+BpWuEs3x 10.10 K2 / slot+0..3: +0.529 +0.311 +0.225 +0.225 +0.225
+C57Woifm  6.10 K2 / slot+0..3: -0.361 -0.437 -0.485 -0.458 -0.458
+2HtyE1W7 10.05 K2 / slot+0..3: -0.030 +0.007 -0.103 -0.200 -0.200
+D6EPcNsX  6.10 K2 / slot+0..3: +0.781 +0.826 +0.579 +0.557 +0.526
+A8GcRwoR  6.02 K2 / slot+0..3: -0.207 -0.228 -0.290 -0.309    -  
+4Ns9x1JC 10.05 K2 / slot+0..3: -0.142 -0.135 -0.141 -0.122 -0.122

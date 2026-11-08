@@ -4,6 +4,10 @@ Wallet `Hn6vBWWySnxA8XjxRQDEmZEuH5QL7KqosnJGcLcUzFJ6` (pump.fun username **Rafin
 Found on the copy-trading app's leaderboard the owner pasted on Oct 31 (+$135.7k realized over 30 days, ROI +131%,
 121 trades, 30 s holds); resolved to its wallet through its pump.fun profile page.
 
+**Status (Nov 8): not to go live yet** ([`05-check-nov08/`](05-check-nov08/README.md)). It has not traded since Nov 6
+22:47 UTC and sent 8,450 USDC to an exchange; its 472.6 SOL stays. Its 15 copies of Nov 1-8 make −0.79 SOL at slot +1
+(−3.27 without the best 2), so the weekly stop rule fails. Paper on the box until it trades again and a week passes.
+
 **Status (Nov 4): qualified, not run yet; how fast the copier lands decides it.** The copier (`rugsnipe-long copy`,
 [`../docs/21-copier.md`](../docs/21-copier.md)) trades every venue it uses, through Jupiter. Its `[[target]]` is in
 [`../config/copier.example.toml`](../config/copier.example.toml): **its buys of 5.0 SOL or more, 1 SOL, one position at
