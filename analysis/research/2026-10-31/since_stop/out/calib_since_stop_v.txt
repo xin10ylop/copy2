@@ -1,0 +1,6 @@
+landing 2 0.8 stop: raw  +2.58 ( +0.60)   corrected +15.61 (+13.31)  on 156
+landing 2 no stop : raw  +7.36 ( +4.88)   corrected +24.17 (+21.37)  on 153
+landing 4 0.8 stop: raw  +2.71 ( +0.10)   corrected +15.38 (+12.46)  on 156
+landing 4 no stop : raw  +6.95 ( +4.13)   corrected +23.50 (+20.36)  on 153
+landing 7 0.8 stop: raw  +0.25 ( -2.15)   corrected +11.54 ( +8.82)  on 156
+landing 7 no stop : raw  +1.90 ( -0.54)   corrected +16.66 (+13.90)  on 154

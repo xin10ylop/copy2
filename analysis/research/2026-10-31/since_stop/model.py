@@ -122,8 +122,13 @@ def model(r, m, tr, stake, n, tp=2.0, sl=0.8, hold=1790, follow=False, pmax=1.25
         if sl and px <= sl: why, ex = "stop", min(i + 1, len(tr) - 1); break
         if e["t"] - t0 >= hold: why, ex = "time", i; break
     if ex is None: ex = len(tr) - 1
-    x = tr[ex]; vq_r = x["vq"] + net_in; vt_r = x["vt"] * x["vq"] / vq_r
-    out = (vq_r - vt_r * vq_r / (vt_r + tok)) * (1 - x["bps"] / 1e4)
+    x = tr[ex]
+    if os.environ.get("PRICE_MODEL", "q") == "v":     # our tokens out of the curve, the others' token amounts as they were
+        vt_r = max(x["vt"] - tok, 1); vq_r = x["vt"] * x["vq"] / vt_r
+        out = (vq_r - x["vq"]) * (1 - x["bps"] / 1e4)
+    else:                                              # q: our quote stays in the curve (cautious)
+        vq_r = x["vq"] + net_in; vt_r = x["vt"] * x["vq"] / vq_r
+        out = (vq_r - vt_r * vq_r / (vt_r + tok)) * (1 - x["bps"] / 1e4)
     sol = out * rate * (1 - 0.003) / 1e9
     return dict(exit=why, px_in=px_in, px_out=(vta / x["vt"]) ** 2, peak=peak, held=x["t"] - t0, net=sol - stake - 0.0026, trades_ahead=j - k)
 if __name__ == "__main__":

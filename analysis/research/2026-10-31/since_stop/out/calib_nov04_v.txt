@@ -1,0 +1,7 @@
+   median miss by exit: {'tp': '+15.9 points on 7', 'stop': '+4.0 points on 3', 'time': '+9.7 points on 4'}
+landing 2 0.8 stop: raw  -1.52 ( -3.34)   corrected  +3.40 ( +1.26)  on 64
+landing 2 no stop : raw  -1.65 ( -3.84)   corrected  +5.35 ( +2.84)  on 63
+landing 4 0.8 stop: raw  +0.08 ( -2.39)   corrected  +4.96 ( +2.17)  on 64
+landing 4 no stop : raw  -1.31 ( -4.05)   corrected  +5.53 ( +2.47)  on 63
+landing 7 0.8 stop: raw  -0.10 ( -2.40)   corrected  +4.35 ( +1.73)  on 64
+landing 7 no stop : raw  -3.69 ( -5.98)   corrected  +2.48 ( -0.13)  on 63

@@ -73,3 +73,17 @@ The copy at the plan's settings (1 SOL, 2 open) over those 4.1 days **loses in e
 Nov 8 −0.36. Since the stop (Oct 29 13:52 to Nov 8, 10.2 days, 153 copies), no stop is still ahead: **+5.14 (+2.59)**
 against +1.43 (−0.94) with the stop. The model came out cautious on the bot's real trades (about 13 points of the stake
 a trade, mostly take profits), so the real figures are likely somewhat better, but not enough to turn the last 4 days.
+
+## How far to trust the model: its miss on our real trades (`calib.py`, `out/calib_*.txt`, Nov 8)
+
+On the 15 real trades it can be checked against (the 12 of `report.py` with their real trades between, and the three
+1 SOL timer trades at landing 4; one was refused in the model and skipped), the model is **below the real result on 14
+of 14**: median **+18.9 points of the stake on take profits** (7), **+9.3 on timer exits** (4), +3.9 on stops (3). The
+fee is not the cause (the events charge 300-395 bps a side on most of these coins, and pump takes it), nor the price
+model (`PRICE_MODEL=v`, our tokens out of the curve, gives +15.9 / +9.7 / +4.0). Likely contributors: real sells landing
+into a still-rising price, and a landing count one trade too high on same-slot fills (the on-chain checks counted its
+own buy among the trades before ours). Not resolved.
+
+Corrected by that median miss per exit type, Nov 4 16:11 - Nov 8 at 1 SOL × 2, landing 4, no stop: **raw −1.78 (−4.34),
+corrected +5.36 (+2.42)**; since the stop (10.2 days): raw +5.14, corrected +22.6. The correction rests on 15 trades
+from one evening and night (Oct 28-29) and should be read as an upper bound; the raw model as a lower one.
