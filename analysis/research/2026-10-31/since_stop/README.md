@@ -53,3 +53,23 @@ together (median −0.195, worst −0.79, 12 won; 45 ended on our timer, 6 still
 hit 2.0x before its sale, made the profit. Selling right behind its sale instead (`follow_its_sell = true`, no stop)
 totals +2.19 against +6.92: our sell lands after its own and its copiers', and the 6 coins that reached 2.0x after its
 sale are cut. With the 0.8 stop the 29 such trips lost −0.94, but the stop costs more elsewhere (+1.79 in all).
+
+## Update, Nov 8 (`update.py`, `out/update_nov08.txt`, `out/update_since_stop_nov08.txt`, `out/rules.txt`)
+
+Wallet 4 is still trading (last transaction Nov 8 18:27 Beirut; balance 507 SOL, from 393 on Nov 4; no transfer out
+since Oct 30). 66 routable buys from Nov 4 16:11 to Nov 8 18:10 Beirut (4.1 days, 16 a day). Its rule is the same as
+since Oct 31 (early sales 68% of all 177 trips, the timer on none since Oct 31), but its own result per trip fell:
++35% a trip on Oct 28 - Nov 1, about +19% on Nov 2-6, **−22.5% on Nov 7**, +15% on Nov 8.
+
+The copy at the plan's settings (1 SOL, 2 open) over those 4.1 days **loses in every variant**:
+
+| landing | 0.8 stop | no stop |
+|---|---|---|
+| 2 trades behind | −1.82 (−3.51) | −2.09 (−4.09) |
+| 4 behind | −0.36 (−2.60) | −1.78 (−4.34) |
+| 7 behind | −0.50 (−2.63) | −3.97 (−6.06) |
+
+(brackets: without the best 2). By day at landing 4, no stop: Nov 4 −0.63, Nov 5 +2.53, Nov 6 +1.38, **Nov 7 −4.70**,
+Nov 8 −0.36. Since the stop (Oct 29 13:52 to Nov 8, 10.2 days, 153 copies), no stop is still ahead: **+5.14 (+2.59)**
+against +1.43 (−0.94) with the stop. The model came out cautious on the bot's real trades (about 13 points of the stake
+a trade, mostly take profits), so the real figures are likely somewhat better, but not enough to turn the last 4 days.
