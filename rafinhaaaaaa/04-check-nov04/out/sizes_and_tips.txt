@@ -1,0 +1,17 @@
+its buys Oct 25 - Nov 4 (chain): whole SOL change = swap + tip + fee
+whole 0.25  swap 0.20  tip 0.045  x1
+whole 1.07  swap 1.03  tip 0.045  x1
+whole 1.28  swap 1.18  tip 0.100  x1
+whole 3.05  swap 3.00  tip 0.045  x10
+whole 3.10  swap 3.00  tip 0.100  x5
+whole 3.25  swap 3.21  tip 0.045  x1
+whole 3.27  swap 3.23  tip 0.045  x1
+whole 3.44  swap 3.40  tip 0.045  x1
+whole 3.50  swap 3.46  tip 0.045  x1
+whole 3.54  swap 3.49  tip 0.045  x1
+whole 3.71  swap 3.66  tip 0.045  x1
+whole 5.05  swap 5.00  tip 0.045  x9
+whole 5.10  swap 5.00  tip 0.100  x8
+whole 10.05  swap 10.00  tip 0.045  x4
+whole 10.10  swap 10.00  tip 0.100  x17
+whole 10.80  swap 10.00  tip 0.600  x3

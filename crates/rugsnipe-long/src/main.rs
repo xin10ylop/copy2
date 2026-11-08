@@ -971,7 +971,11 @@ fn copy_run(args: &[String]) -> Result<(), String> {
     cp.feed_up = false;
     loop {
         match rx.recv_timeout(Duration::from_millis(500)) {
-            Ok(feed::FeedMsg::Tx(feed::Src::Copied, t)) => cp.on_tx(&t),
+            Ok(feed::FeedMsg::Tx(feed::Src::Copied, t)) => {
+                // the feed's newest slot now, not the queue's: a buy that waited behind a swap is seen as old
+                cp.tip_slot = feed::latest_slot();
+                cp.on_tx(&t)
+            }
             Ok(feed::FeedMsg::Up(u)) => cp.set_feed(u),
             Ok(_) => {}
             Err(std::sync::mpsc::RecvTimeoutError::Timeout) => {}
@@ -1085,6 +1089,11 @@ fn copy_replay(args: &[String]) -> Result<(), String> {
     use rugsnipe_long::copier::{Copier, PaperExec};
     let mut cfg = copy_cfg(args)?;
     cfg.mode = Mode::Log;
+    // a replay is paper at today's prices: it never writes the service's journal or state (its paper positions would
+    // be picked up by the running copier); --journal FILE keeps its lines
+    cfg.state = String::new();
+    cfg.journal = arg(args, "--journal").unwrap_or_default();
+    cfg.kill_file = String::new();
     let url = match arg(args, "--rpc") {
         Some(u) if u.starts_with('@') => std::fs::read_to_string(&u[1..])
             .map_err(|e| format!("{}: {e}", &u[1..]))?
@@ -1110,7 +1119,6 @@ fn copy_replay(args: &[String]) -> Result<(), String> {
     }
     let rpc = Rpc::new(&url);
     let mut cp = Copier::new(cfg.clone(), PaperExec::new(Rpc::new(&url), cfg.clone()))?;
-    cp.load_state()?;
     for s in &sigs {
         let v = rpc.transaction(s)?;
         let t = TxLite::from_rpc_json(&v)?;

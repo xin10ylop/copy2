@@ -31,6 +31,8 @@ pub struct Quote {
     pub impact_pct: f64,
     /// The route, e.g. `Dynamic Bonding Curve` or `TesseraV > Whirlpool > Pump.fun`.
     pub route: String,
+    /// `contextSlot`: the slot of the chain state the quote was priced on.
+    pub slot: u64,
     pub raw: Value,
 }
 
@@ -67,12 +69,14 @@ pub fn parse_quote(v: Value) -> Result<Quote, String> {
                 .join(" > ")
         })
         .unwrap_or_default();
+    let slot = v["contextSlot"].as_u64().unwrap_or(0);
     Ok(Quote {
         in_amount,
         out_amount,
         min_out,
         impact_pct,
         route,
+        slot,
         raw: v,
     })
 }
@@ -113,6 +117,15 @@ fn turn(optional: bool) -> bool {
         std::thread::sleep(std::time::Duration::from_millis(wait));
     }
     true
+}
+
+/// A call made now, without waiting for the gap (a swap right behind its own quote: Nov 4, 23 of 23 such swaps went
+/// through, 0.17 s + 0.18 s); the next call still waits the gap after it.
+fn mark() {
+    let now = crate::oracle::now_ms();
+    if let Ok(mut g) = GATE.lock() {
+        g.next_ms = g.next_ms.max(now + GAP_MS.load(std::sync::atomic::Ordering::Relaxed));
+    }
 }
 
 fn refused() {
@@ -206,7 +219,11 @@ pub fn swap_tx(
     let body = swap_body(q, user, jito_tip, max_priority).to_string();
     let mut tries = 0;
     let (st, text) = loop {
-        turn(false);
+        if tries > 0 {
+            turn(false);
+        } else {
+            mark();
+        }
         let (st, text) =
             rpc.rpc
                 .post_raw(&format!("{base}/swap"), "application/json", body.as_bytes())?;
@@ -224,12 +241,42 @@ pub fn swap_tx(
         ));
     }
     let v: Value = serde_json::from_str(&text).map_err(|e| format!("jupiter swap: {e}"))?;
+    // Jupiter simulated it (dynamicComputeUnitLimit): a swap that fails there is not sent
+    if !v["simulationError"].is_null() {
+        return Err(format!(
+            "jupiter swap: simulation failed: {}",
+            v["simulationError"].to_string().chars().take(200).collect::<String>()
+        ));
+    }
     let b64 = v["swapTransaction"]
         .as_str()
         .ok_or("jupiter swap: no swapTransaction")?;
     let tx = base64::Engine::decode(&base64::engine::general_purpose::STANDARD, b64)
         .map_err(|e| format!("jupiter swap: {e}"))?;
+    // we sign only a transaction we pay for
+    if fee_payer(&tx) != Some(user.to_bytes()) {
+        return Err("jupiter swap: the transaction's fee payer is not our wallet".into());
+    }
     Ok((tx, v["lastValidBlockHeight"].as_u64().unwrap_or(0)))
+}
+
+/// The fee payer (first account key) of a wire transaction, legacy or v0.
+pub fn fee_payer(tx: &[u8]) -> Option<[u8; 32]> {
+    let nsig = *tx.first()? as usize;
+    if nsig == 0 || nsig >= 0x80 {
+        return None;
+    }
+    let mut i = 1 + 64 * nsig;
+    if tx.get(i)? & 0x80 != 0 {
+        i += 1; // the version prefix
+    }
+    i += 3; // the header
+    let nkeys = *tx.get(i)? as usize;
+    if nkeys == 0 {
+        return None;
+    }
+    i += if nkeys >= 0x80 { 2 } else { 1 };
+    tx.get(i..i + 32)?.try_into().ok()
 }
 
 /// Sign a one-signer wire transaction in place: `[1][sig 64][message]`.
@@ -318,6 +365,27 @@ mod tests {
         assert_eq!(&tx[1..65], &[9u8; 64]);
         let mut two = vec![2u8; 140];
         assert!(sign_one(&mut two, |_| [0u8; 64]).is_err());
+    }
+
+    #[test]
+    fn the_fee_payer_is_read_from_legacy_and_v0_transactions() {
+        let payer = [7u8; 32];
+        let other = [9u8; 32];
+        // [1 sig][64 sig bytes][0x80 v0][header 3][2 keys][payer][other]...
+        let mut v0 = vec![1u8];
+        v0.extend([0u8; 64]);
+        v0.extend([0x80, 1, 0, 1, 2]);
+        v0.extend(payer);
+        v0.extend(other);
+        assert_eq!(fee_payer(&v0), Some(payer));
+        let mut legacy = vec![1u8];
+        legacy.extend([0u8; 64]);
+        legacy.extend([1, 0, 1, 2]);
+        legacy.extend(other);
+        legacy.extend(payer);
+        assert_eq!(fee_payer(&legacy), Some(other));
+        assert_eq!(fee_payer(&[0u8; 10]), None);
+        assert_eq!(fee_payer(&v0[..80]), None);
     }
 
     #[test]

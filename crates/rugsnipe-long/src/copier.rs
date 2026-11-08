@@ -188,6 +188,9 @@ pub struct CopierCfg {
     /// How long a sent swap is waited for before its blockhash's expiry is
     /// checked (it is never given up while it can still land).
     pub confirm_s: u64,
+    /// A buy of the copied wallet seen more than this many slots after the feed's newest slot is not copied (the
+    /// copier fell behind its queue while a swap was waiting); 0 = no check.
+    pub max_lag_slots: u64,
     pub journal: String,
     pub state: String,
     /// While this file exists, no new buys (exits continue).
@@ -218,6 +221,7 @@ impl Default for CopierCfg {
             poll_ms: 3_000,
             jupiter_gap_ms: 350,
             confirm_s: 40,
+            max_lag_slots: 10,
             journal: "/var/lib/rugsnipe-copier/copier.jsonl".into(),
             state: "/var/lib/rugsnipe-copier/state.json".into(),
             kill_file: "/var/lib/rugsnipe-copier/KILL".into(),
@@ -418,6 +422,9 @@ pub struct Fill {
     pub lamports: u64,
     pub tokens: u64,
     pub route: String,
+    /// The slot it priced at (paper: the quote's state) or landed in (live); 0 = unknown.
+    #[serde(default)]
+    pub slot: u64,
 }
 
 /// How the copier trades and prices.
@@ -550,6 +557,7 @@ impl Exec for PaperExec {
             lamports: lamports + self.cfg.paper_side_cost_lamports,
             tokens: q.out_amount,
             route: q.route,
+            slot: q.slot,
         })
     }
     fn sell(&mut self, mint: &Pubkey, _: &Pubkey, tokens: u64) -> Result<Fill, String> {
@@ -559,6 +567,7 @@ impl Exec for PaperExec {
             lamports: q.out_amount.saturating_sub(self.cfg.paper_side_cost_lamports),
             tokens,
             route: q.route,
+            slot: q.slot,
         })
     }
     fn value(&mut self, mint: &Pubkey, tokens: u64) -> Option<u64> {
@@ -584,6 +593,7 @@ pub struct LiveExec {
     out: Option<crate::send::Out>,
     cfg: CopierCfg,
     caches: Caches,
+    resends: u64,
 }
 
 impl LiveExec {
@@ -601,11 +611,14 @@ impl LiveExec {
             out,
             cfg,
             caches: Caches::default(),
+            resends: 0,
         }
     }
 
-    /// Swap along `q`, wait for it to land; the landed transaction.
-    fn swap(&mut self, q: &jup::Quote, kind: rugsnipe_tx::senders::VariantKind) -> Result<(String, TxLite), String> {
+    /// Swap along `q` and wait until it is confirmed, or until it can no longer land (its blockhash expired). The
+    /// signature and the landed transaction (`None`: confirmed but not readable; the caller books from balances).
+    fn swap(&mut self, q: &jup::Quote, kind: rugsnipe_tx::senders::VariantKind) -> Result<(String, Option<TxLite>), SwapErr> {
+        let sure = |why: String| SwapErr { why, sig: None };
         let (mut tx, last_valid) = jup::swap_tx(
             &self.rpc,
             &self.cfg.jupiter,
@@ -613,65 +626,132 @@ impl LiveExec {
             &self.me,
             self.cfg.jito_tip_lamports,
             self.cfg.priority_max_lamports,
-        )?;
+        )
+        .map_err(sure)?;
         let signer = &self.signer;
-        let sig = jup::sign_one(&mut tx, |m| signer.sign(m))?;
+        let sig = jup::sign_one(&mut tx, |m| signer.sign(m)).map_err(sure)?;
         let s = bs58::encode(sig).into_string();
-        let rpc_sent = self.rpc.send(&tx);
-        if let Some(o) = &self.out {
-            let tips = o.tips(self.cfg.jito_tip_lamports);
-            let txs = vec![(tx.clone(), sig); tips.len()];
-            for r in o.send_each(kind, &txs, &tips) {
-                if !r.ok {
-                    eprintln!("copier: sender {} refused {}: {}", r.label, &s[..8], r.why);
-                }
-            }
-        }
-        if let Err(e) = rpc_sent {
-            eprintln!("copier: rpc send {}: {e}", &s[..8]);
-        }
-        // Wait until it lands, or until it no longer can: its blockhash has
-        // expired. Giving up sooner would leave a buy that lands late as
-        // tokens no position owns, never sold. Without Jupiter's
-        // `lastValidBlockHeight`: confirm_s, then 90 s more (a blockhash is
-        // good for 150 blocks, about 60-90 s).
-        let deadline = wall_ms() + self.cfg.confirm_s * 1000;
+        self.send_all(&tx, sig, kind, &s, true);
+        let unsure = |why: String| SwapErr { why, sig: Some(s.clone()) };
+        // Wait for confirmed, not processed: a processed status can be on a fork that is dropped (and the swap land
+        // later on the main one), and the confirmed transaction is the one we book. Re-sent every 2 s (the same
+        // signed bytes: it can land only once) until it lands or its blockhash expires. Giving up sooner would leave
+        // a buy that lands late as tokens no position owns, never sold. Without Jupiter's `lastValidBlockHeight`:
+        // confirm_s, then 90 s more (a blockhash is good for 150 blocks, about 60-90 s).
+        let start = wall_ms();
+        let deadline = start + self.cfg.confirm_s * 1000;
         let hard = deadline + 90_000;
-        let mut expired = false;
+        let (mut expired, mut seen, mut last_send) = (false, false, start);
         loop {
             std::thread::sleep(std::time::Duration::from_millis(400));
-            if let Ok(v) = self.rpc.statuses(std::slice::from_ref(&s)) {
+            if let Ok(v) = self.rpc.statuses_conf(std::slice::from_ref(&s)) {
                 match v.first() {
-                    Some(Some(Ok(_))) => break,
-                    Some(Some(Err(e))) => return Err(format!("{}: landed and failed: {e}", &s[..8])),
-                    _ if expired => return Err(format!("{}: not landed, blockhash expired", &s[..8])),
+                    Some(Some(Ok((_, true)))) => break,
+                    Some(Some(Err((e, true)))) => return Err(sure(format!("{}: landed and failed: {e}", &s[..8]))),
+                    Some(Some(_)) => seen = true, // processed only: wait for confirmed
+                    _ if expired && !seen => return Err(sure(format!("{}: not landed, blockhash expired", &s[..8]))),
                     _ => {}
                 }
             }
             let now = wall_ms();
             if now > hard + 60_000 {
-                // the RPC cannot say: journaled as failed, the tokens checked by hand
-                return Err(format!("{}: status unknown (RPC); check the wallet for this coin", &s[..8]));
+                // the RPC cannot say: the caller checks the wallet
+                return Err(unsure(format!("{}: status unknown (RPC)", &s[..8])));
             }
-            if now > deadline {
-                // one more status read after this, then out
+            if !expired && now >= last_send + 2_000 {
+                last_send = now;
+                self.send_all(&tx, sig, kind, &s, false);
+            }
+            if last_valid > 0 || now > deadline {
                 expired = if last_valid > 0 {
                     matches!(self.rpc.block_height(), Ok(h) if h > last_valid) || now > hard
                 } else {
                     now > hard
                 };
             }
+            if expired && seen && now > hard {
+                // seen processed, never confirmed, and long expired: dropped with its fork, or the RPC is stuck
+                return Err(unsure(format!("{}: seen processed, never confirmed", &s[..8])));
+            }
         }
-        // the confirmed transaction (a few tries: the RPC may lag a slot)
-        for _ in 0..10 {
+        // the confirmed transaction (the RPC may lag a few slots)
+        for _ in 0..20 {
             if let Ok(v) = self.rpc.transaction(&s) {
-                return TxLite::from_rpc_json(&v).map(|t| (s.clone(), t));
+                return match TxLite::from_rpc_json(&v) {
+                    Ok(t) => Ok((s, Some(t))),
+                    Err(_) => Ok((s, None)),
+                };
             }
             std::thread::sleep(std::time::Duration::from_millis(500));
         }
-        Err(format!("{}: landed but not readable", &s[..8]))
+        Ok((s, None))
+    }
+
+    /// The signed swap to our RPC and the senders. Re-sends (`first = false`) go to the senders every other time
+    /// (Jito takes about one request a second from us).
+    fn send_all(&mut self, tx: &[u8], sig: [u8; 64], kind: rugsnipe_tx::senders::VariantKind, s: &str, first: bool) {
+        let rpc_sent = self.rpc.send(tx);
+        self.resends += 1;
+        if first || self.resends % 2 == 0 {
+            if let Some(o) = &self.out {
+                let tips = o.tips(self.cfg.jito_tip_lamports);
+                let txs = vec![(tx.to_vec(), sig); tips.len()];
+                for r in o.send_each(kind, &txs, &tips) {
+                    if !r.ok && first {
+                        eprintln!("copier: sender {} refused {}: {}", r.label, &s[..8], r.why);
+                    }
+                }
+            }
+        }
+        if let Err(e) = rpc_sent {
+            if first {
+                eprintln!("copier: rpc send {}: {e}", &s[..8]);
+            }
+        }
+    }
+
+    /// Our coins of `mint` at the confirmed commitment, read up to `n` times 2 s apart until some show.
+    fn held_confirmed(&self, mint: &Pubkey, program: &Pubkey, n: u32) -> u64 {
+        for i in 0..n {
+            if i > 0 {
+                std::thread::sleep(std::time::Duration::from_millis(2_000));
+            }
+            if let Ok(h) = self.rpc.token_balance_confirmed(&self.me, mint, program) {
+                if h > 0 {
+                    return h;
+                }
+            }
+        }
+        0
+    }
+
+    /// A sale of `mint` from our wallet that landed (an earlier try whose wait ended in an error): our newest
+    /// transactions, back to our buy of it.
+    fn landed_sale(&self, mint: &Pubkey) -> Option<(String, TxLite)> {
+        for s in self.rpc.recent_signatures(&self.me, 30).ok()? {
+            let Ok(v) = self.rpc.transaction(&s) else { continue };
+            let Ok(t) = TxLite::from_rpc_json(&v) else { continue };
+            let d = t.token_delta(&self.me, mint);
+            if d < 0 {
+                return Some((s, t));
+            }
+            if d > 0 {
+                return None; // our buy of it: no sale since
+            }
+        }
+        None
     }
 }
+
+/// A swap that did not end confirmed. `sig: None`: nothing landed for sure (refused before sending, failed on chain,
+/// or expired unseen). `Some`: sent, and the RPC could not say how it ended.
+struct SwapErr {
+    why: String,
+    sig: Option<String>,
+}
+
+/// Rent of a new token account, paid in our buy (an estimate for a buy booked from balances).
+const ATA_RENT: u64 = 2_039_280;
 
 impl Exec for LiveExec {
     fn now_ms(&self) -> u64 {
@@ -680,7 +760,7 @@ impl Exec for LiveExec {
     fn paper(&self) -> bool {
         false
     }
-    fn buy(&mut self, mint: &Pubkey, _: &Pubkey, lamports: u64, min_tokens: u64) -> Result<Fill, String> {
+    fn buy(&mut self, mint: &Pubkey, program: &Pubkey, lamports: u64, min_tokens: u64) -> Result<Fill, String> {
         let bal = self.rpc.balance(&self.me)?;
         let keep = (self.cfg.min_wallet_sol * 1e9) as u64;
         if bal < lamports + keep + self.cfg.jito_tip_lamports {
@@ -688,37 +768,77 @@ impl Exec for LiveExec {
         }
         let q = jup::quote(&self.rpc, &self.cfg.jupiter, &c::WSOL_MINT, mint, lamports, self.cfg.buy_slippage_bps)?;
         premium(&q, min_tokens)?;
-        let (s, t) = self.swap(&q, rugsnipe_tx::senders::VariantKind::Buy)?;
-        let tokens = t.token_delta(&self.me, mint).max(0) as u64;
-        if tokens == 0 {
-            return Err(format!("{}: landed with no tokens", &s[..8]));
+        let (s, t, why) = match self.swap(&q, rugsnipe_tx::senders::VariantKind::Buy) {
+            Ok((s, t)) => (s, t, None),
+            Err(SwapErr { why, sig: None }) => return Err(why),
+            Err(SwapErr { why, sig: Some(s) }) => (s, None, Some(why)),
+        };
+        if let Some(t) = t {
+            let tokens = t.token_delta(&self.me, mint).max(0) as u64;
+            if tokens == 0 {
+                return Err(format!("{}: landed with no tokens", &s[..8]));
+            }
+            return Ok(Fill {
+                sig: s,
+                lamports: t.sol_spent(&self.me).max(0) as u64,
+                tokens,
+                route: q.route,
+                slot: t.slot,
+            });
+        }
+        // confirmed but unreadable, or the RPC could not say: the wallet decides. A buy that landed is always booked,
+        // or its coins would stay in the wallet, never sold.
+        let held = self.held_confirmed(mint, program, 4);
+        if held == 0 {
+            return Err(format!("{}: {}; the wallet holds none of the coin", &s[..8], why.unwrap_or_else(|| "confirmed, not readable".into())));
         }
         Ok(Fill {
             sig: s,
-            lamports: t.sol_spent(&self.me).max(0) as u64,
-            tokens,
-            route: q.route,
+            lamports: lamports + self.cfg.jito_tip_lamports + 5_000 + ATA_RENT,
+            tokens: held,
+            route: format!("{} (booked from balances: the transaction was not read; cost estimated)", q.route),
+            slot: 0,
         })
     }
     fn sell(&mut self, mint: &Pubkey, program: &Pubkey, tokens: u64) -> Result<Fill, String> {
-        let held = self.rpc.token_balance(&self.me, mint, program)?;
+        let mut held = self.rpc.token_balance(&self.me, mint, program)?;
         if held == 0 {
-            // nothing left (sold elsewhere): closed with nothing back
-            return Ok(Fill {
-                sig: "none-held".into(),
-                lamports: 0,
-                tokens: 0,
-                route: String::new(),
-            });
+            // A zero read: confirm it (a processed read can hit a node a few slots behind), then look for a sale of
+            // ours that landed (an earlier try whose wait ended in an error) before closing with nothing back.
+            held = self.held_confirmed(mint, program, 3);
+            if held == 0 {
+                if let Some((s, t)) = self.landed_sale(mint) {
+                    return Ok(Fill {
+                        lamports: (-t.sol_spent(&self.me)).max(0) as u64,
+                        tokens: (-t.token_delta(&self.me, mint)).max(0) as u64,
+                        slot: t.slot,
+                        sig: s,
+                        route: "an earlier try landed (found on chain)".into(),
+                    });
+                }
+                // nothing held and no sale of ours: gone some other way, closed with nothing back
+                return Ok(Fill {
+                    sig: "none-held".into(),
+                    lamports: 0,
+                    tokens: 0,
+                    route: String::new(),
+                    slot: 0,
+                });
+            }
         }
         let amount = tokens.min(held);
         let q = jup::quote(&self.rpc, &self.cfg.jupiter, mint, &c::WSOL_MINT, amount, self.cfg.sell_slippage_bps)?;
-        let (s, t) = self.swap(&q, rugsnipe_tx::senders::VariantKind::Sell)?;
+        let (s, t) = self.swap(&q, rugsnipe_tx::senders::VariantKind::Sell).map_err(|e| e.why)?;
+        let Some(t) = t else {
+            // confirmed, not readable: the next try finds it on chain and books it
+            return Err(format!("{}: confirmed, not readable yet", &s[..8]));
+        };
         Ok(Fill {
             sig: s,
             lamports: (-t.sol_spent(&self.me)).max(0) as u64,
             tokens: amount,
             route: q.route,
+            slot: t.slot,
         })
     }
     fn value(&mut self, mint: &Pubkey, tokens: u64) -> Option<u64> {
@@ -776,7 +896,15 @@ impl Pos {
     pub fn net(&self) -> Option<i64> {
         self.proceeds.map(|p| p as i64 - self.cost as i64)
     }
+    /// Open, its exit fired, and its sale failed `STUCK_TRIES` times (no route, a pulled pool ...): still retried
+    /// every 5 min, but it no longer holds a `max_open` slot, and the daily stop counts it as lost.
+    pub fn stuck(&self) -> bool {
+        self.open() && self.exit.is_some() && self.tries >= STUCK_TRIES
+    }
 }
+
+/// Failed sales after which a position is stuck (about 10 min of retries).
+pub const STUCK_TRIES: u32 = 20;
 
 const DAY_MS: u64 = 86_400_000;
 
@@ -790,6 +918,10 @@ pub struct Copier<E: Exec> {
     next_id: u64,
     /// No buys while the feed is down.
     pub feed_up: bool,
+    /// The feed's newest slot when the current transaction is handled (0 = unknown: no age check).
+    pub tip_slot: u64,
+    /// While an exit behind its sale runs: its sale's slot (journaled beside ours).
+    its_sale_slot: u64,
     /// Every journal line of this run (also appended to `cfg.journal`).
     pub lines: Vec<Value>,
 }
@@ -810,6 +942,8 @@ impl<E: Exec> Copier<E> {
             book: vec![],
             next_id: 1,
             feed_up: true,
+            tip_slot: 0,
+            its_sale_slot: 0,
             lines: vec![],
         })
     }
@@ -846,10 +980,13 @@ impl<E: Exec> Copier<E> {
             return;
         }
         let tmp = format!("{}.tmp", self.cfg.state);
-        if let Ok(s) = serde_json::to_string(&self.book) {
-            if std::fs::write(&tmp, s).is_ok() {
-                let _ = std::fs::rename(&tmp, &self.cfg.state);
-            }
+        let r = serde_json::to_string(&self.book)
+            .map_err(|e| e.to_string())
+            .and_then(|s| std::fs::write(&tmp, s).map_err(|e| e.to_string()))
+            .and_then(|_| std::fs::rename(&tmp, &self.cfg.state).map_err(|e| e.to_string()));
+        if let Err(e) = r {
+            // a restart would not know the open positions: their coins would stay in the wallet
+            eprintln!("copier: STATE NOT SAVED ({}): {e}", self.cfg.state);
         }
     }
 
@@ -882,11 +1019,14 @@ impl<E: Exec> Copier<E> {
     pub fn day_net(&self) -> i64 {
         let today = self.exec.now_ms() / DAY_MS;
         let paper = self.exec.paper();
-        self.book
+        let closed: i64 = self
+            .book
             .iter()
             .filter(|p| p.paper == paper && p.closed_ms.map(|c| c / DAY_MS) == Some(today))
             .filter_map(|p| p.net())
-            .sum()
+            .sum();
+        let stuck: i64 = self.book.iter().filter(|p| p.paper == paper && p.stuck()).map(|p| p.cost as i64).sum();
+        closed - stuck
     }
 
     /// Open positions of the mode's own kind (paper or real).
@@ -894,7 +1034,7 @@ impl<E: Exec> Copier<E> {
         let paper = self.exec.paper();
         self.book
             .iter()
-            .filter(|p| p.open() && p.paper == paper && target.is_none_or(|t| p.target == t))
+            .filter(|p| p.open() && !p.stuck() && p.paper == paper && target.is_none_or(|t| p.target == t))
             .count()
     }
 
@@ -919,8 +1059,12 @@ impl<E: Exec> Copier<E> {
             };
             for a in acts {
                 match a {
-                    Act::Buy(b) => self.on_buy(i, b, &tx.sig_b58()),
-                    Act::Sell { mint, .. } => self.on_sell(i, &mint),
+                    Act::Buy(b) => self.on_buy(i, b, &tx.sig_b58(), tx.slot),
+                    Act::Sell { mint, .. } => {
+                        self.its_sale_slot = tx.slot;
+                        self.on_sell(i, &mint);
+                        self.its_sale_slot = 0;
+                    }
                 }
             }
         }
@@ -936,7 +1080,7 @@ impl<E: Exec> Copier<E> {
         self.log("skip", v);
     }
 
-    fn on_buy(&mut self, i: usize, b: Buy, its_sig: &str) {
+    fn on_buy(&mut self, i: usize, b: Buy, its_sig: &str, slot: u64) {
         let t = self.targets[i].1.clone();
         let name = t.name.as_str();
         if t.coins == Coins::PumpUnroutable {
@@ -962,6 +1106,11 @@ impl<E: Exec> Copier<E> {
             return self.skip(name, &b.mint, its_sig, "large", json!({ "its_sol": its_sol }));
         }
         let ms = b.mint.to_string();
+        // seen late: the copier fell behind its queue (a swap was waiting); its sale may already have come
+        let lag = self.tip_slot.saturating_sub(slot);
+        if self.cfg.max_lag_slots > 0 && self.tip_slot > 0 && lag > self.cfg.max_lag_slots {
+            return self.skip(name, &b.mint, its_sig, "stale", json!({ "its_sol": its_sol, "lag_slots": lag }));
+        }
         let why = if !self.cfg.kill_file.is_empty() && std::path::Path::new(&self.cfg.kill_file).exists() {
             Some("killed")
         } else if !self.feed_up {
@@ -1017,8 +1166,11 @@ impl<E: Exec> Copier<E> {
                     sell_sig: None,
                 };
                 self.next_id += 1;
+                // its slot and ours (paper: the slot our quote was priced on; live: the slot our buy landed in)
                 let v = json!({ "id": p.id, "target": name, "mint": p.mint, "its_sig": its_sig, "its_sol": its_sol,
-                                "stake": stake, "cost": p.cost, "tokens": p.tokens, "sig": p.buy_sig, "route": p.route });
+                                "stake": stake, "cost": p.cost, "tokens": p.tokens, "sig": p.buy_sig, "route": p.route,
+                                "its_slot": slot, "our_slot": f.slot,
+                                "lag_slots": if f.slot > 0 && slot > 0 { f.slot as i64 - slot as i64 } else { -1 } });
                 self.book.push(p);
                 self.log("buy", v);
                 self.save();
@@ -1040,11 +1192,13 @@ impl<E: Exec> Copier<E> {
         }
         let (name, ms) = (t.name.clone(), mint.to_string());
         let now = self.exec.now_ms();
-        if let Some(k) = self
-            .book
-            .iter()
-            .position(|p| p.open() && p.exit.is_none() && p.target == name && p.mint == ms)
-        {
+        let ks: Vec<usize> = (0..self.book.len())
+            .filter(|&k| {
+                let p = &self.book[k];
+                p.open() && p.exit.is_none() && p.target == name && p.mint == ms
+            })
+            .collect();
+        for k in ks {
             self.exit(k, "its-sale", now);
         }
     }
@@ -1142,17 +1296,29 @@ impl<E: Exec> Copier<E> {
                 p.proceeds = Some(f.lamports);
                 p.sell_sig = Some(f.sig.clone());
                 let net = p.net().unwrap_or(0);
-                let v = json!({ "id": p.id, "target": p.target, "mint": p.mint, "reason": reason, "cost": p.cost,
+                let mut v = json!({ "id": p.id, "target": p.target, "mint": p.mint, "reason": reason, "cost": p.cost,
                                 "proceeds": f.lamports, "net": net, "held_s": (now - p.opened_ms) / 1000,
-                                "sig": f.sig, "route": f.route, "tries": p.tries });
+                                "sig": f.sig, "route": f.route, "tries": p.tries, "our_slot": f.slot });
+                if self.its_sale_slot > 0 {
+                    v["its_slot"] = json!(self.its_sale_slot);
+                    if f.slot > 0 {
+                        v["lag_slots"] = json!(f.slot as i64 - self.its_sale_slot as i64);
+                    }
+                }
                 self.log("sell", v);
             }
             Err(e) => {
                 let p = &mut self.book[k];
                 p.tries += 1;
-                p.next_try_ms = now + (2_000 * p.tries as u64).min(30_000);
+                p.next_try_ms = now + if p.tries >= STUCK_TRIES { 300_000 } else { (2_000 * p.tries as u64).min(30_000) };
                 let v = json!({ "id": p.id, "target": p.target, "mint": p.mint, "reason": reason, "tries": p.tries, "why": e });
+                let stuck = p.tries == STUCK_TRIES;
+                let sv = json!({ "id": p.id, "target": p.target, "mint": p.mint, "cost": p.cost, "tries": p.tries,
+                                 "why": "the sale keeps failing: retried every 5 min, its slot freed, counted as lost today; sell it by hand if it can be" });
                 self.log("sell-failed", v);
+                if stuck {
+                    self.log("sell-stuck", sv);
+                }
             }
         }
         self.save();
@@ -1276,7 +1442,7 @@ mod tests {
                 return Err("premium: fake".into());
             }
             self.buys.push((*mint, lamports));
-            Ok(Fill { sig: "b".into(), lamports: lamports + 1_000_000, tokens: lamports * 10, route: "fake".into() })
+            Ok(Fill { sig: "b".into(), lamports: lamports + 1_000_000, tokens: lamports * 10, route: "fake".into(), slot: 0 })
         }
         fn sell(&mut self, mint: &Pubkey, _: &Pubkey, tokens: u64) -> Result<Fill, String> {
             if self.fail_sells > 0 {
@@ -1285,7 +1451,7 @@ mod tests {
             }
             self.sells.push(*mint);
             let v = self.values.get(mint).copied().unwrap_or(tokens / 10);
-            Ok(Fill { sig: "s".into(), lamports: v, tokens, route: "fake".into() })
+            Ok(Fill { sig: "s".into(), lamports: v, tokens, route: "fake".into(), slot: 0 })
         }
         fn value(&mut self, mint: &Pubkey, _: u64) -> Option<u64> {
             self.values.get(mint).copied()
@@ -1338,7 +1504,7 @@ max_hold_s = 1790
         e.on_tx(&fx("w2_buy_dbc")); // 5.046 SOL
         assert!(e.exec.buys.is_empty());
         assert_eq!(e.lines.last().unwrap()["why"], "small");
-        e.on_buy(0, buy(DBC_COIN, 5_101_000_000), "x");
+        e.on_buy(0, buy(DBC_COIN, 5_101_000_000), "x", 0);
         assert_eq!(e.exec.buys, vec![(pk(DBC_COIN), 300_000_000)]);
         assert_eq!(e.open_count(Some("w2")), 1);
     }
@@ -1346,7 +1512,7 @@ max_hold_s = 1790
     #[test]
     fn its_sale_closes_our_position_right_behind_it() {
         let mut e = Copier::new(cfg(), Fake::default()).unwrap();
-        e.on_buy(0, buy(DBC_COIN, 5_101_000_000), "x");
+        e.on_buy(0, buy(DBC_COIN, 5_101_000_000), "x", 0);
         e.exec.now = 30_000;
         e.on_tx(&fx("w2_sell_dbc"));
         assert_eq!(e.exec.sells, vec![pk(DBC_COIN)]);
@@ -1358,7 +1524,7 @@ max_hold_s = 1790
     #[test]
     fn the_timer_sells_at_max_hold() {
         let mut e = Copier::new(cfg(), Fake::default()).unwrap();
-        e.on_buy(0, buy(DBC_COIN, 5_101_000_000), "x");
+        e.on_buy(0, buy(DBC_COIN, 5_101_000_000), "x", 0);
         e.exec.now = 299_000;
         e.on_tick();
         assert!(e.book[0].open());
@@ -1374,15 +1540,15 @@ max_hold_s = 1790
         let mut b = buy(B_COIN, 1_500_000_000);
         b.on_pump = true;
         // a SOL-priced pump coin: not part B
-        e.on_buy(1, b.clone(), "x");
+        e.on_buy(1, b.clone(), "x", 0);
         assert_eq!(e.lines.last().unwrap()["why"], "not-pump-unroutable");
         // a quote pump's route reaches: the long copy's (part A)
         b.pump_quote = Some(pk(PUMP));
         e.exec.routable.insert(pk(PUMP));
-        e.on_buy(1, b.clone(), "x");
+        e.on_buy(1, b.clone(), "x", 0);
         assert_eq!(e.lines.last().unwrap()["why"], "pump-routable");
         e.exec.routable.clear();
-        e.on_buy(1, b, "x");
+        e.on_buy(1, b, "x", 0);
         assert_eq!(e.exec.buys.len(), 1);
         let cost = e.book[0].cost; // 0.1 SOL + 0.001
         // valued under the stop: out
@@ -1399,7 +1565,7 @@ max_hold_s = 1790
         let mut b = buy(B_COIN, 1_500_000_000);
         b.on_pump = true;
         b.pump_quote = Some(pk(PUMP));
-        e.on_buy(1, b, "x");
+        e.on_buy(1, b, "x", 0);
         let cost = e.book[0].cost;
         e.exec.now = 3_000;
         e.exec.values.insert(pk(B_COIN), cost * 2 - 1);
@@ -1419,7 +1585,7 @@ max_hold_s = 1790
         let mut e = Copier::new(c, Fake::default()).unwrap();
         // it paid 1.5 SOL for 1,000 units: 1.5e6 lamports a unit
         let b = Buy { tokens: 1_000, pump_quote: Some(pk(PUMP)), on_pump: true, ..buy(B_COIN, 1_500_000_000) };
-        e.on_buy(1, b, "x");
+        e.on_buy(1, b, "x", 0);
         let p = e.book[0].clone();
         assert!((p.its_ppu - 1_500_000.0).abs() < 1e-6);
         // our tokens (fake: stake x 10) at twice its price
@@ -1441,12 +1607,12 @@ max_hold_s = 1790
         let mut e = Copier::new(c, Fake::default()).unwrap();
         // the fake fills at 0.1 lamports a unit; it paid 0.1 (premium 0): copied
         let b = Buy { tokens: 15_000_000_000, pump_quote: Some(pk(PUMP)), on_pump: true, ..buy(B_COIN, 1_500_000_000) };
-        e.on_buy(1, b, "x");
+        e.on_buy(1, b, "x", 0);
         assert_eq!(e.exec.buys.len(), 1);
         // it paid 0.05 (we would pay twice its price): skipped
         let other = "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU";
         let b = Buy { tokens: 30_000_000_000, pump_quote: Some(pk(PUMP)), on_pump: true, ..buy(other, 1_500_000_000) };
-        e.on_buy(1, b, "y");
+        e.on_buy(1, b, "y", 0);
         assert_eq!(e.exec.buys.len(), 1);
         assert_eq!(e.open_count(Some("w4b")), 1);
     }
@@ -1454,7 +1620,7 @@ max_hold_s = 1790
     #[test]
     fn a_failed_sale_is_retried_until_it_lands() {
         let mut e = Copier::new(cfg(), Fake::default()).unwrap();
-        e.on_buy(0, buy(DBC_COIN, 5_101_000_000), "x");
+        e.on_buy(0, buy(DBC_COIN, 5_101_000_000), "x", 0);
         e.exec.fail_sells = 2;
         e.exec.now = 300_000;
         e.on_tick();
@@ -1475,11 +1641,11 @@ max_hold_s = 1790
     fn max_open_held_coins_and_the_daily_stop_hold_buys_back() {
         let mut e = Copier::new(cfg(), Fake::default()).unwrap();
         for (i, m) in ["11111111111111111111111111111112", "11111111111111111111111111111113", "11111111111111111111111111111114", "11111111111111111111111111111115"].iter().enumerate() {
-            e.on_buy(0, buy(m, 5_200_000_000 + i as u64), "x");
+            e.on_buy(0, buy(m, 5_200_000_000 + i as u64), "x", 0);
         }
         assert_eq!(e.exec.buys.len(), 3, "w2 max_open 3");
         assert_eq!(e.lines.last().unwrap()["why"], "max-open");
-        e.on_buy(1, Buy { pump_quote: Some(pk(PUMP)), on_pump: true, ..buy("11111111111111111111111111111112", 1_500_000_000) }, "x");
+        e.on_buy(1, Buy { pump_quote: Some(pk(PUMP)), on_pump: true, ..buy("11111111111111111111111111111112", 1_500_000_000) }, "x", 0);
         assert_eq!(e.lines.last().unwrap()["why"], "held");
         // close the three at a loss of 0.2 SOL each: past the 0.5 daily stop
         for m in ["11111111111111111111111111111112", "11111111111111111111111111111113", "11111111111111111111111111111114"] {
@@ -1488,7 +1654,7 @@ max_hold_s = 1790
         e.exec.now = 300_000;
         e.on_tick();
         assert!(e.day_net() < -500_000_000);
-        e.on_buy(0, buy("11111111111111111111111111111116", 5_200_000_000), "x");
+        e.on_buy(0, buy("11111111111111111111111111111116", 5_200_000_000), "x", 0);
         assert_eq!(e.lines.last().unwrap()["why"], "daily-stop");
     }
 
@@ -1498,9 +1664,9 @@ max_hold_s = 1790
         let mut c = cfg();
         c.kill_file = k.to_string_lossy().into_owned();
         let mut e = Copier::new(c, Fake::default()).unwrap();
-        e.on_buy(0, buy(DBC_COIN, 5_200_000_000), "x");
+        e.on_buy(0, buy(DBC_COIN, 5_200_000_000), "x", 0);
         std::fs::write(&k, b"").unwrap();
-        e.on_buy(0, buy("11111111111111111111111111111112", 5_200_000_000), "x");
+        e.on_buy(0, buy("11111111111111111111111111111112", 5_200_000_000), "x", 0);
         assert_eq!(e.lines.last().unwrap()["why"], "killed");
         e.exec.now = 300_000;
         e.on_tick();
@@ -1512,7 +1678,7 @@ max_hold_s = 1790
     fn no_buys_while_the_feed_is_down() {
         let mut e = Copier::new(cfg(), Fake::default()).unwrap();
         e.set_feed(false);
-        e.on_buy(0, buy(DBC_COIN, 5_200_000_000), "x");
+        e.on_buy(0, buy(DBC_COIN, 5_200_000_000), "x", 0);
         assert_eq!(e.lines.last().unwrap()["why"], "feed-down");
     }
 
@@ -1522,7 +1688,7 @@ max_hold_s = 1790
         let mut c = cfg();
         c.state = dir.to_string_lossy().into_owned();
         let mut e = Copier::new(c.clone(), Fake::default()).unwrap();
-        e.on_buy(0, buy(DBC_COIN, 5_200_000_000), "x");
+        e.on_buy(0, buy(DBC_COIN, 5_200_000_000), "x", 0);
         let mut e2 = Copier::new(c, Fake::default()).unwrap();
         assert_eq!(e2.load_state().unwrap(), 1);
         assert_eq!(e2.book[0].mint, DBC_COIN);
@@ -1539,13 +1705,13 @@ max_hold_s = 1790
         c.state = dir.to_string_lossy().into_owned();
         c.targets[0].max_open = 1;
         let mut e = Copier::new(c.clone(), Fake::default()).unwrap();
-        e.on_buy(0, buy(DBC_COIN, 5_200_000_000), "x"); // paper
+        e.on_buy(0, buy(DBC_COIN, 5_200_000_000), "x", 0); // paper
         // mode on: the paper position is loaded, but neither the cap nor the daily stop counts it
         let mut live = Copier::new(c.clone(), Fake { live: true, ..Fake::default() }).unwrap();
         assert_eq!(live.load_state().unwrap(), 1);
         assert_eq!(live.open_count(Some("w2")), 0);
         let other = "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU";
-        live.on_buy(0, buy(other, 5_200_000_000), "y");
+        live.on_buy(0, buy(other, 5_200_000_000), "y", 0);
         assert_eq!(live.exec.buys.len(), 1, "the real buy is not held back by the paper one");
         // its timer: the paper one closes at a quote, never through a real sale
         live.exec.values.insert(pk(DBC_COIN), 250_000_000);
@@ -1559,9 +1725,48 @@ max_hold_s = 1790
         // back to paper while the real one is open: refused (here it closed, so a new real one is opened by hand)
         let _ = std::fs::remove_file(&dir);
         let mut live2 = Copier::new(c.clone(), Fake { live: true, ..Fake::default() }).unwrap();
-        live2.on_buy(0, buy(other, 5_200_000_000), "z");
+        live2.on_buy(0, buy(other, 5_200_000_000), "z", 0);
         assert!(Copier::new(c, Fake::default()).unwrap().load_state().is_err());
         let _ = std::fs::remove_file(dir);
+    }
+
+    #[test]
+    fn a_buy_seen_after_the_queue_fell_behind_is_not_copied() {
+        let mut e = Copier::new(cfg(), Fake::default()).unwrap();
+        e.tip_slot = 1_000;
+        e.on_buy(0, buy(DBC_COIN, 5_101_000_000), "x", 989); // 11 slots behind the feed: stale
+        assert!(e.book.is_empty());
+        assert_eq!(e.lines.last().unwrap()["why"], "stale");
+        e.on_buy(0, buy(DBC_COIN, 5_101_000_000), "x", 990); // 10 behind: copied
+        assert_eq!(e.book.len(), 1);
+    }
+
+    #[test]
+    fn a_sale_that_keeps_failing_frees_its_slot_and_counts_as_lost() {
+        let mut e = Copier::new(cfg(), Fake::default()).unwrap();
+        e.on_buy(0, buy(DBC_COIN, 5_101_000_000), "x", 0);
+        let cost = e.book[0].cost as i64;
+        e.exec.fail_sells = 1_000;
+        let mut now = 300_000;
+        for _ in 0..STUCK_TRIES {
+            e.exec.now = now;
+            e.on_tick();
+            now += 31_000;
+        }
+        assert!(e.book[0].open() && e.book[0].stuck());
+        assert_eq!(e.lines.iter().filter(|l| l["ev"] == "sell-stuck").count(), 1);
+        assert_eq!(e.open_count(Some("w2")), 0);
+        assert_eq!(e.day_net(), -cost);
+        // the slot is free for its next buy, and the stuck sale is still retried, every 5 min
+        e.on_buy(0, buy("11111111111111111111111111111112", 5_200_000_000), "y", 0);
+        assert_eq!(e.open_count(Some("w2")), 1);
+        let t = e.book[0].tries;
+        e.exec.now = now + 200_000;
+        e.on_tick();
+        assert_eq!(e.book[0].tries, t);
+        e.exec.now = now + 300_000;
+        e.on_tick();
+        assert_eq!(e.book[0].tries, t + 1);
     }
 
     #[test]
@@ -1571,7 +1776,7 @@ max_hold_s = 1790
         assert_eq!(c.mode, Mode::Log);
         assert_eq!(c.targets.len(), 1, "part B is commented out");
         let r = &c.targets[0];
-        assert_eq!((r.name.as_str(), r.coins, r.min_sol, r.max_hold_s), ("rafinha", Coins::Any, 5.1, 300));
+        assert_eq!((r.name.as_str(), r.coins, r.min_sol, r.max_hold_s), ("rafinha", Coins::Any, 5.0, 300));
         assert_eq!((r.stake(5_100_000_000), r.max_open, r.follow_sell), (1_000_000_000, 1, true));
         assert_eq!((r.take_profit, r.stop, r.max_premium), (0.0, 0.0, 0.0));
         // part B's block, uncommented, is a valid target with the scored exits
