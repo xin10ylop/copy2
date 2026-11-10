@@ -1,0 +1,6 @@
+landing 2 0.8 stop: raw  -2.36 ( -3.86)   corrected  -0.40 ( -2.27)  on 24
+landing 2 no stop : raw  -1.83 ( -3.39)   corrected  +0.89 ( -1.05)  on 24
+landing 4 0.8 stop: raw  -2.04 ( -3.54)   corrected  -0.07 ( -1.95)  on 24
+landing 4 no stop : raw  -1.50 ( -3.06)   corrected  +1.22 ( -0.72)  on 24
+landing 7 0.8 stop: raw  -2.52 ( -3.76)   corrected  -0.97 ( -2.58)  on 24
+landing 7 no stop : raw  -1.78 ( -3.11)   corrected  +0.47 ( -1.24)  on 24

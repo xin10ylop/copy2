@@ -87,3 +87,20 @@ own buy among the trades before ours). Not resolved.
 Corrected by that median miss per exit type, Nov 4 16:11 - Nov 8 at 1 SOL × 2, landing 4, no stop: **raw −1.78 (−4.34),
 corrected +5.36 (+2.42)**; since the stop (10.2 days): raw +5.14, corrected +22.6. The correction rests on 15 trades
 from one evening and night (Oct 28-29) and should be read as an upper bound; the raw model as a lower one.
+
+## Update, Nov 10 (`out/calib_nov08.txt`, `out/calib_last7.txt`, `out/update_last7_byday.txt`, `out/rules.txt`)
+
+Wallet 4 still trades (last transaction Nov 10 15:17 Beirut). **A second cash-out:** Nov 9 03:17 Beirut, 410 SOL to the
+same `EXzuWDVb...` in five transfers within a minute; balance 158 SOL on Nov 10. Its flow is thinner (10 routable buys on
+Nov 9, 8 on Nov 10 to 15:17) and its own result per trip weaker (Nov 9 +20.6%, Nov 10 −1.9%); its rule is unchanged
+(early sales on 69.5% of all 200 trips since Oct 28).
+
+The copy at 1 SOL × 2, no stop, landing 4 (raw model / corrected by its miss on our real trades):
+
+| window | copies | raw (w/o best 2) | corrected (w/o best 2) |
+|---|---|---|---|
+| Nov 8 18:10 - Nov 10 15:17 | 24 | −1.50 (−3.06) | +1.22 (−0.72) |
+| last 7 days, Nov 3 15:30 - Nov 10 15:17 | 99 | −2.60 (−5.16) | +8.76 (+5.83) |
+
+By day (raw): Nov 3 −1.14, Nov 4 +1.90, Nov 5 +2.53, Nov 6 +1.38, Nov 7 −4.70, Nov 8 −1.30, Nov 9 +0.26, Nov 10 −1.52.
+The raw model loses over the week, the corrected one wins; only real fills can say which is right.

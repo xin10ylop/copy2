@@ -1,0 +1,6 @@
+landing 2 0.8 stop: raw  -3.87 ( -5.56)   corrected  +4.39 ( +2.32)  on 100
+landing 2 no stop : raw  -3.37 ( -5.40)   corrected  +8.18 ( +5.77)  on 99
+landing 4 0.8 stop: raw  -1.94 ( -4.18)   corrected  +6.28 ( +3.66)  on 100
+landing 4 no stop : raw  -2.60 ( -5.16)   corrected  +8.76 ( +5.83)  on 99
+landing 7 0.8 stop: raw  -1.91 ( -4.12)   corrected  +5.59 ( +3.00)  on 100
+landing 7 no stop : raw  -4.20 ( -6.43)   corrected  +6.12 ( +3.51)  on 99

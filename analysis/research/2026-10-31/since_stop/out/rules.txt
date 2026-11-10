@@ -1,4 +1,4 @@
-177 routable trips of wallet 4 since Oct 28 20:34 Beirut
+200 routable trips of wallet 4 since Oct 28 20:34 Beirut
 day    trips   tp stop timer early none  early: median price, median s   its own result per trip (quote)
 10-28      7    2    0     0     5    0  1.22x  168 s   mean +106.0%, sum +7.42
 10-29     18    1    1     6    10    0  1.27x   95 s   mean +39.9%, sum +7.19
@@ -11,6 +11,8 @@ day    trips   tp stop timer early none  early: median price, median s   its own
 11-05     17    1    5     0    11    0  1.24x  303 s   mean +21.4%, sum +3.64
 11-06     23    1    4     0    18    0  1.10x  268 s   mean +18.7%, sum +4.30
 11-07     15    0    6     0     8    1  1.02x  366 s   mean -22.5%, sum -3.15
-11-08      9    1    1     0     7    0  0.98x  301 s   mean +14.9%, sum +1.34
-all      177   10   33     9   120    5  1.07x  300 s   mean +25.7%, sum +44.20
-early-sale rate 67.8%  (Oct 19-22: 3.5%, Oct 23-27: 13.6%, Oct 27-28: 49.0%; fresh/README §2); held to its timer 5.1% (67%, 67%, 39%); sold all at once on 100%
+11-08     14    1    2     0    11    0  0.98x  301 s   mean +14.3%, sum +2.00
+11-09     10    0    1     0     9    0  1.03x  296 s   mean +20.6%, sum +2.06
+11-10      8    0    2     0     6    0  1.02x  216 s   mean -1.9%, sum -0.15
+all      200   10   37     9   139    5  1.07x  299 s   mean +24.0%, sum +46.77
+early-sale rate 69.5%  (Oct 19-22: 3.5%, Oct 23-27: 13.6%, Oct 27-28: 49.0%; fresh/README §2); held to its timer 4.5% (67%, 67%, 39%); sold all at once on 100%
