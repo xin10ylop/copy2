@@ -15,7 +15,17 @@ branch `claude/magical-einstein-k78idp`.
 
 **Agents: read [`CLAUDE.md`](CLAUDE.md) first.**
 
-## Where things stand (Nov 3)
+## Live again (Nov 12)
+
+**The long copy (wallet 4's part A) runs live since Nov 12 01:23 UTC (03:23 Beirut)** on a Vultr Frankfurt box
+(`fra-long`, High Performance AMD, 4 vCPU / 8 GB, $48 a month, a card on file; every Cherry Frankfurt VDS was out of
+stock). Settings: 0.1 SOL a copy, 2 open, take profit 2.5x, **no stop**, 1790 s, its sale not followed, price limit
+1.25x, daily stop 0.3 SOL. Wallet `Eao8T2Pk2aDzPWUFCA8si7oWd5ndFKfnX3HjYMpERst6` (1.78 SOL in, 0.2 of it as the WBTC float); **its key file was copied to
+the owner's Mac (sha256 prefix checked on both) before any SOL went in.** Pings: 0.54-0.70 ms to Jito, Helius,
+Nozomi and Triton in Frankfurt. The copier (Rafinhaaaaaa) is installed but not enabled. Next: about 20 closed trades
+at 0.1, checked on chain against the model (`analysis/research/2026-10-31/since_stop/`), then 0.5 SOL × 2.
+
+## Where things stood (Nov 3)
 
 **Nothing runs; no box exists since Oct 29.** The plan for the next box ([`08-new-box/`](08-new-box/README.md)) is
 4 SOL in two wallets. Its backtests give about +0.7 to +3.5 SOL a day (§1 there); expect the low half.
