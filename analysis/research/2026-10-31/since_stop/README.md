@@ -147,3 +147,10 @@ live trades, where wallet 4 sold all three after 3-5 minutes.
   up to +1.55 on one). Net for holding −0.95; without its best 2 coins −4.04.
 - **Stops:** 0.8 and 0.7 lose 3.5-3.9 SOL against no stop (the coins dip and come back). 0.6 and 0.5 gain 0.6-1.1;
   0.5 is ahead of no stop in both halves at both landings, by 0.2-0.7 a half: small, inside the model's error.
+
+**Wallet 4's own week** (`his_week.py`, `out/his_week_nov12.txt`): on the 100 coins we copy that it closed, it spent
+196.76 SOL and made **+21.32 SOL (+10.8%)**, 42 won, +11.29 without its best 2; WBTC it sold into is valued at its own
+SOL<->WBTC swap rate. 5 more coins it sold into the quote token are left out (−9.71 SOL in SOL terms, the quote tokens'
+value unknown). The raw model copying it at its own price (landing 0) and selling right behind it gives only +1.10 SOL
+on those 105 (about +1%); landing 4 −0.77. So the raw model sits about 10 points a trade under wallet 4's real result
+even with no lag, the same size as its measured miss on our own trades (§ "How far to trust the model").

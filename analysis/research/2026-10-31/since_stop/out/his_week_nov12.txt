@@ -1,0 +1,10 @@
+11-05 08:49 to 11-12 08:49 Beirut, coins wallet 4 first bought that week; WBTC at 8442 lamports a unit (median of its 73 SOL<->WBTC swaps)
+  the coins we copy: 100 closed, 42 won; spent 196.76 SOL, net +21.32 SOL (+10.8%), without its best 2 +11.29; left out (still held or another token left) 5
+    by day: 11-05 8 +3.82  11-06 21 +5.57  11-07 15 -1.90  11-08 13 +0.72  11-09 10 +3.25  11-10 10 -2.91  11-11 16 +6.83  11-12 7 +5.94
+    left out: 9wpxNVJZ net so far -1.653 tokens left 0 other ['8PzFWyLp']
+    left out: FagubDNv net so far -1.791 tokens left 0 other ['Cm6fNnMk']
+    left out: HVXmJHX5 net so far -2.284 tokens left 0 other ['A13oRB9F']
+    left out: DV1LJAWo net so far -1.772 tokens left 0 other ['Cm6fNnMk']
+    left out: 77DQnENJ net so far -2.208 tokens left 0 other ['Ai66LHZG']
+  all its coins: 3788 closed, 1069 won; spent 2797.20 SOL, net +201.84 SOL (+7.2%), without its best 2 +176.29; left out (still held or another token left) 1538
+    by day: 11-05 267 +41.76  11-06 452 +57.62  11-07 460 +27.84  11-08 477 +0.88  11-09 430 +24.96  11-10 526 -7.95  11-11 807 +41.31  11-12 369 +15.43
