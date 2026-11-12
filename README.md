@@ -33,6 +33,15 @@ wallet by `HckQ93Xq...` (15:06-15:51 UTC; we signed nothing) were sold through J
 +0.0674 SOL on chain. SOL 2.1877 after, plus the WBTC float (about 0.59 SOL).
 **Take profit 2.4 since Nov 12 16:42 UTC** (was 2.5; `since_stop/out/tp_fine.txt`: the 2.3-2.6 plateau, 2.4 ahead by
 0.4 SOL over two weeks and just under wallet 4's own 2.5x target). The restart's journal: `tp 2.4x`, feed connected.
+**A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
+branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet
+that passed the pick-on-week-1 test (tp 3.0, 300 s: week 2 raw +13.76, corrected +20.95; week 1 raw −2.28 with the
+live exit, its own week 1 −1.78 without its best 2). Checked Nov 12 with the bot's own detection on its last 150
+transactions (`examples/scan.rs`, `W=`): its buys are seen and valued (SOL through Jupiter or wSOL, 4 of 34 unpriced);
+its 1.0+ SOL buys that day were mostly in an unroutable quote (Xsc9qvGR), 2 of 7 routable. 74% of its transactions fail
+(96% on Nov 12). Unit `rugsnipe-long-tab` (config `/etc/rugsnipe/long-tab.toml`, state `/var/lib/rugsnipe-long-tab`,
+wallet `tab-wallet.json`): min_sol 1.0, tp 3.0, 300 s, no stop, its sale not followed, paper at 0.1. Real only after
+its paper record, at 0.1 SOL with its own wallet.
 
 **First 3 closed (Nov 12, checked on chain, journal = chain):** +0.2479 SOL. All three landed in wallet 4's own block
 (3, 7 and 8 coin trades between its buy and ours).

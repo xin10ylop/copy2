@@ -25,7 +25,8 @@ fn main() {
         .map(|p| serde_json::from_str(&std::fs::read_to_string(p).unwrap()).unwrap())
         .unwrap_or_default();
     let min_sol: f64 = a.get(3).map_or(1.45, |s| s.parse().unwrap());
-    let w4: Pubkey = W4.parse().unwrap();
+    // the copied wallet: wallet 4, or W=... for another one
+    let w4: Pubkey = std::env::var("W").unwrap_or_else(|_| W4.into()).parse().unwrap();
     let anchors = [c::WSOL_MINT, WBTC.parse().unwrap()];
     let mut files: Vec<_> = std::fs::read_dir(&a[1])
         .unwrap()
