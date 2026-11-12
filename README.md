@@ -37,6 +37,16 @@ at 0.1, checked on chain against the model (`analysis/research/2026-10-31/since_
 Source: `analysis/research/2026-10-31/since_stop/out/live_nov12_vs_model.txt`. Too few to judge: one win carries the
 total, and the two losers did worse than the model.
 
+Wallet 4 on the same coins (`his_vs_ours.py`, `out/his_vs_ours_nov12.txt`): it sold all three after 3 to 5 minutes;
+we hold to our own exits.
+
+| Coin | Wallet 4 | We | Its sale |
+|---|---|---|---|
+| `Ci9Bg1Bx` | +2.9% | −59.7% | after 303 s |
+| `BttUQVPM` | −28.1% | −45.5% | after 179 s |
+| `5tePJcGm` | +113.3% | +353.1% | after 224 s |
+| Total | +39.4% (+2.22 on 5.65 SOL) | +82.6% (+0.248 on 0.3 SOL) | |
+
 ## Where things stood (Nov 3)
 
 **Nothing runs; no box exists since Oct 29.** The plan for the next box ([`08-new-box/`](08-new-box/README.md)) is

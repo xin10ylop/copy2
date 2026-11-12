@@ -1,0 +1,11 @@
+wallet 4's transactions fetched up to 11-12 15:38:59 Beirut
+coin       his SOL in  his SOL back  his %     our %    held (his)   other tokens moved
+    11-12 05:17:41  buy  SOL -1.6406  coin +66124522661135  4RdwNm3m  
+    11-12 05:22:44  sell SOL +1.6876  coin -66124522661135  hz8sgGRE  
+  Ci9Bg1Bx     1.6406       1.6876     +2.9%    -59.7%  303 s   coin left 0
+    11-12 06:58:16  buy  SOL -1.6731  coin +37847843914070  4EtmZ9zG  
+    11-12 07:01:15  sell SOL +1.2028  coin -37847843914070  138ft9mk  
+  BttUQVPM     1.6731       1.2028    -28.1%    -45.5%  179 s   coin left 0
+    11-12 08:49:08  buy  SOL -2.3371  coin +49530859207760  4eA2GMxA  
+    11-12 08:52:52  sell SOL +4.9846  coin -49530859207760  4KkkR33P  
+  5tePJcGm     2.3371       4.9846   +113.3%   +353.1%  224 s   coin left 0
