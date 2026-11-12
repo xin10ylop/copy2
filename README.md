@@ -31,6 +31,8 @@ At 0.5 SOL (journal, Nov 12 UTC): #3 `7dDprVHP` timer −0.1106, #4 `57pQW4mw` t
 `Eymbsj8M` take profit 2.50x after 312 s +0.6228. The day: 6 closed, 2 won, +0.7477 SOL. Two coins airdropped to the
 wallet by `HckQ93Xq...` (15:06-15:51 UTC; we signed nothing) were sold through Jupiter with `float sell`: +0.1968 and
 +0.0674 SOL on chain. SOL 2.1877 after, plus the WBTC float (about 0.59 SOL).
+**Take profit 2.4 since Nov 12 16:42 UTC** (was 2.5; `since_stop/out/tp_fine.txt`: the 2.3-2.6 plateau, 2.4 ahead by
+0.4 SOL over two weeks and just under wallet 4's own 2.5x target). The restart's journal: `tp 2.4x`, feed connected.
 
 **First 3 closed (Nov 12, checked on chain, journal = chain):** +0.2479 SOL. All three landed in wallet 4's own block
 (3, 7 and 8 coin trades between its buy and ours).
