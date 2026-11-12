@@ -1,0 +1,5 @@
+1 live trades at 0.1 SOL, tp 2.5, no stop, 1790 s, against the raw model at the same landing
+  Ci9Bg1Bx  real -0.0597 ( -59.7%)   model -0.0372 ( -37.2%)  miss  -22.5 pts   model: time in 1.17x out 0.81x peak 1.18x
+  BttUQVPM  real -0.0455 ( -45.5%)   model -0.0368 ( -36.8%)  miss   -8.7 pts   model: time in 0.89x out 0.61x peak 0.89x
+  5tePJcGm  real +0.3531 (+353.1%)   model +0.1475 (+147.5%)  miss +205.6 pts   model: tp in 0.88x out 2.37x peak 2.50x
+  total real +0.2479, model +0.0735

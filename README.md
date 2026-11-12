@@ -25,6 +25,18 @@ the owner's Mac (sha256 prefix checked on both) before any SOL went in.** Pings:
 Nozomi and Triton in Frankfurt. The copier (Rafinhaaaaaa) is installed but not enabled. Next: about 20 closed trades
 at 0.1, checked on chain against the model (`analysis/research/2026-10-31/since_stop/`), then 0.5 SOL × 2.
 
+**First 3 closed (Nov 12, checked on chain, journal = chain):** +0.2479 SOL. All three landed in wallet 4's own block
+(3, 7 and 8 coin trades between its buy and ours).
+
+| # | Coin | Exit | Real | Raw model, same landing | Real minus model |
+|---|---|---|---|---|---|
+| 0 | `Ci9Bg1Bx` | timer (2 sells failed 6004, the 3rd landed) | −0.0597 | −0.0372 | −22.5 pts |
+| 1 | `BttUQVPM` | timer | −0.0455 | −0.0368 | −8.7 pts |
+| 2 | `5tePJcGm` | take profit, 351 s | +0.3531 | +0.1475 | +205.6 pts |
+
+Source: `analysis/research/2026-10-31/since_stop/out/live_nov12_vs_model.txt`. Too few to judge: one win carries the
+total, and the two losers did worse than the model.
+
 ## Where things stood (Nov 3)
 
 **Nothing runs; no box exists since Oct 29.** The plan for the next box ([`08-new-box/`](08-new-box/README.md)) is
