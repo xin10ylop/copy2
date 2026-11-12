@@ -1,0 +1,17 @@
+tp 2.4, 30 min, holding; SOL at 1 SOL, two weeks
+stop  | week 1 | week 2 |  both  | both w/o best 2s | both calibrated | stops hit
+None  | +10.21 |  +0.91 | +11.12 |            +3.74 |          +31.85 |     0   <- live
+0.3   | +10.26 |  +1.33 | +11.59 |            +4.21 |          +32.01 |     6
+0.4   | +10.40 |  +1.17 | +11.57 |            +4.18 |          +31.79 |     9
+0.5   |  +8.38 |  +1.91 | +10.29 |            +2.91 |          +30.02 |    20
+0.6   |  +7.61 |  +1.90 |  +9.51 |            +2.13 |          +28.23 |    40
+0.7   |  +7.75 |  -1.40 |  +6.34 |            -0.90 |          +23.53 |    63
+0.8   |  +6.48 |  -2.05 |  +4.44 |            -2.38 |          +19.97 |    88
+
+every copy, landing 4, no stop: of those whose price touched X (x the price its buy left)
+  X    touched  then reached tp 2.4   ended above our entry   their result with no stop / with a stop at X
+  0.3        6           0                     0                -4.87 /   -4.36
+  0.4       11           0                     0                -7.88 /   -7.39
+  0.5       22           0                     1               -11.75 /  -11.84
+  0.6       43           1                     4               -17.41 /  -18.91
+  0.7       68           4                    11               -19.25 /  -24.30

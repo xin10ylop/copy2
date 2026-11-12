@@ -234,3 +234,12 @@ than 1790 s; 120 s is the one to watch on the live trades.
 landings): a plateau at 2.3-2.6 (+9.39, +11.12, +10.71, +10.43; without the best 2s +2.61, +3.74, +3.26, +2.69), a
 fall below it (2.2 +6.00, 2.0 +4.11, 1.8 −1.20) and a slow one above (2.7-3.0 +8.5 to +10.4). 2.4 leads 2.5 by 0.4,
 inside the noise; it also sells just under wallet 4's own 2.5x target, ahead of its sale on the coins that reach it.
+
+## Stop losses with tp 2.4, and do deep drops come back? (`stop_scan.py`, `out/stop_scan.txt`, Nov 12)
+
+Live rule (tp 2.4, 30 min, holding), two weeks, raw, three landings. No stop +11.12 (+3.74 without the best 2s); 0.3x
++11.59, 0.4x +11.57, 0.5x +10.29, 0.6x +9.51, 0.7x +6.34, 0.8x +4.44. With the live calibration per exit (stops +3.9,
+timers +9.3, take profits +18.9 points) no stop +31.85, 0.3x +32.01, 0.4x +31.79, 0.5x +30.02. Deep drops rarely come
+back within the 30 minutes: of the copies whose price touched 0.5x the price its buy left, 0 of 22 reached the take
+profit and 1 ended above our entry; at 0.4x 0 of 11; at 0.6x 1 of 43 and 4 above entry. They also seldom fall much
+further, so a stop there saves next to nothing (0.5x: −11.84 against −11.75 without). No stop stays.
