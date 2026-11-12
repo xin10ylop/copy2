@@ -1,0 +1,51 @@
+# rugsnipe-long-tab -- hot role. A second long copy, of TAB16RxX (analysis/research/2026-11-13/lookalikes/):
+# the same binary with /etc/rugsnipe/long-tab.toml, its own state (/var/lib/rugsnipe-long-tab) and its own wallet
+# (/etc/rugsnipe/keys/tab-wallet.json, loaded under the same credential name). Without that wallet it runs paper
+# only (mode = "log"). `rugsnipe-long status --config /etc/rugsnipe/long-tab.toml` shows its book.
+[Unit]
+Description=rugsnipe long copy of TAB16RxX (a second copied wallet)
+Documentation=file:/opt/rugsnipe/src/docs/20-long-copy.md
+PartOf=rugsnipe.target
+Wants=network-online.target
+After=network-online.target time-sync.target chrony.service
+ConditionPathExists=/etc/rugsnipe/long-tab.toml
+StartLimitIntervalSec=300
+StartLimitBurst=20
+
+[Service]
+Type=simple
+User=rugsnipe
+Group=rugsnipe
+StateDirectory=rugsnipe-long-tab
+StateDirectoryMode=0750
+WorkingDirectory=/var/lib/rugsnipe-long-tab
+Environment=RUST_BACKTRACE=1
+ExecStart=/opt/rugsnipe/bin/rugsnipe-long run --config /etc/rugsnipe/long-tab.toml
+Restart=always
+RestartSec=2
+TimeoutStopSec=10
+UMask=0027
+LimitNOFILE=65536
+# Credentials: copied by PID 1 from /etc/rugsnipe/keys into $CREDENTIALS_DIRECTORY (the service
+# user never reads /etc/rugsnipe/keys); ABSENT is the fallback when a file is missing.
+LoadCredential=api-keys:/etc/rugsnipe/keys/api-keys.toml
+SetCredential=api-keys:ABSENT
+LoadCredential=long-wallet:/etc/rugsnipe/keys/tab-wallet.json
+SetCredential=long-wallet:ABSENT
+# hardening
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+SystemCallArchitectures=native
+ReadWritePaths=/var/lib/rugsnipe-long-tab
+
+[Install]
+WantedBy=rugsnipe.target

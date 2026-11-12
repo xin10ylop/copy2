@@ -7,7 +7,10 @@
 //!     Positions now, today's result (paper and real), the last closed;
 //!     `--chain`: the wallet's SOL and floats.
 //! rugsnipe-long float buy MINT SOL | float sell MINT all|AMOUNT [--config ...]
-//!     Buy or sell a float through Jupiter from the long wallet.
+//!     Buy or sell a float through Jupiter from the long wallet. Selling a
+//!     coin that is not a float (an airdrop) books its SOL for `status`.
+//! rugsnipe-long float book SIG [--config ...]
+//!     Book a sale already made (its SOL change) for `status`.
 //! rugsnipe-long copy [--config /etc/rugsnipe/copier.toml]
 //!     The copier (docs/21): several wallets' buys on any venue through
 //!     Jupiter (wallet 4's part B, other wallets); mode log (paper) or on.
@@ -721,11 +724,78 @@ fn status(args: &[String]) -> Result<(), String> {
             pap as f64 / 1e9
         );
     }
+    // coins airdropped to the wallet and sold (`float sell`, `float book`)
+    let ex = rugsnipe_long::extra::load(dir);
+    if !ex.is_empty() {
+        let today: Vec<_> = ex.iter().filter(|e| e.ms / 86_400_000 == day).collect();
+        let sum = |v: &mut dyn Iterator<Item = i64>| v.sum::<i64>() as f64 / 1e9;
+        let real_today: i64 = book
+            .positions
+            .iter()
+            .filter(|p| !p.paper && p.state == State::Closed && p.closed_ms / 86_400_000 == day)
+            .map(|p| p.net_lamports)
+            .sum();
+        let real_all: i64 = closed.iter().filter(|p| !p.paper).map(|p| p.net_lamports).sum();
+        let ex_today = sum(&mut today.iter().map(|e| e.lamports));
+        let ex_all = sum(&mut ex.iter().map(|e| e.lamports));
+        println!(
+            "   airdrops sold: today {} ({:+.4} SOL), all {} ({:+.4} SOL)",
+            today.len(),
+            ex_today,
+            ex.len(),
+            ex_all
+        );
+        println!(
+            "   trades + airdrops: today {:+.4} SOL, all {:+.4} SOL",
+            real_today as f64 / 1e9 + ex_today,
+            real_all as f64 / 1e9 + ex_all
+        );
+    }
     Ok(())
 }
 
 /// Jupiter swap API v1 (lite).
 const JUP: &str = "https://lite-api.jup.ag/swap/v1";
+
+/// Book a sale outside the copy (an airdropped coin sold) in
+/// `<state_dir>/extra.jsonl`: our SOL change in transaction `sig`.
+fn book_extra(cfg: &LongCfg, rpc: &Rpc, me: &Pubkey, sig: &str) -> Result<String, String> {
+    let mut tx = Err(String::new());
+    for _ in 0..10 {
+        tx = rpc.transaction(sig);
+        if tx.is_ok() {
+            break;
+        }
+        std::thread::sleep(Duration::from_secs(2));
+    }
+    let tx = tx?;
+    if !tx["meta"]["err"].is_null() {
+        return Err(format!("{sig} failed on chain"));
+    }
+    let d = rugsnipe_long::extra::sol_delta(&tx, &me.to_string()).ok_or("our wallet is not in it")?;
+    let mint = tx["meta"]["preTokenBalances"]
+        .as_array()
+        .into_iter()
+        .flatten()
+        .find(|b| b["owner"].as_str() == Some(&me.to_string()) && !cfg.floats.iter().any(|f| Some(f.as_str()) == b["mint"].as_str()))
+        .and_then(|b| b["mint"].as_str())
+        .unwrap_or("?")
+        .to_string();
+    let e = rugsnipe_long::extra::Extra {
+        ms: tx["blockTime"].as_u64().unwrap_or(0) * 1000,
+        sig: sig.to_string(),
+        mint,
+        lamports: d,
+    };
+    let new = rugsnipe_long::extra::append(std::path::Path::new(&cfg.state_dir), &e)?;
+    Ok(format!(
+        "{} {} {:+.4} SOL ({})",
+        if new { "booked" } else { "already booked:" },
+        &e.mint[..e.mint.len().min(8)],
+        d as f64 / 1e9,
+        &sig[..8]
+    ))
+}
 
 fn float(args: &[String]) -> Result<(), String> {
     let cfg = load_cfg(args)?;
@@ -737,7 +807,13 @@ fn float(args: &[String]) -> Result<(), String> {
         args.first().map(String::as_str),
         args.get(1).ok_or("float buy|sell MINT ...")?,
     );
+    if side == Some("book") {
+        let n = book_extra(&cfg, &rpc, &me, mint)?;
+        println!("{n}");
+        return Ok(());
+    }
     let mint: Pubkey = mint.parse().map_err(|_| "MINT")?;
+    let airdrop = side == Some("sell") && !cfg.float_pks().contains(&mint);
     let mut chain = rpc;
     let prog = route::Chain::mint_program(&mut chain, &mint).ok_or("unknown mint")?;
     let (input, output, amount) = match side {
@@ -760,7 +836,7 @@ fn float(args: &[String]) -> Result<(), String> {
             };
             (mint, c::WSOL_MINT, a)
         }
-        _ => return Err("float buy MINT SOL | float sell MINT all|AMOUNT".into()),
+        _ => return Err("float buy MINT SOL | float sell MINT all|AMOUNT | float book SIG".into()),
     };
     if amount == 0 {
         return Err("nothing to swap".into());
@@ -818,6 +894,13 @@ fn float(args: &[String]) -> Result<(), String> {
                         &mint.to_string()[..8],
                         chain.token_balance(&me, &mint, &prog)?
                     );
+                    if airdrop {
+                        // not a float: an airdropped coin sold, part of the result
+                        match book_extra(&cfg, &chain, &me, &s) {
+                            Ok(n) => println!("{n}"),
+                            Err(e) => println!("not booked ({e}): run `float book {s}` later"),
+                        }
+                    }
                     return Ok(());
                 }
                 Some(Some(Err(e))) => return Err(format!("failed: {e}")),

@@ -199,3 +199,38 @@ copy (raw, 1 SOL): +0.068, +0.177, −0.058, −0.154, +0.173 a copy; take profi
 only 1.6+/1.8+/2.0+ loses money and copies in both weeks; a stake that grows with its size is behind on week 1 and
 ahead on week 2 by about 1 SOL (mixed). The older study's "bigger buys hit the take profit more" is the 1.5 cut we
 already use (`2026-10-27/h9long`).
+
+**How often holding past its sale pays** (`hold_wins.py`, `out/hold_wins.txt`; every coin, landing 4, raw): over the
+two weeks it sold before our own exit on 174 of 195 copies. Held past its sale to our take profit (the 5tePJcGm case):
+19 coins, +16.38 SOL over selling behind it (10 in week 1, 9 in week 2). Holding was better on 53 coins (+25.57) and
+worse on 89 (−19.99, −0.225 each): net +5.57 (+6.52 week 1, −0.95 week 2).
+
+## Low take profits (`low_tp.py`, `out/low_tp.txt`; `short_timer.py`, `out/short_timer.txt`, Nov 12)
+
+Take profit 1.1-3.0x the price its buy left × timer 60 s-30 min, holding or selling behind its sale; two weeks, 1 SOL,
+2 open, raw, mean of three landings. **Take profits of 1.1-1.5 lose at every timer** (holding, 30 min: 1.1 −8.44,
+1.2 −8.80, 1.3 −6.02, 1.4 −6.48, 1.5 −5.37 against 2.5 +10.71): they hit 40-76% of the time, but a hit at 1.2x the
+price its buy left is a few percent over our entry after costs, and the misses fall 20-30%. 2.0-3.0 are the only
+positive rows; 2.5 and 3.0 lead. Side finding: tp 2.5-3.0 with a 2-minute timer was positive in both weeks (+11.76
+and +12.96 against +10.71; 11 of 15 days up against 8), but 90 s and 3 min do worse than 30 min, so it is a narrow
+peak, not a trend; the model's correction for 2-minute timer exits is unmeasured. No change.
+
+**A take profit that steps down** (`tp_step.py`, `out/tp_step.txt`): 2.5x until T seconds, then L until 30 min (T 120-
+1600 s, L 1.0-2.0), holding, two weeks. Live +10.71 (+3.26 without the best 2s). No cell is clearly ahead: the best,
+2.0 after 1300 s, +11.02 (+3.57). Lowering early (120-600 s) helps week 2 (up to +3.96 against +0.12) and costs more in
+week 1 (+2.4 to +7.7 against +10.59): the coins that reach 2.5x late pay for the slow ones. No change.
+
+## The timer, finely (`timer_scan.py`, `out/timer_scan.txt`, Nov 12)
+
+30 s to 30 min (the cached paths end 31 min after its buy: nothing longer can be tested), tp 2.5 and 3.0, holding or
+selling behind its sale; two weeks, raw, mean of three landings. Tp 2.5, holding (live = 1790 s: +10.71, +3.26 without
+the best 2s, 8 of 15 days up): 120 s +11.76 (+5.47, 11/15), 300 s +10.38, 600 s +8.28, 900 s +7.10, 1200 s +11.34,
+1500 s +10.12. The curve is bumpy (120 good, 180-240 worse, 300 good, 900 worse, 1200 good): differences of 1-3 SOL
+in two weeks are noise. Short timers (90-300 s) win week 2 (+2.6 to +6.2 against +0.12) and lose week 1 (+3.8 to +6.2
+against +10.59). Selling behind its sale is behind holding at every timer from 300 s up. No timer is clearly better
+than 1790 s; 120 s is the one to watch on the live trades.
+
+**Take profit 1.8-3.0 in steps of 0.1** (`tp_fine.py`, `out/tp_fine.txt`; 30 min, holding, two weeks, raw, three
+landings): a plateau at 2.3-2.6 (+9.39, +11.12, +10.71, +10.43; without the best 2s +2.61, +3.74, +3.26, +2.69), a
+fall below it (2.2 +6.00, 2.0 +4.11, 1.8 −1.20) and a slow one above (2.7-3.0 +8.5 to +10.4). 2.4 leads 2.5 by 0.4,
+inside the noise; it also sells just under wallet 4's own 2.5x target, ahead of its sale on the coins that reach it.
