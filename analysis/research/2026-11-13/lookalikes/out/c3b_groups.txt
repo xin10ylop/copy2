@@ -1,0 +1,38 @@
+276 wallets with 20+ launch buys of 1.0+ SOL on 5+ creators; 127 groups
+Fhbh1DTUDKt6qu9zVg8Q5VgnZa1WWWbxBxG6pCoJoggA   1120 coins (280 a day)  SOL 2.13  slot 0  group of 1  flips in 0-1 s (Oct 29; s1)
+6Z91Dgiz9E44bMW11rQuMBjt1NwwPoQGXFNZieGfVtAb    763 coins (191 a day)  SOL 1.88  slot 0  group of 1  flips in 1-4 s (s1)
+H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg    398 coins (100 a day)  SOL 1.43  slot 0  group of 1  wallet 4
+dKMjeGJ4Mk9S3hxdfTThvZ7exks2xMwWqSM5NvN2CTK     334 coins (84 a day)  SOL 3.70  slot 0  group of 1  slot-0 sniper, sells in seconds (Oct 29)
+FiFawHqxeTVBhv6YbqbLwDVuvokRpPUM1bNwAyxhGc6W    270 coins (68 a day)  SOL 2.05  slot 0  group of 1  flips in 0-5 s (s1)
+E1icorNRLQMDr1C8qWBtA9aadRK2uT2daRYQjtkWUQL1    217 coins (54 a day)  SOL 1.32  slot 0  group of 2  
+54YNHFVt3VwxMpmfiqMmYCFTJkSyCNDX7sx9RcRGVd43    198 coins (50 a day)  SOL 1.03  slot 0  group of 1  
+TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3     176 coins (44 a day)  SOL 1.52  slot 0  group of 1  scored
+Anubis512ho5t7S6LNSwoxUWdeQmX2kf3RvZ8ApHHF5w    172 coins (43 a day)  SOL 1.49  slot 1  group of 1  
+3yrJE1A8dgSuy5NLimG5GSYxA6wMkvnAYLD9Y4xR2fjJ    143 coins (36 a day)  SOL 1.94  slot 0  group of 1  
+EcrMBga8HvSiCX2jQNiTfDuvrqkSE7ABQQ7YN5JTKcTb    137 coins (34 a day)  SOL 1.15  slot 1  group of 1  scored
+AMDEmVocLtN5ji2gBY7BrmSHEyM5vt6TGszBbg4crMXg    127 coins (32 a day)  SOL 1.06  slot 0  group of 1  flips, median 15 s (c4)
+Gg3ska7ScdMZX5nPgsM7wBfprRhNp6cuS2zuG7UFXcDv    120 coins (30 a day)  SOL 2.64  slot 0  group of 2  
+53DnQU1dJZNHfKBpv2Lhsd4EBGNpwsF4tS13Egc1m6Tv    118 coins (30 a day)  SOL 1.48  slot 1  group of 1  flips, median 6-22 s (s1, s5)
+ApeEifQPXuLFuMWU1HaKmKPZGfiXuLNG587iQDeu9s1g    117 coins (29 a day)  SOL 1.13  slot 0  group of 2  
+DsU5Up8wYJ7skNfxxv5NDZ2iGgwJxUZbgwPs7TvqS53m    116 coins (29 a day)  SOL 2.14  slot 0  group of 2  
+GptCXZcoBXWLmTCmN1G2w5XYQ3LYMAd54z6hBdESbQpA    111 coins (28 a day)  SOL 3.07  slot 8  group of 1  
+DKsKrFHW39c7KotTPzBWZ7t2CrvPNWG2JoVW8XvAoBbQ    111 coins (28 a day)  SOL 2.01  slot 0  group of 1  
+54md8NmG6WMNpdDP3YsicvsNCsMM7RRsAr4wUwJKJ4Sg    101 coins (25 a day)  SOL 2.79  slot 0  group of 6  
+4dtXKCipXuYXNXNKMGo7DoHoA3KGDZxQCK9EJmKVrL97    100 coins (25 a day)  SOL 1.91  slot 0  group of 1  
+9CX1fn9ewPsJgo6snJDxTzMRijRE5NVzNgTJMDHJbkcH     99 coins (25 a day)  SOL 2.88  slot 0  group of 2  
+6Qa46jFT7NegJRKNGPMQudr9v1aNC73KqFzX7vuvwRcC     94 coins (24 a day)  SOL 1.56  slot 0  group of 3  
+CkvVCWbx6VHfifU5QwTGk9JBqoE7QhGYKk8yTHkWr1KV     91 coins (23 a day)  SOL 1.99  slot 3  group of 1  
+4QYcEYZ1acSxdbskP6QgnVGdfQS71AJ9fdhomYpQPNUX     88 coins (22 a day)  SOL 1.23  slot 0  group of 3  
+HK9K6ZMMozD17ADBVMuoFUNXtr9Z4Bo5zTkQA5mk94iS     87 coins (22 a day)  SOL 4.12  slot 1  group of 1  
+2mpYrCv8XifEaB1JsaRZwiGkKpQP6V6DpHdomnLLGud5     79 coins (20 a day)  SOL 1.25  slot 6  group of 1  
+9pnhstim5NP4b7JPzC9sxm38cwLtdvP2yh3XucuebUj3     79 coins (20 a day)  SOL 1.54  slot 0  group of 3  
+5fMFE7rb8wSgfuq2GwVu4PDVhYQHKX1zHvY53SCuCBf6     77 coins (19 a day)  SOL 1.53  slot 0  group of 5  
+Ca9uop1Qmobv8wizP5aM9ampmpGciEpikQ3NpBPcrFS5     74 coins (18 a day)  SOL 1.03  slot 0  group of 1  
+C6e1qALSEHm2S2PzDwxvBQLupwssagtVKt4Biw7mLB1K     72 coins (18 a day)  SOL 2.93  slot 0  group of 1  
+Cv4iKTEkmjBcSTURuU2pXDca3JMcYH9EJw5DAstcqyy7     71 coins (18 a day)  SOL 1.54  slot 0  group of 4  
+3tNPvytXB9yTZLgh5RGdjrXVxHp89vGeCiwx9juqgp7q     70 coins (18 a day)  SOL 1.54  slot 0  group of 5  
+5xLpFzjYQqKoMuLYfDkV9nNHSVLNtAXUr98soA9yGjTF     67 coins (17 a day)  SOL 2.32  slot 1  group of 1  
+3vagabLFHWWeNiWP1uuCfGpu5XYFBXdzSKymiZJ6vGXp     63 coins (16 a day)  SOL 3.05  slot 0  group of 1  
+9W2JNrQtT9Gp6HfoZAd7xTvpWNPg3pPzM8Ju8e9p5jp3     61 coins (15 a day)  SOL 3.64  slot 0  group of 1  
+BLnA72XN7Jvt5oPZXXnpXYQzwsuqYJ2x511nZ24wRfr3     60 coins (15 a day)  SOL 4.70  slot 0  group of 2  
+27 to the hold check

@@ -34,7 +34,7 @@ for m, v in ok.items():
         if not e["buy"] or e["user"] in (v["creator"], v["user"]) or e["sig"] == v["csig"] or e["user"] in first: continue
         if e["t"] - v["bt"] > WIN: continue
         first.add(e["user"])
-        sol = e["q"] * p0 * f
+        sol = e["q"] * p0 * f / 1e9                     # lamports -> SOL
         bundled = e["ds"] == 0 and tx0 is not None and e["idx"] is not None and e["idx"] - tx0 <= 5
         buys[e["user"]].append(dict(m=m, sol=sol, ds=e["ds"], dt=e["t"] - v["bt"], creator=v["creator"], quote=v["quote"], bundled=bundled, sig=e["sig"]))
 rows = []
