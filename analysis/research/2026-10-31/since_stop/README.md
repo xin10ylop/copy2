@@ -204,3 +204,13 @@ already use (`2026-10-27/h9long`).
 two weeks it sold before our own exit on 174 of 195 copies. Held past its sale to our take profit (the 5tePJcGm case):
 19 coins, +16.38 SOL over selling behind it (10 in week 1, 9 in week 2). Holding was better on 53 coins (+25.57) and
 worse on 89 (−19.99, −0.225 each): net +5.57 (+6.52 week 1, −0.95 week 2).
+
+## Low take profits (`low_tp.py`, `out/low_tp.txt`; `short_timer.py`, `out/short_timer.txt`, Nov 12)
+
+Take profit 1.1-3.0x the price its buy left × timer 60 s-30 min, holding or selling behind its sale; two weeks, 1 SOL,
+2 open, raw, mean of three landings. **Take profits of 1.1-1.5 lose at every timer** (holding, 30 min: 1.1 −8.44,
+1.2 −8.80, 1.3 −6.02, 1.4 −6.48, 1.5 −5.37 against 2.5 +10.71): they hit 40-76% of the time, but a hit at 1.2x the
+price its buy left is a few percent over our entry after costs, and the misses fall 20-30%. 2.0-3.0 are the only
+positive rows; 2.5 and 3.0 lead. Side finding: tp 2.5-3.0 with a 2-minute timer was positive in both weeks (+11.76
+and +12.96 against +10.71; 11 of 15 days up against 8), but 90 s and 3 min do worse than 30 min, so it is a narrow
+peak, not a trend; the model's correction for 2-minute timer exits is unmeasured. No change.
