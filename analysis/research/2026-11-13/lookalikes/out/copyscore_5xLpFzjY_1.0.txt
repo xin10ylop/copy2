@@ -1,0 +1,29 @@
+5xLpFzjYQqKoMuLYfDkV9nNHSVLNtAXUr98soA9yGjTF: 36 copyable buys (1.0+ SOL, other quote, route class ABC, one buy) with its buy on the path; P1 16 (2.4 a day), P2 20 (2.9 a day)
+   size: median 2.13 SOL
+   overlap: 2 of 36 are coins wallet 4 bought for 1.45+ SOL (since_stop scan.out, Oct 28 - Nov 12)
+   frenzy: curve trades after its buy in its slot and the next: median 0.0 (p25 0, p75 1)
+   its first sale after its buy: p25 / median / p75 275 / 277 / 297 s; none within 31 min on 0; under 20 s 0, 20-120 s 0, 120 s+ 36
+
+== its own result on these coins (closed coins), and the raw model on it (landing 0, behind its sale)
+   P1: 16 coins, spent 32.66 SOL, real +0.86 SOL (+2.6%), without its best 2 -1.24; won 5; model on it -7.6% a trade -> gap +10.2 points
+   P2: 20 coins, spent 45.10 SOL, real -5.28 SOL (-11.7%), without its best 2 -6.11; won 3; model on it -17.5% a trade -> gap +5.8 points
+   both: 36 coins, spent 77.76 SOL, real -4.42 SOL (-5.7%), without its best 2 -6.52; won 8; model on it -13.1% a trade -> gap +7.4 points
+
+== our copy, 1 SOL, 2 open, limit 1.25: net SOL (without the best 2), copies, refused; corr = net + gap x copies
+   exit                                     landing    |   P1 net (w/o 2)    n ref    corr |   P2 net (w/o 2)    n ref    corr
+   HOLD (tp 2.5, 30 min; live)              4 after    |   -1.82 ( -2.42)   16   0   -0.19 |   -2.03 ( -2.54)   19   0   -0.93
+   HOLD (tp 2.5, 30 min; live)              8 after    |   -1.70 ( -2.29)   16   0   -0.07 |   -1.97 ( -2.06)   17   2   -0.98
+   HOLD (tp 2.5, 30 min; live)              block late |   -1.52 ( -2.39)   16   0   +0.11 |   -2.15 ( -3.02)   19   0   -1.04
+   FOLLOW (behind its sale, 30 min cap)     4 after    |   -1.58 ( -2.01)   16   0   +0.05 |   -3.21 ( -3.19)   19   0   -2.10
+   FOLLOW (behind its sale, 30 min cap)     8 after    |   -1.76 ( -1.99)   16   0   -0.13 |   -2.21 ( -2.19)   17   2   -1.22
+   FOLLOW (behind its sale, 30 min cap)     block late |   -1.32 ( -1.74)   16   0   +0.31 |   -3.44 ( -3.51)   19   0   -2.34
+   FOLLOW+TP (behind it, or tp 2.5 first)   4 after    |   -1.58 ( -2.01)   16   0   +0.05 |   -3.21 ( -3.19)   19   0   -2.10
+   FOLLOW+TP (behind it, or tp 2.5 first)   8 after    |   -1.76 ( -1.99)   16   0   -0.13 |   -2.21 ( -2.19)   17   2   -1.22
+   FOLLOW+TP (behind it, or tp 2.5 first)   block late |   -1.32 ( -1.74)   16   0   +0.31 |   -3.44 ( -3.51)   19   0   -2.34
+
+== exit grid (135 rule sets), picked on P1 (mean over the landings, without the best 2), scored on P2
+   hold       tp 1.5  stop None 1790s   P1  -0.40 ( -1.23) | P2  -1.88 ( -2.49) | P2 by landing: -1.92 (-2.50) / -1.62 (-2.06) / -2.09 (-2.90)
+   hold       tp 1.5  stop 0.5  1790s   P1  -0.40 ( -1.23) | P2  -1.88 ( -2.49) | P2 by landing: -1.92 (-2.50) / -1.62 (-2.06) / -2.09 (-2.90)
+   hold       tp 1.5  stop 0.7  1790s   P1  -0.40 ( -1.23) | P2  -1.88 ( -2.49) | P2 by landing: -1.92 (-2.50) / -1.62 (-2.06) / -2.09 (-2.90)
+   hold       tp 1.5  stop None  600s   P1  -0.78 ( -1.51) | P2  -2.14 ( -2.61) | P2 by landing: -2.30 (-2.69) / -1.61 (-2.06) / -2.52 (-3.08)
+   hold       tp 1.5  stop 0.5   600s   P1  -0.78 ( -1.51) | P2  -2.14 ( -2.61) | P2 by landing: -2.30 (-2.69) / -1.61 (-2.06) / -2.52 (-3.08)

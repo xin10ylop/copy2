@@ -15,6 +15,7 @@ import sys, os, json, gzip, itertools, statistics, collections
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import cmodel as M
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + "/score"); from periods import PA, PB, PC
 W = sys.argv[1]; FLOOR = float(sys.argv[2]) if len(sys.argv) > 2 else 1.45; MULTI = os.environ.get("MULTI") == "1"
+KIND = os.environ.get("KIND", "pump, other quote")   # "pump, SOL quote": SOL-priced curves (route: the curve itself, class A)
 ROUTES = os.environ.get("ROUTES", "ABC")    # E = the copier's coins (no canonical pool: Jupiter), scored one and two blocks late
 SRC = os.environ.get("SRC", "score")
 W4 = "H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg"
@@ -37,10 +38,10 @@ else:
     T = json.load(open(f"{H}_trips.json")); sigs = sorted(json.load(open(f"{H}_sigs.json")), key=lambda x: x[2])
     for x in T:
         b = x["tr"][0]
-        if x["kind"] != "pump, other quote" or not b["buy"] or (b["v"] or 0) < FLOOR or not (PA <= b["bt"] < PC): continue
+        if x["kind"] != KIND or not b["buy"] or (b["v"] or 0) < FLOOR or not (PA <= b["bt"] < PC): continue
         nb = sum(1 for y in x["tr"] if y["buy"]); ns = sum(1 for y in x["tr"] if not y["buy"])
         if nb != 1 or (ns > 1 and not MULTI): continue
-        if cls(x) not in ROUTES: continue
+        if (cls(x) if KIND == "pump, other quote" else "A") not in ROUTES: continue
         anchor = next((s for s, sl, bt, f in sigs if bt >= b["bt"] + 1880), None)
         trips.append(dict(m=x["m"], slot=b["s"], t=b["bt"], sol=b["v"], real=x["net"], spent=b["v"], closed=not x["open"], anchor=anchor))
     from concurrent.futures import ThreadPoolExecutor
@@ -50,7 +51,7 @@ trips.sort(key=lambda d: d["t"])
 trips = [d for d in trips if M.its_buy(W, d, d["tr"]) is not None]
 per = lambda d: "P1" if d["t"] < PB else "P2"
 HALF = {"P1": [d for d in trips if per(d) == "P1"], "P2": [d for d in trips if per(d) == "P2"]}
-print(f"{W}: {len(trips)} copyable buys ({FLOOR}+ SOL, other quote, route class {ROUTES}, one buy{', sold in parts too' if MULTI else ''}) with its buy on the path; "
+print(f"{W}: {len(trips)} copyable buys ({FLOOR}+ SOL, {KIND}, route class {ROUTES}, one buy{', sold in parts too' if MULTI else ''}) with its buy on the path; "
       f"P1 {len(HALF['P1'])} ({len(HALF['P1'])/((PB-PA)/86400):.1f} a day), P2 {len(HALF['P2'])} ({len(HALF['P2'])/((PC-PB)/86400):.1f} a day)")
 print(f"   size: median {statistics.median(d['sol'] for d in trips):.2f} SOL" if trips else "   no trips")
 ov = sum(1 for d in trips if d["m"][:8] in W4COINS)
@@ -124,4 +125,4 @@ for r in res[:5]:
 best = res[0]
 json.dump(dict(W=W, floor=FLOOR, n=len(trips), P1=len(HALF["P1"]), P2=len(HALF["P2"]), gap=GAP, overlap=ov,
                table={"|".join(map(str, k)): v for k, v in SUM.items()}, best=dict(rule=nm(best[0]), p1=best[1:3], p2=best[3:5])),
-          open(f"{M.lib.OUT}/copyscore_{W[:8]}_{FLOOR}{'_multi' if MULTI else ''}_{ROUTES}.json", "w"))
+          open(f"{M.lib.OUT}/copyscore_{W[:8]}_{FLOOR}{'_multi' if MULTI else ''}_{ROUTES}{'_sol' if KIND != 'pump, other quote' else ''}.json", "w"))
