@@ -1,0 +1,21 @@
+112331 cached transactions, 16326 fee payers
+payers with any tip of exactly 1,067,000 or 1,010,000 lamports:
+  H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg   331 of   444 tx, nonce-first  444, coins 153   <- wallet 4
+  28MJrJr2Pu2GPicLj8631nApwzXUAh9vkx2J6VgLPz3y     2 of    88 tx, nonce-first    0, coins   3
+  3bx6pJVD6TC8ijF66F6UHSyCx1kCHqgacS1T6iKHcwKk     1 of    15 tx, nonce-first   15, coins   5
+  CGAZ8ysbcmc6a14uYRqDJfnQvjRF4fVSZBYiTsZgRwcH     1 of     6 tx, nonce-first    0, coins   3
+  Q4J6vefnKFmg5gAxGwnhthk5sewKDpnC8YNLD7Lv9ng     1 of     6 tx, nonce-first    0, coins   3
+  AmTWj8QbMyuM8mF143TNtU83MQknVMq2amDsKv7k5fts     1 of     3 tx, nonce-first    0, coins   2
+  7JzJLH5NKSMrUzK2FiJYLS7ps8jTQRTBa614cPp3TZny     1 of     4 tx, nonce-first    0, coins   2
+  Bk2uq5BCwjiUVw1W3YjoBLV6ESQksrzqK7oNj8v7EkNE     1 of     3 tx, nonce-first    0, coins   2
+  HTfBQpcFkzMPUERvGWxCG8335hjzsU4kpZboTWcqkGQz     1 of     3 tx, nonce-first    0, coins   2
+  EF1zFy4LGij8c6mSp1zhe99x6TntHLm56VVx2zK1XG4r     1 of     2 tx, nonce-first    0, coins   1
+payers tipping 1.00-1.10 M lamports 5+ times, but never wallet 4's two sizes: 484
+  FHpcNSe6tb2n15bAdq4BkeYWGyZKFD7yLYrH92ng7wCT  sizes {1000000: 141}  nonce-first 0/9026  coins 0
+  6Z91Dgiz9E44bMW11rQuMBjt1NwwPoQGXFNZieGfVtAb  sizes {1000000: 114, 1100000: 2}  nonce-first 42/265  coins 31
+  53DnQU1dJZNHfKBpv2Lhsd4EBGNpwsF4tS13Egc1m6Tv  sizes {1000000: 81}  nonce-first 48/148  coins 49
+  GDpQeG3corqFhJTRbfAWqU5j73gkuoFPGCjNsvjLyZiT  sizes {1075532: 31, 1036256: 19, 1072367: 6}  nonce-first 0/190  coins 14
+  FZwgteiuV11YfpGYn4dzFZK7iZ8WtTuxCDciRSyPNSCo  sizes {1075532: 35, 1036256: 17, 1072367: 6}  nonce-first 0/167  coins 11
+  D5d2honrUBF81xyczcAWTXvhKmiX136V7u4fwpMQrBpP  sizes {1060000: 27, 1000000: 25, 1100000: 16}  nonce-first 0/104  coins 14
+  ARkqR3bNwawLXmok4zH3tcTNjSVfQp58XkLfPJd8k8xa  sizes {1000000: 63}  nonce-first 0/59  coins 2
+  TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3  sizes {1000000: 40, 1100000: 21}  nonce-first 57/147  coins 68

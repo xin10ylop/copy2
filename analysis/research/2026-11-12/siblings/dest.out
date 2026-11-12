@@ -1,0 +1,13 @@
+where the cash-out address sent things:
+  EPjFWd     36746.10 -> 9jxYUDN9DZd56BmULrMV7eRMwHc2VzMZwU7bKXFSyyug
+  SOL          710.00 -> FV1Uw92pQAutoDj9Y3Nq4aiKjazCPeCFHqY1VRgeaXWq
+  SOL          209.98 -> 9jxYUDN9DZd56BmULrMV7eRMwHc2VzMZwU7bKXFSyyug
+  WXMRyR        20.07 -> 9jxYUDN9DZd56BmULrMV7eRMwHc2VzMZwU7bKXFSyyug
+  5GgRAE         2.33 -> 9jxYUDN9DZd56BmULrMV7eRMwHc2VzMZwU7bKXFSyyug
+  AymATz         1.60 -> 9jxYUDN9DZd56BmULrMV7eRMwHc2VzMZwU7bKXFSyyug
+
+9jxYUDN9DZd56BmULrMV7eRMwHc2VzMZwU7bKXFSyyug: owner program 11111111111111111111111111111111, balance 5.94 SOL, newest-1000 signatures 27, span 11-06 19:09 -> 11-10 01:49 Beirut
+   who signs its newest 40 transactions: {'9jxYUDN9': 7, 'EXzuWDVb': 7, 'DbjXAFab': 6, 'EXzujfNy': 3, 'EXzuF8ZQ': 2}
+Traceback (most recent call last):
+  File "<stdin>", line 31, in <module>
+TypeError: unsupported format string passed to NoneType.__format__

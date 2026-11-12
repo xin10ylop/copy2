@@ -1,0 +1,36 @@
+balance now 0.0 SOL
+10-30 02:15:15 signer H9kuqGKN    +10.00 SOL  ['111111']  counterparties [('H9kuqGKN', -10.0)]  its tokens after {}
+10-30 02:15:39 signer H9kuqGKN   +440.00 SOL  ['111111']  counterparties [('H9kuqGKN', -440.0)]  its tokens after {}
+10-30 02:15:56 signer H9kuecgK     +0.00 SOL  ['111111']  counterparties []  its tokens after {}
+10-30 02:16:23 signer H9kuqGKN    +60.00 SOL  ['111111']  counterparties [('H9kuqGKN', -60.0)]  its tokens after {}
+10-30 02:24:36 signer EXzuWDVb   -300.00 SOL  ['111111', 'AToken', 'JUP6Lk', 'Tokenk']  counterparties [('BUYQjWAa', 41.39), ('5pVN5XZB', 258.55)]  its tokens after {'EPjFWd': '28023.355453'}
+10-30 02:24:41 signer 31MSg3CE     +0.00 SOL  ['111111']  counterparties []  its tokens after {}
+10-30 02:26:20 signer EXzuWDVb   -100.00 SOL  ['111111', 'AToken', 'JUP6Lk', 'Tokenk']  counterparties [('6wWVbLeH', 99.9)]  its tokens after {'5GgRAE': '2.327232', 'EPjFWd': '28023.355453'}
+10-30 02:26:38 signer EXzuWDVb    -60.00 SOL  ['111111', 'AToken', 'JUP6Lk', 'Tokenk']  counterparties [('2HzSi75N', 20.42), ('5pVN5XZB', 39.52)]  its tokens after {'WXMRyR': '9.224658325803', 'EPjFWd': '28023.355453'}
+11-06 19:09:17 signer EXzuWDVb     -2.00 SOL  ['111111']  counterparties [('9jxYUDN9', 2.0)]  its tokens after {}
+11-06 19:10:30 signer 9jxYVg4u     +0.00 SOL  ['AToken', 'Tokenk']  counterparties []  its tokens after {'EPjFWd': '28023.355553'}
+11-06 19:10:36 signer 9jxYVg4u     +0.00 SOL  ['111111']  counterparties []  its tokens after {}
+11-06 19:11:39 signer EXzuWDVb     -0.00 SOL  ['AToken', 'Tokenk']  counterparties []  its tokens after {'WXMRyR': '5.224658325803'}
+11-06 19:11:48 signer EXzuWDVb     -0.00 SOL  ['AToken', 'Tokenk']  counterparties []  its tokens after {'EPjFWd': '26023.355553'}
+11-06 19:12:57 signer EXzuWDVb     -0.00 SOL  ['AToken', 'Tokenz']  counterparties []  its tokens after {'5GgRAE': '1.327232'}
+11-06 19:14:02 signer EXzuWDVb     -0.00 SOL  ['Tokenk']  counterparties []  its tokens after {'EPjFWd': '13023.355753'}
+11-06 19:14:20 signer EXzuWDVb     -0.00 SOL  ['Tokenk']  counterparties []  its tokens after {'EPjFWd': '0'}
+11-06 19:14:33 signer EXzuWDVb     -0.00 SOL  ['Tokenz']  counterparties []  its tokens after {'5GgRAE': '0'}
+11-06 19:14:42 signer EXzuWDVb     -0.00 SOL  ['Tokenk']  counterparties []  its tokens after {'WXMRyR': '0'}
+11-06 19:16:49 signer EXzuWDVb    -47.99 SOL  ['111111']  counterparties [('9jxYUDN9', 47.99)]  its tokens after {}
+11-09 03:17:01 signer H9kuqGKN    +10.00 SOL  ['111111']  counterparties [('H9kuqGKN', -10.0)]  its tokens after {}
+11-09 03:17:29 signer H9kuqGKN   +100.00 SOL  ['111111']  counterparties [('H9kuqGKN', -100.0)]  its tokens after {}
+11-09 03:17:36 signer H9kuqGKN   +100.00 SOL  ['111111']  counterparties [('H9kuqGKN', -100.0)]  its tokens after {}
+11-09 03:17:52 signer H9kuqGKN   +100.00 SOL  ['111111']  counterparties [('H9kuqGKN', -100.0)]  its tokens after {}
+11-09 03:18:09 signer H9kuecgK     +0.00 SOL  ['AToken', 'Tokenk']  counterparties []  its tokens after {'EPjFWd': '0.0001'}
+11-09 03:18:10 signer H9kuqGKN   +100.00 SOL  ['111111']  counterparties [('H9kuqGKN', -100.0)]  its tokens after {}
+11-09 03:18:15 signer H9kuecgK     +0.00 SOL  ['111111']  counterparties []  its tokens after {}
+11-09 03:19:20 signer EXzuWDVb   -100.00 SOL  ['111111', 'AToken', 'JUP6Lk', 'Tokenk']  counterparties [('6wWVbLeH', 79.84), ('44GW6aFi', 20.14)]  its tokens after {'EPjFWd': '8722.741437'}
+11-09 03:19:27 signer PpP9WsCp     +0.00 SOL  ['111111']  counterparties []  its tokens after {}
+11-09 03:19:43 signer EXzuWDVb    -75.00 SOL  ['111111', 'AToken', 'JUP6Lk', 'Tokenk']  counterparties [('HgFLBWQu', 53.12), ('2HzSi75N', 21.8)]  its tokens after {'WXMRyR': '10.846468827709'}
+11-09 03:20:23 signer EXzuWDVb    -75.00 SOL  ['111111', 'AToken', 'JUP6Lk', 'Tokenk']  counterparties [('44GW6aFi', 74.92)]  its tokens after {'AymATz': '1.595652', 'Xsv9hR': '0', 'EPjFWd': '8722.741437'}
+11-10 00:22:03 signer EXzuWDVb     -0.00 SOL  ['AToken', 'Tokenk']  counterparties []  its tokens after {'AymATz': '0'}
+11-10 00:31:28 signer EXzuWDVb     -0.00 SOL  ['Tokenk']  counterparties []  its tokens after {'WXMRyR': '0'}
+11-10 00:31:44 signer EXzuWDVb     -0.00 SOL  ['Tokenk']  counterparties []  its tokens after {'EPjFWd': '0'}
+11-10 00:33:46 signer 9jxYRGEm     +0.00 SOL  ['AToken', 'Tokenk']  counterparties []  its tokens after {'EPjFWd': '0.001111'}
+11-10 00:35:32 signer EXzuWDVb   -160.00 SOL  ['111111']  counterparties [('9jxYUDN9', 160.0)]  its tokens after {}
