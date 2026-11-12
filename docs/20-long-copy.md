@@ -103,6 +103,9 @@ within a slot** (`exits_pess.py`):
   against 3.5% on Oct 19-22, and on Oct 27-28 holding to our exits scored +3.10 against -0.51 behind it, on Oct
   19-27 about even (`analysis/research/2026-10-28/more/`). `float_stake_sol` stakes more on WBTC-routed copies
   (about +0.12 SOL a copy against +0.02 from wSOL).
+- **Airdropped coins sold count in `status`** (Nov 12): `float sell` of a mint that is not a float books our SOL change
+  in `<state_dir>/extra.jsonl` (`float book SIG` books a sale already made); `status` prints the airdrop sales today and
+  in all, and trades plus airdrops. Two coins sent to the wallet on Nov 12 sold for +0.26 SOL.
 - **`follow_its_sell = false` holds through every sale of it** (Nov 12): before, a second sale event of the same coin
   (or the same one delivered twice) fell through to the following branch and sold us behind it; wallet 4 sold in one
   piece on all 222 trips of Oct 28 - Nov 12, and no live trade took that path. The record keeps its first sale.

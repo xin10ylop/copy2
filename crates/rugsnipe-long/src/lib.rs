@@ -16,6 +16,7 @@ pub mod config;
 pub mod copier;
 pub mod detect;
 pub mod engine;
+pub mod extra;
 pub mod feed;
 pub mod jup;
 pub mod keys;
