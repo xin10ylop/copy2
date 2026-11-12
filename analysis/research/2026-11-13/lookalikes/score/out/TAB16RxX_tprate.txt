@@ -1,0 +1,59 @@
+
+== TP rate by kind   [P1 n tp% its net | P2 n tp% its net | P3 n tp% its net]
+   SOL quote    all               36   0.0%   -0.31 |     3   0.0%   -0.12 |     0   0.0%   +0.00
+   other quote  all              779   3.0%  +41.04 |  1207   3.3%  +80.45 |    25   4.0%   +1.87
+
+== TP rate by quote   [P1 n tp% its net | P2 n tp% its net | P3 n tp% its net]
+   SOL quote    SOL               36   0.0%   -0.31 |     3   0.0%   -0.12 |     0   0.0%   +0.00
+   other quote  98sM              38  10.5%   +0.58 |    35   5.7%   +4.89 |     0   0.0%   +0.00
+   other quote  A7bd              13   0.0%   +3.71 |    18   0.0%   +1.10 |     0   0.0%   +0.00
+   other quote  PUMP              83   2.4%   -1.65 |   259   2.7%  +13.01 |     0   0.0%   +0.00
+   other quote  SPCX              29   3.4%   +3.20 |    75   2.7%   +3.41 |     1   0.0%   -0.13
+   other quote  TTWO               0   0.0%   +0.00 |    32   6.2%   +4.45 |     1   0.0%   -0.14
+   other quote  WBTC               2   0.0%   -0.19 |    34   0.0%   +6.43 |     1   0.0%   -0.23
+   other quote  other            581   2.6%  +32.90 |   704   3.1%  +36.65 |    21   4.8%   +2.58
+   other quote  via SOL           10   0.0%   -0.03 |    39  10.3%   +9.52 |     0   0.0%   +0.00
+
+== TP rate by its size (SOL)   [P1 n tp% its net | P2 n tp% its net | P3 n tp% its net]
+   SOL quote    <0.6              36   0.0%   -0.31 |     3   0.0%   -0.12 |     0   0.0%   +0.00
+   other quote  0.6-0.9           23   0.0%   +1.25 |   149   1.3%   -5.25 |    11   0.0%   -0.18
+   other quote  0.9-1.2           44   2.3%   +1.41 |    37   2.7%   +3.11 |     0   0.0%   +0.00
+   other quote  1.2-1.5           24   4.2%   +4.88 |    92   9.8%  +31.64 |     4   0.0%   -0.47
+   other quote  <0.6             605   2.5%   +3.48 |   827   2.4%  +17.76 |     5   0.0%   -0.05
+   other quote  >=1.5             83   7.2%  +30.03 |   102   7.8%  +33.19 |     5  20.0%   +2.57
+
+== TP rate by its size, the long copy's floor   [P1 n tp% its net | P2 n tp% its net | P3 n tp% its net]
+   SOL quote    <1.45             36   0.0%   -0.31 |     3   0.0%   -0.12 |     0   0.0%   +0.00
+   other quote  <1.45            695   2.4%  +11.21 |  1098   2.7%  +43.79 |    20   0.0%   -0.71
+   other quote  >=1.45            84   7.1%  +29.83 |   109   9.2%  +36.66 |     5  20.0%   +2.57
+
+== TP rate by its tip   [P1 n tp% its net | P2 n tp% its net | P3 n tp% its net]
+   SOL quote    1.07M             36   0.0%   -0.31 |     2   0.0%   -0.20 |     0   0.0%   +0.00
+   other quote  1.07M            670   3.3%  +36.90 |   454   4.0%  +47.65 |     1   0.0%   -0.26
+   other quote  >2M              109   0.9%   +4.14 |   744   3.0%  +32.06 |    23   4.3%   +2.17
+
+== TP rate by route   [P1 n tp% its net | P2 n tp% its net | P3 n tp% its net]
+   SOL quote    buy_exact_quote_in    36   0.0%   -0.31 |     1   0.0%   -0.00 |     0   0.0%   +0.00
+   other quote  buy_exact_quote_in   756   3.0%  +45.08 |  1018   3.4%  +80.79 |    11   0.0%   -0.55
+   other quote  multi_hop_swap    23   0.0%   -4.04 |   189   2.6%   -0.34 |    14   7.1%   +2.41
+
+== TP rate by tokens sold before its buy (M)   [P1 n tp% its net | P2 n tp% its net | P3 n tp% its net]
+   other quote  10-20             41   0.0%   +1.47 |    43   2.3%   +0.57 |     2   0.0%   -0.24
+   other quote  20-40            101   2.0%   +6.73 |   101   2.0%   +3.90 |     2   0.0%   -0.07
+   other quote  40-80            131   3.1%   +4.76 |   126   3.2%   +6.26 |     5   0.0%   -0.44
+   other quote  80-160           177   2.8%  +16.60 |   285   3.9%  +24.42 |     9   0.0%   -0.09
+   other quote  <10              101   1.0%   -2.78 |    86   2.3%   +1.50 |     4   0.0%   +0.19
+   other quote  >=160            228   4.8%  +14.26 |   566   3.5%  +43.80 |     3  33.3%   +2.51
+
+== TP rate by its TP hits in its last 20 closed   [P1 n tp% its net | P2 n tp% its net | P3 n tp% its net]
+   other quote  0                462   2.8%  +29.72 |   588   3.4%  +32.95 |     5  20.0%   +2.80
+   other quote  1                218   3.7%   +6.58 |   468   3.4%  +44.84 |    20   0.0%   -0.94
+   other quote  2                 74   2.7%   +2.96 |   123   2.4%   +1.30 |     0   0.0%   +0.00
+   other quote  3+                25   0.0%   +1.78 |    28   3.6%   +1.36 |     0   0.0%   +0.00
+
+== TP rate by hour block UTC   [P1 n tp% its net | P2 n tp% its net | P3 n tp% its net]
+   SOL quote    18h               35   0.0%   -0.31 |     1   0.0%   +0.08 |     0   0.0%   +0.00
+   other quote  00h              136   2.2%  +11.81 |   311   2.3%  +18.73 |     0   0.0%   +0.00
+   other quote  06h              128   2.3%   +6.94 |   176   1.7%  +11.01 |    16   6.2%   +1.78
+   other quote  12h              219   1.4%   -0.75 |   293   4.8%  +28.69 |     9   0.0%   +0.09
+   other quote  18h              296   4.7%  +23.05 |   427   3.7%  +22.03 |     0   0.0%   +0.00

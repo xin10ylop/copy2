@@ -1,0 +1,35 @@
+
+== its one-buy one-sell trips, 1.0+ SOL, other quote, all: how it sold   [n: tp / stop / time / early (share)]
+   P1  118:  tp   7 ( 5.9%)  stop  12 (10.2%)  time   0 ( 0.0%)  early  99 (83.9%)   its net  +34.40  (early sells +10.79)
+   P2  219:  tp  17 ( 7.8%)  stop  20 ( 9.1%)  time   1 ( 0.5%)  early 181 (82.6%)   its net  +67.16  (early sells +34.35)
+   P3    9:  tp   1 (11.1%)  stop   2 (22.2%)  time   2 (22.2%)  early   4 (44.4%)   its net   +2.10  (early sells  -0.17)
+
+== its one-buy one-sell trips, 1.0+ SOL, other quote, routable (route class A, B, C): how it sold   [n: tp / stop / time / early (share)]
+   P1   54:  tp   2 ( 3.7%)  stop  10 (18.5%)  time   0 ( 0.0%)  early  42 (77.8%)   its net  +13.76  (early sells  +4.10)
+   P2   97:  tp  11 (11.3%)  stop  10 (10.3%)  time   1 ( 1.0%)  early  75 (77.3%)   its net  +37.20  (early sells +12.97)
+   P3    7:  tp   1 (14.3%)  stop   2 (28.6%)  time   2 (28.6%)  early   2 (28.6%)   its net   +2.09  (early sells  -0.18)
+
+== the early sells (1.0+ SOL, other quote, all routes): p10 p25 p50 p75 p90
+   P1 99: seconds held [120, 121, 300, 300, 301]  multiple at its sale [0.85, 0.94, 1.01, 1.32, 1.66]  SOL value multiple [0.81, 0.88, 0.96, 1.22, 1.53]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 0  10-60 s 2  1-5 min 34  5-15 min 63  15-30 min 0
+      multiple: 0.75-1.0x 41  1.0-1.5x 43  1.5-2.0x 10  2.0-2.4x 5   won 44
+      quote: PUMP 19  C5xph2yL 17  NTRNDMqQ 11  A7bd 5  via SOL only 5  WXMR 4  jM9r9PJF 3  SPCX 3   route class: A 24  B 18  E 57
+      for scale, time: 0 quote 
+      for scale, tp: 7 quote DJTu 2  XsbEhLAt 2  C5xph2yL 2  WXMR 1
+   P2 181: seconds held [75, 120, 180, 210, 210]  multiple at its sale [0.88, 0.97, 1.1, 1.39, 1.64]  SOL value multiple [0.82, 0.92, 1.03, 1.29, 1.5]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 2  10-60 s 11  1-5 min 168  5-15 min 0  15-30 min 0
+      multiple: 0.75-1.0x 56  1.0-1.5x 93  1.5-2.0x 24  2.0-2.4x 8   won 101
+      quote: PUMP 23  via SOL only 16  C5xph2yL 15  4CxjZyMN 15  98sM 10  Xsc9qvGR 10  TTWO 9  SPCX 8   route class: A 49  B 19  C 7  E 106
+      for scale, time: 1 quote NV2RYH95 1
+      for scale, tp: 17 quote via SOL only 3  9cRCn9rG 2  PUMP 2  C5xph2yL 1
+   P3 4: seconds held [124, 210, 210, 211, 211]  multiple at its sale [0.9, 0.91, 1.12, 1.3, 1.3]  SOL value multiple [0.84, 0.84, 1.04, 1.18, 1.18]  share of its tokens sold [1.0, 1.0, 1.0, 1.0, 1.0]
+      held: <10 s 0  10-60 s 0  1-5 min 4  5-15 min 0  15-30 min 0
+      multiple: 0.75-1.0x 2  1.0-1.5x 2  1.5-2.0x 0  2.0-2.4x 0   won 2
+      quote: 4CxjZyMN 1  Pren 1  WBTC 1  NKEda5nH 1   route class: A 1  C 1  E 2
+      for scale, time: 2 quote 4CxjZyMN 1  7eGri6B8 1
+      for scale, tp: 1 quote 7yLCJpWQ 1
+
+== every coin first bought for 1.0+ SOL (other quote), any number of trades: its first curve sale
+   P1 156 coins: 1 buys 2 sells 38  early first sale, sold all 99  early first sale, sold part 30  still holds some 12  trades: 1 buy 1 sell 118   early first sale 129 (82.7%)
+   P2 280 coins: 1 buy, no curve sale 1  1 buys 2 sells 60  early first sale, sold all 181  early first sale, sold part 35  still holds some 21  trades: 1 buy 1 sell 219   early first sale 216 (77.1%)
+   P3 9 coins: early first sale, sold all 4  trades: 1 buy 1 sell 9   early first sale 4 (44.4%)
