@@ -1,0 +1,51 @@
+== 54YNHFVt3VwxMpmfiqMmYCFTJkSyCNDX7sx9RcRGVd43  rows 2570, last row 11-12 16:41 UTC, days P1 6.71 P2 7.00 P3 0.41
+
+1. first buys of coins priced in another token (and SOL-priced, for scale), by its SOL value
+   its first-buy SOL, other quote: p10..p90 [0.5, 0.5, 0.98, 1.0, 1.05]   SOL-priced: [0.0, 2.0, 2.0, 2.0, 2.0]
+   1.0+ SOL P1:     0 coins,    0.0 a day;  create+0/+1 0 of 0 measured (0%), 0.0 a day; within 2 s 0;  SOL-priced 1.0+: 295
+   1.0+ SOL P2:   168 coins,   24.0 a day;  create+0/+1 167 of 168 measured (99%), 23.9 a day; within 2 s 168;  SOL-priced 1.0+: 62
+   1.0+ SOL P3:     2 coins,    4.9 a day;  create+0/+1 2 of 2 measured (100%), 4.9 a day; within 2 s 2;  SOL-priced 1.0+: 0
+   1.0+ quote mix: PUMP 62  xStock 25  4CxjZyMN 24  9cRCn9rG 11  98sM 6  WBTC 5  5qaP7oKU 5  EYX9NaK8 4  7SL2VnfY 3  98kfF7rm 3
+   1.0+ route class (route_q): A 65  B 1  C 5  E 99   routable (A B C) 71 of 170 (42%)
+   0.5+ SOL P1:     0 coins,    0.0 a day;  create+0/+1 0 of 0 measured (0%), 0.0 a day; within 2 s 0;  SOL-priced 0.5+: 295
+   0.5+ SOL P2:   398 coins,   56.9 a day;  create+0/+1 167 of 168 measured (99%), 23.9 a day; within 2 s 168;  SOL-priced 0.5+: 62
+   0.5+ SOL P3:     2 coins,    4.9 a day;  create+0/+1 2 of 2 measured (100%), 4.9 a day; within 2 s 2;  SOL-priced 0.5+: 0
+   0.5+ quote mix: PUMP 127  WBTC 37  C5xph2yL 33  SPCX 33  xStock 32  4CxjZyMN 24  9cRCn9rG 13  Big1krPP 13  98sM 13  NTRNDMqQ 10
+   0.5+ route class (route_q): A 89  B 46  C 37  E 228   routable (A B C) 172 of 400 (43%)
+
+2. its one-buy one-sell curve trips (exitrule.py), coins priced in another token
+   all sizes: 417 trips; seconds held p10..p90 [19, 30, 93, 120, 120]; held 1,790 s or more 0 (0%); its most common holds (10-s bins) [(120, 158), (30, 55), (20, 32)]: 175 (42%) within -10/+20 s of 120 s
+      marginal multiple at its sale p10..p90 [0.85, 0.97, 1.01, 1.15, 1.48]; >= 2.4x 8, <= 0.75x 18, 0.75-2.4x before 1,790 s 391; its net +13.84, won 158
+      held: <5 s 4  5-30 s 70  30 s-2 min 168  2-10 min 175  10-29.8 min 0  29.8-31 min 0  >31 min 0
+      multiple at sales before 1,790 s: <0.5 1  0.5-0.75 17  0.75-1.0 118  1.0-1.5 243  1.5-2.0 26  2.0-2.4 4  2.4-3 5  3+ 3
+   1.0+ SOL: 170 trips; seconds held p10..p90 [19, 30, 59, 120, 120]; held 1,790 s or more 0 (0%); its most common holds (10-s bins) [(120, 51), (30, 35), (20, 15)]: 56 (33%) within -10/+20 s of 120 s
+      marginal multiple at its sale p10..p90 [0.84, 0.95, 1.02, 1.15, 1.45]; >= 2.4x 4, <= 0.75x 8, 0.75-2.4x before 1,790 s 158; its net +5.50, won 64
+      held: <5 s 4  5-30 s 31  30 s-2 min 82  2-10 min 53  10-29.8 min 0  29.8-31 min 0  >31 min 0
+      multiple at sales before 1,790 s: <0.5 1  0.5-0.75 7  0.75-1.0 50  1.0-1.5 100  1.5-2.0 7  2.0-2.4 1  2.4-3 3  3+ 1
+   P1 by shape: 
+   P2 by shape: 1 buy 1 sale 415 +13.96  no sale 1 +1.38
+   P3 by shape: 1 buy 1 sale 2 -0.11
+   coins priced in another token by its curve trades: 2 (one buy one sell) 417, 1 1, 3+ 0
+
+3. early sales, 1.0+ SOL one-buy one-sell trips (early.py)
+   P1 0: tp 0 stop 0 time 0 early 0 (0.0%)
+   P2 168: tp 4 stop 8 time 0 early 156 (92.9%)
+   P3 2: tp 0 stop 0 time 0 early 2 (100.0%)
+
+4. signatures 2883: failed 313; landed 2570, of which it signed 2325; failed / (failed + its landed) 11.9%  (failed / all 10.9%)
+   P1: failed 216, its landed 772: 21.9%
+   P2: failed 97, its landed 1518: 6.0%
+   P3: failed 0, its landed 35: 0.0%
+
+6. its own result (ledger.py, by the coin's first buy)
+   P1 all tokens           379 tokens     +9.50 (   +7.05)
+   P1 pump, other quote      0 tokens     +0.00 (   +0.00)
+   P1 pump, SOL quote      379 tokens     +9.50 (   +7.05)
+   P2 all tokens           489 tokens    +12.59 (   +6.70)
+   P2 pump, other quote    416 tokens    +15.34 (   +9.45)
+   P2 pump, SOL quote       62 tokens     +0.94 (   -1.24)
+   P3 all tokens             2 tokens     -0.11 (   +0.00)
+   P3 pump, other quote      2 tokens     -0.11 (   +0.00)
+   P3 pump, SOL quote        0 tokens     +0.00 (   +0.00)
+
+8. after its 1.0+ SOL buys (coins priced in another token, full_paths): curve transactions in its slot after it and the next: median None (p25..p75 [], n 0); curve trades on the recorded path, same slots: median None (p25..p75 [], n 0)

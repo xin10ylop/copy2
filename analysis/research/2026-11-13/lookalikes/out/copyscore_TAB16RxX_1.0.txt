@@ -1,4 +1,4 @@
-TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3: 149 copyable buys (1.0+ SOL, other quote, route class ABC, one buy) with its buy on the path; P1 54 (8.0 a day), P2 95 (13.6 a day)
+TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3: 149 copyable buys (1.0+ SOL, pump, other quote, route class ABC, one buy) with its buy on the path; P1 54 (8.0 a day), P2 95 (13.6 a day)
    size: median 1.50 SOL
    overlap: 26 of 149 are coins wallet 4 bought for 1.45+ SOL (since_stop scan.out, Oct 28 - Nov 12)
    frenzy: curve trades after its buy in its slot and the next: median 2 (p25 1, p75 4)

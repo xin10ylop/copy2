@@ -1,4 +1,4 @@
-5xLpFzjYQqKoMuLYfDkV9nNHSVLNtAXUr98soA9yGjTF: 36 copyable buys (1.0+ SOL, other quote, route class ABC, one buy) with its buy on the path; P1 16 (2.4 a day), P2 20 (2.9 a day)
+5xLpFzjYQqKoMuLYfDkV9nNHSVLNtAXUr98soA9yGjTF: 36 copyable buys (1.0+ SOL, pump, other quote, route class ABC, one buy) with its buy on the path; P1 16 (2.4 a day), P2 20 (2.9 a day)
    size: median 2.13 SOL
    overlap: 2 of 36 are coins wallet 4 bought for 1.45+ SOL (since_stop scan.out, Oct 28 - Nov 12)
    frenzy: curve trades after its buy in its slot and the next: median 0.0 (p25 0, p75 1)

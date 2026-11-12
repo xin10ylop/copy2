@@ -1,4 +1,4 @@
-H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg: 205 copyable buys (1.45+ SOL, other quote, routable, one buy) with its buy on the path; P1 101 (14.9 a day), P2 104 (14.9 a day)
+H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg: 205 copyable buys (1.45+ SOL, pump, other quote, route class ABC, one buy) with its buy on the path; P1 101 (14.9 a day), P2 104 (14.9 a day)
    size: median 1.60 SOL
    overlap: 205 of 205 are coins wallet 4 bought for 1.45+ SOL (since_stop scan.out, Oct 28 - Nov 12)
    frenzy: curve trades after its buy in its slot and the next: median 2 (p25 1, p75 4)
@@ -21,9 +21,9 @@ H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg: 205 copyable buys (1.45+ SOL, othe
    FOLLOW+TP (behind it, or tp 2.5 first)   8 after    |   -1.55 ( -3.68)   82  19   +4.56 |   -1.07 ( -4.56)   92  12   +6.74
    FOLLOW+TP (behind it, or tp 2.5 first)   block late |   +6.66 ( +3.97)   96   5  +13.81 |   -0.52 ( -4.28)  102   2   +8.13
 
-== exit grid (135 rule sets), picked on P1 (mean over the 3 landings, without the best 2), scored on P2
-   hold       tp 2.5  stop None 1790s   P1 +10.59 ( +7.55) | P2  -1.35 ( -5.76) | P2 by landing 4 / 8 / late: -1.61 (-5.97) / -1.40 (-5.82) / -1.05 (-5.48)
-   hold       tp 2.5  stop 0.5  1790s   P1  +8.76 ( +5.72) | P2  -0.35 ( -4.76) | P2 by landing 4 / 8 / late: -0.56 (-4.93) / -0.50 (-4.93) / +0.01 (-4.42)
-   hold       tp 2.5  stop 0.7  1790s   P1  +8.12 ( +5.08) | P2  -2.55 ( -6.73) | P2 by landing 4 / 8 / late: -3.22 (-7.51) / -2.14 (-6.01) / -2.31 (-6.66)
-   hold       tp 3.0  stop None 1790s   P1  +8.89 ( +4.90) | P2  -1.15 ( -5.58) | P2 by landing 4 / 8 / late: -1.15 (-6.07) / -1.89 (-5.93) / -0.40 (-4.76)
-   hold       tp 2.0  stop None 1790s   P1  +6.92 ( +4.72) | P2  -3.62 ( -7.28) | P2 by landing 4 / 8 / late: -3.81 (-7.53) / -4.21 (-7.71) / -2.82 (-6.58)
+== exit grid (135 rule sets), picked on P1 (mean over the landings, without the best 2), scored on P2
+   hold       tp 2.5  stop None 1790s   P1 +10.59 ( +7.55) | P2  -1.35 ( -5.76) | P2 by landing: -1.61 (-5.97) / -1.40 (-5.82) / -1.05 (-5.48)
+   hold       tp 2.5  stop 0.5  1790s   P1  +8.76 ( +5.72) | P2  -0.35 ( -4.76) | P2 by landing: -0.56 (-4.93) / -0.50 (-4.93) / +0.01 (-4.42)
+   hold       tp 2.5  stop 0.7  1790s   P1  +8.12 ( +5.08) | P2  -2.55 ( -6.73) | P2 by landing: -3.22 (-7.51) / -2.14 (-6.01) / -2.31 (-6.66)
+   hold       tp 3.0  stop None 1790s   P1  +8.89 ( +4.90) | P2  -1.15 ( -5.58) | P2 by landing: -1.15 (-6.07) / -1.89 (-5.93) / -0.40 (-4.76)
+   hold       tp 2.0  stop None 1790s   P1  +6.92 ( +4.72) | P2  -3.62 ( -7.28) | P2 by landing: -3.81 (-7.53) / -4.21 (-7.71) / -2.82 (-6.58)

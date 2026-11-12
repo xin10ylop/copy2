@@ -1,1 +1,33 @@
 16:24:49 117989 landed transactions
+launchlab: 117989 transactions, 1380 launches seen, 1982 buys of 1.0+ SOL within 2 s of a launch by 788 wallets
+wallet                                        coins SOL med sold 1st sale med s 120 s+ no sale 10m+
+9999xxvxwKh9UMiNiESjTTCh3nzeXh8af7i9Dn7pckHV     51    2.00   51              3      0            0
+Hfgr8mSEfsDmmeMdQrSopeY7Y4KZP57kiTqbKPQEUxDE     29    1.99   28            3.0      0            1
+57jABUoJuSqAFxu8z3thZ5qGpVkBEZeHZeYMDzL9i8FA     26    5.10   26           15.0      2            0
+Fhbh1DTUDKt6qu9zVg8Q5VgnZa1WWWbxBxG6pCoJoggA     25    1.70   24            2.0      0            1
+3zmcCJXQNhXa8Bbrs5bUEejKjpcoweeiBHnpdJ9zk91T     22    1.00   22            3.0      0            0
+8CvFWU1Hfmy7HkS7eWG2x8EMtQxAzCr7KcukKwspGFwB     20    1.42   20            5.5      0            0
+JAunzNqs3bVBcWDjDxfq9rgLzJMCadNXoaCgfzLGMtYs     20    1.41   20            5.5      0            0
+QuANTFune1xdA7BR7Pcfq9HQN7GwRjobHQ51ek8TBcb      17    1.30   17             34      5            0
+GHxjcDTcnJVNRDpetVxjbGej85RyiT7rbguFAqLU6Vm1     17    2.05   16            3.0      4            1
+53DnQU1dJZNHfKBpv2Lhsd4EBGNpwsF4tS13Egc1m6Tv     16    1.00   16            8.0      0            0
+HK9K6ZMMozD17ADBVMuoFUNXtr9Z4Bo5zTkQA5mk94iS     16    4.00   16            1.0      0            0
+HjzLyTEU6eK8t43m7xCcS6RjmJUBF5fdKHGY5NoFrR5a     16    1.99   16            4.5      0            0
+BGgevXGGKnmJoVyFFghUQXLSvRykNfYm5mBrR4yX3stW     16    1.80   16            4.0      0            0
+BcMFWQiw1CvP4CTKEBtWWPfZEpGpViMCCaSd7angwVoD     16    1.75   16            2.5      0            0
+4ghp64HmdFHv2AhknNYXHnzWTYfp7MT753A56GLJZwZF     16    1.00   16           51.0      4            0
+4HuTMCe7YmaFAwPP5A1PsCGmnXLa82BaRQZembcXNHBx     15    3.38   15              2      0            0
+89CDG4SzvhtgUpiefR6fVaPc6DC7AN9fJ45WPVvFDEza     14    1.35   14           12.0      1            0
+CLgFJcsjbRmJi1yCkBDT4Z6eAK55RSQaavSQ68uxbPDA     14    3.50   14            6.5      2            0
+9iVvQYusUs3o5T5gzhDvtVwpj1WmirSYKTmXcLCn87ak     14    1.39   14           42.0      0            0
+9RK8NAyqGFC6r8oeYNF5pbNMwraaBMb6ubQcmFj4SinV     14    1.45   14           61.0      0            0
+5o786j42vqZuVG3Q6aQts98aUZqhpZ2P3qVMkBfyj6zm     14    1.55   14           62.0      0            0
+DW98jQBdSEWQCmRpb4APuXzdDEABuou9i2Rf1vMRbBqu     13    1.00   12            2.0      0            0
+FMurCd5xbVdmc4tNzwxYFGtZbvqoRYx4HSJBrRitLRKm     13    1.25   13              6      1            0
+38uzzLBFhUXTd4i2f55nAGtiQ61bG2nFWah2GMpvdkJj     13    3.00   13              4      0            0
+PMJA8UQDyWTFw2Smhyp9jGA6aTaP7jKHR7BPudrgyYN      13    1.36   13              5      0            0
+2mw4cXBgFFb1TJMxse7nPUSwBZncWKht7J1ELXLYNrAQ     13    1.54   13             47      0            0
+E5HS3Cv18wFJzzXx3czSKoWE2xsmDewqJiwbvrZN4Neb     12    8.67   11              7      0            1
+52NUhyYcpwwycY2To1bLMtp6pjDjtUMFeUqQxZfBJgAt     11    2.52   11              4      0            0
+ApBpv7oKaSe1H1i3cYYFwCgvvzEAWTEGWHtYaBcCwPht     11    2.50   11              2      0            0
+8vEwQES9m6J3oUdkYHh5Ts2TQW9qtqz1R1SswaeUzMyN     10    2.54   10            9.0      0            0

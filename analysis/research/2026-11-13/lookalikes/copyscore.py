@@ -84,7 +84,7 @@ def sc(res):
     return len(v), sum(allv), sum(allv) - sum(v[:2]), sum(1 for _, o in res if o["exit"] == "refused")
 # its real result and the gap
 print("\n== its own result on these coins (closed coins), and the raw model on it (landing 0, behind its sale)")
-GAP = {}
+GAP = {}; REAL = {}
 for p in ("P1", "P2", "both"):
     rs = trips if p == "both" else HALF[p]
     c = [d for d in rs if d["closed"] and d["real"] is not None and d["spent"]]
@@ -93,7 +93,7 @@ for p in ("P1", "P2", "both"):
     v = sorted((d["real"] for d in c), reverse=True)
     mo = [M.model(W, d, d["tr"], 1.0, 0, tp=None, sl=None, hold=10**9, follow=True, pmax=99) for d in c]
     mp = 100 * sum(o["net"] for o in mo if "net" in o) / max(1, sum(1 for o in mo if "net" in o))
-    GAP[p] = real - mp
+    GAP[p] = real - mp; REAL[p] = dict(n=len(c), spent=sum(d['spent'] for d in c), net=sum(v), net2=sum(v[2:]), pct=real)
     print(f"   {p}: {len(c)} coins, spent {sum(d['spent'] for d in c):.2f} SOL, real {sum(v):+.2f} SOL ({real:+.1f}%), without its best 2 {sum(v[2:]):+.2f}; "
           f"won {sum(1 for x in v if x > 0)}; model on it {mp:+.1f}% a trade -> gap {real - mp:+.1f} points")
 POL = (("HOLD (tp 2.5, 30 min; live)", dict(tp=2.5, sl=None, hold=1790, follow=False)),
@@ -123,6 +123,6 @@ for r in res[:5]:
     print(f"   {nm(r[0]):36s} P1 {r[2]:+6.2f} ({r[1]:+6.2f}) | P2 {r[4]:+6.2f} ({r[3]:+6.2f}) | P2 by landing: "
           + " / ".join(f"{x[1]:+.2f} ({x[2]:+.2f})" for x in r[5]))
 best = res[0]
-json.dump(dict(W=W, floor=FLOOR, n=len(trips), P1=len(HALF["P1"]), P2=len(HALF["P2"]), gap=GAP, overlap=ov,
-               table={"|".join(map(str, k)): v for k, v in SUM.items()}, best=dict(rule=nm(best[0]), p1=best[1:3], p2=best[3:5])),
+json.dump(dict(W=W, floor=FLOOR, n=len(trips), P1=len(HALF["P1"]), P2=len(HALF["P2"]), gap=GAP, real=REAL, overlap=ov, kind=KIND, multi=MULTI, routes=ROUTES,
+               table={"|".join(map(str, k)): v for k, v in SUM.items()}, best=dict(rule=nm(best[0]), p1=best[1:3], p2=best[3:5], p2land=best[5])),
           open(f"{M.lib.OUT}/copyscore_{W[:8]}_{FLOOR}{'_multi' if MULTI else ''}_{ROUTES}{'_sol' if KIND != 'pump, other quote' else ''}.json", "w"))
