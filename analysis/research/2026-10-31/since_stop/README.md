@@ -190,3 +190,12 @@ trailing stop none/0.5/0.7 of the peak; wallet 4's sale held through, followed, 
 **Why week 2 is flat** (`why_weeks.py`, `out/why_weeks.txt`; live rule, landing 4): wallet 4 itself made +39.89 SOL
 (+23.2%) on week 1's coins and +21.32 (+10.8%) on week 2's. Our copies reached take profit on 22% then 16%, and the
 copies that ran out the timer lost 0.169 SOL each then 0.295: fewer winners and deeper losers.
+
+## Wallet 4's bet size as a signal (`size_signal.py`, `out/size_signal.txt`, Nov 12)
+
+Asked after its 2.33 SOL buy gave our +353%. 206 buys Oct 29-Nov 12 (median 1.60 SOL). **No signal above our 1.45
+floor.** Its own result by size: 1.45-1.6 +20.4%, 1.6-1.8 +34.3%, 1.8-2.0 −20.0%, 2.0-2.5 +6.5%, 2.5+ +22.0%. Our
+copy (raw, 1 SOL): +0.068, +0.177, −0.058, −0.154, +0.173 a copy; take profit hit 18%, 25%, 11%, 10%, 29%. Copying
+only 1.6+/1.8+/2.0+ loses money and copies in both weeks; a stake that grows with its size is behind on week 1 and
+ahead on week 2 by about 1 SOL (mixed). The older study's "bigger buys hit the take profit more" is the 1.5 cut we
+already use (`2026-10-27/h9long`).

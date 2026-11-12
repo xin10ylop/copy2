@@ -1,0 +1,17 @@
+206 buys, sizes: median 1.60 SOL, quartiles [1.5, 1.6, 1.98]
+
+its size    buys | its real %   won | our copy: net/copy  tp hit w/o best 2 | week 1 / week 2 (our net/copy)
+1.45-1.6     100 |     +20.4% 39/98 |            +0.068     18%     +0.022 | +0.121 (62) / -0.038 (31)
+1.60-1.8      36 |     +34.3% 20/34 |            +0.177     25%     +0.068 | +0.759 (8) / +0.011 (28)
+1.80-2.0      19 |     -20.0%  5/17 |            -0.058     11%     -0.188 | +0.023 (6) / -0.095 (13)
+2.00-2.5      32 |      +6.5% 16/31 |            -0.154     10%     -0.258 | -0.503 (9) / -0.005 (21)
+2.50-         19 |     +22.0%  9/19 |            +0.173     29%     -0.000 | +0.230 (8) / +0.123 (9)
+
+Rules, 2 open, raw model, mean over landing 4 / 8 / one block late: copies, net (w/o best 2); and with the 9.1-point yardstick
+   rule                                     | week 1                       | week 2
+   live: every 1.45+ buy, 1 SOL             |  87.0 +10.59 ( +7.55) yard +18.51 |  96.3  +0.12 ( -4.29) yard  +8.88
+   only its buys of 1.6+ SOL                |  29.0  +3.90 ( +1.09) yard  +6.54 |  66.7  +0.99 ( -2.64) yard  +7.06
+   only its buys of 1.8+ SOL                |  21.7  -1.67 ( -4.32) yard  +0.30 |  42.3  +0.16 ( -2.79) yard  +4.01
+   only its buys of 2.0+ SOL                |  16.0  -1.94 ( -4.47) yard  -0.48 |  30.0  +1.09 ( -1.86) yard  +3.82
+   stake = its size / 1.8 (0.8-1.4 SOL)     |  87.0  +9.22 ( +5.69) yard +16.56 |  96.3  +0.62 ( -3.50) yard  +9.68
+   1.5 SOL on its 2.0+ buys, 1 below        |  87.0  +9.71 ( +5.87) yard +18.33 |  96.3  +0.66 ( -3.93) yard +10.80
