@@ -85,6 +85,10 @@ marks before any backtest (`score/README.md` "cheap marks").
 - Our copy at 1 SOL, 2 open, landings 4 / 8 / one block late; exits: hold with take profit 2.5 and 30 min, and sell
   behind its sale; plus the best of a small exit grid picked on the first half only (`since_stop/exit_search.py`).
 - Overlap with wallet 4: how many of its buys are the same coins (a second wallet on the same coins adds little).
+- **Data already fetched:** `data/datasets/since_stop.tar.xz` (47 MB): wallet 4's transactions Oct 28 - Nov 12 and
+  `paths.json.gz`, every trade on its 225 routable coins for 31 minutes from its buy (the trader, side, amounts, block
+  order), which is where search 1 starts. `SP=/your/scratchpad bash data/datasets/unpack.sh since_stop`, then pass
+  `<SP>/since_stop` as `SPD` to the `since_stop/*.py` scripts. Fetch newer data with `since_stop/fetch_w4.py`.
 - Fetching: `analysis/research/2026-10-28/fetch/` uses the public RPC; the Oct 29 search used the Triton endpoint. If
   you need a keyed RPC, ask the owner for it through the environment's secure credential form; never put a key in a
   file, a commit or the chat.
