@@ -1,0 +1,5 @@
+hold, tp 2.5, no stop, 1790 s: copies taken / refused / raw net / estimate with the 9.1-point yardstick (SOL at 1 SOL)
+  pick week limit 1.25:  90/ 7 +12.14 est +20.33 |  79/18  +6.52 est +13.71 |  92/ 5 +13.12 est +21.49
+  pick week limit 1.15:  80/18 +11.71 est +18.99 |  67/33  +3.42 est  +9.52 |  87/11 +14.18 est +22.10
+  test week limit 1.25:  99/ 3  -0.08 est  +8.93 |  90/12  +0.01 est  +8.20 | 100/ 2  +0.42 est  +9.52
+  test week limit 1.15:  85/18  +4.68 est +12.41 |  77/26  +2.34 est  +9.34 |  94/ 8  +2.05 est +10.60

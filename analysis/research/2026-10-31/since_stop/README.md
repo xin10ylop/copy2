@@ -168,3 +168,21 @@ model run on wallet 4 itself gives +1.8% a trade against its real +10.8%, so it 
 All within about a point of each other and 1-2 points under wallet 4. "Sell behind it, or tp 2.5 first"
 (`follow_its_sell = true`) is ahead at every landing by 0.6-1.1 points and less dependent on the best 2. The 9.1-point
 yardstick is measured on quick sales; our own take-profit fills beat the model by more (+18.9), which favours holding.
+
+## A wide search over the exits, two weeks (`exit_search.py`, `out/exit_search_nov12.txt`, `out/exit_search_limit.txt`, Nov 12)
+
+2,160 rule sets (take profit 1.5-4 or none; stop none/0.5/0.6/0.7; timer 5/10/30 min; price limit 1.15/1.25; a
+trailing stop none/0.5/0.7 of the peak; wallet 4's sale held through, followed, or followed only below 1.0/1.5/2.0x),
+1 SOL, 2 open, raw model, averaged over landing 4, 8 and one block late. Picked on Oct 29 14:02 to Nov 5 08:49 Beirut
+(101 buys), tested on the week to Nov 12 08:49 (105 buys).
+
+- **What runs live is the best of the 2,160 on the pick week** (+10.59, +7.55 without the best 2) and +0.12 (−4.29)
+  on the test week. Following its sale with tp 2.5: +3.22 (+0.73), then +0.10 (−3.64). Over the two weeks holding is
+  ahead by about 7 SOL; following is ahead only on the last week, by 0.6 without the best 2.
+- Each choice on its own (mean over every rule set with it): tp 2.5 is the best take profit in both weeks; no stop and
+  0.5 are level, 0.7 is worst; the trailing stop does not help; holding is best on the pick week, follow below 1.5x on
+  the test week. The hindsight best of the test week (follow below 1.5x, no tp, limit 1.15) was −0.81 without the
+  best 2 on the pick week.
+- Price limit 1.15 instead of 1.25: better on the test week in the raw model, but it refuses 10-20 more copies a week;
+  with the 9.1-point yardstick per copy the two are level over the two weeks (landing 4: +31.4 vs +29.3; 8: +18.9 vs
+  +21.9; late: +32.7 vs +31.0). No change.

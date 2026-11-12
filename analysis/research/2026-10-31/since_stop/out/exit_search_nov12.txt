@@ -1,0 +1,43 @@
+2160 rule sets; pick week 10-29 14:02 to 11-05 08:49 (101 buys), test week to 11-12 08:49 (105 buys), Beirut
+1 SOL, 2 open, raw model; SOL = mean over landings 4, 8 and one block late; (w/o best 2)
+
+== live, and live with its sale followed
+   rule set                                                           | pick week: net (w/o best 2) | TEST week: net (w/o best 2) | test by landing 4 / 8 / late (w/o best 2)
+   hold       tp 2.5  stop None 1790s limit 1.25 trail None           | +10.59 ( +7.55)          |  +0.12 ( -4.29)           | -4.44 / -4.42 / -4.02
+   follow     tp 2.5  stop None 1790s limit 1.25 trail None           |  +3.22 ( +0.73)          |  +0.10 ( -3.64)           | -4.09 / -3.57 / -3.24
+
+== the 15 best on the pick week (without the best 2), and how they did the next week
+   rule set                                                           | pick week: net (w/o best 2) | TEST week: net (w/o best 2) | test by landing 4 / 8 / late (w/o best 2)
+   hold       tp 2.5  stop None 1790s limit 1.25 trail None           | +10.59 ( +7.55)          |  +0.12 ( -4.29)           | -4.44 / -4.42 / -4.02
+   hold       tp 2.5  stop None 1790s limit 1.15 trail None           |  +9.77 ( +6.73)          |  +3.02 ( -1.39)           | +0.31 / -2.09 / -2.38
+   hold       tp 2.5  stop 0.5  1790s limit 1.25 trail None           |  +8.76 ( +5.72)          |  +1.11 ( -3.29)           | -3.40 / -3.52 / -2.96
+   hold       tp 2.5  stop None 1790s limit 1.25 trail 0.5            |  +8.32 ( +5.43)          |  +1.06 ( -3.35)           | -3.81 / -2.44 / -3.78
+   hold       tp 2.5  stop 0.6  1790s limit 1.25 trail None           |  +8.29 ( +5.25)          |  +0.91 ( -3.50)           | -3.80 / -3.38 / -3.31
+   hold       tp 2.5  stop 0.7  1790s limit 1.25 trail None           |  +8.12 ( +5.08)          |  -2.82 ( -6.99)           | -7.75 / -6.29 / -6.93
+   hold       tp 2.5  stop 0.5  1790s limit 1.15 trail None           |  +8.11 ( +5.07)          |  +3.90 ( -0.51)           | +1.30 / -1.50 / -1.33
+   hold       tp 2.5  stop 0.6  1790s limit 1.15 trail None           |  +8.10 ( +5.06)          |  +3.95 ( -0.45)           | +1.26 / -1.44 / -1.18
+   hold       tp 3.0  stop None 1790s limit 1.25 trail None           |  +8.89 ( +4.90)          |  +1.46 ( -3.44)           | -3.78 / -3.95 / -2.59
+   hold       tp 2.5  stop None 1790s limit 1.15 trail 0.5            |  +7.67 ( +4.79)          |  +4.11 ( -0.29)           | +1.05 / -0.27 / -1.66
+   hold       tp 2.5  stop 0.7  1790s limit 1.15 trail None           |  +7.78 ( +4.74)          |  +0.15 ( -4.03)           | -2.47 / -4.81 / -4.80
+   hold       tp 2.0  stop None 1790s limit 1.25 trail None           |  +6.92 ( +4.72)          |  -2.81 ( -6.47)           | -6.68 / -6.95 / -5.78
+   hold       tp 2.5  stop 0.7  1790s limit 1.25 trail 0.5            |  +7.45 ( +4.57)          |  -2.89 ( -7.07)           | -8.06 / -5.57 / -7.58
+   follow<1.0 tp 2.5  stop 0.5  1790s limit 1.25 trail None           |  +7.42 ( +4.54)          |  -0.59 ( -5.00)           | -5.15 / -5.02 / -4.83
+   follow<1.0 tp 2.5  stop None 1790s limit 1.25 trail None           |  +7.42 ( +4.54)          |  -0.64 ( -5.05)           | -5.18 / -5.11 / -4.87
+
+   of the 50 best on the pick week, 33 beat live on the test week (w/o best 2); of all 2160, 1039
+
+== each choice on its own: the mean TEST-week result (w/o best 2) over every rule set that has it, and the pick week's
+   follow: hold +0.59 / -4.08   follow +0.13 / -4.45   follow<1.0 -0.10 / -4.81   follow<1.5 -0.30 / -4.02   follow<2.0 -0.06 / -4.64
+   tp    : 1.5 -0.88 / -7.30   2.0 +0.38 / -4.33   2.5 +1.30 / -3.18   3.0 +0.38 / -2.95   4.0 -0.18 / -4.00   None -0.69 / -4.64
+   sl    : None +0.22 / -3.32   0.5 -0.02 / -3.02   0.6 +0.15 / -4.01   0.7 -0.15 / -7.24
+   hold  : 300 +0.35 / -3.49   600 -0.43 / -4.93   1790 +0.23 / -4.78
+   pmax  : 1.15 -0.01 / -3.32   1.25 +0.11 / -5.48
+   trail : None +0.20 / -3.93   0.5 +0.19 / -4.51   0.7 -0.24 / -4.75
+
+== the 5 best on the test week (hindsight, for scale)
+   rule set                                                           | pick week: net (w/o best 2) | TEST week: net (w/o best 2) | test by landing 4 / 8 / late (w/o best 2)
+   follow<1.5 tp None stop 0.5  1790s limit 1.15 trail None           |  +7.93 ( -0.81)          | +13.21 ( +3.66)           | +5.53 / +2.52 / +2.95
+   follow<1.5 tp None stop None 1790s limit 1.15 trail None           |  +7.96 ( -0.78)          | +12.98 ( +3.44)           | +5.30 / +2.29 / +2.72
+   follow<1.5 tp 3.0  stop 0.5   300s limit 1.15 trail None           |  +3.63 ( +0.25)          |  +7.78 ( +3.17)           | +4.03 / +2.42 / +3.07
+   follow<1.5 tp 4.0  stop 0.5  1790s limit 1.15 trail None           |  +5.50 ( +0.10)          |  +9.42 ( +3.09)           | +4.15 / +2.74 / +2.39
+   follow<1.5 tp 3.0  stop None  300s limit 1.15 trail None           |  +3.66 ( +0.27)          |  +7.55 ( +2.94)           | +3.81 / +2.18 / +2.84
