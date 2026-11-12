@@ -42,6 +42,12 @@ its 1.0+ SOL buys that day were mostly in an unroutable quote (Xsc9qvGR), 2 of 7
 (96% on Nov 12). Unit `rugsnipe-long-tab` (config `/etc/rugsnipe/long-tab.toml`, state `/var/lib/rugsnipe-long-tab`,
 wallet `tab-wallet.json`): min_sol 1.0, tp 3.0, 300 s, no stop, its sale not followed, paper at 0.1. Real only after
 its paper record, at 0.1 SOL with its own wallet.
+The exact check (the bot's own detection over all its 1.0+ buys, lookalike branch commit `89b9332`,
+`out/scan_score_TAB16RxX.txt`): 183 copyable first buys (week 1 53, week 2 130; 55 route from our WBTC float), still
+10-32 a day on Nov 10-12. Tp 3.0 + 300 s at landing 4: week 1 raw +1.28 (−2.36 without the best 2), corrected +6.63;
+week 2 +3.08 (−3.23), corrected +13.03. Raw without the best 2 is negative in both weeks for every exit; the profit
+rests on the correction (+10.5 / +8.5 points, measured on its own trades, never yet on our fills). Without the WBTC
+routes it loses raw in both weeks. Weaker than the route-class approximation (+13.76 raw in week 2).
 
 **First 3 closed (Nov 12, checked on chain, journal = chain):** +0.2479 SOL. All three landed in wallet 4's own block
 (3, 7 and 8 coin trades between its buy and ours).
