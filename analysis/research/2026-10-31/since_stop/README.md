@@ -154,3 +154,17 @@ SOL<->WBTC swap rate. 5 more coins it sold into the quote token are left out (�
 value unknown). The raw model copying it at its own price (landing 0) and selling right behind it gives only +1.10 SOL
 on those 105 (about +1%); landing 4 −0.77. So the raw model sits about 10 points a trade under wallet 4's real result
 even with no lag, the same size as its measured miss on our own trades (§ "How far to trust the model").
+
+**Our exits against wallet 4's real week, on one yardstick** (`vs_him_week.py`, `out/vs_him_week_nov12.txt`): the raw
+model run on wallet 4 itself gives +1.8% a trade against its real +10.8%, so it sits 9.1 points under. Our estimate =
++10.8% + (our model % − its model %), 1 SOL a coin, every coin:
+
+| Landing | Hold (live) | Sell behind it | Sell behind it, or tp 2.5 first |
+|---|---|---|---|
+| its block, 4 trades after | +8.7% | +8.9% | +9.5% |
+| its block, 8 trades after | +8.9% | +9.6% | +9.7% |
+| one block late | +9.1% | +8.7% | +10.2% |
+
+All within about a point of each other and 1-2 points under wallet 4. "Sell behind it, or tp 2.5 first"
+(`follow_its_sell = true`) is ahead at every landing by 0.6-1.1 points and less dependent on the best 2. The 9.1-point
+yardstick is measured on quick sales; our own take-profit fills beat the model by more (+18.9), which favours holding.

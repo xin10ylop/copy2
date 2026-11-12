@@ -1,0 +1,21 @@
+100 coins wallet 4 bought and closed, Nov 5 08:49 to Nov 12 08:49 Beirut
+  wallet 4, real:                        +10.8% a trade (its own SOL in and out)
+  wallet 4 through the raw model:         +1.8%   -> the model sits 9.1 points under reality
+
+== landing in its block, 4 trades after it
+   policy                                       copies  model % w/o best 2 ESTIMATE % SOL at 1 SOL  exits
+   what we run (hold; tp 2.5, no stop, 30 min)      97    -0.4%      -4.9%      +8.7%       +8.41  {'time': 82, 'tp': 15, 'refused': 3}
+   sell right behind it (no tp, 30 min cap)         97    -0.2%      -4.9%      +8.9%       +8.59  {'its_sell': 95, 'time': 2, 'refused': 3}
+   sell right behind it, or tp 2.5 first            97    +0.4%      -3.6%      +9.5%       +9.21  {'its_sell': 89, 'time': 2, 'refused': 3, 'tp': 6}
+
+== landing in its block, 8 trades after it
+   policy                                       copies  model % w/o best 2 ESTIMATE % SOL at 1 SOL  exits
+   what we run (hold; tp 2.5, no stop, 30 min)      88    -0.1%      -5.2%      +8.9%       +7.87  {'time': 75, 'tp': 13, 'refused': 12}
+   sell right behind it (no tp, 30 min cap)         88    +0.5%      -3.7%      +9.6%       +8.45  {'its_sell': 80, 'time': 8, 'refused': 12}
+   sell right behind it, or tp 2.5 first            88    +0.6%      -3.3%      +9.7%       +8.53  {'its_sell': 75, 'time': 8, 'refused': 12, 'tp': 5}
+
+== landing one block late
+   policy                                       copies  model % w/o best 2 ESTIMATE % SOL at 1 SOL  exits
+   what we run (hold; tp 2.5, no stop, 30 min)      98    +0.1%      -4.5%      +9.1%       +8.95  {'time': 82, 'tp': 16, 'refused': 2}
+   sell right behind it (no tp, 30 min cap)         98    -0.4%      -3.9%      +8.7%       +8.51  {'its_sell': 98, 'refused': 2}
+   sell right behind it, or tp 2.5 first            98    +1.1%      -2.7%     +10.2%       +9.96  {'its_sell': 91, 'refused': 2, 'tp': 7}
