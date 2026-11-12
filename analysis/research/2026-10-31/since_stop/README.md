@@ -219,3 +219,13 @@ peak, not a trend; the model's correction for 2-minute timer exits is unmeasured
 1600 s, L 1.0-2.0), holding, two weeks. Live +10.71 (+3.26 without the best 2s). No cell is clearly ahead: the best,
 2.0 after 1300 s, +11.02 (+3.57). Lowering early (120-600 s) helps week 2 (up to +3.96 against +0.12) and costs more in
 week 1 (+2.4 to +7.7 against +10.59): the coins that reach 2.5x late pay for the slow ones. No change.
+
+## The timer, finely (`timer_scan.py`, `out/timer_scan.txt`, Nov 12)
+
+30 s to 30 min (the cached paths end 31 min after its buy: nothing longer can be tested), tp 2.5 and 3.0, holding or
+selling behind its sale; two weeks, raw, mean of three landings. Tp 2.5, holding (live = 1790 s: +10.71, +3.26 without
+the best 2s, 8 of 15 days up): 120 s +11.76 (+5.47, 11/15), 300 s +10.38, 600 s +8.28, 900 s +7.10, 1200 s +11.34,
+1500 s +10.12. The curve is bumpy (120 good, 180-240 worse, 300 good, 900 worse, 1200 good): differences of 1-3 SOL
+in two weeks are noise. Short timers (90-300 s) win week 2 (+2.6 to +6.2 against +0.12) and lose week 1 (+3.8 to +6.2
+against +10.59). Selling behind its sale is behind holding at every timer from 300 s up. No timer is clearly better
+than 1790 s; 120 s is the one to watch on the live trades.
