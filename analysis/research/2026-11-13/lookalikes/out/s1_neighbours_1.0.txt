@@ -1,0 +1,30 @@
+225 coins of wallet 4 (routable 1.45+ buys, Oct 28 - Nov 12) with its buy in the path; buyers of 1.0+ SOL within 5.0 s of it
+309 wallets; 8 on 5+ coins, 7 on 10+
+wallet                                        coins SOL med ahead dt med   1st sale s p25/med/p75 held 120s+ no sale 31m 1 sale multi-buy
+TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3      29    1.49    15    0.0      31/   120/    210    18  62%           0     24         0
+Fhbh1DTUDKt6qu9zVg8Q5VgnZa1WWWbxBxG6pCoJoggA     22    2.89    22    0.0       0/     0/      0     0   0%           0      0         1
+6Z91Dgiz9E44bMW11rQuMBjt1NwwPoQGXFNZieGfVtAb     22    2.95    20    0.0       1/     2/      4     0   0%           0      6         2
+53DnQU1dJZNHfKBpv2Lhsd4EBGNpwsF4tS13Egc1m6Tv     21    1.46     2    0.0       3/     6/     21     0   0%           0     21         0
+dKMjeGJ4Mk9S3hxdfTThvZ7exks2xMwWqSM5NvN2CTK      17    3.58    15    0.0       0/     2/      3     0   0%           0      0         0
+EcrMBga8HvSiCX2jQNiTfDuvrqkSE7ABQQ7YN5JTKcTb     17    1.37     4    0.0      20/   213/    215    12  71%           0     17         0
+FiFawHqxeTVBhv6YbqbLwDVuvokRpPUM1bNwAyxhGc6W     14    3.21    14    0.0       0/     1/      5     0   0%           0      5         0
+AMDEmVocLtN5ji2gBY7BrmSHEyM5vt6TGszBbg4crMXg      6    1.22     1    0.0      10/    63/    155     2  33%           0      5         1
+FZU56d9iPqohXM5XBrYYBZLi2UoUnZT4V5Qf2631tEzb      4    1.15     1    1.0     381/   603/   1582     3  75%           0      3         0
+3dwZP6T8tApEByVMiwYVeMQC7gwjeEVy6HjWWVyvhS6c      4    1.92     0    0.0     273/   273/    325     4 100%           0      4         0
+D6k83xYtheGVRNx1irZLaV39FSLkjxf327MqA1mMDw6s      4    1.12     0    1.5      20/    88/    111     0   0%           0      3         4
+BFmgjdgepMxNnEyndQZC68Db3ajPdD3V8is1bQbdj4h4      4    1.05     4    0.0       -/     -/      -     4 100%           4      0         0
+9qz7cWBqYBP2TnGfzMmxX64G4PQip7HtogjPBBnMhWpw      3    2.98     2    0.0       2/     5/      6     0   0%           0      1         0
+8HqYzz88xMMSn934Jb5Kmvkabzp9X6o1zhP5NWP9Qh9f      3    2.89     3    0.0       5/    57/     75     0   0%           0      3         0
+4BYjXY3RS1wKVo89g9rJQF76TWiwVxZBHRhdzCed563R      3    1.82     3    0.0       -/     -/      -     3 100%           3      0         2
+52NUhyYcpwwycY2To1bLMtp6pjDjtUMFeUqQxZfBJgAt      3    1.98     0    2.0       1/    12/     12     1  33%           1      2         0
+EkE4p8wtNyhXmHz24U5VCwDqXVhCBBKeDcTtC5on17M9      3    1.33     0    5.0     169/   169/    169     3 100%           2      0         0
+HMMqESbpSgYQF7LLEzhciF3wr4DeQcGRGPjoD8Wg3YgW      3    1.21     0    5.0     169/   169/    169     3 100%           2      0         0
+6SgQYB98mRFpE3qzgXYaRHyAwvUJ5nHNus62U8n2Sffu      3    1.79     3    0.0       4/     6/    121     1  33%           0      2         0
+CGAZ8ysbcmc6a14uYRqDJfnQvjRF4fVSZBYiTsZgRwcH      3    1.83     0    4.0       2/     2/     46     0   0%           0      3         0
+Q4J6vefnKFmg5gAxGwnhthk5sewKDpnC8YNLD7Lv9ng       3    1.87     0    4.0       2/     2/     46     0   0%           0      3         0
+7sdQr1E2DKXsj3gRCpY2pQMr5q1SXRVX2byo4BjZsQ8F      3    8.77     3    0.0       1/     5/     10     0   0%           0      0         0
+CvHqmxcD7k24UZGbcA98zN5CxUqLMM4pGby38NLmuH3b      3    1.13     0    3.0       2/    22/     22     0   0%           0      0         2
+2Fv83sqnAyfXonqsPHNVyDHgZ2wSZGHPoWHKKgHNL8p9      3    1.20     0    3.0       2/    22/     22     0   0%           0      0         2
+BnJ571hZ9ADiVeR5D4qFN9PsnvuuvvZQLXCvdRP6Acmo      3    1.17     0    4.0      17/    19/     19     1  33%           1      1         1
+GPCZE1KjTg88bHrUS37pD9fnaKgNX6Gm1WPz6oRKZmgQ      3    4.79     0    3.0       1/     2/      2     0   0%           0      2         1
+DXakcr7cCtVoeYhWN9yHPKWiQsiMjmLDseWJxZJmzYGz      3    2.66     0    3.0       2/     4/      6     0   0%           0      2         0

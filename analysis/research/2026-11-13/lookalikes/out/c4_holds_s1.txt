@@ -1,0 +1,2 @@
+TAB16RxX 600 tx over 16.0 h: 82 coins bought, 82 with a sale: first sale p25/med/p75 134/210/210 s, 120 s+ on 63; no sale 10+ min 0; other-quote coins: 82 closed, median 210 s, 120 s+ 63
+6anjqMeW 600 tx over 11.8 h: 163 coins bought, 157 with a sale: first sale p25/med/p75 2/2/24 s, 120 s+ on 20; no sale 10+ min 6; other-quote coins: 78 closed, median 3 s, 120 s+ 13

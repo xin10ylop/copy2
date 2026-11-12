@@ -1,0 +1,19 @@
+225 coins of wallet 4 (routable 1.45+ buys, Oct 28 - Nov 12) with its buy in the path; buyers of 1.45+ SOL within 5.0 s of it
+185 wallets; 7 on 5+ coins, 6 on 10+
+wallet                                        coins SOL med ahead dt med   1st sale s p25/med/p75 held 120s+ no sale 31m 1 sale multi-buy
+Fhbh1DTUDKt6qu9zVg8Q5VgnZa1WWWbxBxG6pCoJoggA     21    2.90    21    0.0       0/     0/      0     0   0%           0      0         1
+6Z91Dgiz9E44bMW11rQuMBjt1NwwPoQGXFNZieGfVtAb     21    2.98    19    0.0       1/     2/      4     0   0%           0      5         2
+TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3      21    1.63     9    0.0      41/   120/    210    13  62%           0     17         0
+dKMjeGJ4Mk9S3hxdfTThvZ7exks2xMwWqSM5NvN2CTK      17    3.58    15    0.0       0/     2/      3     0   0%           0      0         0
+FiFawHqxeTVBhv6YbqbLwDVuvokRpPUM1bNwAyxhGc6W     14    3.21    14    0.0       0/     1/      5     0   0%           0      5         0
+53DnQU1dJZNHfKBpv2Lhsd4EBGNpwsF4tS13Egc1m6Tv     11    1.48     2    0.0       4/    10/     31     0   0%           0     11         0
+EcrMBga8HvSiCX2jQNiTfDuvrqkSE7ABQQ7YN5JTKcTb      8    1.83     0    0.0      17/   215/    215     5  62%           0      8         0
+3dwZP6T8tApEByVMiwYVeMQC7gwjeEVy6HjWWVyvhS6c      4    1.92     0    0.0     273/   273/    325     4 100%           0      4         0
+8HqYzz88xMMSn934Jb5Kmvkabzp9X6o1zhP5NWP9Qh9f      3    2.89     3    0.0       5/    57/     75     0   0%           0      3         0
+52NUhyYcpwwycY2To1bLMtp6pjDjtUMFeUqQxZfBJgAt      3    1.98     0    2.0       1/    12/     12     1  33%           1      2         0
+6SgQYB98mRFpE3qzgXYaRHyAwvUJ5nHNus62U8n2Sffu      3    1.79     3    0.0       4/     6/    121     1  33%           0      2         0
+CGAZ8ysbcmc6a14uYRqDJfnQvjRF4fVSZBYiTsZgRwcH      3    1.83     0    4.0       2/     2/     46     0   0%           0      3         0
+Q4J6vefnKFmg5gAxGwnhthk5sewKDpnC8YNLD7Lv9ng       3    1.87     0    4.0       2/     2/     46     0   0%           0      3         0
+7sdQr1E2DKXsj3gRCpY2pQMr5q1SXRVX2byo4BjZsQ8F      3    8.77     3    0.0       1/     5/     10     0   0%           0      0         0
+GPCZE1KjTg88bHrUS37pD9fnaKgNX6Gm1WPz6oRKZmgQ      3    4.79     0    3.0       1/     2/      2     0   0%           0      2         1
+DXakcr7cCtVoeYhWN9yHPKWiQsiMjmLDseWJxZJmzYGz      3    2.66     0    3.0       2/     4/      6     0   0%           0      2         0
