@@ -1,0 +1,11 @@
+wallet 4 paid its two tip sizes to 117 accounts in its newest 2,000 transactions
+scanned 23607 transactions to those accounts, from 11-11 18:01 to 11-12 04:46 Beirut
+payers of exactly 1,067,000 or 1,010,000 lamports to them:
+  H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg  106   <- wallet 4
+  8LBfYVFKUucSmzRE4sued1VYAb6CoDSEhpnoBsH4aQxA  1
+
+real	12m43.602s
+user	1m14.095s
+sys	0m9.347s
+
+[exited with code 0]

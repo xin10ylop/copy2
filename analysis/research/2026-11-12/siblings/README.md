@@ -15,7 +15,13 @@
    rest and sent it out through a cross-chain bridge (the transactions signed by `DbjXAFab...`, the bridge's relayer).
    None of the three trades pump coins; lookalike addresses (`H9kuecgK`, `EXzujfNy`, `EXzuF8ZQ`, `9jxYVg4u` ...) sent
    zero-value transactions to each: address poisoning, not the operator.
-3. **Its tip sizes on any coin** (`tipscan.py` → `tipscan.out`): the newest 1,000 payments to each tip account wallet 4
-   itself paid; see the result there.
+3. **Its tip sizes on any coin** (`tipscan.py` → `tipscan.out`): the newest 1,000 payments to each of the 117 tip
+   accounts wallet 4 paid its two sizes to (23,607 transactions, Nov 11 18:01 - Nov 12 04:46 Beirut). Payers of exactly
+   1,067,000 or 1,010,000 lamports: wallet 4 (106) and **one other, `8LBfYVFKUucSmzRE4sued1VYAb6CoDSEhpnoBsH4aQxA`**.
+   That wallet does share the habit (durable nonce on 117 of 120, a 1,010,000 tip on 103; `deep_candidates.out`), but
+   it is not a copy target (`profile.py` → `profile_8LBf.out`): active since Jan 11 (64,075 signatures), it buys
+   graduated pump coins on their PumpSwap pools and sells them back 1-4 minutes later for about 0.002-0.004 SOL a round
+   trip, with periodic +0.012-0.014 SOL coming in: volume or reward farming, never a launch buy. The same software or
+   operator, perhaps; nothing to copy.
 
 The Oct 29 search (`../../2026-10-29/wallets/`) found no other wallet with its trading edge either.

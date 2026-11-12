@@ -1,0 +1,51 @@
+8LBfYVFKUucSmzRE4sued1VYAb6CoDSEhpnoBsH4aQxA: 64075 signatures (61259 landed), 01-11 05:16:54 -> 11-12 04:45:34 Beirut
+its first 6 transactions:
+  first 01-11 05:16:54 signer 8LBfYVFK -0.0022 SOL  ['FLASHX', 'ata', 'system'] via ['pumpswap']  {'HW9TwKjg': 861.760045}
+  first 01-11 05:16:59 signer 7jZce44d +0.0000 SOL  ['system']  {}
+  first 01-11 05:16:59 signer AmpsKjD2 +0.0000 SOL  ['system']  {}
+  first 01-11 05:16:59 signer AmpsKjD2 +0.0000 SOL  ['system']  {}
+  first 01-11 05:16:59 signer 7jZce44d +0.0000 SOL  ['system']  {}
+  first 01-11 05:17:05 signer 8LBfYVFK +0.0000 SOL  ['FLASHX', 'system'] via ['pumpswap']  {'HW9TwKjg': -861.760045}
+its newest 40 landed transactions:
+  11-12 04:45:34 signer 8LBfYVFK +0.0014 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'3dqeBW7E': -4.77055}
+  11-12 04:44:55 signer 8LBfYVFK -0.0025 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'3dqeBW7E': 4.77055}
+  11-12 04:43:23 signer 8LBfYVFK +0.0005 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'BkkYbdQC': -28.347989}
+  11-12 04:39:22 signer 8LBfYVFK -0.0040 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'BkkYbdQC': 28.347989}
+  11-12 04:35:42 signer 8LBfYVFK +0.0121 SOL  ['token22']  {}
+  11-12 04:20:04 signer 8LBfYVFK +0.0005 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'9KeQ4mNg': -215.592362}
+  11-12 04:20:04 signer 8LBfYVFK -0.0016 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'9KeQ4mNg': 215.592362}
+  11-12 04:04:27 signer 8LBfYVFK +0.0005 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'3dqeBW7E': -15.212567}
+  11-12 04:02:15 signer 8LBfYVFK -0.0025 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'3dqeBW7E': 15.212567}
+  11-12 03:50:47 signer 8LBfYVFK -0.0001 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'ENdPZyCa': -119.761967}
+  11-12 03:50:21 signer 8LBfYVFK +0.0005 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'9KeQ4mNg': -62.318212}
+  11-12 03:50:06 signer 8LBfYVFK -0.0026 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'9KeQ4mNg': 62.318212}
+  11-12 03:50:04 signer 8LBfYVFK -0.0025 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'ENdPZyCa': 119.761967}
+  11-12 03:49:16 signer 8LBfYVFK +0.0005 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'ENdPZyCa': -104.019915}
+  11-12 03:49:00 signer 8LBfYVFK -0.0025 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'ENdPZyCa': 104.019915}
+  11-12 03:34:27 signer 8LBfYVFK +0.0005 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'A6Wh9Xsf': -21.767016}
+  11-12 03:34:27 signer 8LBfYVFK -0.0031 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'A6Wh9Xsf': 21.767016}
+  11-12 03:31:39 signer 8LBfYVFK -0.0010 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'2fBozcrL': -291.342014}
+  11-12 03:27:39 signer 8LBfYVFK +0.0005 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'3dqeBW7E': -5.755911}
+  11-12 03:27:36 signer 8LBfYVFK -0.0010 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'2fBozcrL': 291.342014}
+  11-12 03:25:21 signer 8LBfYVFK -0.0025 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'3dqeBW7E': 5.755911}
+  11-12 03:18:25 signer 8LBfYVFK +0.0005 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'ENdPZyCa': -53.739996}
+  11-12 03:18:21 signer 8LBfYVFK -0.0040 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'ENdPZyCa': 53.739996}
+  11-12 03:18:08 signer 8LBfYVFK +0.0005 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'3dqeBW7E': -10.707308}
+  11-12 03:18:05 signer 8LBfYVFK -0.0040 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'3dqeBW7E': 10.707308}
+  11-12 03:06:02 signer 8LBfYVFK +0.0005 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'2fBozcrL': -68.157697}
+  11-12 03:05:34 signer 8LBfYVFK -0.0025 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'2fBozcrL': 68.157697}
+  11-12 03:05:32 signer 8LBfYVFK +0.0005 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'2fBozcrL': -75.344114}
+  11-12 03:05:26 signer 8LBfYVFK -0.0040 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'2fBozcrL': 75.344114}
+  11-12 02:46:58 signer 8LBfYVFK +0.0014 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'B2MFrwFq': -9.785078}
+  11-12 02:46:56 signer 8LBfYVFK -0.0031 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'B2MFrwFq': 9.785078}
+  11-12 02:37:16 signer 8LBfYVFK +0.0005 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'6wX5SbZR': -69.521351}
+  11-12 02:37:08 signer 8LBfYVFK -0.0040 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'6wX5SbZR': 69.521351}
+  11-12 01:39:57 signer 8LBfYVFK +0.0005 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'7r3Hcmzz': -16.155316}
+  11-12 01:38:10 signer 8LBfYVFK -0.0040 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'7r3Hcmzz': 16.155316}
+  11-12 01:35:41 signer 8LBfYVFK +0.0136 SOL  ['token22']  {}
+  11-12 01:22:33 signer 8LBfYVFK +0.0005 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'BsQja1w9': -225.082395}
+  11-12 01:18:30 signer 8LBfYVFK -0.0025 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'BsQja1w9': 225.082395}
+  11-12 01:15:53 signer 8LBfYVFK +0.0005 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'6JtU6hRi': -92.147104}
+  11-12 01:11:50 signer 8LBfYVFK -0.0025 SOL  ['ata', 'pumpswap', 'system', 'token'] via ['pumpswap']  {'6JtU6hRi': 92.147104}
+programs: {'pumpswap': 78, 'system': 44, 'ata': 39, 'token': 38, 'FLASHX': 2, 'token22': 2}
+pump coins touched: 15

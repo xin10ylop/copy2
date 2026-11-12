@@ -2,3 +2,5 @@
    nonce-first 78/120; tips (lamports, top 5) {750000: 38, 1000000: 31, 2000000: 14, 1000010: 11, 1000012: 7}; SOL spent per tx over 0.3: []
 == 28MJrJr2Pu2GPicLj8631nApwzXUAh9vkx2J6VgLPz3y: 253 landed signatures (oldest of them 11-11 22:52 Beirut), 68 own of the newest 120
    nonce-first 0/68; tips (lamports, top 5) {158276: 23, 175532: 17, 1059740: 2, 183060: 2, 200000: 2}; SOL spent per tx over 0.3: [0.33, 0.54, 1.09, 1.5, 1.5, 2.07, 15.19, 17.12]
+== 8LBfYVFKUucSmzRE4sued1VYAb6CoDSEhpnoBsH4aQxA: 300 landed signatures (oldest of them 11-11 05:08 Beirut), 120 own of the newest 120
+   nonce-first 117/120; tips (lamports, top 5) {1010000: 103, 10000: 58, 110000: 14}; SOL spent per tx over 0.3: []
