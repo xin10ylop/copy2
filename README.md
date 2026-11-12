@@ -27,6 +27,10 @@ at 0.1, checked on chain against the model (`analysis/research/2026-10-31/since_
 **0.5 SOL × 2 since Nov 12 14:18 UTC (16:18 Beirut)**, the owner's call after the first 3 closed: daily stop 1.0 SOL;
 the WBTC float topped up with 0.4 SOL (44,861 units, slot 468555971; float 67,418 units, about 0.57 SOL at wallet 4's
 own swap rate that week) so WBTC-routed copies (40 of its 105 last week) still fit a stake. SOL 1.4236 after.
+At 0.5 SOL (journal, Nov 12 UTC): #3 `7dDprVHP` timer −0.1106, #4 `57pQW4mw` timer −0.0124 (peak 1.83x), #5
+`Eymbsj8M` take profit 2.50x after 312 s +0.6228. The day: 6 closed, 2 won, +0.7477 SOL. Two coins airdropped to the
+wallet by `HckQ93Xq...` (15:06-15:51 UTC; we signed nothing) were sold through Jupiter with `float sell`: +0.1968 and
++0.0674 SOL on chain. SOL 2.1877 after, plus the WBTC float (about 0.59 SOL).
 
 **First 3 closed (Nov 12, checked on chain, journal = chain):** +0.2479 SOL. All three landed in wallet 4's own block
 (3, 7 and 8 coin trades between its buy and ours).
