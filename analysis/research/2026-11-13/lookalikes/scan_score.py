@@ -1,6 +1,6 @@
 # The copy of a wallet on exactly the buys the long copy would take: examples/scan.rs's verdicts (W=<wallet>, the bot's
 # own detection and route planner) instead of route_q.py's class. Kept: ROUTABLE, the wallet's first buy of the coin.
-# WBTC-input routes (paid from 3NZ9JMVB: they need our WBTC float) are scored with the rest and also apart.
+# WBTC-input routes (the plan's route input is 3NZ9JMVB: they need our WBTC float) are scored with the rest and also apart.
 # Model: cmodel.py (= since_stop/model.py), 1 SOL, 2 open, landing 4 / 8 / one block late; exits tp 3.0 + 300 s,
 # tp 2.5 + 1790 s, and follow its sale (30 min cap); raw, without each week's best 2, and corrected = raw + GAP x copies
 # (the wallet's model gap per week, copyscore.py). Paths: the cached ones, the rest fetched (cmodel.path).
@@ -22,6 +22,8 @@ for l in open(SCAN):
     if m:
         s = int(m.group(1)); r = dict(slot=s, t=bt.get(s), mint8=m.group(2), sol=float(m.group(3)), frm=m.group(4), quote=m.group(5),
                                      verdict="ROUTABLE" if m.group(7) == "ROUTABLE" else "no route", why=m.group(8).strip()[:60])
+        ri = re.search(r"route: Route \{ input: (\w{8})", l)          # what our bot pays with: wSOL, or the WBTC float
+        r["frm"] = ri.group(1) if ri else r["frm"]
     elif u:
         s = int(u.group(1)); r = dict(slot=s, t=bt.get(s), mint8=u.group(2), sol=None, frm=u.group(3), quote="?", verdict="unpriced", why="")
     else: continue
