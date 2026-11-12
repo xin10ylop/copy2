@@ -24,6 +24,9 @@ stock). Settings: 0.1 SOL a copy, 2 open, take profit 2.5x, **no stop**, 1790 s,
 the owner's Mac (sha256 prefix checked on both) before any SOL went in.** Pings: 0.54-0.70 ms to Jito, Helius,
 Nozomi and Triton in Frankfurt. The copier (Rafinhaaaaaa) is installed but not enabled. Next: about 20 closed trades
 at 0.1, checked on chain against the model (`analysis/research/2026-10-31/since_stop/`), then 0.5 SOL × 2.
+**0.5 SOL × 2 since Nov 12 14:18 UTC (16:18 Beirut)**, the owner's call after the first 3 closed: daily stop 1.0 SOL;
+the WBTC float topped up with 0.4 SOL (44,861 units, slot 468555971; float 67,418 units, about 0.57 SOL at wallet 4's
+own swap rate that week) so WBTC-routed copies (40 of its 105 last week) still fit a stake. SOL 1.4236 after.
 
 **First 3 closed (Nov 12, checked on chain, journal = chain):** +0.2479 SOL. All three landed in wallet 4's own block
 (3, 7 and 8 coin trades between its buy and ours).
