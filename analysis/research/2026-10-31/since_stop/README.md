@@ -229,3 +229,8 @@ the best 2s, 8 of 15 days up): 120 s +11.76 (+5.47, 11/15), 300 s +10.38, 600 s 
 in two weeks are noise. Short timers (90-300 s) win week 2 (+2.6 to +6.2 against +0.12) and lose week 1 (+3.8 to +6.2
 against +10.59). Selling behind its sale is behind holding at every timer from 300 s up. No timer is clearly better
 than 1790 s; 120 s is the one to watch on the live trades.
+
+**Take profit 1.8-3.0 in steps of 0.1** (`tp_fine.py`, `out/tp_fine.txt`; 30 min, holding, two weeks, raw, three
+landings): a plateau at 2.3-2.6 (+9.39, +11.12, +10.71, +10.43; without the best 2s +2.61, +3.74, +3.26, +2.69), a
+fall below it (2.2 +6.00, 2.0 +4.11, 1.8 −1.20) and a slow one above (2.7-3.0 +8.5 to +10.4). 2.4 leads 2.5 by 0.4,
+inside the noise; it also sells just under wallet 4's own 2.5x target, ahead of its sale on the coins that reach it.
