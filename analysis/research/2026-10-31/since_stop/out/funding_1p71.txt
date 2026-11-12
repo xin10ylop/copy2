@@ -1,0 +1,5 @@
+last 7 days: 108 routable buys, 62 of them from wSOL (the rest from the WBTC float)
+  1 SOL x 2, all routes (the plan, needs 2.8 SOL) 105 copies  raw  -2.33 ( -6.05)  corrected  +9.46 ( +5.36)
+  1 SOL x 1, wSOL routes only (fits 1.71 SOL)   55 copies  raw  -5.33 ( -8.10)  corrected  +0.56 ( -2.59)
+  0.5 SOL x 2, all routes, 0.5 float (fits 1.71) 105 copies  raw  -1.16 ( -3.02)  corrected  +4.73 ( +2.68)
+  0.1 SOL x 2, all routes (the start)          105 copies  raw  -0.23 ( -0.60)  corrected  +0.95 ( +0.54)

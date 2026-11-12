@@ -1,0 +1,1 @@
+landing 4 no stop : 105 copies, NET  -2.33 SOL, without the best 2  -6.05; by day 11-05 +1.59  11-06 +1.38  11-07 -4.70  11-08 -1.30  11-09 +0.26  11-10 -2.62  11-11 +3.08  11-12 -0.01  exits {'tp': 24, 'time': 78, 'refused': 3}

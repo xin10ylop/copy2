@@ -104,3 +104,20 @@ The copy at 1 SOL × 2, no stop, landing 4 (raw model / corrected by its miss on
 
 By day (raw): Nov 3 −1.14, Nov 4 +1.90, Nov 5 +2.53, Nov 6 +1.38, Nov 7 −4.70, Nov 8 −1.30, Nov 9 +0.26, Nov 10 −1.52.
 The raw model loses over the week, the corrected one wins; only real fills can say which is right.
+
+## Update, Nov 12 (`out/calib_nov10.txt`, `out/calib_last7_nov12.txt`, `out/funding_1p71.txt`)
+
+Wallet 4 still trades (last transaction Nov 12 02:26 Beirut). On **Nov 11 04:13-04:20 Beirut it swapped about 154 SOL
+into USDC** (8 swaps of 20 SOL, about 1,660 USDC each, plus 11.7 SOL at 12:49), kept in its own wallet; its SOL balance
+is about 45. Routable buys by day (Beirut): Nov 9 10, Nov 10 10, Nov 11 16, Nov 12 4 to 02:26; its own result per trip
+Nov 10 −8.5%, Nov 11 +21.7%.
+
+The copy, no stop, landing 4: since Nov 10 15:17 (22 copies, 1 SOL × 2) raw +1.97 (−1.75), corrected +4.51 (+0.41).
+Last 7 days (from Nov 5 02:30):
+
+| setting | copies | raw (w/o best 2) | corrected (w/o best 2) |
+|---|---|---|---|
+| 1 SOL × 2, all routes (needs about 2.8 SOL) | 105 | −2.33 (−6.05) | +9.46 (+5.36) |
+| 1 SOL × 1, wSOL routes only (what 1.71 SOL buys at 1 SOL) | 55 | −5.33 (−8.10) | +0.56 (−2.59) |
+| 0.5 SOL × 2, all routes, 0.5 SOL float (fits 1.71 SOL) | 105 | −1.16 (−3.02) | +4.73 (+2.68) |
+| 0.1 SOL × 2, all routes | 105 | −0.23 (−0.60) | +0.95 (+0.54) |
