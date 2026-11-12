@@ -708,9 +708,25 @@ fn status(args: &[String]) -> Result<(), String> {
             if let Some(t) = its_cache.get(&p.mint) {
                 return Some(t.clone());
             }
-            let (rpc, w) = (chain_rpc.as_ref()?, copied?);
-            let ata = pda::associated_token_address(&w, &p.mint.parse().ok()?, &p.coin_program.parse().ok()?);
-            let sigs = match rpc.recent_signatures(&ata, 25) {
+            let rpc = chain_rpc.as_ref()?;
+            copied?;
+            // its token account for the coin, from its buy (it does not use the ATA)
+            let acct: Pubkey = match rpc.transaction(&p.its_sig) {
+                Ok(t) => match rugsnipe_long::its::token_account(&t, &cfg.copy_wallet, &p.mint)
+                    .and_then(|a| a.parse().ok())
+                {
+                    Some(a) => a,
+                    None => {
+                        its_err.get_or_insert(format!("{}: no token account in its buy", &p.mint[..8]));
+                        return None;
+                    }
+                },
+                Err(e) => {
+                    its_err.get_or_insert(format!("{}: its buy: {e}", &p.mint[..8]));
+                    return None;
+                }
+            };
+            let sigs = match rpc.recent_signatures(&acct, 25) {
                 Ok(s) => s,
                 Err(e) => {
                     its_err.get_or_insert(format!("{}: {e}", &p.mint[..8]));

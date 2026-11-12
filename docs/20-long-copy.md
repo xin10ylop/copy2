@@ -110,7 +110,8 @@ within a slot** (`exits_pess.py`):
   never following in both weeks; on the copies it changes, +1.47 and +2.67 SOL raw, +0.82 and +1.49 after the live
   calibration, 24 of 32 better. Test `an_early_sale_under_the_price_is_followed_when_its_sales_are_not`.
 - **`status --chain` puts each trade next to the copied wallet's own** (Nov 12): its result on the coin (`its pct`,
-  from its transactions on its token account of the coin, WBTC at the price API's rate; `?` when a token had no price)
+  from its transactions on its own token account of the coin, read from its buy: wallet 4 does not use the
+  associated token account, WBTC at the price API's rate; `?` when a token had no price)
   and when it sold (`it sold`, seconds from its buy, or `holding`); also each result and the totals in dollars at the
   current SOL price. Finished coins are cached in `<state_dir>/its.json`. `examples/its_trip.rs` runs the same
   calculation on saved transactions (5tePJcGm: +113.3%, sold after 224 s, as the chain gives).

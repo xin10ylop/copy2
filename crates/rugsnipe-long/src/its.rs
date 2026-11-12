@@ -57,6 +57,32 @@ fn token_deltas(tx: &Value, wallet: &str) -> Vec<(String, i128)> {
     out
 }
 
+/// The token account `wallet` holds `mint` in, from a transaction that moved
+/// it (its buy). Wallet 4 does not use the associated token account: its
+/// account for 5tePJcGm was 4AVcSZET..., the ATA would be W4FA3jsJ... .
+pub fn token_account(tx: &Value, wallet: &str, mint: &str) -> Option<String> {
+    let mut keys: Vec<&str> = tx["transaction"]["message"]["accountKeys"]
+        .as_array()?
+        .iter()
+        .filter_map(Value::as_str)
+        .collect();
+    for k in ["writable", "readonly"] {
+        if let Some(a) = tx["meta"]["loadedAddresses"][k].as_array() {
+            keys.extend(a.iter().filter_map(Value::as_str));
+        }
+    }
+    ["postTokenBalances", "preTokenBalances"]
+        .iter()
+        .find_map(|k| {
+            tx["meta"][*k].as_array()?.iter().find_map(|b| {
+                (b["owner"].as_str() == Some(wallet) && b["mint"].as_str() == Some(mint))
+                    .then(|| b["accountIndex"].as_u64())
+                    .flatten()
+                    .and_then(|i| keys.get(i as usize).map(|k| k.to_string()))
+            })
+        })
+}
+
 /// Its trip on `mint` from its transactions on the coin (any order; failed
 /// ones are skipped). `lamports_per_unit` prices any other token it moved.
 pub fn trip(
@@ -118,6 +144,19 @@ mod tests {
                      "preTokenBalances": toks.iter().map(|(m, a, _)| json!({"owner": "W", "mint": m, "uiTokenAmount": {"amount": a}})).collect::<Vec<_>>(),
                      "postTokenBalances": toks.iter().map(|(m, _, b)| json!({"owner": "W", "mint": m, "uiTokenAmount": {"amount": b}})).collect::<Vec<_>>()}
         })
+    }
+
+    #[test]
+    fn its_token_account_comes_from_its_buy() {
+        let t = json!({
+            "transaction": {"message": {"accountKeys": ["W", "X"]}},
+            "meta": {"loadedAddresses": {"writable": ["ACCT"], "readonly": []},
+                     "preTokenBalances": [],
+                     "postTokenBalances": [{"accountIndex": 1, "owner": "Y", "mint": "C"},
+                                           {"accountIndex": 2, "owner": "W", "mint": "C"}]}
+        });
+        assert_eq!(token_account(&t, "W", "C").as_deref(), Some("ACCT"));
+        assert_eq!(token_account(&t, "W", "D"), None);
     }
 
     #[test]
