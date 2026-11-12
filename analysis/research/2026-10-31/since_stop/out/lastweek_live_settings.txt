@@ -1,0 +1,5 @@
+108 routable buys, Nov 05 02:26 - Nov 12 01:38 Beirut; the live settings: 1 SOL, 2 open, tp 2.5, no stop, 1790 s, its sale not followed, 1.25 limit
+landing 3: 104 copies, raw -1.44 (w/o best 2 -5.65), corrected +9.58 (w/o best 2 +4.99); exits {'tp': 16, 'time': 86, 'refused': 2}
+   by day raw / corrected: 11-05 -0.43/+1.15  11-06 +1.36/+3.69  11-07 -4.92/-3.61  11-08 -1.24/+0.16  11-09 -0.31/+0.72  11-10 -1.32/-0.29  11-11 +5.17/+7.05  11-12 +0.24/+0.71
+landing 4: 104 copies, raw -0.31 (w/o best 2 -4.68), corrected +10.62 (w/o best 2 +5.88); exits {'tp': 16, 'time': 85, 'refused': 3}
+   by day raw / corrected: 11-05 -0.46/+1.12  11-06 +1.80/+4.14  11-07 -4.70/-3.40  11-08 -1.25/+0.15  11-09 -0.40/+0.63  11-10 -1.20/-0.17  11-11 +5.46/+7.24  11-12 +0.43/+0.90
