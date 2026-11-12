@@ -214,3 +214,8 @@ price its buy left is a few percent over our entry after costs, and the misses f
 positive rows; 2.5 and 3.0 lead. Side finding: tp 2.5-3.0 with a 2-minute timer was positive in both weeks (+11.76
 and +12.96 against +10.71; 11 of 15 days up against 8), but 90 s and 3 min do worse than 30 min, so it is a narrow
 peak, not a trend; the model's correction for 2-minute timer exits is unmeasured. No change.
+
+**A take profit that steps down** (`tp_step.py`, `out/tp_step.txt`): 2.5x until T seconds, then L until 30 min (T 120-
+1600 s, L 1.0-2.0), holding, two weeks. Live +10.71 (+3.26 without the best 2s). No cell is clearly ahead: the best,
+2.0 after 1300 s, +11.02 (+3.57). Lowering early (120-600 s) helps week 2 (up to +3.96 against +0.12) and costs more in
+week 1 (+2.4 to +7.7 against +10.59): the coins that reach 2.5x late pay for the slow ones. No change.
