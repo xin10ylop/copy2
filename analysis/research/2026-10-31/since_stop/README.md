@@ -186,3 +186,7 @@ trailing stop none/0.5/0.7 of the peak; wallet 4's sale held through, followed, 
 - Price limit 1.15 instead of 1.25: better on the test week in the raw model, but it refuses 10-20 more copies a week;
   with the 9.1-point yardstick per copy the two are level over the two weeks (landing 4: +31.4 vs +29.3; 8: +18.9 vs
   +21.9; late: +32.7 vs +31.0). No change.
+
+**Why week 2 is flat** (`why_weeks.py`, `out/why_weeks.txt`; live rule, landing 4): wallet 4 itself made +39.89 SOL
+(+23.2%) on week 1's coins and +21.32 (+10.8%) on week 2's. Our copies reached take profit on 22% then 16%, and the
+copies that ran out the timer lost 0.169 SOL each then 0.295: fewer winners and deeper losers.

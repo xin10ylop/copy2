@@ -1,0 +1,15 @@
+week 1 (Oct 29 14:02 - Nov 5 08:49): 101 buys
+  wallet 4 real: 99 coins, spent 171.7 SOL, net +39.89 (+23.2%), without its best 2 +29.02, won 47
+  us, raw model: 97 copies, net +12.14, without the best 2 +8.87; best two +1.83 +1.44
+    tp         20 copies, +22.68 SOL, +1.134 each
+    time       69 copies, -11.68 SOL, -0.169 each
+    refused     7 copies,  -0.00 SOL, -0.000 each
+    graduated   1 copies,  +1.15 SOL, +1.145 each
+    reached take profit: 22% of copies
+week 2 (Nov 5 08:49 - Nov 12 08:49): 105 buys
+  wallet 4 real: 100 coins, spent 196.8 SOL, net +21.32 (+10.8%), without its best 2 +11.29, won 42
+  us, raw model: 102 copies, net -0.08, without the best 2 -4.44; best two +2.20 +2.17
+    tp         16 copies, +24.43 SOL, +1.527 each
+    time       83 copies, -24.50 SOL, -0.295 each
+    refused     3 copies,  -0.00 SOL, -0.000 each
+    reached take profit: 16% of copies
