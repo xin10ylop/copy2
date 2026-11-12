@@ -5,7 +5,8 @@
 //!     The service: mode log (paper) or on (real), from long.toml.
 //! rugsnipe-long status [--config ...] [--tz +0200] [--last 15] [--chain]
 //!     Positions now, today's result (paper and real), the last closed;
-//!     `--chain`: the wallet's SOL and floats.
+//!     `--chain`: the wallet's SOL and floats, results in dollars, and per closed
+//!     trade the copied wallet's own result on the coin and when it sold.
 //! rugsnipe-long float buy MINT SOL | float sell MINT all|AMOUNT [--config ...]
 //!     Buy or sell a float through Jupiter from the long wallet. Selling a
 //!     coin that is not a float (an airdrop) books its SOL for `status`.
@@ -582,36 +583,56 @@ fn status(args: &[String]) -> Result<(), String> {
         cfg.max_open,
         if dir.join("KILL").exists() { "  KILL: no new buys" } else { "" }
     );
+    // --chain: the wallet, and per closed trade the copied wallet's own result on the coin and SOL in dollars
+    let mut chain_rpc: Option<Rpc> = None;
+    let oracle = Oracle::default();
+    let mut sol_usd: Option<f64> = None;
     if args.iter().any(|a| a == "--chain") {
-        if let (Some(w), Ok(k)) = (wallet, keys::api_keys(&cfg.api_keys)) {
+        let ids: Vec<String> = std::iter::once(c::WSOL_MINT.to_string())
+            .chain(cfg.floats.iter().cloned())
+            .collect();
+        if let Ok((200, body)) = rugsnipe_tx::rpc::HttpGet::new(Duration::from_secs(10), 1 << 20)
+            .get(&format!("{}?ids={}", cfg.price_api, ids.join(",")))
+        {
+            if let Ok(v) = serde_json::from_str::<serde_json::Value>(&body) {
+                oracle.apply(&v);
+                sol_usd = v[c::WSOL_MINT.to_string()]["usdPrice"].as_f64();
+            }
+        }
+        if let Ok(k) = keys::api_keys(&cfg.api_keys) {
             if let Ok(mut rpc) = rpc_of(&cfg, &k) {
-                let b = rpc
-                    .balance(&w)
-                    .map(|b| format!("{:.4}", b as f64 / 1e9))
-                    .unwrap_or("?".into());
-                let mut fl = vec![];
-                for f in cfg.float_pks() {
-                    let prog =
-                        route::Chain::mint_program(&mut rpc, &f).unwrap_or(c::SPL_TOKEN_PROGRAM_ID);
-                    let a = rpc.token_balance(&w, &f, &prog).unwrap_or(0);
-                    let d = rpc.decimals(&f).unwrap_or(0);
-                    fl.push(format!(
-                        "{} {:.8}",
-                        &f.to_string()[..8],
-                        a as f64 / 10f64.powi(d as i32)
-                    ));
-                }
-                println!(
-                    "   wallet {b} SOL  floats: {}",
-                    if fl.is_empty() {
-                        "none".into()
-                    } else {
-                        fl.join(", ")
+                if let Some(w) = wallet {
+                    let b = rpc
+                        .balance(&w)
+                        .map(|b| format!("{:.4}", b as f64 / 1e9))
+                        .unwrap_or("?".into());
+                    let mut fl = vec![];
+                    for f in cfg.float_pks() {
+                        let prog =
+                            route::Chain::mint_program(&mut rpc, &f).unwrap_or(c::SPL_TOKEN_PROGRAM_ID);
+                        let a = rpc.token_balance(&w, &f, &prog).unwrap_or(0);
+                        let d = rpc.decimals(&f).unwrap_or(0);
+                        fl.push(format!(
+                            "{} {:.8}",
+                            &f.to_string()[..8],
+                            a as f64 / 10f64.powi(d as i32)
+                        ));
                     }
-                );
+                    println!(
+                        "   wallet {b} SOL  floats: {}{}",
+                        if fl.is_empty() {
+                            "none".into()
+                        } else {
+                            fl.join(", ")
+                        },
+                        sol_usd.map_or(String::new(), |u| format!("  (SOL ${u:.2})"))
+                    );
+                }
+                chain_rpc = Some(rpc);
             }
         }
     }
+    let usd = |lamports: f64| sol_usd.map_or(String::new(), |u| format!(" (${:+.2})", lamports / 1e9 * u));
     let day = now / 86_400_000;
     for paper in [true, false] {
         let c: Vec<_> = book
@@ -625,11 +646,12 @@ fn status(args: &[String]) -> Result<(), String> {
             continue;
         }
         println!(
-            "   today (the UTC day) {}: {} closed, {} won, net {:+.4} SOL; {} open; {} buys failed",
+            "   today (the UTC day) {}: {} closed, {} won, net {:+.4} SOL{}; {} open; {} buys failed",
             if paper { "paper" } else { "REAL" },
             c.len(),
             c.iter().filter(|p| p.net_lamports > 0).count(),
             c.iter().map(|p| p.net_lamports).sum::<i64>() as f64 / 1e9,
+            usd(c.iter().map(|p| p.net_lamports).sum::<i64>() as f64),
             book.positions
                 .iter()
                 .filter(|p| p.paper == paper && p.live())
@@ -673,9 +695,47 @@ fn status(args: &[String]) -> Result<(), String> {
         .collect();
     closed.sort_by_key(|p| std::cmp::Reverse(p.closed_ms));
     if !closed.is_empty() {
+        // the copied wallet's own trip on each coin (cached once it has sold everything)
+        let its_path = dir.join("its.json");
+        let mut its_cache: std::collections::HashMap<String, rugsnipe_long::its::ItsTrip> =
+            std::fs::read_to_string(&its_path)
+                .ok()
+                .and_then(|t| serde_json::from_str(&t).ok())
+                .unwrap_or_default();
+        let copied: Option<Pubkey> = cfg.copy_wallet.parse().ok();
+        let mut its_err: Option<String> = None;
+        let mut its_of = |p: &rugsnipe_long::pos::Position| -> Option<rugsnipe_long::its::ItsTrip> {
+            if let Some(t) = its_cache.get(&p.mint) {
+                return Some(t.clone());
+            }
+            let (rpc, w) = (chain_rpc.as_ref()?, copied?);
+            let ata = pda::associated_token_address(&w, &p.mint.parse().ok()?, &p.coin_program.parse().ok()?);
+            let sigs = match rpc.recent_signatures(&ata, 25) {
+                Ok(s) => s,
+                Err(e) => {
+                    its_err.get_or_insert(format!("{}: {e}", &p.mint[..8]));
+                    return None;
+                }
+            };
+            let mut txs: Vec<serde_json::Value> = vec![];
+            for s in &sigs {
+                match rpc.transaction(s) {
+                    Ok(t) => txs.push(t),
+                    Err(e) => {
+                        its_err.get_or_insert(format!("{}: {e}", &p.mint[..8]));
+                    }
+                }
+            }
+            let price = |m: &str| m.parse::<Pubkey>().ok().and_then(|m| oracle.lamports_per_unit(&m));
+            let t = rugsnipe_long::its::trip(&txs, &cfg.copy_wallet, &p.mint, &price);
+            if !t.holding && t.spent > 0 && !t.unpriced {
+                its_cache.insert(p.mint.clone(), t.clone());
+            }
+            (t.spent > 0).then_some(t)
+        };
         println!("   last {} closed, newest first:", last.min(closed.len()));
         println!(
-            "     {:>4}  {:5}  {:8}  {:8}  {:>7}  {:11}  {:11}  {:>6}  {:>6}  {:>6}  {:>8}  {:>7}",
+            "     {:>4}  {:5}  {:8}  {:8}  {:>7}  {:11}  {:11}  {:>6}  {:>6}  {:>8}  {:>7}  {:>9}  {:>8}  {:>8}",
             "#",
             "side",
             "bought",
@@ -685,13 +745,16 @@ fn status(args: &[String]) -> Result<(), String> {
             "exit",
             "peak",
             "held",
-            "",
             "net SOL",
-            "pct"
+            "pct",
+            "net $",
+            "its pct",
+            "it sold"
         );
         for p in closed.iter().take(last) {
+            let its = if chain_rpc.is_some() { its_of(p) } else { None };
             println!(
-                "     {:>4}  {:5}  {:8}  {:8}  {:>7.3}  {:11}  {:11}  {:>5.2}x  {:>5}s  {:>6}  {:>+8.4}  {:>+6.1}%",
+                "     {:>4}  {:5}  {:8}  {:8}  {:>7.3}  {:11}  {:11}  {:>5.2}x  {:>5}s  {:>+8.4}  {:>+6.1}%  {:>9}  {:>8}  {:>8}",
                 p.id,
                 if p.paper { "paper" } else { "REAL" },
                 hhmm(p.seen_ms, off),
@@ -701,10 +764,27 @@ fn status(args: &[String]) -> Result<(), String> {
                 p.reason.map_or("?", |r| r.name()),
                 p.peak,
                 p.closed_ms.saturating_sub(p.seen_ms) / 1000,
-                "",
                 p.net_lamports as f64 / 1e9,
-                p.net_lamports as f64 / p.stake_lamports.max(1) as f64 * 100.0
+                p.net_lamports as f64 / p.stake_lamports.max(1) as f64 * 100.0,
+                sol_usd.map_or(String::new(), |u| format!("{:+.2}", p.net_lamports as f64 / 1e9 * u)),
+                its.as_ref()
+                    .and_then(|t| t.pct())
+                    .map_or(String::new(), |x| format!("{x:+.1}%{}", if its.as_ref().is_some_and(|t| t.unpriced) { "?" } else { "" })),
+                its.as_ref().map_or(String::new(), |t| match (t.sold_after_s, t.holding) {
+                    (Some(s), _) => format!("{s}s"),
+                    (None, true) => "holding".into(),
+                    (None, false) => "?".into(),
+                })
             );
+        }
+        drop(its_of);
+        if let Some(e) = its_err {
+            println!("   (its own result incomplete: {e})");
+        }
+        if chain_rpc.is_some() {
+            if let Ok(t) = serde_json::to_string(&its_cache) {
+                let _ = std::fs::write(&its_path, t);
+            }
         }
         let all: i64 = closed
             .iter()
@@ -717,9 +797,10 @@ fn status(args: &[String]) -> Result<(), String> {
             .map(|p| p.net_lamports)
             .sum();
         println!(
-            "   all closed: real {} ({:+.4} SOL), paper {} ({:+.4} SOL)",
+            "   all closed: real {} ({:+.4} SOL{}), paper {} ({:+.4} SOL)",
             closed.iter().filter(|p| !p.paper).count(),
             all as f64 / 1e9,
+            usd(all as f64),
             closed.iter().filter(|p| p.paper).count(),
             pap as f64 / 1e9
         );
@@ -746,9 +827,11 @@ fn status(args: &[String]) -> Result<(), String> {
             ex_all
         );
         println!(
-            "   trades + airdrops: today {:+.4} SOL, all {:+.4} SOL",
+            "   trades + airdrops: today {:+.4} SOL{}, all {:+.4} SOL{}",
             real_today as f64 / 1e9 + ex_today,
-            real_all as f64 / 1e9 + ex_all
+            usd(real_today as f64 + ex_today * 1e9),
+            real_all as f64 / 1e9 + ex_all,
+            usd(real_all as f64 + ex_all * 1e9)
         );
     }
     Ok(())

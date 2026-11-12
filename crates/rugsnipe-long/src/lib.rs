@@ -18,6 +18,7 @@ pub mod detect;
 pub mod engine;
 pub mod extra;
 pub mod feed;
+pub mod its;
 pub mod jup;
 pub mod keys;
 pub mod oracle;

@@ -103,6 +103,11 @@ within a slot** (`exits_pess.py`):
   against 3.5% on Oct 19-22, and on Oct 27-28 holding to our exits scored +3.10 against -0.51 behind it, on Oct
   19-27 about even (`analysis/research/2026-10-28/more/`). `float_stake_sol` stakes more on WBTC-routed copies
   (about +0.12 SOL a copy against +0.02 from wSOL).
+- **`status --chain` puts each trade next to the copied wallet's own** (Nov 12): its result on the coin (`its pct`,
+  from its transactions on its token account of the coin, WBTC at the price API's rate; `?` when a token had no price)
+  and when it sold (`it sold`, seconds from its buy, or `holding`); also each result and the totals in dollars at the
+  current SOL price. Finished coins are cached in `<state_dir>/its.json`. `examples/its_trip.rs` runs the same
+  calculation on saved transactions (5tePJcGm: +113.3%, sold after 224 s, as the chain gives).
 - **Airdropped coins sold count in `status`** (Nov 12): `float sell` of a mint that is not a float books our SOL change
   in `<state_dir>/extra.jsonl` (`float book SIG` books a sale already made); `status` prints the airdrop sales today and
   in all, and trades plus airdrops. Two coins sent to the wallet on Nov 12 sold for +0.26 SOL.
