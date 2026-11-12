@@ -241,9 +241,15 @@ impl Engine {
                             .iter_mut()
                             .filter(|p| p.mint_pk() == mint)
                         {
-                            if !follow && p.live() && p.its_sell_px == 0.0 {
-                                // our own exits stay; what selling behind it
-                                // would have made goes on the record
+                            if !follow {
+                                // our own exits stay, on every sale of it (a
+                                // second sale event, or the same one delivered
+                                // twice, must not take us out: 2026-11-12);
+                                // what selling behind its first would have
+                                // made goes on the record
+                                if !p.live() || p.its_sell_px != 0.0 {
+                                    continue;
+                                }
                                 p.its_sell_px = p.price();
                                 p.its_sell_net = if p.state == State::Buying {
                                     0

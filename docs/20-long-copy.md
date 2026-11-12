@@ -103,6 +103,9 @@ within a slot** (`exits_pess.py`):
   against 3.5% on Oct 19-22, and on Oct 27-28 holding to our exits scored +3.10 against -0.51 behind it, on Oct
   19-27 about even (`analysis/research/2026-10-28/more/`). `float_stake_sol` stakes more on WBTC-routed copies
   (about +0.12 SOL a copy against +0.02 from wSOL).
+- **`follow_its_sell = false` holds through every sale of it** (Nov 12): before, a second sale event of the same coin
+  (or the same one delivered twice) fell through to the following branch and sold us behind it; wallet 4 sold in one
+  piece on all 222 trips of Oct 28 - Nov 12, and no live trade took that path. The record keeps its first sale.
 - **`stop = 0` means no stop** (Nov 4): the trip ends at the take profit or the hold. Since Oct 30 wallet 4 has dropped
   its 30-minute timer and sells two thirds of its big buys early, and the 0.8 stop sold into its sale; over Oct 29 - Nov 4
   at 1 SOL × 3 the copy makes +1.79 with the stop and +6.26 without, better at every landing and in both halves, and

@@ -613,6 +613,14 @@ fn its_early_sell_is_not_followed_when_configured_and_is_recorded() {
     );
     e.on_tick(now_ms());
     assert_eq!(e.book.positions[0].state, State::Open);
+    // the same sale again (delivered twice, or a second sale): still ours to
+    // hold, and the record keeps the first
+    price_to(&mut e, 1.1);
+    e.on_tx(Src::Copied, &sell);
+    e.on_tick(now_ms());
+    let p = &e.book.positions[0];
+    assert_eq!((p.state, p.reason, p.its_sold), (State::Open, None, false), "never followed");
+    assert!((p.its_sell_px - 1.3).abs() < 0.01, "the first sale's price: {}", p.its_sell_px);
     // then our own take profit
     price_to(&mut e, 2.1);
     e.on_tick(now_ms());
