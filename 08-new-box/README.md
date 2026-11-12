@@ -145,8 +145,8 @@ rm ~/long-wallet.json ~/copier-wallet.json
 ## 7. The plan's settings, then paper for a day (on the box)
 
 ```
-sudo sed -i -E 's/^max_open[[:space:]]*=.*/max_open = 2/; s/^daily_stop_sol[[:space:]]*=.*/daily_stop_sol = 1.0/; s/^cu_limit[[:space:]]*=.*/cu_limit = 200000/; s/^follow_its_sell[[:space:]]*=.*/follow_its_sell = false/; s/^stop[[:space:]]*=.*/stop = 0.0/' /etc/rugsnipe/long.toml
-sudo grep -nE '^(mode|stake_sol|max_open|daily_stop_sol|cu_limit|follow_its_sell|stop) ' /etc/rugsnipe/long.toml
+sudo sed -i -E 's/^max_open[[:space:]]*=.*/max_open = 2/; s/^daily_stop_sol[[:space:]]*=.*/daily_stop_sol = 1.0/; s/^cu_limit[[:space:]]*=.*/cu_limit = 200000/; s/^follow_its_sell[[:space:]]*=.*/follow_its_sell = false/; s/^stop[[:space:]]*=.*/stop = 0.0/; s/^take_profit[[:space:]]*=.*/take_profit = 2.5/' /etc/rugsnipe/long.toml
+sudo grep -nE '^(mode|stake_sol|max_open|daily_stop_sol|cu_limit|follow_its_sell|stop|take_profit) ' /etc/rugsnipe/long.toml
 sudo sed -i -E 's/^min_sol[[:space:]]*=[[:space:]]*5\.1[[:space:]]*$/min_sol = 5.0/' /etc/rugsnipe/copier.toml
 sudo grep -nE '^(mode|daily_stop_sol|senders|jito_tip_lamports|name|min_sol|stake_sol|max_open) ' /etc/rugsnipe/copier.toml
 sudo systemctl enable --now rugsnipe-long rugsnipe-copier
@@ -164,11 +164,15 @@ sleep 20; sudo journalctl -u rugsnipe-long -u rugsnipe-copier -n 12 --no-pager
 | `cu_limit` | `200000` |
 | `follow_its_sell` | `false` |
 | `stop` | `0.0` (no stop, since Nov 4) |
+| `take_profit` | `2.5` (since Nov 12) |
 
 `cu_limit` and `follow_its_sell` are as `fra-long` ran them. **`stop = 0.0`** turns the 0.8 stop off (it needs the
 code from Nov 4, `stop = 0 means no stop`): since Oct 30 wallet 4 sells most of its big buys early, and the stop sold
 into its sale. Oct 29 - Nov 4 at 1 SOL × 2, landing 4 trades behind it: +1.79 SOL with the stop, +6.92 without;
 better at every landing and in both halves, neutral on Oct 19-28 (`../analysis/research/2026-10-31/since_stop/`).
+**`take_profit = 2.5`** (Nov 12, `optimize.py`): over Oct 29 - Nov 12 at 1 SOL × 2 it beats 2.0 at every landing from 2 to
+7 and in both weeks, raw and corrected (landing 4: +11.26 against +4.91 raw, +31.83 against +27.38 corrected). On the
+older Oct 19-28 data 2.0 was better; wallet 4 has changed since, and the two weeks since agree.
 
 **The copier config** (second grep):
 

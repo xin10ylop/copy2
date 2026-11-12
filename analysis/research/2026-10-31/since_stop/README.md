@@ -121,3 +121,17 @@ Last 7 days (from Nov 5 02:30):
 | 1 SOL × 1, wSOL routes only (what 1.71 SOL buys at 1 SOL) | 55 | −5.33 (−8.10) | +0.56 (−2.59) |
 | 0.5 SOL × 2, all routes, 0.5 SOL float (fits 1.71 SOL) | 105 | −1.16 (−3.02) | +4.73 (+2.68) |
 | 0.1 SOL × 2, all routes | 105 | −0.23 (−0.60) | +0.95 (+0.54) |
+
+## The settings at our speed (`optimize.py`, `out/optimize_N3.txt`, `out/optimize_N4.txt`, `out/tp_compare.txt`, Nov 12)
+
+360 combinations (take profit 1.5 / 1.75 / 2.0 / 2.5 / 3.0; stop none / 0.7 / 0.8; hold 300 / 600 / 900 / 1790 s;
+following its sale or not; price limit 1.15 / 1.25 / 1.5), 1 SOL, max_open 2, landing 3 and 4 trades after its buy (our
+live speed), picked on Oct 29 14:02 - Nov 5 12:00 Beirut (103 buys) and scored on Nov 5 12:00 - Nov 12 01:38 (100):
+
+- **Take profit 2.5 beats 2.0** at every landing (2, 3, 4, 7) and in both weeks, raw and corrected; 3.0 is about equal to
+  2.5. Landing 4, 13.5 days: tp 2.0 raw +4.91 / corrected +27.38; **tp 2.5 raw +11.26 / corrected +31.83**; tp 3.0 +10.73
+  / +29.67. On Oct 19-28 (`nostop_old.py`) 2.0 was better; that was before wallet 4 dropped its own timer.
+- **No stop and not following its sale** are in every top variant, both weeks.
+- **Hold 1790 s** is best on the first week; 300-900 s win some second-week rows, not consistently: kept.
+- **Price limit:** 1.15, 1.25 and 1.5 swap places between weeks and landings: 1.25 kept.
+- **max_open:** 1 is worse in the second week (raw −7.69 against −3.68); 2, 3 and 4 are within half a SOL: 2 kept.

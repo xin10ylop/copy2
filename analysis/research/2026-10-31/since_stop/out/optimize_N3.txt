@@ -1,0 +1,35 @@
+landing 3; first half 103 buys (Oct 29 14:02 - Nov 05 12:00 Beirut), second half 100 (to Nov 12 01:38)
+
+== top 8 picked on the first half by raw, without the best 2; then their second half
+  tp 2.5  stop None hold 1790 follow False pmax 1.15 | 1st raw +13.95 (+10.73) cor +23.49 (+19.89) | 2nd raw  +1.16 ( -3.05) cor +10.60 ( +6.01)
+  tp 2.5  stop None hold 1790 follow False pmax 1.25 | 1st raw +13.08 ( +9.85) cor +23.28 (+19.67) | 2nd raw  -1.63 ( -5.84) cor  +8.65 ( +4.06)
+  tp 2.5  stop None hold 1790 follow False pmax 1.50 | 1st raw +12.94 ( +9.71) cor +23.98 (+20.37) | 2nd raw  -0.89 ( -5.10) cor  +9.57 ( +4.98)
+  tp 2.5  stop None hold  900 follow False pmax 1.15 | 1st raw +11.54 ( +8.81) cor +21.07 (+17.96) | 2nd raw  +1.77 ( -2.44) cor +10.92 ( +6.33)
+  tp 2.5  stop 0.7  hold 1790 follow False pmax 1.15 | 1st raw +11.48 ( +8.25) cor +20.07 (+16.47) | 2nd raw  -0.11 ( -4.10) cor  +7.28 ( +2.92)
+  tp 3.0  stop None hold 1790 follow False pmax 1.50 | 1st raw +12.04 ( +8.03) cor +22.03 (+17.64) | 2nd raw  -0.35 ( -4.74) cor  +9.54 ( +4.77)
+  tp 2.5  stop None hold  900 follow False pmax 1.25 | 1st raw +10.74 ( +8.01) cor +20.93 (+17.82) | 2nd raw  -2.52 ( -6.73) cor  +7.56 ( +2.97)
+  tp 2.0  stop None hold 1790 follow False pmax 1.15 | 1st raw +10.37 ( +8.00) cor +21.16 (+18.40) | 2nd raw  -2.25 ( -5.52) cor  +7.85 ( +4.21)
+  ... ours (tp 2.0, no stop, 1790 s, hold through its sale, 1.25) ranks 22 of 360 on the first half:
+  tp 2.0  stop None hold 1790 follow False pmax 1.25 | 1st raw  +9.28 ( +6.90) cor +20.72 (+17.97) | 2nd raw  -4.10 ( -7.37) cor  +6.94 ( +3.29)
+  ours ranks 172 of 360 on the second half; the second half's best:
+  tp 3.0  stop None hold  300 follow False pmax 1.15 | 1st raw  +8.74 ( +4.92) cor +17.02 (+12.82) | 2nd raw  +5.49 ( +1.09) cor +14.25 ( +9.48)
+
+== top 8 picked on the first half by corrected, without the best 2; then their second half
+  tp 2.5  stop None hold 1790 follow False pmax 1.50 | 1st raw +12.94 ( +9.71) cor +23.98 (+20.37) | 2nd raw  -0.89 ( -5.10) cor  +9.57 ( +4.98)
+  tp 2.5  stop None hold 1790 follow False pmax 1.15 | 1st raw +13.95 (+10.73) cor +23.49 (+19.89) | 2nd raw  +1.16 ( -3.05) cor +10.60 ( +6.01)
+  tp 2.5  stop None hold 1790 follow False pmax 1.25 | 1st raw +13.08 ( +9.85) cor +23.28 (+19.67) | 2nd raw  -1.63 ( -5.84) cor  +8.65 ( +4.06)
+  tp 2.5  stop None hold  900 follow False pmax 1.50 | 1st raw +10.61 ( +7.88) cor +21.64 (+18.53) | 2nd raw  -1.78 ( -5.99) cor  +8.48 ( +3.90)
+  tp 2.0  stop None hold 1790 follow False pmax 1.15 | 1st raw +10.37 ( +8.00) cor +21.16 (+18.40) | 2nd raw  -2.25 ( -5.52) cor  +7.85 ( +4.21)
+  tp 2.0  stop None hold 1790 follow False pmax 1.50 | 1st raw  +8.45 ( +6.07) cor +20.92 (+18.17) | 2nd raw  -3.70 ( -6.96) cor  +7.53 ( +3.89)
+  tp 2.0  stop None hold  900 follow False pmax 1.15 | 1st raw  +9.69 ( +7.32) cor +20.76 (+18.00) | 2nd raw  -2.29 ( -5.55) cor  +7.53 ( +3.89)
+  tp 2.0  stop None hold 1790 follow False pmax 1.25 | 1st raw  +9.28 ( +6.90) cor +20.72 (+17.97) | 2nd raw  -4.10 ( -7.37) cor  +6.94 ( +3.29)
+  ... ours (tp 2.0, no stop, 1790 s, hold through its sale, 1.25) ranks 8 of 360 on the first half:
+  tp 2.0  stop None hold 1790 follow False pmax 1.25 | 1st raw  +9.28 ( +6.90) cor +20.72 (+17.97) | 2nd raw  -4.10 ( -7.37) cor  +6.94 ( +3.29)
+  ours ranks 44 of 360 on the second half; the second half's best:
+  tp 3.0  stop None hold  300 follow False pmax 1.15 | 1st raw  +8.74 ( +4.92) cor +17.02 (+12.82) | 2nd raw  +5.49 ( +1.09) cor +14.25 ( +9.48)
+
+== the cap, ours: 1st half / 2nd half, raw (w/o best 2) and corrected
+  max_open 1: 1st +10.71 ( +8.33) cor +20.19 | 2nd  -7.99 (-11.25) cor  +0.80
+  max_open 2: 1st  +9.28 ( +6.90) cor +20.72 | 2nd  -4.10 ( -7.37) cor  +6.94
+  max_open 3: 1st  +9.03 ( +6.66) cor +20.85 | 2nd  -3.38 ( -6.64) cor  +7.85
+  max_open 4: 1st  +9.03 ( +6.66) cor +20.85 | 2nd  -3.88 ( -7.15) cor  +7.44
