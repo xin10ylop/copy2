@@ -1,0 +1,35 @@
+
+== its one-buy one-sell trips, 1.0+ SOL, other quote, all: how it sold   [n: tp / stop / time / early (share)]
+   P1   79:  tp   0 ( 0.0%)  stop  34 (43.0%)  time   0 ( 0.0%)  early  45 (57.0%)   its net  -92.96  (early sells -54.28)
+   P2   95:  tp   0 ( 0.0%)  stop  23 (24.2%)  time   2 ( 2.1%)  early  70 (73.7%)   its net -121.35  (early sells -91.83)
+   P3   10:  tp   0 ( 0.0%)  stop   1 (10.0%)  time   1 (10.0%)  early   8 (80.0%)   its net  -12.15  (early sells  -9.45)
+
+== its one-buy one-sell trips, 1.0+ SOL, other quote, routable (route class A, B, C): how it sold   [n: tp / stop / time / early (share)]
+   P1    4:  tp   0 ( 0.0%)  stop   2 (50.0%)  time   0 ( 0.0%)  early   2 (50.0%)   its net   -4.36  (early sells  -1.10)
+   P2   15:  tp   0 ( 0.0%)  stop  10 (66.7%)  time   0 ( 0.0%)  early   5 (33.3%)   its net  -21.61  (early sells  -7.50)
+   P3    0:  tp   0 ( 0.0%)  stop   0 ( 0.0%)  time   0 ( 0.0%)  early   0 ( 0.0%)   its net   +0.00  (early sells  +0.00)
+
+== the early sells (1.0+ SOL, other quote, all routes): p10 p25 p50 p75 p90
+   P1 45: seconds held [11, 20, 43, 80, 195]  multiple at its sale [0.76, 0.76, 0.79, 0.85, 0.95]  SOL value multiple [0.22, 0.26, 0.74, 0.89, 1.53]  share of its tokens sold [0.27, 0.31, 1.0, 1.0, 2.16]
+      held: <10 s 4  10-60 s 25  1-5 min 13  5-15 min 2  15-30 min 1
+      multiple: 0.75-1.0x 42  1.0-1.5x 2  1.5-2.0x 1  2.0-2.4x 0   won 1
+      quote: AMD8XwJX 7  DJTu 5  SPCX 4  PUMP 4  DoGEV7LA 3  98sM 2  pSo1f9nQ 2  SQQQAa3g 2   route class: C 2  E 43
+      for scale, time: 0 quote 
+      for scale, tp: 0 quote 
+   P2 70: seconds held [22, 34, 52, 173, 333]  multiple at its sale [0.77, 0.77, 0.79, 0.83, 0.93]  SOL value multiple [0.25, 0.33, 1.47, 1.54, 1.62]  share of its tokens sold [0.31, 0.35, 1.97, 2.13, 2.13]
+      held: <10 s 5  10-60 s 32  1-5 min 26  5-15 min 5  15-30 min 2
+      multiple: 0.75-1.0x 69  1.0-1.5x 0  1.5-2.0x 1  2.0-2.4x 0   won 0
+      quote: SPCX 12  BABANGA4 8  PUMP 7  DGuudmnJ 6  TTWO 4  SQQQAa3g 3  Xsc9qvGR 3  9cRCn9rG 2   route class: A 4  C 1  E 65
+      for scale, time: 2 quote DoGEV7LA 1  Xsc9qvGR 1
+      for scale, tp: 0 quote 
+   P3 8: seconds held [11, 61, 112, 252, 329]  multiple at its sale [0.76, 0.78, 0.78, 0.79, 0.87]  SOL value multiple [0.22, 0.77, 1.55, 1.61, 1.62]  share of its tokens sold [0.27, 1.0, 2.2, 2.2, 2.21]
+      held: <10 s 0  10-60 s 2  1-5 min 5  5-15 min 1  15-30 min 0
+      multiple: 0.75-1.0x 8  1.0-1.5x 0  1.5-2.0x 0  2.0-2.4x 0   won 0
+      quote: SPCX 2  Xsc9qvGR 2  Pren 1  J3NKxxXZ 1  PUMP 1  BABANGA4 1   route class: E 8
+      for scale, time: 1 quote PUMP 1
+      for scale, tp: 0 quote 
+
+== every coin first bought for 1.0+ SOL (other quote), any number of trades: its first curve sale
+   P1 119 coins: 1 buy, no curve sale 19  1 buys 2 sells 1  early first sale, sold all 23  early first sale, sold part 30  still holds some 27  trades: 1 buy 1 sell 99   early first sale 53 (44.5%)
+   P2 179 coins: 1 buy, no curve sale 64  1 buys 2 sells 1  1 buys 3 sells 1  early first sale, sold all 51  early first sale, sold part 31  still holds some 35  trades: 1 buy 1 sell 113   early first sale 82 (45.8%)
+   P3 15 coins: 1 buy, no curve sale 2  early first sale, sold all 6  early first sale, sold part 4  still holds some 4  trades: 1 buy 1 sell 13   early first sale 10 (66.7%)

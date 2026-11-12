@@ -1,0 +1,1 @@
+1437 coins with curve trades {'pump, SOL quote': 1103, 'pump, other quote': 334}
