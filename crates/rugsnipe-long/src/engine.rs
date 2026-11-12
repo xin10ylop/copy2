@@ -234,14 +234,32 @@ impl Engine {
                         // it sold before any rule of ours fired: out behind it,
                         // as the backtest sells (its price path ends at its sale)
                         let follow = self.cfg.follow_its_sell;
+                        let (early_s, early_below) =
+                            (self.cfg.follow_early_s.clone(), self.cfg.follow_early_below);
                         let fees = self.paper_fees();
+                        let now = now_ms();
                         for p in self
                             .book
                             .positions
                             .iter_mut()
                             .filter(|p| p.mint_pk() == mint)
                         {
-                            if !follow {
+                            // an early sale of a coin that has not taken off:
+                            // followed even when its sales are not
+                            // (follow_early_s; the age is from when we saw its buy)
+                            let age_s = now.saturating_sub(p.seen_ms) / 1000;
+                            let early = early_s.len() == 2
+                                && (early_s[0]..early_s[1]).contains(&age_s)
+                                && p.price() < early_below;
+                            if early && !follow && p.live() {
+                                println!(
+                                    "long its-sell #{} {} early ({age_s} s after its buy, at {:.2}x): following it",
+                                    p.id,
+                                    m8(&mint),
+                                    p.price()
+                                );
+                            }
+                            if !follow && !early {
                                 // our own exits stay, on every sale of it (a
                                 // second sale event, or the same one delivered
                                 // twice, must not take us out: 2026-11-12);

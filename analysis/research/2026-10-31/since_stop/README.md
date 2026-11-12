@@ -243,3 +243,14 @@ timers +9.3, take profits +18.9 points) no stop +31.85, 0.3x +32.01, 0.4x +31.79
 back within the 30 minutes: of the copies whose price touched 0.5x the price its buy left, 0 of 22 reached the take
 profit and 1 ended above our entry; at 0.4x 0 of 11; at 0.6x 1 of 43 and 4 above entry. They also seldom fall much
 further, so a stop there saves next to nothing (0.5x: −11.84 against −11.75 without). No stop stays.
+
+## Follow its sale only when it comes early (`follow_when.py`, `follow_when_detail.py`, `out/follow_when*.txt`, Nov 12)
+
+198 rules: sell behind its sale only when it comes a..b seconds after its buy (edges 0-1790 s), optionally only while
+the price is under 1.0x or 1.5x; otherwise tp 2.4 / 30 min / no stop. Two weeks, raw, three landings. Live (never
+follow) +10.21 (+7.18 without the best 2) and +0.91 (−3.44). 35 rules beat it in both weeks without the best 2, all of
+them windows inside 30-300 s: the best, **30-180 s while under 1.5x**, +10.75 (+7.71) and +3.35 (−1.00); its
+neighbours 30-120, 30-240 and 60-180 s agree. On the copies it changes (landing 4, every copy): week 1 12 copies, 7
+better, 4 worse, +1.47 SOL raw, +0.82 calibrated (a sale behind its sale counted like a stop, +3.9 points, against
++9.3 for the timer it replaces); week 2 20 copies, 17 better, 2 worse, +2.67 raw, +1.49 calibrated. Built as
+`follow_early_s` / `follow_early_below` (docs/20 §3).

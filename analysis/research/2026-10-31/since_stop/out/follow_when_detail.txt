@@ -1,0 +1,2 @@
+week 1: 12 copies followed; live did {'time': 12}; better 7, worse 4; raw +1.47 SOL, calibrated +0.82
+week 2: 20 copies followed; live did {'time': 19, 'tp': 1}; better 17, worse 2; raw +2.67 SOL, calibrated +1.49

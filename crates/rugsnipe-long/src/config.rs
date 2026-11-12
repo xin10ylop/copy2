@@ -91,6 +91,14 @@ pub struct LongCfg {
     /// against 3.5% on Oct 19-22; on Oct 27-28 holding to our exits scored
     /// +3.10 against -0.51, on Oct 19-27 about even).
     pub follow_its_sell: bool,
+    /// With `follow_its_sell = false`: still sell behind its sale when it
+    /// comes `[from, to)` seconds after its buy and the price is under
+    /// `follow_early_below` (an early sale of a coin that has not taken off).
+    /// Empty = off. Oct 29 - Nov 12, [30, 180] and 1.5: better in both weeks
+    /// on the copies it changes, +0.82 and +1.49 SOL at 1 SOL after the live
+    /// calibration (analysis/research/2026-10-31/since_stop/follow_when.py).
+    pub follow_early_s: Vec<u64>,
+    pub follow_early_below: f64,
     /// Our buy, valued in SOL, when the route starts from a float (WBTC);
     /// 0 = `stake_sol`. WBTC-routed copies made about +0.12 SOL a copy
     /// against +0.02 from wrapped SOL (backtests §9).
@@ -134,6 +142,8 @@ impl Default for LongCfg {
             paper_land_slots: 1,
             reserve_sol: 0.05,
             follow_its_sell: true,
+            follow_early_s: vec![],
+            follow_early_below: 1.5,
             float_stake_sol: 0.0,
             state_dir: "/var/lib/rugsnipe-long".into(),
             price_api: crate::oracle::API.into(),
@@ -195,6 +205,14 @@ impl LongCfg {
         }
         if !(0.0..=100.0).contains(&self.float_stake_sol) {
             return bad("float_stake_sol must be in [0, 100]");
+        }
+        if !(self.follow_early_s.is_empty()
+            || (self.follow_early_s.len() == 2 && self.follow_early_s[0] < self.follow_early_s[1]))
+        {
+            return bad("follow_early_s must be [] or [from, to] seconds with from < to");
+        }
+        if !(self.follow_early_below > 0.0) {
+            return bad("follow_early_below must be positive");
         }
         Ok(())
     }

@@ -590,6 +590,42 @@ fn a_restart_checks_an_unseen_buy_at_once_but_keeps_it_until_its_real_age() {
 /// sells early on half of its big buys now; on Oct 27-28 holding to our own
 /// exits scored +3.10 against -0.51 behind it, on Oct 19-27 about even).
 #[test]
+fn an_early_sale_under_the_price_is_followed_when_its_sales_are_not() {
+    use rugsnipe_long::detect::{self, Seen};
+    let sell = fx("w4_sell_wbtc_multihop");
+    let setup = |tag: &str, window: Vec<u64>| {
+        let mut e = opened(tag);
+        e.cfg.follow_its_sell = false;
+        e.cfg.follow_early_s = window;
+        e.cfg.follow_early_below = 1.5;
+        let w4: pump_codec::Pubkey = e.cfg.copy_wallet.parse().unwrap();
+        let mint = match detect::read(&sell, &w4, &|_| None).as_slice() {
+            [Seen::Sell { mint, .. }] => *mint,
+            s => panic!("{s:?}"),
+        };
+        e.book.positions[0].mint = mint.to_string();
+        e
+    };
+    // its sale within the window (seconds after its buy) and under 1.5x: out behind it
+    let mut e = setup("early1", vec![0, 600]);
+    price_to(&mut e, 1.3);
+    e.on_tx(Src::Copied, &sell);
+    assert_eq!(e.book.positions[0].reason, Some(Reason::ItsSell), "followed");
+    // over the price: our own exits stay
+    let mut e = setup("early2", vec![0, 600]);
+    price_to(&mut e, 1.6);
+    e.on_tx(Src::Copied, &sell);
+    let p = &e.book.positions[0];
+    assert_eq!((p.state, p.reason), (State::Open, None), "a coin that took off is held");
+    assert!(p.its_sell_px > 1.5, "and the sale is on the record");
+    // outside the window: our own exits stay
+    let mut e = setup("early3", vec![600, 1200]);
+    price_to(&mut e, 1.3);
+    e.on_tx(Src::Copied, &sell);
+    assert_eq!(e.book.positions[0].reason, None, "a sale outside the window is not followed");
+}
+
+#[test]
 fn its_early_sell_is_not_followed_when_configured_and_is_recorded() {
     use rugsnipe_long::detect::{self, Seen};
     let mut e = opened("notfollow");

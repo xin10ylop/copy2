@@ -64,6 +64,11 @@ reserve_sol = 0.05
 # behind it would have made (2026-10-28: it sells early on half of its big buys now; Oct 27-28 holding to our exits
 # scored +3.10 against -0.51 behind it, Oct 19-27 about even). Paper-test it before a real run.
 follow_its_sell = true
+# with follow_its_sell = false: still sell behind its sale when it comes [from, to) seconds after its buy while the price
+# is under follow_early_below x the price its buy left (an early sale of a coin that has not taken off); [] = off.
+# Oct 29 - Nov 12: [30, 180] and 1.5 better in both weeks (analysis/research/2026-10-31/since_stop/follow_when.py)
+follow_early_s = []
+follow_early_below = 1.5
 # our buy when the route starts from a float (WBTC); 0 = stake_sol. WBTC-routed copies made about +0.12 SOL a copy
 # against +0.02 from wrapped SOL (2 SOL on WBTC / 1 on wSOL: P1 +8.13, P2 +25.07 against +5.44 / +12.79)
 float_stake_sol = 0.0
