@@ -135,3 +135,15 @@ live speed), picked on Oct 29 14:02 - Nov 5 12:00 Beirut (103 buys) and scored o
 - **Hold 1790 s** is best on the first week; 300-900 s win some second-week rows, not consistently: kept.
 - **Price limit:** 1.15, 1.25 and 1.5 swap places between weeks and landings: 1.25 kept.
 - **max_open:** 1 is worse in the second week (raw −7.69 against −3.68); 2, 3 and 4 are within half a SOL: 2 kept.
+
+## Hold through its sale or follow it, and stop losses (`hold_vs_follow.py`, `out/hold_vs_follow_nov12.txt`, Nov 12)
+
+Last 7 days (Nov 5 08:49 to Nov 12 08:49 Beirut), 1 SOL, 2 open, tp 2.5, 1790 s, raw model. Asked after the first
+live trades, where wallet 4 sold all three after 3-5 minutes.
+
+- **Hold vs follow is a tie in the raw model:** −0.08 vs −0.16 SOL at landing 4, +0.01 vs −0.07 at landing 8. Without
+  the best 2, following is slightly ahead (−4.09 vs −4.44). Holding wins the second half, following the first.
+- The shape is real: coin by coin, holding is worse on 57 coins (−13.15 SOL, −0.23 each) and better on 23 (+12.20,
+  up to +1.55 on one). Net for holding −0.95; without its best 2 coins −4.04.
+- **Stops:** 0.8 and 0.7 lose 3.5-3.9 SOL against no stop (the coins dip and come back). 0.6 and 0.5 gain 0.6-1.1;
+  0.5 is ahead of no stop in both halves at both landings, by 0.2-0.7 a half: small, inside the model's error.
