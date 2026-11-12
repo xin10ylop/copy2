@@ -199,3 +199,8 @@ copy (raw, 1 SOL): +0.068, +0.177, −0.058, −0.154, +0.173 a copy; take profi
 only 1.6+/1.8+/2.0+ loses money and copies in both weeks; a stake that grows with its size is behind on week 1 and
 ahead on week 2 by about 1 SOL (mixed). The older study's "bigger buys hit the take profit more" is the 1.5 cut we
 already use (`2026-10-27/h9long`).
+
+**How often holding past its sale pays** (`hold_wins.py`, `out/hold_wins.txt`; every coin, landing 4, raw): over the
+two weeks it sold before our own exit on 174 of 195 copies. Held past its sale to our take profit (the 5tePJcGm case):
+19 coins, +16.38 SOL over selling behind it (10 in week 1, 9 in week 2). Holding was better on 53 coins (+25.57) and
+worse on 89 (−19.99, −0.225 each): net +5.57 (+6.52 week 1, −0.95 week 2).

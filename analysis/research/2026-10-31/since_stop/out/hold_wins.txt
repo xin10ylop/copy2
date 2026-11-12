@@ -1,0 +1,9 @@
+week 1: 93 copies; it sold before our exit on 81
+  holding past its sale reached take profit (the 5tePJcGm case): 10 coins, +7.48 SOL over selling behind it (+0.75 each)
+  holding better: 30 coins, +13.37 SOL | holding worse: 35 coins, -6.84 SOL (-0.195 each) | net +6.52
+week 2: 102 copies; it sold before our exit on 93
+  holding past its sale reached take profit (the 5tePJcGm case): 9 coins, +8.90 SOL over selling behind it (+0.99 each)
+  holding better: 23 coins, +12.20 SOL | holding worse: 54 coins, -13.15 SOL (-0.243 each) | net -0.95
+both: 195 copies; it sold before our exit on 174
+  holding past its sale reached take profit (the 5tePJcGm case): 19 coins, +16.38 SOL over selling behind it (+0.86 each)
+  holding better: 53 coins, +25.57 SOL | holding worse: 89 coins, -19.99 SOL (-0.225 each) | net +5.57
