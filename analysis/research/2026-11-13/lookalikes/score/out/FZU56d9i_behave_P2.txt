@@ -1,0 +1,28 @@
+
+== pump, other quote: 631 closed coins whose first trade is a buy, net -7.59
+   buys per coin p10..p90 [1, 1, 1, 1, 1]  sells per coin [1, 1, 1, 1, 2]  first-buy SOL [-1.311, -1.265, -1.21, -1.196, -1.185]  tip M [0.0, 0.0, 1.0, 1.0, 1.0]
+   slots to first sell [59, 250, 1400, 14491, 117516]  to last sell [71, 291, 1684, 17326, 141418]
+   ix of first buy [('buy_exact_quote_in', 631)]
+   price at its first sell / after its first buy [0.613, 0.679, 0.842, 0.992, 1.393]
+   its net / first-buy SOL [-51.489, -44.916, -23.298, 0.635, 55.876]  mean -1.202  won 158 / 631
+   first sell after      <=2 slots: coins     1 net    +0.15 won 1
+   first sell after     3-10 slots: coins    10 net    -0.72 won 1
+   first sell after    11-50 slots: coins    42 net    -9.34 won 7
+   first sell after   51-200 slots: coins    78 net    -7.88 won 22
+   first sell after 201-1000 slots: coins   149 net   -18.62 won 32
+   first sell after    >1000 slots: coins   332 net   -26.97 won 82
+   first buy     <0.6 SOL: coins   631 net    -7.59 won 158
+
+== pump, SOL quote: 1434 closed coins whose first trade is a buy, net -97.81
+   buys per coin p10..p90 [1, 1, 1, 1, 1]  sells per coin [1, 1, 1, 1, 1]  first-buy SOL [-1.302, -1.302, -1.302, -1.302, -1.302]  tip M [0.0, 1.0, 1.0, 1.0, 1.0]
+   slots to first sell [28, 49, 95, 1391, 33791]  to last sell [31, 49, 96, 1774, 44705]
+   ix of first buy [('buy_exact_sol_in', 1428), ('buy_exact_quote_in', 6)]
+   price at its first sell / after its first buy [0.617, 0.781, 0.898, 0.959, 1.11]
+   its net / first-buy SOL [-48.781, -27.582, -10.713, -2.538, 20.538]  mean -6.821  won 264 / 1434
+   first sell after      <=2 slots: coins     3 net    -0.76 won 0
+   first sell after     3-10 slots: coins    46 net    -7.92 won 5
+   first sell after    11-50 slots: coins   485 net   -52.98 won 28
+   first sell after   51-200 slots: coins   281 net   -27.18 won 49
+   first sell after 201-1000 slots: coins   191 net   -21.06 won 57
+   first sell after    >1000 slots: coins   392 net   -32.61 won 97
+   first buy     <0.6 SOL: coins  1434 net   -97.81 won 264
