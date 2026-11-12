@@ -54,6 +54,13 @@ that page's §2 steps 1-3:
 2. The four pings: every average must be under 1 ms.
 3. An `ops` user with SSH-key login only.
 
+**If Cherry Frankfurt is out of stock** (every Cherry Frankfurt VDS was on Nov 12): **Vultr Frankfurt**, measured
+0.66-0.69 ms from TeraSwitch FRA on Oct 28 (`../07-rework-2026-10-28/infra.md` §6). In stock on Nov 12 (Vultr's
+public API, region `fra`): `vhp-4c-8gb-amd` High Performance, 4 vCPU, 8 GB, 180 GB NVMe, **$48 a month**; or
+`voc-c-4c-8gb-75s-amd` CPU Optimized (dedicated cores), 4 vCPU, 8 GB, **$80 a month**. Ubuntu 24.04, a card as the
+payment method. Nothing else changes: Nozomi stays `fra2`, the four pings must stay under 1 ms. Vultr's default user
+is `root` as at Cherry, so §3's steps apply as written.
+
 From here on, every block runs on the box as `ops`.
 
 ## 4. Code and install (on the box)
