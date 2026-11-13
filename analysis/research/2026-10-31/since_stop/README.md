@@ -276,3 +276,10 @@ The coins' trades for 2 hours after its buy, fetched on Triton; stopped at 166 o
 best 2: 30 min +7.38, 50 min +6.73), and week 2 is incomplete. Coin by coin (landing 4): of 124 copies still open at
 30 min, held to 2 h, 4 reached the take profit, +2.25 SOL in all. Beyond an hour worse. No change: re-test with all
 of week 2.
+
+**The last two weeks as the bot runs on Nov 13, at 0.5 SOL** (`live_rule_05.py`, `out/live_rule_05.txt`): tp 2.4,
+30 min, no stop, the early-sale rule, 3-hop routes, 2 open, mean of three landings. Week 1: 105 copies, raw +6.78
+(+5.21 without the best 2), corrected +10.68 (+7.4 points a copy); week 2: 105, raw +3.03 (+0.78), corrected +7.49
+(+8.5). Two weeks: raw +9.81, corrected **+18.17 SOL**. TAB16RxX on the same footing (the lookalike exact check,
+1 SOL, tp 3.0 + 300 s, mean of three landings, halved for 0.5 SOL; no 3-hop routes in that set): raw +0.65 / +2.32,
+corrected +3.27 / +7.21, **+10.48** in two weeks.
