@@ -33,3 +33,7 @@ decoder, path and price model). `tab_cells.py` prints a few cells by landing (sa
   the live rule raw at all six week-landing cells, and without the best 2 at five of six. 12 of 588 rule sets beat
   live in both weeks without the best 2; the top six are this rule's neighbours (0-120 s, under 1.5x, a 0.5 stop).
 - A stop at 0.5 changes nothing. Take profits under 2.5 and timers of 60 s or 30 min are the weak ends.
+- **At 1 SOL** (`STAKE=1.0 python3 -I tab_cells.py ...`, `out/tab_cells_1sol.txt`): the live rule of Nov 13 (tp 4.0,
+  600 s, its sale followed within 60 s) week 1 raw +3.448, corrected +8.628; week 2 raw +10.148, corrected +19.725;
+  **two weeks +28.35 corrected, about +2.0 SOL a day.** The old rule (tp 3.0, 300 s): +6.542 and +14.480 corrected,
+  matching the lookalike study's exact check (+6.54 and +14.41).
