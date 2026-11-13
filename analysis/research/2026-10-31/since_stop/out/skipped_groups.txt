@@ -1,0 +1,5 @@
+since Oct 29 12:02 UTC; WBTC at 8313 lamports a unit
+group       buys | its real: coins, spent, net, %, won, without its best 2 | quotes
+routable     206 | 197   365.1  +59.60  +16.3%  88  +47.29 | [('C5xph2yL', 57), ('NTRNDMqQ', 23), ('3NZ9JMVB', 18), ('4CxjZyMN', 13), ('GSp4qePZ', 12)]
+3 hops        31 |  26    55.6  +41.44  +74.5%  19  +28.31 | [('F1LQvm5b', 5), ('ERs7y4nM', 4), ('83WuTBUf', 2), ('DffdPtAK', 2), ('CXWNzqBE', 2)]
+no pool      114 |   0     0.0   +0.00   +0.0%   0   +0.00 | [('HiMSSzzw', 7), ('WXMRyRZh', 5), ('Pren1FvF', 5), ('Xsv9hRk1', 4), ('CARDSccU', 4)]

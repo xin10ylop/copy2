@@ -254,3 +254,11 @@ neighbours 30-120, 30-240 and 60-180 s agree. On the copies it changes (landing 
 better, 4 worse, +1.47 SOL raw, +0.82 calibrated (a sale behind its sale counted like a stop, +3.9 points, against
 +9.3 for the timer it replaces); week 2 20 copies, 17 better, 2 worse, +2.67 raw, +1.49 calibrated. Built as
 `follow_early_s` / `follow_early_below` (docs/20 §3).
+
+## What the bot skips: 3-hop routes and coins with no pool (`skipped_groups.py`, `out/skipped_groups.txt`, Nov 13)
+
+Wallet 4's 1.45+ SOL buys since the stop (Oct 29 12:02 UTC) by the scan's verdict, and its own real result on them:
+routable 206 (+59.60 SOL on 365.1, +16.3%, 88 of 197 won); **route of 3 hops 31 (+41.44 on 55.6, +74.5%, 19 of 26
+won, +28.31 without its best 2)**; no pool reaches the quote 114 (paid back in the quote, not valued here). Oct 19-27
+had 7 three-hop buys in 9.6 days (`2026-10-28/more/` §B: they fit in a v0 transaction with pump's lookup table,
+1,027 bytes). Our copy of them: `hops3_copy.py` (paths on Triton, one more pool hop each way charged).
