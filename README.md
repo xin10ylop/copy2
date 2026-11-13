@@ -33,6 +33,8 @@ wallet by `HckQ93Xq...` (15:06-15:51 UTC; we signed nothing) were sold through J
 +0.0674 SOL on chain. SOL 2.1877 after, plus the WBTC float (about 0.59 SOL).
 **Take profit 2.4 since Nov 12 16:42 UTC** (was 2.5; `since_stop/out/tp_fine.txt`: the 2.3-2.6 plateau, 2.4 ahead by
 0.4 SOL over two weeks and just under wallet 4's own 2.5x target). The restart's journal: `tp 2.4x`, feed connected.
+**Nov 12 23:54 UTC: the early-sale rule on** (`follow_early_s = [30, 180]`, `follow_early_below = 1.5`). **Nov 13 00:34
+UTC: 3-hop routes live** (`0d2b078`; journal `long lookup table Hyif6eWb: 184 addresses`, feed connected).
 **A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
 branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet
 that passed the pick-on-week-1 test (tp 3.0, 300 s: week 2 raw +13.76, corrected +20.95; week 1 raw −2.28 with the
