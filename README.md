@@ -55,6 +55,11 @@ daily stop 2.0 SOL; the rest unchanged (tp 2.4, no stop, 1790 s, early-sale rule
 `stake 1 SOL tp 2.4x stop 0x hold 1790s max_open 2`, wallet SOL 2.1750 plus the WBTC float (134,432 units), feed connected.
 A stop at 0.5x or 0.4x was asked again after #11 (−56.7%) and #12 (−44.0%); it stays off (`since_stop/out/stop_scan.txt`:
 0.5x −0.83 SOL raw over two weeks, −1.83 SOL in week 1; 0.4x +0.45 raw, −0.06 calibrated, a wash).
+First at 1 SOL: #14 FAVdiH3q timer −0.0851 (−8.5%; wallet 4 +9.4%, sold at 196 s), #15 KgcdZjU4 timer −0.2493
+(−24.9%; wallet 4 +8.4%, sold at 299 s); both of its sales after the 180 s early-sale window, so held, as the rule says.
+Nov 13 UTC: 8 closed, 2 won, +0.9236; all 16 real +1.1066, trades + airdrops +1.7460 SOL. TAB16RxX's bot: 14 real,
+1 won, −0.1665; two of them (3a8RGrQg, FAVdiH3q) the same coin bought in the same second as wallet 4 (the lookalike
+study's overlap: 26 of its 149 buys).
 **A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
 branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet
 that passed the pick-on-week-1 test (tp 3.0, 300 s: week 2 raw +13.76, corrected +20.95; week 1 raw −2.28 with the
