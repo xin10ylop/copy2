@@ -1,0 +1,24 @@
+240 rule sets; 0.5 SOL, 2 open, 3-hop coins in; raw; week 1 (w/o best 2) | week 2 (w/o best 2) | both
+== live
+   tp 2.4 1790s early 30-180<1.5 (live)  stop None |  +6.78 ( +5.21) |  +3.03 ( +0.78) |  +9.81 ( +5.99)
+== the 10 best on week 1 (without its best 2), with their week 2
+   tp 2.6 1790s early never              stop None |  +7.47 ( +5.79) |  +1.16 ( -1.16) |  +8.64 ( +4.62)
+   tp 2.6 1200s early never              stop None |  +7.42 ( +5.73) |  +1.96 ( -0.36) |  +9.38 ( +5.37)
+   tp 2.4 1790s early never              stop None |  +7.20 ( +5.63) |  +1.35 ( -0.90) |  +8.55 ( +4.73)
+   tp 2.6 1200s early 30-240<1.5         stop None |  +7.12 ( +5.44) |  +3.48 ( +1.15) | +10.59 ( +6.59)
+   tp 2.6 1790s early 30-240<1.5         stop None |  +7.06 ( +5.38) |  +3.23 ( +0.91) | +10.29 ( +6.28)
+   tp 2.4 1790s early 30-240<1.5         stop None |  +6.92 ( +5.36) |  +2.73 ( +0.49) |  +9.66 ( +5.84)
+   tp 2.6 1790s early 30-180 any         stop None |  +6.98 ( +5.32) |  +2.99 ( +0.66) |  +9.97 ( +5.98)
+   tp 2.6 1200s early 30-180<1.5 (live)  stop None |  +6.96 ( +5.29) |  +3.43 ( +1.10) | +10.39 ( +6.39)
+   tp 3.0 1200s early never              stop None |  +7.39 ( +5.25) |  +2.57 ( -0.02) |  +9.96 ( +5.23)
+   tp 2.6 1790s early 30-180<1.5 (live)  stop None |  +6.91 ( +5.23) |  +2.74 ( +0.41) |  +9.65 ( +5.65)
+== beat live in BOTH weeks without the best 2: 4 of 240
+   tp 2.6 1200s early 30-240<1.5         stop None |  +7.12 ( +5.44) |  +3.48 ( +1.15) | +10.59 ( +6.59)
+   tp 2.6 1200s early 30-180 any         stop None |  +6.88 ( +5.22) |  +3.52 ( +1.19) | +10.39 ( +6.41)
+   tp 2.6 1200s early 30-180<1.5 (live)  stop None |  +6.96 ( +5.29) |  +3.43 ( +1.10) | +10.39 ( +6.39)
+   tp 2.6 1790s early 30-240<1.5         stop None |  +7.06 ( +5.38) |  +3.23 ( +0.91) | +10.29 ( +6.28)
+== each choice on its own: mean over every rule set with it, week 1 / week 2 (without the best 2)
+   tp   : 2.0 +2.56 / -1.12   2.2 +2.95 / -0.91   2.4 +3.68 / +0.55   2.6 +3.81 / +0.81   3.0 +3.44 / +1.24
+   hold : 300 +2.05 / +0.82   600 +2.65 / +0.03   1200 +4.26 / -0.04   1790 +4.21 / -0.36
+   early: never +3.62 / -0.62   30-180<1.5 (live) +3.34 / +0.66   0-180<1.5 +2.82 / +0.49   30-240<1.5 +3.47 / +0.63   30-180 any +3.29 / +0.53   0-300<1.0 +3.21 / -1.01
+   sl   : None +3.47 / +0.07   0.5 +3.11 / +0.16

@@ -292,3 +292,13 @@ copies, 189.1 SOL staked, raw +21.37, corrected +35.36 (+18.7% of the SOL staked
 corrected +25.31 (+12.6%); **two weeks +60.67 corrected on 390.6 SOL (+15.5%)**, against wallet 4's own +102.65 on
 424 SOL (+24.2%: routable +61.21 on 368.5, 3-hop +41.44 on 55.6). The 2-open limit costs little (105 against 109
 copies a week).
+
+## The final exit review, everything together (`exit_final.py`, `out/exit_final.txt`, Nov 13)
+
+240 rule sets with the bot as it runs (0.5 SOL, 2 open, 3-hop coins in): tp 2.0-3.0 × timer 300-1790 s × the early-
+sale rule (never, 30-180 s under 1.5x = live, 0-180, 30-240, 30-180 at any price, 0-300 under 1.0x) × stop none/0.5.
+Live: week 1 +6.78 (+5.21 without the best 2), week 2 +3.03 (+0.78), +9.81 (+5.99). **4 of 240 beat it in both weeks
+without the best 2**, all tp 2.6 with a 1200 s timer or the 30-240 s window, by +0.3 to +0.6 SOL in two weeks: noise.
+The week-1 winner (tp 2.6, 1790 s, never follow: +5.79) drops to −1.16 in week 2: the early-sale rule is what holds
+week 2 up (never −0.62 on average against +0.66 for the live window). By choice: tp 2.4-3.0 level and ahead of
+2.0-2.2; timers 1200-1790 s best in week 1, 300 s in week 2; the 0.5 stop no better than none. No change.
