@@ -1,0 +1,21 @@
+2097 parsed, 0 not
+468763821 Bvdx59oa 1.495 SOL from Xsc9qvGR quote Xsc9qvGR jupiter false: no route: NoAnchor(Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh)
+468789398 xxh1tzYg 2.010 SOL from pumpCmXq quote pumpCmXq jupiter false: no route: NoAnchor(pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn)
+468805370 HKjGgB6o 1.867 SOL from EKpQGSJt quote EKpQGSJt jupiter true: no route: NoAnchor(EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm)
+468809105 3EKoHX4f 1.497 SOL from So111111 quote 4iJ7xEQr jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: 4iJ7xEQrUvVUQH9KVStvw3FaY2PZDd7RtR4L9zx2
+468826803 6S3iL67j 1.509 SOL from So111111 quote 9cRCn9rG jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: 9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTG
+468896879 BUdiaswB 1.675 SOL from So111111 quote 9sFGCTjE jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: 9sFGCTjEsBk78uC2bCdxtwuUM1aartbBhe8WQXwR
+468925212 9qHNeWBw 1.571 SOL from pumpCmXq quote pumpCmXq jupiter false: no route: NoAnchor(pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn)
+468942726 8DgkUJJ8 2.380 SOL from pumpCmXq quote pumpCmXq jupiter false: no route: NoAnchor(pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn)
+468972128 GLmWEbqA 1.826 SOL from So111111 quote 4FP2GRQS jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: 4FP2GRQS3WYPsZSE2dwaVzqkajrBpHcXyVSTVt83
+468981678 3a8RGrQg 1.722 SOL from So111111 quote 9cRCn9rG jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: 9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTG
+469004053 A9GgjmnK 1.584 SOL from Xsc9qvGR quote Xsc9qvGR jupiter false: no route: NoAnchor(Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh)
+469005766 5njLdCTU 1.577 SOL from XspzcW1P quote XspzcW1P jupiter false: no route: NoAnchor(XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX)
+469014633 Esp1UqVg 2.093 SOL from Xsc9qvGR quote Xsc9qvGR jupiter false: no route: NoAnchor(Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh)
+469030893 6HimP4fi 1.946 SOL from pumpCmXq quote pumpCmXq jupiter false: no route: NoAnchor(pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn)
+469031598 FAVdiH3q 1.510 SOL from So111111 quote H74CYmXg jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: H74CYmXgMkYHYuSRsZt6RJb4NYp2u72Vw8BS5huA
+469053071 AhQQvhyf 1.589 SOL from METvsvVR quote METvsvVR jupiter true: no route: NoAnchor(METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL)
+469082874 KgcdZjU4 1.751 SOL from So111111 quote NTRNDMqQ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: NTRNDMqQSiwEC2jJs3wJiZS6bpGYQJtMNQJgiX3W
+469087340 CpjS26Sz 1.859 SOL from BArimz1P quote BArimz1P jupiter true: no route: NoAnchor(BArimz1PcKZr8PcPh3tcZ2dg4S7FJLk3cw6R5F8GsHKg)
+469103134 oxbezHbo 2.024 SOL from So111111 quote Q1vecEMQ jupiter false: ROUTABLE Plan { route: Route { input: So11111111111111111111111111111111111111112, hops: [Hop { venue: Pool, base_mint: Q1vecEMQEgDyrw1txmBgFwUrkeQurqkEe1bGMzFp
+2097 transactions: SOL-priced buys 552, sells 736, other-quote buys under 1.45 SOL 183, unpriced 0
