@@ -8,9 +8,11 @@ def call(m, p):
     if "error" in r: raise RuntimeError(str(r["error"])[:200])
     return r["result"]
 # (coin prefix, its SOL, rule: tp, hold, follow window)
-TRADES = [("481Ntemy", 1.829, 3.0, 300, None), ("4NBwggZy", 2.0, 4.0, 600, (0, 60, 1e9)), ("fdjHiwNk", 1.5, 4.0, 600, (0, 60, 1e9))]
+TRADES = [("481Ntemy", 1.829, 3.0, 300, None)] + [(c, sol, 4.0, 600, (0, 60, 1e9)) for c, sol in (
+    ("4NBwggZy", 2.0), ("fdjHiwNk", 1.5), ("6MPM3y2N", 1.5), ("98VsxJ8T", 1.5), ("DhY4Gmmm", 2.0), ("8yxHek5W", 1.5),
+    ("9XT4cpFG", 1.5), ("3a8RGrQg", 2.0), ("GTZPXNgi", 2.0), ("Ciy2H6NU", 1.5))]
 txs = {}
-for s in call("getSignaturesForAddress", [ME, {"limit": 60}]):
+for s in call("getSignaturesForAddress", [ME, {"limit": 200}]):
     if s["err"]: continue
     t = call("getTransaction", [s["signature"], {"encoding": "json", "maxSupportedTransactionVersion": 0}])
     m = t["meta"]; ks = t["transaction"]["message"]["accountKeys"] + m["loadedAddresses"]["writable"] + m["loadedAddresses"]["readonly"]
