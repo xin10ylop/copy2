@@ -1,0 +1,19 @@
+0.1 SOL, 2 open; per landing 4 / 8 / one block late: raw (without the best 2), copies
+live: tp 3.0, 300 s, never follow
+   week 1: +0.040 (-0.340)  51 | +0.135 (-0.197)  48 | -0.045 (-0.411)  51   mean raw +0.043, corrected +0.568
+   week 2: +0.152 (-0.532) 116 | +0.426 (-0.127) 105 | +0.350 (-0.329) 121   mean raw +0.309, corrected +1.278
+tp 3.0, 300 s, follow its sale at 0-60 s
+   week 1: +0.013 (-0.368)  51 | +0.112 (-0.220)  49 | -0.074 (-0.440)  51   mean raw +0.017, corrected +0.546
+   week 2: +0.452 (-0.232) 117 | +0.852 (+0.298) 106 | +0.730 (+0.050) 122   mean raw +0.678, corrected +1.655
+tp 3.0, 600 s, follow its sale at 0-60 s
+   week 1: +0.049 (-0.331)  50 | +0.096 (-0.235)  48 | -0.022 (-0.408)  50   mean raw +0.041, corrected +0.559
+   week 2: +0.333 (-0.351) 115 | +0.635 (+0.030) 104 | +0.657 (-0.023) 119   mean raw +0.542, corrected +1.499
+tp 4.0, 300 s, follow its sale at 0-60 s
+   week 1: +0.089 (-0.445)  51 | +0.173 (-0.269)  49 | +0.004 (-0.521)  51   mean raw +0.089, corrected +0.617
+   week 2: +0.690 (-0.121) 117 | +1.079 (+0.423) 106 | +0.685 (-0.124) 122   mean raw +0.818, corrected +1.796
+tp 4.0, 600 s, follow its sale at 0-60 s
+   week 1: +0.287 (-0.247)  50 | +0.311 (-0.159)  48 | +0.228 (-0.326)  50   mean raw +0.275, corrected +0.793
+   week 2: +0.789 (-0.022) 115 | +1.110 (+0.405) 104 | +0.752 (-0.058) 119   mean raw +0.884, corrected +1.841
+tp 4.0, 600 s, never follow
+   week 1: +0.308 (-0.226)  49 | +0.334 (-0.136)  47 | +0.278 (-0.276)  49   mean raw +0.307, corrected +0.814
+   week 2: +0.246 (-0.565) 114 | +0.563 (-0.143) 103 | +0.106 (-0.703) 118   mean raw +0.305, corrected +1.254
