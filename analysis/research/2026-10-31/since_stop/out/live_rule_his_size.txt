@@ -1,0 +1,4 @@
+wallet 4 copied as the bot runs on Nov 13, stake his SOL, 999 open; mean of landings 4 / 8 / one block late
+  w1: 109 copies, 189.1 SOL staked, raw +21.37 SOL (without the best 2 +15.02), corrected +35.36 (+18.7% of the SOL staked)
+  w2: 107 copies, 201.5 SOL staked, raw +8.18 SOL (without the best 2 +1.08), corrected +25.31 (+12.6% of the SOL staked)
+  both: raw +29.55 (without the best 2s +16.09), corrected +60.67

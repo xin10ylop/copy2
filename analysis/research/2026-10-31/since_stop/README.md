@@ -287,3 +287,8 @@ At 1 SOL (`STAKE=1.0 python3 -I live_rule_05.py SPD`, `out/live_rule_1sol.txt`):
 without the best 2), corrected +21.03; week 2 raw +5.81 (+1.46), corrected +14.73; two weeks raw +19.04, corrected
 **+35.76 SOL**. TAB16RxX at 1 SOL (the exact check, mean of three landings): raw +1.29 / +4.63, corrected +6.54 /
 +14.41, **+20.95**.
+At his own size on every buy, no open-trade limit (`STAKE=his CAP=999`, `out/live_rule_his_size.txt`): week 1 109
+copies, 189.1 SOL staked, raw +21.37, corrected +35.36 (+18.7% of the SOL staked); week 2 107, 201.5 SOL, raw +8.18,
+corrected +25.31 (+12.6%); **two weeks +60.67 corrected on 390.6 SOL (+15.5%)**, against wallet 4's own +102.65 on
+424 SOL (+24.2%: routable +61.21 on 368.5, 3-hop +41.44 on 55.6). The 2-open limit costs little (105 against 109
+copies a week).

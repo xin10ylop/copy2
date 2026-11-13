@@ -11,8 +11,8 @@ with contextlib.redirect_stdout(io.StringIO()):
 M = E.M; G = E.G
 P3 = json.load(gzip.open(f"{SPD}/paths_3hop.json.gz")); G.P.update(P3)
 H3 = {k for k in P3}
-STAKE = float(os.environ.get("STAKE", "0.5")); GAP = {"w1": 0.074, "w2": 0.085}
-def model(r, n, tp=2.4, hold=1790, a=30, b=180, below=1.5, pmax=1.25):
+STAKE_ENV = os.environ.get("STAKE", "0.5"); STAKE = 1.0 if STAKE_ENV == "his" else float(STAKE_ENV); CAP = int(os.environ.get("CAP", "2")); GAP = {"w1": 0.074, "w2": 0.085}
+def model(r, n, stake=None, tp=2.4, hold=1790, a=30, b=180, below=1.5, pmax=1.25):
     m, tr = G.P[f"{r['slot']}_{r['mint8']}"]
     k = next((i for i, e in enumerate(tr) if e["user"] == M.W4 and e["buy"] and e["slot"] == r["slot"]), None)
     if k is None: return None
@@ -21,7 +21,8 @@ def model(r, n, tp=2.4, hold=1790, a=30, b=180, below=1.5, pmax=1.25):
     ent = tr[j]; px_in = (vta / ent["vt"]) ** 2
     if px_in > pmax: return (-0.0004, "refused", 0)
     hops = 0.997 if f"{r['slot']}_{r['mint8']}" in H3 else 1.0
-    Q = STAKE * 1e9 * (1 - 0.003) * hops / rate; net_in = Q * 1e4 / (1e4 + ent["bps"])
+    st = stake if stake is not None else STAKE
+    Q = st * 1e9 * (1 - 0.003) * hops / rate; net_in = Q * 1e4 / (1e4 + ent["bps"])
     tok = ent["vt"] - ent["vt"] * ent["vq"] / (ent["vq"] + net_in)
     ex, why = None, "time"
     for i in range(j + 1, len(tr)):
@@ -33,7 +34,7 @@ def model(r, n, tp=2.4, hold=1790, a=30, b=180, below=1.5, pmax=1.25):
     if ex is None: ex = len(tr) - 1
     x = tr[ex]; vq_r = x["vq"] + net_in; vt_r = x["vt"] * x["vq"] / vq_r
     out = (vq_r - vt_r * vq_r / (vt_r + tok)) * (1 - x["bps"] / 1e4)
-    return (out * rate * (1 - 0.003) * hops / 1e9 - STAKE - 0.0026, why, x["t"] - t0)
+    return (out * rate * (1 - 0.003) * hops / 1e9 - st - 0.0026, why, x["t"] - t0, st)
 rows3 = [r for r in json.load(open(f"{SPD}/toolong.json")) if f"{r['slot']}_{r['mint8']}" in P3]
 END = max(r["t"] for r in G.trips); MID = END - 7 * 86400
 allr = sorted(G.trips + rows3, key=lambda r: r["t"])
@@ -42,18 +43,20 @@ def sim(rs, n):
     out, open_ = [], []
     for r in rs:
         open_ = [x for x in open_ if x > r["t"]]
-        if len(open_) >= 2: continue
-        o = model(r, n)
+        if len(open_) >= CAP: continue
+        o = model(r, n, r["sol"] if STAKE_ENV == "his" else None)
         if o is None: continue
         if o[1] != "refused": open_.append(r["t"] + o[2])
         out.append(o)
     v = sorted((o[0] for o in out), reverse=True); c = sum(1 for o in out if o[1] != "refused")
-    return sum(v), sum(v[2:]), c
-print(f"wallet 4 copied as the bot runs on Nov 13, {STAKE} SOL, 2 open; mean of landings 4 / 8 / one block late")
+    staked = sum(o[3] for o in out if o[1] != "refused")
+    return sum(v), sum(v[2:]), c, staked
+print(f"wallet 4 copied as the bot runs on Nov 13, stake {STAKE_ENV} SOL, {CAP} open; mean of landings 4 / 8 / one block late")
 tot = [0, 0, 0]
 for w in ("w1", "w2"):
-    x = [sim(W[w], n) for n in E.LAND]; raw = sum(a for a, _, _ in x) / 3; r2 = sum(b for _, b, _ in x) / 3; c = sum(z for _, _, z in x) / 3
-    corr = raw + GAP[w] * STAKE * c
+    x = [sim(W[w], n) for n in E.LAND]; raw = sum(a[0] for a in x) / 3; r2 = sum(a[1] for a in x) / 3; c = sum(a[2] for a in x) / 3
+    st = sum(a[3] for a in x) / 3
+    corr = raw + GAP[w] * st
     tot = [tot[0] + raw, tot[1] + r2, tot[2] + corr]
-    print(f"  {w}: {c:.0f} copies, raw {raw:+.2f} SOL (without the best 2 {r2:+.2f}), corrected {corr:+.2f}")
+    print(f"  {w}: {c:.0f} copies, {st:.1f} SOL staked, raw {raw:+.2f} SOL (without the best 2 {r2:+.2f}), corrected {corr:+.2f} ({100*corr/st:+.1f}% of the SOL staked)")
 print(f"  both: raw {tot[0]:+.2f} (without the best 2s {tot[1]:+.2f}), corrected {tot[2]:+.2f}")
