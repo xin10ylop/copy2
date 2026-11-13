@@ -35,6 +35,12 @@ wallet by `HckQ93Xq...` (15:06-15:51 UTC; we signed nothing) were sold through J
 0.4 SOL over two weeks and just under wallet 4's own 2.5x target). The restart's journal: `tp 2.4x`, feed connected.
 **Nov 12 23:54 UTC: the early-sale rule on** (`follow_early_s = [30, 180]`, `follow_early_below = 1.5`). **Nov 13 00:34
 UTC: 3-hop routes live** (`0d2b078`; journal `long lookup table Hyif6eWb: 184 addresses`, feed connected).
+**Nov 13 11:48 UTC: TAB16RxX copied with real money at 0.1 SOL × 2** (unit `rugsnipe-long-tab`, tp 3.0, 300 s, no stop,
+daily stop 0.3), its own wallet `7ByEajSYmXjBK56LX4Wj3kVBAAeLYNW3soRE1T1WTubs` (the key copied to the owner's Mac first,
+sha256 prefix checked on both), funded with 0.5 SOL from the long wallet (`send`, slot 468915460), 0.15 SOL of it as
+its WBTC float (17,436 units). Why: its 9 paper trades Nov 12-13 −0.0220 SOL raw, +0.0545 with the +8.5-point gap
+measured on it; the 0.1 SOL run measures whether our real fills earn that gap. Stop if, at about 30 trades, they do
+not.
 **A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
 branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet
 that passed the pick-on-week-1 test (tp 3.0, 300 s: week 2 raw +13.76, corrected +20.95; week 1 raw −2.28 with the
