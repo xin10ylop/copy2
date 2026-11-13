@@ -44,6 +44,9 @@ not.
 TAB16RxX real against the model, trade by trade (the gap the 0.1 SOL run measures): #10 481Ntemy (Nov 13 11:56 UTC,
 pool+curve, landed in its slot 2 trades after it, timer at 300 s): real −0.0301 SOL on chain, model at that landing
 −0.0345: **real +4.4 points over the model.**
+**Nov 13 12:57 UTC: TAB16RxX's exits changed to tp 4.0, 600 s, its sale followed when it comes within 60 s of its buy**
+(`follow_early_s = [0, 60]`, `follow_early_below = 100.0`; `analysis/research/2026-11-13/tab_exits/`: corrected two
+weeks at 0.1 SOL +2.64 against +1.85 for tp 3.0 / 300 s). The restart's journal: `tp 4x … hold 600s`, feed connected.
 **A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
 branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet
 that passed the pick-on-week-1 test (tp 3.0, 300 s: week 2 raw +13.76, corrected +20.95; week 1 raw −2.28 with the
