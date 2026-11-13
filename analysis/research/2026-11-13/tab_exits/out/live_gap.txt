@@ -1,0 +1,12 @@
+481Ntemy: landed 2 trades after its buy (slot same); real -0.0301, model -0.0345 (time, peak 1.59x) -> +4.4 points
+4NBwggZy: landed 1 trades after its buy (slot +1); real +0.1394, model +0.0944 (time, peak 2.90x) -> +44.9 points
+fdjHiwNk: landed 3 trades after its buy (slot same); real -0.0269, model -0.0276 (time, peak 1.20x) -> +0.7 points
+6MPM3y2N: landed 0 trades after its buy (slot same); real -0.0157, model -0.0156 (time, peak 1.47x) -> -0.1 points
+98VsxJ8T: landed 2 trades after its buy (slot same); real -0.0178, model -0.0248 (its_sell, peak 1.08x) -> +7.0 points
+DhY4Gmmm: landed 0 trades after its buy (slot +1); real -0.0433, model -0.0389 (time, peak 1.07x) -> -4.4 points
+8yxHek5W: landed 0 trades after its buy (slot same); real -0.0178, model -0.0230 (its_sell, peak 1.01x) -> +5.2 points
+9XT4cpFG: landed 4 trades after its buy (slot same); real -0.0353, model -0.0331 (time, peak 1.19x) -> -2.2 points
+3a8RGrQg: landed 3 trades after its buy (slot +1); real -0.0428, model -0.0431 (time, peak 1.43x) -> +0.3 points
+GTZPXNgi: landed 0 trades after its buy (slot same); real -0.0162, model -0.0168 (time, peak 1.15x) -> +0.7 points
+Ciy2H6NU: landed 2 trades after its buy (slot +2); real -0.0136, model -0.0179 (its_sell, peak 1.12x) -> +4.3 points
+all: real -0.1201, model -0.1809, +5.5 points a trade

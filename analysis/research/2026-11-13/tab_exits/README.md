@@ -58,3 +58,10 @@ Its copyable buys are mostly 1.5 SOL (40) and 2.0 SOL (39). Our copy with the li
 **2.0 SOL buys were the worst band in both weeks** (−21.4% and −2.6% a copy; 1.0-1.45 +18.5% / +2.3%, 1.45-1.6
 −38.2% on 3 / +13.3%, 1.6-1.95 +15.3% / +24.2%). Copying only its 2.0 buys: −0.237 and −0.070 (live +0.275 and
 +0.884); doubling the stake on them: +0.079 and +0.873. No size rule.
+
+**Updated, 11 real trades (Nov 13 11:56-16:13 UTC; `out/live_gap.txt`):** real −0.1201 SOL against −0.1809 in the
+model at our exact landings, **+5.5 points a trade**; without 4NBwggZy (+44.9) +1.6 points on the other 10 (median
++0.7). The 8 losses in a row of 15:09-16:13 UTC were losses in the model too: the coins, not our fills. Our landings:
+its slot on 8 of 11, 0-4 trades after its buy. The gap is smaller than the +8.5-10.5 points the corrected backtest
+assumed; with the live rule the raw backtest is positive already (+0.275 and +0.884 at 0.1 SOL), so the copy stays
+positive at a gap of 0-5 points, by about half the corrected figure.
