@@ -266,3 +266,13 @@ had 7 three-hop buys in 9.6 days (`2026-10-28/more/` §B: they fit in a v0 trans
 (+20.2% a copy), +2.67 without the best 2, 14 won; landing 8: +3.35 (+14.6%); one block late: +6.65 (+22.9%). With
 the routable ones at 2 open, two weeks, mean of the 3 landings: **+16.51 SOL (+12.16 without the best 2) against
 +11.12 (+6.77) for the routable ones alone.** Built Nov 13 (docs/20 §3, 3-hop routes).
+
+## Holding longer than 30 minutes (`paths_long.py`, `paths_long_partial.py`, `hold_long.py`, `out/hold_long.txt`, Nov 13)
+
+The coins' trades for 2 hours after its buy, fetched on Triton; stopped at 166 of 206 coins (week 1 all 101, week 2
+65 of 105: its last 40 coins are missing). Raw, 2 open, mean of three landings. Tp 2.4: 30 min (live) +10.42 / −3.01,
++7.40 in all (+1.53 without the best 2s); 40 min +9.01; **50 min +10.22 / +1.07, +11.29 (+4.00)**; 60 min +10.91
+(+3.63); 90 min +5.53; 2 h +4.54. Tp 3.0 with 60 min +12.77 (+2.82). The gain is all in week 2 (week 1 without the
+best 2: 30 min +7.38, 50 min +6.73), and week 2 is incomplete. Coin by coin (landing 4): of 124 copies still open at
+30 min, held to 2 h, 4 reached the take profit, +2.25 SOL in all. Beyond an hour worse. No change: re-test with all
+of week 2.
