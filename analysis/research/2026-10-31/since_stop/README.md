@@ -283,3 +283,7 @@ of week 2.
 (+8.5). Two weeks: raw +9.81, corrected **+18.17 SOL**. TAB16RxX on the same footing (the lookalike exact check,
 1 SOL, tp 3.0 + 300 s, mean of three landings, halved for 0.5 SOL; no 3-hop routes in that set): raw +0.65 / +2.32,
 corrected +3.27 / +7.21, **+10.48** in two weeks.
+At 1 SOL (`STAKE=1.0 python3 -I live_rule_05.py SPD`, `out/live_rule_1sol.txt`): wallet 4 week 1 raw +13.24 (+10.20
+without the best 2), corrected +21.03; week 2 raw +5.81 (+1.46), corrected +14.73; two weeks raw +19.04, corrected
+**+35.76 SOL**. TAB16RxX at 1 SOL (the exact check, mean of three landings): raw +1.29 / +4.63, corrected +6.54 /
++14.41, **+20.95**.

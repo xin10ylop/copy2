@@ -1,0 +1,4 @@
+wallet 4 copied as the bot runs on Nov 13, 1.0 SOL, 2 open; mean of landings 4 / 8 / one block late
+  w1: 105 copies, raw +13.24 SOL (without the best 2 +10.20), corrected +21.03
+  w2: 105 copies, raw +5.81 SOL (without the best 2 +1.46), corrected +14.73
+  both: raw +19.04 (without the best 2s +11.66), corrected +35.76

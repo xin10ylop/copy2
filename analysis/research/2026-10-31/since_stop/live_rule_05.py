@@ -11,7 +11,7 @@ with contextlib.redirect_stdout(io.StringIO()):
 M = E.M; G = E.G
 P3 = json.load(gzip.open(f"{SPD}/paths_3hop.json.gz")); G.P.update(P3)
 H3 = {k for k in P3}
-STAKE = 0.5; GAP = {"w1": 0.074, "w2": 0.085}
+STAKE = float(os.environ.get("STAKE", "0.5")); GAP = {"w1": 0.074, "w2": 0.085}
 def model(r, n, tp=2.4, hold=1790, a=30, b=180, below=1.5, pmax=1.25):
     m, tr = G.P[f"{r['slot']}_{r['mint8']}"]
     k = next((i for i, e in enumerate(tr) if e["user"] == M.W4 and e["buy"] and e["slot"] == r["slot"]), None)
@@ -49,7 +49,7 @@ def sim(rs, n):
         out.append(o)
     v = sorted((o[0] for o in out), reverse=True); c = sum(1 for o in out if o[1] != "refused")
     return sum(v), sum(v[2:]), c
-print("wallet 4 copied as the bot runs on Nov 13, 0.5 SOL, 2 open; mean of landings 4 / 8 / one block late")
+print(f"wallet 4 copied as the bot runs on Nov 13, {STAKE} SOL, 2 open; mean of landings 4 / 8 / one block late")
 tot = [0, 0, 0]
 for w in ("w1", "w2"):
     x = [sim(W[w], n) for n in E.LAND]; raw = sum(a for a, _, _ in x) / 3; r2 = sum(b for _, b, _ in x) / 3; c = sum(z for _, _, z in x) / 3
