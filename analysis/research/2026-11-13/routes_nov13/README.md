@@ -34,3 +34,10 @@ Week 2 from Nov 5 12:00 Beirut.
 By the token it paid with (no pool and not checked): **PUMP `pumpCmXq` 157 coins, +83.11 on 312.1 (+26.6%)**;
 `SPCXxcqX` 56, +43.17 (+41.3%); `TTWofwAg` 32, +9.43 (+14.7%); USDC 12, +2.73; `XspzcW1P` 12, +0.56; `A7bdiYdS` 12,
 +5.04; `Xsc9qvGR` 8, +2.61; others 7, +1.68. Our copy of them is not modelled (it needs their price paths).
+
+## PUMP's price in SOL, Oct 28 - Nov 13 (`pump_rate.py`, `out/pump_rate.txt`)
+
+From wallet 4's own SOL-PUMP swaps (local data): daily medians 40.9 to 45.7 SOL a million PUMP over 16 days (Nov 4
+high, Nov 8 low), the largest day-to-day change −6% (Nov 7 43.5 to Nov 8 40.9). On a 2 SOL PUMP float that is about
+±0.1 SOL a day at worst, and it averages out; a SOL-PUMP leg inside every copy (no float) would pay the swap's fee and
+spread on each buy and sale for sure.
