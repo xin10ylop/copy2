@@ -1,0 +1,14 @@
+its buys by size (SOL): [(1.5, 40), (2.0, 39), (1.36, 11), (1.35, 9), (1.8, 7), (1.37, 7), (1.81, 5), (1.41, 5), (1.39, 5), (1.79, 4)]
+
+every copy at 0.1 SOL, mean of 3 landings: copies, raw net, per copy, won, take profits | week 1 | week 2
+   1.0-1.45  |  14.7  +0.271  +18.5% won  3.7 tp 2.0 |  43.3  +0.099   +2.3% won 10.3 tp 2.0
+   1.45-1.6  |   3.0  -0.115  -38.2% won  0.0 tp 0.0 |  37.7  +0.499  +13.3% won  8.3 tp 3.0
+   1.6-1.95  |  20.7  +0.316  +15.3% won  5.7 tp 2.0 |  10.3  +0.250  +24.2% won  4.7 tp 0.0
+   1.95-2.05 |  13.0  -0.279  -21.4% won  3.0 tp 0.0 |  26.7  -0.070   -2.6% won  5.7 tp 1.0
+   2.05+     |    - |    -
+
+rules, 2 open, mean of 3 landings, raw (without the best 2) | week 1 | week 2
+   live: every 1.0+ buy, same stake   | +0.275 (-0.244) | +0.884 (+0.109)
+   only its 1.95+ buys                | -0.237 (-0.360) | -0.070 (-0.450)
+   only its 1.45+ buys                | +0.005 (-0.489) | +0.765 (-0.010)
+   double stake on its 1.95+ buys     | +0.079 (-0.440) | +0.873 (-0.078)

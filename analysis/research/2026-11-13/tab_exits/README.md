@@ -51,3 +51,10 @@ with the rule live at the time, 0.1 SOL:
 | **3 trades** | | **+0.0823** | **+0.0323** | **+16.7 points a trade** |
 
 The correction used for TAB16RxX is +8.5 to +10.5 points a trade. Three trades: too few to rely on.
+
+## Its bet size (`tab_size.py`, `out/tab_size.txt`, Nov 13)
+
+Its copyable buys are mostly 1.5 SOL (40) and 2.0 SOL (39). Our copy with the live rule, every copy, 0.1 SOL: its
+**2.0 SOL buys were the worst band in both weeks** (−21.4% and −2.6% a copy; 1.0-1.45 +18.5% / +2.3%, 1.45-1.6
+−38.2% on 3 / +13.3%, 1.6-1.95 +15.3% / +24.2%). Copying only its 2.0 buys: −0.237 and −0.070 (live +0.275 and
++0.884); doubling the stake on them: +0.079 and +0.873. No size rule.
