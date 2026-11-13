@@ -41,6 +41,9 @@ sha256 prefix checked on both), funded with 0.5 SOL from the long wallet (`send`
 its WBTC float (17,436 units). Why: its 9 paper trades Nov 12-13 −0.0220 SOL raw, +0.0545 with the +8.5-point gap
 measured on it; the 0.1 SOL run measures whether our real fills earn that gap. Stop if, at about 30 trades, they do
 not.
+TAB16RxX real against the model, trade by trade (the gap the 0.1 SOL run measures): #10 481Ntemy (Nov 13 11:56 UTC,
+pool+curve, landed in its slot 2 trades after it, timer at 300 s): real −0.0301 SOL on chain, model at that landing
+−0.0345: **real +4.4 points over the model.**
 **A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
 branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet
 that passed the pick-on-week-1 test (tp 3.0, 300 s: week 2 raw +13.76, corrected +20.95; week 1 raw −2.28 with the
