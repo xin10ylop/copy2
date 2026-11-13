@@ -1,0 +1,35 @@
+since Oct 29 12:02 UTC; tokens valued at {'3NZ9JMVB': 7950, 'pumpCmXq': 0.044, 'EPjFWdd5': 12.922, 'A7bdiYdS': 118.874, 'TTWofwAg': 2947.237, 'Xsc9qvGR': 20.807, 'XspzcW1P': 67.232, 'NVDAVuiB': 2079.617, 'SPCXxcqX': 1781.419, 'he1iusmf': 1.236}
+group       period  buys coins   spent     net       %  won w/o best 2
+routable    week 1          99   169.4  +39.15  +23.1%   47     +28.42
+routable    week 2         106   202.6  +19.51   +9.6%   46      +9.82
+routable    all      214   205   372.0  +58.66  +15.8%   93     +46.60
+3 hops      week 1          18    37.5  +28.32  +75.6%   13     +15.77
+3 hops      week 2           8    16.0  +11.26  +70.5%    6      +2.90
+3 hops      all       31    26    53.4  +39.58  +74.1%   19     +27.03
+no pool     week 1          62   104.0  +39.48  +38.0%   34     +23.04
+no pool     week 2         125   258.5  +47.00  +18.2%   56     +35.77
+no pool     all      292   187   362.4  +86.48  +23.9%   90     +70.05
+not checked week 1          41    78.3  +30.25  +38.6%   25     +19.19
+not checked week 2          68   128.3  +31.60  +24.6%   31     +19.69
+not checked all      109   109   206.6  +61.85  +29.9%   56     +47.60
+
+no pool and not checked, by the token it paid with:
+  pumpCmXq  157 coins  spent  312.1  net +83.11   +26.6%  won 77
+  SPCXxcqX   56 coins  spent  104.6  net +43.17   +41.3%  won 30
+  TTWofwAg   32 coins  spent   64.3  net  +9.43   +14.7%  won 17
+  EPjFWdd5   12 coins  spent   20.8  net  +2.73   +13.2%  won 6
+  XspzcW1P   12 coins  spent   20.8  net  +0.56    +2.7%  won 4
+  A7bdiYdS   12 coins  spent   20.2  net  +5.04   +24.9%  won 5
+  Xsc9qvGR    8 coins  spent   13.9  net  +2.61   +18.8%  won 4
+  he1iusmf    4 coins  spent    7.5  net  +1.65   +22.0%  won 2
+  NVDAVuiB    3 coins  spent    4.9  net  +0.03    +0.7%  won 1
+
+Nov 13 UTC, no pool:
+  02:44 Bvdx59oa Xsc9qvGR spent 1.58 net -0.120 (-7.6%)
+  04:16 xxh1tzYg pumpCmXq spent 2.10 net -0.149 (-7.1%)
+  12:23 9qHNeWBw pumpCmXq spent 1.63 net +2.163 (+132.9%)
+  13:26 8DgkUJJ8 pumpCmXq spent 2.48 net -0.490 (-19.8%)
+  17:07 A9GgjmnK Xsc9qvGR spent 1.62 net +1.689 (+104.0%)
+  17:13 5njLdCTU XspzcW1P spent 1.62 net -0.268 (-16.6%)
+  17:45 Esp1UqVg Xsc9qvGR spent 2.14 net -0.720 (-33.6%)
+  18:43 6HimP4fi pumpCmXq spent 2.03 net -0.142 (-7.0%)
