@@ -37,3 +37,17 @@ decoder, path and price model). `tab_cells.py` prints a few cells by landing (sa
   600 s, its sale followed within 60 s) week 1 raw +3.448, corrected +8.628; week 2 raw +10.148, corrected +19.725;
   **two weeks +28.35 corrected, about +2.0 SOL a day.** The old rule (tp 3.0, 300 s): +6.542 and +14.480 corrected,
   matching the lookalike study's exact check (+6.54 and +14.41).
+
+## Real trades against the model (`live_gap.py`, Nov 13)
+
+Our wallet's buy and sell on chain against `cmodel.model` at the exact landing (our own trade's position on the path),
+with the rule live at the time, 0.1 SOL:
+
+| Coin | Landing | Real | Model | Real − model |
+|---|---|---|---|---|
+| 481Ntemy (tp 3.0, 300 s) | its slot, 2 trades after | −0.0301 | −0.0345 | +4.4 points |
+| 4NBwggZy (tp 4.0, 600 s) | next slot, 1 trade after | +0.1394 | +0.0944 | +44.9 points |
+| fdjHiwNk (tp 4.0, 600 s) | its slot, 3 trades after | −0.0269 | −0.0276 | +0.7 points |
+| **3 trades** | | **+0.0823** | **+0.0323** | **+16.7 points a trade** |
+
+The correction used for TAB16RxX is +8.5 to +10.5 points a trade. Three trades: too few to rely on.
