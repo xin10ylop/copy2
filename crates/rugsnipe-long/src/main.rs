@@ -10,6 +10,9 @@
 //! rugsnipe-long float buy MINT SOL | float sell MINT all|AMOUNT [--config ...]
 //!     Buy or sell a float through Jupiter from the long wallet. Selling a
 //!     coin that is not a float (an airdrop) books its SOL for `status`.
+//! rugsnipe-long send TO SOL [--config ...]
+//!     Send SOL from the long wallet to TO (funding another bot's wallet):
+//!     a plain transfer, refused if it would leave under 0.1 SOL.
 //! rugsnipe-long float book SIG [--config ...]
 //!     Book a sale already made (its SOL change) for `status`.
 //! rugsnipe-long copy [--config /etc/rugsnipe/copier.toml]
@@ -63,6 +66,7 @@ fn main() {
         Some("run") => run(&args[1..]),
         Some("status") => status(&args[1..]),
         Some("float") => float(&args[1..]),
+        Some("send") => send_sol(&args[1..]),
         Some("keygen") => keygen(&args[1..]),
         Some("copy") => copy_run(&args[1..]),
         Some("copy-status") => copy_status(&args[1..]),
@@ -893,6 +897,48 @@ fn status(args: &[String]) -> Result<(), String> {
 
 /// Jupiter swap API v1 (lite).
 const JUP: &str = "https://lite-api.jup.ag/swap/v1";
+
+/// `send TO SOL`: a system transfer from the long wallet, waited for.
+fn send_sol(args: &[String]) -> Result<(), String> {
+    let cfg = load_cfg(args)?;
+    let k = keys::api_keys(&cfg.api_keys)?;
+    let rpc = rpc_of(&cfg, &k)?;
+    let signer = keys::wallet(&cfg.wallet_file)?;
+    let me = signer.pubkey();
+    let to: Pubkey = args.first().ok_or("send TO SOL")?.parse().map_err(|_| "TO is not an address")?;
+    let sol: f64 = args.get(1).ok_or("send TO SOL")?.parse().map_err(|_| "SOL")?;
+    if !(sol > 0.0 && sol <= 100.0) || to == me {
+        return Err("send TO SOL: SOL in (0, 100], TO another wallet".into());
+    }
+    let lamports = (sol * 1e9) as u64;
+    let bal = rpc.balance(&me)?;
+    if bal < lamports + 100_000_000 {
+        return Err(format!("balance {:.4} SOL: it would leave under 0.1 SOL", bal as f64 / 1e9));
+    }
+    let (bh, _) = rpc.blockhash()?;
+    let ixs = [pump_codec::instructions::system_transfer(&me, &to, lamports)];
+    let (tx, _) = txb::sign(&me, &ixs, &bh, |m| signer.sign(m)).map_err(|e| e.to_string())?;
+    let s = rpc.send(&tx)?;
+    println!("sent {sol} SOL from {} to {}: {s}", &me.to_string()[..8], to);
+    for _ in 0..30 {
+        std::thread::sleep(Duration::from_secs(2));
+        if let Ok(st) = rpc.statuses(std::slice::from_ref(&s)) {
+            match st.first() {
+                Some(Some(Ok(slot))) => {
+                    println!(
+                        "landed in slot {slot}; ours now {:.4} SOL, theirs {:.4} SOL",
+                        rpc.balance(&me).unwrap_or(0) as f64 / 1e9,
+                        rpc.balance(&to).unwrap_or(0) as f64 / 1e9
+                    );
+                    return Ok(());
+                }
+                Some(Some(Err(e))) => return Err(format!("failed: {e}")),
+                _ => {}
+            }
+        }
+    }
+    Err("not landed after 60 s (check the signature)".into())
+}
 
 /// Book a sale outside the copy (an airdropped coin sold) in
 /// `<state_dir>/extra.jsonl`: our SOL change in transaction `sig`.

@@ -103,6 +103,8 @@ within a slot** (`exits_pess.py`):
   against 3.5% on Oct 19-22, and on Oct 27-28 holding to our exits scored +3.10 against -0.51 behind it, on Oct
   19-27 about even (`analysis/research/2026-10-28/more/`). `float_stake_sol` stakes more on WBTC-routed copies
   (about +0.12 SOL a copy against +0.02 from wSOL).
+- **`send TO SOL`** (Nov 13): a plain SOL transfer from the long wallet (to fund another bot's wallet, such as
+  `rugsnipe-long-tab`'s), refused if it would leave under 0.1 SOL; waits for it to land.
 - **3-hop routes** (Nov 13, `route.rs` `MAX_OUR_HOPS = 3`): a transaction too long for legacy (a 3-hop buy or sell,
   about 1,270 bytes) is sent as v0 with pump's mainnet lookup table (`txb::sign`, `rugsnipe_tx::msg::compile_signed_v0`;
   the table is read from the chain at start: `long lookup table Hyif6eWb: 184 addresses`). Tests: the v0 round trip
