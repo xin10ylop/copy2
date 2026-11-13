@@ -1,0 +1,6 @@
+31 3-hop buys with a path
+  landing 4     : 26 copies, net +5.25 SOL (+20.2% a copy), without the best 2 +2.67; tp 5, won 14
+  landing 8     : 23 copies, net +3.35 SOL (+14.6% a copy), without the best 2 +0.81; tp 4, won 11
+  landing slot+1: 29 copies, net +6.65 SOL (+22.9% a copy), without the best 2 +4.17; tp 6, won 17
+  2 open, two weeks, routable only (live)  : +11.12 SOL (without the best 2 +6.77), mean of 3 landings
+  2 open, two weeks, routable + 3-hop      : +16.51 SOL (without the best 2 +12.16), mean of 3 landings

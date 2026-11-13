@@ -262,3 +262,7 @@ routable 206 (+59.60 SOL on 365.1, +16.3%, 88 of 197 won); **route of 3 hops 31 
 won, +28.31 without its best 2)**; no pool reaches the quote 114 (paid back in the quote, not valued here). Oct 19-27
 had 7 three-hop buys in 9.6 days (`2026-10-28/more/` §B: they fit in a v0 transaction with pump's lookup table,
 1,027 bytes). Our copy of them: `hops3_copy.py` (paths on Triton, one more pool hop each way charged).
+**Our copy of the 31 (raw model, live rule, `out/hops3_copy.txt`):** every copy, landing 4: 26 copies, +5.25 SOL
+(+20.2% a copy), +2.67 without the best 2, 14 won; landing 8: +3.35 (+14.6%); one block late: +6.65 (+22.9%). With
+the routable ones at 2 open, two weeks, mean of the 3 landings: **+16.51 SOL (+12.16 without the best 2) against
++11.12 (+6.77) for the routable ones alone.** Built Nov 13 (docs/20 §3, 3-hop routes).
