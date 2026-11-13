@@ -15,7 +15,9 @@ Two copied wallets, kept apart, and the bots that copy them:
 
 Wallet 4's strategies:
 - **Strategy A, the long copy:** `crates/rugsnipe-long`. **Live again since Nov 12 01:23 UTC** on a Vultr Frankfurt box
-  (`fra-long`, user `ops`, prompt `ops@fra-long`): 0.1 SOL × 2, take profit 2.5, no stop, daily stop 0.3, wallet
+  (`fra-long`, user `ops`, prompt `ops@fra-long`): since Nov 12-13 0.5 SOL × 2, take profit 2.4, no stop, 30 min,
+  daily stop 1.0, the early-sale rule (`follow_early_s = [30, 180]`), 3-hop routes (v0); a second unit
+  `rugsnipe-long-tab` copies TAB16RxX in paper (README "Live again"). Wallet
   `Eao8T2Pk...` (its key copied to the owner's Mac first). Before that, **stopped on Oct 29 ~13:40 UTC: Cherry deleted the hourly
   Frankfurt box (`fra-long`) for a zero balance, and the wallet's only key file with it; 4.5 SOL at `E7KX1hcM...` are
   lost** (`03-strategy-A-long-copy/deploy-frankfurt.md`, top). It had run live Oct 28 18:34 to Oct 29 11:52 UTC at 0.1,
@@ -129,8 +131,8 @@ bash data/datasets/unpack.sh h9long     # one archive
    2 hours at night on Oct 28-29), its early-sale rate; stop at once if it goes quiet 3 hours or sends 10+ SOL out. Check every trade on chain as `deploy-frankfurt.md` §6 does; the
    backtest under the live conditions is `analysis/research/2026-10-28/fresh/land_cond.py`.
 4. Not built: an alarm when wallet 4 goes quiet or sends SOL out (its predecessor was emptied in one evening); a
-   successor scan by its fingerprint (`07-rework-2026-10-28/wallet-check.md` §7); 3-hop routes via a v0 transaction
-   (about +0.1 SOL a day); the "can wait" list of the code review.
+   successor scan by its fingerprint (`07-rework-2026-10-28/wallet-check.md` §7); the "can wait" list of the code
+   review. (3-hop routes: built and live Nov 13, docs/20 §3.)
    **Other wallets to copy: searched Oct 29, none found** (`analysis/research/2026-10-29/wallets/README.md`: six scored
    in full, all flip or sell on short timers; the nearest, `3dwZP6T8`, is worth re-scoring after a week).
 5. Strategy D stays stopped. If the hot bot ever runs again, deploy the graduation fix `af681ad` first.
