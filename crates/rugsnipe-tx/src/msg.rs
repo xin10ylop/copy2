@@ -163,6 +163,94 @@ pub fn compile_signed_legacy(
     Ok((bytes, sig))
 }
 
+/// An address lookup table: its account and the addresses it holds, in
+/// order (an address's index in the table is its position here).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct LookupTable {
+    pub key: Pubkey,
+    pub addresses: Vec<Pubkey>,
+}
+
+/// [`keys_for`] compiled into a v0 transaction that loads from `table`
+/// every key it holds that is neither a signer nor a program id (the
+/// runtime only invokes static keys), signed by `sign` (the payer alone).
+/// Layout: `compact(n_sigs) | sigs | 0x80 | header(3) | compact(n_static) |
+/// static keys | blockhash | compact(n_ix) | (prog u8 | compact(n) | idx* |
+/// compact(len) | data)* | compact(1) | table | compact(n_w) | w idx* |
+/// compact(n_r) | r idx*`; account indexes run over the static keys, then
+/// the loaded writable, then the loaded read-only ones.
+pub fn compile_signed_v0(
+    payer: &Pubkey,
+    ixs: &[Instruction],
+    blockhash: &[u8; 32],
+    table: &LookupTable,
+    sign: impl FnOnce(&[u8]) -> [u8; 64],
+) -> Result<(Vec<u8>, [u8; 64]), CompileError> {
+    let keys = keys_for(payer, ixs);
+    let programs: Vec<Pubkey> = ixs.iter().map(|ix| ix.program_id).collect();
+    let in_table = |k: &Pubkey| table.addresses.iter().position(|a| a == k);
+    let loadable =
+        |k: &KeySpec| !k.signer && !programs.contains(&k.key) && in_table(&k.key).is_some();
+    let stat: Vec<KeySpec> = keys.iter().filter(|k| !loadable(k)).copied().collect();
+    let lw: Vec<KeySpec> = keys
+        .iter()
+        .filter(|k| loadable(k) && k.writable)
+        .copied()
+        .collect();
+    let lr: Vec<KeySpec> = keys
+        .iter()
+        .filter(|k| loadable(k) && !k.writable)
+        .copied()
+        .collect();
+    if stat.iter().filter(|k| k.signer).count() != 1 {
+        return Err(CompileError::TooMany("signers (the payer must sign alone)"));
+    }
+    if keys.len() > 256 || table.addresses.len() > 256 || ixs.len() > 64 {
+        return Err(CompileError::TooMany("keys/instructions"));
+    }
+    let all: Vec<Pubkey> = stat.iter().chain(&lw).chain(&lr).map(|k| k.key).collect();
+    let idx = |k: &Pubkey| all.iter().position(|a| a == k);
+    let n_ro_signed = stat.iter().filter(|k| k.signer && !k.writable).count();
+    let n_ro_unsigned = stat.iter().filter(|k| !k.signer && !k.writable).count();
+    let mut out = Vec::with_capacity(1_232);
+    compact_u16(&mut out, 1);
+    let sigs = out.len();
+    out.resize(out.len() + 64, 0);
+    let msg_start = out.len();
+    out.push(0x80);
+    out.extend_from_slice(&[1, n_ro_signed as u8, n_ro_unsigned as u8]);
+    compact_u16(&mut out, stat.len());
+    for k in &stat {
+        out.extend_from_slice(k.key.as_ref());
+    }
+    out.extend_from_slice(blockhash);
+    compact_u16(&mut out, ixs.len());
+    for ix in ixs {
+        let p = idx(&ix.program_id).ok_or(CompileError::MissingKey(ix.program_id))?;
+        out.push(p as u8);
+        compact_u16(&mut out, ix.accounts.len());
+        for m in &ix.accounts {
+            out.push(idx(&m.pubkey).ok_or(CompileError::MissingKey(m.pubkey))? as u8);
+        }
+        compact_u16(&mut out, ix.data.len());
+        out.extend_from_slice(&ix.data);
+    }
+    compact_u16(&mut out, 1);
+    out.extend_from_slice(table.key.as_ref());
+    for part in [&lw, &lr] {
+        compact_u16(&mut out, part.len());
+        for k in part.iter() {
+            out.push(in_table(&k.key).expect("loadable keys are in the table") as u8);
+        }
+    }
+    if out.len() > crate::MAX_TX_LEN {
+        return Err(CompileError::TooLong(out.len()));
+    }
+    let sig = sign(&out[msg_start..]);
+    out[sigs..sigs + 64].copy_from_slice(&sig);
+    Ok((out, sig))
+}
+
 /// Compile `ixs` over the exact key order `keys` into a zero-signed
 /// transaction. Every instruction account must exist in `keys` with at
 /// least the flags the instruction asks for; extra flags are an error
@@ -315,6 +403,78 @@ pub fn compile(
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn a_v0_transaction_loads_from_the_table_and_decodes_to_the_same_instructions() {
+        use pump_codec::instructions::AccountLookup;
+        use pump_codec::tx::{TxVersion, TxView};
+        let u = |n: u8| Pubkey::new_from_array([n; 32]);
+        let (payer, prog_a, prog_b) = (u(1), u(2), u(3));
+        // in the table: a program (must stay static), a writable and two read-only keys
+        let table = LookupTable {
+            key: u(99),
+            addresses: vec![u(50), prog_b, u(10), u(11), u(12)],
+        };
+        let ixs = vec![
+            Instruction {
+                program_id: prog_a,
+                accounts: vec![
+                    AccountMeta::new(payer, true),
+                    AccountMeta::new(u(10), false),
+                    AccountMeta::new_readonly(u(11), false),
+                    AccountMeta::new(u(20), false),
+                ],
+                data: vec![1, 2, 3],
+            },
+            Instruction {
+                program_id: prog_b,
+                accounts: vec![
+                    AccountMeta::new_readonly(u(12), false),
+                    AccountMeta::new_readonly(u(21), false),
+                    AccountMeta::new(u(10), false),
+                ],
+                data: vec![9],
+            },
+        ];
+        let (bytes, sig) = compile_signed_v0(&payer, &ixs, &[5; 32], &table, |m| {
+            assert_eq!(m[0], 0x80, "the message starts with the v0 prefix");
+            [7; 64]
+        })
+        .unwrap();
+        assert_eq!(sig, [7; 64]);
+        let v = TxView::parse(&bytes).unwrap();
+        assert_eq!(v.version(), TxVersion::V0);
+        assert_eq!(v.fee_payer(), &payer);
+        assert_eq!(v.recent_blockhash(), &[5; 32]);
+        assert_eq!(v.signature(0), Some(&[7; 64]));
+        let lk: Vec<_> = v.address_table_lookups().collect();
+        assert_eq!(lk.len(), 1);
+        assert_eq!(lk[0].account_key, &u(99));
+        // the runtime resolves writable indexes first, then read-only ones
+        let loaded: Vec<Pubkey> = lk[0]
+            .writable_indexes
+            .iter()
+            .chain(lk[0].readonly_indexes)
+            .map(|i| table.addresses[*i as usize])
+            .collect();
+        assert_eq!(loaded, vec![u(10), u(11), u(12)]);
+        assert!(!v.static_account_keys().contains(&u(10)));
+        assert!(
+            v.static_account_keys().contains(&prog_b),
+            "programs stay static"
+        );
+        for (ix, view) in ixs.iter().zip(v.instructions()) {
+            assert_eq!(v.program_id(&view), &ix.program_id);
+            let acc = v.instruction_accounts(&view, Some(&loaded));
+            assert_eq!(acc.account_count(), ix.accounts.len());
+            for (i, m) in ix.accounts.iter().enumerate() {
+                assert_eq!(acc.account(i), Some(m.pubkey));
+                let t = acc.index(i).unwrap() as usize;
+                assert_eq!(v.is_signer(t), m.is_signer, "{i}");
+                assert!(v.is_writable(t) >= m.is_writable, "{i}");
+            }
+        }
+    }
 
     #[test]
     fn compact_encoding() {

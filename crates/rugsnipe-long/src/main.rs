@@ -102,6 +102,7 @@ fn simulate(args: &[String]) -> Result<(), String> {
         .map_err(|_| "--buyback N")?;
     let close_coin = args.iter().any(|a| a == "--close");
     let mut rpc = Rpc::new(&url);
+    load_pump_alt(&rpc);
     let tx = TxLite::from_rpc_json(&rpc.transaction(&sig)?)?;
     let seen = detect::read(&tx, &w4, &|_| None);
     let t = seen
@@ -301,6 +302,7 @@ fn simulate_sell(args: &[String]) -> Result<(), String> {
         anchors.push(f.parse().map_err(|_| "--float MINT")?);
     }
     let mut rpc = Rpc::new(&url);
+    load_pump_alt(&rpc);
     let coin_program = route::Chain::mint_program(&mut rpc, &mint).ok_or("coin program")?;
     let quote_program = route::Chain::mint_program(&mut rpc, &quote).ok_or("quote program")?;
     let tokens = rpc.token_balance(&user, &mint, &coin_program)?;
@@ -452,11 +454,33 @@ fn rpc_of(cfg: &LongCfg, k: &rugsnipe_tx::senders::ApiKeys) -> Result<Rpc, Strin
     Ok(Rpc::new(&keys::resolve_url(k, &cfg.rpc_url)?))
 }
 
+/// pump's lookup table for v0 transactions (a 3-hop route needs it), read
+/// from the chain once; without it a 3-hop route cannot be sent.
+fn load_pump_alt(rpc: &Rpc) {
+    for i in 0..3 {
+        match rpc.accounts(&[c::PUMP_MAINNET_ALT]) {
+            Ok(a) => {
+                match a.first().cloned().flatten().and_then(|a| txb::parse_lookup_table(c::PUMP_MAINNET_ALT, &a.data)) {
+                    Some(t) => {
+                        println!("long lookup table {}: {} addresses", &c::PUMP_MAINNET_ALT.to_string()[..8], t.addresses.len());
+                        txb::set_lookup_table(t);
+                    }
+                    None => eprintln!("long: pump's lookup table unreadable: 3-hop routes cannot be sent"),
+                }
+                return;
+            }
+            Err(e) if i == 2 => eprintln!("long: pump's lookup table not read ({e}): 3-hop routes cannot be sent"),
+            Err(_) => std::thread::sleep(Duration::from_secs(1)),
+        }
+    }
+}
+
 fn run(args: &[String]) -> Result<(), String> {
     let cfg = load_cfg(args)?;
     let hot = load_hot(&cfg)?;
     let k = keys::api_keys(&cfg.api_keys)?;
     let rpc = rpc_of(&cfg, &k)?;
+    load_pump_alt(&rpc);
     // the wallet: required for real trading; paper uses it (if present) to
     // see our own transactions, which it never sends
     let signer = match keys::wallet(&cfg.wallet_file) {

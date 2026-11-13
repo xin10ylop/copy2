@@ -15,8 +15,10 @@ use pump_codec::multihop::{Hop, Route};
 use pump_codec::{pda, Pubkey};
 
 /// Longest route we send: 3 hops is about 1,270 bytes with the wrap,
-/// budget, ATA and tip instructions, over the 1,232-byte limit (docs/20).
-pub const MAX_OUR_HOPS: usize = 2;
+/// budget, ATA and tip instructions, over the 1,232-byte legacy limit; it
+/// goes as v0 with pump's lookup table, about 1,027 bytes (`txb::sign`;
+/// since 2026-11-13: wallet 4's 3-hop buys made +74.5% Oct 29 - Nov 12).
+pub const MAX_OUR_HOPS: usize = 3;
 
 /// Chain facts the planner needs (cached by the caller).
 pub trait Chain {
@@ -193,7 +195,8 @@ mod tests {
         assert_eq!(p.route, r);
         assert_eq!(p.how, "copied");
         assert_eq!(p.anchor_program, c::SPL_TOKEN_PROGRAM_ID);
-        // from a float we do not hold, and no pool to put in front within 2 hops
+        // from a float we do not hold: a pool from wrapped SOL to it in
+        // front, 3 hops (sent as v0); without that pool, no route
         let wbtc = k(3);
         let pool_w = Hop::pool(
             &k(8),
@@ -205,7 +208,36 @@ mod tests {
         let rw = Route::new(wbtc, vec![pool_w, curve]).unwrap();
         assert_eq!(
             plan(&trig(Some(rw.clone()), q), &[c::WSOL_MINT], &mut f),
-            Err(NoRoute::TooLong(3))
+            Err(NoRoute::NoAnchor(wbtc))
+        );
+        let mut fw = Fake {
+            pools: [pda::canonical_pump_swap_pool(&wbtc, &c::WSOL_MINT)]
+                .into_iter()
+                .collect(),
+        };
+        let p3 = plan(&trig(Some(rw.clone()), q), &[c::WSOL_MINT], &mut fw).unwrap();
+        assert_eq!(p3.how, "copied+pool");
+        assert_eq!(p3.route.mints(), vec![c::WSOL_MINT, wbtc, q, k(7)]);
+        // its own 3-hop route from wrapped SOL: copied; a 4th hop is too long
+        let r3 = Route::new(c::WSOL_MINT, p3.route.hops.clone()).unwrap();
+        assert_eq!(
+            plan(&trig(Some(r3.clone()), q), &[c::WSOL_MINT], &mut f)
+                .unwrap()
+                .how,
+            "copied"
+        );
+        let mut h4 = vec![Hop::pool(
+            &k(6),
+            &wbtc,
+            &c::SPL_TOKEN_PROGRAM_ID,
+            &k(4),
+            &c::SPL_TOKEN_PROGRAM_ID,
+        )];
+        h4.extend(p3.route.hops.iter().skip(1).copied());
+        let r4 = Route::new(k(4), h4).unwrap();
+        assert_eq!(
+            plan(&trig(Some(r4), q), &[c::WSOL_MINT], &mut fw),
+            Err(NoRoute::TooLong(4))
         );
         // held as a float: copied as is
         assert_eq!(

@@ -1,5 +1,7 @@
-//! Our buy and sell transactions (legacy, no lookup table: a 2-hop route
-//! with the wrap, the ATA, the budget and the tip fits, as wallet 4's own do).
+//! Our buy and sell transactions: legacy when they fit (a 2-hop route with
+//! the wrap, the ATA, the budget and the tip does), else v0 with pump's own
+//! lookup table (a 3-hop route: about 1,270 bytes legacy, 1,027 v0;
+//! `analysis/research/2026-10-28/more/` §B).
 //!
 //! * **Buy**: compute budget; when paying wrapped SOL, create our wSOL ATA,
 //!   transfer the stake in, `SyncNative`; create the coin ATA;
@@ -13,7 +15,35 @@ use pump_codec::constants as c;
 use pump_codec::instructions as pi;
 use pump_codec::multihop::{self, MultiHop, Route};
 use pump_codec::{pda, Instruction, Pubkey};
-use rugsnipe_tx::msg::{compile_signed_legacy, CompileError};
+use rugsnipe_tx::msg::{compile_signed_legacy, compile_signed_v0, CompileError, LookupTable};
+use std::sync::OnceLock;
+
+/// pump's mainnet lookup table (`PUMP_MAINNET_ALT`), read from the chain at
+/// start ([`set_lookup_table`]): a transaction too big for legacy is sent
+/// as v0 with it.
+static PUMP_ALT: OnceLock<LookupTable> = OnceLock::new();
+
+/// The addresses of a lookup table account (they start after its 56-byte
+/// header).
+pub fn parse_lookup_table(key: Pubkey, data: &[u8]) -> Option<LookupTable> {
+    let body = data.get(56..)?;
+    (body.len() % 32 == 0 && !body.is_empty()).then(|| LookupTable {
+        key,
+        addresses: body
+            .chunks_exact(32)
+            .map(|c| Pubkey::new_from_array(c.try_into().expect("32 bytes")))
+            .collect(),
+    })
+}
+
+/// Set pump's lookup table once (later calls are ignored).
+pub fn set_lookup_table(t: LookupTable) {
+    let _ = PUMP_ALT.set(t);
+}
+
+pub fn lookup_table() -> Option<&'static LookupTable> {
+    PUMP_ALT.get()
+}
 
 /// Budget and tip of one transaction.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -141,14 +171,32 @@ pub fn sell_ixs(
     v
 }
 
-/// Compile and sign (legacy). `sign` signs the message bytes.
+/// Compile and sign: legacy, or v0 with pump's lookup table when legacy is
+/// too long (a 3-hop route). `sign` signs the message bytes.
 pub fn sign(
     user: &Pubkey,
     ixs: &[Instruction],
     blockhash: &[u8; 32],
-    sign: impl FnOnce(&[u8]) -> [u8; 64],
+    sign: impl Fn(&[u8]) -> [u8; 64],
 ) -> Result<(Vec<u8>, [u8; 64]), CompileError> {
-    compile_signed_legacy(user, ixs, blockhash, sign)
+    sign_with(user, ixs, blockhash, lookup_table(), sign)
+}
+
+/// [`sign`] with an explicit table (tests).
+pub fn sign_with(
+    user: &Pubkey,
+    ixs: &[Instruction],
+    blockhash: &[u8; 32],
+    table: Option<&LookupTable>,
+    sign: impl Fn(&[u8]) -> [u8; 64],
+) -> Result<(Vec<u8>, [u8; 64]), CompileError> {
+    match compile_signed_legacy(user, ixs, blockhash, &sign) {
+        Err(CompileError::TooLong(n)) => match table {
+            Some(t) => compile_signed_v0(user, ixs, blockhash, t, &sign),
+            None => Err(CompileError::TooLong(n)),
+        },
+        r => r,
+    }
 }
 
 #[cfg(test)]
@@ -214,6 +262,104 @@ mod tests {
         assert!(bytes.len() <= rugsnipe_tx::MAX_TX_LEN, "{}", bytes.len());
         assert_eq!(sig, [7; 64]);
         assert_eq!(&bytes[1..65], &[7; 64]);
+    }
+
+    #[test]
+    fn a_three_hop_buy_and_sell_go_as_v0_with_pumps_table_and_fit() {
+        use pump_codec::tx::{TxVersion, TxView};
+        // pump's mainnet lookup table as read from the chain on 2026-11-13 (184 addresses)
+        let table = parse_lookup_table(
+            c::PUMP_MAINNET_ALT,
+            include_bytes!("../tests/fixtures/pump_alt.bin"),
+        )
+        .unwrap();
+        assert_eq!(table.addresses.len(), 184);
+        let user = k(1);
+        let (q1, q2, coin) = (k(4), k(5), k(7));
+        let r = Route::new(
+            c::WSOL_MINT,
+            vec![
+                Hop::pool(
+                    &k(9),
+                    &q1,
+                    &c::SPL_TOKEN_PROGRAM_ID,
+                    &c::WSOL_MINT,
+                    &c::SPL_TOKEN_PROGRAM_ID,
+                ),
+                Hop::pool(
+                    &k(8),
+                    &q2,
+                    &c::TOKEN_2022_PROGRAM_ID,
+                    &q1,
+                    &c::SPL_TOKEN_PROGRAM_ID,
+                ),
+                Hop::curve(
+                    &coin,
+                    &c::TOKEN_2022_PROGRAM_ID,
+                    &q2,
+                    &c::TOKEN_2022_PROGRAM_ID,
+                ),
+            ],
+        )
+        .unwrap();
+        let fees = Fees {
+            cu_limit: 400_000,
+            cu_price: 2_000_000,
+            tip: Some((k(2), 1_000_000)),
+        };
+        let b = buy_ixs(
+            &user,
+            &r,
+            &c::SPL_TOKEN_PROGRAM_ID,
+            &c::TOKEN_2022_PROGRAM_ID,
+            500_000_000,
+            1,
+            &fees,
+            0,
+        );
+        let s = sell_ixs(
+            &user,
+            &r.reversed(),
+            &c::SPL_TOKEN_PROGRAM_ID,
+            &c::TOKEN_2022_PROGRAM_ID,
+            5,
+            1,
+            true,
+            &fees,
+            0,
+        );
+        for ixs in [&b, &s] {
+            // too long for legacy: refused without the table
+            assert!(matches!(
+                sign_with(&user, ixs, &[0; 32], None, |_| [7; 64]),
+                Err(CompileError::TooLong(_))
+            ));
+            let (bytes, sig) = sign_with(&user, ixs, &[0; 32], Some(&table), |_| [7; 64]).unwrap();
+            assert!(bytes.len() <= rugsnipe_tx::MAX_TX_LEN, "{}", bytes.len());
+            assert_eq!(sig, [7; 64]);
+            let v = TxView::parse(&bytes).unwrap();
+            assert_eq!(v.version(), TxVersion::V0);
+            assert_eq!(v.fee_payer(), &user);
+            assert_eq!(v.num_instructions(), ixs.len());
+            let (w, ro) = v.num_lookup_accounts();
+            assert!(
+                w + ro >= 8,
+                "pump's fixed accounts come from the table: {w} + {ro}"
+            );
+        }
+        // a 2-hop buy stays legacy with the table set
+        let b2 = buy_ixs(
+            &user,
+            &two_hops_from_wsol(),
+            &c::SPL_TOKEN_PROGRAM_ID,
+            &c::TOKEN_2022_PROGRAM_ID,
+            1,
+            1,
+            &fees,
+            0,
+        );
+        let (bytes, _) = sign_with(&user, &b2, &[0; 32], Some(&table), |_| [7; 64]).unwrap();
+        assert_eq!(TxView::parse(&bytes).unwrap().version(), TxVersion::Legacy);
     }
 
     #[test]
