@@ -588,9 +588,23 @@ fn status(args: &[String]) -> Result<(), String> {
     let oracle = Oracle::default();
     let mut sol_usd: Option<f64> = None;
     if args.iter().any(|a| a == "--chain") {
-        let ids: Vec<String> = std::iter::once(c::WSOL_MINT.to_string())
+        // also the quote tokens of the trades shown: the copied wallet may be
+        // paid in them (TAB16RxX sells a coin into its quote token)
+        let mut shown: Vec<rugsnipe_long::pos::Position> =
+            std::fs::read_to_string(dir.join("closed.jsonl"))
+                .unwrap_or_default()
+                .lines()
+                .filter_map(|l| serde_json::from_str(l).ok())
+                .collect();
+        shown.sort_by_key(|p| std::cmp::Reverse(p.closed_ms));
+        let mut ids: Vec<String> = std::iter::once(c::WSOL_MINT.to_string())
             .chain(cfg.floats.iter().cloned())
             .collect();
+        for p in shown.iter().take(last) {
+            if !ids.contains(&p.quote_mint) && ids.len() < 45 {
+                ids.push(p.quote_mint.clone());
+            }
+        }
         if let Ok((200, body)) = rugsnipe_tx::rpc::HttpGet::new(Duration::from_secs(10), 1 << 20)
             .get(&format!("{}?ids={}", cfg.price_api, ids.join(",")))
         {

@@ -49,6 +49,23 @@ week 2 +3.08 (−3.23), corrected +13.03. Raw without the best 2 is negative in 
 rests on the correction (+10.5 / +8.5 points, measured on its own trades, never yet on our fills). Without the WBTC
 routes it loses raw in both weeks. Weaker than the route-class approximation (+13.76 raw in week 2).
 
+**Wallet 4 against us on the same coins, Nov 12 (status --chain on the box):**
+
+| # | Coin | Us | Wallet 4 | It sold after |
+|---|---|---|---|---|
+| 0 | Ci9Bg1Bx | −59.7% | +2.9% | 303 s |
+| 1 | BttUQVPM | −45.5% | −28.1% | 179 s |
+| 2 | 5tePJcGm | +353.1% | +113.3% | 224 s |
+| 3 | 7dDprVHP | −22.1% | −11.3% | 302 s |
+| 4 | 57pQW4mw | −2.5% | −24.0% | 182 s |
+| 5 | Eymbsj8M | +124.6% | +93.4% | 289 s |
+| 6 | GZn6HC8d | −75.3% | −71.4% | 141 s |
+| 7 | GaHAZThn | −37.7% | −13.6% | 299 s |
+
+Average a trade: us +29.4%, wallet 4 +7.7%. The early-sale rule (`follow_early_s`, on since Nov 12 23:54 UTC) would
+have followed its sales on #1 (179 s) and #6 (141 s). TAB16RxX in paper: 2 closed on Nov 12 (4GrVD8NA −24.6%,
+BW41hQ7J −35.0%, both on the 300 s timer).
+
 **First 3 closed (Nov 12, checked on chain, journal = chain):** +0.2479 SOL. All three landed in wallet 4's own block
 (3, 7 and 8 coin trades between its buy and ours).
 
