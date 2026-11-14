@@ -316,6 +316,24 @@ impl Rpc {
             .unwrap_or(0))
     }
 
+    /// `owner`'s token accounts under `program`: (account, mint, raw amount).
+    pub fn token_accounts(&self, owner: &Pubkey, program: &Pubkey) -> Result<Vec<(Pubkey, Pubkey, u64)>, String> {
+        let v = self.rpc.call(
+            "getTokenAccountsByOwner",
+            json!([owner.to_string(), {"programId": program.to_string()}, {"encoding": "base64", "commitment": "confirmed"}]),
+        )?;
+        Ok(v["value"]
+            .as_array()
+            .ok_or("getTokenAccountsByOwner: no value")?
+            .iter()
+            .filter_map(|a| {
+                let k: Pubkey = a["pubkey"].as_str()?.parse().ok()?;
+                let d = b64(a["account"]["data"][0].as_str()?);
+                Some((k, Pubkey::try_from(d.get(..32)?).ok()?, token_amount(&d)))
+            })
+            .collect())
+    }
+
     pub fn balance(&self, k: &Pubkey) -> Result<u64, String> {
         let v = self.rpc.call(
             "getBalance",

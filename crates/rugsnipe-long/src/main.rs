@@ -10,9 +10,10 @@
 //! rugsnipe-long float buy MINT SOL | float sell MINT all|AMOUNT [--config ...]
 //!     Buy or sell a float through Jupiter from the long wallet. Selling a
 //!     coin that is not a float (an airdrop) books its SOL for `status`.
-//! rugsnipe-long send TO SOL [--config ...]
+//! rugsnipe-long send TO SOL|all [--config ...]
 //!     Send SOL from the long wallet to TO (funding another bot's wallet):
-//!     a plain transfer, refused if it would leave under 0.1 SOL.
+//!     a plain transfer, refused if it would leave under 0.1 SOL. `all`
+//!     empties the wallet: its empty token accounts closed, every lamport sent.
 //! rugsnipe-long float book SIG [--config ...]
 //!     Book a sale already made (its SOL change) for `status`.
 //! rugsnipe-long copy [--config /etc/rugsnipe/copier.toml]
@@ -906,7 +907,10 @@ fn send_sol(args: &[String]) -> Result<(), String> {
     let signer = keys::wallet(&cfg.wallet_file)?;
     let me = signer.pubkey();
     let to: Pubkey = args.first().ok_or("send TO SOL")?.parse().map_err(|_| "TO is not an address")?;
-    let sol: f64 = args.get(1).ok_or("send TO SOL")?.parse().map_err(|_| "SOL")?;
+    if args.get(1).map(String::as_str) == Some("all") {
+        return send_all(&rpc, &signer, &to);
+    }
+    let sol: f64 = args.get(1).ok_or("send TO SOL|all")?.parse().map_err(|_| "SOL")?;
     if !(sol > 0.0 && sol <= 100.0) || to == me {
         return Err("send TO SOL: SOL in (0, 100], TO another wallet".into());
     }
@@ -938,6 +942,71 @@ fn send_sol(args: &[String]) -> Result<(), String> {
         }
     }
     Err("not landed after 60 s (check the signature)".into())
+}
+
+/// Wait up to 60 s for `s` to land.
+fn landed(rpc: &Rpc, s: &str) -> Result<u64, String> {
+    for _ in 0..30 {
+        std::thread::sleep(Duration::from_secs(2));
+        if let Ok(st) = rpc.statuses(&[s.to_string()]) {
+            match st.first() {
+                Some(Some(Ok(slot))) => return Ok(*slot),
+                Some(Some(Err(e))) => return Err(format!("{s} failed: {e}")),
+                _ => {}
+            }
+        }
+    }
+    Err(format!("{s} not landed after 60 s"))
+}
+
+/// `send TO all`: empty the wallet (a bot paused for good, 2026-11-14): close
+/// its empty token accounts (their rent comes back), then send every lamport
+/// but the fee. Accounts still holding tokens are listed and left; sell them
+/// first (`float sell MINT all`).
+fn send_all(rpc: &Rpc, signer: &rugsnipe_tx::signer::HotSigner, to: &Pubkey) -> Result<(), String> {
+    let me = signer.pubkey();
+    let mut empty = vec![];
+    for p in [c::SPL_TOKEN_PROGRAM_ID, c::TOKEN_2022_PROGRAM_ID] {
+        for (k, mint, amount) in rpc.token_accounts(&me, &p)? {
+            // wrapped SOL is closed whatever it holds: its lamports come back
+            if amount == 0 || mint == c::WSOL_MINT {
+                empty.push((p, k));
+            } else {
+                println!("left: {} holds {amount} of {mint} (sell it first to send its value)", &k.to_string()[..8]);
+            }
+        }
+    }
+    for chunk in empty.chunks(10) {
+        let ixs: Vec<_> = chunk
+            .iter()
+            .map(|(p, k)| pump_codec::instructions::token_close_account(p, k, &me, &me))
+            .collect();
+        let (bh, _) = rpc.blockhash()?;
+        let (tx, _) = txb::sign(&me, &ixs, &bh, |m| signer.sign(m)).map_err(|e| e.to_string())?;
+        // a close that fails (a Token-2022 account with withheld fees) costs
+        // only its rent: the SOL is sent all the same
+        match rpc.send(&tx).and_then(|s| landed(rpc, &s).map(|slot| (s, slot))) {
+            Ok((s, slot)) => println!("closed {} empty token accounts: {s} (slot {slot})", chunk.len()),
+            Err(e) => println!("could not close {} token accounts ({e}); going on", chunk.len()),
+        }
+    }
+    let bal = rpc.balance(&me)?;
+    if bal <= 5_000 {
+        return Err(format!("balance {bal} lamports: nothing to send"));
+    }
+    let lamports = bal - 5_000; // one signature's fee; the account closes at 0
+    let (bh, _) = rpc.blockhash()?;
+    let ixs = [pump_codec::instructions::system_transfer(&me, to, lamports)];
+    let (tx, _) = txb::sign(&me, &ixs, &bh, |m| signer.sign(m)).map_err(|e| e.to_string())?;
+    let s = rpc.send(&tx)?;
+    println!("sent {:.9} SOL (all) from {} to {to}: {s}", lamports as f64 / 1e9, &me.to_string()[..8]);
+    let slot = landed(rpc, &s)?;
+    println!(
+        "landed in slot {slot}; ours now {:.9} SOL, theirs {:.4} SOL",
+        rpc.balance(&me).unwrap_or(0) as f64 / 1e9,
+        rpc.balance(to).unwrap_or(0) as f64 / 1e9
+    );
+    Ok(())
 }
 
 /// Book a sale outside the copy (an airdropped coin sold) in
