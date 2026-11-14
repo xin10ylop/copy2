@@ -1,0 +1,27 @@
+(1) the real take profits: the coin's high within 30 min of its buy, and when it passed 3.0x
+   5tePJcGm: high 5.96x, passed 3.0x at 473 s
+   Eymbsj8M: high 10.00x, passed 3.0x at 389 s
+   BUdiaswB: high 3.62x, passed 3.0x at 643 s
+   BTCmcoKg (WBTC-paid, under 1.45 SOL at the study's WBTC price, fetched apart): high 4.75x at 49 s, passed 3.0x at 29 s
+
+(2) 443 coins: our buy 4 trades after his pays +5.9% over the price his buy left (median; a quarter pay over +11.1%)
+    his first sale moves the price by -7.4% (median; a quarter by -10.9% or more): he sells at 1.02x, the next seller at 0.95x
+
+(3) our real trades in the model (landing 4, the real stake), SOL: the rule live then | his every sale followed | the new rule (tp 3.0, 1200 s, early 30-290)
+   #0  Ci9Bg1Bx real -0.0597 | -0.0371 (time    ) | -0.0111 (its_sell  353 s) | -0.0371 (time     1791 s)
+   #1  BttUQVPM real -0.0455 | -0.0432 (time    ) | -0.0356 (its_sell  211 s) | -0.0356 (its_sell  211 s)
+   #2  5tePJcGm real +0.3531 | +0.1612 (tp      ) | +0.1144 (its_sell  224 s) | +0.2892 (tp        473 s)
+   #3  7dDprVHP real -0.1106 | -0.1659 (time    ) | -0.1416 (its_sell  810 s) | -0.1659 (time     1790 s)
+   #4  57pQW4mw real -0.0124 | -0.2133 (time    ) | -0.0012 (its_sell  183 s) | -0.0012 (its_sell  183 s)
+   #5  Eymbsj8M real +0.6228 | +0.4610 (tp      ) | +0.3444 (its_sell  289 s) | +0.7463 (tp        389 s)
+   #6  GZn6HC8d real -0.3763 | -0.3810 (time    ) | -0.3403 (its_sell  141 s) | -0.3403 (its_sell  141 s)
+   #7  GaHAZThn real -0.1884 | -0.2023 (time    ) | -0.1354 (its_sell  307 s) | -0.2023 (time     1790 s)
+   #8  3EKoHX4f real -0.0600 | -0.0961 (time    ) | -0.0961 (its_sell 1790 s) | -0.0961 (time     1790 s)
+   #9  6S3iL67j real -0.0907 | -0.1220 (time    ) | -0.0704 (its_sell  359 s) | -0.1214 (time     1377 s)
+   #10 BUdiaswB real +1.3340 | +0.5321 (tp      ) | +0.5321 (tp        268 s) | +0.8242 (tp        643 s)
+   #11 GLmWEbqA real -0.2837 | -0.3168 (time    ) | -0.0985 (its_sell    3 s) | -0.3131 (time     1363 s)
+   #12 3a8RGrQg real -0.2201 | -0.2276 (time    ) | -0.0962 (its_sell  210 s) | -0.0962 (its_sell  210 s)
+   #14 FAVdiH3q real -0.0851 | -0.0815 (time    ) | +0.0053 (its_sell  196 s) | +0.0053 (its_sell  196 s)
+   #15 KgcdZjU4 real -0.2493 | -0.3232 (time    ) | -0.1957 (its_sell  299 s) | -0.3232 (time     1791 s)
+   #16 oxbezHbo real -0.4291 | -0.3134 (its_sell) | -0.3134 (its_sell  151 s) | -0.3134 (its_sell  151 s)
+   16 trades (not #13, #17: no path): real +0.0990 | model, rule then -1.3690 | his every sale followed -0.5393 | new rule -0.1808

@@ -15,9 +15,10 @@ Two copied wallets, kept apart, and the bots that copy them:
 
 Wallet 4's strategies:
 - **Strategy A, the long copy:** `crates/rugsnipe-long`. **Live again since Nov 12 01:23 UTC** on a Vultr Frankfurt box
-  (`fra-long`, user `ops`, prompt `ops@fra-long`): since Nov 13 17:25 UTC 1 SOL × 2, take profit 2.4, no stop, 30 min,
-  daily stop 2.0, the early-sale rule (`follow_early_s = [30, 180]`), 3-hop routes (v0); a second unit
-  `rugsnipe-long-tab` copies TAB16RxX at 0.1 SOL real (README "Live again"). Wallet
+  (`fra-long`, user `ops`, prompt `ops@fra-long`): since Nov 14 01:20 UTC 0.5 SOL × 2, take profit 3.0, no stop, 1200 s,
+  daily stop 1.0, the early-sale rule (`follow_early_s = [30, 290]`), 3-hop routes (v0), floats WBTC, PUMP and SPCX
+  (`float_min_frac = 0.5`; `float level MINT SOL` once a day; `analysis/research/2026-11-14/float_exits/`); the second
+  unit `rugsnipe-long-tab` (TAB16RxX) is paused since Nov 14 (README "Live again"). Wallet
   `Eao8T2Pk...` (its key copied to the owner's Mac first). Before that, **stopped on Oct 29 ~13:40 UTC: Cherry deleted the hourly
   Frankfurt box (`fra-long`) for a zero balance, and the wallet's only key file with it; 4.5 SOL at `E7KX1hcM...` are
   lost** (`03-strategy-A-long-copy/deploy-frankfurt.md`, top). It had run live Oct 28 18:34 to Oct 29 11:52 UTC at 0.1,

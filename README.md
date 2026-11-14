@@ -60,6 +60,17 @@ First at 1 SOL: #14 FAVdiH3q timer −0.0851 (−8.5%; wallet 4 +9.4%, sold at 1
 Nov 13 UTC: 8 closed, 2 won, +0.9236; all 16 real +1.1066, trades + airdrops +1.7460 SOL. TAB16RxX's bot: 14 real,
 1 won, −0.1665; two of them (3a8RGrQg, FAVdiH3q) the same coin bought in the same second as wallet 4 (the lookalike
 study's overlap: 26 of its 149 buys).
+**Nov 14 01:20 UTC (03:20 Beirut): 0.5 SOL × 2 again, PUMP and SPCX added as floats, new exits** (the owner's call on
+the floats and the stake; `analysis/research/2026-11-14/float_exits/`): take profit 3.0, timer 1200 s, early-sale
+window 30-290 s under 1.5x, no stop, daily stop 1.0, `float_min_frac = 0.5`. Backtest, raw, 0.5 SOL, 15.5 days:
++8.82 SOL as it ran, +22.92 with the two floats, +31.14 with the new exits too. `float level` (commit `6138ade`):
+WBTC sold down to 0.6 SOL (68,011 units, slot 469141427), PUMP bought for 0.5 SOL (11,231,836,808 units, slot
+469141436); the SPCX buy was refused by Jupiter (HTTP 429) and is to be run again. The restart's journal: `stake 0.5
+SOL tp 3x stop 0x hold 1200s max_open 2`, three floats, SOL 1.0696, feed connected.
+**The 1 SOL hours (Nov 13 17:25 - Nov 14 01:18 UTC): 4 copies, 4 losses, −1.1895 SOL** (#14 −0.0851, #15 −0.2493,
+#16 −0.4291 behind its sale, #17 `EH6yuh4Y` timer −0.4260; wallet 4 sold #17 at 180 s, one second past the old
+window). All 18 real: +0.2515 SOL; with the airdrops +0.8909. The TAB16RxX bot was paused by the owner on Nov 14 (14
+real, −0.1665); `send TO all` built to return its balance.
 **A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
 branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet
 that passed the pick-on-week-1 test (tp 3.0, 300 s: week 2 raw +13.76, corrected +20.95; week 1 raw −2.28 with the

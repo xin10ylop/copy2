@@ -1,0 +1,12 @@
+hold (window 30-290 s) against also 290-330 s (30-330): copies the change touches, landing 4 / 8 / late
+   first half: 35 copies, selling behind him -2.02 SOL (16 better, 15 worse, 1 take profits cut) | 36 copies, selling behind him -2.04 SOL (17 better, 15 worse, 1 take profits cut) | 37 copies, selling behind him -2.10 SOL (18 better, 15 worse, 1 take profits cut)
+   second half: 51 copies, selling behind him -0.03 SOL (30 better, 10 worse, 1 take profits cut) | 44 copies, selling behind him +0.04 SOL (28 better, 10 worse, 1 take profits cut) | 54 copies, selling behind him +0.02 SOL (31 better, 11 worse, 1 take profits cut)
+hold (window 30-290 s) against also to 600 s (30-600): copies the change touches, landing 4 / 8 / late
+   first half: 59 copies, selling behind him -1.63 SOL (31 better, 19 worse, 1 take profits cut) | 60 copies, selling behind him -1.44 SOL (32 better, 19 worse, 1 take profits cut) | 61 copies, selling behind him -1.71 SOL (33 better, 19 worse, 1 take profits cut)
+   second half: 62 copies, selling behind him -2.36 SOL (36 better, 14 worse, 2 take profits cut) | 55 copies, selling behind him -2.46 SOL (34 better, 14 worse, 2 take profits cut) | 65 copies, selling behind him -2.66 SOL (37 better, 15 worse, 2 take profits cut)
+hold (window 30-290 s) against every sale under 1.5x (30-1200): copies the change touches, landing 4 / 8 / late
+   first half: 83 copies, selling behind him -1.26 SOL (39 better, 25 worse, 1 take profits cut) | 80 copies, selling behind him -1.08 SOL (39 better, 25 worse, 1 take profits cut) | 85 copies, selling behind him -1.36 SOL (41 better, 25 worse, 1 take profits cut)
+   second half: 66 copies, selling behind him -2.67 SOL (37 better, 17 worse, 2 take profits cut) | 59 copies, selling behind him -2.81 SOL (35 better, 17 worse, 2 take profits cut) | 70 copies, selling behind him -2.98 SOL (38 better, 18 worse, 2 take profits cut)
+hold (window 30-290 s) against every sale, any price (0-1200): copies the change touches, landing 4 / 8 / late
+   first half: 133 copies, selling behind him -5.86 SOL (62 better, 50 worse, 17 take profits cut) | 124 copies, selling behind him -4.75 SOL (59 better, 47 worse, 15 take profits cut) | 139 copies, selling behind him -4.98 SOL (67 better, 51 worse, 17 take profits cut)
+   second half: 99 copies, selling behind him -4.67 SOL (54 better, 33 worse, 13 take profits cut) | 86 copies, selling behind him -5.48 SOL (48 better, 31 worse, 12 take profits cut) | 103 copies, selling behind him -5.17 SOL (54 better, 35 worse, 13 take profits cut)

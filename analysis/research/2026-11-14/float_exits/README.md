@@ -78,3 +78,20 @@ second SOL, PUMP or SPCX slot nothing. SOL 1, WBTC 2, PUMP 1, SPCX 1 needs about
 up, worst −0.44, median +1.87, best +6.84; the best 3 days +16.58 of +34.32. Deepest fall from a high −2.0 to −2.3 SOL
 (Nov 6-8), with or without the 1.0 SOL daily stop. By what we pay with: WBTC 105 copies +11.47, PUMP 125 +13.44,
 SPCX 47 +9.31, SOL 125 +0.09.
+
+## The owner's two remarks after the switch (`him_vs_us.py`, `follow_300.py`, Nov 14)
+
+- **"All our wins would have been losses at tp 3.0": no.** `status` shows the peak while we held; each of the four
+  coins went on: 5tePJcGm 5.96x (3.0x at 473 s), Eymbsj8M 10.00x (389 s), BUdiaswB 3.62x (643 s), BTCmcoKg 4.75x (29 s).
+- **"He loses much less than us and even profits on trades we lose": true, and a copy cannot have his result.** On
+  the 18 real trades (`status --chain`): the 14 we lost, us −35.2% a trade, him −16.9%; the 4 we won, us +215%, him
+  +125%; all 18, us +20.4%, him +14.7%. On the 443 coins our buy pays +5.9% over the price his buy left (median), and
+  his first sale moves the price −7.4% (he sells at 1.02x, the next seller at 0.95x).
+- **Selling behind more of his sales** (coin by coin, every copy, tp 3.0, 1200 s, against the window 30-290 s): also
+  290-330 s: first half −2.02 SOL on 35 copies (16 better, 15 worse), second half −0.03 (30 better, 10 worse); every
+  sale under 1.5x: −1.26 and −2.67; every sale at any price: −5.86 and −4.67 (17 and 13 take profits cut). Most copies
+  get a little better, a few that run after his sale get much worse.
+- **Our 16 real trades in the model** (landing 4, real stakes): the rule live then −1.3690 SOL (real +0.0990), his
+  every sale followed −0.5393, the new rule −0.1808.
+- The WBTC-paid buys are valued at 7,950 lamports a unit here (about 8,820 on Nov 14), so a few just over 1.45 SOL
+  (BTCmcoKg, 1.499) are missing from the study.
