@@ -1031,15 +1031,26 @@ fn book_extra(cfg: &LongCfg, rpc: &Rpc, me: &Pubkey, sig: &str) -> Result<String
     if !tx["meta"]["err"].is_null() {
         return Err(format!("{sig} failed on chain"));
     }
-    let d = rugsnipe_long::extra::sol_delta(&tx, &me.to_string()).ok_or("our wallet is not in it")?;
+    let mut d = rugsnipe_long::extra::sol_delta(&tx, &me.to_string()).ok_or("our wallet is not in it")?;
+    // floats that came with it (holder fees paid in a float), at the price API's rate
+    let o = Oracle::default();
+    if let Ok(v) = rpc.rpc.get_json(&format!("{}?ids={},{}", cfg.price_api, cfg.floats.join(","), c::WSOL_MINT)) {
+        o.apply(&v);
+    }
+    let price = |m: &str| m.parse::<Pubkey>().ok().and_then(|m| o.last_known(&m));
+    let in_float = rugsnipe_long::extra::float_value(&tx, &me.to_string(), &cfg.floats, &price);
+    if let Some((v, _)) = &in_float {
+        d += v;
+    }
     let mint = tx["meta"]["preTokenBalances"]
         .as_array()
         .into_iter()
         .flatten()
         .find(|b| b["owner"].as_str() == Some(&me.to_string()) && !cfg.floats.iter().any(|f| Some(f.as_str()) == b["mint"].as_str()))
         .and_then(|b| b["mint"].as_str())
-        .unwrap_or("?")
-        .to_string();
+        .map(str::to_string)
+        .or(in_float.map(|f| f.1))
+        .unwrap_or("?".into());
     let e = rugsnipe_long::extra::Extra {
         ms: tx["blockTime"].as_u64().unwrap_or(0) * 1000,
         sig: sig.to_string(),

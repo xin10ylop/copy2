@@ -70,7 +70,17 @@ slot 469142936. After it: SOL 0.6180, floats 0.599 / 0.500 / 0.449 SOL (`status 
 SOL tp 3x stop 0x hold 1200s max_open 2`, three floats, SOL 1.0696, feed connected.
 **The 1 SOL hours (Nov 13 17:25 - Nov 14 01:18 UTC): 4 copies, 4 losses, −1.1895 SOL** (#14 −0.0851, #15 −0.2493,
 #16 −0.4291 behind its sale, #17 `EH6yuh4Y` timer −0.4260; wallet 4 sold #17 at 180 s, one second past the old
-window). All 18 real: +0.2515 SOL; with the airdrops +0.8909. The TAB16RxX bot was paused by the owner on Nov 14 (14
+window). All 18 real: +0.2515 SOL; with the airdrops +0.8909.
+**The first copies from the PUMP float (Nov 14, chain = journal, checked on Triton):** #18 `4TMzhGzY` 04:01:56 UTC, route
+curve, in its slot, 11,068,310,820 PUMP in, sold behind its sale at 256 s, 10,406,863,982 back: −0.0310 SOL. #19
+`6KpdMXAS` (SOL route) sold behind its sale at 200 s after two failed sells (0.0002 SOL each): −0.2420. #20 `DHcZRxRX`
+04:17:36, the whole float (10,570,389,970 PUMP, 0.4775 SOL: `float_min_frac`), timer 1200 s, 6,238,253,472 back:
+−0.1991. **While we held #20, 1,028.105 PUMP came to the float as holder fees** (`2FSqwb8j`, pump's
+`DistributeFeeToHolders` from `HckQ93Xq...`, about +0.045 SOL): the "airdrops" of Nov 12-13 were the same thing, paid
+in the coin's quote token. Also unsold in the wallet: 3,280.6 `H74CYmXg` (FAVdiH3q's quote, about 0.054 SOL). Nov 14 to
+08:45 UTC: 4 closed, 0 won, −0.8980 (three at the new settings, −0.4721); all 21 real −0.2205, with the airdrops
++0.4189. SOL 0.3708 (SOL routes skipped under 0.55), floats 0.605 / 0.321 / 0.460 SOL. The unit restarted between
+06:13 and 07:10 UTC (pid 136093 to 153466) with the settings unchanged; cause not yet known. The TAB16RxX bot was paused by the owner on Nov 14 (14
 real, −0.1665); `send TO all` built to return its balance.
 **A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
 branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet

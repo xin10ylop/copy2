@@ -113,6 +113,10 @@ within a slot** (`exits_pess.py`):
 - **`float level MINT SOL`** (Nov 14): brings a float to a SOL value through Jupiter, buying what is missing or selling
   the excess (nothing within 5% of the target or 0.02 SOL); the daily rebalance with three floats (wins and losses
   stay in the float the trade was paid from).
+- **Holder fees paid into a float** (Nov 14): pump distributes fees to a coin's holders in the coin's quote token
+  (`DistributeFeeToHolders`, sent by `HckQ93Xq...`; the coins "airdropped" on Nov 12-13 were these). For a coin priced
+  in a float they land in the float itself, and the trade's journal does not see them. `float book SIG` now adds the
+  floats that came in that transaction, at the price API's rate, to the SOL change it books.
 - **`send TO all`** (Nov 14): empties the wallet, for a bot paused for good (TAB16RxX's): closes its empty token
   accounts and any wrapped SOL (10 a transaction; their rent comes back; a close that fails is reported and skipped),
   lists accounts still holding tokens (sell them first with `float sell MINT all`), then sends every lamport but the

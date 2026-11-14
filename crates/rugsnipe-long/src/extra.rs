@@ -38,6 +38,28 @@ pub fn sol_delta(tx: &Value, me: &str) -> Option<i64> {
     Some(post - pre)
 }
 
+/// The floats that came to `me` in a transaction, valued in lamports: holder
+/// fees are paid in the coin's quote token, so for a coin priced in a float
+/// they land in the float itself (2026-11-14: 1,028 PUMP while we held
+/// DHcZRxRX). `(lamports, the float's mint)`; `None` when no float moved or
+/// one has no price.
+pub fn float_value(
+    tx: &Value,
+    me: &str,
+    floats: &[String],
+    lamports_per_unit: &dyn Fn(&str) -> Option<f64>,
+) -> Option<(i64, String)> {
+    let mut out: Option<(i64, String)> = None;
+    for (m, a) in crate::its::token_deltas(tx, me) {
+        if !floats.contains(&m) {
+            continue;
+        }
+        let v = (a as f64 * lamports_per_unit(&m)?) as i64;
+        out = Some((out.as_ref().map_or(0, |o| o.0) + v, m));
+    }
+    out
+}
+
 /// Book one sale (once per signature).
 pub fn append(dir: &Path, e: &Extra) -> Result<bool, String> {
     if load(dir).iter().any(|x| x.sig == e.sig) {
@@ -88,6 +110,24 @@ mod tests {
         assert_eq!(sol_delta(&tx, "ME"), Some(100));
         assert_eq!(sol_delta(&tx, "A"), Some(-1));
         assert_eq!(sol_delta(&tx, "Z"), None);
+    }
+
+    #[test]
+    fn holder_fees_paid_into_a_float_are_valued() {
+        // 1,028.10523 PUMP to us, nothing in SOL (2FSqwb8j, 2026-11-14)
+        let tx = json!({
+            "transaction": {"message": {"accountKeys": ["X", "ME"]}},
+            "meta": {"preBalances": [10, 20], "postBalances": [9, 20],
+                     "preTokenBalances": [{"owner": "ME", "mint": "PUMP", "uiTokenAmount": {"amount": "0"}}],
+                     "postTokenBalances": [{"owner": "ME", "mint": "PUMP", "uiTokenAmount": {"amount": "1028105230"}},
+                                           {"owner": "ME", "mint": "COIN", "uiTokenAmount": {"amount": "5"}}]}
+        });
+        let fl = vec!["PUMP".to_string()];
+        let p = |m: &str| (m == "PUMP").then_some(0.0442);
+        assert_eq!(float_value(&tx, "ME", &fl, &p), Some((45_442_251, "PUMP".into())));
+        assert_eq!(float_value(&tx, "ME", &fl, &|_| None), None);
+        assert_eq!(float_value(&tx, "ME", &["WBTC".to_string()], &p), None);
+        assert_eq!(sol_delta(&tx, "ME"), Some(0));
     }
 
     #[test]

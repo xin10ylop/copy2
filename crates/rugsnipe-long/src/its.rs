@@ -32,7 +32,7 @@ impl ItsTrip {
 
 /// `wallet`'s token changes in a `getTransaction` result (`json` encoding):
 /// mint -> raw amount (post minus pre).
-fn token_deltas(tx: &Value, wallet: &str) -> Vec<(String, i128)> {
+pub fn token_deltas(tx: &Value, wallet: &str) -> Vec<(String, i128)> {
     let mut out: Vec<(String, i128)> = vec![];
     for (k, sign) in [("preTokenBalances", -1i128), ("postTokenBalances", 1)] {
         for b in tx["meta"][k].as_array().into_iter().flatten() {
