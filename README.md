@@ -80,7 +80,18 @@ curve, in its slot, 11,068,310,820 PUMP in, sold behind its sale at 256 s, 10,40
 in the coin's quote token. Also unsold in the wallet: 3,280.6 `H74CYmXg` (FAVdiH3q's quote, about 0.054 SOL). Nov 14 to
 08:45 UTC: 4 closed, 0 won, −0.8980 (three at the new settings, −0.4721); all 21 real −0.2205, with the airdrops
 +0.4189. SOL 0.3708 (SOL routes skipped under 0.55), floats 0.605 / 0.321 / 0.460 SOL. The unit restarted between
-06:13 and 07:10 UTC (pid 136093 to 153466) with the settings unchanged; cause not yet known. The TAB16RxX bot was paused by the owner on Nov 14 (14
+06:13 and 07:10 UTC (pid 136093 to 153466) with the settings unchanged; cause not yet known.
+**Nov 14 11:54 UTC (13:54 Beirut): 0.3 SOL × 2, timer 600 s** (take profit 3.0 and the early-sale window 30-290 s
+kept; daily stop 0.6; `analysis/research/2026-11-14/float_exits/`, the A-to-Z review: over 23.5 days and 781 buys a
+600 s timer makes as much as 1200 s with the deepest fall −3.08 SOL instead of −5.24 at 0.5 SOL, the owner's own
+suggestion; tp 4.0 was recommended for a few hours and withdrawn, it wins only on the few largest trades). 0.3 SOL
+because the wallet (about 1.8 SOL) no longer carried four kinds of copy at 0.5: SOL routes were blocked under 0.55
+SOL and the PUMP float was one loss from its floor. The restart's journal: `stake 0.3 SOL tp 3x stop 0x hold 600s
+max_open 2`, SOL 0.4254, floats PUMP 0.315 / WBTC 0.601 / SPCX 0.458 SOL, feed connected. Booked with it: the holder
+fee paid in PUMP (`2FSqwb8j`, +0.0446 SOL) and the `H74CYmXg` fee sold (+0.0545, slot 469318341): holder fees
++0.7385 SOL in all, trades −0.2205, **together +0.5180 SOL**. The 06:59 UTC restart was a clean stop and start by
+systemd (`Deactivated successfully`), not a crash and not the owner (the box shows "System restart required": an
+automatic update, most likely); no copy was open. The TAB16RxX bot was paused by the owner on Nov 14 (14
 real, −0.1665); `send TO all` built to return its balance.
 **A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
 branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet
