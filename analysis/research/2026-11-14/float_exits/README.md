@@ -103,3 +103,18 @@ profits, 1 in 6.9 copies, 3.2 a day; at least one on 16 of 17 days.** Net +34.33
 other copy together −15.24. By kind: SOL 11 in 117 copies (1 in 10.6; on 6 of 17 days); WBTC 12 in 97 (1 in 8.1; 9
 days); PUMP 18 in 118 (1 in 6.6; 12 days); SPCX 14 in 46 (1 in 3.3; 9 days); 3-hop routes 3 in 21 (2 days). Between
 one take profit and the next: 5.2 hours (median), 25.2 at most; the longest run of copies without one, 47.
+
+## Its own exits for each kind of copy? (`per_class.py`, `out/per_class.txt`, Nov 14)
+
+The owner's question. 64 rules a kind (tp 2.0 / 2.4 / 3.0 / 4.0 x timer 300 / 600 / 1200 / 1790 s x his sale followed
+never / 30-180 / 30-290 s / always), each kind's best picked on one half and scored on the other, both ways:
+- **The bot's run with each kind on its own picked rule, on the half it was not picked on: +0.30 SOL against +10.38
+  for the one rule (picked on the first half, scored on the second), and +16.10 against +20.75 (the other way).**
+  Worse by −10.09 and −4.65 SOL.
+- A kind's best rule on one half ranks 54th to 58th of 64 on the other half for SOL, WBTC and PUMP (SPCX: 36th one
+  way, 2nd the other). The picks contradict each other: PUMP tp 4.0 / 300 s then tp 3.0 / 600 s; WBTC tp 3.0 / 1200 s
+  then tp 2.0 / 300 s; SPCX tp 2.0 / 300 s then tp 4.0 / 600 s.
+- One setting at a time (the rest as the one rule): no kind has a setting that wins in both halves by more than
+  about 1 SOL, except SOL-paid copies with a 300 s timer (−1.27 / −3.30 against −2.26 / −3.06: better in one half only).
+Each kind has 23 to 73 copies a half and about 1 take profit in 7 copies, so a half holds 5 to 10 take profits a
+kind: too few to tune on. The one rule stays.
