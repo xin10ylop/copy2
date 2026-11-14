@@ -8,14 +8,16 @@ import sys, os, itertools, datetime, collections
 from multiprocessing import Pool
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import lib as L
 SPD = sys.argv[1]; STAKE = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5
-rows, P, info = L.load(SPD)
+# FE_T0 / FE_T1 (unix seconds): another window than "since the stop" (unseen_week.py)
+T_A = float(os.environ.get("FE_T0", L.T_STOP)); T_B = float(os.environ.get("FE_T1", "inf"))
+rows, P, info = L.load(SPD, T_A, T_B)
 PREP = {}
 for r in rows:
     for n in L.LAND:
         p = L.prep(r, P, n)
         if p is not None: PREP[r["key"], n] = p
 rows = [r for r in rows if all((r["key"], n) in PREP for n in L.LAND)]
-END = max(r["t"] for r in rows); MID = (L.T_STOP + END) / 2
+END = max(r["t"] for r in rows); MID = (T_A + END) / 2
 HALF = lambda r: 0 if r["t"] < MID else 1
 LIVE = dict(tp=2.4, hold=1790, early=(30, 180, 1.5), sl=None)
 f = lambda t: datetime.datetime.fromtimestamp(t + 7200, datetime.timezone.utc).strftime("%m-%d %H:%M")

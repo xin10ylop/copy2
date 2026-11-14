@@ -11,7 +11,8 @@ T_STOP = 1793274720 + 600                                   # Oct 29 12:02 UTC
 NAMES = {"So111111": "SOL", "3NZ9JMVB": "WBTC", "pumpCmXq": "PUMP", "SPCXxcqX": "SPCX"}
 LAND = (4, 8, "slot+1")
 CAL = {"tp": 0.189, "time": 0.093, "graduated": 0.093, "its_sell": 0.039, "stop": 0.039, "refused": 0.0}   # since_stop README: the model's miss on our real trades, points of the stake
-def load(SPD):
+def load(SPD, t0=T_STOP, t1=float("inf")):
+    """The copyable buys with t0 <= time < t1 (default: since the stop), a coin's rebuy within the hour left out."""
     t_of = {(r["slot"], r["mint8"]): r["t"] for r in json.load(open(f"{SPD}/routable.json"))}
     P = json.load(gzip.open(f"{SPD}/paths.json.gz"))
     rows = []
@@ -19,7 +20,7 @@ def load(SPD):
         m = re.match(r"(\d+) (\S{8}) ([\d.]+) SOL from (\S+) quote (\S+) jupiter (\S+): ROUTABLE hops (\d+) how (\S+) .*?input: (\w{8})", l)
         if not m: continue
         slot, m8 = int(m.group(1)), m.group(2)
-        if (slot, m8) not in t_of or t_of[slot, m8] < T_STOP: continue
+        if (slot, m8) not in t_of or not (t0 <= t_of[slot, m8] < t1): continue
         rows.append(dict(slot=slot, mint8=m8, t=t_of[slot, m8], sol=float(m.group(3)), frm=m.group(4), quote=m.group(5), hops=int(m.group(7)),
                          how=m.group(8), anchor=NAMES.get(m.group(9), m.group(9)), key=f"{slot}_{m8}"))
     rows.sort(key=lambda r: r["t"])
