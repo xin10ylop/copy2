@@ -1,0 +1,22 @@
+0.5 SOL, 2 open; first half (w/o best 2) | second half | both; copies a day; SOL needed = 0.55 a SOL slot + 0.5 a float slot
+ live (tp 2.4, early 30-180)
+   SOL 2, WBTC 2, PUMP 2, SPCX 2          needs 4.10 | raw +16.11 (+14.23) |  +6.62 ( +4.36) | +22.73 (+18.59) | cor +42.80 | 26.6 a day
+   SOL 2, WBTC 2, PUMP 1, SPCX 1          needs 3.10 | raw +16.83 (+14.94) |  +6.09 ( +3.83) | +22.92 (+18.78) | cor +42.41 | 25.8 a day
+   SOL 2, WBTC 1, PUMP 1, SPCX 1          needs 2.60 | raw +14.64 (+12.75) |  +6.09 ( +3.83) | +20.73 (+16.59) | cor +39.74 | 25.4 a day
+   SOL 1, WBTC 2, PUMP 1, SPCX 1          needs 2.55 | raw +17.22 (+15.33) |  +6.74 ( +4.49) | +23.96 (+19.82) | cor +43.06 | 25.2 a day
+   SOL 1, WBTC 1, PUMP 1, SPCX 1          needs 2.05 | raw +15.03 (+13.15) |  +6.74 ( +4.49) | +21.77 (+17.63) | cor +40.39 | 24.7 a day
+   no SOL routes; WBTC 2, PUMP 1, SPCX 1  needs 2.00 | raw +16.80 (+14.92) |  +7.63 ( +5.40) | +24.43 (+20.32) | cor +38.09 | 17.6 a day
+   no SOL routes; WBTC 1, PUMP 1, SPCX 1  needs 1.50 | raw +14.70 (+12.82) |  +7.63 ( +5.40) | +22.33 (+18.22) | cor +35.45 | 17.1 a day
+ new (tp 3.0, early 30-290)
+   SOL 2, WBTC 2, PUMP 2, SPCX 2          needs 4.10 | raw +18.94 (+16.53) | +11.60 ( +7.67) | +30.54 (+24.20) | cor +47.63 | 26.8 a day
+   SOL 2, WBTC 2, PUMP 1, SPCX 1          needs 3.10 | raw +19.92 (+17.51) | +10.45 ( +6.51) | +30.36 (+24.02) | cor +46.94 | 25.9 a day
+   SOL 2, WBTC 1, PUMP 1, SPCX 1          needs 2.60 | raw +15.55 (+13.14) | +10.45 ( +6.51) | +26.00 (+19.65) | cor +42.01 | 25.4 a day
+   SOL 1, WBTC 2, PUMP 1, SPCX 1          needs 2.55 | raw +19.82 (+17.41) | +10.69 ( +6.76) | +30.51 (+24.17) | cor +46.88 | 25.5 a day
+   SOL 1, WBTC 1, PUMP 1, SPCX 1          needs 2.05 | raw +15.45 (+13.04) | +10.69 ( +6.76) | +26.15 (+19.80) | cor +41.95 | 25.1 a day
+   no SOL routes; WBTC 2, PUMP 1, SPCX 1  needs 2.00 | raw +20.01 (+17.70) | +10.84 ( +7.13) | +30.85 (+24.83) | cor +42.60 | 17.9 a day
+   no SOL routes; WBTC 1, PUMP 1, SPCX 1  needs 1.50 | raw +15.72 (+13.46) | +10.84 ( +7.13) | +26.57 (+20.59) | cor +37.61 | 17.2 a day
+
+new rule, 1 open from each, landing 4, by UTC day: 16 days, 15 up; worst -1.36, second worst +0.22, median +0.74, best +6.61
+   10-29 +0.61  10-30 +2.05  10-31 +4.08  11-01 +6.61  11-02 +0.57  11-03 +0.27  11-04 +0.86  11-05 +2.27  11-06 +0.22  11-07 -1.36  11-08 +0.46  11-09 +2.51  11-10 +0.43  11-11 +5.25  11-12 +3.21  11-13 +0.48
+   deepest fall from a high: -3.13 SOL; exits {'time': 176, 'its_sell': 124, 'tp': 52, 'refused': 23, 'graduated': 11}
+   by what we pay with: WBTC 94 copies +7.84; PUMP 121 copies +11.89; SPCX 47 copies +9.23; SOL 124 copies -0.42

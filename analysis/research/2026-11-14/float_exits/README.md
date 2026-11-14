@@ -1,4 +1,4 @@
-# PUMP and SPCX as floats, and the exits over everything the bot then copies (Nov 14; in progress)
+# PUMP and SPCX as floats, and the exits over everything the bot then copies (Nov 14)
 
 Wallet 4 buys many coins with the PUMP token (`pumpCmXq...`) and the tokenized SpaceX stock (`SPCXxcqX...`). Neither
 has a PumpSwap pool to SOL or WBTC, so the bot had no route (`../../2026-11-13/routes_nov13/`). Held as floats, like
@@ -34,4 +34,47 @@ Checked so far (Nov 14):
   115, PUMP-paid 150 (120 one hop, 28 two, 2 three), SPCX-paid 54, others 8. Five buys the earlier 3-hop study counted
   (`TooLong(3)`) have no route: its own route is 3 hops from a token we do not hold.
 
-Results: to come when the paths are fetched.
+## Results (Nov 14; `out/*.txt`; SPD = 443 copyable buys, Oct 29 12:02 UTC - Nov 13 23:02 UTC, 15.5 days)
+
+Run after the above: `tp_check.py`, `early_check.py`, `tp_fine.py`, `hold_check.py`, `caps_check.py`, `risk_check.py`,
+`decode_check.py` (each `python3 -I X.py SPD 0.5 > out/X.txt`). All raw model, 0.5 SOL, 2 open, mean of landings
+4 / 8 / one block late unless said; brackets = without each half's best 2.
+
+**The model reads the new coins right** (`decode_check.py`): wallet 4's own result from the path's events equals its
+token balances on all 110 PUMP-paid and 50 SPCX-paid coins it bought once and sold out (difference 0.00 points a coin).
+
+**What each kind of coin makes, every copy, live rule** (`float_exits.txt` §1): SOL-paid 135 copies −1.71 (−4.84),
+WBTC-paid 110 +10.13 (+6.31), **PUMP-paid 145 +8.51 (+5.15), SPCX-paid 53 +5.01 (+2.19)**; PUMP and SPCX positive in
+both halves.
+
+**The bot's run, live rule** (§2): SOL + WBTC routes (live now) +8.82 (+4.91), second half −0.94; with PUMP and SPCX
+(1 open from each) **+22.92 (+18.78)**, second half +6.09. Corrected by the model's Oct 28-29 miss: +20.04 against
++42.41.
+
+**The model against the bot's 17 real trades** (`live_gap_w4.txt`): 16 found; real +0.0990 SOL, model −1.3690 at
+landing 4. Timer exits (12): real over the model by +4.5 points of the stake (median); take profits (3): +160 (median;
++32, +160, +192); the one sale behind its sale −11.6. The raw model stays the lower bound.
+
+**Exits** (§3, `tp_fine.txt`, `tp_check.txt`, `early_check.txt`, `hold_check.txt`):
+- **Take profit 3.0 over 2.4**: +30.36 (+24.02) against +23.44 (+19.30) (early 30-290, 1790 s); better in both halves,
+  in each third of the period, at each landing, without the best 2 and the best 5. The scan is smooth: 2.4 +23.44,
+  2.6 +24.40, 2.8 +27.24, 3.0 +30.36, 3.2 +30.87, 3.4 +30.12, then noisy (3.6 +27.47, 4.0 +31.70 with fewer and
+  bigger wins: without the best 5 it falls from +17.54 at 3.0 to +14.60). Of 96 copies that reached 2.4x, 63 reached
+  3.0x (66%; PUMP 73%, SPCX 74%, WBTC 61%, SOL 52%). SOL-paid coins alone prefer 2.4; the bot has one setting.
+- **The early-sale window 30-290 s** (was 30-180), still under 1.5x: better in both halves at tp 2.4 and 3.0
+  (+30.36 against +28.55 at 3.0). Wallet 4 sells 62 of 443 coins at 300-309 s (its own timer); following those is
+  worse (30-310: +27.83), so the window ends before them.
+- **The timer, 1200 s** (was 1790): the owner's question, are the wins in by 600 s? Mostly: of 60 take profits at 3.0,
+  50 come within 600 s. But the 10 later ones earn +6.21 SOL and waiting costs −4.60 on the rest: 600 s +28.12
+  (+23.18), 1200 s **+31.14 (+26.19)**, 1790 s +30.51 (+24.17). 1200 s is as good as 1790 s or a little better at
+  both rules, each landing, and frees the money a third sooner.
+- **No stop**: 0.4x and 0.5x change nothing (§3 means: +14.24 / +3.31 without, +14.37 / +3.34 and +14.12 / +3.29 with).
+
+**How many at once from each** (`caps_check.txt`): a second WBTC slot is worth about +4.4 SOL (first half only); a
+second SOL, PUMP or SPCX slot nothing. SOL 1, WBTC 2, PUMP 1, SPCX 1 needs about 2.55 SOL; one from each, 2.05.
+
+**The rule chosen** (tp 3.0, 1200 s, early 30-290 under 1.5x, no stop; SOL 1, WBTC 2, PUMP 1, SPCX 1;
+`risk_check.txt`): +31.14 (+26.19), first half +20.75 (+18.34), second +10.38 (+7.85). Landing 4 by UTC day: 15 of 16
+up, worst −0.44, median +1.87, best +6.84; the best 3 days +16.58 of +34.32. Deepest fall from a high −2.0 to −2.3 SOL
+(Nov 6-8), with or without the 1.0 SOL daily stop. By what we pay with: WBTC 105 copies +11.47, PUMP 125 +13.44,
+SPCX 47 +9.31, SOL 125 +0.09.

@@ -33,6 +33,23 @@ pub fn now_ms() -> u64 {
         .unwrap_or(0)
 }
 
+/// `float level`: the swap that brings a float holding `held` raw units, at
+/// `lamports_per_unit`, to `target_sol`: `Some((true, lamports))` to buy
+/// with, `Some((false, units))` to sell, `None` when it is within 5% of the
+/// target (or 0.02 SOL).
+pub fn level(held: u64, lamports_per_unit: f64, target_sol: f64) -> Option<(bool, u64)> {
+    let have = held as f64 * lamports_per_unit / 1e9;
+    let diff = target_sol - have;
+    if diff.abs() < (0.05 * target_sol).max(0.02) || lamports_per_unit <= 0.0 {
+        return None;
+    }
+    Some(if diff > 0.0 {
+        (true, (diff * 1e9) as u64)
+    } else {
+        (false, ((-diff * 1e9 / lamports_per_unit) as u64).min(held))
+    })
+}
+
 impl Oracle {
     /// Lamports per raw unit of `mint` (wrapped SOL: 1).
     pub fn lamports_per_unit(&self, mint: &Pubkey) -> Option<f64> {
@@ -132,6 +149,23 @@ impl Oracle {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn a_float_is_levelled_to_its_target() {
+        // PUMP at 0.0429 lamports a raw unit: 11.655e9 units = 0.5 SOL
+        let p = 0.0429;
+        assert_eq!(level(0, p, 0.5), Some((true, 500_000_000)));
+        // 0.3 SOL held: buy the missing 0.2
+        let (buy, a) = level(6_993_006_993, p, 0.5).unwrap();
+        assert!(buy && (a as i64 - 200_000_000).abs() < 10);
+        // 0.8 SOL held: sell 0.3 SOL of it, in raw units
+        let (buy, a) = level(18_648_018_648, p, 0.5).unwrap();
+        assert!(!buy && (a as f64 * p / 1e9 - 0.3).abs() < 1e-6);
+        // within 5% (or 0.02 SOL): left alone; target 0 sells all of it
+        assert_eq!(level(11_900_000_000, p, 0.5), None);
+        assert_eq!(level(11_655_011_655, p, 0.0), Some((false, 11_655_011_655)));
+        assert_eq!(level(1000, 0.0, 0.5), None);
+    }
 
     #[test]
     fn prices_in_lamports_per_raw_unit() {

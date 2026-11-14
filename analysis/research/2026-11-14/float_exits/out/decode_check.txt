@@ -1,0 +1,2 @@
+PUMP: 110 coins; its result from the events +15.5% a coin, from its balances +15.5%; difference per coin: median +0.00 points, worst +0.00; its spend, events / balances: median 1.0000; fee in its events: [(395, 73), (125, 42), (195, 39)] bps
+SPCX: 50 coins; its result from the events +46.4% a coin, from its balances +46.4%; difference per coin: median +0.00 points, worst +0.00; its spend, events / balances: median 1.0000; fee in its events: [(125, 62), (395, 18), (295, 4)] bps

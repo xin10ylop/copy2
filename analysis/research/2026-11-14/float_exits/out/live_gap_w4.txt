@@ -1,0 +1,24 @@
+  # coin     stake     real exit     | model at landing 2 / 4 / 8 (its exit)                    | real - model at 4, points of the stake
+  0 Ci9Bg1Bx   0.1  -0.0597 time     | -0.0337 (time) / -0.0371 (time) / -0.0258 (time) |  -22.6
+  1 BttUQVPM   0.1  -0.0455 time     | -0.0476 (time) / -0.0432 (time) / -0.0320 (time) |   -2.3
+  2 5tePJcGm   0.1  +0.3531 tp       | +0.1112 (tp) / +0.1612 (tp) / +0.1475 (tp) | +191.9
+  3 7dDprVHP   0.5  -0.1106 time     | -0.1515 (time) / -0.1659 (time) / -0.1717 (time) |  +11.1
+  4 57pQW4mw   0.5  -0.0124 time     | -0.2036 (time) / -0.2133 (time) / -0.2313 (time) |  +40.2
+  5 Eymbsj8M   0.5  +0.6228 tp       | +0.4745 (tp) / +0.4610 (tp) / +0.4587 (tp) |  +32.4
+  6 GZn6HC8d   0.5  -0.3763 time     | -0.3871 (time) / -0.3810 (time) / -0.3890 (time) |   +0.9
+  7 GaHAZThn   0.5  -0.1884 time     | -0.1824 (time) / -0.2023 (time) / -0.1801 (time) |   +2.8
+  8 3EKoHX4f   0.5  -0.0600 time     | -0.0966 (time) / -0.0961 (time) / -0.0122 (time) |   +7.2
+  9 6S3iL67j   0.5  -0.0907 time     | -0.0992 (time) / -0.1220 (time) / -0.1358 (time) |   +6.3
+ 10 BUdiaswB   0.5  +1.3340 tp       | +0.5568 (tp) / +0.5321 (tp) / +0.7677 (tp) | +160.4
+ 11 GLmWEbqA   0.5  -0.2837 time     | -0.3090 (time) / -0.3168 (time) / -0.2925 (time) |   +6.6
+ 12 3a8RGrQg   0.5  -0.2201 time     | -0.2237 (time) / -0.2276 (time) / -0.2057 (time) |   +1.5
+ 13 BTCmcoKg not in the rows (no path)
+ 14 FAVdiH3q   1.0  -0.0851 time     | -0.0763 (time) / -0.0815 (time) / -0.0980 (time) |   -0.4
+ 15 KgcdZjU4   1.0  -0.2493 time     | -0.2893 (time) / -0.3232 (time) / -0.3405 (time) |   +7.4
+ 16 oxbezHbo   1.0  -0.4291 its_sell | -0.2345 (its_) / -0.3134 (its_) / -0.2771 (its_) |  -11.6
+
+total real +0.0990 SOL; model at landing 2 -1.1920, 4 -1.3690, 8 -1.0179
+  time     12 trades: real - model at landing 4, median +4.5 points, mean +4.9
+  tp        3 trades: real - model at landing 4, median +160.4 points, mean +128.2
+  its_sell  1 trades: real - model at landing 4, median -11.6 points, mean -11.6
+  all      16 trades: median +6.4, mean +27.0

@@ -1,0 +1,20 @@
+443 buys, stake 0.5, 2 open, 1 from each of PUMP / SPCX; raw model
+rule                                 | thirds of the period (mean of landings)  | both halves: net, w/o best 2, w/o best 5 | landing 4 / 8 / late | tp exits | corrected
+live: tp 2.4, 1790 s, early 30-180   | +11.16  +4.12  +7.64                     | +22.92 +18.78 +13.68                    | +24.48 / +20.18 / +24.10 |  86.3    | +42.41
+tp 2.4, 1790 s, early 30-300         | +11.28  +3.85  +8.20                     | +23.33 +19.19 +14.19                    | +25.40 / +19.48 / +25.12 |  83.7    | +41.26
+tp 2.4, 1200 s, early 30-300         | +11.07  +4.84  +8.24                     | +24.15 +20.00 +15.01                    | +26.42 / +19.96 / +26.06 |  81.3    | +42.06
+tp 3.0, 1790 s, early 30-180         | +13.44  +5.98  +9.13                     | +28.55 +22.21 +15.74                    | +30.56 / +23.50 / +31.60 |  55.7    | +46.15
+tp 3.0, 1790 s, early 30-300         | +13.60  +5.91 +10.24                     | +29.74 +23.40 +16.93                    | +32.30 / +24.22 / +32.71 |  54.7    | +45.89
+tp 3.0, 1200 s, early 30-300         | +13.54  +6.06 +10.72                     | +30.32 +25.38 +18.92                    | +33.36 / +24.82 / +32.79 |  52.3    | +46.59
+tp 3.5, 1790 s, early 30-300         | +11.79  +5.99  +9.66                     | +27.45 +20.45 +12.71                    | +30.25 / +21.77 / +30.32 |  41.7    | +42.77
+tp 4.0, 1790 s, early 30-300         | +13.58  +7.17 +11.02                     | +31.77 +23.99 +14.68                    | +34.56 / +25.85 / +34.89 |  34.7    | +46.70
+tp 4.0, 1200 s, early 30-300         | +14.26  +7.46 +11.88                     | +33.60 +26.84 +17.74                    | +36.64 / +27.80 / +36.35 |  31.7    | +48.64
+tp 5.0, 1790 s, early 30-300         |  +9.85  +8.58 +14.36                     | +32.79 +23.96 +12.35                    | +35.40 / +26.71 / +36.25 |  24.0    | +47.19
+no tp, 1790 s, early 30-300          |  +2.66 +10.14 +10.40                     | +23.21  +9.96  -2.99                    | +22.78 / +16.67 / +30.18 |   0.0    | +36.33
+
+the copies whose price reached 2.4x (landing 4, every copy, early 30-180 under 1.5x, 1790 s): where they go if we do not sell there
+   SOL  :  21 reached 2.4x; of them 11 reached 3.0x (52%), 7 reached 4.0x (33%); the 14 that did not reach 4.0x ended at 1.10x (median), 13 of them under 2.4x, 7 under 1.0x
+   WBTC :  23 reached 2.4x; of them 14 reached 3.0x (61%), 8 reached 4.0x (35%); the 15 that did not reach 4.0x ended at 1.98x (median), 9 of them under 2.4x, 2 under 1.0x
+   PUMP :  33 reached 2.4x; of them 24 reached 3.0x (73%), 13 reached 4.0x (39%); the 20 that did not reach 4.0x ended at 1.00x (median), 18 of them under 2.4x, 10 under 1.0x
+   SPCX :  19 reached 2.4x; of them 14 reached 3.0x (74%), 11 reached 4.0x (58%); the 8 that did not reach 4.0x ended at 0.82x (median), 8 of them under 2.4x, 5 under 1.0x
+   all  :  96 reached 2.4x; of them 63 reached 3.0x (66%), 39 reached 4.0x (41%); the 57 that did not reach 4.0x ended at 1.36x (median), 48 of them under 2.4x, 24 under 1.0x

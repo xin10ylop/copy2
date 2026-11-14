@@ -1,0 +1,9 @@
+landing 4      daily stop None: 402 copies, net +34.32 SOL; deepest fall -2.26 SOL, from 11-06 04:00 to 11-07 04:14 Beirut
+landing 4      daily stop 1.0 : 378 copies, net +33.73 SOL; deepest fall -2.32 SOL, from 11-06 04:00 to 11-08 02:40 Beirut
+landing 8      daily stop None: 404 copies, net +25.40 SOL; deepest fall -2.10 SOL, from 11-06 04:00 to 11-08 02:40 Beirut
+landing 8      daily stop 1.0 : 372 copies, net +25.20 SOL; deepest fall -2.01 SOL, from 11-06 04:00 to 11-08 02:40 Beirut
+landing slot+1 daily stop None: 402 copies, net +33.69 SOL; deepest fall -2.32 SOL, from 11-06 04:00 to 11-08 02:02 Beirut
+landing slot+1 daily stop 1.0 : 357 copies, net +32.57 SOL; deepest fall -2.11 SOL, from 11-06 04:00 to 11-08 02:02 Beirut
+landing 4 by UTC day: 16 days, 15 up; worst -0.44, median +1.87, best +6.84; the best 3 days +16.58 of +34.32
+   10-29 +0.70  10-30 +2.60  10-31 +4.00  11-01 +6.84  11-02 +0.43  11-03 +0.13  11-04 +2.95  11-05 +3.08  11-06 +1.17  11-07 -0.44  11-08 +0.76  11-09 +2.56  11-10 +0.38  11-11 +5.74  11-12 +2.90  11-13 +0.52
+   by what we pay with: WBTC 105 copies +11.47 (42 won); PUMP 125 copies +13.44 (52 won); SPCX 47 copies +9.31 (21 won); SOL 125 copies +0.09 (30 won); exits {'time': 185, 'its_sell': 127, 'tp': 55, 'refused': 24, 'graduated': 11}

@@ -110,6 +110,9 @@ within a slot** (`exits_pess.py`):
   the stake; under it the buy is skipped (`float ... under the stake`). For several small floats (PUMP, SPCX), which
   would otherwise stop copying after one loss until topped up. `status --chain` shows each float's SOL value.
   `examples/scan.rs` takes `FLOATS=MINT,...` and prints each route's hops and kind.
+- **`float level MINT SOL`** (Nov 14): brings a float to a SOL value through Jupiter, buying what is missing or selling
+  the excess (nothing within 5% of the target or 0.02 SOL); the daily rebalance with three floats (wins and losses
+  stay in the float the trade was paid from).
 - **`send TO all`** (Nov 14): empties the wallet, for a bot paused for good (TAB16RxX's): closes its empty token
   accounts and any wrapped SOL (10 a transaction; their rent comes back; a close that fails is reported and skipped),
   lists accounts still holding tokens (sell them first with `float sell MINT all`), then sends every lamport but the

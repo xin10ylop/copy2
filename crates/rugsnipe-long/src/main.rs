@@ -10,6 +10,9 @@
 //! rugsnipe-long float buy MINT SOL | float sell MINT all|AMOUNT [--config ...]
 //!     Buy or sell a float through Jupiter from the long wallet. Selling a
 //!     coin that is not a float (an airdrop) books its SOL for `status`.
+//! rugsnipe-long float level MINT SOL [--config ...]
+//!     Bring a float to a SOL value: buys what is missing or sells the
+//!     excess through Jupiter (nothing within 5% of the target).
 //! rugsnipe-long send TO SOL|all [--config ...]
 //!     Send SOL from the long wallet to TO (funding another bot's wallet):
 //!     a plain transfer, refused if it would leave under 0.1 SOL. `all`
@@ -1081,6 +1084,34 @@ fn float(args: &[String]) -> Result<(), String> {
                 .map_err(|_| "SOL")?;
             (c::WSOL_MINT, mint, (s * 1e9) as u64)
         }
+        // bring the float to a SOL value: buy what is missing, sell the excess
+        Some("level") => {
+            let target: f64 = args
+                .get(2)
+                .ok_or("float level MINT SOL")?
+                .parse()
+                .map_err(|_| "SOL")?;
+            if !(0.0..=100.0).contains(&target) {
+                return Err("float level MINT SOL: SOL in [0, 100]".into());
+            }
+            let held = chain.token_balance(&me, &mint, &prog)?;
+            let o = Oracle::default();
+            o.apply(&chain.rpc.get_json(&format!("{}?ids={mint},{}", cfg.price_api, c::WSOL_MINT))?);
+            let p = o.last_known(&mint).ok_or("no price for that mint")?;
+            println!(
+                "{} holds {held} units = {:.4} SOL, target {target} SOL",
+                &mint.to_string()[..8],
+                held as f64 * p / 1e9
+            );
+            match rugsnipe_long::oracle::level(held, p, target) {
+                None => {
+                    println!("within 5% of the target: nothing to do");
+                    return Ok(());
+                }
+                Some((true, lamports)) => (c::WSOL_MINT, mint, lamports),
+                Some((false, units)) => (mint, c::WSOL_MINT, units),
+            }
+        }
         Some("sell") => {
             let held = chain.token_balance(&me, &mint, &prog)?;
             let a = match args.get(2).map(String::as_str) {
@@ -1092,7 +1123,7 @@ fn float(args: &[String]) -> Result<(), String> {
             };
             (mint, c::WSOL_MINT, a)
         }
-        _ => return Err("float buy MINT SOL | float sell MINT all|AMOUNT | float book SIG".into()),
+        _ => return Err("float buy MINT SOL | float sell MINT all|AMOUNT | float level MINT SOL | float book SIG".into()),
     };
     if amount == 0 {
         return Err("nothing to swap".into());
