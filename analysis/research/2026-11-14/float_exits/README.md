@@ -118,3 +118,30 @@ never / 30-180 / 30-290 s / always), each kind's best picked on one half and sco
   about 1 SOL, except SOL-paid copies with a 300 s timer (−1.27 / −3.30 against −2.26 / −3.06: better in one half only).
 Each kind has 23 to 73 copies a half and about 1 take profit in 7 copies, so a half holds 5 to 10 take profits a
 kind: too few to tune on. The one rule stays.
+
+## The chosen rule verified (`verify_final.py`, `out/verify_final.txt`, Nov 14)
+
+- **Neighbours:** tp 3.0-3.2 x timer 1050-1350 s x early window ending 240-290 s all give +30.5 to +32.6 SOL (+25.6 to
+  +27.1 without the best 2); the chosen rule +31.14 (+26.19). A plateau.
+- **The 17 Beirut days drawn again with replacement, 10,000 times; the chosen rule ahead in:** 98.9% of draws against
+  the old rule (+23.96), 99.7% against tp 2.4, 95.1% against a 600 s timer (+28.12), 99.7% against his every sale
+  followed (+20.84). Ties: timer 1790 s (64.2%), early 30-180 s (63.5%), never following (63.9%), a 0.5x stop (51.2%).
+  **Take profit 4.0 is ahead of 3.0 (+33.26; 3.0 ahead in 34.9% of draws)** but on fewer, bigger wins (without the
+  best 5: +14.60 against +17.54).
+- With any one day left out the chosen rule still leads the old one by +4.74 SOL or more.
+
+## What the bot still does not copy (`uncopied.py`, `unpriced_all.py`, Nov 14)
+
+Since Oct 29 12:02 UTC (15.6 days), wallet 4's 1.45+ SOL buys: **445 have a route (28.6 a day)**; **203 have none
+(13.0 a day; 60 paying tokens)**; and **159 more are paid in tokens the scan had no price for (10.2 a day; valued at
+Jupiter's price of Nov 14)**. Its own result on them: no route, 94 coins valued, +29.79 SOL on 172.5 (+17.3%);
+unpriced, 158 coins, +50.56 on 295.4 (+17.1%). The largest: `98sMhvDw` 50 buys (+21.5%), `TTWofwAg` 34 (+24.3%),
+`WXMRyRZh` 22 (+18.7%), `DJTu7vi8` 21 (+24.9%), `XsbEhLAt` 17 (+28.4%), `Xsc9qvGR` 16 (+19.1%), `AMD8XwJX` 14
+(−14.7%), `A7bdiYdS` 12 (+24.9%), USDC 12 (+3.0%), `XspzcW1P` 12 (+2.7%). Each would need its own float (0.5 SOL)
+and our copy modelled first. Also not copied by design: its buys under 1.45 SOL, a coin bought again within the
+hour, and its buys of coins priced in SOL (the other parts, `02-decomposition/`).
+
+**SOL-paid copies were never the profit.** Live rule, 0.5 SOL, every copy: SOL-paid −1.71 SOL, WBTC-paid +10.13
+(`out/float_exits.txt` §1). The earlier figures (`since_stop/out/stop_scan.txt` +11.12 raw at 1 SOL, +16.51 with the
+3-hop coins) are both kinds together at twice the stake: +8.82 here at 0.5 SOL. Real: the 17 SOL-paid trades
+−0.3271 SOL, the one WBTC-paid +0.5786.
