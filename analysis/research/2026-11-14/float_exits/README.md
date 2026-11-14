@@ -145,3 +145,33 @@ hour, and its buys of coins priced in SOL (the other parts, `02-decomposition/`)
 (`out/float_exits.txt` §1). The earlier figures (`since_stop/out/stop_scan.txt` +11.12 raw at 1 SOL, +16.51 with the
 3-hop coins) are both kinds together at twice the stake: +8.82 here at 0.5 SOL. Real: the 17 SOL-paid trades
 −0.3271 SOL, the one WBTC-paid +0.5786.
+
+## One more week the rules never saw (`unseen_week.py`, `three_blocks.py`, `finalists.py`, Nov 14)
+
+Wallet 4's transactions of Oct 21 18:30 - Oct 28 18:30 UTC fetched (`fetch_w4.py`), the scan and the paths run again
+over everything: **block A = Oct 21 18:30 - Oct 29 12:02 UTC, 333 copyable buys** (SOL 149, WBTC 126, PUMP 45, SPCX 13;
+all with a path) that no rule here was picked on; B and C = the study period's halves (241 and 203 buys). 0.5 SOL, 2
+open (SOL 1, WBTC 2, PUMP 1, SPCX 1), raw, mean of landings.
+
+- **On A the rule live since Nov 14 01:20 UTC (tp 3.0, 1200 s, early 30-290) made +4.16 SOL (+2.21 without the best
+  2) against +0.73 (−1.08) for the old rule**: better, but 494th of 841 rules there. The timer decided that week:
+  300 s +9.71, 600 s +8.79, 900 s +6.27, 1200 s +4.16, 1790 s +1.68.
+- **Over the three blocks (100 rules, `three_blocks.py`)** the live rule ranks 79th / 9th / 7th (without the best 2);
+  the steadiest are tp 4.0 with a 600 s timer (worst rank 27-29). Means by choice, A / B / C: timer 300 s +7.99 /
+  +16.83 / +1.97, **600 s +7.72 / +16.20 / +4.73**, 1200 s +3.31 / +17.40 / +6.11, 1790 s +0.32 / +16.17 / +5.46; tp
+  2.4 +3.49 / +14.33 / +3.75, 3.0 +3.99 / +17.48 / +5.49, 4.0 +5.87 / +18.09 / +4.67, 5.0 +6.19 / +15.68 / +6.14.
+- **The finalists over all 25 Beirut days (777 buys, `finalists.py`):**
+
+| rule (early 30-290) | A | B | C | all | without the best 5 of each block | deepest fall | ahead of the live rule in |
+|---|---|---|---|---|---|---|---|
+| live: tp 3.0, 1200 s | +4.16 | +20.75 | +10.24 | +35.15 | +19.17 | −5.24 | |
+| tp 3.0, 600 s | +8.79 | +19.43 | +8.55 | +36.76 | +20.73 | −3.08 | 64.8% of draws |
+| tp 4.0, 1200 s | +6.64 | +22.79 | +10.33 | +39.76 | +17.35 | −5.89 | 78.4% |
+| **tp 4.0, 600 s** | **+11.59** | **+21.38** | **+9.67** | **+42.64** | +20.04 | **−2.83** | **87.4%** |
+| tp 5.0, 600 s | +12.98 | +19.65 | +11.80 | +44.44 | +16.96 | −2.83 | 90.2% |
+
+  tp 4.0 / 600 s beats tp 3.0 / 600 s in each block (net and without the best 2) and at each landing (+46.87 / +32.20
+  / +48.84 against the live rule's +38.47 / +25.30 / +41.69); without each block's best 5 the two are equal (the
+  extra comes from the largest wins: 41 take profits in 25 days against 66). The 600 s timer halves the deepest fall.
+- **So the 1200 s timer was fitted to the two weeks it was picked on; the owner's 600 s was the steadier choice.**
+  Recommended Nov 14: `take_profit = 4.0`, `max_hold_s = 600`, the early-sale window unchanged.

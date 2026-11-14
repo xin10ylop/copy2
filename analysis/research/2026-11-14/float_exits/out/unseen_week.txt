@@ -1,0 +1,33 @@
+333 copyable buys, 10-21 21:20 to 10-29 13:22 Beirut; paid with: {'SOL': 149, 'SPCX': 13, 'WBTC': 126, 'PUMP': 45}; 0 without a path
+
+rule                                           | net    | w/o best 2 | w/o best 5 | landing 4 / 8 / late     | copies | tp exits | corrected
+CHOSEN: tp 3.0, 1200 s, early 30-290           |  +4.16 |  +2.21     |  -0.42     |  +4.26 /  +0.07 /  +8.15 |   245  |  19.3    | +14.52
+old: tp 2.4, 1790 s, early 30-180              |  +0.73 |  -1.08     |  -3.13     |  +0.70 /  -1.17 /  +2.65 |   245  |  31.3    | +11.80
+tp 2.4, the rest as chosen                     |  +4.50 |  +2.69     |  +0.61     |  +4.85 /  +1.09 /  +7.55 |   248  |  32.0    | +15.62
+tp 2.0, the rest as chosen                     |  +1.45 |  +0.30     |  -1.13     |  +1.09 /  -1.04 /  +4.31 |   253  |  43.0    | +13.28
+tp 3.5, the rest as chosen                     |  +6.04 |  +3.53     |  +0.18     |  +5.35 /  +2.51 / +10.25 |   245  |  15.0    | +16.17
+tp 4.0, the rest as chosen                     |  +6.64 |  +3.90     |  +0.08     |  +5.94 /  +2.35 / +11.63 |   245  |  13.0    | +16.68
+timer 300 s                                    |  +9.71 |  +7.51     |  +4.82     |  +9.89 /  +3.69 / +15.53 |   289  |  17.3    | +21.79
+timer 600 s                                    |  +8.79 |  +6.72     |  +4.09     |  +9.67 /  +3.83 / +12.86 |   273  |  20.0    | +20.36
+timer 900 s                                    |  +6.27 |  +4.32     |  +1.70     |  +6.63 /  +1.88 / +10.30 |   253  |  19.7    | +16.97
+timer 1790 s                                   |  +1.68 |  -0.26     |  -2.90     |  +2.01 /  -1.85 /  +4.90 |   243  |  20.3    | +11.96
+his sale never followed                        |  +2.97 |  +1.00     |  -1.68     |  +2.49 /  +0.04 /  +6.39 |   242  |  19.7    | +13.87
+early 30-180 s                                 |  +4.39 |  +2.42     |  -0.26     |  +4.19 /  +0.98 /  +8.01 |   245  |  19.7    | +14.92
+early 30-330 s (his 300 s sales too)           |  +5.08 |  +3.13     |  +0.50     |  +5.62 /  -0.01 /  +9.62 |   247  |  20.7    | +15.50
+his every sale followed                        |  +4.13 |  +2.18     |  -0.33     |  +4.36 /  +0.08 /  +7.94 |   253  |  14.0    | +11.94
+a 0.5x stop added                              |  +4.80 |  +2.76     |  +0.10     |  +5.25 /  +0.49 /  +8.67 |   248  |  20.3    | +15.14
+
+the 840 rules of float_exits.py on this week: the chosen rule's net +4.16 would rank 494 of 841, without the best 2 +2.21 rank 501; the old rule ranks 704 and 720; rules above zero: 736 of 840
+   the 5 best of this week (hindsight):
+      tp 4.0  600s early 30-180 any         stop 0.4  +12.94 (+10.05)
+      tp 4.0  600s early 30-180 any         stop None +12.89 (+10.00)
+      tp 4.0  600s early 30-180 any         stop 0.5  +12.51 ( +9.62)
+      tp 4.0  300s early 30-180 any         stop None +12.26 ( +9.46)
+      tp 4.0  300s early 30-180 any         stop 0.4  +12.07 ( +9.28)
+
+by kind, every copy, the chosen rule / the old rule (mean of landings):
+   SOL   149 copies:  +4.34 /  -0.13
+   WBTC  126 copies:  +3.47 /  +4.84
+   PUMP   45 copies:  +2.30 /  -0.23
+   SPCX   13 copies:  -1.43 /  -1.66
+by Beirut day, chosen / old: 10-21 -0.14/-0.14  10-22 -1.54/-1.29  10-23 -1.65/-1.55  10-24 +0.13/-0.22  10-25 +1.90/+2.23  10-26 -0.43/-1.49  10-27 +1.51/+0.45  10-28 +3.02/+2.16  10-29 +1.36/+0.58
