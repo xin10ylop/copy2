@@ -24,7 +24,10 @@ def call(m, p, key=None):
             r = json.load(urllib.request.urlopen(req, timeout=60))
             if "error" in r: raise RuntimeError(str(r["error"])[:100])
             res = r["result"]
-            if path and res is not None: json.dump(res, gzip.open(path, "wt"))
+            if path and res is not None:                 # written whole or not at all (two runs may share the cache)
+                tmp = f"{path}.{os.getpid()}.tmp"
+                with gzip.open(tmp, "wt") as f: json.dump(res, f)
+                os.replace(tmp, path)
             return res
         except Exception:
             time.sleep(1.5 * (k + 1))
