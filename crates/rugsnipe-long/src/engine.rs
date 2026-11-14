@@ -388,6 +388,17 @@ impl Engine {
                 _ => return self.skip(&t, &format!("no price for the float {}", m8(&plan.anchor))),
             }
         };
+        // a float under the stake (a loss is paid back in it) buys with what
+        // it holds, down to `float_min_frac` of the stake
+        let (stake, amount_in) = if !paper && plan.anchor != c::WSOL_MINT {
+            let held = self.floats.get(&plan.anchor).copied().unwrap_or(0);
+            match self.cfg.float_buy(stake, amount_in, held) {
+                Some(x) => x,
+                None => return self.skip(&t, &format!("float {} under the stake", m8(&plan.anchor))),
+            }
+        } else {
+            (stake, amount_in)
+        };
         // our share of its buy: in the same unit when we pay what it paid
         let share = if plan.anchor == t.input_mint && t.input_amount > 0 {
             amount_in as f64 / t.input_amount as f64

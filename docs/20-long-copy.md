@@ -105,6 +105,11 @@ within a slot** (`exits_pess.py`):
   (about +0.12 SOL a copy against +0.02 from wSOL).
 - **`send TO SOL`** (Nov 13): a plain SOL transfer from the long wallet (to fund another bot's wallet, such as
   `rugsnipe-long-tab`'s), refused if it would leave under 0.1 SOL; waits for it to land.
+- **`float_min_frac`** (Nov 14, default 1.0 = as before): a float that holds less than the stake (a losing trade is paid
+  back in it) still buys, with all it holds and the stake scaled down with it, when that is at least this share of
+  the stake; under it the buy is skipped (`float ... under the stake`). For several small floats (PUMP, SPCX), which
+  would otherwise stop copying after one loss until topped up. `status --chain` shows each float's SOL value.
+  `examples/scan.rs` takes `FLOATS=MINT,...` and prints each route's hops and kind.
 - **`send TO all`** (Nov 14): empties the wallet, for a bot paused for good (TAB16RxX's): closes its empty token
   accounts and any wrapped SOL (10 a transaction; their rent comes back; a close that fails is reported and skipped),
   lists accounts still holding tokens (sell them first with `float sell MINT all`), then sends every lamport but the

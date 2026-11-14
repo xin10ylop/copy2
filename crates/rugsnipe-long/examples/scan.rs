@@ -4,7 +4,7 @@
 //! `min_sol` or more, the route or why there is none. PRICES (optional) is a
 //! JSON map of mint -> lamports per raw unit for buys paid in a held token.
 //!
-//!     [SCAN_SOL=1] cargo run -p rugsnipe-long --example scan -- RPC_URL DIR [PRICES] [MIN_SOL]
+//!     [SCAN_SOL=1] [FLOATS=MINT,...] cargo run -p rugsnipe-long --example scan -- RPC_URL DIR [PRICES] [MIN_SOL]
 use pump_codec::constants as c;
 use pump_codec::Pubkey;
 use rugsnipe_long::chain::Rpc;
@@ -27,7 +27,11 @@ fn main() {
     let min_sol: f64 = a.get(3).map_or(1.45, |s| s.parse().unwrap());
     // the copied wallet: wallet 4, or W=... for another one
     let w4: Pubkey = std::env::var("W").unwrap_or_else(|_| W4.into()).parse().unwrap();
-    let anchors = [c::WSOL_MINT, WBTC.parse().unwrap()];
+    // FLOATS=MINT,MINT: more floats the routes may start from (PUMP, SPCX ...)
+    let mut anchors: Vec<Pubkey> = vec![c::WSOL_MINT, WBTC.parse().unwrap()];
+    if let Ok(f) = std::env::var("FLOATS") {
+        anchors.extend(f.split(',').filter_map(|m| m.parse::<Pubkey>().ok()));
+    }
     let mut files: Vec<_> = std::fs::read_dir(&a[1])
         .unwrap()
         .map(|e| e.unwrap().path())
@@ -81,7 +85,7 @@ fn main() {
                         continue;
                     }
                     let how = match route::plan(&t, &anchors, &mut rpc) {
-                        Ok(p) => format!("ROUTABLE {p:?}"),
+                        Ok(p) => format!("ROUTABLE hops {} how {} {p:?}", p.route.hops.len(), p.how),
                         Err(e) => format!("no route: {e:?}"),
                     };
                     println!(

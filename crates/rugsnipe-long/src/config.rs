@@ -103,6 +103,12 @@ pub struct LongCfg {
     /// 0 = `stake_sol`. WBTC-routed copies made about +0.12 SOL a copy
     /// against +0.02 from wrapped SOL (backtests §9).
     pub float_stake_sol: f64,
+    /// A float that holds less than the stake (a loss is paid back in it)
+    /// still buys, with all it holds, when that is at least this share of
+    /// the stake; under it the buy is skipped. 1.0 = the whole stake or
+    /// nothing. Several small floats (PUMP, SPCX, 2026-11-14) would
+    /// otherwise stop copying after one losing trade until topped up.
+    pub float_min_frac: f64,
     /// Positions, journal-only state, the kill file.
     pub state_dir: String,
     /// Float prices (Jupiter Price API v3; with a key: `https://api.jup.ag/price/v3`
@@ -145,6 +151,7 @@ impl Default for LongCfg {
             follow_early_s: vec![],
             follow_early_below: 1.5,
             float_stake_sol: 0.0,
+            float_min_frac: 1.0,
             state_dir: "/var/lib/rugsnipe-long".into(),
             price_api: crate::oracle::API.into(),
         }
@@ -206,6 +213,9 @@ impl LongCfg {
         if !(0.0..=100.0).contains(&self.float_stake_sol) {
             return bad("float_stake_sol must be in [0, 100]");
         }
+        if !(self.float_min_frac > 0.0 && self.float_min_frac <= 1.0) {
+            return bad("float_min_frac must be in (0, 1]");
+        }
         if !(self.follow_early_s.is_empty()
             || (self.follow_early_s.len() == 2 && self.follow_early_s[0] < self.follow_early_s[1]))
         {
@@ -227,6 +237,19 @@ impl LongCfg {
         (s * 1e9) as u64
     }
 
+    /// What a float buy spends: `(stake, amount_in)` as asked when the
+    /// float holds it, scaled down to all it holds when that is at least
+    /// `float_min_frac` of it, `None` (skip) under that.
+    pub fn float_buy(&self, stake: u64, amount_in: u64, held: u64) -> Option<(u64, u64)> {
+        if held >= amount_in {
+            Some((stake, amount_in))
+        } else if amount_in > 0 && held as f64 >= amount_in as f64 * self.float_min_frac && self.float_min_frac < 1.0 {
+            Some(((stake as f64 * held as f64 / amount_in as f64) as u64, held))
+        } else {
+            None
+        }
+    }
+
     pub fn copy_pk(&self) -> pump_codec::Pubkey {
         self.copy_wallet.parse().expect("validated")
     }
@@ -241,11 +264,27 @@ mod tests {
     use super::*;
 
     #[test]
+    fn a_float_under_the_stake_buys_with_what_it_holds() {
+        // the default: the whole stake or nothing
+        let c = LongCfg::default();
+        assert_eq!(c.float_buy(500, 1000, 1000), Some((500, 1000)));
+        assert_eq!(c.float_buy(500, 1000, 999), None);
+        // half the stake or more: all it holds, the stake scaled with it
+        let c = LongCfg::from_toml_str("float_min_frac = 0.5").unwrap();
+        assert_eq!(c.float_buy(500_000_000, 1000, 2000), Some((500_000_000, 1000)));
+        assert_eq!(c.float_buy(500_000_000, 1000, 700), Some((350_000_000, 700)));
+        assert_eq!(c.float_buy(500_000_000, 1000, 500), Some((250_000_000, 500)));
+        assert_eq!(c.float_buy(500_000_000, 1000, 499), None);
+        assert_eq!(c.float_buy(500_000_000, 0, 0), Some((500_000_000, 0)));
+    }
+
+    #[test]
     fn defaults_validate_and_parse() {
         LongCfg::default().validate().unwrap();
         let c = LongCfg::from_toml_str("mode = \"on\"\nstake_sol = 0.5\nmax_open = 2\n").unwrap();
         assert_eq!(c.mode, Mode::On);
         assert_eq!(c.max_open, 2);
+        assert!(LongCfg::from_toml_str("float_min_frac = 0.0").is_err());
         assert!(LongCfg::from_toml_str("stop = 1.2").is_err());
         assert!(LongCfg::from_toml_str("stop = 0.0").is_ok());
         assert!(LongCfg::from_toml_str("stop = -0.1").is_err());

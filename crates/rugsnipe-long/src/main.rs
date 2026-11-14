@@ -655,8 +655,12 @@ fn status(args: &[String]) -> Result<(), String> {
                             route::Chain::mint_program(&mut rpc, &f).unwrap_or(c::SPL_TOKEN_PROGRAM_ID);
                         let a = rpc.token_balance(&w, &f, &prog).unwrap_or(0);
                         let d = rpc.decimals(&f).unwrap_or(0);
+                        // its SOL value at the price API's rate
+                        let v = oracle
+                            .last_known(&f)
+                            .map_or(String::new(), |p| format!(" ({:.3} SOL)", a as f64 * p / 1e9));
                         fl.push(format!(
-                            "{} {:.8}",
+                            "{} {:.8}{v}",
                             &f.to_string()[..8],
                             a as f64 / 10f64.powi(d as i32)
                         ));
