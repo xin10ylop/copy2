@@ -95,3 +95,11 @@ SPCX 47 +9.31, SOL 125 +0.09.
   every sale followed −0.5393, the new rule −0.1808.
 - The WBTC-paid buys are valued at 7,950 lamports a unit here (about 8,820 on Nov 14), so a few just over 1.45 SOL
   (BTCmcoKg, 1.499) are missing from the study.
+
+## Do the take profits come every day, from every kind of copy? (`tp_daily.py`, `out/tp_daily.txt`, Nov 14)
+
+The run at the live rule, landing 4, by Beirut day (17 days, the first and last partial): 378 copies, **55 take
+profits, 1 in 6.9 copies, 3.2 a day; at least one on 16 of 17 days.** Net +34.33 SOL = the take profits +49.57, every
+other copy together −15.24. By kind: SOL 11 in 117 copies (1 in 10.6; on 6 of 17 days); WBTC 12 in 97 (1 in 8.1; 9
+days); PUMP 18 in 118 (1 in 6.6; 12 days); SPCX 14 in 46 (1 in 3.3; 9 days); 3-hop routes 3 in 21 (2 days). Between
+one take profit and the next: 5.2 hours (median), 25.2 at most; the longest run of copies without one, 47.
