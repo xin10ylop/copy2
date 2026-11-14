@@ -17,7 +17,9 @@ W4 = "H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg"
 CACHE = f"{SPD}/cache"; os.makedirs(CACHE, exist_ok=True)
 def call(m, p, key=None):
     path = f"{CACHE}/{key}.json.gz" if key else None
-    if path and os.path.exists(path): return json.load(gzip.open(path))
+    if path and os.path.exists(path):
+        try: return json.load(gzip.open(path))
+        except Exception: os.remove(path)                    # cut off by a killed run: fetched again
     for k in range(8):
         try:
             req = urllib.request.Request(R, json.dumps({"jsonrpc": "2.0", "id": 1, "method": m, "params": p}).encode(), {"content-type": "application/json"})
