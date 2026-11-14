@@ -16,9 +16,13 @@
  14 FAVdiH3q   1.0  -0.0851 time     | -0.0763 (time) / -0.0815 (time) / -0.0980 (time) |   -0.4
  15 KgcdZjU4   1.0  -0.2493 time     | -0.2893 (time) / -0.3232 (time) / -0.3405 (time) |   +7.4
  16 oxbezHbo   1.0  -0.4291 its_sell | -0.2345 (its_) / -0.3134 (its_) / -0.2771 (its_) |  -11.6
+ 17 EH6yuh4Y   1.0  -0.4260 time     | -0.4305 (time) / -0.3695 (time) / -0.4610 (time) |   -5.7
+ 18 4TMzhGzY   0.5  -0.0310 its_sell | -0.0057 (its_) / -0.0181 (its_) / -0.0475 (its_) |   -2.6
+ 19 6KpdMXAS   0.5  -0.2420 its_sell | -0.0998 (its_) / -0.0004 (refu) / -0.0998 (its_) |  -48.3
+ 20 DHcZRxRX   0.5  -0.1991 time     | -0.1958 (time) / -0.1681 (time) / -0.1853 (time) |   -6.5
 
-total real +0.0990 SOL; model at landing 2 -1.1920, 4 -1.3690, 8 -1.0179
-  time     12 trades: real - model at landing 4, median +4.5 points, mean +4.9
+total real -0.7991 SOL; model at landing 2 -1.9238, 4 -1.9251, 8 -1.8115
+  time     14 trades: real - model at landing 4, median +2.1 points, mean +3.3
   tp        3 trades: real - model at landing 4, median +160.4 points, mean +128.2
-  its_sell  1 trades: real - model at landing 4, median -11.6 points, mean -11.6
-  all      16 trades: median +6.4, mean +27.0
+  its_sell  3 trades: real - model at landing 4, median -11.6 points, mean -20.8
+  all      20 trades: median +2.1, mean +18.4

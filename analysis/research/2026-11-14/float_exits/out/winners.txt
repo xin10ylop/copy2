@@ -1,0 +1,16 @@
+5tePJcGm (real win #2): high 5.96x; 3.0x at 473 s, 4.0x at 511 s; price at 600 s 3.48x, at 1200 s 5.88x
+      old 2.4/1790: +0.661 (tp 142 s) | live 3.0/1200: +1.407 (tp 473 s) | 3.0/600: +1.407 (tp 473 s) | 4.0/600: +1.708 (tp 511 s)
+Eymbsj8M (real win #5): high 10.00x; 3.0x at 389 s, 4.0x at 477 s; price at 600 s 5.80x, at 1200 s 3.72x
+      old 2.4/1790: +0.461 (tp 304 s) | live 3.0/1200: +0.746 (tp 389 s) | 3.0/600: +0.746 (tp 389 s) | 4.0/600: +1.190 (tp 479 s)
+BUdiaswB (real win #10): high 3.62x; 3.0x at 643 s, 4.0x at None s; price at 600 s 2.33x, at 1200 s 2.65x
+      old 2.4/1790: +0.532 (tp 268 s) | live 3.0/1200: +0.824 (tp 643 s) | 3.0/600: +0.526 (time 600 s) | 4.0/600: +0.526 (time 600 s)
+HdBaFgoC (missed Nov 14 06:13 UTC, SOL under the stake): high 1.92x; 3.0x at None s, 4.0x at None s; price at 600 s 1.73x, at 1200 s 0.75x
+      old 2.4/1790: -0.240 (its_sell 88 s) | live 3.0/1200: -0.240 (its_sell 88 s) | 3.0/600: -0.240 (its_sell 88 s) | 4.0/600: -0.240 (its_sell 88 s)
+4TMzhGzY (#18): high 1.87x; 3.0x at None s, 4.0x at None s; price at 600 s 0.83x, at 1200 s 1.16x
+      old 2.4/1790: +0.033 (time 1871 s) | live 3.0/1200: -0.018 (its_sell 257 s) | 3.0/600: -0.018 (its_sell 257 s) | 4.0/600: -0.018 (its_sell 257 s)
+6KpdMXAS (#19): high 1.65x; 3.0x at None s, 4.0x at None s; price at 600 s 0.90x, at 1200 s 0.83x
+      old 2.4/1790: -0.000 (refused 0 s) | live 3.0/1200: -0.000 (refused 0 s) | 3.0/600: -0.000 (refused 0 s) | 4.0/600: -0.000 (refused 0 s)
+DHcZRxRX (#20): high 1.01x; 3.0x at None s, 4.0x at None s; price at 600 s 0.59x, at 1200 s 0.58x
+      old 2.4/1790: -0.176 (time 1200 s) | live 3.0/1200: -0.176 (time 1200 s) | 3.0/600: -0.176 (time 1200 s) | 4.0/600: -0.176 (time 1200 s)
+EH6yuh4Y (#17): high 1.57x; 3.0x at None s, 4.0x at None s; price at 600 s 0.74x, at 1200 s 0.74x
+      old 2.4/1790: -0.190 (time 1791 s) | live 3.0/1200: -0.109 (its_sell 216 s) | 3.0/600: -0.109 (its_sell 216 s) | 4.0/600: -0.109 (its_sell 216 s)

@@ -175,3 +175,44 @@ open (SOL 1, WBTC 2, PUMP 1, SPCX 1), raw, mean of landings.
   extra comes from the largest wins: 41 take profits in 25 days against 66). The 600 s timer halves the deepest fall.
 - **So the 1200 s timer was fitted to the two weeks it was picked on; the owner's 600 s was the steadier choice.**
   Recommended Nov 14: `take_profit = 4.0`, `max_hold_s = 600`, the early-sale window unchanged.
+
+## The review from A to Z the owner asked for (`review_az.py`, `winners.py`, `live_gap_w4.py`, Nov 14 afternoon)
+
+**Is the bot trading?** Yes; wallet 4 was slow. From the switch (Nov 14 01:20 UTC) to 11:34 UTC it made 9 buys of
+1.45+ SOL: 4 with a route (3 copied: #18, #19, #20; `HdBaFgoC` at 06:13 skipped, SOL 0.371 under the 0.55 a SOL copy
+needs; in the model that copy loses 0.24 SOL at 0.5), 5 with none (`he1iusmf` 3, `DJTu7vi8`, `PreweJYE`).
+
+**Every timer x take profit over all 23.5 days** (781 buys, 0.5 SOL, early 30-290; `out/review_az.txt`):
+
+| timer | tp 2.4 | tp 3.0 | tp 4.0 | tp 3.0 without each block's best 5 | tp 4.0 the same | deepest fall, tp 3.0 |
+|---|---|---|---|---|---|---|
+| 300 s | +29.76 | +35.20 | +36.56 | +19.30 | +15.83 | −3.63 |
+| 450 s | +28.08 | +34.83 | +38.80 | +19.01 | +16.73 | −3.02 |
+| **600 s** | +28.44 | **+36.23** | +42.11 | **+20.21** | +19.51 | **−3.08** |
+| 750 s | +29.08 | +36.29 | +41.39 | +20.32 | +19.02 | −4.09 |
+| 900 s | +26.92 | +34.35 | +39.69 | +18.48 | +17.28 | −4.70 |
+| 1200 s (live) | +28.00 | +34.62 | +39.23 | +18.64 | +16.82 | −5.24 |
+| 1790 s | +23.50 | +31.53 | +34.43 | +14.13 | +10.78 | −6.40 |
+
+- tp 3.0 beats 2.4 at every timer (by 5 to 8 SOL). tp 4.0 beats 3.0 on the total at every timer and loses to it
+  without each block's best 5 at every timer: its extra is a handful of the largest wins. **tp 3.0 stays** (the
+  recommendation of tp 4.0 is withdrawn).
+- The timer: 450-750 s is a plateau for tp 3.0 (+34.8 to +36.3) with the smallest falls; 1200 s and 1790 s fall
+  deeper. **600 s.**
+- How often a copy wins at tp 3.0 / 600 s (landing 4): 27.2 copies a day, 9.5 close above zero (35%), 4.6 make +50%
+  of the stake or more, 3.0 reach the take profit; average win +0.40 SOL, average loss −0.12. At tp 4.0: 9.1, 4.0
+  and 1.8 a day.
+- At tp 3.0 / 600 s: never following his sale +34.31, early 30-180 +34.65, 30-290 +36.23, 30-330 +37.08, his every
+  sale +28.36, a 0.5x stop +35.99, a 0.7x stop +32.04.
+- **0.3 SOL a copy:** tp 3.0 / 600 s +21.52 over the 23.5 days (without the best 5: +11.79), deepest fall −1.91.
+
+**The real winners under each rule** (`out/winners.txt`, model, 0.5 SOL): 5tePJcGm passed 3.0x at 473 s and 4.0x at
+511 s; Eymbsj8M 389 s and 477 s; BUdiaswB 3.0x at 643 s, never 4.0x (2.33x at 600 s: sold there by a 600 s timer,
++0.526 against +0.824 at 1200 s); BTCmcoKg 3.0x at 29 s.
+
+**The model against the 21 real trades** (`out/live_gap_w4.txt`; 20 with a path): real −0.7991 SOL, model −1.9251
+at landing 4. By exit, real minus model in points of the stake: timer (14) +2.1 median; take profit (3) +160;
+**sold behind his sale (3) −11.6 median (#16 −11.6, #18 −2.6, #19 −48.3)**. #19's first two sells failed on chain
+with `ExceededSlippage` in slot 469188206 (the 30% floor), the third landed in the next slot at the 50% floor: the
+price fell over 30% within the slot behind his sale. Three trades are too few to change the early-sale rule; each
+further sale behind his is to be compared with what holding would have given.
