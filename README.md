@@ -151,6 +151,20 @@ landed in the same slot 469811411). Day −0.1730; all real 28, −0.5563; with 
 1.0 SOL (−45,164 units, +0.4109 SOL, slot 469835546), PUMP 0.6 (+0.1408, slot 469835556); SPCX, TTWO, DJT and HYPE
 refused by Jupiter's price API (HTTP 429), to be levelled again. The restart: `min_sol 1.3 stake 0.5 SOL tp 3x stop 0x
 hold 600s max_open 2`, six floats, feed connected; SOL 1.1135.
+**#36 `GGSWz3uu`** (SPCX float, bought 19:02:34 UTC): peak 2.56x, wallet 4 sold at 63 s at +107% (above 1.5x, so not
+followed), our timer sold at 600 s: −0.0864 SOL (chain −42,721 SPCX units and the fees, about −0.085). **#37
+`Da5Gbwd8`** (TTWO, the whole float, 127,753 units = 0.418 SOL): take profit 3.02x after 68 s, **+1.0501 SOL** (chain
++323,105 TTWO units, about +1.048). A holder fee in SPCX for GGSWz3uu, +13,060 units (`2rtWCTbw`, from `HckQ93Xq...`).
+Day +0.7906 SOL.
+**Nov 15 19:29:51 UTC (21:29 Beirut): take profit 4.0 and two exit signals** (`82d0768`; the owner's go after
+`analysis/research/2026-11-16/signals/`): `sell_pressure = [5, 60, 30]` (out when the other traders' sells outnumber
+their buys by 5 over 60 s, from 30 s after its buy) and `stall_s = 180` (out after 180 s without a new high, once back
+at our fill price). Backtest, 1,238 buys at 0.5 SOL over 24 days: +75.29 against +56.63 SOL, 3 losing days against
+6, worst day −1.23 against −2.41; tp 3.0-3.5 with the signals +65.35 to +67.92 (`out/tp_scan.txt`). Trailing stops
+(10-70% under the peak) and top-holder sells were tested and do not help. Floats levelled to 0.6 (SPCX −51,335
+units +0.0995 SOL, TTWO −266,105 +0.8662, DJT −2,449,539 +0.1554, HYPE −153,277,322 +0.1433; slots 469847066-165,
+each on chain). The restart: `tp 4x stop 0x hold 600s sell_pressure [5, 60, 30] stall 180s max_open 2`, six floats,
+feed connected; SOL 2.3728, WBTC 0.994, the five others 0.600-0.603 SOL.
 **A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
 branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet
 that passed the pick-on-week-1 test (tp 3.0, 300 s: week 2 raw +13.76, corrected +20.95; week 1 raw −2.28 with the
