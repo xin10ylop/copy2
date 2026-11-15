@@ -48,8 +48,9 @@ def prep(r, P, n, pmax=1.25):
 def first(c):
     i = int(np.argmax(c)) if len(c) else 0
     return i if len(c) and c[i] else None
-def model(p, stake, tp, hold, early, sl):
-    """(net SOL, why, seconds held) for one prepared copy."""
+def model(p, stake, tp, hold, early, sl, trail=None):
+    """(net SOL, why, seconds held) for one prepared copy. `trail` = (a, d): once the price has reached a, sell when it
+    falls d (a share) under its high since our buy."""
     if p["refused"]: return (-0.0004, "refused", 0)
     vt0, vq0, bps0 = p["ent"]
     Q = stake * 1e9 * p["hopf"] / p["rate"]; net_in = Q * 1e4 / (1e4 + bps0); tok = vt0 - vt0 * vq0 / (vq0 + net_in)
@@ -63,6 +64,9 @@ def model(p, stake, tp, hold, early, sl):
         i = first(p["sell"] & (p["age"] >= early[0]) & (p["age"] < early[1]) & (p["px"] < early[2])); c += [(i, 1, "its_sell", 1)] if i is not None else []
     if tp: i = first(p["px"] >= tp);                         c += [(i, 2, "tp", 1)] if i is not None else []
     if sl: i = first(p["px"] <= sl);                         c += [(i, 3, "stop", 1)] if i is not None else []
+    if trail:
+        pk = np.maximum.accumulate(p["px"]); i = first((pk >= trail[0]) & (p["px"] <= pk * (1 - trail[1])))
+        c += [(i, 3, "trail", 1)] if i is not None else []
     i = first(p["age"] >= hold);                             c += [(i, 4, "time", 0)] if i is not None else []
     if c:
         i, _, why, d = min(c); ex = min(i + d, n - 1)
@@ -71,19 +75,19 @@ def model(p, stake, tp, hold, early, sl):
     vq_r = p["vq"][ex] + net_in; vt_r = p["vt"][ex] * p["vq"][ex] / vq_r
     out = (vq_r - vt_r * vq_r / (vt_r + tok)) * (1 - p["bps"][ex] / 1e4)
     return (out * p["rate"] * p["hopf"] / 1e9 - stake - 0.0026, why, int(p["age"][ex]))
-def model_partial(p, stake, tp1, frac, tp, hold, early, sl=None):
+def model_partial(p, stake, tp1, frac, tp, hold, early, sl=None, trail=None):
     """A part sale (the owner's question, Nov 15): sell `frac` of the position on the trade after the price reaches
     `tp1`, the rest by `model`'s rules (tp, timer, his early sale, a stop). Each part is valued as its own position of
     its share of the stake (the second sale's price impact of the first is left out: our stake is small next to the
     curve); the extra sell transaction costs 0.0013 SOL. frac 0 or no tp1 = `model`."""
-    if not frac or not tp1 or p["refused"]: return model(p, stake, tp, hold, early, sl)
+    if not frac or not tp1 or p["refused"]: return model(p, stake, tp, hold, early, sl, trail)
     n = len(p["px"])
     i1 = first(p["px"] >= tp1) if n else None
-    rest = model(p, stake * (1 - frac), tp, hold, early, sl)
+    rest = model(p, stake * (1 - frac), tp, hold, early, sl, trail)
     # no part sale (the price never reaches tp1 before the position is closed): the whole of it as `model`, one cost
-    if i1 is None: return model(p, stake, tp, hold, early, sl)
+    if i1 is None: return model(p, stake, tp, hold, early, sl, trail)
     if p["age"][i1] > rest[2] or (rest[1] in ("its_sell", "graduated", "stop") and p["age"][i1] >= rest[2]):
-        return model(p, stake, tp, hold, early, sl)
+        return model(p, stake, tp, hold, early, sl, trail)
     q = dict(p); ex = min(i1 + 1, n - 1)
     vt0, vq0, bps0 = p["ent"]; Q = stake * frac * 1e9 * p["hopf"] / p["rate"]; net_in = Q * 1e4 / (1e4 + bps0)
     tok = vt0 - vt0 * vq0 / (vq0 + net_in)
