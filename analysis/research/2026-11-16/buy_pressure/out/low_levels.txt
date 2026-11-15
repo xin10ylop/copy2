@@ -1,0 +1,54 @@
+1238 buys. Part 1: the first crossing of a level within 600 s of its buy (landing 4), by the others' buys minus sells in the 60 s before
+== crossing 1.2x (662 copies); next level 1.5x
+   buys minus sells 0 or less :   43 copies | reaches 1.5x:  74.4% | highest after, median 1.57x of the level | at 600 s: median 1.02x, mean 1.45x of the level
+   buys minus sells 1 to 5    :  341 copies | reaches 1.5x:  68.0% | highest after, median 1.44x of the level | at 600 s: median 0.92x, mean 1.28x of the level
+   buys minus sells 6 to 15   :  203 copies | reaches 1.5x:  71.4% | highest after, median 1.46x of the level | at 600 s: median 0.93x, mean 1.30x of the level
+   buys minus sells 16 or more:   75 copies | reaches 1.5x:  68.0% | highest after, median 1.47x of the level | at 600 s: median 0.83x, mean 1.20x of the level
+== crossing 1.3x (585 copies); next level 2.0x
+   buys minus sells 0 or less :   31 copies | reaches 2.0x:  41.9% | highest after, median 1.45x of the level | at 600 s: median 0.98x, mean 1.61x of the level
+   buys minus sells 1 to 5    :  212 copies | reaches 2.0x:  45.8% | highest after, median 1.44x of the level | at 600 s: median 0.91x, mean 1.25x of the level
+   buys minus sells 6 to 15   :  211 copies | reaches 2.0x:  47.4% | highest after, median 1.49x of the level | at 600 s: median 0.91x, mean 1.31x of the level
+   buys minus sells 16 or more:  131 copies | reaches 2.0x:  39.7% | highest after, median 1.36x of the level | at 600 s: median 0.82x, mean 1.10x of the level
+== crossing 1.5x (460 copies); next level 2.0x
+   buys minus sells 0 or less :   26 copies | reaches 2.0x:  50.0% | highest after, median 1.34x of the level | at 600 s: median 0.82x, mean 1.28x of the level
+   buys minus sells 1 to 5    :   78 copies | reaches 2.0x:  59.0% | highest after, median 1.48x of the level | at 600 s: median 0.93x, mean 1.17x of the level
+   buys minus sells 6 to 15   :  204 copies | reaches 2.0x:  56.9% | highest after, median 1.49x of the level | at 600 s: median 0.94x, mean 1.29x of the level
+   buys minus sells 16 or more:  152 copies | reaches 2.0x:  57.2% | highest after, median 1.46x of the level | at 600 s: median 0.84x, mean 1.16x of the level
+== crossing 1.75x (332 copies); next level 3.0x
+   buys minus sells 0 or less :    8 copies | reaches 3.0x:  62.5% | highest after, median 2.71x of the level | at 600 s: median 1.90x, mean 2.26x of the level
+   buys minus sells 1 to 5    :   32 copies | reaches 3.0x:  21.9% | highest after, median 1.23x of the level | at 600 s: median 0.98x, mean 1.16x of the level
+   buys minus sells 6 to 15   :  110 copies | reaches 3.0x:  46.4% | highest after, median 1.65x of the level | at 600 s: median 0.94x, mean 1.29x of the level
+   buys minus sells 16 or more:  182 copies | reaches 3.0x:  39.6% | highest after, median 1.52x of the level | at 600 s: median 0.91x, mean 1.16x of the level
+
+Part 2: a take profit at a low level when buying has faded, added to the live setup (+75.29); * = ahead in all three blocks; noise about +-3.4 SOL
+                                                              | total  | gain    | by block A / B / C | w/o b5 | neg  | worst | draws ahead [5%, 95%]  | exits
+   out at 1.2x if buys minus sells in 60 s is 0 or less       | +63.32 | -11.97  | -5.54 -4.88 -1.55 | +54.03 | 4/24 | -0.90 |   0.3% [-20.3,  -4.7] | tp 36, by it 282
+   out at 1.2x if buys minus sells in 60 s is -3 or less      | +71.35 |  -3.93  | -1.48 -1.69 -0.77 | +61.72 | 3/24 | -1.21 |   7.0% [ -8.8,  +0.5] | tp 44, by it 179
+   out at 1.2x if buys minus sells in 60 s is -5 or less      | +74.23 |  -1.05  | -1.00 +0.24 -0.30 | +64.60 | 3/24 | -1.23 |  27.2% [ -3.6,  +0.8] | tp 47, by it 130
+   out at 1.2x if buys minus sells in 30 s is 0 or less       | +56.26 | -19.03  | -5.54 -10.26 -3.23 | +48.36 | 2/24 | -0.18 |   0.1% [-28.0,  -8.2] | tp 23, by it 389
+   out at 1.2x if buys minus sells in 120 s is 0 or less      | +67.74 |  -7.55  | -3.89 -3.11 -0.54 | +58.15 | 4/24 | -0.90 |   0.7% [-14.1,  -2.1] | tp 41, by it 122
+   out at 1.2x if buys minus sells in 120 s is -3 or less     | +71.94 |  -3.35  | -1.41 -2.07 +0.13 | +62.30 | 3/24 | -1.17 |   9.7% [ -8.3,  +0.6] | tp 45, by it 40
+   out at 1.3x if buys minus sells in 60 s is 0 or less       | +65.97 |  -9.32  | -3.97 -3.74 -1.62 | +56.68 | 4/24 | -0.98 |   0.4% [-16.6,  -3.2] | tp 38, by it 208
+   out at 1.3x if buys minus sells in 60 s is -3 or less      | +71.57 |  -3.71  | -1.63 -1.35 -0.74 | +61.94 | 3/24 | -1.18 |   7.3% [ -8.6,  +0.3] | tp 44, by it 134
+   out at 1.3x if buys minus sells in 60 s is -5 or less      | +74.19 |  -1.10  | -0.96 +0.16 -0.30 | +64.55 | 3/24 | -1.23 |  25.4% [ -3.4,  +0.7] | tp 47, by it 99
+   out at 1.3x if buys minus sells in 30 s is 0 or less       | +57.65 | -17.64  | -5.38 -8.93 -3.33 | +49.75 | 2/24 | -0.32 |   0.2% [-26.6,  -6.6] | tp 23, by it 313
+   out at 1.3x if buys minus sells in 120 s is 0 or less      | +68.22 |  -7.07  | -3.27 -3.01 -0.79 | +58.63 | 4/24 | -1.16 |   0.9% [-13.4,  -2.0] | tp 41, by it 70
+   out at 1.3x if buys minus sells in 120 s is -3 or less     | +72.02 |  -3.27  | -1.27 -2.02 +0.02 | +62.38 | 3/24 | -1.17 |   9.6% [ -8.0,  +0.6] | tp 45, by it 24
+   out at 1.5x if buys minus sells in 60 s is 0 or less       | +70.37 |  -4.92  | -1.88 -2.74 -0.31 | +60.89 | 3/24 | -0.95 |   3.5% [-10.1,  -0.5] | tp 42, by it 121
+   out at 1.5x if buys minus sells in 60 s is -3 or less      | +73.47 |  -1.81  | -0.89 -0.27 -0.65 | +63.84 | 3/24 | -1.17 |  13.6% [ -4.6,  +0.8] | tp 46, by it 78
+   out at 1.5x if buys minus sells in 60 s is -5 or less      | +74.38 |  -0.91  | -0.95 +0.03 +0.01 | +64.74 | 3/24 | -1.23 |  36.4% [ -3.1,  +0.4] | tp 47, by it 66
+   out at 1.5x if buys minus sells in 30 s is 0 or less       | +60.30 | -14.98  | -2.67 -9.43 -2.88 | +52.14 | 2/24 | -0.38 |   0.2% [-22.2,  -5.3] | tp 26, by it 215
+   out at 1.5x if buys minus sells in 120 s is 0 or less      | +72.20 |  -3.08  | -1.39 -1.41 -0.29 | +62.61 | 3/24 | -1.16 |   7.5% [ -7.5,  +0.4] | tp 45, by it 37
+   out at 1.5x if buys minus sells in 120 s is -3 or less     | +74.10 |  -1.18  | -0.86 -0.50 +0.17 | +64.47 | 3/24 | -1.17 |  19.4% [ -3.3,  +0.6] | tp 47, by it 13
+   out at 1.75x if buys minus sells in 60 s is 0 or less      | +71.32 |  -3.97  | -0.74 -2.43 -0.80 | +61.81 | 3/24 | -1.24 |   2.2% [ -7.8,  -0.6] | tp 44, by it 69
+   out at 1.75x if buys minus sells in 60 s is -3 or less     | +73.23 |  -2.05  | -0.73 -0.31 -1.02 | +63.60 | 3/24 | -1.24 |   8.2% [ -4.8,  +0.3] | tp 46, by it 45
+   out at 1.75x if buys minus sells in 60 s is -5 or less     | +74.47 |  -0.81  | -0.86 +0.03 +0.01 | +64.84 | 3/24 | -1.23 |  35.8% [ -2.9,  +0.4] | tp 47, by it 37
+   out at 1.75x if buys minus sells in 30 s is 0 or less      | +64.88 | -10.40  | -0.87 -5.97 -3.56 | +56.49 | 3/24 | -1.15 |   0.3% [-15.3,  -3.5] | tp 30, by it 135
+   out at 1.75x if buys minus sells in 120 s is 0 or less     | +73.43 |  -1.86  | -0.71 -1.18 +0.03 | +63.79 | 3/24 | -1.23 |   6.8% [ -4.2,  +0.1] | tp 46, by it 13
+   out at 1.75x if buys minus sells in 120 s is -3 or less    | +74.03 |  -1.26  | -0.78 -0.49 +0.01 | +64.39 | 3/24 | -1.23 |  15.4% [ -3.4,  +0.4] | tp 47, by it 8
+== for scale: a plain take profit at the level (no condition)
+   tp 1.2                                                     |  -3.87 | -79.16  | -22.85 -34.11 -22.19 |  -6.79 | 16/24 | -1.67 |   0.0% [-94.3, -57.5] | tp 573, by it 0
+   tp 1.3                                                     |  +7.35 | -67.94  | -20.67 -29.20 -18.07 |  +3.64 | 10/24 | -1.55 |   0.0% [-83.3, -46.9] | tp 494, by it 0
+   tp 1.5                                                     | +23.31 | -51.97  | -16.53 -20.85 -14.60 | +19.22 | 7/24 | -1.23 |   0.0% [-63.7, -33.8] | tp 370, by it 0
+   tp 1.75                                                    | +32.93 | -42.36  | -12.28 -16.37 -13.71 | +28.02 | 5/24 | -1.82 |   0.0% [-51.7, -29.1] | tp 251, by it 0
+   tp 2.0                                                     | +44.12 | -31.17  | -8.73 -11.47 -10.96 | +38.59 | 5/24 | -2.17 |   0.0% [-39.5, -18.8] | tp 197, by it 0

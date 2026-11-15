@@ -33,3 +33,14 @@ every group.
 
 **Nothing to change.** What buy pressure knows, the live rules already use: the price only gets to the take profit
 while buying is strong, and when buying turns into net selling for a minute `sell_pressure` sells.
+
+## From 1.2x (`low_levels.py`, `out/low_levels.txt`; the owner: "how didn't you start at 1.2x?")
+
+- **The crossings of 1.2x, 1.3x, 1.5x, 1.75x:** buy pressure does not separate them either. Crossing 1.2x (662
+  copies): 74% / 68% / 71% / 68% reach 1.5x with 0 or less / 1-5 / 6-15 / 16+ more buys than sells. Crossing 1.3x (585):
+  42% / 46% / 47% / 40% reach 2x. At these levels weak buying is common (384 of 662 cross 1.2x with 5 or fewer net
+  buys), so there is something to act on, and it carries no information.
+- **A take profit at 1.2 / 1.3 / 1.5 / 1.75x when buying has faded,** 24 settings added to the live setup: all lose,
+  −0.81 to −19.03 SOL (the tightest, "0 or less in 30 s": −19.03 at 1.2x, −17.64 at 1.3x, −14.98 at 1.5x). They do
+  cut the worst day (to −0.18 at best) by selling 200-390 copies early, at the price of the runs.
+- For scale, a plain take profit there: 1.2x −79.16, 1.3x −67.94, 1.5x −51.97, 1.75x −42.36, 2.0x −31.17.
