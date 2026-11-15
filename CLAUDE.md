@@ -19,7 +19,7 @@ Wallet 4's strategies:
   (since Nov 15 19:29 UTC, with the exit signals `sell_pressure = [5, 60, 30]` and `stall_s = 180`;
   `analysis/research/2026-11-16/signals/`; **the exit is frozen since Nov 15 night, the owner's rule: no change until
   about 50 real trades or two weeks have judged it**, `2026-11-16/final_exit/`), no stop, 600 s, daily stop 1.0, the early-sale rule (`follow_early_s = [30, 290]`), 3-hop routes (v0), floats WBTC, PUMP, SPCX, TTWO,
-  DJT and HYPE (`float_min_frac = 0.5`; `float level MINT SOL` once a day; `analysis/research/2026-11-14/float_exits/`,
+  DJT, HYPE and AAPLx (Apple, since Nov 15 21:38 UTC) (`float_min_frac = 0.5`; `float level MINT SOL` once a day; `analysis/research/2026-11-14/float_exits/`,
   `2026-11-15/all_tokens/`), every fee tier copied (`min_fee_bps = 0`: the 125 bps floor ran Nov 15 13:08 to 15:14 UTC
   and was removed on the owner's call, for fear of overfitting; `2026-11-15/skip_filters/`); the second
   unit `rugsnipe-long-tab` (TAB16RxX) is paused since Nov 14 (README "Live again"). Wallet

@@ -183,6 +183,12 @@ where wallet 4 sold at 1.5x or more and we stayed make +47.15 of the total (+94%
 leaving behind such a sale loses 2 to 19 SOL; following its sale in its first 30 s loses 9. Take profit under 4 loses
 in every block, 4 to 6 is the same. No combination beats the live setup walked forward. **Nothing changes; no more
 changes to the exit until about 50 real trades or two weeks have judged it** (the owner's rule).
+**Nov 15 21:38 UTC (23:38 Beirut): an Apple float** (AAPLx, `XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp`, a tokenized
+stock, Token-2022 with a freeze authority, a pause switch and a permanent delegate like TTWO and DJT; the owner's
+call, as `analysis/research/2026-11-15/all_tokens/` recommended once 0.5 SOL was spare: 26 buys in 24.7 days, +3.05 SOL
+at 0.5, block by block −0.20 / +2.86 / +0.39, simulated on chain Nov 15): 12,036,623 units for 0.6 SOL (slot
+469883188). The exit is not touched. The restart: seven floats, feed connected; SOL 1.8689, WBTC 0.992, PUMP 0.612,
+SPCX 0.549, TTWO 0.580, DJT 0.596, HYPE 0.603, AAPLx 0.598 SOL. Day: 12 closed, 5 won, +0.8062 SOL.
 **The settings of the two signals, all of them, on the live setup** (`analysis/research/2026-11-16/signals/out/grid.txt`,
 520 settings): windows of 20-45 s lose 5 to 21 SOL, 60-120 s are flat, counting from 0-10 s after its buy loses 3 to
 5, SOL in place of the trade count loses everywhere, a stall under 120 s loses 2 to 17 and 180-300 s are flat (+3.1
