@@ -124,6 +124,13 @@ better in each block, and on the buys the threshold was not picked on). The rest
 (slot 469771258). The restart: six floats; SOL 0.9926, WBTC 1.406, PUMP 0.748, SPCX 0.759, TTWO 0.758, DJT 0.757, HYPE
 0.750 SOL (about 6.17 SOL in all); feed connected. The TAB16RxX bot was paused by the owner on Nov 14 (14
 real, −0.1665); `send TO all` built to return its balance.
+**Nov 15, one copy by 15:01 UTC: a quiet day, not a fault.** Wallet 4's own transactions (876, fetched from 00:00 UTC,
+scanned with `examples/scan.rs` and today's floats): 18 buys of 1.3+ SOL, 5 with no route (USDC, XsCPL9dN, Pren1FvF).
+Of the 13 routable, 9 were on 100 bps coins, which `min_fee_bps = 125` now skips; 2 more (`3Xtzu55E` 04:30 UTC,
+`29xjBYAf` 10:54) were skipped by the journal for "SOL balance 0.33 under the stake", before the top-up. The rest:
+`BURn1o8x` copied (#30, take profit); `Dtobp85W` (11:50) paid in TTWO before the TTWO float; `JBR2Avtr` (04:16, 1.42)
+and `HHsWnAKw` (13:04, WBTC 1.34) under the then 1.45 minimum. From the fee floor (13:08) to 15:01 UTC it made no buy
+of 1.3+ SOL at all.
 **A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
 branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet
 that passed the pick-on-week-1 test (tp 3.0, 300 s: week 2 raw +13.76, corrected +20.95; week 1 raw −2.28 with the
