@@ -132,9 +132,15 @@ Of the 13 routable, 9 were on 100 bps coins, which `min_fee_bps = 125` now skips
 and `HHsWnAKw` (13:04, WBTC 1.34) under the then 1.45 minimum. From the fee floor (13:08) to 15:01 UTC it made no buy
 of 1.3+ SOL at all. Of today's low-fee buys, the 7 modelled make +3.99 SOL at 0.5 (two of them +2.45 and +1.52);
 over 26 days the floor makes the same money (+35.75 against +34.94) with 4 losing days against 8.
-**Nov 15 evening: the fee floor removed** (`min_fee_bps = 0`), the owner's call: one search out of 66,430 rules, the
+**Nov 15 15:14 UTC (17:14 Beirut): the fee floor removed** (`min_fee_bps = 0`), the owner's call: one search out of 66,430 rules, the
 gain +0.81 SOL over 26 days, so it may be luck. At 0.7 SOL without it the backtest's deepest fall is −4.04 to −5.09
-SOL, worst day −2.27 to −2.70 (with it −3.27 to −4.27 and −1.09 to −2.40; `2026-11-16/weekdays/out/risk_now.txt`).
+SOL, worst day −2.27 to −2.70 (with it −3.27 to −4.27 and −1.09 to −2.40; `2026-11-16/weekdays/out/risk_now.txt`). The
+restart: `min_sol 1.3 stake 0.7 SOL tp 3x stop 0x hold 600s max_open 2`, six floats, feed connected. Before it: **#32
+`832qVw3x`, the first TTWO copy** (195 bps), bought 15:06:55 in its slot +0 with 214,528 TTWO units, sold behind its
+early sale at 1.13x after 178 s (peak 1.69x): journal +0.0116 SOL; chain (slots 469773850, 469774689) 219,082 units
+back, +4,554 units and −0.00261 SOL in fees, about +0.012 SOL at the status price. One skip by the floor while it ran:
+`9TV1aVdJ` (1.758 SOL, 100 bps, 15:11:57). Day: 2 closed, 2 won, +0.6154 SOL; all real 25, +0.2321; with holder fees
++0.9706 SOL.
 **A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
 branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet
 that passed the pick-on-week-1 test (tp 3.0, 300 s: week 2 raw +13.76, corrected +20.95; week 1 raw −2.28 with the
