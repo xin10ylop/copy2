@@ -1,0 +1,7 @@
+no rule                     : copies 699, take profits 60.0, net +34.94 (without the best 5 +27.15) | A +7.42  B +14.08  C +7.82  D (after the study data) +5.62
+skip fee tier under 125 bps : copies 609, take profits 58.0, net +35.75 (without the best 5 +29.62) | A +8.86  B +14.88  C +10.43  D (after the study data) +1.57
+the rule's gain by day, 26 days: total +0.81, ahead on 17 days, behind on 7; worst day for the rule -3.99 (11-15), best +1.18; ahead in 61.0% of draws of the days
+low-fee buys: 107 of 782; by block A 43, B 23, C 31, D 10
+no rule                     : days 26, losing 8, worst -1.26, median +0.63, best +5.03; deepest fall over days -1.26
+skip fee tier under 125 bps : days 26, losing 4, worst -0.67, median +0.73, best +4.54; deepest fall over days -0.67
+by day, no rule / rule: 10-21 -0.15/-0.15  10-22 -0.73/+0.30  10-23 -0.10/+0.08  10-24 +0.61/+0.58  10-25 +4.11/+4.54  10-26 -1.15/-0.67  10-27 +0.55/+0.89  10-28 +2.89/+2.89  10-29 +2.48/+1.50  10-30 +2.53/+2.62  10-31 +0.86/+1.10  11-01 +5.03/+4.48  11-02 +0.74/+0.68  11-03 -0.31/-0.04  11-04 -0.16/+0.31  11-05 +3.81/+4.21  11-06 +0.15/+0.09  11-07 -1.26/-0.08  11-08 +1.40/+1.51  11-09 +0.05/+0.17  11-10 +0.63/+0.73  11-11 +4.14/+3.82  11-12 +3.81/+4.25  11-13 +0.16/+0.55  11-14 -0.19/+0.34  11-15 +5.02/+1.03

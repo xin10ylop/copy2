@@ -32,3 +32,17 @@ copy) against +11.3% for the rest: the weak group, no longer a losing one. `opus
 **Decision (Nov 15): built, off.** `min_fee_bps` in `long.toml` (0 = off; `docs/20-long-copy.md` §3), and each buy
 line now ends with `fee N bps`, so the low-fee copies can be counted as they come. To be looked at again after about
 50 more of them. Neither study found an early bail-out worth having.
+
+## With the newest day in (`fable/updated.py`, `fable/out/updated.txt`, Nov 15)
+
+The owner asked why not deploy it if it is more profitable. The bot's run on the wider dataset (782 buys of the four
+live kinds, Oct 21 - Nov 15 12:10 UTC; tokens at the Nov 15 price), 0.5 SOL, mean of three landings:
+
+| | net | without the best 5 | A | B | C | after the study data | losing days of 26 | worst day | median day |
+|---|---|---|---|---|---|---|---|---|---|
+| no rule | +34.94 | +27.15 | +7.42 | +14.08 | +7.82 | +5.62 | 8 | −1.26 | +0.63 |
+| skip fee tier under 125 bps | +35.75 | +29.62 | +8.86 | +14.88 | +10.43 | +1.57 | 4 | −0.67 | +0.73 |
+
+The rule is ahead on 17 days and behind on 7; its gain over 26 days is +0.81 SOL, because Nov 15 alone cost it
+−3.99 (+5.02 without it, +1.03 with it: the two low-fee winners). Days drawn again: ahead in 61.0%. **So: the same
+money, steadier days** (half the losing days, half the worst day), at the price of a big day now and then.
