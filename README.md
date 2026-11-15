@@ -165,6 +165,15 @@ at our fill price). Backtest, 1,238 buys at 0.5 SOL over 24 days: +75.29 against
 units +0.0995 SOL, TTWO −266,105 +0.8662, DJT −2,449,539 +0.1554, HYPE −153,277,322 +0.1433; slots 469847066-165,
 each on chain). The restart: `tp 4x stop 0x hold 600s sell_pressure [5, 60, 30] stall 180s max_open 2`, six floats,
 feed connected; SOL 2.3728, WBTC 0.994, the five others 0.600-0.603 SOL.
+**#38 `Dyc9zPSt`, the first `sell_pressure` exit** (TTWO float, bought 19:56:53 UTC in its slot +0, 152,080 units):
+sold at 1.75x after 89 s (peak 1.88x), journal **+0.2906 SOL (+58.1%)**; chain (slots 469854763, 469855179) 241,314
+TTWO units back, +89,234 units and −0.00261 SOL in fees, about +0.291 SOL at the status price. Wallet 4 was still
+holding. Day: 8 closed, 4 won, +1.0812 SOL.
+**The settings of the two signals, all of them, on the live setup** (`analysis/research/2026-11-16/signals/out/grid.txt`,
+520 settings): windows of 20-45 s lose 5 to 21 SOL, 60-120 s are flat, counting from 0-10 s after its buy loses 3 to
+5, SOL in place of the trade count loses everywhere, a stall under 120 s loses 2 to 17 and 180-300 s are flat (+3.1
+at 300 s); the best joint setting +6.69, picked on two blocks −0.64 on the third. The live values stay. Top holders
+with their real bags (`2026-11-16/holders/`, from the cached transactions): 33 rules, all lose 7 to 39 SOL.
 **A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
 branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet
 that passed the pick-on-week-1 test (tp 3.0, 300 s: week 2 raw +13.76, corrected +20.95; week 1 raw −2.28 with the
