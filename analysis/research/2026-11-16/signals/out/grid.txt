@@ -1,0 +1,64 @@
+1238 buys; 0.5 SOL, 2 open; the live setup +75.29 (round 3's own: +75.29); every figure below is the gain over it
+== pressure: N more sells than buys (rows) over W seconds (columns), from 30 s; * = ahead in all three blocks
+              20s      30s      45s      60s      75s      90s     120s     150s     180s     240s     300s
+   N  2:   -20.88   -17.89    -7.77    -2.84    -2.99    -1.06    -2.82    -6.98    -7.00    -6.11    -5.62 
+   N  3:   -18.00   -16.30    -7.73    -3.15    -3.78    -1.84    -4.35    -7.18    -6.72    -5.66    -5.58 
+   N  4:   -13.39   -11.73    -8.52    -2.22    -3.74    +0.43    -1.28    -4.42    -4.37    -3.11    -3.21 
+   N  5:   -14.92    -8.61    -4.94    +0.00    -1.02    -0.08    -1.55    -3.92    -3.22    -1.78    -2.01 
+   N  6:   -15.54    -7.01    -4.35    -2.32    -2.64    -1.74    -1.60    -4.43    -3.28    -1.98    -2.09 
+   N  7:   -16.43    -5.00    -1.60    -2.49    -2.35    -2.18    -1.77    -2.69    -2.62    -1.61    -1.74 
+   N  8:   -15.23    -6.76    -0.67    -2.07    -1.84    -2.38    -1.38    -1.94    -1.21    -1.22    -1.29 
+   N 10:   -12.63    -8.30    +2.21*   +1.86    -1.11    +0.08    -1.93    -1.34    +0.10    -1.09    -0.99 
+   N 12:   -10.54    -6.17    +1.32    +1.16*   +0.93    -0.47    -1.70    -2.07    -0.43    -2.02    -1.92 
+== pressure: counted from F seconds after its buy (rows), N in W (columns)
+             5 in 60s    4 in 90s    5 in 90s    6 in 90s   6 in 120s   8 in 120s   8 in 180s
+   F   0:       -4.94       -7.67       -4.65       -5.04       -4.85       -3.11       -2.98 
+   F  10:       -2.61       -3.43       -2.26       -4.10       -3.85       -2.32       -2.15 
+   F  20:       +0.79*      +0.86       +0.97       -0.78       -0.64       -0.56       -0.38 
+   F  30:       +0.00       +0.43       -0.08       -1.74       -1.60       -1.38       -1.21 
+   F  45:       -0.81       -0.19       -0.95       -2.84       -2.68       -2.11       -1.90 
+   F  60:       -0.54       -0.18       -1.59       -2.70       -2.65       -1.90       -1.71 
+   F  90:       -2.28       +0.27       -0.93       -2.51       -2.42       -2.69       -2.36 
+   F 120:       -2.69       +0.30       -0.82       -2.51       -1.85       -2.39       -1.67 
+== solflow in place of the count: the others' sells minus buys at X SOL (rows) over W seconds (columns), from 30 s
+                30s      60s      90s     120s     180s     240s
+   X  0.5:   -30.37   -25.19   -19.88   -19.21   -17.48   -15.51 
+   X    1:   -28.64   -21.99   -18.54   -18.08   -15.05   -14.23 
+   X    2:   -29.15   -20.00   -16.41   -15.56   -12.78   -11.31 
+   X    3:   -26.71   -15.09   -14.67   -14.74   -12.22    -9.07 
+   X    5:   -22.44   -12.32   -10.46   -10.32    -8.68    -5.40 
+   X    8:   -16.62    -8.08    -4.82    -3.39    -4.69    -1.40 
+   no pressure rule at all (stall only): -2.51
+== stall: no new high for T seconds (columns), armed at A times our buy (rows; 0 = at once)
+                60s      90s     120s     150s     180s     210s     240s     300s     400s
+   A    0:   -17.03    -8.29    -1.94    -1.25    +0.47*   +2.18    +2.27    +3.26*   +0.70 
+   A  0.8:   -17.03    -8.33    -1.95    -1.25    +0.47*   +2.18    +2.28    +3.26*   +0.70 
+   A    1:   -17.34    -8.21    -2.27    -1.66    +0.00    +1.62    +1.76    +3.12*   +0.59 
+   A  1.1:   -17.50    -8.58    -3.65    -2.94    -1.07    +0.45    +0.86    +1.95    +0.37 
+   A  1.2:   -16.37    -7.90    -4.13    -3.73    -1.74    -0.16    +0.42    +1.64    +0.34 
+   A  1.3:   -13.96    -5.53    -4.20    -3.68    -2.15    -0.68    +0.04    +1.41    +0.17 
+   A  1.5:   -14.16    -6.51    -4.61    -3.81    -2.22    -0.70    -0.05    +1.37    +0.17 
+   no stall rule at all (pressure only): +0.08
+== joint: pressure x stall x take profit x timer (the whole grid below; the 15 best by total)
+   5 in 60 s from 30 s; stall 180 s; tp 4.0; timer 600 s | +75.29 | +0.00 | A +15.66 B +33.96 C +25.66 | w/o best 5 +65.65 | losing days 3/24 | worst -1.23 | ahead in   0.0% of draws   <- live
+   4 in 90 s from 30 s; stall 240 s; tp 5.0; timer 900 s | +81.98 | +6.69 | A +14.81 B +37.46 C +29.71 | w/o best 5 +70.86 | losing days 2/24 | worst -0.36 | ahead in  86.0% of draws
+   4 in 90 s from 60 s; stall 240 s; tp 5.0; timer 900 s | +81.77 | +6.48 | A +15.10 B +37.63 C +29.04 | w/o best 5 +70.65 | losing days 1/24 | worst -0.26 | ahead in  84.3% of draws
+   4 in 90 s from 30 s; stall 240 s; tp 5.0; timer 600 s | +81.56 | +6.28 | A +15.67 B +36.53 C +29.37 | w/o best 5 +70.48 | losing days 2/24 | worst -0.27 | ahead in  88.9% of draws
+   4 in 90 s from 60 s; stall 240 s; tp 5.0; timer 600 s | +81.17 | +5.88 | A +15.74 B +36.70 C +28.73 | w/o best 5 +70.08 | losing days 1/24 | worst -0.38 | ahead in  86.5% of draws
+   5 in 90 s from 30 s; stall 240 s; tp 5.0; timer 900 s | +81.04 | +5.75 | A +14.84 B +37.46 C +28.75 | w/o best 5 +69.92 | losing days 2/24 | worst -0.67 | ahead in  83.1% of draws
+   5 in 90 s from 30 s; stall 240 s; tp 5.0; timer 600 s | +80.86 | +5.57 | A +15.69 B +36.53 C +28.65 | w/o best 5 +69.77 | losing days 2/24 | worst -0.58 | ahead in  85.7% of draws
+   6 in 120 s from 30 s; stall 240 s; tp 5.0; timer 900 s | +80.57 | +5.28 | A +15.64 B +35.30 C +29.62 | w/o best 5 +69.41 | losing days 3/24 | worst -1.47 | ahead in  82.3% of draws
+   6 in 120 s from 60 s; stall 240 s; tp 5.0; timer 900 s | +79.78 | +4.50 | A +15.57 B +35.28 C +28.94 | w/o best 5 +68.62 | losing days 2/24 | worst -1.49 | ahead in  78.9% of draws
+   8 in 120 s from 30 s; stall 240 s; tp 5.0; timer 900 s | +79.78 | +4.49 | A +15.47 B +34.92 C +29.39 | w/o best 5 +68.62 | losing days 2/24 | worst -1.50 | ahead in  74.8% of draws
+   4 in 90 s from 30 s; stall 210 s; tp 5.0; timer 600 s | +79.75 | +4.46 | A +14.70 B +36.49 C +28.56 | w/o best 5 +68.66 | losing days 2/24 | worst -0.28 | ahead in  84.7% of draws
+   5 in 90 s from 60 s; stall 240 s; tp 5.0; timer 900 s | +79.66 | +4.37 | A +15.12 B +36.72 C +27.81 | w/o best 5 +68.54 | losing days 1/24 | worst -0.85 | ahead in  75.8% of draws
+   8 in 120 s from 60 s; stall 240 s; tp 5.0; timer 900 s | +79.48 | +4.19 | A +15.25 B +35.39 C +28.84 | w/o best 5 +68.32 | losing days 2/24 | worst -1.61 | ahead in  71.5% of draws
+   5 in 90 s from 60 s; stall 240 s; tp 5.0; timer 600 s | +79.34 | +4.06 | A +15.81 B +35.79 C +27.75 | w/o best 5 +68.26 | losing days 1/24 | worst -0.76 | ahead in  77.6% of draws
+   4 in 90 s from 30 s; stall 240 s; tp 4.0; timer 600 s | +79.34 | +4.06 | A +16.37 B +34.83 C +28.14 | w/o best 5 +69.65 | losing days 3/24 | worst -0.69 | ahead in  88.0% of draws
+   4 in 90 s from 60 s; stall 210 s; tp 5.0; timer 600 s | +79.26 | +3.98 | A +14.68 B +36.67 C +27.92 | w/o best 5 +68.18 | losing days 1/24 | worst -0.29 | ahead in  78.6% of draws
+   of 288 joint settings: 125 ahead of live, 17 in all three blocks; median gain -0.59
+== picked on two blocks out of every setting above, scored on the third (gain over live in the held-out block)
+   held out A: picked '4 in 90 s from 30 s; stall 240 s; tp 5.0; timer 900 s' (+7.55 on the other two) -> -0.85; the 10 best picks on average -0.95
+   held out B: picked '6 in 120 s from 30 s; stall 240 s; tp 5.0; timer 900 s' (+3.95 on the other two) -> +1.33; the 10 best picks on average +1.72
+   held out C: picked '5 in 60 s from 60 s; stall 240 s; tp 5.0; timer 900 s' (+4.59 on the other two) -> -1.12; the 10 best picks on average -0.21
+   total out of sample: -0.64 SOL, out of 520 settings
