@@ -141,6 +141,16 @@ early sale at 1.13x after 178 s (peak 1.69x): journal +0.0116 SOL; chain (slots 
 back, +4,554 units and −0.00261 SOL in fees, about +0.012 SOL at the status price. One skip by the floor while it ran:
 `9TV1aVdJ` (1.758 SOL, 100 bps, 15:11:57). Day: 2 closed, 2 won, +0.6154 SOL; all real 25, +0.2321; with holder fees
 +0.9706 SOL.
+After it, three losses, each by its rules and equal to the chain: **#33 `EqcJFqoL`** (TTWO) sold behind its early sale
+at 0.77x after 156 s, −0.1122 SOL (chain −33,092 TTWO units and the fees); **#34 `EdWqZQVq`** (TTWO, 1.301 SOL, the
+whole float) behind its early sale at 0.68x after 37 s, −0.2533 (−76,938 units); **#35 `99KxrsW6`** (SOL, 100 bps,
+the kind the floor skipped) bought 64.3% under its price after a dump in its slot, it sold at 298 s (outside 30-290),
+our timer sold at 0.35x after 600 s: −0.4229 (chain −0.702919 + 0.280420 and two failed tries of −0.000205, the third
+landed in the same slot 469811411). Day −0.1730; all real 28, −0.5563; with holder fees +0.1822 SOL.
+**Nov 15 18:48 UTC (20:48 Beirut): back to 0.5 SOL × 2, daily stop 1.0** (the owner's call). Floats levelled: WBTC
+1.0 SOL (−45,164 units, +0.4109 SOL, slot 469835546), PUMP 0.6 (+0.1408, slot 469835556); SPCX, TTWO, DJT and HYPE
+refused by Jupiter's price API (HTTP 429), to be levelled again. The restart: `min_sol 1.3 stake 0.5 SOL tp 3x stop 0x
+hold 600s max_open 2`, six floats, feed connected; SOL 1.1135.
 **A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
 branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet
 that passed the pick-on-week-1 test (tp 3.0, 300 s: week 2 raw +13.76, corrected +20.95; week 1 raw −2.28 with the
