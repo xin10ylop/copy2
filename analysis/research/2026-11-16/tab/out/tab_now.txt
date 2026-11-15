@@ -1,0 +1,24 @@
+183 copyable first buys of 1.0+ SOL, 11-01 to 11-12 (halves split Nov 6: 66 / 117); kinds {'SOL': 128, 'WBTC': 55}; 0.5 SOL, 2 open, mean of three landings
+   rule                                                 | total  | halves        | w/o best 2 | w/o best 5 | days<0 | worst | vs TAB live 2: gain, ahead in draws [5%, 95%] | exits (a landing)
+   TAB live 1 (Nov 12): tp 3.0, 300 s, its sale never   |  +3.70 |  +1.80  +1.90 |  +0.58     |  -2.24     |  5/10 | -0.98 |  -3.91,   8.6% [ -7.7,  +0.7] | time 153 tp 11
+   TAB live 2 (Nov 13): tp 4.0, 600 s, its sale 0-60 s  |  +7.61 |  +2.80  +4.81 |  +3.83     |  -0.50     |  4/10 | -2.17 |  +0.00,   0.0% [ +0.0,  +0.0] | time 112 its_sell 39 tp 10 graduated 1
+   WALLET 4'S FROZEN SETUP, untouched                   |  +2.86 |  +2.37  +0.49 |  -0.53     |  -4.35     |  3/10 | -0.99 |  -4.75,  12.9% [-11.7,  +1.7] | its_sell 89 press 41 time 17 stall 15 tp 5 graduated 1
+     the same without the two signals                   |  +0.96 |  +2.16  -1.21 |  -2.43     |  -6.33     |  4/10 | -1.08 |  -6.65,   4.9% [-12.9,  -0.0] | its_sell 115 time 42 tp 6 graduated 1
+     the same without the stall                         |  +3.02 |  +2.69  +0.33 |  -0.37     |  -4.26     |  4/10 | -1.03 |  -4.59,  11.9% [-10.7,  +1.6] | its_sell 89 press 43 time 28 tp 6 graduated 1
+     the same without the pressure rule                 |  +1.20 |  +2.10  -0.90 |  -2.19     |  -6.02     |  3/10 | -1.39 |  -6.41,   5.2% [-12.9,  +0.1] | its_sell 116 stall 26 time 19 tp 5 graduated 1
+     the same, tp 3.0                                   |  +2.03 |  +1.82  +0.20 |  -0.30     |  -3.02     |  3/10 | -0.75 |  -5.58,  10.2% [-12.6,  +1.3] | its_sell 89 press 38 time 17 stall 14 tp 9
+     the same, tp 5.0                                   |  +3.63 |  +2.46  +1.17 |  -0.14     |  -4.54     |  3/10 | -0.99 |  -3.98,  16.0% [-10.5,  +2.2] | its_sell 89 press 42 time 17 stall 16 tp 3 graduated 1
+     the same, timer 300 s                              |  +1.62 |  +1.97  -0.36 |  -1.44     |  -4.94     |  5/10 | -0.99 |  -5.99,   7.7% [-13.2,  +0.8] | its_sell 89 press 38 time 28 stall 8 tp 4 graduated 1
+     the same, timer 900 s                              |  +2.95 |  +2.39  +0.56 |  -0.44     |  -4.26     |  3/10 | -0.99 |  -4.66,  10.2% [-11.2,  +1.2] | its_sell 89 press 41 stall 17 time 15 tp 5 graduated 1
+     the same, its sale never followed                  |  +7.03 |  +3.16  +3.87 |  +3.26     |  -1.00     |  3/10 | -0.95 |  -0.58,  38.9% [ -4.1,  +3.1] | press 83 stall 40 time 35 tp 7 graduated 1
+     the same, its sale 0-60 s at any price             |  +8.36 |  +3.12  +5.24 |  +4.58     |  +0.33     |  3/10 | -0.76 |  +0.75,  52.9% [ -3.1,  +3.8] | press 59 its_sell 39 stall 34 time 27 tp 7 graduated 1
+     the same, its sale 0-290 s under 1.5x              |  +3.02 |  +2.37  +0.64 |  -0.37     |  -4.20     |  3/10 | -0.99 |  -4.59,  11.2% [-10.9,  +1.6] | its_sell 90 press 40 time 17 stall 15 tp 5 graduated 1
+     the same, its sale 30-290 s at any price           |  +0.28 |  +1.37  -1.09 |  -2.77     |  -5.32     |  4/10 | -0.93 |  -7.33,   6.7% [-16.1,  +0.7] | its_sell 98 press 39 time 17 stall 11 tp 3
+     the same, its sale at any time, any price          |  +0.53 |  +0.91  -0.37 |  -2.51     |  -5.06     |  5/10 | -0.93 |  -7.07,   4.3% [-15.4,  -0.3] | its_sell 112 press 35 time 11 stall 7 tp 3
+== wallet 4's frozen setup on TAB16RxX, by what TAB16RxX did (every copy, landing 4)
+   it sold under 1.5x at 30-290 s: followed    :  94 copies, net  -7.53 SOL,  -16.0% a copy, 16.0% won
+   it had not sold when we closed              :  46 copies, net  +4.78 SOL,  +20.8% a copy, 32.6% won
+   it sold after 290 s: not followed           :  17 copies, net  -0.54 SOL,   -6.3% a copy, 29.4% won
+   it sold at 1.5x or more: not followed       :  13 copies, net  +5.73 SOL,  +88.1% a copy, 61.5% won
+   it sold in its first 30 s: not followed     :   2 copies, net  -0.25 SOL,  -25.1% a copy,  0.0% won
+== overlap with wallet 4: of TAB16RxX's 183 copyable buys, wallet 4 bought the same coin within 30 minutes on 35 (35 of them with 1.3+ SOL: the ones both bots would copy); wallet 4 first on 1, the same slot 30, TAB16RxX first on 4
