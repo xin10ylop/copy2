@@ -44,3 +44,11 @@ The slice was chosen on the first sample (88 of its copies, +10.4% a copy); **th
 copy, +8.88 SOL, positive in each block (A +2.54, B +1.56, C +4.78)**. The edge at 1.3 is not smooth (1.2-1.3 was −4.3%
 a copy in the sample, 78 copies), and in October (`02-decomposition/` §2) the 1.25-1.45 band lost: to be watched.
 Recommended Nov 16: `min_sol = 1.3`, 2 open.
+
+## The HYPE float (`hype.py`, `out/hype.txt`, Nov 16)
+
+HYPE = `98sMhvDwXj1RQi5c5Mndm3vPe9cBqPrbLaufMXFNMh5g` (an SPL token, no freeze authority). 53 HYPE-paid buys with a
+path (1.45+ SOL; the 1.3-1.45 ones were not fetched); 52 pass the fee rule. Every copy: +2.88 SOL, +11.1% a copy, but
+by block A −0.14, B +4.14, C −1.12. The bot's run (six kinds, min_sol 1.3, fee rule, 2 open, 0.5 SOL): +54.82 →
++57.75 with HYPE (without the best 5: +48.54 → +51.12); by block A +12.60 → +12.37, B +20.93 → +25.03, C +21.29 →
++20.35. One good block carries it. Added on the owner's call.
