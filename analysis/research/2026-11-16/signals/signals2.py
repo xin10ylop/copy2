@@ -94,35 +94,36 @@ def lab(s, tp):
     if s and s[3]: t += f", under {s[3]}x"
     return t + f" | tp {tp if tp else 'none'}"
 TPS = (3.0, 4.0, None)
-print(f"{len(ROWS)} buys (seven kinds, 1.3+ SOL, every fee tier); {len(SIGS)} signals x {len(TPS)} take profits; 0.5 SOL, 2 open; 600 s, early 30-290 s")
-S = {}
-for tp in TPS:
-    S[lab(None, tp)] = ((None, tp), score(None, tp))
-    for s in SIGS: S[lab(s, tp)] = ((s, tp), score(s, tp))
-hdr = f"   {'rule':58s} | total  | A      B      C      | w/o best 5 | days<0 | worst | fall  | exits (a landing)"
-row = lambda nm, s: f"   {nm:58s} | {s['tot']:+6.2f} | {s['b'][0]:+6.2f} {s['b'][1]:+6.2f} {s['b'][2]:+6.2f} | {s['wo5']:+6.2f}     | {s['neg']:2d}/{s['nd']} | {s['worst']:+5.2f} | {s['fall']:+5.2f} | " + " ".join(f"{w} {c:.0f}" for w, c in s["whys"].most_common())
-L0 = S[lab(None, 3.0)][1]
-print("== the live rule, and tp 4.0 / no tp alone\n" + hdr)
-for tp in TPS: print(row(lab(None, tp), S[lab(None, tp)][1]))
-print("== the 30 best by total\n" + hdr)
-for nm, (k, s) in sorted(S.items(), key=lambda q: -q[1][1]["tot"])[:30]: print(row(nm, s))
-print("== with tp 3.0, by family: settings ahead of live / all, the best, and the best on losing days")
-for fam in ("trail", "fall", "stall", "insider", "flipper", "insum", "flipsum", "sellers", "extend"):
-    xs = [(nm, s) for nm, (k, s) in S.items() if k[0] and k[0][0] == fam and k[1] == 3.0]
-    b = max(xs, key=lambda q: q[1]["tot"]); c = min(xs, key=lambda q: (q[1]["neg"], -q[1]["tot"]))
-    print(f"   {fam:8s}: {sum(1 for nm, s in xs if s['tot'] > L0['tot'])}/{len(xs)} ahead; best '{b[0]}' {b[1]['tot']:+.2f} (A {b[1]['b'][0]:+.2f} B {b[1]['b'][1]:+.2f} C {b[1]['b'][2]:+.2f}); fewest losing days '{c[0]}' {c[1]['neg']}/{c[1]['nd']}, {c[1]['tot']:+.2f}")
-print("== trails, tp 3.0 (total)")
-for a in (1.2, 1.5, 2.0, 2.5, 3.0): print(f"   once {a}x: " + "  ".join(f"{d * 100:.0f}% {S[lab(('trail', a, d, None), 3.0)][1]['tot']:+6.2f}" for d in (0.4, 0.5, 0.6, 0.7)))
-print(f"   (live {L0['tot']:+.2f})")
-print("== ahead of the live rule in all three blocks\n" + hdr)
-for nm, (k, s) in sorted(S.items(), key=lambda q: -q[1][1]["tot"]):
-    if k != (None, 3.0) and all(s["b"][i] > L0["b"][i] for i in range(3)): print(row(nm, s))
-print("== picked on two blocks out of all of them, scored on the third (gain over live in the held-out block)")
-gains = []
-for held in range(3):
-    other = [i for i in range(3) if i != held]
-    rk = sorted(((nm, s) for nm, (k, s) in S.items() if k != (None, 3.0)), key=lambda q: -sum(q[1]["b"][i] for i in other))
-    g = rk[0][1]["b"][held] - L0["b"][held]; gains.append(g)
-    g10 = sum(s["b"][held] - L0["b"][held] for nm, s in rk[:10]) / 10
-    print(f"   held out {'ABC'[held]}: picked '{rk[0][0]}' ({sum(rk[0][1]['b'][i] - L0['b'][i] for i in other):+.2f} on the other two) -> {g:+.2f}; the 10 best picks on average {g10:+.2f}")
-print(f"   total out of sample: {sum(gains):+.2f} SOL")
+if __name__ == "__main__":
+    print(f"{len(ROWS)} buys (seven kinds, 1.3+ SOL, every fee tier); {len(SIGS)} signals x {len(TPS)} take profits; 0.5 SOL, 2 open; 600 s, early 30-290 s")
+    S = {}
+    for tp in TPS:
+        S[lab(None, tp)] = ((None, tp), score(None, tp))
+        for s in SIGS: S[lab(s, tp)] = ((s, tp), score(s, tp))
+    hdr = f"   {'rule':58s} | total  | A      B      C      | w/o best 5 | days<0 | worst | fall  | exits (a landing)"
+    row = lambda nm, s: f"   {nm:58s} | {s['tot']:+6.2f} | {s['b'][0]:+6.2f} {s['b'][1]:+6.2f} {s['b'][2]:+6.2f} | {s['wo5']:+6.2f}     | {s['neg']:2d}/{s['nd']} | {s['worst']:+5.2f} | {s['fall']:+5.2f} | " + " ".join(f"{w} {c:.0f}" for w, c in s["whys"].most_common())
+    L0 = S[lab(None, 3.0)][1]
+    print("== the live rule, and tp 4.0 / no tp alone\n" + hdr)
+    for tp in TPS: print(row(lab(None, tp), S[lab(None, tp)][1]))
+    print("== the 30 best by total\n" + hdr)
+    for nm, (k, s) in sorted(S.items(), key=lambda q: -q[1][1]["tot"])[:30]: print(row(nm, s))
+    print("== with tp 3.0, by family: settings ahead of live / all, the best, and the best on losing days")
+    for fam in ("trail", "fall", "stall", "insider", "flipper", "insum", "flipsum", "sellers", "extend"):
+        xs = [(nm, s) for nm, (k, s) in S.items() if k[0] and k[0][0] == fam and k[1] == 3.0]
+        b = max(xs, key=lambda q: q[1]["tot"]); c = min(xs, key=lambda q: (q[1]["neg"], -q[1]["tot"]))
+        print(f"   {fam:8s}: {sum(1 for nm, s in xs if s['tot'] > L0['tot'])}/{len(xs)} ahead; best '{b[0]}' {b[1]['tot']:+.2f} (A {b[1]['b'][0]:+.2f} B {b[1]['b'][1]:+.2f} C {b[1]['b'][2]:+.2f}); fewest losing days '{c[0]}' {c[1]['neg']}/{c[1]['nd']}, {c[1]['tot']:+.2f}")
+    print("== trails, tp 3.0 (total)")
+    for a in (1.2, 1.5, 2.0, 2.5, 3.0): print(f"   once {a}x: " + "  ".join(f"{d * 100:.0f}% {S[lab(('trail', a, d, None), 3.0)][1]['tot']:+6.2f}" for d in (0.4, 0.5, 0.6, 0.7)))
+    print(f"   (live {L0['tot']:+.2f})")
+    print("== ahead of the live rule in all three blocks\n" + hdr)
+    for nm, (k, s) in sorted(S.items(), key=lambda q: -q[1][1]["tot"]):
+        if k != (None, 3.0) and all(s["b"][i] > L0["b"][i] for i in range(3)): print(row(nm, s))
+    print("== picked on two blocks out of all of them, scored on the third (gain over live in the held-out block)")
+    gains = []
+    for held in range(3):
+        other = [i for i in range(3) if i != held]
+        rk = sorted(((nm, s) for nm, (k, s) in S.items() if k != (None, 3.0)), key=lambda q: -sum(q[1]["b"][i] for i in other))
+        g = rk[0][1]["b"][held] - L0["b"][held]; gains.append(g)
+        g10 = sum(s["b"][held] - L0["b"][held] for nm, s in rk[:10]) / 10
+        print(f"   held out {'ABC'[held]}: picked '{rk[0][0]}' ({sum(rk[0][1]['b'][i] - L0['b'][i] for i in other):+.2f} on the other two) -> {g:+.2f}; the 10 best picks on average {g10:+.2f}")
+    print(f"   total out of sample: {sum(gains):+.2f} SOL")

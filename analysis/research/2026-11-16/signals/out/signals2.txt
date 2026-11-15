@@ -1,0 +1,187 @@
+1238 buys (seven kinds, 1.3+ SOL, every fee tier); 117 signals x 3 take profits; 0.5 SOL, 2 open; 600 s, early 30-290 s
+== the live rule, and tp 4.0 / no tp alone
+   rule                                                       | total  | A      B      C      | w/o best 5 | days<0 | worst | fall  | exits (a landing)
+   live | tp 3.0                                              | +56.63 | +11.10 +24.30 +21.24 | +48.46     |  6/24 | -2.41 | -2.41 | time 637 its_sell 238 tp 108 refused 87 graduated 14
+   live | tp 4.0                                              | +68.75 | +13.91 +27.92 +26.92 | +59.06     |  4/24 | -1.94 | -1.94 | time 668 its_sell 237 refused 86 tp 66 graduated 21
+   live | tp none                                             | +72.04 | +17.06 +25.48 +29.51 | +54.35     |  4/24 | -2.09 | -2.27 | time 721 its_sell 236 refused 86 graduated 32
+== the 30 best by total
+   rule                                                       | total  | A      B      C      | w/o best 5 | days<0 | worst | fall  | exits (a landing)
+   10+ more sellers than buyers in 60 s | tp none             | +77.51 | +19.03 +33.05 +25.43 | +59.96     |  5/24 | -0.95 | -0.95 | time 530 signal 286 its_sell 170 refused 89 graduated 28
+   5+ more sellers than buyers in 60 s | tp none              | +76.69 | +20.63 +32.71 +23.34 | +59.33     |  7/24 | -1.29 | -1.29 | signal 486 time 400 its_sell 118 refused 90 graduated 27
+   5+ more sellers than buyers in 60 s | tp 4.0               | +75.36 | +15.75 +35.75 +23.86 | +65.73     |  4/24 | -1.33 | -1.33 | signal 453 time 388 its_sell 118 refused 90 tp 53 graduated 19
+   later buyer sells 5%+, under 1.5x | tp none                | +75.11 | +17.09 +26.19 +31.83 | +57.42     |  5/24 | -1.85 | -2.33 | time 655 its_sell 224 refused 87 signal 86 graduated 32
+   10+ more sellers than buyers in 60 s | tp 4.0              | +74.97 | +14.04 +34.74 +26.19 | +65.30     |  5/24 | -1.45 | -1.45 | time 510 signal 257 its_sell 170 refused 89 tp 57 graduated 19
+   3+ more sellers than buyers in 60 s | tp 4.0               | +74.66 | +14.88 +34.78 +25.00 | +65.03     |  4/24 | -1.54 | -1.54 | signal 569 time 310 its_sell 92 refused 90 tp 49 graduated 19
+   5+ more sellers than buyers in 60 s, under 1.5x | tp none  | +74.59 | +16.08 +31.25 +27.26 | +56.99     |  4/24 | -1.70 | -1.70 | time 441 signal 432 its_sell 122 refused 90 graduated 31
+   3+ more sellers than buyers in 60 s | tp none              | +74.54 | +16.10 +34.28 +24.16 | +57.97     |  6/24 | -1.54 | -1.54 | signal 600 time 321 its_sell 92 refused 90 graduated 27
+   10+ more sellers than buyers in 60 s, under 1.5x | tp none | +74.35 | +14.85 +31.97 +27.52 | +56.79     |  4/24 | -1.29 | -1.48 | time 564 signal 246 its_sell 170 refused 89 graduated 30
+   5+ more sellers than buyers in 60 s, under 1.5x | tp 4.0   | +74.13 | +14.23 +34.16 +25.74 | +64.44     |  4/24 | -1.70 | -1.70 | signal 421 time 403 its_sell 122 refused 90 tp 59 graduated 22
+   no new high 300 s once 1.0x | tp none                      | +73.89 | +17.74 +28.04 +28.12 | +56.20     |  4/24 | -1.59 | -1.80 | time 428 signal 305 its_sell 239 refused 88 graduated 32
+   3+ more sellers than buyers in 60 s, under 1.5x | tp 4.0   | +73.63 | +13.29 +33.51 +26.84 | +63.94     |  4/24 | -1.80 | -1.80 | signal 533 time 329 its_sell 97 refused 90 tp 55 graduated 22
+   holder from before sells 3%+ | tp none                     | +73.23 | +18.88 +27.08 +27.28 | +55.54     |  3/24 | -3.45 | -3.45 | time 596 its_sell 194 signal 184 refused 89 graduated 32
+   no new high 180 s once 1.0x | tp none                      | +73.16 | +14.78 +31.14 +27.24 | +55.61     |  4/24 | -2.10 | -2.10 | signal 475 time 291 its_sell 227 refused 89 graduated 30
+   10+ more sellers than buyers in 60 s, under 1.5x | tp 4.0  | +72.92 | +13.03 +33.70 +26.19 | +63.23     |  5/24 | -1.45 | -1.45 | time 523 signal 235 its_sell 170 refused 89 tp 61 graduated 21
+   falls 50% within 5 s, under 1.5x | tp none                 | +72.78 | +16.53 +27.33 +28.93 | +55.10     |  3/24 | -2.09 | -2.27 | time 701 its_sell 233 refused 87 signal 31 graduated 31
+   no new high 180 s once 1.0x | tp 4.0                       | +72.77 | +13.68 +32.42 +26.67 | +63.08     |  5/24 | -2.16 | -2.16 | signal 445 time 276 its_sell 227 refused 89 tp 55 graduated 21
+   5+ more sellers than buyers in 30 s, under 1.5x | tp none  | +72.51 | +17.36 +29.20 +25.95 | +54.92     |  5/24 | -1.42 | -1.42 | signal 472 time 434 its_sell 92 refused 89 graduated 30
+   no new high 300 s once 1.0x | tp 4.0                       | +72.42 | +14.95 +30.50 +26.97 | +62.72     |  4/24 | -1.86 | -1.86 | time 391 signal 289 its_sell 239 refused 88 tp 66 graduated 21
+   trail 40% once 3.0x | tp none                              | +72.14 | +18.99 +26.31 +26.84 | +56.18     |  3/24 | -1.31 | -1.50 | time 676 its_sell 235 refused 87 signal 55 graduated 29
+   no new high 300 s once 2.0x | tp none                      | +72.12 | +17.22 +27.34 +27.55 | +54.42     |  4/24 | -1.83 | -2.02 | time 649 its_sell 238 refused 86 signal 74 graduated 32
+   live | tp none                                             | +72.04 | +17.06 +25.48 +29.51 | +54.35     |  4/24 | -2.09 | -2.27 | time 721 its_sell 236 refused 86 graduated 32
+   no new high 300 s once 1.3x | tp none                      | +71.94 | +17.56 +27.30 +27.08 | +54.25     |  4/24 | -1.80 | -1.93 | time 576 its_sell 238 signal 152 refused 87 graduated 32
+   trail 70% once 1.2x | tp none                              | +71.79 | +17.26 +27.33 +27.20 | +54.11     |  3/24 | -1.85 | -2.04 | time 691 its_sell 238 refused 87 signal 36 graduated 31
+   no new high 300 s once 1.5x | tp none                      | +71.78 | +17.58 +27.29 +26.90 | +54.08     |  4/24 | -1.84 | -2.00 | time 610 its_sell 238 signal 116 refused 87 graduated 32
+   holder from before sells 5%+ | tp none                     | +71.78 | +16.31 +26.54 +28.93 | +54.08     |  5/24 | -2.10 | -2.29 | time 665 its_sell 221 refused 89 signal 81 graduated 32
+   trail 70% once 1.5x | tp none                              | +71.75 | +17.26 +27.32 +27.17 | +54.07     |  3/24 | -1.85 | -2.04 | time 691 its_sell 238 refused 87 signal 36 graduated 31
+   no new high 120 s once 1.0x | tp none                      | +71.74 | +18.71 +30.21 +22.83 | +54.06     |  6/24 | -3.04 | -3.04 | signal 580 time 247 its_sell 173 refused 89 graduated 30
+   trail 70% once 2.0x | tp none                              | +71.71 | +17.29 +27.29 +27.14 | +54.03     |  3/24 | -1.85 | -2.04 | time 695 its_sell 238 refused 87 graduated 31 signal 30
+   trail 50% once 2.5x | tp none                              | +71.68 | +16.24 +29.85 +25.59 | +54.49     |  5/24 | -1.44 | -1.63 | time 668 its_sell 238 refused 87 signal 60 graduated 30
+== with tp 3.0, by family: settings ahead of live / all, the best, and the best on losing days
+   trail   : 4/20 ahead; best 'trail 60% once 2.0x | tp 3.0' +56.97 (A +10.48 B +25.55 C +20.94); fewest losing days 'trail 50% once 1.5x | tp 3.0' 5/24, +55.40
+   fall    : 0/32 ahead; best 'falls 50% within 5 s | tp 3.0' +55.98 (A +11.33 B +24.56 C +20.10); fewest losing days 'falls 40% within 60 s, under 1.5x | tp 3.0' 5/24, +52.53
+   stall   : 11/16 ahead; best 'no new high 180 s once 1.0x | tp 3.0' +63.11 (A +12.41 B +28.84 C +21.86); fewest losing days 'no new high 120 s once 1.0x | tp 3.0' 3/24, +62.52
+   insider : 1/8 ahead; best 'holder from before sells 3%+ | tp 3.0' +57.94 (A +10.43 B +26.11 C +21.39); fewest losing days 'holder from before sells 3%+ | tp 3.0' 4/24, +57.94
+   flipper : 4/8 ahead; best 'later buyer sells 5%+, under 1.5x | tp 3.0' +59.18 (A +10.96 B +25.05 C +23.17); fewest losing days 'later buyer sells 5%+ | tp 3.0' 4/24, +58.41
+   insum   : 0/6 ahead; best 'holders from before sell 5%+ in 30 s, under 1.5x | tp 3.0' +48.30 (A +8.53 B +20.31 C +19.46); fewest losing days 'holders from before sell 3%+ in 30 s | tp 3.0' 5/24, +39.58
+   flipsum : 0/6 ahead; best 'later buyers sell 8%+ in 30 s, under 1.5x | tp 3.0' +49.19 (A +10.16 B +19.68 C +19.35); fewest losing days 'later buyers sell 5%+ in 30 s | tp 3.0' 3/24, +41.17
+   sellers : 10/18 ahead; best '5+ more sellers than buyers in 60 s | tp 3.0' +63.15 (A +12.72 B +29.67 C +20.75); fewest losing days '3+ more sellers than buyers in 10 s | tp 3.0' 3/24, +43.84
+   extend  : 1/3 ahead; best 'hold to 1200 s if +3 SOL net buying at 600 s | tp 3.0' +57.94 (A +11.34 B +24.05 C +22.56); fewest losing days 'hold to 1200 s if +3 SOL net buying at 600 s | tp 3.0' 5/24, +57.94
+== trails, tp 3.0 (total)
+   once 1.2x: 40% +51.45  50% +55.28  60% +56.06  70% +56.32
+   once 1.5x: 40% +53.57  50% +55.40  60% +56.33  70% +56.29
+   once 2.0x: 40% +55.56  50% +56.70  60% +56.97  70% +56.25
+   once 2.5x: 40% +56.26  50% +56.78  60% +56.50  70% +56.07
+   once 3.0x: 40% +56.82  50% +56.63  60% +56.63  70% +56.63
+   (live +56.63)
+== ahead of the live rule in all three blocks
+   rule                                                       | total  | A      B      C      | w/o best 5 | days<0 | worst | fall  | exits (a landing)
+   10+ more sellers than buyers in 60 s | tp none             | +77.51 | +19.03 +33.05 +25.43 | +59.96     |  5/24 | -0.95 | -0.95 | time 530 signal 286 its_sell 170 refused 89 graduated 28
+   5+ more sellers than buyers in 60 s | tp none              | +76.69 | +20.63 +32.71 +23.34 | +59.33     |  7/24 | -1.29 | -1.29 | signal 486 time 400 its_sell 118 refused 90 graduated 27
+   5+ more sellers than buyers in 60 s | tp 4.0               | +75.36 | +15.75 +35.75 +23.86 | +65.73     |  4/24 | -1.33 | -1.33 | signal 453 time 388 its_sell 118 refused 90 tp 53 graduated 19
+   later buyer sells 5%+, under 1.5x | tp none                | +75.11 | +17.09 +26.19 +31.83 | +57.42     |  5/24 | -1.85 | -2.33 | time 655 its_sell 224 refused 87 signal 86 graduated 32
+   10+ more sellers than buyers in 60 s | tp 4.0              | +74.97 | +14.04 +34.74 +26.19 | +65.30     |  5/24 | -1.45 | -1.45 | time 510 signal 257 its_sell 170 refused 89 tp 57 graduated 19
+   3+ more sellers than buyers in 60 s | tp 4.0               | +74.66 | +14.88 +34.78 +25.00 | +65.03     |  4/24 | -1.54 | -1.54 | signal 569 time 310 its_sell 92 refused 90 tp 49 graduated 19
+   5+ more sellers than buyers in 60 s, under 1.5x | tp none  | +74.59 | +16.08 +31.25 +27.26 | +56.99     |  4/24 | -1.70 | -1.70 | time 441 signal 432 its_sell 122 refused 90 graduated 31
+   3+ more sellers than buyers in 60 s | tp none              | +74.54 | +16.10 +34.28 +24.16 | +57.97     |  6/24 | -1.54 | -1.54 | signal 600 time 321 its_sell 92 refused 90 graduated 27
+   10+ more sellers than buyers in 60 s, under 1.5x | tp none | +74.35 | +14.85 +31.97 +27.52 | +56.79     |  4/24 | -1.29 | -1.48 | time 564 signal 246 its_sell 170 refused 89 graduated 30
+   5+ more sellers than buyers in 60 s, under 1.5x | tp 4.0   | +74.13 | +14.23 +34.16 +25.74 | +64.44     |  4/24 | -1.70 | -1.70 | signal 421 time 403 its_sell 122 refused 90 tp 59 graduated 22
+   no new high 300 s once 1.0x | tp none                      | +73.89 | +17.74 +28.04 +28.12 | +56.20     |  4/24 | -1.59 | -1.80 | time 428 signal 305 its_sell 239 refused 88 graduated 32
+   3+ more sellers than buyers in 60 s, under 1.5x | tp 4.0   | +73.63 | +13.29 +33.51 +26.84 | +63.94     |  4/24 | -1.80 | -1.80 | signal 533 time 329 its_sell 97 refused 90 tp 55 graduated 22
+   holder from before sells 3%+ | tp none                     | +73.23 | +18.88 +27.08 +27.28 | +55.54     |  3/24 | -3.45 | -3.45 | time 596 its_sell 194 signal 184 refused 89 graduated 32
+   no new high 180 s once 1.0x | tp none                      | +73.16 | +14.78 +31.14 +27.24 | +55.61     |  4/24 | -2.10 | -2.10 | signal 475 time 291 its_sell 227 refused 89 graduated 30
+   10+ more sellers than buyers in 60 s, under 1.5x | tp 4.0  | +72.92 | +13.03 +33.70 +26.19 | +63.23     |  5/24 | -1.45 | -1.45 | time 523 signal 235 its_sell 170 refused 89 tp 61 graduated 21
+   falls 50% within 5 s, under 1.5x | tp none                 | +72.78 | +16.53 +27.33 +28.93 | +55.10     |  3/24 | -2.09 | -2.27 | time 701 its_sell 233 refused 87 signal 31 graduated 31
+   no new high 180 s once 1.0x | tp 4.0                       | +72.77 | +13.68 +32.42 +26.67 | +63.08     |  5/24 | -2.16 | -2.16 | signal 445 time 276 its_sell 227 refused 89 tp 55 graduated 21
+   5+ more sellers than buyers in 30 s, under 1.5x | tp none  | +72.51 | +17.36 +29.20 +25.95 | +54.92     |  5/24 | -1.42 | -1.42 | signal 472 time 434 its_sell 92 refused 89 graduated 30
+   no new high 300 s once 1.0x | tp 4.0                       | +72.42 | +14.95 +30.50 +26.97 | +62.72     |  4/24 | -1.86 | -1.86 | time 391 signal 289 its_sell 239 refused 88 tp 66 graduated 21
+   trail 40% once 3.0x | tp none                              | +72.14 | +18.99 +26.31 +26.84 | +56.18     |  3/24 | -1.31 | -1.50 | time 676 its_sell 235 refused 87 signal 55 graduated 29
+   no new high 300 s once 2.0x | tp none                      | +72.12 | +17.22 +27.34 +27.55 | +54.42     |  4/24 | -1.83 | -2.02 | time 649 its_sell 238 refused 86 signal 74 graduated 32
+   live | tp none                                             | +72.04 | +17.06 +25.48 +29.51 | +54.35     |  4/24 | -2.09 | -2.27 | time 721 its_sell 236 refused 86 graduated 32
+   no new high 300 s once 1.3x | tp none                      | +71.94 | +17.56 +27.30 +27.08 | +54.25     |  4/24 | -1.80 | -1.93 | time 576 its_sell 238 signal 152 refused 87 graduated 32
+   trail 70% once 1.2x | tp none                              | +71.79 | +17.26 +27.33 +27.20 | +54.11     |  3/24 | -1.85 | -2.04 | time 691 its_sell 238 refused 87 signal 36 graduated 31
+   no new high 300 s once 1.5x | tp none                      | +71.78 | +17.58 +27.29 +26.90 | +54.08     |  4/24 | -1.84 | -2.00 | time 610 its_sell 238 signal 116 refused 87 graduated 32
+   holder from before sells 5%+ | tp none                     | +71.78 | +16.31 +26.54 +28.93 | +54.08     |  5/24 | -2.10 | -2.29 | time 665 its_sell 221 refused 89 signal 81 graduated 32
+   trail 70% once 1.5x | tp none                              | +71.75 | +17.26 +27.32 +27.17 | +54.07     |  3/24 | -1.85 | -2.04 | time 691 its_sell 238 refused 87 signal 36 graduated 31
+   no new high 120 s once 1.0x | tp none                      | +71.74 | +18.71 +30.21 +22.83 | +54.06     |  6/24 | -3.04 | -3.04 | signal 580 time 247 its_sell 173 refused 89 graduated 30
+   trail 70% once 2.0x | tp none                              | +71.71 | +17.29 +27.29 +27.14 | +54.03     |  3/24 | -1.85 | -2.04 | time 695 its_sell 238 refused 87 graduated 31 signal 30
+   trail 50% once 2.5x | tp none                              | +71.68 | +16.24 +29.85 +25.59 | +54.49     |  5/24 | -1.44 | -1.63 | time 668 its_sell 238 refused 87 signal 60 graduated 30
+   trail 70% once 3.0x | tp none                              | +71.60 | +18.01 +26.73 +26.87 | +53.92     |  4/24 | -1.91 | -2.09 | time 708 its_sell 237 refused 87 graduated 31 signal 16
+   trail 70% once 2.5x | tp none                              | +71.53 | +17.29 +27.11 +27.13 | +53.85     |  3/24 | -1.85 | -2.04 | time 701 its_sell 237 refused 87 graduated 31 signal 23
+   later buyer sells 5%+, under 1.5x | tp 4.0                 | +71.42 | +13.61 +28.71 +29.10 | +61.75     |  4/24 | -1.43 | -1.62 | time 606 its_sell 224 refused 87 signal 82 tp 65 graduated 21
+   trail 40% once 2.5x | tp none                              | +71.42 | +17.19 +26.36 +27.88 | +55.87     |  5/24 | -1.23 | -1.57 | time 656 its_sell 236 refused 87 signal 77 graduated 29
+   falls 50% within 5 s | tp none                             | +71.25 | +15.68 +27.50 +28.07 | +53.65     |  3/24 | -2.09 | -2.27 | time 698 its_sell 233 refused 87 signal 34 graduated 31
+   trail 50% once 3.0x | tp none                              | +71.24 | +17.90 +28.68 +24.67 | +53.69     |  6/24 | -1.58 | -1.77 | time 684 its_sell 237 refused 87 signal 42 graduated 30
+   3+ more sellers than buyers in 60 s, under 1.5x | tp none  | +71.24 | +12.56 +30.79 +27.89 | +53.69     |  6/24 | -1.80 | -1.80 | signal 544 time 363 its_sell 97 refused 90 graduated 31
+   no new high 180 s once 1.3x | tp none                      | +71.01 | +15.79 +29.73 +25.49 | +53.45     |  4/24 | -1.96 | -1.96 | time 499 signal 243 its_sell 236 refused 88 graduated 30
+   10+ more sellers than buyers in 30 s | tp none             | +70.98 | +17.12 +31.37 +22.50 | +54.48     |  6/24 | -1.23 | -1.23 | time 526 signal 306 its_sell 157 refused 89 graduated 25
+   no new high 180 s once 2.0x | tp none                      | +70.73 | +15.59 +28.52 +26.62 | +53.17     |  3/24 | -2.26 | -2.26 | time 605 its_sell 239 signal 126 refused 87 graduated 29
+   no new high 120 s once 1.3x | tp none                      | +70.49 | +19.59 +28.22 +22.68 | +52.81     |  5/24 | -2.64 | -2.64 | time 473 signal 299 its_sell 210 refused 88 graduated 30
+   no new high 300 s once 1.3x | tp 4.0                       | +70.47 | +14.78 +29.76 +25.93 | +60.77     |  5/24 | -1.90 | -1.90 | time 540 its_sell 238 signal 135 refused 87 tp 66 graduated 21
+   later buyer sells 3%+, under 1.5x | tp none                | +70.38 | +15.21 +26.94 +28.23 | +52.75     |  4/24 | -1.60 | -1.79 | time 488 signal 316 its_sell 180 refused 89 graduated 30
+   no new high 300 s once 1.5x | tp 4.0                       | +70.31 | +14.79 +29.75 +25.76 | +60.61     |  5/24 | -1.90 | -1.90 | time 574 its_sell 238 signal 99 refused 87 tp 66 graduated 21
+   holder from before sells 5%+, under 1.5x | tp none         | +70.26 | +14.64 +26.38 +29.25 | +52.57     |  5/24 | -2.10 | -2.29 | time 671 its_sell 220 refused 89 signal 75 graduated 32
+   hold to 1200 s if +3 SOL net buying at 600 s | tp 4.0      | +70.11 | +14.82 +27.53 +27.76 | +60.37     |  5/24 | -1.94 | -1.94 | time 658 its_sell 235 refused 86 tp 73 graduated 23
+   no new high 180 s once 1.5x | tp none                      | +70.00 | +15.11 +28.82 +26.07 | +52.45     |  3/24 | -2.16 | -2.16 | time 544 its_sell 239 signal 192 refused 87 graduated 29
+   later buyer sells 5%+ | tp 4.0                             | +69.97 | +13.15 +29.22 +27.59 | +60.32     |  4/24 | -1.43 | -1.62 | time 602 its_sell 222 signal 93 refused 87 tp 62 graduated 21
+   no new high 300 s once 2.0x | tp 4.0                       | +69.94 | +13.73 +29.80 +26.41 | +60.24     |  5/24 | -1.94 | -1.94 | time 613 its_sell 238 refused 86 tp 65 signal 58 graduated 21
+   5+ more sellers than buyers in 30 s | tp none              | +69.89 | +20.05 +28.20 +21.63 | +53.60     |  3/24 | -0.97 | -0.97 | signal 535 time 392 refused 89 its_sell 83 graduated 23
+   trail 50% once 2.0x | tp none                              | +69.85 | +14.26 +31.32 +24.27 | +53.24     |  5/24 | -2.50 | -2.50 | time 648 its_sell 239 refused 87 signal 86 graduated 28
+   no new high 120 s once 2.0x | tp none                      | +69.75 | +19.25 +26.51 +23.99 | +52.07     |  5/24 | -2.22 | -2.63 | time 586 its_sell 237 signal 148 refused 87 graduated 29
+   holder from before sells 3%+, under 1.5x | tp none         | +69.57 | +16.01 +26.48 +27.07 | +51.87     |  3/24 | -3.45 | -3.45 | time 611 its_sell 194 signal 168 refused 89 graduated 32
+   no new high 180 s once 1.3x | tp 4.0                       | +69.53 | +13.60 +31.01 +24.92 | +59.83     |  5/24 | -2.02 | -2.02 | time 484 its_sell 236 signal 213 refused 88 tp 56 graduated 21
+   trail 60% once 1.5x | tp none                              | +69.52 | +14.37 +27.72 +27.43 | +51.96     |  4/24 | -1.58 | -1.76 | time 664 its_sell 238 refused 87 signal 68 graduated 30
+   trail 60% once 2.0x | tp none                              | +69.44 | +14.11 +28.01 +27.31 | +51.88     |  4/24 | -1.58 | -1.76 | time 672 its_sell 240 refused 87 signal 58 graduated 30
+   later buyer sells 5%+ | tp none                            | +69.39 | +13.04 +26.98 +29.37 | +52.57     |  6/24 | -1.85 | -2.28 | time 643 its_sell 222 signal 102 refused 87 graduated 31
+   no new high 120 s once 1.5x | tp none                      | +69.28 | +19.42 +26.96 +22.90 | +51.60     |  5/24 | -2.80 | -3.20 | time 520 signal 233 its_sell 225 refused 88 graduated 29
+   hold to 1200 s if +1 SOL net buying at 600 s | tp 4.0      | +69.28 | +14.43 +27.92 +26.92 | +59.54     |  5/24 | -2.27 | -2.27 | time 655 its_sell 234 refused 86 tp 73 graduated 23
+   trail 60% once 1.2x | tp none                              | +69.25 | +13.83 +27.86 +27.56 | +51.69     |  4/24 | -1.57 | -1.75 | time 656 its_sell 236 refused 87 signal 78 graduated 30
+   holder from before sells 3%+ | tp 4.0                      | +69.17 | +12.85 +29.25 +27.07 | +59.48     |  3/24 | -3.45 | -3.45 | time 555 its_sell 195 signal 176 refused 89 tp 61 graduated 21
+   10+ more sellers than buyers in 30 s, under 1.5x | tp none | +69.15 | +15.55 +28.24 +25.36 | +51.59     |  7/24 | -1.62 | -1.62 | time 563 signal 257 its_sell 159 refused 89 graduated 30
+   5+ more sellers than buyers in 30 s, under 1.5x | tp 4.0   | +69.06 | +13.97 +30.53 +24.55 | +59.45     |  4/24 | -1.42 | -1.42 | signal 462 time 404 its_sell 92 refused 89 tp 50 graduated 21
+   trail 50% once 1.2x | tp none                              | +68.93 | +13.51 +31.01 +24.41 | +52.32     |  5/24 | -2.30 | -2.30 | time 613 its_sell 228 signal 133 refused 87 graduated 28
+   falls 50% within 10 s, under 1.5x | tp none                | +68.88 | +11.84 +28.14 +28.89 | +52.10     |  4/24 | -2.95 | -2.95 | time 689 its_sell 234 refused 87 signal 47 graduated 30
+   no new high 180 s once 2.0x | tp 4.0                       | +68.81 | +12.99 +29.77 +26.05 | +59.11     |  4/24 | -2.32 | -2.32 | time 587 its_sell 239 signal 96 refused 87 tp 58 graduated 20
+   live | tp 4.0                                              | +68.75 | +13.91 +27.92 +26.92 | +59.06     |  4/24 | -1.94 | -1.94 | time 668 its_sell 237 refused 86 tp 66 graduated 21
+   trail 50% once 1.5x | tp none                              | +68.72 | +13.67 +31.12 +23.93 | +52.11     |  5/24 | -2.50 | -2.50 | time 629 its_sell 233 signal 111 refused 87 graduated 28
+   trail 60% once 2.5x | tp none                              | +68.70 | +14.11 +26.99 +27.61 | +51.15     |  4/24 | -1.58 | -1.77 | time 686 its_sell 239 refused 87 signal 40 graduated 30
+   trail 50% once 2.5x | tp 4.0                               | +68.65 | +11.13 +30.17 +27.34 | +58.95     |  5/24 | -1.94 | -1.94 | time 643 its_sell 238 refused 87 tp 61 signal 33 graduated 21
+   no new high 180 s once 1.5x | tp 4.0                       | +68.52 | +12.92 +30.10 +25.50 | +58.83     |  4/24 | -2.22 | -2.22 | time 528 its_sell 239 signal 162 refused 87 tp 57 graduated 20
+   falls 50% within 10 s | tp none                            | +68.36 | +11.96 +28.36 +28.04 | +51.67     |  4/24 | -2.73 | -2.73 | time 686 its_sell 234 refused 87 signal 50 graduated 30
+   10+ more sellers than buyers in 10 s, under 1.5x | tp none | +68.32 | +13.85 +29.75 +24.72 | +50.76     |  5/24 | -1.25 | -1.44 | time 590 signal 224 its_sell 163 refused 88 graduated 29
+   trail 70% once 1.2x | tp 4.0                               | +68.30 | +13.10 +28.95 +26.25 | +58.60     |  5/24 | -1.94 | -1.94 | time 648 its_sell 238 refused 87 tp 64 signal 26 graduated 21
+   3+ more sellers than buyers in 30 s, under 1.5x | tp none  | +68.27 | +12.14 +28.93 +27.20 | +50.72     |  6/24 | -1.22 | -1.22 | signal 600 time 348 refused 90 its_sell 66 graduated 29
+   trail 60% once 2.5x | tp 4.0                               | +68.27 | +12.00 +29.71 +26.56 | +58.57     |  5/24 | -1.94 | -1.94 | time 650 its_sell 239 refused 87 tp 63 signal 23 graduated 21
+   trail 70% once 1.5x | tp 4.0                               | +68.26 | +13.10 +28.94 +26.22 | +58.57     |  5/24 | -1.94 | -1.94 | time 648 its_sell 238 refused 87 tp 64 signal 25 graduated 21
+   trail 70% once 3.0x | tp 4.0                               | +68.25 | +13.99 +28.35 +25.92 | +58.56     |  4/24 | -1.94 | -1.94 | time 664 its_sell 237 refused 87 tp 65 graduated 21 signal 5
+   trail 70% once 2.0x | tp 4.0                               | +68.22 | +13.12 +28.91 +26.19 | +58.53     |  5/24 | -1.94 | -1.94 | time 652 its_sell 238 refused 87 tp 64 graduated 21 signal 20
+   trail 60% once 3.0x | tp none                              | +68.20 | +14.66 +26.37 +27.17 | +50.64     |  4/24 | -1.69 | -1.88 | time 698 its_sell 237 refused 87 graduated 30 signal 28
+   trail 60% once 1.5x | tp 4.0                               | +68.20 | +12.26 +30.44 +25.50 | +58.59     |  5/24 | -1.92 | -1.92 | time 628 its_sell 238 refused 87 tp 63 signal 52 graduated 21
+   trail 60% once 2.0x | tp 4.0                               | +68.12 | +12.00 +30.73 +25.38 | +58.51     |  5/24 | -1.94 | -1.94 | time 635 its_sell 240 refused 87 tp 63 signal 41 graduated 21
+   trail 70% once 2.5x | tp 4.0                               | +68.04 | +13.12 +28.74 +26.18 | +58.34     |  5/24 | -1.94 | -1.94 | time 658 its_sell 237 refused 87 tp 64 graduated 21 signal 13
+   falls 40% within 60 s, under 1.5x | tp none                | +68.02 | +11.11 +28.75 +28.16 | +51.44     |  6/24 | -2.66 | -2.66 | time 602 its_sell 193 signal 185 refused 87 graduated 27
+   trail 40% once 2.0x | tp none                              | +68.01 | +16.21 +25.70 +26.10 | +53.15     |  7/24 | -1.87 | -2.83 | time 625 its_sell 232 signal 120 refused 87 graduated 27
+   trail 60% once 1.2x | tp 4.0                               | +67.93 | +11.71 +30.58 +25.64 | +58.32     |  5/24 | -1.89 | -1.89 | time 619 its_sell 236 refused 87 tp 63 signal 62 graduated 21
+   trail 60% once 3.0x | tp 4.0                               | +67.91 | +12.69 +29.09 +26.12 | +58.21     |  4/24 | -1.94 | -1.94 | time 660 its_sell 237 refused 87 tp 64 graduated 21 signal 11
+   falls 40% within 5 s, under 1.5x | tp none                 | +67.84 | +11.77 +27.84 +28.23 | +51.06     |  6/24 | -2.53 | -2.53 | time 671 its_sell 228 refused 87 signal 72 graduated 30
+   trail 50% once 3.0x | tp 4.0                               | +67.83 | +12.41 +29.00 +26.41 | +58.13     |  4/24 | -1.94 | -1.94 | time 658 its_sell 237 refused 87 tp 62 graduated 21 signal 15
+   10+ more sellers than buyers in 30 s, under 1.5x | tp 4.0  | +67.34 | +12.58 +30.60 +24.16 | +57.72     |  6/24 | -1.70 | -1.70 | time 528 signal 247 its_sell 159 refused 89 tp 55 graduated 21
+   later buyer sells 2%+, under 1.5x | tp none                | +67.17 | +12.00 +26.07 +29.09 | +50.45     |  5/24 | -1.64 | -1.64 | signal 500 time 392 its_sell 115 refused 91 graduated 29
+   falls 50% within 30 s | tp none                            | +66.63 | +12.52 +28.67 +25.44 | +50.02     |  5/24 | -2.58 | -2.58 | time 656 its_sell 232 refused 87 signal 85 graduated 29
+   holder from before sells 3%+, under 1.5x | tp 4.0          | +66.51 | +11.74 +28.88 +25.88 | +56.81     |  4/24 | -3.45 | -3.45 | time 563 its_sell 194 signal 168 refused 89 tp 61 graduated 21
+   10+ more sellers than buyers in 10 s, under 1.5x | tp 4.0  | +66.30 | +11.68 +31.70 +22.91 | +56.69     |  5/24 | -1.29 | -1.29 | time 557 signal 213 its_sell 163 refused 88 tp 53 graduated 20
+   later buyer sells 3%+, under 1.5x | tp 4.0                 | +66.29 | +12.52 +28.87 +24.90 | +56.72     |  5/24 | -1.58 | -1.58 | time 452 signal 307 its_sell 180 refused 89 tp 55 graduated 21
+   falls 50% within 5 s, under 1.5x | tp 4.0                  | +66.27 | +12.58 +28.52 +25.17 | +56.66     |  5/24 | -2.54 | -2.54 | time 653 its_sell 233 refused 87 tp 63 signal 27 graduated 21
+   10+ more sellers than buyers in 30 s | tp 4.0              | +66.22 | +13.63 +31.00 +21.58 | +57.84     |  6/24 | -1.93 | -1.93 | time 513 signal 277 its_sell 157 refused 89 tp 49 graduated 17
+   falls 50% within 60 s | tp none                            | +65.99 | +12.56 +28.84 +24.59 | +49.38     |  6/24 | -2.59 | -2.59 | time 640 its_sell 229 signal 105 refused 87 graduated 28
+   3+ more sellers than buyers in 30 s, under 1.5x | tp 4.0   | +65.94 | +11.75 +28.69 +25.50 | +56.33     |  6/24 | -1.22 | -1.22 | signal 591 time 322 refused 90 its_sell 66 tp 44 graduated 21
+   trail 40% once 3.0x | tp 4.0                               | +65.90 | +12.97 +27.90 +25.03 | +56.25     |  4/24 | -1.94 | -1.94 | time 656 its_sell 235 refused 87 tp 56 signal 27 graduated 21
+   falls 50% within 5 s | tp 4.0                              | +65.89 | +12.20 +28.52 +25.17 | +56.28     |  5/24 | -2.54 | -2.54 | time 653 its_sell 233 refused 87 tp 62 signal 27 graduated 21
+   trail 40% once 1.5x | tp none                              | +65.80 | +15.91 +25.43 +24.46 | +50.94     |  7/24 | -2.14 | -3.01 | time 592 its_sell 213 signal 175 refused 87 graduated 27
+   5+ more sellers than buyers in 10 s, under 1.5x | tp none  | +65.79 | +12.03 +29.77 +23.99 | +48.23     |  6/24 | -2.10 | -2.10 | time 463 signal 435 its_sell 96 refused 89 graduated 29
+   trail 40% once 2.5x | tp 4.0                               | +65.74 | +11.78 +27.90 +26.07 | +56.21     |  7/24 | -1.94 | -2.09 | time 637 its_sell 236 refused 87 tp 53 signal 51 graduated 21
+   10+ more sellers than buyers in 10 s | tp none             | +65.56 | +13.80 +30.13 +21.63 | +51.83     |  5/24 | -1.40 | -1.40 | time 548 signal 283 its_sell 158 refused 88 graduated 20
+   falls 40% within 30 s | tp none                            | +64.60 | +12.54 +26.03 +26.03 | +49.67     |  6/24 | -2.57 | -2.57 | time 598 its_sell 201 signal 182 refused 87 graduated 26
+   falls 40% within 60 s | tp none                            | +64.31 | +13.13 +25.61 +25.58 | +49.45     |  6/24 | -2.66 | -2.66 | time 577 signal 213 its_sell 191 refused 87 graduated 26
+   trail 40% once 1.2x | tp none                              | +63.84 | +15.37 +24.78 +23.69 | +48.98     |  8/24 | -1.98 | -2.65 | time 559 signal 232 its_sell 193 refused 87 graduated 26
+   trail 40% once 2.0x | tp 4.0                               | +63.67 | +12.22 +27.77 +23.69 | +54.26     |  7/24 | -2.57 | -3.54 | time 607 its_sell 232 signal 96 refused 87 tp 50 graduated 20
+   falls 40% within 10 s | tp none                            | +63.29 | +11.38 +25.32 +26.58 | +48.36     |  6/24 | -2.34 | -2.34 | time 639 its_sell 222 signal 115 refused 87 graduated 26
+   no new high 120 s once 2.0x | tp 4.0                       | +63.26 | +13.10 +28.41 +21.76 | +53.69     |  6/24 | -2.38 | -2.80 | time 580 its_sell 237 signal 111 refused 87 tp 54 graduated 20
+   no new high 180 s once 1.0x | tp 3.0                       | +63.11 | +12.41 +28.84 +21.86 | +54.93     |  5/24 | -2.63 | -2.63 | signal 411 time 271 its_sell 228 tp 102 refused 89 graduated 15
+   3+ more sellers than buyers in 60 s | tp 3.0               | +62.90 | +11.56 +29.83 +21.50 | +54.84     |  4/24 | -1.99 | -1.99 | signal 546 time 302 its_sell 92 refused 90 tp 87 graduated 14
+   later buyer sells 2%+ | tp none                            | +62.75 | +12.63 +25.50 +24.62 | +46.96     |  4/24 | -1.50 | -1.50 | signal 567 time 341 its_sell 107 refused 91 graduated 27
+   3+ more sellers than buyers in 60 s, under 1.5x | tp 3.0   | +62.65 | +11.59 +27.70 +23.36 | +54.48     |  4/24 | -1.80 | -1.80 | signal 516 time 314 its_sell 97 tp 95 refused 90 graduated 15
+   trail 40% once 1.5x | tp 4.0                               | +62.08 | +12.42 +27.61 +22.05 | +52.80     |  7/24 | -2.84 | -3.72 | time 576 its_sell 213 signal 150 refused 87 tp 49 graduated 20
+   5+ more sellers than buyers in 60 s, under 1.5x | tp 3.0   | +62.06 | +12.36 +27.17 +22.53 | +53.89     |  5/24 | -1.70 | -1.70 | signal 405 time 388 its_sell 122 tp 98 refused 90 graduated 15
+   10+ more sellers than buyers in 60 s | tp 3.0              | +61.77 | +11.92 +28.50 +21.36 | +53.60     |  6/24 | -1.92 | -1.92 | time 496 signal 236 its_sell 169 tp 101 refused 89 graduated 13
+   3+ more sellers than buyers in 30 s | tp none              | +60.79 | +14.82 +24.53 +21.44 | +45.11     |  4/24 | -0.94 | -0.94 | signal 664 time 305 refused 90 its_sell 57 graduated 21
+   10+ more sellers than buyers in 60 s, under 1.5x | tp 3.0  | +60.60 | +11.66 +26.91 +22.02 | +52.43     |  6/24 | -1.92 | -1.92 | time 503 signal 222 its_sell 170 tp 104 refused 89 graduated 14
+   holder from before sells 2%+ | tp 4.0                      | +60.42 | +11.23 +25.51 +23.68 | +50.72     |  6/24 | -2.17 | -2.17 | time 467 signal 334 its_sell 145 refused 90 tp 50 graduated 21
+   5+ more sellers than buyers in 30 s, under 1.5x | tp 3.0   | +59.49 | +12.47 +25.32 +21.70 | +51.31     |  6/24 | -1.42 | -1.42 | signal 448 time 389 its_sell 92 refused 89 tp 87 graduated 15
+   trail 40% once 1.2x | tp 4.0                               | +59.39 | +11.88 +26.23 +21.28 | +50.11     |  8/24 | -2.69 | -3.36 | time 543 signal 208 its_sell 193 refused 87 tp 47 graduated 19
+   no new high 300 s once 1.0x | tp 3.0                       | +58.82 | +12.02 +25.52 +21.28 | +50.65     |  5/24 | -2.33 | -2.33 | time 376 signal 272 its_sell 240 tp 108 refused 88 graduated 14
+   later buyers sell 8%+ in 30 s, under 1.5x | tp none        | +57.69 | +11.30 +24.85 +21.54 | +41.16     |  8/24 | -2.85 | -2.85 | signal 460 time 460 refused 90 its_sell 88 graduated 25
+== picked on two blocks out of all of them, scored on the third (gain over live in the held-out block)
+   held out A: picked '10+ more sellers than buyers in 60 s | tp 4.0' (+15.40 on the other two) -> +2.94; the 10 best picks on average +3.14
+   held out B: picked 'later buyer sells 5%+, under 1.5x | tp none' (+16.58 on the other two) -> +1.90; the 10 best picks on average +1.99
+   held out C: picked '5+ more sellers than buyers in 60 s | tp none' (+17.95 on the other two) -> +2.11; the 10 best picks on average +2.83
+   total out of sample: +6.94 SOL
