@@ -169,6 +169,14 @@ feed connected; SOL 2.3728, WBTC 0.994, the five others 0.600-0.603 SOL.
 sold at 1.75x after 89 s (peak 1.88x), journal **+0.2906 SOL (+58.1%)**; chain (slots 469854763, 469855179) 241,314
 TTWO units back, +89,234 units and −0.00261 SOL in fees, about +0.291 SOL at the status price. Wallet 4 was still
 holding. Day: 8 closed, 4 won, +1.0812 SOL.
+**#39 `E3c6RqFX`** (TTWO, 20:26:37 UTC): wallet 4 sold 3 s after its buy (before the 30 s of the early-sale rule), the
+coin fell to 0.44x, `sell_pressure` sold at 62 s: −0.2685 SOL (chain −80,202 TTWO units and the fees, about −0.266).
+**#40 `DA9ehd4f`** (SOL, 3 hops, 100 bps): the buy failed on chain, −0.0004 SOL: the program refused the price
+(`ExceededSlippage`) and the transaction then ran out of compute (`ComputationalBudgetExceeded`, 200,000 of 200,000
+units). **The box's `cu_limit = 200000` (set Oct 28 for 2-hop routes) is too low for 3 hops:** wallet 4's own 3-hop
+buys use up to 177,930 units (2-hop float routes up to 274,262), and ours add about 40,000 for the token accounts.
+To be raised to 350,000 (about +0.0003 SOL a transaction). Day: 9 closed, 4 won, +0.8127; all real 32, +0.4295; with
+holder fees +1.1932 SOL.
 **The settings of the two signals, all of them, on the live setup** (`analysis/research/2026-11-16/signals/out/grid.txt`,
 520 settings): windows of 20-45 s lose 5 to 21 SOL, 60-120 s are flat, counting from 0-10 s after its buy loses 3 to
 5, SOL in place of the trade count loses everywhere, a stall under 120 s loses 2 to 17 and 180-300 s are flat (+3.1
