@@ -1,0 +1,83 @@
+1238 buys (seven kinds, 1.3+ SOL, every fee tier), 10-21 to 11-15 13:04 UTC; 256 rules; 0.5 SOL, 2 open
+== the live rule
+   rule                                   | total  | A      B      C      | w/o best 5 | days<0 | worst | deepest fall | exits (a landing)
+   no trail, tp 3.0, 600 s                | +56.63 | +11.10 +24.30 +21.24 | +48.46     |  6/24 | -2.41 | -2.41        | time 637 its_sell 238 tp 108 refused 87 graduated 14
+== the 25 best by total
+   rule                                   | total  | A      B      C      | w/o best 5 | days<0 | worst | deepest fall | exits (a landing)
+   no trail, no tp, 600 s                 | +72.04 | +17.06 +25.48 +29.51 | +54.35     |  4/24 | -2.09 | -2.27        | time 721 its_sell 236 refused 86 graduated 32
+   trail 50% once 2.5x, no tp, 600 s      | +71.68 | +16.24 +29.85 +25.59 | +54.49     |  5/24 | -1.44 | -1.63        | time 668 its_sell 238 refused 87 trail 60 graduated 30
+   trail 40% once 2.5x, no tp, 600 s      | +71.34 | +17.19 +26.36 +27.80 | +55.80     |  5/24 | -1.23 | -1.57        | time 656 its_sell 235 refused 87 trail 78 graduated 29
+   trail 50% once 2.0x, no tp, 600 s      | +69.73 | +14.21 +31.25 +24.27 | +53.12     |  5/24 | -2.50 | -2.50        | time 647 its_sell 235 trail 90 refused 87 graduated 28
+   trail 50% once 1.75x, no tp, 600 s     | +69.57 | +14.69 +30.96 +23.92 | +52.96     |  5/24 | -2.50 | -2.50        | time 640 its_sell 229 trail 104 refused 87 graduated 28
+   trail 50% once 1.3x, no tp, 600 s      | +69.21 | +13.80 +31.14 +24.27 | +52.60     |  5/24 | -2.39 | -2.39        | time 618 its_sell 217 trail 139 refused 87 graduated 28
+   no trail, tp 4.0, 600 s                | +68.75 | +13.91 +27.92 +26.92 | +59.06     |  4/24 | -1.94 | -1.94        | time 668 its_sell 237 refused 86 tp 66 graduated 21
+   trail 50% once 2.5x, tp 4.0, 600 s     | +68.65 | +11.13 +30.17 +27.34 | +58.95     |  5/24 | -1.94 | -1.94        | time 643 its_sell 238 refused 87 tp 61 trail 33 graduated 21
+   trail 50% once 1.2x, no tp, 600 s      | +68.59 | +13.43 +30.74 +24.42 | +51.98     |  5/24 | -2.30 | -2.30        | time 612 its_sell 214 trail 149 refused 87 graduated 28
+   trail 50% once 1.5x, no tp, 600 s      | +68.55 | +13.62 +30.94 +24.00 | +51.94     |  5/24 | -2.50 | -2.50        | time 628 its_sell 224 trail 122 refused 87 graduated 28
+   trail 40% once 2.0x, no tp, 600 s      | +67.84 | +16.17 +25.67 +26.01 | +52.98     |  7/24 | -1.87 | -2.83        | time 625 its_sell 228 trail 125 refused 87 graduated 27
+   trail 50% once 2.0x, tp 4.0, 600 s     | +67.49 | +10.60 +31.57 +25.32 | +57.89     |  5/24 | -2.49 | -2.49        | time 622 its_sell 235 refused 87 trail 65 tp 60 graduated 20
+   trail 50% once 1.75x, tp 4.0, 600 s    | +67.33 | +11.08 +31.29 +24.96 | +57.72     |  5/24 | -2.81 | -2.81        | time 615 its_sell 229 refused 87 trail 78 tp 60 graduated 20
+   trail 40% once 1.75x, no tp, 600 s     | +67.19 | +16.65 +24.91 +25.62 | +52.32     |  7/24 | -2.22 | -3.11        | time 613 its_sell 212 trail 153 refused 87 graduated 27
+   trail 50% once 1.3x, tp 4.0, 600 s     | +66.80 | +10.02 +31.47 +25.31 | +57.19     |  5/24 | -2.81 | -2.81        | time 593 its_sell 217 trail 114 refused 87 tp 59 graduated 20
+   trail 50% once 1.5x, tp 4.0, 600 s     | +66.14 |  +9.84 +31.26 +25.05 | +56.54     |  5/24 | -2.89 | -2.89        | time 604 its_sell 224 trail 96 refused 87 tp 59 graduated 20
+   trail 40% once 2.5x, tp 4.0, 600 s     | +65.66 | +11.78 +27.90 +25.99 | +56.14     |  7/24 | -1.94 | -2.09        | time 637 its_sell 235 refused 87 tp 53 trail 52 graduated 21
+   trail 50% once 1.2x, tp 4.0, 600 s     | +65.64 |  +9.65 +30.53 +25.46 | +56.04     |  5/24 | -2.81 | -2.81        | time 588 its_sell 214 trail 124 refused 87 tp 58 graduated 20
+   trail 40% once 1.5x, no tp, 600 s      | +65.37 | +15.83 +25.27 +24.27 | +50.50     |  7/24 | -2.13 | -3.05        | time 591 its_sell 196 trail 194 refused 87 graduated 27
+   trail 40% once 2.5x, no tp, 1200 s     | +64.84 | +10.63 +27.11 +27.10 | +49.03     |  5/24 | -1.84 | -3.29        | time 583 its_sell 223 trail 93 refused 83 graduated 32
+   trail 40% once 1.3x, no tp, 600 s      | +64.16 | +15.79 +25.42 +22.96 | +49.30     |  8/24 | -1.92 | -2.72        | time 570 trail 237 its_sell 175 refused 87 graduated 26
+   trail 40% once 2.0x, tp 4.0, 600 s     | +63.50 | +12.18 +27.73 +23.59 | +54.09     |  7/24 | -2.57 | -3.54        | time 607 its_sell 228 trail 100 refused 87 tp 50 graduated 20
+   trail 40% once 1.75x, tp 4.0, 600 s    | +63.19 | +12.66 +27.32 +23.20 | +53.78     |  7/24 | -2.93 | -3.82        | time 596 its_sell 212 trail 128 refused 87 tp 50 graduated 20
+   trail 40% once 1.2x, no tp, 600 s      | +63.17 | +15.27 +24.58 +23.32 | +48.31     |  8/24 | -1.98 | -2.72        | time 556 trail 264 its_sell 164 refused 87 graduated 26
+   trail 50% once 2.5x, tp 4.0, 1200 s    | +62.72 |  +4.74 +28.73 +29.25 | +52.84     |  6/24 | -2.03 | -3.66        | time 574 its_sell 226 refused 83 tp 66 trail 41 graduated 24
+== ahead of the live rule in all three blocks
+   rule                                   | total  | A      B      C      | w/o best 5 | days<0 | worst | deepest fall | exits (a landing)
+   no trail, no tp, 600 s                 | +72.04 | +17.06 +25.48 +29.51 | +54.35     |  4/24 | -2.09 | -2.27        | time 721 its_sell 236 refused 86 graduated 32
+   trail 50% once 2.5x, no tp, 600 s      | +71.68 | +16.24 +29.85 +25.59 | +54.49     |  5/24 | -1.44 | -1.63        | time 668 its_sell 238 refused 87 trail 60 graduated 30
+   trail 40% once 2.5x, no tp, 600 s      | +71.34 | +17.19 +26.36 +27.80 | +55.80     |  5/24 | -1.23 | -1.57        | time 656 its_sell 235 refused 87 trail 78 graduated 29
+   trail 50% once 2.0x, no tp, 600 s      | +69.73 | +14.21 +31.25 +24.27 | +53.12     |  5/24 | -2.50 | -2.50        | time 647 its_sell 235 trail 90 refused 87 graduated 28
+   trail 50% once 1.75x, no tp, 600 s     | +69.57 | +14.69 +30.96 +23.92 | +52.96     |  5/24 | -2.50 | -2.50        | time 640 its_sell 229 trail 104 refused 87 graduated 28
+   trail 50% once 1.3x, no tp, 600 s      | +69.21 | +13.80 +31.14 +24.27 | +52.60     |  5/24 | -2.39 | -2.39        | time 618 its_sell 217 trail 139 refused 87 graduated 28
+   no trail, tp 4.0, 600 s                | +68.75 | +13.91 +27.92 +26.92 | +59.06     |  4/24 | -1.94 | -1.94        | time 668 its_sell 237 refused 86 tp 66 graduated 21
+   trail 50% once 2.5x, tp 4.0, 600 s     | +68.65 | +11.13 +30.17 +27.34 | +58.95     |  5/24 | -1.94 | -1.94        | time 643 its_sell 238 refused 87 tp 61 trail 33 graduated 21
+   trail 50% once 1.2x, no tp, 600 s      | +68.59 | +13.43 +30.74 +24.42 | +51.98     |  5/24 | -2.30 | -2.30        | time 612 its_sell 214 trail 149 refused 87 graduated 28
+   trail 50% once 1.5x, no tp, 600 s      | +68.55 | +13.62 +30.94 +24.00 | +51.94     |  5/24 | -2.50 | -2.50        | time 628 its_sell 224 trail 122 refused 87 graduated 28
+   trail 40% once 2.0x, no tp, 600 s      | +67.84 | +16.17 +25.67 +26.01 | +52.98     |  7/24 | -1.87 | -2.83        | time 625 its_sell 228 trail 125 refused 87 graduated 27
+   trail 40% once 1.75x, no tp, 600 s     | +67.19 | +16.65 +24.91 +25.62 | +52.32     |  7/24 | -2.22 | -3.11        | time 613 its_sell 212 trail 153 refused 87 graduated 27
+   trail 40% once 2.5x, tp 4.0, 600 s     | +65.66 | +11.78 +27.90 +25.99 | +56.14     |  7/24 | -1.94 | -2.09        | time 637 its_sell 235 refused 87 tp 53 trail 52 graduated 21
+   trail 40% once 1.5x, no tp, 600 s      | +65.37 | +15.83 +25.27 +24.27 | +50.50     |  7/24 | -2.13 | -3.05        | time 591 its_sell 196 trail 194 refused 87 graduated 27
+   trail 40% once 1.3x, no tp, 600 s      | +64.16 | +15.79 +25.42 +22.96 | +49.30     |  8/24 | -1.92 | -2.72        | time 570 trail 237 its_sell 175 refused 87 graduated 26
+   trail 40% once 2.0x, tp 4.0, 600 s     | +63.50 | +12.18 +27.73 +23.59 | +54.09     |  7/24 | -2.57 | -3.54        | time 607 its_sell 228 trail 100 refused 87 tp 50 graduated 20
+   trail 40% once 1.75x, tp 4.0, 600 s    | +63.19 | +12.66 +27.32 +23.20 | +53.78     |  7/24 | -2.93 | -3.82        | time 596 its_sell 212 trail 128 refused 87 tp 50 graduated 20
+   trail 40% once 1.2x, no tp, 600 s      | +63.17 | +15.27 +24.58 +23.32 | +48.31     |  8/24 | -1.98 | -2.72        | time 556 trail 264 its_sell 164 refused 87 graduated 26
+   trail 40% once 1.5x, tp 4.0, 600 s     | +61.65 | +12.34 +27.46 +21.85 | +52.36     |  7/24 | -2.84 | -3.75        | time 574 its_sell 196 trail 169 refused 87 tp 49 graduated 20
+   trail 40% once 1.75x, no tp, 1200 s    | +60.62 | +11.15 +26.22 +23.25 | +45.34     |  5/24 | -2.11 | -2.90        | time 533 its_sell 203 trail 179 refused 83 graduated 30
+== the 15 with the fewest losing days (then the smallest fall)
+   rule                                   | total  | A      B      C      | w/o best 5 | days<0 | worst | deepest fall | exits (a landing)
+   trail 25% once 2.0x, no tp, 1200 s     | +47.97 |  +9.71 +19.61 +18.64 | +37.09     |  4/24 | -1.65 | -1.65        | time 524 its_sell 213 trail 192 refused 83 graduated 20
+   no trail, tp 4.0, 600 s                | +68.75 | +13.91 +27.92 +26.92 | +59.06     |  4/24 | -1.94 | -1.94        | time 668 its_sell 237 refused 86 tp 66 graduated 21
+   no trail, no tp, 600 s                 | +72.04 | +17.06 +25.48 +29.51 | +54.35     |  4/24 | -2.09 | -2.27        | time 721 its_sell 236 refused 86 graduated 32
+   trail 30% once 1.2x, no tp, 600 s      | +46.22 | +12.57 +23.44 +10.20 | +32.38     |  5/24 | -0.89 | -0.89        | time 482 trail 398 its_sell 121 refused 89 graduated 20
+   trail 25% once 2.5x, no tp, 600 s      | +52.99 | +11.94 +20.80 +20.26 | +41.60     |  5/24 | -1.46 | -1.46        | time 629 its_sell 235 trail 114 refused 87 graduated 21
+   trail 40% once 2.5x, no tp, 600 s      | +71.34 | +17.19 +26.36 +27.80 | +55.80     |  5/24 | -1.23 | -1.57        | time 656 its_sell 235 refused 87 trail 78 graduated 29
+   trail 30% once 2.5x, no tp, 600 s      | +61.66 | +14.22 +26.43 +21.01 | +46.74     |  5/24 | -1.60 | -1.60        | time 634 its_sell 235 trail 104 refused 87 graduated 27
+   trail 30% once 2.0x, no tp, 1200 s     | +51.63 | +11.71 +23.18 +16.73 | +37.23     |  5/24 | -1.60 | -1.60        | time 527 its_sell 214 trail 182 refused 83 graduated 25
+   trail 50% once 2.5x, no tp, 600 s      | +71.68 | +16.24 +29.85 +25.59 | +54.49     |  5/24 | -1.44 | -1.63        | time 668 its_sell 238 refused 87 trail 60 graduated 30
+   trail 30% once 1.5x, no tp, 600 s      | +50.09 | +14.49 +24.10 +11.51 | +35.89     |  5/24 | -1.35 | -1.63        | time 539 trail 275 its_sell 177 refused 88 graduated 22
+   trail 30% once 2.0x, tp 4.0, 1200 s    | +51.15 |  +8.93 +23.25 +18.97 | +43.25     |  5/24 | -1.69 | -1.69        | time 525 its_sell 214 trail 151 refused 83 tp 39 graduated 19
+   trail 30% once 1.5x, no tp, 1200 s     | +45.41 | +10.63 +23.16 +11.62 | +31.64     |  5/24 | -1.76 | -1.76        | time 473 trail 299 its_sell 168 refused 84 graduated 23
+   trail 30% once 1.5x, tp 4.0, 1200 s    | +45.20 |  +9.00 +22.77 +13.43 | +37.66     |  5/24 | -1.80 | -1.80        | time 472 trail 272 its_sell 168 refused 84 tp 33 graduated 17
+   trail 50% once 2.5x, tp 4.0, 600 s     | +68.65 | +11.13 +30.17 +27.34 | +58.95     |  5/24 | -1.94 | -1.94        | time 643 its_sell 238 refused 87 tp 61 trail 33 graduated 21
+   trail 25% once 2.0x, tp 4.0, 1200 s    | +47.83 |  +7.66 +20.63 +19.55 | +39.97     |  5/24 | -1.99 | -1.99        | time 523 its_sell 213 trail 167 refused 83 tp 29 graduated 18
+== with tp 3.0 and 600 s as live, each trail (total; blocks)
+   once 1.2x: 10%  +1.28  15% +15.25  20% +27.24  25% +37.61  30% +40.94  40% +50.78  50% +54.94
+   once 1.3x: 10%  +9.80  15% +21.07  20% +30.08  25% +37.79  30% +41.66  40% +52.29  50% +55.88
+   once 1.5x: 10% +22.50  15% +29.86  20% +32.53  25% +39.30  30% +44.03  40% +53.14  50% +55.23
+   once 1.75x: 10% +30.34  15% +34.37  20% +34.85  25% +40.63  30% +47.66  40% +54.72  50% +55.81
+   once 2.0x: 10% +36.81  15% +42.42  20% +42.25  25% +47.23  30% +50.70  40% +55.39  50% +56.58
+   once 2.5x: 10% +45.60  15% +47.71  20% +48.75  25% +50.90  30% +53.30  40% +56.18  50% +56.78
+   (live, no trail: +56.63)
+== picked on two blocks, scored on the third (the gain over the live rule in the held-out block)
+   held out A: picked 'trail 50% once 2.5x, tp 4.0, 1200 s' (+12.44 on the other two) -> -6.36 on A; the 10 best picks on average -2.91
+   held out B: picked 'no trail, no tp, 600 s' (+14.23 on the other two) -> +1.18 on B; the 10 best picks on average +2.35
+   held out C: picked 'trail 50% once 2.5x, no tp, 600 s' (+10.69 on the other two) -> +4.36 on C; the 10 best picks on average +4.17
+   total out of sample: -0.82 SOL

@@ -1,0 +1,56 @@
+1238 buys (seven kinds, 1.3+ SOL, every fee tier); 112 signals; 0.5 SOL, 2 open; on top of tp 3.0, 600 s, early 30-290 s
+== the live rule
+   rule                                             | total  | A      B      C      | w/o best 5 | days<0 | worst | deepest fall | exits (a landing)
+   live (no signal)                                 | +56.63 | +11.10 +24.30 +21.24 | +48.46     |  6/24 | -2.41 | -2.41        | time 637 its_sell 238 tp 108 refused 87 graduated 14
+== the 25 best by total
+   rule                                             | total  | A      B      C      | w/o best 5 | days<0 | worst | deepest fall | exits (a landing)
+   a sell of 5%+ of supply, after 30 s, under 1.5x  | +57.57 |  +8.76 +25.77 +23.04 | +49.40     |  6/24 | -1.94 | -2.47        | time 540 its_sell 211 signal 139 tp 106 refused 89 graduated 14
+   a sell of 5%+ of supply, after 30 s              | +56.80 |  +8.62 +26.28 +21.90 | +48.77     |  6/24 | -1.94 | -2.47        | time 536 its_sell 210 signal 148 tp 103 refused 89 graduated 14
+   sells - buys 6 SOL since ours, after 30 s        | +56.66 | +10.37 +24.85 +21.43 | +48.69     |  7/24 | -2.73 | -2.73        | time 535 its_sell 178 signal 173 tp 105 refused 87 graduated 14
+   sells - buys 6 SOL since ours, after 30 s, under 1.5x | +56.66 | +10.37 +24.85 +21.43 | +48.69     |  7/24 | -2.73 | -2.73        | time 535 its_sell 178 signal 173 tp 105 refused 87 graduated 14
+   live (no signal)                                 | +56.63 | +11.10 +24.30 +21.24 | +48.46     |  6/24 | -2.41 | -2.41        | time 637 its_sell 238 tp 108 refused 87 graduated 14
+   a sell of 3%+ of supply, after 30 s, under 1.5x  | +54.87 |  +8.89 +26.14 +19.83 | +46.76     |  5/24 | -2.96 | -2.96        | signal 393 time 383 its_sell 150 refused 91 tp 90 graduated 15
+   5+ sellers in 10 s, after 30 s, under 1.5x       | +54.27 |  +9.91 +24.34 +20.03 | +46.10     |  6/24 | -1.42 | -1.42        | time 562 its_sell 205 signal 123 tp 100 refused 87 graduated 15
+   8+ sellers in 30 s, after 30 s, under 1.5x       | +53.97 | +10.85 +23.07 +20.06 | +45.80     |  6/24 | -1.19 | -1.19        | time 562 its_sell 202 signal 131 tp 98 refused 87 graduated 15
+   sells - buys 3 SOL since ours, after 30 s        | +53.91 |  +9.77 +22.47 +21.68 | +46.01     |  7/24 | -2.27 | -2.27        | time 452 signal 312 its_sell 138 tp 100 refused 88 graduated 14
+   sells - buys 3 SOL since ours, after 30 s, under 1.5x | +53.78 |  +9.77 +22.33 +21.68 | +45.87     |  7/24 | -2.27 | -2.27        | time 452 signal 312 its_sell 138 tp 100 refused 88 graduated 14
+   5+ sellers in 30 s, after 30 s, under 1.5x       | +53.53 | +10.48 +23.50 +19.55 | +45.36     |  5/24 | -1.33 | -1.36        | time 545 its_sell 207 signal 139 tp 99 refused 88 graduated 14
+   a sell of 3%+ of supply, after 30 s              | +53.47 |  +9.63 +25.19 +18.65 | +45.69     |  4/24 | -2.96 | -2.96        | signal 429 time 365 its_sell 143 refused 91 tp 78 graduated 15
+   net flow -4 SOL in 60 s, after 30 s, under 1.5x  | +52.86 | +10.81 +21.76 +20.29 | +44.96     |  5/24 | -2.19 | -2.19        | signal 418 time 410 its_sell 96 refused 89 tp 85 graduated 14
+   sells - buys 1 SOL since ours, after 30 s        | +52.74 |  +8.79 +21.46 +22.50 | +44.83     |  5/24 | -1.70 | -1.70        | signal 472 time 349 its_sell 105 tp 95 refused 92 graduated 14
+   sells - buys 1 SOL since ours, after 30 s, under 1.5x | +52.71 |  +8.79 +21.43 +22.50 | +44.80     |  5/24 | -1.70 | -1.70        | signal 471 time 349 its_sell 105 tp 95 refused 92 graduated 14
+   net flow -2 SOL in 60 s, after 30 s, under 1.5x  | +52.54 |  +9.53 +22.19 +20.82 | +44.65     |  6/24 | -1.63 | -1.63        | signal 574 time 315 refused 91 tp 80 its_sell 57 graduated 14
+   a sell of 2%+ of supply, after 30 s, under 1.5x  | +52.04 |  +7.51 +22.40 +22.13 | +43.94     |  5/24 | -1.12 | -1.12        | signal 588 time 293 refused 92 its_sell 81 tp 74 graduated 14
+   3+ sellers in 10 s, after 30 s, under 1.5x       | +52.00 |  +9.68 +22.98 +19.33 | +43.83     |  5/24 | -1.67 | -2.07        | time 549 its_sell 217 signal 131 tp 98 refused 89 graduated 13
+   5+ sellers in 30 s, after 30 s                   | +51.98 |  +9.58 +22.85 +19.55 | +43.81     |  5/24 | -1.10 | -1.28        | time 532 its_sell 201 signal 171 tp 89 refused 88 graduated 13
+   3+ sellers in 30 s, after 30 s, under 1.5x       | +51.93 |  +9.04 +23.39 +19.50 | +43.76     |  6/24 | -2.02 | -2.44        | time 535 its_sell 218 signal 146 tp 100 refused 89 graduated 13
+   net flow -4 SOL in 60 s, after 30 s              | +51.33 | +10.01 +22.55 +18.77 | +43.55     |  6/24 | -2.31 | -2.31        | signal 448 time 402 its_sell 90 refused 89 tp 73 graduated 13
+   8+ sellers in 10 s, after 30 s, under 1.5x       | +51.16 |  +8.63 +21.74 +20.79 | +42.99     |  7/24 | -1.49 | -1.49        | time 581 its_sell 199 signal 112 tp 95 refused 87 graduated 14
+   net flow -1 SOL in 60 s, after 30 s, under 1.5x  | +51.04 |  +9.28 +20.53 +21.23 | +43.14     |  5/24 | -1.46 | -1.46        | signal 651 time 263 refused 92 tp 76 its_sell 48 graduated 14
+   net flow -1 SOL in 60 s, after 30 s              | +50.50 |  +9.96 +22.65 +17.89 | +44.26     |  6/24 | -1.50 | -1.50        | signal 683 time 254 refused 92 tp 63 its_sell 41 graduated 13
+   3+ sellers in 10 s, after 30 s                   | +50.48 |  +9.06 +21.66 +19.76 | +42.31     |  5/24 | -1.61 | -2.08        | time 539 its_sell 216 signal 148 tp 93 refused 89 graduated 13
+== ahead of the live rule in all three blocks
+   rule                                             | total  | A      B      C      | w/o best 5 | days<0 | worst | deepest fall | exits (a landing)
+== the 10 with the fewest losing days (then the smallest fall)
+   rule                                             | total  | A      B      C      | w/o best 5 | days<0 | worst | deepest fall | exits (a landing)
+   5%+ of supply sold in 30 s, after 30 s           | +37.59 |  +9.35 +15.23 +13.00 | +32.35     |  4/24 | -1.26 | -1.26        | signal 688 time 298 refused 92 tp 29 its_sell 28 graduated 12
+   8%+ of supply sold in 30 s, after 30 s           | +36.24 |  +8.95 +15.35 +11.94 | +31.00     |  4/24 | -1.98 | -1.98        | signal 586 time 368 refused 91 its_sell 46 tp 33 graduated 12
+   a sell of 3%+ of supply, after 30 s              | +53.47 |  +9.63 +25.19 +18.65 | +45.69     |  4/24 | -2.96 | -2.96        | signal 429 time 365 its_sell 143 refused 91 tp 78 graduated 15
+   a sell of 2%+ of supply, after 30 s              | +48.74 |  +7.59 +20.15 +21.00 | +42.40     |  5/24 | -0.92 | -0.92        | signal 633 time 282 refused 92 its_sell 73 tp 52 graduated 14
+   3%+ of supply sold in 10 s, after 30 s           | +40.16 |  +9.72 +15.07 +15.38 | +34.91     |  5/24 | -1.10 | -1.10        | signal 703 time 276 refused 92 its_sell 40 tp 28 graduated 11
+   a sell of 2%+ of supply, after 30 s, under 1.5x  | +52.04 |  +7.51 +22.40 +22.13 | +43.94     |  5/24 | -1.12 | -1.12        | signal 588 time 293 refused 92 its_sell 81 tp 74 graduated 14
+   8+ sellers in 30 s, after 30 s                   | +48.10 |  +8.75 +19.65 +19.70 | +39.93     |  5/24 | -1.12 | -1.12        | time 544 its_sell 195 signal 176 refused 87 tp 80 graduated 14
+   5%+ of supply sold in 30 s, after 30 s, under 1.5x | +43.43 |  +8.86 +16.77 +17.80 | +35.65     |  5/24 | -1.13 | -1.13        | signal 644 time 304 refused 92 tp 55 its_sell 35 graduated 14
+   a sell of 1%+ of supply, after 30 s              | +43.02 |  +7.27 +17.38 +18.36 | +37.64     |  5/24 | -1.18 | -1.18        | signal 806 time 194 refused 92 tp 30 its_sell 26 graduated 12
+   3%+ of supply sold in 10 s, after 30 s, under 1.5x | +45.98 |  +8.74 +17.68 +19.56 | +38.09     |  5/24 | -1.27 | -1.27        | signal 654 time 283 refused 92 tp 58 its_sell 48 graduated 14
+== by family: the best of each and how many of its settings beat the live rule
+   big     : 2 of 16 ahead; best 'a sell of 5%+ of supply, after 30 s, under 1.5x' +57.57
+   bigsum  : 0 of 24 ahead; best '8%+ of supply sold in 10 s, after 30 s, under 1.5x' +47.98
+   cluster : 0 of 24 ahead; best '5+ sellers in 10 s, after 30 s, under 1.5x' +54.27
+   flow    : 0 of 36 ahead; best 'net flow -4 SOL in 60 s, after 30 s, under 1.5x' +52.86
+   drain   : 2 of 12 ahead; best 'sells - buys 6 SOL since ours, after 30 s' +56.66
+== picked on two blocks, scored on the third (the gain over the live rule in the held-out block)
+   held out A: picked 'a sell of 5%+ of supply, after 30 s, under 1.5x' (+3.28 on the other two) -> -2.34 on A; the 10 best picks on average -1.82
+   held out B: picked 'sells - buys 6 SOL since ours, after 30 s' (-0.53 on the other two) -> +0.55 on B; the 10 best picks on average -0.87
+   held out C: picked 'sells - buys 6 SOL since ours, after 30 s' (-0.17 on the other two) -> +0.20 on C; the 10 best picks on average -0.93
+   total out of sample: -1.59 SOL
