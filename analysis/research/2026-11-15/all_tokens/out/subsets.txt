@@ -1,0 +1,36 @@
+
+with the SOL routes:
+   + nothing                      |  +7.42 ( +5.43) | +14.08 (+11.74) | +13.44 ( +9.47) | +34.94 (+26.63) | 28.3 a day | floats' SOL at 0.5 each: 0.0 more
+   + TTWO                         |  +8.68 ( +6.68) | +13.24 (+10.90) | +16.91 (+12.94) | +38.83 (+30.52) | 31.1 a day | floats' SOL at 0.5 each: 0.5 more
+   + HYPE                         |  +7.15 ( +5.16) | +18.74 (+15.97) | +12.49 ( +8.52) | +38.39 (+29.65) | 30.1 a day | floats' SOL at 0.5 each: 0.5 more
+   + DJT                          |  +7.69 ( +5.67) | +18.39 (+15.87) | +13.05 ( +9.08) | +39.12 (+30.61) | 29.6 a day | floats' SOL at 0.5 each: 0.5 more
+   + AAPLx                        |  +7.22 ( +5.23) | +16.89 (+14.54) | +13.83 ( +9.86) | +37.94 (+29.63) | 29.1 a day | floats' SOL at 0.5 each: 0.5 more
+   + TTWO + HYPE                  |  +8.41 ( +6.41) | +17.90 (+15.13) | +15.96 (+11.99) | +42.28 (+33.54) | 33.0 a day | floats' SOL at 0.5 each: 1.0 more
+   + TTWO + DJT                   |  +8.95 ( +6.92) | +17.55 (+15.03) | +16.52 (+12.55) | +43.02 (+34.50) | 32.4 a day | floats' SOL at 0.5 each: 1.0 more
+   + TTWO + AAPLx                 |  +8.48 ( +6.48) | +16.05 (+13.71) | +17.30 (+13.33) | +41.83 (+33.51) | 31.9 a day | floats' SOL at 0.5 each: 1.0 more
+   + HYPE + DJT                   |  +7.42 ( +5.40) | +23.05 (+20.20) | +12.10 ( +8.13) | +42.57 (+33.74) | 31.5 a day | floats' SOL at 0.5 each: 1.0 more
+   + HYPE + AAPLx                 |  +6.96 ( +4.96) | +20.92 (+18.15) | +12.88 ( +8.91) | +40.75 (+32.02) | 30.9 a day | floats' SOL at 0.5 each: 1.0 more
+   + DJT + AAPLx                  |  +7.49 ( +5.47) | +21.19 (+18.68) | +13.44 ( +9.47) | +42.12 (+33.61) | 30.4 a day | floats' SOL at 0.5 each: 1.0 more
+   + TTWO + HYPE + DJT            |  +8.68 ( +6.65) | +22.21 (+19.37) | +15.57 (+11.61) | +46.47 (+37.62) | 34.3 a day | floats' SOL at 0.5 each: 1.5 more
+   + TTWO + HYPE + AAPLx          |  +8.22 ( +6.21) | +20.08 (+17.31) | +16.35 (+12.38) | +44.65 (+35.91) | 33.8 a day | floats' SOL at 0.5 each: 1.5 more
+   + TTWO + DJT + AAPLx           |  +8.75 ( +6.72) | +20.36 (+17.84) | +16.91 (+12.94) | +46.02 (+37.50) | 33.2 a day | floats' SOL at 0.5 each: 1.5 more
+   + HYPE + DJT + AAPLx           |  +7.22 ( +5.20) | +25.22 (+22.38) | +12.49 ( +8.52) | +44.94 (+36.10) | 32.3 a day | floats' SOL at 0.5 each: 1.5 more
+   + TTWO + HYPE + DJT + AAPLx    |  +8.48 ( +6.45) | +24.38 (+21.54) | +15.96 (+12.00) | +48.83 (+39.99) | 35.1 a day | floats' SOL at 0.5 each: 2.0 more
+
+WITHOUT the SOL routes:
+   + nothing                      |  +3.35 ( +1.55) | +13.92 (+11.73) | +10.57 ( +8.26) | +27.84 (+21.54) | 18.4 a day | floats' SOL at 0.5 each: 0.0 more
+   + TTWO                         |  +4.54 ( +2.64) | +13.08 (+10.89) | +14.04 (+11.72) | +31.67 (+25.26) | 21.3 a day | floats' SOL at 0.5 each: 0.5 more
+   + HYPE                         |  +3.08 ( +1.28) | +18.34 (+15.64) |  +9.54 ( +7.23) | +30.96 (+24.16) | 20.3 a day | floats' SOL at 0.5 each: 0.5 more
+   + DJT                          |  +3.62 ( +1.73) | +18.23 (+15.84) | +10.18 ( +7.87) | +32.02 (+25.44) | 19.7 a day | floats' SOL at 0.5 each: 0.5 more
+   + AAPLx                        |  +3.15 ( +1.35) | +16.49 (+14.27) | +10.96 ( +8.65) | +30.60 (+24.27) | 19.2 a day | floats' SOL at 0.5 each: 0.5 more
+   + TTWO + HYPE                  |  +4.28 ( +2.38) | +17.50 (+14.81) | +13.01 (+10.70) | +34.79 (+27.88) | 23.3 a day | floats' SOL at 0.5 each: 1.0 more
+   + TTWO + DJT                   |  +4.81 ( +2.88) | +17.39 (+15.00) | +13.65 (+11.33) | +35.85 (+29.21) | 22.7 a day | floats' SOL at 0.5 each: 1.0 more
+   + TTWO + AAPLx                 |  +4.34 ( +2.45) | +15.65 (+13.43) | +14.43 (+12.11) | +34.43 (+27.99) | 22.2 a day | floats' SOL at 0.5 each: 1.0 more
+   + HYPE + DJT                   |  +3.35 ( +1.46) | +22.65 (+19.85) |  +9.15 ( +6.84) | +35.15 (+28.15) | 21.6 a day | floats' SOL at 0.5 each: 1.0 more
+   + HYPE + AAPLx                 |  +2.88 ( +1.08) | +21.15 (+18.45) |  +9.93 ( +7.62) | +33.96 (+27.16) | 21.1 a day | floats' SOL at 0.5 each: 1.0 more
+   + DJT + AAPLx                  |  +3.42 ( +1.53) | +20.79 (+18.39) | +10.57 ( +8.26) | +34.78 (+28.18) | 20.5 a day | floats' SOL at 0.5 each: 1.0 more
+   + TTWO + HYPE + DJT            |  +4.55 ( +2.61) | +21.81 (+19.01) | +12.62 (+10.31) | +38.98 (+31.92) | 24.6 a day | floats' SOL at 0.5 each: 1.5 more
+   + TTWO + HYPE + AAPLx          |  +4.08 ( +2.18) | +20.31 (+17.62) | +13.40 (+11.09) | +37.79 (+30.88) | 24.1 a day | floats' SOL at 0.5 each: 1.5 more
+   + TTWO + DJT + AAPLx           |  +4.61 ( +2.68) | +19.96 (+17.56) | +14.04 (+11.72) | +38.61 (+31.96) | 23.5 a day | floats' SOL at 0.5 each: 1.5 more
+   + HYPE + DJT + AAPLx           |  +3.15 ( +1.27) | +25.46 (+22.65) |  +9.54 ( +7.23) | +38.15 (+31.15) | 22.4 a day | floats' SOL at 0.5 each: 1.5 more
+   + TTWO + HYPE + DJT + AAPLx    |  +4.35 ( +2.41) | +24.62 (+21.82) | +13.01 (+10.70) | +41.98 (+34.92) | 25.4 a day | floats' SOL at 0.5 each: 2.0 more
