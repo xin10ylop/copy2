@@ -189,6 +189,12 @@ call, as `analysis/research/2026-11-15/all_tokens/` recommended once 0.5 SOL was
 at 0.5, block by block −0.20 / +2.86 / +0.39, simulated on chain Nov 15): 12,036,623 units for 0.6 SOL (slot
 469883188). The exit is not touched. The restart: seven floats, feed connected; SOL 1.8689, WBTC 0.992, PUMP 0.612,
 SPCX 0.549, TTWO 0.580, DJT 0.596, HYPE 0.603, AAPLx 0.598 SOL. Day: 12 closed, 5 won, +0.8062 SOL.
+**TAB16RxX studied again and left paused (Nov 15 night, `analysis/research/2026-11-16/tab/`):** 890 copyable buys over
+15 days (nothing copyable before Oct 31); what it would add to wallet 4 is +0.37 SOL a day at 0.5 SOL on 18.8 copies a
+day, −2.52 without its best 5 trades; its own sale is not wallet 4's (the 86 copies it sold at 30-60 s lose 24% each).
+The owner declined a paper run. Tested on wallet 4 the same night and not adopted: buy pressure as a guide for the
+take profit (`2026-11-16/buy_pressure/`, from 1.2x) and buying that slows or selling that rises
+(`2026-11-16/momentum/`).
 **The settings of the two signals, all of them, on the live setup** (`analysis/research/2026-11-16/signals/out/grid.txt`,
 520 settings): windows of 20-45 s lose 5 to 21 SOL, 60-120 s are flat, counting from 0-10 s after its buy loses 3 to
 5, SOL in place of the trade count loses everywhere, a stall under 120 s loses 2 to 17 and 180-300 s are flat (+3.1
