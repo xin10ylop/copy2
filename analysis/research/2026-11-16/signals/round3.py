@@ -120,25 +120,26 @@ for nm, e in (("30-290 s at any price", (30, 290, 1e9)), ("0-600 s under 1.5x", 
 for h in (300, 450, 900, 1200, 1790): R[f"timer: {h} s"] = ((SEL, STALL), 4.0, h, E)
 for N, W in ((3, 60), (3, 90), (5, 90), (4, 90), (5, 120), (3, 120)): R[f"press: {N}+ more sells than buys in {W} s (in place of 5 in 60)"] = ((("sellers", N, W, None), STALL), 4.0, 600, E)
 for T in (120, 150, 240): R[f"press: stall {T} s (in place of 180)"] = ((SEL, ("stall", 1.0, T, None)), 4.0, 600, E)
-B0 = score(BASE); random.seed(7)
-print(f"{len(ROWS)} buys; the creator known for {len(ROWS) - miss}; 0.5 SOL, 2 open; {len(R)} additions to the live setup")
-hdr = f"   {'rule':66s} | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it"
-def row(nm, s):
-    g = [a - b for a, b in zip(s["days"], B0["days"])]; dr = [sum(random.choice(g) for _ in g) for _ in range(1000)]
-    mine = sum(c for w, c in s["whys"].items() if w not in ("tp", "time", "its_sell", "graduated", "refused", "sellers", "stall"))
-    return f"   {nm:66s} | {s['tot']:+6.2f} | {s['tot'] - B0['tot']:+6.2f} | {s['b'][0]:+6.2f} {s['b'][1]:+6.2f} {s['b'][2]:+6.2f} | {s['wo5']:+6.2f}     | {s['neg']:2d}/{s['nd']} | {s['worst']:+5.2f} | {100 * sum(1 for y in dr if y > 0) / 1000:5.1f}%         | {mine:.0f}"
-print("== the live setup (both signals, tp 4.0, 600 s)\n" + hdr + "\n" + row("live", B0))
-S = {nm: score(r) for nm, r in R.items()}
-fam = lambda nm: nm.split(":")[0]
-for f in ("uniq", "ratio", "nettok", "drought", "quiet", "tstop", "dev", "his", "timer", "press"):
-    xs = [(nm, s) for nm, s in S.items() if fam(nm) == f]
-    print(f"== {f}: {sum(1 for nm, s in xs if s['tot'] > B0['tot'])} of {len(xs)} ahead of the live setup, {sum(1 for nm, s in xs if all(s['b'][i] > B0['b'][i] for i in range(3)))} in all three blocks\n" + hdr)
-    for nm, s in xs: print(row(nm, s))
-print("== picked on two blocks, scored on the third (gain over the live setup in the held-out block)")
-tot = 0
-for held in range(3):
-    other = [i for i in range(3) if i != held]
-    rk = sorted(S.items(), key=lambda q: -sum(q[1]["b"][i] for i in other))
-    g = rk[0][1]["b"][held] - B0["b"][held]; tot += g
-    print(f"   held out {'ABC'[held]}: picked '{rk[0][0]}' ({sum(rk[0][1]['b'][i] - B0['b'][i] for i in other):+.2f} on the other two) -> {g:+.2f}; the 10 best picks on average {sum(s['b'][held] - B0['b'][held] for nm, s in rk[:10]) / 10:+.2f}")
-print(f"   total out of sample: {tot:+.2f} SOL")
+if __name__ == "__main__":
+    B0 = score(BASE); random.seed(7)
+    print(f"{len(ROWS)} buys; the creator known for {len(ROWS) - miss}; 0.5 SOL, 2 open; {len(R)} additions to the live setup")
+    hdr = f"   {'rule':66s} | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it"
+    def row(nm, s):
+        g = [a - b for a, b in zip(s["days"], B0["days"])]; dr = [sum(random.choice(g) for _ in g) for _ in range(1000)]
+        mine = sum(c for w, c in s["whys"].items() if w not in ("tp", "time", "its_sell", "graduated", "refused", "sellers", "stall"))
+        return f"   {nm:66s} | {s['tot']:+6.2f} | {s['tot'] - B0['tot']:+6.2f} | {s['b'][0]:+6.2f} {s['b'][1]:+6.2f} {s['b'][2]:+6.2f} | {s['wo5']:+6.2f}     | {s['neg']:2d}/{s['nd']} | {s['worst']:+5.2f} | {100 * sum(1 for y in dr if y > 0) / 1000:5.1f}%         | {mine:.0f}"
+    print("== the live setup (both signals, tp 4.0, 600 s)\n" + hdr + "\n" + row("live", B0))
+    S = {nm: score(r) for nm, r in R.items()}
+    fam = lambda nm: nm.split(":")[0]
+    for f in ("uniq", "ratio", "nettok", "drought", "quiet", "tstop", "dev", "his", "timer", "press"):
+        xs = [(nm, s) for nm, s in S.items() if fam(nm) == f]
+        print(f"== {f}: {sum(1 for nm, s in xs if s['tot'] > B0['tot'])} of {len(xs)} ahead of the live setup, {sum(1 for nm, s in xs if all(s['b'][i] > B0['b'][i] for i in range(3)))} in all three blocks\n" + hdr)
+        for nm, s in xs: print(row(nm, s))
+    print("== picked on two blocks, scored on the third (gain over the live setup in the held-out block)")
+    tot = 0
+    for held in range(3):
+        other = [i for i in range(3) if i != held]
+        rk = sorted(S.items(), key=lambda q: -sum(q[1]["b"][i] for i in other))
+        g = rk[0][1]["b"][held] - B0["b"][held]; tot += g
+        print(f"   held out {'ABC'[held]}: picked '{rk[0][0]}' ({sum(rk[0][1]['b'][i] - B0['b'][i] for i in other):+.2f} on the other two) -> {g:+.2f}; the 10 best picks on average {sum(s['b'][held] - B0['b'][held] for nm, s in rk[:10]) / 10:+.2f}")
+    print(f"   total out of sample: {tot:+.2f} SOL")
