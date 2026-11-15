@@ -1,0 +1,19 @@
+# rugsnipe-float-level -- the long copy's box: its floats brought back to their sizes while no copy is open
+# (deploy/bin/rugsnipe-float-level; the sizes in /etc/rugsnipe/float-levels, "MINT SOL" a line). Started every 10
+# minutes by rugsnipe-float-level.timer. Root, as `sudo rugsnipe-long float level` is run by hand (the wallet file and
+# the config are root-only).
+# Install: sudo install -m 755 deploy/bin/rugsnipe-float-level /usr/local/bin/ and these two units in /etc/systemd/system/.
+# Once by hand: sudo systemctl start rugsnipe-float-level.service; journalctl -u rugsnipe-float-level -n 20
+[Unit]
+Description=rugsnipe-long floats back to their sizes
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/etc/rugsnipe/float-levels
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+ExecStart=/usr/local/bin/rugsnipe-float-level
+TimeoutStartSec=300
+Nice=10

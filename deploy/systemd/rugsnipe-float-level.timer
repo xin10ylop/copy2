@@ -1,0 +1,11 @@
+# Every 10 minutes: the long copy's floats back to their sizes (rugsnipe-float-level.service).
+[Unit]
+Description=rugsnipe-long floats back to their sizes (every 10 min)
+
+[Timer]
+OnCalendar=*:5/10
+AccuracySec=15s
+Unit=rugsnipe-float-level.service
+
+[Install]
+WantedBy=timers.target
