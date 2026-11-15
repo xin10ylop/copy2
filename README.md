@@ -175,7 +175,7 @@ coin fell to 0.44x, `sell_pressure` sold at 62 s: −0.2685 SOL (chain −80,202
 (`ExceededSlippage`) and the transaction then ran out of compute (`ComputationalBudgetExceeded`, 200,000 of 200,000
 units). **The box's `cu_limit = 200000` (set Oct 28 for 2-hop routes) is too low for 3 hops:** wallet 4's own 3-hop
 buys use up to 177,930 units (2-hop float routes up to 274,262), and ours add about 40,000 for the token accounts.
-To be raised to 350,000 (about +0.0003 SOL a transaction). Day: 9 closed, 4 won, +0.8127; all real 32, +0.4295; with
+Raised to 350,000 at 20:44:19 UTC (about +0.0003 SOL a transaction; the restart's journal: the same start line, feed connected). Day: 9 closed, 4 won, +0.8127; all real 32, +0.4295; with
 holder fees +1.1932 SOL.
 **The exit, studied one last time and frozen (Nov 15 night, `analysis/research/2026-11-16/final_exit/`):** each part
 changed alone against the live setup, the noise measured (±3.4 SOL when the days are drawn again). The 100 copies

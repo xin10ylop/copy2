@@ -38,7 +38,7 @@ are in the Cherry portal, not here. The repo is cloned at `~/rugsnipe`.
 | Units | `rugsnipe-long` enabled and running; `rugsnipe-hot` installed by the role, **never enabled** (strategy D is stopped) |
 | Keys | `/etc/rugsnipe/keys/api-keys.toml` (root, 0400): `GRPC_TOKEN` (Triton), `NOZOMI_KEY`, `RPC_URL` (Triton, with its token). Typed in from the dashboards; never printed, never in git |
 | Hot config | `/etc/rugsnipe/rugsnipe.toml`: `[feeds] grpc = { enabled = true, url = "https://riptide.rpcpool.com", x_token = "GRPC_TOKEN", stale_ms = 2_000, bundle_run = true }`; `[senders] nozomi = { enabled = true, url = "http://fra2.nozomi.temporal.xyz", key = "NOZOMI_KEY", min_tip = 1_000_000 }` |
-| Long config | `/etc/rugsnipe/long.toml`: `mode = "log"`, `rpc_url = "cred:RPC_URL"`, `hot_config = "/etc/rugsnipe/rugsnipe.toml"`, `cu_limit = 200000`, `follow_its_sell = false`; the rest as `config/long.example.toml` |
+| Long config | `/etc/rugsnipe/long.toml`: `mode = "log"`, `rpc_url = "cred:RPC_URL"`, `hot_config = "/etc/rugsnipe/rugsnipe.toml"`, `cu_limit = 200000` (**350000 since Nov 15 20:44 UTC**: 200,000 is too low for 3-hop routes, #40), `follow_its_sell = false`; the rest as `config/long.example.toml` |
 
 The start line of Oct 28 17:58 UTC: `long start: mode Log wallet 1111...1111 copy H9ku...jDg min_sol 1.45 stake 1 SOL
 tp 2x stop 0.8x hold 1790s max_open 4 floats ["3NZ9...qmJh"] buy senders [] sell senders [] feed
