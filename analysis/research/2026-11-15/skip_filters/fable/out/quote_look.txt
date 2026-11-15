@@ -1,0 +1,28 @@
+156 quote tokens. The 14 most used: quote, copies, low-fee copies (bps <= 100), the fee tiers seen, take profits, net (low-fee / others)
+   C5xph2yL  151  18 | tiers {300: 125, 30: 9, 100: 7, 200: 6} | tp  8 |  -1.56 /  +6.93
+   pumpCmXq  150   0 | tiers {395: 46, 125: 36, 195: 28, 295: 15} | tp 22 |  +0.00 /  +9.50
+   NTRNDMqQ   75   2 | tiers {300: 60, 130: 10, 200: 2, 150: 1} | tp  3 |  -0.25 /  -0.40
+   SPCXxcqX   64   0 | tiers {125: 38, 395: 13, 195: 5, 295: 2} | tp 14 |  +0.00 /  +7.75
+   3NZ9JMVB   37   0 | tiers {395: 24, 195: 5, 125: 5, 345: 2} | tp  4 |  +0.00 /  +3.09
+   H74CYmXg   14   2 | tiers {300: 12, 100: 2} | tp  0 |  -0.18 /  +0.48
+   4CxjZyMN   14   8 | tiers {100: 4, 300: 4, 30: 4, 200: 1} | tp  3 |  -0.00 /  +0.57
+   9cRCn9rG   12   4 | tiers {300: 7, 30: 2, 200: 1, 75: 1} | tp  0 |  -0.18 /  -0.92
+   GSp4qePZ   12   2 | tiers {300: 10, 30: 2} | tp  1 |  -0.13 /  +0.61
+   CSRRgTwf   10   0 | tiers {300: 10} | tp  3 |  +0.00 /  +2.31
+   3LPTanzy    9   9 | tiers {30: 9} | tp  0 |  -0.20 /  +0.00
+   HytpiyuR    8   0 | tiers {300: 7, 150: 1} | tp  3 |  +0.00 /  +1.60
+   7SL2VnfY    7   2 | tiers {100: 2, 200: 2, 300: 2, 120: 1} | tp  1 |  -0.14 /  +0.30
+   41WpXn15    7   2 | tiers {300: 5, 100: 1, 30: 1} | tp  0 |  -0.51 /  +0.54
+
+the 96 low-fee copies are quoted in 52 tokens; the top: C5xph2yL 18, 3LPTanzy 9, 4CxjZyMN 8, 9cRCn9rG 4, 7SL2VnfY 2, HbXn9Lcu 2, H74CYmXg 2, 8EzagXsp 2
+   quoted in WBTC / PUMP / SPCX   bps > 100 : 251 copies, 40 tp, net +20.34 (+16.2% a copy); A/B/C +2.08 / +9.00 / +9.26
+   quoted in another coin         bps <= 100:  96 copies,  4 tp, net  -4.47 ( -9.3% a copy); A/B/C -0.88 / -1.32 / -2.28
+   quoted in another coin         bps > 100 : 434 copies, 36 tp, net +24.21 (+11.2% a copy); A/B/C +11.25 / +10.82 / +2.13
+
+coins quoted in another coin, by fee tier: copies, median share of the curve sold, median virtual quote reserve in SOL
+   bps  30:  44 copies, sold 0.152, vq 28.4 SOL, its buy moved the price 1.119x
+   bps 100:  41 copies, sold 0.276, vq 33.9 SOL, its buy moved the price 1.107x
+   bps 130:  10 copies, sold 0.183, vq 28.9 SOL, its buy moved the price 1.111x
+   bps 150:  11 copies, sold 0.320, vq 37.5 SOL, its buy moved the price 1.092x
+   bps 200:  30 copies, sold 0.207, vq 29.9 SOL, its buy moved the price 1.110x
+   bps 300: 364 copies, sold 0.149, vq 32.6 SOL, its buy moved the price 1.101x

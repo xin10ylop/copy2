@@ -75,6 +75,9 @@ float_stake_sol = 0.0
 # a float holding less than the stake (a loss is paid back in it) still buys, with all it holds, when that is at
 # least this share of the stake; 1.0 = the whole stake or nothing. 0.5 with several small floats (PUMP, SPCX).
 float_min_frac = 1.0
+# skip a coin whose fee tier (protocol + creator fee of its own buy, basis points) is under this; 0 = off. 125 skips
+# the coins priced in another coin with a creator fee of 1% or less (analysis/research/2026-11-15/skip_filters/).
+min_fee_bps = 0
 
 state_dir = "/var/lib/rugsnipe-long"
 price_api = "https://lite-api.jup.ag/price/v3"

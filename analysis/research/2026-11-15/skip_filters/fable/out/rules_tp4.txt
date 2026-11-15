@@ -1,0 +1,39 @@
+781 copies, 80 take profits, net of all +40.09 SOL; 364 conditions, 66430 rules (one or two conditions); at most 4 take profits lost
+valid rules (skipped set loses in A, B and C): 286
+the 25 best valid rules: gain SOL (A / B / C), copies skipped, take profits lost
+    +5.39 (+1.85 / +1.61 / +1.93)   81 skipped, 1 tp lost | bps <= 100  AND  w4_last3 > -0.2795
+    +5.33 (+1.59 / +1.43 / +2.30)   87 skipped, 3 tp lost | bps <= 100  AND  any_30m > 6
+    +5.20 (+1.47 / +1.43 / +2.30)   78 skipped, 2 tp lost | bps <= 100  AND  any_30m > 8
+    +5.16 (+1.29 / +1.05 / +2.83)   82 skipped, 1 tp lost | bps <= 100  AND  since_sell <= 241
+    +5.16 (+1.54 / +1.32 / +2.30)   89 skipped, 3 tp lost | bps <= 100  AND  gap_any <= 403
+    +4.98 (+0.85 / +1.32 / +2.81)   91 skipped, 3 tp lost | bps <= 100  AND  since_last <= 2479
+    +4.95 (+1.91 / +0.94 / +2.10)   82 skipped, 1 tp lost | bps <= 100  AND  w4_last10 > -0.09924
+    +4.94 (+1.20 / +0.94 / +2.81)   77 skipped, 2 tp lost | bps <= 100  AND  same_slot_after > 0
+    +4.86 (+1.25 / +1.32 / +2.30)   85 skipped, 3 tp lost | bps <= 100  AND  any_60m > 12
+    +4.84 (+1.27 / +1.43 / +2.14)   72 skipped, 2 tp lost | bps <= 100  AND  any_30m > 9
+    +4.80 (+1.25 / +1.25 / +2.30)   72 skipped, 2 tp lost | bps <= 100  AND  any_60m > 20
+    +4.78 (+1.61 / +1.44 / +1.74)   69 skipped, 1 tp lost | bps <= 100  AND  w4_last3 > -0.199
+    +4.74 (+1.07 / +1.44 / +2.24)   82 skipped, 2 tp lost | bps <= 100  AND  w4_last5 > -0.2342
+    +4.71 (+1.41 / +1.54 / +1.76)   72 skipped, 1 tp lost | bps <= 100  AND  w4_last5 > -0.1497
+    +4.69 (+1.14 / +1.25 / +2.30)   82 skipped, 3 tp lost | bps <= 100  AND  any_60m > 17
+    +4.68 (+1.59 / +1.50 / +1.58)   65 skipped, 1 tp lost | bps <= 100  AND  w4_last3 > -0.1229
+    +4.68 (+1.07 / +1.16 / +2.44)   73 skipped, 1 tp lost | bps <= 100  AND  since_sell <= 171
+    +4.62 (+1.37 / +1.08 / +2.18)   82 skipped, 3 tp lost | bps <= 100  AND  any_5m > 0
+    +4.60 (+0.91 / +1.24 / +2.45)   94 skipped, 4 tp lost | bps <= 125  AND  hops 2
+    +4.59 (+1.45 / +1.49 / +1.65)   73 skipped, 1 tp lost | bps <= 100  AND  w4_last10 > -0.04923
+    +4.59 (+1.46 / +0.95 / +2.18)   78 skipped, 3 tp lost | bps <= 100  AND  gap_any <= 261
+    +4.53 (+1.44 / +1.06 / +2.03)   88 skipped, 3 tp lost | sol > 1.486  AND  bps <= 100
+    +4.51 (+0.93 / +1.36 / +2.22)   72 skipped, 2 tp lost | bps <= 100  AND  any_60m <= 39
+    +4.47 (+0.88 / +1.32 / +2.28)   96 skipped, 4 tp lost | bps <= 100  AND  bps <= 195
+    +4.47 (+0.88 / +1.32 / +2.28)   96 skipped, 4 tp lost | bps <= 100  AND  bps <= 125
+
+the guard, results shuffled inside each block, 300 times: the best valid gain found by luck: median +3.93, 90% of the time under +4.79, 95% under +5.26, largest +7.13
+the real best +5.39: a shuffle did as well or better 4% of the time
+
+picked on two blocks (the best rule that loses in both and loses at most the limit of take profits), scored on the third:
+   left out A: best on the other two +4.13 (by luck: median +3.63, 95% under +4.58); on A it gains +0.85, loses 2 tp there | bps <= 100  AND  since_last <= 2479
+      the 20 best on the other two: on A their gain is +0.95 on average, 19 of 20 above zero
+   left out B: best on the other two +5.17 (by luck: median +3.76, 95% under +4.81); on B it gains -3.21, loses 4 tp there | sold <= 0.2083  AND  px_in_4 <= 1.016
+      the 20 best on the other two: on B their gain is -0.07 on average, 10 of 20 above zero
+   left out C: best on the other two +3.46 (by luck: median +3.03, 95% under +4.02); on C it gains +1.93, loses 1 tp there | bps <= 100  AND  w4_last3 > -0.2795
+      the 20 best on the other two: on C their gain is +1.54 on average, 19 of 20 above zero

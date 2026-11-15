@@ -1,0 +1,72 @@
+781 buys; the bot's run; mean of the three landings unless said; 23 full Beirut days
+
+== skip: no rule   (0 of 781 buys match)
+   copies 691 | take profits 66.0 (lost 0.0) | of the 20 biggest wins lost 0.0 | losing copies skipped 0
+   net +36.23 | without the best 5 +30.11, best 10 +24.71 | losing days 5.3 of 23, worst -1.31 | deepest fall -2.86 | A +8.79  B +19.43  C +8.02
+   by landing 4 / 8 / late: +40.30 / +26.28 / +42.10
+
+== skip: fee tier <= 100 bps   (96 of 781 buys match)
+   copies 612 | take profits 65.3 (lost 2.7) | of the 20 biggest wins lost 0.3 | losing copies skipped 71
+   net +41.00 | without the best 5 +34.88, best 10 +29.48 | losing days 3.3 of 23, worst -0.49 | deepest fall -2.21 | A +10.45  B +20.26  C +10.30
+   by landing 4 / 8 / late: +44.07 / +31.11 / +47.83 | ahead of no rule in 98.8% of draws of the days
+   real trades it would have skipped: [('GZn6HC8d', -0.3763), ('3EKoHX4f', -0.06), ('GLmWEbqA', -0.2837), ('FAVdiH3q', -0.0851), ('KgcdZjU4', -0.2493), ('oxbezHbo', -0.4291), ('EH6yuh4Y', -0.426), ('6KpdMXAS', -0.242)] = -2.1515 SOL; real trades not in the data: ['BTCmcoKg', '8FE3SQjW', '4A7n9wq8', 'BURn1o8x']
+
+== skip: fee tier <= 30 bps   (49 of 781 buys match)
+   copies 652 | take profits 65.7 (lost 1.3) | of the 20 biggest wins lost 0.0 | losing copies skipped 34
+   net +38.45 | without the best 5 +32.33, best 10 +26.93 | losing days 4.3 of 23, worst -0.95 | deepest fall -2.59 | A +9.42  B +19.62  C +9.41
+   by landing 4 / 8 / late: +42.25 / +27.85 / +45.27 | ahead of no rule in 90.8% of draws of the days
+   real trades it would have skipped: [('GZn6HC8d', -0.3763), ('3EKoHX4f', -0.06), ('EH6yuh4Y', -0.426)] = -0.8623 SOL; real trades not in the data: ['BTCmcoKg', '8FE3SQjW', '4A7n9wq8', 'BURn1o8x']
+
+== skip: fee tier 31-100 bps   (47 of 781 buys match)
+   copies 651 | take profits 65.7 (lost 1.3) | of the 20 biggest wins lost 0.3 | losing copies skipped 36
+   net +38.71 | without the best 5 +32.59, best 10 +27.19 | losing days 4.3 of 23, worst -0.82 | deepest fall -2.39 | A +9.74  B +20.06  C +8.90
+   by landing 4 / 8 / late: +42.05 / +29.47 / +44.60 | ahead of no rule in 95.2% of draws of the days
+   real trades it would have skipped: [('GLmWEbqA', -0.2837), ('FAVdiH3q', -0.0851), ('KgcdZjU4', -0.2493), ('oxbezHbo', -0.4291), ('6KpdMXAS', -0.242)] = -1.2892 SOL; real trades not in the data: ['BTCmcoKg', '8FE3SQjW', '4A7n9wq8', 'BURn1o8x']
+
+== skip: fee tier <= 200 bps, coin quoted in another coin   (152 of 781 buys match)
+   copies 569 | take profits 59.0 (lost 8.0) | of the 20 biggest wins lost 1.0 | losing copies skipped 104
+   net +38.07 | without the best 5 +32.01, best 10 +26.65 | losing days 3.3 of 23, worst -0.85 | deepest fall -2.36 | A +8.72  B +17.72  C +11.62
+   by landing 4 / 8 / late: +40.74 / +27.84 / +45.62 | ahead of no rule in 68.9% of draws of the days
+   real trades it would have skipped: [('Ci9Bg1Bx', -0.0597), ('BttUQVPM', -0.0455), ('7dDprVHP', -0.1106), ('GZn6HC8d', -0.3763), ('3EKoHX4f', -0.06), ('GLmWEbqA', -0.2837), ('FAVdiH3q', -0.0851), ('KgcdZjU4', -0.2493), ('oxbezHbo', -0.4291), ('EH6yuh4Y', -0.426), ('6KpdMXAS', -0.242)] = -2.3673 SOL; real trades not in the data: ['BTCmcoKg', '8FE3SQjW', '4A7n9wq8', 'BURn1o8x']
+
+== skip: fee tier <= 100 and we pay with SOL   (67 of 781 buys match)
+   copies 635 | take profits 64.3 (lost 2.7) | of the 20 biggest wins lost 0.3 | losing copies skipped 49
+   net +38.44 | without the best 5 +32.32, best 10 +26.93 | losing days 4.0 of 23, worst -0.76 | deepest fall -2.44 | A +9.15  B +19.40  C +9.90
+   by landing 4 / 8 / late: +41.59 / +29.61 / +44.13 | ahead of no rule in 89.0% of draws of the days
+   real trades it would have skipped: [('GZn6HC8d', -0.3763), ('3EKoHX4f', -0.06), ('GLmWEbqA', -0.2837), ('FAVdiH3q', -0.0851), ('KgcdZjU4', -0.2493), ('oxbezHbo', -0.4291), ('EH6yuh4Y', -0.426), ('6KpdMXAS', -0.242)] = -2.1515 SOL; real trades not in the data: ['BTCmcoKg', '8FE3SQjW', '4A7n9wq8', 'BURn1o8x']
+
+== skip: curve under 10% sold   (157 of 781 buys match)
+   copies 577 | take profits 63.0 (lost 6.7) | of the 20 biggest wins lost 1.3 | losing copies skipped 109
+   net +35.95 | without the best 5 +29.84, best 10 +24.45 | losing days 6.0 of 23, worst -1.19 | deepest fall -3.40 | A +10.68  B +19.55  C +5.73
+   by landing 4 / 8 / late: +40.16 / +26.16 / +41.54 | ahead of no rule in 48.0% of draws of the days
+   real trades it would have skipped: [] = +0.0000 SOL; real trades not in the data: ['BTCmcoKg', '8FE3SQjW', '4A7n9wq8', 'BURn1o8x']
+
+== skip: curve under 16% sold   (312 of 781 buys match)
+   copies 446 | take profits 58.0 (lost 12.7) | of the 20 biggest wins lost 3.0 | losing copies skipped 207
+   net +34.39 | without the best 5 +28.28, best 10 +22.89 | losing days 5.3 of 23, worst -0.72 | deepest fall -2.60 | A +10.22  B +17.73  C +6.44
+   by landing 4 / 8 / late: +38.59 / +27.31 / +37.27 | ahead of no rule in 33.7% of draws of the days
+   real trades it would have skipped: [('Ci9Bg1Bx', -0.0597), ('7dDprVHP', -0.1106), ('3EKoHX4f', -0.06), ('FAVdiH3q', -0.0851), ('KgcdZjU4', -0.2493), ('6KpdMXAS', -0.242)] = -0.8067 SOL; real trades not in the data: ['BTCmcoKg', '8FE3SQjW', '4A7n9wq8', 'BURn1o8x']
+
+== skip: its buy moved the price over 1.12x   (163 of 781 buys match)
+   copies 570 | take profits 58.0 (lost 10.0) | of the 20 biggest wins lost 2.3 | losing copies skipped 100
+   net +33.76 | without the best 5 +27.90, best 10 +22.60 | losing days 4.3 of 23, worst -1.17 | deepest fall -2.99 | A +8.84  B +15.83  C +9.09
+   by landing 4 / 8 / late: +37.12 / +25.69 / +38.46 | ahead of no rule in 24.6% of draws of the days
+   real trades it would have skipped: [('Ci9Bg1Bx', -0.0597), ('5tePJcGm', 0.3531), ('7dDprVHP', -0.1106), ('3EKoHX4f', -0.06), ('KgcdZjU4', -0.2493), ('oxbezHbo', -0.4291), ('EH6yuh4Y', -0.426), ('6KpdMXAS', -0.242)] = -1.2236 SOL; real trades not in the data: ['BTCmcoKg', '8FE3SQjW', '4A7n9wq8', 'BURn1o8x']
+
+== skip: its buy moved the price over 1.12x and curve under 16% sold   (83 of 781 buys match)
+   copies 641 | take profits 67.7 (lost 1.3) | of the 20 biggest wins lost 0.0 | losing copies skipped 55
+   net +39.98 | without the best 5 +33.85, best 10 +28.42 | losing days 3.3 of 23, worst -1.10 | deepest fall -2.66 | A +11.26  B +19.56  C +9.15
+   by landing 4 / 8 / late: +43.77 / +29.91 / +46.25 | ahead of no rule in 98.8% of draws of the days
+   real trades it would have skipped: [('Ci9Bg1Bx', -0.0597), ('7dDprVHP', -0.1106), ('3EKoHX4f', -0.06), ('KgcdZjU4', -0.2493), ('6KpdMXAS', -0.242)] = -0.7216 SOL; real trades not in the data: ['BTCmcoKg', '8FE3SQjW', '4A7n9wq8', 'BURn1o8x']
+
+== skip: every SOL-paid copy   (287 of 781 buys match)
+   copies 453 | take profits 49.7 (lost 16.3) | of the 20 biggest wins lost 4.7 | losing copies skipped 182
+   net +32.05 | without the best 5 +26.38, best 10 +21.20 | losing days 2.3 of 23, worst -1.06 | deepest fall -2.21 | A +4.70  B +18.84  C +8.51
+   by landing 4 / 8 / late: +36.42 / +23.87 / +35.85 | ahead of no rule in 18.9% of draws of the days
+   real trades it would have skipped: [('Ci9Bg1Bx', -0.0597), ('BttUQVPM', -0.0455), ('5tePJcGm', 0.3531), ('7dDprVHP', -0.1106), ('57pQW4mw', -0.0124), ('Eymbsj8M', 0.6228), ('GZn6HC8d', -0.3763), ('GaHAZThn', -0.1884), ('3EKoHX4f', -0.06), ('6S3iL67j', -0.0907), ('BUdiaswB', 1.334), ('GLmWEbqA', -0.2837), ('3a8RGrQg', -0.2201), ('FAVdiH3q', -0.0851), ('KgcdZjU4', -0.2493), ('oxbezHbo', -0.4291), ('EH6yuh4Y', -0.426), ('6KpdMXAS', -0.242)] = -0.5690 SOL; real trades not in the data: ['BTCmcoKg', '8FE3SQjW', '4A7n9wq8', 'BURn1o8x']
+
+== skip: fee tier <= 100 or curve under 10% sold   (236 of 781 buys match)
+   copies 506 | take profits 61.3 (lost 9.3) | of the 20 biggest wins lost 1.7 | losing copies skipped 164
+   net +39.39 | without the best 5 +33.28, best 10 +27.89 | losing days 4.3 of 23, worst -0.74 | deepest fall -2.29 | A +11.40  B +20.23  C +7.77
+   by landing 4 / 8 / late: +42.77 / +30.87 / +44.54 | ahead of no rule in 80.3% of draws of the days
+   real trades it would have skipped: [('GZn6HC8d', -0.3763), ('3EKoHX4f', -0.06), ('GLmWEbqA', -0.2837), ('FAVdiH3q', -0.0851), ('KgcdZjU4', -0.2493), ('oxbezHbo', -0.4291), ('EH6yuh4Y', -0.426), ('6KpdMXAS', -0.242)] = -2.1515 SOL; real trades not in the data: ['BTCmcoKg', '8FE3SQjW', '4A7n9wq8', 'BURn1o8x']

@@ -1,0 +1,69 @@
+781 buys; the bot's run, mean of the three landings; net | A B C | without the best 5, 10 | take profits, bails | days
+   the live rule, no bail-out                   | +36.23 |  +8.79 +19.43  +8.02 | +30.11 +24.71 | tp 66.0 bailed   0.0 | losing days 5.3, worst -1.31, fall -2.86
+   price under 0.6x at 15 s                     | +34.83 |  +8.83 +19.64  +6.36 | +28.95 +23.62 | tp 65.0 bailed   9.0 | losing days 5.0, worst -1.33, fall -2.94
+   price under 0.7x at 15 s                     | +34.47 |  +8.83 +18.97  +6.67 | +28.59 +23.27 | tp 65.0 bailed  24.0 | losing days 5.3, worst -1.11, fall -2.72
+   price under 0.8x at 15 s                     | +34.94 |  +8.85 +19.75  +6.33 | +29.06 +23.73 | tp 65.0 bailed  45.3 | losing days 5.0, worst -1.56, fall -3.04
+   price under 0.9x at 15 s                     | +33.30 |  +9.31 +17.56  +6.44 | +27.47 +22.24 | tp 62.7 bailed  86.0 | losing days 5.7, worst -2.12, fall -3.97
+   price under 1.0x at 15 s                     | +28.72 |  +8.94 +15.59  +4.19 | +22.90 +17.79 | tp 58.3 bailed 142.0 | losing days 6.3, worst -1.96, fall -3.68
+   price under 0.6x at 30 s                     | +35.89 |  +8.88 +19.10  +7.91 | +29.77 +24.37 | tp 66.0 bailed  10.0 | losing days 5.0, worst -1.49, fall -3.12
+   price under 0.7x at 30 s                     | +35.14 |  +8.62 +19.13  +7.39 | +29.02 +23.62 | tp 66.0 bailed  24.0 | losing days 5.3, worst -2.10, fall -3.66
+   price under 0.8x at 30 s                     | +36.16 |  +8.98 +19.69  +7.49 | +30.04 +24.64 | tp 66.0 bailed  54.0 | losing days 6.0, worst -1.87, fall -3.32
+   price under 0.9x at 30 s                     | +34.92 |  +9.38 +18.99  +6.55 | +29.04 +23.72 | tp 64.7 bailed  88.7 | losing days 6.0, worst -1.61, fall -3.23
+   price under 1.0x at 30 s                     | +32.34 |  +8.61 +16.04  +7.69 | +26.46 +21.14 | tp 62.3 bailed 138.7 | losing days 6.3, worst -1.03, fall -2.88
+   price under 0.6x at 45 s                     | +36.31 |  +8.87 +19.50  +7.94 | +30.19 +24.79 | tp 66.0 bailed  10.0 | losing days 5.0, worst -1.46, fall -3.02
+   price under 0.7x at 45 s                     | +36.71 |  +9.05 +19.44  +8.22 | +30.59 +25.19 | tp 66.0 bailed  30.0 | losing days 4.7, worst -1.45, fall -3.00  <- better in A, B and C
+   price under 0.8x at 45 s                     | +37.09 |  +9.20 +19.46  +8.43 | +30.97 +25.57 | tp 66.0 bailed  53.3 | losing days 4.7, worst -1.78, fall -3.34  <- better in A, B and C
+   price under 0.9x at 45 s                     | +34.57 |  +9.19 +18.05  +7.33 | +28.69 +23.36 | tp 63.7 bailed  98.7 | losing days 6.3, worst -1.56, fall -3.13
+   price under 1.0x at 45 s                     | +35.16 |  +9.22 +18.04  +7.91 | +29.23 +23.88 | tp 62.3 bailed 141.3 | losing days 6.3, worst -1.26, fall -2.74
+   price under 0.6x at 60 s                     | +36.71 |  +8.92 +19.55  +8.24 | +30.59 +25.20 | tp 66.0 bailed  15.0 | losing days 4.7, worst -1.45, fall -3.01  <- better in A, B and C
+   price under 0.7x at 60 s                     | +36.86 |  +9.10 +19.43  +8.33 | +30.74 +25.34 | tp 66.0 bailed  33.0 | losing days 4.7, worst -1.42, fall -2.98  <- better in A, B and C
+   price under 0.8x at 60 s                     | +36.07 |  +8.90 +18.96  +8.21 | +29.95 +24.56 | tp 66.0 bailed  55.0 | losing days 6.0, worst -1.32, fall -2.91
+   price under 0.9x at 60 s                     | +36.00 |  +8.27 +18.95  +8.78 | +29.88 +24.48 | tp 65.7 bailed  89.7 | losing days 6.0, worst -1.17, fall -2.70
+   price under 1.0x at 60 s                     | +36.69 |  +9.13 +18.22  +9.34 | +30.52 +25.09 | tp 64.7 bailed 151.0 | losing days 6.3, worst -1.58, fall -2.87
+   price under 0.6x at 90 s                     | +36.48 |  +8.91 +19.59  +7.97 | +30.35 +24.96 | tp 66.0 bailed  17.3 | losing days 5.0, worst -1.50, fall -3.05
+   price under 0.7x at 90 s                     | +37.29 |  +9.09 +19.69  +8.51 | +31.17 +25.77 | tp 66.0 bailed  35.3 | losing days 4.7, worst -1.40, fall -2.97  <- better in A, B and C
+   price under 0.8x at 90 s                     | +35.57 |  +8.45 +19.79  +7.34 | +29.47 +24.10 | tp 65.3 bailed  55.3 | losing days 5.3, worst -1.98, fall -3.53
+   price under 0.9x at 90 s                     | +34.59 |  +8.04 +18.87  +7.67 | +28.52 +23.17 | tp 64.7 bailed  87.3 | losing days 5.3, worst -1.98, fall -3.43
+   price under 1.0x at 90 s                     | +35.53 |  +7.90 +18.88  +8.75 | +29.46 +24.12 | tp 64.7 bailed 149.3 | losing days 6.0, worst -1.61, fall -2.96
+   price under 0.6x at 120 s                    | +36.40 |  +8.81 +19.59  +8.00 | +30.28 +24.88 | tp 66.0 bailed  18.3 | losing days 5.0, worst -1.54, fall -3.09
+   price under 0.7x at 120 s                    | +36.52 |  +8.98 +19.68  +7.86 | +30.40 +25.00 | tp 66.0 bailed  39.0 | losing days 4.7, worst -2.05, fall -3.60
+   price under 0.8x at 120 s                    | +35.93 |  +8.90 +19.84  +7.19 | +29.81 +24.41 | tp 66.0 bailed  54.3 | losing days 5.3, worst -2.05, fall -3.60
+   price under 0.9x at 120 s                    | +35.76 |  +7.92 +20.43  +7.41 | +29.66 +24.29 | tp 64.0 bailed  90.7 | losing days 5.3, worst -2.05, fall -3.32
+   price under 1.0x at 120 s                    | +35.22 |  +7.19 +20.05  +7.98 | +29.12 +23.75 | tp 64.0 bailed 141.7 | losing days 6.3, worst -1.86, fall -3.09
+   price under 0.6x at 180 s                    | +36.60 |  +8.85 +19.54  +8.20 | +30.48 +25.08 | tp 66.0 bailed  20.3 | losing days 5.0, worst -1.42, fall -2.98  <- better in A, B and C
+   price under 0.7x at 180 s                    | +36.99 |  +9.05 +19.57  +8.36 | +30.86 +25.47 | tp 66.0 bailed  34.3 | losing days 4.7, worst -1.35, fall -2.94  <- better in A, B and C
+   price under 0.8x at 180 s                    | +37.29 |  +9.06 +19.70  +8.53 | +31.17 +25.78 | tp 66.0 bailed  44.7 | losing days 4.7, worst -1.35, fall -2.93  <- better in A, B and C
+   price under 0.9x at 180 s                    | +36.70 |  +8.35 +20.08  +8.28 | +30.58 +25.19 | tp 65.0 bailed  74.0 | losing days 4.3, worst -1.28, fall -2.78
+   price under 1.0x at 180 s                    | +37.95 |  +8.51 +20.30  +9.15 | +31.78 +26.36 | tp 65.0 bailed 127.3 | losing days 4.3, worst -1.17, fall -2.47
+   never above 1.05x by 30 s                    | +32.06 |  +8.83 +16.55  +6.67 | +26.27 +20.97 | tp 62.7 bailed 195.3 | losing days 5.7, worst -1.69, fall -3.63
+   never above 1.1x by 30 s                     | +33.14 |  +8.10 +17.00  +8.03 | +27.35 +22.06 | tp 62.0 bailed 243.7 | losing days 4.7, worst -1.66, fall -3.61
+   never above 1.2x by 30 s                     | +27.73 |  +7.92 +15.09  +4.72 | +21.94 +16.79 | tp 54.7 bailed 342.0 | losing days 7.0, worst -1.74, fall -3.55
+   never above 1.5x by 30 s                     | +23.65 |  +4.23 +11.53  +7.90 | +17.98 +12.99 | tp 43.7 bailed 498.7 | losing days 7.3, worst -0.87, fall -3.41
+   never above 1.05x by 60 s                    | +34.05 |  +8.58 +17.26  +8.21 | +28.00 +22.66 | tp 64.3 bailed 164.7 | losing days 6.0, worst -1.70, fall -3.52
+   never above 1.1x by 60 s                     | +34.08 |  +7.81 +17.33  +8.94 | +28.03 +22.69 | tp 63.7 bailed 209.0 | losing days 5.7, worst -1.66, fall -3.55
+   never above 1.2x by 60 s                     | +34.74 |  +8.66 +18.27  +7.81 | +28.62 +23.25 | tp 62.0 bailed 296.7 | losing days 7.0, worst -1.15, fall -3.44
+   never above 1.5x by 60 s                     | +30.30 |  +6.64 +16.59  +7.07 | +24.21 +18.94 | tp 52.3 bailed 455.7 | losing days 6.0, worst -1.45, fall -3.47
+   never above 1.05x by 120 s                   | +35.61 |  +8.54 +19.00  +8.06 | +29.48 +24.05 | tp 65.7 bailed 138.0 | losing days 4.7, worst -1.75, fall -3.28
+   never above 1.1x by 120 s                    | +35.77 |  +7.39 +19.53  +8.85 | +29.64 +24.22 | tp 65.0 bailed 181.3 | losing days 4.3, worst -1.74, fall -3.03
+   never above 1.2x by 120 s                    | +38.69 |  +8.03 +21.99  +8.67 | +32.52 +27.06 | tp 66.0 bailed 248.3 | losing days 4.7, worst -1.13, fall -2.65
+   never above 1.5x by 120 s                    | +34.69 |  +6.04 +20.94  +7.71 | +28.58 +23.26 | tp 59.3 bailed 384.0 | losing days 5.3, worst -1.38, fall -3.26
+   never above 1.05x by 180 s                   | +35.91 |  +8.34 +18.99  +8.58 | +29.78 +24.35 | tp 65.0 bailed 116.7 | losing days 4.7, worst -1.11, fall -2.66
+   never above 1.1x by 180 s                    | +36.02 |  +7.61 +19.26  +9.15 | +29.89 +24.46 | tp 64.3 bailed 158.0 | losing days 4.0, worst -1.09, fall -2.55
+   never above 1.2x by 180 s                    | +38.16 |  +8.25 +21.25  +8.66 | +31.98 +26.53 | tp 65.0 bailed 219.7 | losing days 4.3, worst -1.49, fall -2.76
+   never above 1.5x by 180 s                    | +37.37 |  +7.47 +21.02  +8.87 | +31.19 +25.73 | tp 64.0 bailed 327.7 | losing days 4.0, worst -0.97, fall -2.28
+   more sells than buys (count) by 15 s         | +33.56 |  +7.96 +19.69  +5.91 | +27.75 +22.50 | tp 62.7 bailed  72.3 | losing days 5.7, worst -1.04, fall -2.65
+   more sells than buys (count) by 30 s         | +35.44 |  +8.38 +19.27  +7.80 | +29.36 +24.01 | tp 65.0 bailed  70.0 | losing days 5.3, worst -1.32, fall -2.93
+   more sells than buys (count) by 60 s         | +34.76 |  +7.74 +19.62  +7.40 | +28.87 +23.56 | tp 64.7 bailed  85.0 | losing days 5.3, worst -1.31, fall -2.91
+   more sells than buys (volume) by 15 s        | +28.63 |  +6.96 +16.34  +5.32 | +22.77 +17.52 | tp 57.0 bailed 162.3 | losing days 5.7, worst -1.92, fall -3.24
+   more sells than buys (volume) by 30 s        | +34.28 |  +8.88 +16.50  +8.90 | +28.24 +22.86 | tp 63.3 bailed 167.0 | losing days 6.3, worst -0.99, fall -2.52
+   more sells than buys (volume) by 60 s        | +34.50 |  +8.32 +17.64  +8.54 | +28.33 +22.90 | tp 62.3 bailed 179.0 | losing days 6.3, worst -1.71, fall -2.74
+
+57 bail-out rules tried; better than no bail-out in each of A, B and C: 8
+
+with the fee-tier entry filter (skip when the fee tier is 100 bps or less):
+   fee filter, no bail-out                      | +41.00 | +10.45 +20.26 +10.30 | +34.88 +29.48 | tp 65.3 bailed   0.0 | losing days 3.3, worst -0.49, fall -2.21  <- better in A, B and C
+   fee filter + never above 1.2x by 120 s       | +42.71 |  +9.62 +22.78 +10.30 | +36.53 +31.06 | tp 64.7 bailed 214.3 | losing days 3.0, worst -0.75, fall -1.95
+   fee filter + never above 1.2x by 180 s       | +42.53 |  +9.91 +22.02 +10.60 | +36.35 +30.88 | tp 63.7 bailed 190.3 | losing days 2.3, worst -0.64, fall -1.99
+   fee filter + price under 1.0x at 180 s       | +42.75 | +10.39 +21.18 +11.18 | +36.58 +31.14 | tp 64.3 bailed 106.3 | losing days 2.3, worst -0.40, fall -2.00
+   fee filter + never above 1.5x by 180 s       | +41.53 |  +9.11 +21.99 +10.43 | +35.36 +29.89 | tp 62.7 bailed 281.7 | losing days 2.3, worst -0.59, fall -1.81
+   fee filter + price under 0.8x at 180 s       | +41.96 | +10.70 +20.53 +10.73 | +35.84 +30.43 | tp 65.3 bailed  33.0 | losing days 2.7, worst -0.49, fall -2.22  <- better in A, B and C

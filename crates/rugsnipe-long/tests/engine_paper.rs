@@ -666,3 +666,27 @@ fn its_early_sell_is_not_followed_when_configured_and_is_recorded() {
     assert_eq!(p.state, State::Closed);
     assert!(p.its_sell_net > 0 && p.net_lamports > p.its_sell_net);
 }
+
+/// `min_fee_bps`: a coin whose fee tier is under it is not copied (2026-11-15:
+/// the copies of low-fee coins lost in every block of the backtest); off (0)
+/// by default, and a fee that is not in the event is never skipped.
+#[test]
+fn a_coin_under_the_fee_floor_is_skipped() {
+    let tx = fx("w4_buy_wsol_multihop");
+    let fee = rugsnipe_long::detect::read(&tx, &LongCfg::default().copy_pk(), &|_| None)
+        .into_iter()
+        .find_map(|s| match s {
+            rugsnipe_long::detect::Seen::Buy(t) => Some(t.fee_bps),
+            _ => None,
+        })
+        .expect("the fixture is its buy");
+    assert!(fee > 0, "the fixture carries its fee");
+    let mut e = engine("feefloor");
+    e.cfg.min_fee_bps = fee + 1;
+    e.on_tx(Src::Copied, &tx);
+    assert!(e.book.positions.is_empty(), "under the floor: skipped");
+    let mut e = engine("feefloor-at");
+    e.cfg.min_fee_bps = fee;
+    e.on_tx(Src::Copied, &tx);
+    assert_eq!(e.book.positions.len(), 1, "at the floor: copied");
+}

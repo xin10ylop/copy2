@@ -1,0 +1,214 @@
+781 buys; all: 
+      all                           781 copies,  80 tp (10.2%) | A +12.46  B +18.51  C  +9.12 | all  +40.09 |  +10.3% a copy
+
+== anchor
+      PUMP                          192 copies,  25 tp (13.0%) | A  +2.82  B  +4.15  C  +6.48 | all  +13.45 |  +14.0% a copy
+      SOL                           287 copies,  22 tp ( 7.7%) | A  +5.72  B  -0.07  C  -0.99 | all   +4.66 |   +3.2% a copy
+      SPCX                           66 copies,  14 tp (21.2%) | A  -1.19  B  +5.92  C  +2.67 | all   +7.40 |  +22.4% a copy
+      WBTC                          236 copies,  19 tp ( 8.1%) | A  +5.11  B  +8.51  C  +0.96 | all  +14.58 |  +12.4% a copy
+
+== hops
+      1                             251 copies,  40 tp (15.9%) | A  +2.08  B  +9.00  C  +9.26 | all  +20.34 |  +16.2% a copy
+      2                             495 copies,  36 tp ( 7.3%) | A +10.15  B  +6.00  C  +0.08 | all  +16.24 |   +6.6% a copy
+      3                              35 copies,   4 tp (11.4%) | A  +0.23  B  +3.50  C  -0.23 | all   +3.50 |  +20.0% a copy
+
+== how
+      copied                        521 copies,  38 tp ( 7.3%) | A  +9.40  B +10.08  C  -0.66 | all  +18.82 |   +7.2% a copy
+      curve                         251 copies,  40 tp (15.9%) | A  +2.08  B  +9.00  C  +9.26 | all  +20.34 |  +16.2% a copy
+      pool+curve                      9 copies,   2 tp (22.2%) | A  +0.98  B  -0.57  C  +0.52 | all   +0.93 |  +20.6% a copy
+
+== sol (missing 0)
+      x <= 1.5                      286 copies,  28 tp ( 9.8%) | A  +5.93  B  +4.57  C  +1.45 | all  +11.95 |   +8.4% a copy
+      1.5 < x <= 1.502               34 copies,   1 tp ( 2.9%) | A  +1.15  B  -0.23  C  +0.00 | all   +0.92 |   +5.4% a copy
+      1.502 < x <= 1.562            149 copies,  15 tp (10.1%) | A  +6.52  B  +1.52  C  -0.22 | all   +7.82 |  +10.5% a copy
+      1.562 < x <= 1.933            157 copies,  23 tp (14.6%) | A  -1.14  B +12.14  C  +1.77 | all  +12.77 |  +16.3% a copy
+      1.933 < x                     155 copies,  13 tp ( 8.4%) | A  +0.00  B  +0.50  C  +6.12 | all   +6.62 |   +8.5% a copy
+
+== move (missing 0)
+      x <= 1.073                    157 copies,  22 tp (14.0%) | A  +1.77  B  +7.40  C  +3.16 | all  +12.33 |  +15.7% a copy
+      1.073 < x <= 1.089            156 copies,  22 tp (14.1%) | A  +5.11  B  +3.65  C  +1.17 | all   +9.92 |  +12.7% a copy
+      1.089 < x <= 1.101            156 copies,  13 tp ( 8.3%) | A  +3.84  B  +1.92  C  +3.57 | all   +9.34 |  +12.0% a copy
+      1.101 < x <= 1.119            156 copies,  10 tp ( 6.4%) | A  -0.16  B  +3.22  C  +1.85 | all   +4.92 |   +6.3% a copy
+      1.119 < x                     156 copies,  13 tp ( 8.3%) | A  +1.90  B  +2.31  C  -0.63 | all   +3.58 |   +4.6% a copy
+
+== sold (missing 0)
+      x <= 0.09885                  157 copies,   8 tp ( 5.1%) | A  +0.70  B  -0.36  C  +2.34 | all   +2.67 |   +3.4% a copy
+      0.09885 < x <= 0.1626         156 copies,   9 tp ( 5.8%) | A  +1.68  B  +1.46  C  -0.71 | all   +2.43 |   +3.1% a copy
+      0.1626 < x <= 0.2548          156 copies,  19 tp (12.2%) | A  +2.99  B  +8.47  C  -2.11 | all   +9.36 |  +12.0% a copy
+      0.2548 < x <= 0.3877          156 copies,  27 tp (17.3%) | A  +3.73  B  +6.29  C  +4.86 | all  +14.88 |  +19.1% a copy
+      0.3877 < x                    156 copies,  17 tp (10.9%) | A  +3.36  B  +2.65  C  +4.74 | all  +10.75 |  +13.8% a copy
+
+== vq_sol (missing 0)
+      x <= 28.07                    157 copies,  12 tp ( 7.6%) | A  +3.49  B  +2.19  C  -1.40 | all   +4.27 |   +5.4% a copy
+      28.07 < x <= 33.46            156 copies,   8 tp ( 5.1%) | A  -0.87  B  +2.17  C  +0.96 | all   +2.26 |   +2.9% a copy
+      33.46 < x <= 40.44            156 copies,  19 tp (12.2%) | A  +5.52  B  +4.64  C  +2.52 | all  +12.69 |  +16.3% a copy
+      40.44 < x <= 49.76            156 copies,  20 tp (12.8%) | A  +2.47  B  +1.18  C  +2.72 | all   +6.38 |   +8.2% a copy
+      49.76 < x                     156 copies,  21 tp (13.5%) | A  +1.86  B  +8.32  C  +4.31 | all  +14.49 |  +18.6% a copy
+
+== bps (missing 0)
+      x <= 125                      177 copies,  20 tp (11.3%) | A  -0.41  B  +3.25  C  -0.97 | all   +1.87 |   +2.1% a copy
+      125 < x <= 295                141 copies,  21 tp (14.9%) | A  +3.47  B  +4.73  C  +3.29 | all  +11.49 |  +16.3% a copy
+      295 < x <= 300                364 copies,  25 tp ( 6.9%) | A  +7.83  B  +8.26  C  +2.80 | all  +18.89 |  +10.4% a copy
+      300 < x                        99 copies,  14 tp (14.1%) | A  +1.57  B  +2.27  C  +4.00 | all   +7.84 |  +15.8% a copy
+
+== ahead_n (missing 0)
+      x <= 0                        235 copies,  22 tp ( 9.4%) | A  +5.45  B  +4.67  C  +1.78 | all  +11.89 |  +10.1% a copy
+      0 < x <= 1                    282 copies,  28 tp ( 9.9%) | A  +2.71  B  +3.95  C  +4.77 | all  +11.43 |   +8.1% a copy
+      1 < x <= 2                    115 copies,  13 tp (11.3%) | A  +2.19  B  +8.38  C  -0.45 | all  +10.12 |  +17.6% a copy
+      2 < x                         149 copies,  17 tp (11.4%) | A  +2.12  B  +1.51  C  +3.02 | all   +6.65 |   +8.9% a copy
+
+== ahead_sells (missing 0)
+      x <= 0                        777 copies,  79 tp (10.2%) | A +12.46  B +17.88  C  +9.36 | all  +39.70 |  +10.2% a copy
+      0 < x                           4 copies,   1 tp (25.0%) | A  +0.00  B  +0.63  C  -0.24 | all   +0.39 |  +19.5% a copy
+
+== same_slot_after (missing 0)
+      x <= 0                        208 copies,  13 tp ( 6.2%) | A  +1.69  B  +2.06  C  +2.54 | all   +6.29 |   +6.1% a copy
+      0 < x <= 1                    236 copies,  25 tp (10.6%) | A  +3.19  B +10.58  C  -0.04 | all  +13.73 |  +11.6% a copy
+      1 < x <= 2                    140 copies,  16 tp (11.4%) | A  +2.59  B  +3.39  C  +1.56 | all   +7.54 |  +10.8% a copy
+      2 < x <= 3                     72 copies,   4 tp ( 5.6%) | A  +0.82  B  +0.16  C  -1.63 | all   -0.65 |   -1.8% a copy
+      3 < x                         125 copies,  22 tp (17.6%) | A  +4.17  B  +2.32  C  +6.69 | all  +13.18 |  +21.1% a copy
+
+== w4_buys_10m (missing 0)
+      x <= 0                        377 copies,  35 tp ( 9.3%) | A  +6.55  B  +3.76  C  +1.90 | all  +12.21 |   +6.5% a copy
+      0 < x <= 1                    258 copies,  32 tp (12.4%) | A  +3.99  B +11.64  C  +6.63 | all  +22.26 |  +17.3% a copy
+      1 < x                         146 copies,  13 tp ( 8.9%) | A  +1.92  B  +3.10  C  +0.59 | all   +5.61 |   +7.7% a copy
+
+== w4_buys_60m (missing 0)
+      x <= 2                        230 copies,  23 tp (10.0%) | A  +6.00  B  +3.88  C  +3.21 | all  +13.09 |  +11.4% a copy
+      2 < x <= 3                     86 copies,  12 tp (14.0%) | A  +0.61  B  +3.01  C  +3.60 | all   +7.22 |  +16.8% a copy
+      3 < x <= 5                    197 copies,  19 tp ( 9.6%) | A  +5.10  B  +3.44  C  -0.53 | all   +8.01 |   +8.1% a copy
+      5 < x <= 7                    138 copies,  13 tp ( 9.4%) | A  -0.55  B  +1.73  C  +1.12 | all   +2.29 |   +3.3% a copy
+      7 < x                         130 copies,  13 tp (10.0%) | A  +1.31  B  +6.45  C  +1.71 | all   +9.48 |  +14.6% a copy
+
+== w4_all_buys_10m (missing 0)
+      x <= 2                        201 copies,  19 tp ( 9.5%) | A  +6.34  B  +2.28  C  +1.77 | all  +10.39 |  +10.3% a copy
+      2 < x <= 4                    222 copies,  20 tp ( 9.0%) | A  +4.08  B  +6.83  C  -0.98 | all   +9.94 |   +9.0% a copy
+      4 < x <= 5                     95 copies,  10 tp (10.5%) | A  +2.48  B  +3.88  C  +0.35 | all   +6.71 |  +14.1% a copy
+      5 < x <= 7                    128 copies,  13 tp (10.2%) | A  -0.27  B  +4.26  C  +4.01 | all   +8.01 |  +12.5% a copy
+      7 < x                         135 copies,  18 tp (13.3%) | A  -0.18  B  +1.25  C  +3.97 | all   +5.04 |   +7.5% a copy
+
+== w4_gap (missing 0)
+      x <= 174                      157 copies,  17 tp (10.8%) | A  +2.55  B  +6.41  C  +0.40 | all   +9.36 |  +11.9% a copy
+      174 < x <= 414                156 copies,  17 tp (10.9%) | A  +0.73  B  +6.63  C  +4.28 | all  +11.65 |  +14.9% a copy
+      414 < x <= 798                156 copies,  15 tp ( 9.6%) | A  +2.99  B  +2.65  C  +1.31 | all   +6.95 |   +8.9% a copy
+      798 < x <= 1666               156 copies,  14 tp ( 9.0%) | A  +2.84  B  +1.87  C  -1.06 | all   +3.64 |   +4.7% a copy
+      1666 < x                      156 copies,  17 tp (10.9%) | A  +3.36  B  +0.94  C  +4.19 | all   +8.49 |  +10.9% a copy
+
+== w4_last5 (missing 0)
+      x <= -0.1497                  157 copies,  19 tp (12.1%) | A  +3.19  B  +5.52  C  +2.81 | all  +11.52 |  +14.7% a copy
+      -0.1497 < x <= -0.03357       156 copies,  12 tp ( 7.7%) | A  +2.63  B  +0.24  C  +1.62 | all   +4.50 |   +5.8% a copy
+      -0.03357 < x <= 0.1073        156 copies,  16 tp (10.3%) | A  +3.17  B  +1.99  C  +2.37 | all   +7.53 |   +9.7% a copy
+      0.1073 < x <= 0.3263          156 copies,  12 tp ( 7.7%) | A  -2.11  B  +6.91  C  +1.19 | all   +5.99 |   +7.7% a copy
+      0.3263 < x                    156 copies,  21 tp (13.5%) | A  +5.58  B  +3.85  C  +1.13 | all  +10.55 |  +13.5% a copy
+
+== w4_last5_won (missing 0)
+      x <= 1                        340 copies,  33 tp ( 9.7%) | A  +5.10  B  +6.51  C  +3.02 | all  +14.62 |   +8.6% a copy
+      1 < x <= 2                    255 copies,  28 tp (11.0%) | A  +4.54  B  +7.42  C  +4.01 | all  +15.98 |  +12.5% a copy
+      2 < x <= 3                    139 copies,  15 tp (10.8%) | A  +1.17  B  +3.44  C  +2.23 | all   +6.84 |   +9.8% a copy
+      3 < x                          47 copies,   4 tp ( 8.5%) | A  +1.65  B  +1.14  C  -0.14 | all   +2.65 |  +11.3% a copy
+
+== gap_any (missing 0)
+      x <= 30                       161 copies,  15 tp ( 9.3%) | A  +2.08  B  +2.66  C  +1.02 | all   +5.76 |   +7.2% a copy
+      30 < x <= 74                  156 copies,  19 tp (12.2%) | A  +1.46  B  +5.83  C  +4.37 | all  +11.66 |  +14.9% a copy
+      74 < x <= 138                 154 copies,  19 tp (12.3%) | A  +3.27  B  +5.21  C  +1.49 | all   +9.97 |  +13.0% a copy
+      138 < x <= 261                155 copies,  17 tp (11.0%) | A  +2.99  B  +5.39  C  -0.08 | all   +8.30 |  +10.7% a copy
+      261 < x                       155 copies,  10 tp ( 6.5%) | A  +2.66  B  -0.58  C  +2.31 | all   +4.39 |   +5.7% a copy
+
+== any_5m (missing 0)
+      x <= 1                        301 copies,  26 tp ( 8.6%) | A  +5.58  B  +6.75  C  +1.74 | all  +14.07 |   +9.4% a copy
+      1 < x <= 2                    183 copies,  19 tp (10.4%) | A  +3.66  B  +4.82  C  +1.19 | all   +9.68 |  +10.6% a copy
+      2 < x <= 4                    197 copies,  26 tp (13.2%) | A  +3.68  B  +5.30  C  +4.76 | all  +13.74 |  +14.0% a copy
+      4 < x                         100 copies,   9 tp ( 9.0%) | A  -0.46  B  +1.63  C  +1.42 | all   +2.59 |   +5.2% a copy
+
+== any_30m (missing 0)
+      x <= 8                        189 copies,  18 tp ( 9.5%) | A  +4.59  B  +3.50  C  +1.27 | all   +9.36 |   +9.9% a copy
+      8 < x <= 11                   148 copies,  13 tp ( 8.8%) | A  +3.86  B  +2.09  C  -1.28 | all   +4.67 |   +6.3% a copy
+      11 < x <= 15                  150 copies,  17 tp (11.3%) | A  +5.32  B  +6.06  C  -0.12 | all  +11.26 |  +15.0% a copy
+      15 < x <= 20                  159 copies,  16 tp (10.1%) | A  -0.28  B  +3.40  C  +0.75 | all   +3.86 |   +4.9% a copy
+      20 < x                        135 copies,  16 tp (11.9%) | A  -1.02  B  +3.46  C  +8.50 | all  +10.93 |  +16.2% a copy
+
+== any_60m (missing 0)
+      x <= 17                       178 copies,  17 tp ( 9.6%) | A  +6.18  B  +3.07  C  +2.66 | all  +11.92 |  +13.4% a copy
+      17 < x <= 22                  139 copies,  17 tp (12.2%) | A  +4.13  B  +2.11  C  -0.31 | all   +5.93 |   +8.5% a copy
+      22 < x <= 29                  169 copies,   9 tp ( 5.3%) | A  +2.37  B  +1.46  C  -2.33 | all   +1.50 |   +1.8% a copy
+      29 < x <= 39                  145 copies,  22 tp (15.2%) | A  +1.09  B  +9.22  C  +1.60 | all  +11.92 |  +16.4% a copy
+      39 < x                        150 copies,  15 tp (10.0%) | A  -1.31  B  +2.64  C  +7.49 | all   +8.82 |  +11.8% a copy
+
+== since_sell (missing 0)
+      x <= 31                       159 copies,  16 tp (10.1%) | A  +1.08  B  +3.19  C  +1.07 | all   +5.34 |   +6.7% a copy
+      31 < x <= 67                  154 copies,  14 tp ( 9.1%) | A  +0.29  B  +6.81  C  +1.04 | all   +8.14 |  +10.6% a copy
+      67 < x <= 127                 157 copies,  16 tp (10.2%) | A  +3.27  B  +3.47  C  -0.52 | all   +6.22 |   +7.9% a copy
+      127 < x <= 241                157 copies,  13 tp ( 8.3%) | A  +1.17  B  +5.78  C  +1.15 | all   +8.11 |  +10.3% a copy
+      241 < x                       154 copies,  21 tp (13.6%) | A  +6.65  B  -0.75  C  +6.38 | all  +12.28 |  +16.0% a copy
+
+== session_pos (missing 0)
+      x <= 288                      157 copies,  21 tp (13.4%) | A  +7.39  B  +2.94  C  +0.32 | all  +10.64 |  +13.6% a copy
+      288 < x <= 826                156 copies,  19 tp (12.2%) | A  +2.17  B  +7.79  C  +0.10 | all  +10.07 |  +12.9% a copy
+      826 < x <= 1478               156 copies,   7 tp ( 4.5%) | A  -0.77  B  +4.99  C  -1.94 | all   +2.28 |   +2.9% a copy
+      1478 < x <= 2371              156 copies,  11 tp ( 7.1%) | A  +3.67  B  +2.12  C  -0.92 | all   +4.87 |   +6.2% a copy
+      2371 < x                      156 copies,  22 tp (14.1%) | A  +0.00  B  +0.66  C +11.56 | all  +12.22 |  +15.7% a copy
+
+== session_age (missing 0)
+      x <= 4.624e+04                157 copies,  20 tp (12.7%) | A  +6.27  B  +4.54  C  +1.08 | all  +11.89 |  +15.2% a copy
+      4.624e+04 < x <= 1.029e+05    156 copies,  17 tp (10.9%) | A  +3.10  B  +3.21  C  -1.34 | all   +4.97 |   +6.4% a copy
+      1.029e+05 < x <= 1.924e+05    156 copies,  10 tp ( 6.4%) | A  -0.45  B  +7.97  C  -1.81 | all   +5.71 |   +7.3% a copy
+      1.924e+05 < x <= 3.007e+05    156 copies,  13 tp ( 8.3%) | A  +3.69  B  +2.98  C  +0.31 | all   +6.98 |   +8.9% a copy
+      3.007e+05 < x                 156 copies,  20 tp (12.8%) | A  -0.15  B  -0.19  C +10.88 | all  +10.53 |  +13.5% a copy
+
+== holding (missing 0)
+      x <= 60                       158 copies,   5 tp ( 3.2%) | A  -0.41  B  +0.00  C  +0.00 | all   -0.41 |   -0.5% a copy
+      60 < x <= 99                  163 copies,  23 tp (14.1%) | A +11.74  B  +0.00  C  +0.00 | all  +11.74 |  +14.4% a copy
+      99 < x <= 128                 149 copies,  23 tp (15.4%) | A  +1.14  B +13.78  C  +0.00 | all  +14.92 |  +20.0% a copy
+      128 < x <= 162                164 copies,  15 tp ( 9.1%) | A  +0.00  B  +4.96  C  +1.83 | all   +6.79 |   +8.3% a copy
+      162 < x                       147 copies,  14 tp ( 9.5%) | A  +0.00  B  -0.24  C  +7.29 | all   +7.05 |   +9.6% a copy
+
+== w4_last3 (missing 0)
+      x <= -0.199                   159 copies,  16 tp (10.1%) | A  +0.37  B  +6.05  C  +5.76 | all  +12.18 |  +15.3% a copy
+      -0.199 < x <= -0.06768        154 copies,  19 tp (12.3%) | A  +4.17  B  +5.77  C  +0.92 | all  +10.87 |  +14.1% a copy
+      -0.06768 < x <= 0.09772       156 copies,  10 tp ( 6.4%) | A  +1.69  B  -2.22  C  +0.71 | all   +0.17 |   +0.2% a copy
+      0.09772 < x <= 0.3173         156 copies,  16 tp (10.3%) | A  +4.64  B  +3.28  C  +0.06 | all   +7.97 |  +10.2% a copy
+      0.3173 < x                    156 copies,  19 tp (12.2%) | A  +1.60  B  +5.62  C  +1.67 | all   +8.89 |  +11.4% a copy
+
+== w4_last10 (missing 0)
+      x <= -0.09924                 157 copies,  21 tp (13.4%) | A  +5.04  B  +5.33  C  +1.65 | all  +12.02 |  +15.3% a copy
+      -0.09924 < x <= 0.003674      156 copies,  16 tp (10.3%) | A  +2.21  B  +5.55  C  +1.74 | all   +9.49 |  +12.2% a copy
+      0.003674 < x <= 0.109         156 copies,  12 tp ( 7.7%) | A  +1.32  B  +2.15  C  +3.12 | all   +6.60 |   +8.5% a copy
+      0.109 < x <= 0.2584           156 copies,  16 tp (10.3%) | A  +0.62  B  +4.07  C  +2.07 | all   +6.76 |   +8.7% a copy
+      0.2584 < x                    156 copies,  15 tp ( 9.6%) | A  +3.27  B  +1.40  C  +0.55 | all   +5.21 |   +6.7% a copy
+
+== prior_n (missing 0)
+      x <= 1                        281 copies,  23 tp ( 8.2%) | A  +3.77  B  +4.84  C  +0.83 | all   +9.44 |   +6.7% a copy
+      1 < x <= 2                    129 copies,  11 tp ( 8.5%) | A  +3.16  B  +2.78  C  -0.04 | all   +5.90 |   +9.2% a copy
+      2 < x <= 3                     90 copies,   9 tp (10.0%) | A  +1.16  B  +3.25  C  +0.95 | all   +5.36 |  +11.9% a copy
+      3 < x <= 6                    156 copies,  25 tp (16.0%) | A  +4.14  B  +4.19  C  +4.37 | all  +12.69 |  +16.3% a copy
+      6 < x                         125 copies,  12 tp ( 9.6%) | A  +0.24  B  +3.45  C  +3.00 | all   +6.70 |  +10.7% a copy
+
+== age_s (missing 0)
+      x <= 0                        631 copies,  67 tp (10.6%) | A +11.11  B +15.86  C  +6.39 | all  +33.36 |  +10.6% a copy
+      0 < x                         150 copies,  13 tp ( 8.7%) | A  +1.35  B  +2.65  C  +2.73 | all   +6.73 |   +9.0% a copy
+
+== prior_60s (missing 0)
+      x <= 1                        283 copies,  23 tp ( 8.1%) | A  +3.78  B  +4.84  C  +0.83 | all   +9.45 |   +6.7% a copy
+      1 < x <= 2                    128 copies,  11 tp ( 8.6%) | A  +3.04  B  +2.78  C  -0.04 | all   +5.78 |   +9.0% a copy
+      2 < x <= 3                     90 copies,   9 tp (10.0%) | A  +1.26  B  +3.25  C  +0.95 | all   +5.46 |  +12.1% a copy
+      3 < x <= 6                    155 copies,  25 tp (16.1%) | A  +4.14  B  +4.19  C  +4.37 | all  +12.69 |  +16.4% a copy
+      6 < x                         125 copies,  12 tp ( 9.6%) | A  +0.24  B  +3.45  C  +3.00 | all   +6.70 |  +10.7% a copy
+
+== prior_err (missing 0)
+      x <= 0                        567 copies,  58 tp (10.2%) | A  +9.90  B +12.52  C  +5.02 | all  +27.43 |   +9.7% a copy
+      0 < x <= 0.25                  70 copies,  10 tp (14.3%) | A  +1.84  B  +4.90  C  +0.42 | all   +7.16 |  +20.5% a copy
+      0.25 < x                      144 copies,  12 tp ( 8.3%) | A  +0.72  B  +1.08  C  +3.69 | all   +5.49 |   +7.6% a copy
+
+== px_in (missing 0)
+      x <= 0.9778                   157 copies,  12 tp ( 7.6%) | A  -2.87  B  +6.94  C  +4.51 | all   +8.58 |  +10.9% a copy
+      0.9778 < x <= 1.039           156 copies,  13 tp ( 8.3%) | A  -0.60  B  +4.00  C  +1.17 | all   +4.57 |   +5.9% a copy
+      1.039 < x <= 1.075            156 copies,  18 tp (11.5%) | A  +3.41  B  +2.83  C  +5.32 | all  +11.56 |  +14.8% a copy
+      1.075 < x <= 1.141            156 copies,  25 tp (16.0%) | A  +6.87  B  +4.08  C  -1.66 | all   +9.29 |  +11.9% a copy
+      1.141 < x                     156 copies,  12 tp ( 7.7%) | A  +5.65  B  +0.66  C  -0.22 | all   +6.09 |   +7.8% a copy
+
+== hour (missing 0)
+      x <= 4                        187 copies,  21 tp (11.2%) | A  +5.27  B  +6.09  C  +2.35 | all  +13.71 |  +14.7% a copy
+      4 < x <= 10                   126 copies,  11 tp ( 8.7%) | A  +2.04  B  +0.32  C  +4.32 | all   +6.68 |  +10.6% a copy
+      10 < x <= 17                  193 copies,  21 tp (10.9%) | A  +0.59  B  +7.27  C  -0.39 | all   +7.47 |   +7.7% a copy
+      17 < x <= 20                  122 copies,  13 tp (10.7%) | A  +1.78  B  +3.84  C  +1.57 | all   +7.19 |  +11.8% a copy
+      20 < x                        153 copies,  14 tp ( 9.2%) | A  +2.78  B  +0.98  C  +1.27 | all   +5.03 |   +6.6% a copy

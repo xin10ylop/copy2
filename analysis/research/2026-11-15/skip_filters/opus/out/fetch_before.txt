@@ -1,0 +1,2 @@
+781 coins, signatures before its buy: Counter({'cached': 781})
+creation transactions: Counter({'ok': 407, 'cached': 374})

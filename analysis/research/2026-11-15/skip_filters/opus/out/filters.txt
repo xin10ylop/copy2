@@ -1,0 +1,174 @@
+150 distinct entry filters tried (after dropping empty and duplicate ones)
+
+baseline (live rule, no filter)
+   copies | TP (lost/new) | big20 lost | losers skipped (SOL) | wins skipped SOL | net    | w/o5   | w/o10  | A      B      C      | days<0 | worst | fall  | L4 / L8 / slot+1
+    629.7 | 66.0             |            |                      |                  | +36.23 | +30.11 | +24.71 |  +8.79 +19.43  +8.02 |      4 | -1.31 | -2.86 | +40.30 / +26.28 / +42.10
+
+== every filter: change of net against the baseline in A / B / C, and over all; TP lost; rows skipped (mean of landings)
+   sol < 1.486                        |  -1.98  -3.99  -1.18 | all  -7.15 | w/o5  -7.11 | TP lost 10.3 new 0.0 | skipped  78.0 
+   sol > 2.268                        |  +0.00  -2.17  -2.14 | all  -4.31 | w/o5  -4.06 | TP lost  6.0 new 1.0 | skipped  79.0 
+   sol < 1.5                          |  -4.71  -4.45  -1.35 | all -10.51 | w/o5 -10.40 | TP lost 16.0 new 0.0 | skipped 121.0 
+   sol > 1.927                        |  +0.00  -0.56  -4.70 | all  -5.26 | w/o5  -5.06 | TP lost 12.7 new 1.0 | skipped 157.0 
+   sol > 1.731                        |  +0.63  -7.59  -6.12 | all -13.07 | w/o5 -12.77 | TP lost 24.7 new 0.0 | skipped 235.0 
+   sol < 1.502                        |  -4.88  -5.25  -1.35 | all -11.48 | w/o5 -11.25 | TP lost 20.7 new 0.0 | skipped 296.0 
+   sol > 1.562                        |  +1.89 -13.59  -6.89 | all -18.59 | w/o5 -18.21 | TP lost 33.3 new 1.0 | skipped 312.0 
+   size_vs_recent < 0.8669            |  +0.00  -2.88  -1.88 | all  -4.77 | w/o5  -4.69 | TP lost  7.0 new 0.0 | skipped  78.0 
+   size_vs_recent > 1.25              |  +0.00  -1.93  -0.32 | all  -2.25 | w/o5  -2.25 | TP lost  5.0 new 1.0 | skipped  79.0 
+   size_vs_recent < 0.9698            |  -0.29  -6.30  -0.40 | all  -6.99 | w/o5  -6.91 | TP lost 14.0 new 0.0 | skipped 156.0 
+   size_vs_recent > 1.089             |  +0.63  -8.04  -3.95 | all -11.36 | w/o5 -11.11 | TP lost 19.3 new 1.0 | skipped 157.0 
+   size_vs_recent < 0.9963            |  -2.41 -10.00  -3.21 | all -15.62 | w/o5 -15.31 | TP lost 25.0 new 0.0 | skipped 234.0 
+   size_vs_recent > 1.013             |  +0.62  -8.34  -4.08 | all -11.80 | w/o5 -11.55 | TP lost 23.3 new 0.0 | skipped 235.0 
+   size_vs_recent < 0.9997            |  -6.04  -9.35  -3.21 | all -18.60 | w/o5 -18.26 | TP lost 29.3 new 0.0 | skipped 303.0 
+   size_vs_recent > 1.001             |  -3.35  -9.29  -5.16 | all -17.80 | w/o5 -17.53 | TP lost 31.0 new 0.0 | skipped 301.0 
+   progress < 0.08017                 |  -0.66  +0.11  -1.00 | all  -1.56 | w/o5  -1.56 | TP lost  3.7 new 0.7 | skipped  78.0 
+   progress > 0.5374                  |  -1.16  -2.73  +0.90 | all  -2.99 | w/o5  -2.95 | TP lost  4.0 new 0.0 | skipped  79.0 
+   progress < 0.09885                 |  +1.89  +0.12  -2.41 | all  -0.40 | w/o5  -0.39 | TP lost  6.7 new 3.7 | skipped 156.0 
+   progress > 0.3872                  |  -3.04  -2.63  -4.33 | all -10.00 | w/o5  -9.67 | TP lost 14.3 new 0.0 | skipped 157.0 
+   progress < 0.1199                  |  +2.67  -0.96  -1.56 | all  +0.15 | w/o5  +0.16 | TP lost  9.0 new 5.3 | skipped 234.0 
+   progress > 0.3212                  |  -3.25  -7.25  -3.90 | all -14.40 | w/o5 -13.91 | TP lost 24.7 new 0.0 | skipped 235.0 
+   progress < 0.1626                  |  +1.44  -1.70  -1.58 | all  -1.84 | w/o5  -1.83 | TP lost 12.7 new 4.7 | skipped 312.0 
+   progress > 0.2546                  |  -4.76  -9.81  -8.28 | all -22.85 | w/o5 -22.32 | TP lost 36.0 new 0.0 | skipped 313.0 
+   mcap < 26.42                       |  +1.18  -1.19  +1.13 | all  +1.13 | w/o5  +1.14 | TP lost  4.0 new 3.0 | skipped  78.0 
+   mcap > 82.04                       |  -1.09  -3.10  +1.37 | all  -2.82 | w/o5  -2.82 | TP lost  3.0 new 0.0 | skipped  79.0 
+   mcap < 29.25                       |  +0.10  -2.42  +1.33 | all  -0.99 | w/o5  -0.98 | TP lost  7.0 new 2.3 | skipped 156.0 
+   mcap > 64.64                       |  -1.75  -7.15  -1.85 | all -10.75 | w/o5 -10.68 | TP lost 17.7 new 0.0 | skipped 157.0 
+   mcap < 32.63                       |  +0.43  -3.22  +1.86 | all  -0.93 | w/o5  -0.92 | TP lost  9.3 new 2.0 | skipped 234.0 
+   mcap > 52.79                       |  -1.24  -8.53  -5.49 | all -15.26 | w/o5 -15.12 | TP lost 25.0 new 0.0 | skipped 235.0 
+   mcap < 35.09                       |  -1.09  -4.92  +1.94 | all  -4.07 | w/o5  -3.90 | TP lost 12.7 new 2.7 | skipped 312.0 
+   mcap > 46.13                       |  -3.85 -10.53  -7.22 | all -21.60 | w/o5 -21.11 | TP lost 34.7 new 0.0 | skipped 313.0 
+   bps < 100                          |  +0.85  +0.20  +1.55 | all  +2.60 | w/o5  +2.60 | TP lost  1.3 new 1.0 | skipped  55.0   <- better in all three
+   bps < 125                          |  +1.70  +0.83  +2.42 | all  +4.95 | w/o5  +4.95 | TP lost  2.7 new 2.0 | skipped  98.0   <- better in all three
+   bps > 300                          |  -1.10  -2.60  -3.13 | all  -6.82 | w/o5  -6.80 | TP lost 10.7 new 0.0 | skipped  99.0 
+   bps < 195                          |  +1.86  -6.38  +1.50 | all  -3.02 | w/o5  -2.86 | TP lost 20.0 new 2.7 | skipped 203.0 
+   bps < 295                          |  -0.43  -7.97  -0.80 | all  -9.19 | w/o5  -9.00 | TP lost 33.0 new 2.7 | skipped 300.0 
+   impact < 0.06469                   |  -1.22  -1.16  +0.61 | all  -1.77 | w/o5  -1.77 | TP lost  4.7 new 0.0 | skipped  78.0 
+   impact > 0.1376                    |  +0.77  -1.09  +0.81 | all  +0.49 | w/o5  +0.72 | TP lost  6.0 new 1.7 | skipped  79.0 
+   impact < 0.07337                   |  -1.44  -7.16  -3.43 | all -12.03 | w/o5 -11.96 | TP lost 20.7 new 0.0 | skipped 156.0 
+   impact > 0.1193                    |  +0.06  -2.96  +1.07 | all  -1.83 | w/o5  -1.56 | TP lost 10.0 new 2.0 | skipped 157.0 
+   impact < 0.08182                   |  -3.12  -9.14  -2.85 | all -15.10 | w/o5 -15.02 | TP lost 29.7 new 0.0 | skipped 234.0 
+   impact > 0.1109                    |  -0.28  -2.87  -0.54 | all  -3.69 | w/o5  -3.50 | TP lost 13.7 new 1.7 | skipped 235.0 
+   impact < 0.08922                   |  -5.39 -11.57  -3.68 | all -20.64 | w/o5 -20.42 | TP lost 38.7 new 0.0 | skipped 312.0 
+   impact > 0.1006                    |  +0.94  -5.81  +0.10 | all  -4.78 | w/o5  -4.48 | TP lost 17.0 new 2.7 | skipped 313.0 
+   hops > 2                           |  +0.25  -3.50  +0.23 | all  -3.03 | w/o5  -3.03 | TP lost  2.7 new 0.0 | skipped  35.0 
+   hops < 2                           |  -0.92  -9.34  -8.23 | all -18.49 | w/o5 -18.33 | TP lost 34.7 new 0.0 | skipped 251.0 
+   nslot_before > 3                   |  -1.61  -0.11  -0.63 | all  -2.35 | w/o5  -2.35 | TP lost  8.0 new 0.0 | skipped  73.0 
+   nslot_before > 2                   |  -1.62  -1.35  -3.01 | all  -5.98 | w/o5  -5.78 | TP lost 14.0 new 0.0 | skipped 149.0 
+   nslot_before < 1                   |  -4.21  -4.19  -1.47 | all  -9.87 | w/o5  -9.77 | TP lost 18.0 new 0.7 | skipped 235.0 
+   nslot_before > 1                   |  -3.86 -10.46  -2.09 | all -16.41 | w/o5 -15.84 | TP lost 26.0 new 0.0 | skipped 264.0 
+   nslot_sell_before > 0              |  +0.00  -0.63  +0.24 | all  -0.39 | w/o5  -0.39 | TP lost  1.0 new 0.0 | skipped   4.0 
+   slot_buysol_before > 12.95         |  -1.87  -2.36  -1.65 | all  -5.88 | w/o5  -5.88 | TP lost  8.3 new 0.0 | skipped  79.0 
+   slot_buysol_before > 7.302         |  -3.79  -5.86  -4.22 | all -13.87 | w/o5 -13.53 | TP lost 20.0 new 0.0 | skipped 157.0 
+   slot_buysol_before > 4.591         |  -4.37  -7.31  -2.28 | all -13.95 | w/o5 -13.66 | TP lost 24.7 new 0.0 | skipped 235.0 
+   slot_buysol_before < 0.516         |  -2.86  -4.48  -2.58 | all  -9.92 | w/o5  -9.84 | TP lost 23.3 new 2.7 | skipped 312.0 
+   slot_buysol_before > 2.305         |  -4.64 -12.59  -3.74 | all -20.97 | w/o5 -20.40 | TP lost 35.3 new 0.0 | skipped 313.0 
+   w4_big_10m > 2                     |  +0.25  +0.28  +0.00 | all  +0.53 | w/o5  +0.53 | TP lost  0.0 new 0.0 | skipped  24.0 
+   w4_big_10m > 1                     |  +0.32  -0.70  +0.89 | all  +0.52 | w/o5  +0.52 | TP lost  2.0 new 0.0 | skipped  87.0 
+   w4_big_10m > 0                     |  -3.55  -8.18  -0.44 | all -12.17 | w/o5 -12.08 | TP lost 20.3 new 0.0 | skipped 309.0 
+   w4_big_60m > 6                     |  +0.03  -0.48  +0.79 | all  +0.34 | w/o5  +0.34 | TP lost  2.0 new 0.0 | skipped  68.0 
+   w4_big_60m < 1                     |  -1.86  -4.05  -4.33 | all -10.24 | w/o5  -9.97 | TP lost 14.0 new 0.0 | skipped 106.0 
+   w4_big_60m > 5                     |  +0.34  -2.16  -0.24 | all  -2.07 | w/o5  -2.07 | TP lost  5.0 new 0.0 | skipped 112.0 
+   w4_big_60m > 4                     |  +0.17  -2.03  -0.84 | all  -2.70 | w/o5  -2.70 | TP lost  7.3 new 0.0 | skipped 165.0 
+   w4_big_60m < 2                     |  -3.58 -10.36  -6.47 | all -20.41 | w/o5 -19.94 | TP lost 31.7 new 2.7 | skipped 260.0 
+   w4_big_60m > 3                     |  -1.41  -1.94  -2.67 | all  -6.02 | w/o5  -6.00 | TP lost 14.3 new 0.0 | skipped 249.0 
+   mins_since_last_big < 2.067        |  -0.27  -1.36  +1.06 | all  -0.57 | w/o5  -0.62 | TP lost  3.0 new 0.3 | skipped  78.0 
+   mins_since_last_big > 72           |  -1.25  -2.54  -2.35 | all  -6.14 | w/o5  -6.13 | TP lost  9.3 new 0.0 | skipped  79.0 
+   mins_since_last_big < 4.167        |  -0.77  -1.81  -0.04 | all  -2.63 | w/o5  -2.67 | TP lost  6.3 new 1.0 | skipped 156.0 
+   mins_since_last_big > 42.13        |  -1.08  -3.64  -7.07 | all -11.80 | w/o5 -11.41 | TP lost 17.0 new 0.7 | skipped 157.0 
+   mins_since_last_big < 6.883        |  -2.83  -5.95  -0.78 | all  -9.56 | w/o5  -9.55 | TP lost 14.3 new 0.7 | skipped 234.0 
+   mins_since_last_big > 29.33        |  +0.05  -4.72  -7.21 | all -11.89 | w/o5 -11.51 | TP lost 25.0 new 3.3 | skipped 235.0 
+   mins_since_last_big < 10.18        |  -4.03  -7.98  -0.44 | all -12.45 | w/o5 -12.37 | TP lost 21.0 new 0.0 | skipped 312.0 
+   mins_since_last_big > 19.65        |  +2.25  -6.88  -6.50 | all -11.12 | w/o5 -10.75 | TP lost 28.7 new 4.3 | skipped 313.0 
+   w4_tx_1500slots < 2                |  +0.31  +1.08  -0.33 | all  +1.07 | w/o5  +1.07 | TP lost  3.7 new 2.3 | skipped  47.0 
+   w4_tx_1500slots > 15               |  +0.32  -0.55  -2.25 | all  -2.48 | w/o5  -2.48 | TP lost  5.0 new 0.3 | skipped  69.0 
+   w4_tx_1500slots < 4                |  -0.29  +0.28  -0.67 | all  -0.69 | w/o5  -0.67 | TP lost  9.3 new 2.7 | skipped 149.0 
+   w4_tx_1500slots > 12               |  +1.55  -3.24  -2.86 | all  -4.55 | w/o5  -4.55 | TP lost 12.0 new 0.3 | skipped 137.0 
+   w4_tx_1500slots < 5                |  +1.38  -1.90  -0.01 | all  -0.52 | w/o5  -0.51 | TP lost 12.0 new 3.3 | skipped 208.0 
+   w4_tx_1500slots > 10               |  +1.21  -7.83  -2.46 | all  -9.08 | w/o5  -8.69 | TP lost 20.0 new 0.3 | skipped 220.0 
+   w4_tx_1500slots < 6                |  -1.12  -1.73  -1.82 | all  -4.67 | w/o5  -4.69 | TP lost 19.0 new 3.0 | skipped 264.0 
+   w4_tx_1500slots > 9                |  -0.03  -9.35  -2.28 | all -11.66 | w/o5 -11.13 | TP lost 25.3 new 0.3 | skipped 275.0 
+   paper_last10_net < -0.7807         |  -1.45  -2.21  -2.13 | all  -5.78 | w/o5  -5.73 | TP lost  8.0 new 0.0 | skipped  78.0 
+   paper_last10_net > 2.262           |  -0.40  -2.08  -0.16 | all  -2.64 | w/o5  -2.58 | TP lost  7.7 new 0.0 | skipped  78.0 
+   paper_last10_net < -0.4512         |  -1.86  -3.73  -1.27 | all  -6.87 | w/o5  -6.81 | TP lost 13.3 new 1.0 | skipped 156.0 
+   paper_last10_net > 1.531           |  -4.43  -6.74  +0.76 | all -10.40 | w/o5 -10.35 | TP lost 19.0 new 0.0 | skipped 156.0 
+   paper_last10_net < -0.09401        |  -2.97  -5.50  -0.23 | all  -8.70 | w/o5  -8.65 | TP lost 18.0 new 0.0 | skipped 234.0 
+   paper_last10_net > 1.142           |  -6.01  -6.17  -3.54 | all -15.72 | w/o5 -15.57 | TP lost 25.7 new 0.0 | skipped 235.0 
+   paper_last10_net < 0.2089          |  -3.08  -8.00  -1.54 | all -12.63 | w/o5 -12.57 | TP lost 23.3 new 0.0 | skipped 312.0 
+   paper_last10_net > 0.8029          |  -7.21  -7.82  -5.58 | all -20.61 | w/o5 -20.19 | TP lost 32.7 new 0.0 | skipped 313.0 
+   paper_last10_tp > 3                |  +0.00  +0.38  +0.90 | all  +1.28 | w/o5  +1.28 | TP lost  0.0 new 0.0 | skipped  13.0 
+   paper_last10_tp > 2                |  +0.34  -2.51  -0.60 | all  -2.77 | w/o5  -2.77 | TP lost  7.0 new 0.0 | skipped  90.0 
+   paper_last10_tp < 1                |  -4.11  -4.83  -0.19 | all  -9.14 | w/o5  -9.08 | TP lost 18.7 new 0.0 | skipped 284.0 
+   paper_last10_tp > 1                |  -5.00  -6.65  -4.23 | all -15.88 | w/o5 -15.48 | TP lost 26.3 new 0.0 | skipped 262.0 
+   w4_last10_ret < -0.02311           |  -1.77  -0.93  +1.01 | all  -1.69 | w/o5  -1.66 | TP lost  4.7 new 0.0 | skipped  78.0 
+   w4_last10_ret > 0.5884             |  -0.28  +1.01  +0.51 | all  +1.24 | w/o5  +1.24 | TP lost  2.7 new 0.0 | skipped  78.0 
+   w4_last10_ret < 0.06276            |  -3.07  -5.25  -0.75 | all  -9.06 | w/o5  -8.98 | TP lost 14.0 new 0.0 | skipped 153.0 
+   w4_last10_ret > 0.4255             |  -1.69  -3.34  +1.76 | all  -3.27 | w/o5  -3.27 | TP lost 11.3 new 0.0 | skipped 157.0 
+   w4_last10_ret < 0.1293             |  -4.96  -6.33  -1.90 | all -13.18 | w/o5 -13.10 | TP lost 20.7 new 0.0 | skipped 234.0 
+   w4_last10_ret > 0.3429             |  -4.10  -4.52  +2.73 | all  -5.88 | w/o5  -5.88 | TP lost 18.7 new 0.0 | skipped 235.0 
+   w4_last10_ret < 0.1755             |  -4.74  -8.72  -4.71 | all -18.17 | w/o5 -17.79 | TP lost 28.7 new 0.0 | skipped 309.0 
+   w4_last10_ret > 0.274              |  -4.44  -7.16  +3.43 | all  -8.17 | w/o5  -8.17 | TP lost 24.0 new 0.0 | skipped 309.0 
+   n_before > 6                       |  +0.67  -2.90  -0.12 | all  -2.36 | w/o5  -2.36 | TP lost  5.0 new 0.0 | skipped  52.0 
+   n_before > 4                       |  +0.73  -4.51  -4.59 | all  -8.37 | w/o5  -8.29 | TP lost 16.0 new 0.0 | skipped 143.0 
+   n_before > 3                       |  -1.43  -5.04  -4.53 | all -11.00 | w/o5 -10.89 | TP lost 23.0 new 0.0 | skipped 220.0 
+   n_before < 2                       |  +0.62  -4.88  -0.83 | all  -5.10 | w/o5  -5.10 | TP lost 17.0 new 3.3 | skipped 293.0 
+   tx_60s > 3                         |  -1.43  -5.04  -4.53 | all -10.99 | w/o5 -10.89 | TP lost 23.0 new 0.0 | skipped 219.0 
+   tx_60s < 2                         |  +0.60  -4.88  -0.83 | all  -5.11 | w/o5  -5.12 | TP lost 17.0 new 3.3 | skipped 295.0 
+   fail_share > 0.4286                |  -0.67  -0.80  -5.39 | all  -6.86 | w/o5  -6.49 | TP lost  7.3 new 0.0 | skipped  79.0 
+   fail_share > 0.25                  |  -0.62  -1.92  -3.75 | all  -6.29 | w/o5  -5.92 | TP lost 10.3 new 0.0 | skipped 144.0 
+   fail_share > 0                     |  -2.27  -6.35  -3.92 | all -12.54 | w/o5 -11.97 | TP lost 19.3 new 0.0 | skipped 214.0 
+   dev_share > 0.1949                 |  -2.35  -9.10  +0.87 | all -10.58 | w/o5 -10.53 | TP lost 11.3 new 0.0 | skipped  79.0 
+   dev_share < 0.003081               |  -0.84  -1.71  -3.87 | all  -6.42 | w/o5  -6.38 | TP lost 11.3 new 0.3 | skipped 156.0 
+   dev_share > 0.1025                 |  -3.09  -9.81  +0.95 | all -11.95 | w/o5 -11.88 | TP lost 17.3 new 0.0 | skipped 157.0 
+   dev_share < 0.01417                |  +0.20  -3.00  -6.51 | all  -9.31 | w/o5  -9.27 | TP lost 20.0 new 1.3 | skipped 234.0 
+   dev_share > 0.05908                |  -4.52 -11.16  -2.09 | all -17.76 | w/o5 -17.66 | TP lost 26.7 new 0.3 | skipped 235.0 
+   dev_share < 0.0264                 |  -1.15  -2.58  -4.38 | all  -8.11 | w/o5  -8.07 | TP lost 23.3 new 2.3 | skipped 312.0 
+   dev_share > 0.04554                |  -4.60 -14.42  -3.36 | all -22.38 | w/o5 -22.21 | TP lost 33.0 new 0.3 | skipped 313.0 
+   slots_since_create > 1             |  -1.22  -1.11  +1.13 | all  -1.19 | w/o5  -1.19 | TP lost  4.0 new 0.3 | skipped  78.0 
+   creator_prev > 6                   |  -0.78  +1.35  -2.92 | all  -2.34 | w/o5  -2.04 | TP lost  5.0 new 0.0 | skipped  69.0 
+   creator_prev > 3                   |  -0.86  +0.39  -3.94 | all  -4.41 | w/o5  -4.12 | TP lost  9.0 new 0.3 | skipped 126.0 
+   creator_prev > 1                   |  -2.08  -2.68  -5.90 | all -10.66 | w/o5 -10.30 | TP lost 18.0 new 1.7 | skipped 215.0 
+   creator_prev > 0                   |  -1.97  -5.03  -4.94 | all -11.94 | w/o5 -11.64 | TP lost 23.3 new 1.7 | skipped 307.0 
+   creator_prev_net < -0.05042        |  +0.14  -0.32  -2.32 | all  -2.50 | w/o5  -2.50 | TP lost  4.3 new 0.3 | skipped  78.0 
+   creator_prev_net > 1.274           |  -0.41  -0.70  -3.62 | all  -4.74 | w/o5  -4.46 | TP lost  8.0 new 0.7 | skipped  79.0 
+   creator_prev_net < 0               |  -0.62  -0.17  -2.04 | all  -2.83 | w/o5  -2.83 | TP lost  6.3 new 1.0 | skipped 105.0 
+   creator_prev_net > 0.2032          |  -1.14  -4.52  -3.27 | all  -8.94 | w/o5  -8.66 | TP lost 15.3 new 0.7 | skipped 157.0 
+   creator_prev_net > 0               |  -1.45  -4.94  -2.93 | all  -9.32 | w/o5  -9.04 | TP lost 17.0 new 0.7 | skipped 196.0 
+   age_s > 1                          |  -0.89  -0.35  +0.41 | all  -0.83 | w/o5  -0.83 | TP lost  3.0 new 0.3 | skipped  64.0 
+   age_s > 0                          |  -1.26  -3.06  -2.23 | all  -6.55 | w/o5  -6.46 | TP lost 10.7 new 0.3 | skipped 150.0 
+   pays with SOL                      |  -4.08  -0.59  +0.49 | all  -4.18 | w/o5  -3.73 | TP lost 16.3 new 0.0 | skipped 287.0 
+   pays with WBTC                     |  -4.20  -7.75  -0.96 | all -12.91 | w/o5 -12.87 | TP lost 15.0 new 0.7 | skipped 236.0 
+   pays with PUMP                     |  -0.97  -4.24  -4.88 | all -10.09 | w/o5 -10.09 | TP lost 21.3 new 0.7 | skipped 192.0 
+   pays with SPCX                     |  +0.83  -6.36  -2.67 | all  -8.20 | w/o5  -8.13 | TP lost 13.3 new 0.0 | skipped  66.0 
+   route copied                       |  -5.60 -10.38  +0.73 | all -15.26 | w/o5 -14.70 | TP lost 29.3 new 2.0 | skipped 521.0 
+   Beirut weekday 0                   |  +0.23  -0.45  -1.04 | all  -1.27 | w/o5  -1.27 | TP lost  5.0 new 0.0 | skipped  89.0 
+   Beirut weekday 1                   |  -0.65  -0.09  -0.72 | all  -1.46 | w/o5  -1.45 | TP lost  9.0 new 0.0 | skipped  78.0 
+   Beirut weekday 2                   |  -3.50  -0.78  -4.07 | all  -8.36 | w/o5  -8.28 | TP lost  8.0 new 0.0 | skipped  74.0 
+   Beirut weekday 3                   |  -0.40  -4.97  -3.93 | all  -9.30 | w/o5  -9.06 | TP lost 15.0 new 0.0 | skipped 128.0 
+   Beirut weekday 4                   |  +0.46  -3.53  +0.71 | all  -2.36 | w/o5  -2.32 | TP lost  7.0 new 0.0 | skipped 147.0 
+   Beirut weekday 5                   |  -0.47  -4.72  +2.13 | all  -3.06 | w/o5  -2.99 | TP lost  8.0 new 0.0 | skipped 126.0 
+   Beirut weekday 6                   |  -4.46  -4.88  -1.10 | all -10.43 | w/o5 -10.29 | TP lost 14.0 new 0.0 | skipped 139.0 
+   UTC hour 0-5                       |  -3.95  -7.33  -0.73 | all -12.01 | w/o5 -11.80 | TP lost 18.7 new 0.0 | skipped 218.0 
+   UTC hour 6-11                      |  -1.96  -0.07  -4.78 | all  -6.81 | w/o5  -6.44 | TP lost  9.3 new 0.0 | skipped 111.0 
+   UTC hour 12-17                     |  -1.17  -6.65  +0.09 | all  -7.73 | w/o5  -7.73 | TP lost 17.3 new 0.0 | skipped 177.0 
+   UTC hour 18-23                     |  -1.77  -5.38  -2.60 | all  -9.75 | w/o5  -9.67 | TP lost 20.7 new 0.0 | skipped 275.0 
+   first trade is not a create        |  -0.82  -0.71  -0.58 | all  -2.10 | w/o5  -2.09 | TP lost  4.0 new 0.3 | skipped  81.0 
+   refusal limit 1.05                 |  -7.67  -8.14  -2.05 | all -17.87 | w/o5 -17.87 | TP lost 39.7 new 0.7 | skipped 391.7 
+   refusal limit 1.1                  |  -4.39  -4.08  +0.10 | all  -8.37 | w/o5  -8.37 | TP lost 23.0 new 1.0 | skipped 242.7 
+   refusal limit 1.15                 |  -1.03  -2.13  +0.51 | all  -2.65 | w/o5  -2.65 | TP lost  8.7 new 0.7 | skipped 145.7 
+   refusal limit 1.2                  |  +0.35  -0.42  -0.30 | all  -0.37 | w/o5  -0.37 | TP lost  2.7 new 0.7 | skipped  99.0 
+
+== better in each of A, B and C: 2 of 150
+   filter                             | copies | TP (lost/new) | big20 lost | losers skipped (SOL) | wins skipped SOL | net    | w/o5   | w/o10  | A      B      C      | days<0 | worst | fall  | L4 / L8 / slot+1 | days ahead
+   bps < 125                          |  554.3 | 65.3 ( 2.7/2.0) |        0.3 |  66.0 ( -7.83) |            +4.33 | +41.18 | +35.06 | +29.66 | +10.48 +20.26 +10.44 |      1 | -0.13 | -2.20 | +44.26 / +31.28 / +48.00 | 99.1%
+   bps < 100                          |  590.3 | 65.7 ( 1.3/1.0) |        0.0 |  33.7 ( -3.87) |            +2.19 | +38.83 | +32.71 | +27.30 |  +9.64 +19.62  +9.56 |      2 | -0.89 | -2.56 | +42.66 / +28.13 / +45.69 | 94.3%
+
+== picked on two blocks (best summed gain there), scored on the third
+   held out A: 4 filters better on B and C; best there: bps < 125 (+0.83 +2.42) -> on A +1.70; of the 4, 2 also better on A
+   held out B: 13 filters better on A and C; best there: bps < 125 (+1.70 +2.42) -> on B +0.83; of the 13, 2 also better on B
+   held out C: 5 filters better on A and B; best there: bps < 125 (+1.70 +0.83) -> on C +2.42; of the 5, 2 also better on C
+
+== the chance rate: random skips of a share of the buys (the same buys at each landing), 400 draws a share
+   skip  5% at random: better in all three blocks in  3.8% of draws; change of net median -1.46, 90th pct +1.09, best +3.07
+   skip 10% at random: better in all three blocks in  1.8% of draws; change of net median -3.27, 90th pct +0.00, best +3.18
+   skip 20% at random: better in all three blocks in  0.5% of draws; change of net median -5.78, 90th pct -1.86, best +2.74
+   skip 30% at random: better in all three blocks in  0.0% of draws; change of net median -9.53, 90th pct -4.29, best +1.77
+   skip 40% at random: better in all three blocks in  0.0% of draws; change of net median -13.12, 90th pct -7.99, best -1.95

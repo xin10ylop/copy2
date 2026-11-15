@@ -1,0 +1,18 @@
+14 buys of the four live kinds after the study data; every copy, mean of the three landings:
+   fee tier <= 100 bps: 10 copies, 1 take profits, net +3.91 SOL (+78.2% a copy)
+      11-14 17:39 9WB3osgB pays SOL bps 100 net +0.189
+      11-14 17:47 8FE3SQjW pays SOL bps 100 net -0.140
+      11-14 20:51 dB6kUqX2 pays SOL bps 100 net -0.126
+      11-15 02:08 3vhbd6FN pays SOL bps 100 net +2.448
+      11-15 02:32 Bip1Z2Qc pays SOL bps 100 net +1.521
+      11-15 03:02 8TMTxMyP pays SOL bps 100 net -0.086
+      11-15 03:15 HEkjjxux pays SOL bps 100 net +0.409
+      11-15 03:17 EJVSMByf pays SOL bps 100 net -0.000
+      11-15 06:30 3Xtzu55E pays SOL bps 100 net -0.337
+      11-15 12:54 29xjBYAf pays SOL bps 100 net +0.034
+   fee tier > 100 bps: 4 copies, 2 take profits, net +1.57 SOL (+78.3% a copy)
+the real trades of Nov 14-15 not in the study data: 8FE3SQjW fee tier 100; 4A7n9wq8 fee tier 195; BURn1o8x fee tier 195; BTCmcoKg fee tier 395
+   the four live kinds, all dates, fee tier <= 100: 105 copies, net -0.96 (-1.8% a copy)
+   the four live kinds, all dates, fee tier > 100: 677 copies, net +38.37 (+11.3% a copy)
+   the four candidate floats, fee tier <= 100: 7 copies, net -0.32 (-9.1% a copy)
+   the four candidate floats, fee tier > 100: 186 copies, net +13.94 (+15.0% a copy)

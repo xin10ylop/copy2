@@ -342,6 +342,12 @@ impl Engine {
             // its smaller tiers: not copied, not journaled
             return;
         }
+        if self.cfg.min_fee_bps > 0 && t.fee_bps > 0 && t.fee_bps < self.cfg.min_fee_bps {
+            return self.skip(
+                &t,
+                &format!("fee tier {} bps under min_fee_bps {}", t.fee_bps, self.cfg.min_fee_bps),
+            );
+        }
         if rebuy {
             return self.skip(&t, "its second buy of the coin");
         }
@@ -467,14 +473,15 @@ impl Engine {
         };
         if paper {
             println!(
-                "long paper-buy #{id} {} its {:.3} SOL route {} ({} hops) stake {:.3} SOL; seen at its slot +{}, fills at the end of +{}",
+                "long paper-buy #{id} {} its {:.3} SOL route {} ({} hops) stake {:.3} SOL; seen at its slot +{}, fills at the end of +{}; fee {} bps",
                 m8(&t.mint),
                 v as f64 / 1e9,
                 plan.how,
                 plan.route.hops.len(),
                 stake as f64 / 1e9,
                 self.slot.saturating_sub(t.slot),
-                p.land_slot - t.slot
+                p.land_slot - t.slot,
+                t.fee_bps
             );
         } else {
             // money checks
@@ -496,7 +503,7 @@ impl Engine {
             match self.send_buy(&p, &plan.route, min_out) {
                 Ok(sig) => {
                     println!(
-                        "long buy #{id} {} its {:.3} SOL route {} ({} hops) in {} of {} min_out {} sent {} in {} ms; seen at its slot +{}",
+                        "long buy #{id} {} its {:.3} SOL route {} ({} hops) in {} of {} min_out {} sent {} in {} ms; seen at its slot +{}; fee {} bps",
                         m8(&t.mint),
                         v as f64 / 1e9,
                         plan.how,
@@ -506,7 +513,8 @@ impl Engine {
                         min_out,
                         &sig[..8],
                         t0.elapsed().as_millis(),
-                        self.slot.saturating_sub(t.slot)
+                        self.slot.saturating_sub(t.slot),
+                        t.fee_bps
                     );
                     p.buy_sig = Some(sig);
                     if plan.anchor == c::WSOL_MINT {

@@ -113,6 +113,12 @@ within a slot** (`exits_pess.py`):
 - **`float level MINT SOL`** (Nov 14): brings a float to a SOL value through Jupiter, buying what is missing or selling
   the excess (nothing within 5% of the target or 0.02 SOL); the daily rebalance with three floats (wins and losses
   stay in the float the trade was paid from).
+- **`min_fee_bps`** (Nov 15, default 0 = off): its buy is skipped when the coin's fee tier (protocol + creator fee in its
+  own buy event, basis points) is under it (`fee tier N bps under min_fee_bps`); a fee of 0 (not in the event) is
+  never skipped. The `long buy` and `long paper-buy` lines now end with `fee N bps`. Two studies apart found the
+  same rule (under 125 bps: 98 of 781 copies, 4 take profits, the bot's run +41 SOL against +36 over Oct 21 - Nov 14,
+  our 9 real trades of that kind all lost); the 10 such copies after the data made +3.9 SOL in the model, so it stays
+  off until more are seen (`analysis/research/2026-11-15/skip_filters/`).
 - **Holder fees paid into a float** (Nov 14): pump distributes fees to a coin's holders in the coin's quote token
   (`DistributeFeeToHolders`, sent by `HckQ93Xq...`; the coins "airdropped" on Nov 12-13 were these). For a coin priced
   in a float they land in the float itself, and the trade's journal does not see them. `float book SIG` now adds the

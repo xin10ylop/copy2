@@ -103,6 +103,14 @@ pub struct LongCfg {
     /// 0 = `stake_sol`. WBTC-routed copies made about +0.12 SOL a copy
     /// against +0.02 from wrapped SOL (backtests §9).
     pub float_stake_sol: f64,
+    /// Skip its buy when the coin's fee tier (protocol + creator fee of its
+    /// own buy, basis points) is under this; 0 = off. A fee of 0 (not in the
+    /// event) is never skipped. Oct 21 - Nov 14 the copies of coins under 125
+    /// bps lost in every block (98 of 781, 4 take profits, -4.5 SOL at 0.5
+    /// SOL), found by two studies apart; the next 10 made +3.9 SOL in the
+    /// model, so it is off until more of them are seen
+    /// (analysis/research/2026-11-15/skip_filters/).
+    pub min_fee_bps: u32,
     /// A float that holds less than the stake (a loss is paid back in it)
     /// still buys, with all it holds, when that is at least this share of
     /// the stake; under it the buy is skipped. 1.0 = the whole stake or
@@ -152,6 +160,7 @@ impl Default for LongCfg {
             follow_early_below: 1.5,
             float_stake_sol: 0.0,
             float_min_frac: 1.0,
+            min_fee_bps: 0,
             state_dir: "/var/lib/rugsnipe-long".into(),
             price_api: crate::oracle::API.into(),
         }
@@ -212,6 +221,9 @@ impl LongCfg {
         }
         if !(0.0..=100.0).contains(&self.float_stake_sol) {
             return bad("float_stake_sol must be in [0, 100]");
+        }
+        if self.min_fee_bps > 10_000 {
+            return bad("min_fee_bps must be in [0, 10000]");
         }
         if !(self.float_min_frac > 0.0 && self.float_min_frac <= 1.0) {
             return bad("float_min_frac must be in (0, 1]");

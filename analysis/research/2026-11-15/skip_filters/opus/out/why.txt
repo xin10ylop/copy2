@@ -1,0 +1,15 @@
+== all kinds
+   bps < 125   98 coins | peak in 600 s: median 1.22x, reach 1.5x 26.5%, 2x 10.2%, 3x  4.1% | first 60 s: trades 18, traders 10, buy share of volume 0.53 | wallet 4 sells by 60 s 10.2%, by 300 s 49.0% | its own result median -4.7%, mean -2.4%
+   bps >= 125 683 coins | peak in 600 s: median 1.42x, reach 1.5x 46.6%, 2x 28.4%, 3x 13.5% | first 60 s: trades 32, traders 20, buy share of volume 0.57 | wallet 4 sells by 60 s 11.7%, by 300 s 48.6% | its own result median +1.6%, mean +24.9%
+== SOL-paid only
+   bps < 125   69 coins | peak in 600 s: median 1.22x, reach 1.5x 27.5%, 2x 11.6%, 3x  5.8% | first 60 s: trades 21, traders 13, buy share of volume 0.51 | wallet 4 sells by 60 s 13.0%, by 300 s 52.2% | its own result median -5.4%, mean -4.4%
+   bps >= 125 218 coins | peak in 600 s: median 1.36x, reach 1.5x 44.0%, 2x 26.6%, 3x 11.0% | first 60 s: trades 22, traders 14, buy share of volume 0.58 | wallet 4 sells by 60 s 11.5%, by 300 s 45.0% | its own result median +0.1%, mean +23.5%
+== WBTC-paid only
+   bps < 125   22 coins | peak in 600 s: median 1.18x, reach 1.5x 22.7%, 2x  9.1%, 3x  0.0% | first 60 s: trades 8, traders 6, buy share of volume 0.63 | wallet 4 sells by 60 s  4.5%, by 300 s 36.4% | its own result median -3.3%, mean +3.8%
+   bps >= 125 214 coins | peak in 600 s: median 1.28x, reach 1.5x 37.4%, 2x 22.9%, 3x 10.3% | first 60 s: trades 14, traders 10, buy share of volume 0.64 | wallet 4 sells by 60 s  7.9%, by 300 s 29.9% | its own result median +2.8%, mean +25.2%
+
+== the fee values among the low-fee coins (bps: coins)
+   1: 1, 5: 1, 10: 3, 30: 44, 50: 2, 69: 1, 75: 1, 80: 1, 90: 1, 100: 41, 105: 1, 120: 1
+== the low-fee coins by quote token (top 8) and by block
+   C5xph2yL: 18, 3LPTanzy: 9, 4CxjZyMN: 8, 9cRCn9rG: 4, 7SL2VnfY: 3, HbXn9Lcu: 2, H74CYmXg: 2, 8EzagXsp: 2
+   A: 46, B: 20, C: 32   (all buys: A: 333, B: 241, C: 207)

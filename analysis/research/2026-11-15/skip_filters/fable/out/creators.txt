@@ -1,0 +1,24 @@
+781 coins by 733 creators; creators with 1 coin: 716; with 5+: 5
+the 15 creators with the most coins: coins, low-fee coins, take profits, net, blocks seen
+   ssANQJ26   9   9  0  -0.20  blocks ['A']  pays {'SOL': 9}
+   ucXZwSQa   8   0  3  +1.60  blocks ['A', 'B']  pays {'WBTC': 8}
+   BFmgjdge   6   0  0  -0.59  blocks ['A', 'B']  pays {'SOL': 6}
+   CuDe51GP   6   0  0  -0.05  blocks ['B', 'C']  pays {'WBTC': 4, 'PUMP': 2}
+   CyaE1Vxv   5   0  2  +1.47  blocks ['C']  pays {'PUMP': 5}
+   2cqPrX25   4   0  0  -0.28  blocks ['A']  pays {'WBTC': 4}
+   BCyNgSB1   4   0  1  +0.65  blocks ['A']  pays {'PUMP': 4}
+   J1AYySZJ   3   0  0  -0.10  blocks ['A']  pays {'SOL': 3}
+   5VWsGgH8   3   0  1  +0.58  blocks ['A']  pays {'SOL': 3}
+   5YRgrP3m   3   0  0  +0.43  blocks ['A', 'B']  pays {'WBTC': 3}
+   J6YSoAhz   2   0  0  -0.11  blocks ['A']  pays {'SOL': 1, 'WBTC': 1}
+   CgJ3bQ34   2   0  0  -0.06  blocks ['A']  pays {'SOL': 2}
+   D1F4pC8E   2   0  0  +0.74  blocks ['A', 'C']  pays {'SOL': 2}
+   edcow7o5   2   0  0  -0.17  blocks ['B', 'C']  pays {'PUMP': 2}
+   2Txh7D4m   2   0  0  -0.34  blocks ['B']  pays {'WBTC': 2}
+
+the 96 low-fee coins come from 88 creators; the top 5 make 13 of them: [('ssANQJ26', 9), ('6DLs5t6B', 1), ('D1NdtTdd', 1), ('8LZDajg4', 1), ('21FBYMv4', 1)]
+creators with 3+ coins: 51 copies, 7 tp, net +3.50 (+13.7% a copy), A/B/C +0.98 / +1.68 / +0.84
+creators with 1-2 coins: 730 copies, 73 tp, net +36.59 (+10.0% a copy), A/B/C +11.49 / +16.82 / +8.28
+creator's first coin here: 733 copies, 75 tp, net +38.52 (+10.5% a copy), A/B/C +13.06 / +17.10 / +8.37
+creator seen before, its past copies lost on average: 18 copies, 2 tp, net +0.77 (+8.5% a copy), A/B/C +0.46 / +0.13 / +0.17
+creator seen before, its past copies won on average: 30 copies, 3 tp, net +0.80 (+5.3% a copy), A/B/C -1.05 / +1.27 / +0.58

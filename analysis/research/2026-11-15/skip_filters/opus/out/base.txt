@@ -1,0 +1,5 @@
+781 rows Counter({'SOL': 287, 'WBTC': 236, 'PUMP': 192, 'SPCX': 66})
+landing 4: F.sim net +40.3042
+landing 8: F.sim net +26.2841
+landing slot+1: F.sim net +42.1022
+saved 781
