@@ -109,7 +109,12 @@ against +34.94 over 24.7 days): DJT 7,953,726 units (slot 469735371); TTWO faile
 owner's call after `analysis/research/2026-11-15/skip_filters/`: the same money over 26 days, 4 losing days against
 8, and all 9 real trades of that kind had lost; it would have skipped two winners on Nov 15). Code `3404441` (buy
 lines end with `fee N bps`). After it: SOL 0.9444, floats WBTC 0.997 / PUMP 0.600 / SPCX 0.598 / TTWO 0.499 / DJT 0.498
-SOL, about 4.14 SOL in all; 0.5 SOL × 2, tp 3.0, 600 s unchanged. The TAB16RxX bot was paused by the owner on Nov 14 (14
+SOL, about 4.14 SOL in all; 0.5 SOL × 2, tp 3.0, 600 s unchanged.
+**Nov 15 14:12 UTC (16:12 Beirut): 0.7 SOL × 2, daily stop 1.4** (the owner topped the wallet up to about 5.6 SOL).
+Floats levelled for 0.7: WBTC 1.402 SOL (155,038 units, room for its 2 open), PUMP 0.749, SPCX 0.752, TTWO 0.750, DJT
+0.750 (slots 469758159-469758565); SOL 1.7441. The restart: `stake 0.7 SOL tp 3x stop 0x hold 600s max_open 2`, five
+floats, feed connected. The backtest's deepest fall for this setup at 0.7 SOL: −3.27 to −4.27 SOL with the fee rule
+(`analysis/research/2026-11-16/weekdays/out/risk_now.txt`). The TAB16RxX bot was paused by the owner on Nov 14 (14
 real, −0.1665); `send TO all` built to return its balance.
 **A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
 branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet
