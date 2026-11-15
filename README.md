@@ -114,7 +114,11 @@ SOL, about 4.14 SOL in all; 0.5 SOL × 2, tp 3.0, 600 s unchanged.
 Floats levelled for 0.7: WBTC 1.402 SOL (155,038 units, room for its 2 open), PUMP 0.749, SPCX 0.752, TTWO 0.750, DJT
 0.750 (slots 469758159-469758565); SOL 1.7441. The restart: `stake 0.7 SOL tp 3x stop 0x hold 600s max_open 2`, five
 floats, feed connected. The backtest's deepest fall for this setup at 0.7 SOL: −3.27 to −4.27 SOL with the fee rule
-(`analysis/research/2026-11-16/weekdays/out/risk_now.txt`). The TAB16RxX bot was paused by the owner on Nov 14 (14
+(`analysis/research/2026-11-16/weekdays/out/risk_now.txt`).
+**Nov 15 14:47 UTC (16:47 Beirut): `min_sol = 1.3`** (was 1.45; `analysis/research/2026-11-16/decomp/`: its 1.3-1.45 SOL
+buys copy at +10.5% a copy, as the 1.45+ ones do; the bot's run +54.82 against +43.82 SOL at 0.5 over Oct 21 - Nov 15,
+better in each block, and on the buys the threshold was not picked on). The restart: `min_sol 1.3 stake 0.7 SOL tp 3x
+… max_open 2`, five floats, feed connected. The TAB16RxX bot was paused by the owner on Nov 14 (14
 real, −0.1665); `send TO all` built to return its balance.
 **A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
 branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet

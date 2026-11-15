@@ -15,7 +15,7 @@ Two copied wallets, kept apart, and the bots that copy them:
 
 Wallet 4's strategies:
 - **Strategy A, the long copy:** `crates/rugsnipe-long`. **Live again since Nov 12 01:23 UTC** on a Vultr Frankfurt box
-  (`fra-long`, user `ops`, prompt `ops@fra-long`): since Nov 15 14:12 UTC 0.7 SOL × 2, take profit 3.0, no stop, 600 s,
+  (`fra-long`, user `ops`, prompt `ops@fra-long`): since Nov 15 14:12 UTC 0.7 SOL × 2 (its buys of 1.3+ SOL since 14:47), take profit 3.0, no stop, 600 s,
   daily stop 1.4, the early-sale rule (`follow_early_s = [30, 290]`), 3-hop routes (v0), floats WBTC, PUMP, SPCX, TTWO
   and DJT (`float_min_frac = 0.5`; `float level MINT SOL` once a day; `analysis/research/2026-11-14/float_exits/`,
   `2026-11-15/all_tokens/`), coins with a fee tier under 125 bps skipped (`min_fee_bps = 125`, Nov 15;
