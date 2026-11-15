@@ -1,0 +1,59 @@
+1238 buys; 187111 sells by others after our buy (landing 4), the bag not found for 5735; 33 additions to the live setup
+== the live setup
+   rule                                                           | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it
+   live                                                           | +75.29 |  +0.00 | +15.66 +33.96 +25.66 | +65.65     |  3/24 | -1.23 |   0.0%         | 0
+== whale: 0 of 8 ahead of the live setup, 0 in all three blocks
+   rule                                                           | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it
+   whale: a 1%+ holder sells                                      | +44.67 | -30.61 |  +7.76 +18.86 +18.06 | +37.69     |  5/24 | -0.70 |   0.0%         | 755
+   whale: a 2%+ holder sells                                      | +45.95 | -29.34 |  +7.66 +20.87 +17.42 | +38.67     |  5/24 | -0.90 |   0.0%         | 601
+   whale: a 3%+ holder sells                                      | +54.64 | -20.64 | +11.52 +23.46 +19.67 | +47.01     |  4/24 | -1.39 |   0.0%         | 438
+   whale: a 5%+ holder sells                                      | +66.44 |  -8.85 | +10.07 +31.72 +24.65 | +56.87     |  4/24 | -1.96 |   0.1%         | 206
+   whale: a 1%+ holder sells, under 1.5x                          | +50.59 | -24.70 |  +8.86 +20.18 +21.55 | +41.37     |  5/24 | -1.00 |   0.0%         | 697
+   whale: a 2%+ holder sells, under 1.5x                          | +51.72 | -23.56 |  +8.37 +22.47 +20.88 | +42.50     |  5/24 | -1.09 |   0.0%         | 528
+   whale: a 3%+ holder sells, under 1.5x                          | +60.80 | -14.49 | +10.18 +28.33 +22.28 | +51.44     |  4/24 | -1.41 |   0.0%         | 364
+   whale: a 5%+ holder sells, under 1.5x                          | +67.92 |  -7.37 | +10.73 +31.62 +25.57 | +58.35     |  3/24 | -2.14 |   0.6%         | 175
+== exit: 0 of 8 ahead of the live setup, 0 in all three blocks
+   rule                                                           | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it
+   exit: a 0.5%+ holder sells its whole bag                       | +43.32 | -31.97 |  +7.17 +18.41 +17.74 | +36.25     |  4/24 | -0.84 |   0.0%         | 825
+   exit: a 1%+ holder sells its whole bag                         | +48.20 | -27.09 |  +9.21 +19.28 +19.71 | +40.83     |  4/24 | -0.87 |   0.0%         | 751
+   exit: a 2%+ holder sells its whole bag                         | +52.88 | -22.41 |  +9.06 +23.75 +20.06 | +44.99     |  4/24 | -1.58 |   0.0%         | 536
+   exit: a 3%+ holder sells its whole bag                         | +63.41 | -11.88 | +12.39 +28.47 +22.55 | +54.14     |  3/24 | -0.92 |   0.1%         | 310
+   exit: a 0.5%+ holder sells its whole bag, under 1.5x           | +49.87 | -25.42 |  +7.69 +20.95 +21.22 | +40.65     |  7/24 | -1.22 |   0.0%         | 765
+   exit: a 1%+ holder sells its whole bag, under 1.5x             | +50.94 | -24.35 |  +9.06 +20.84 +21.04 | +41.72     |  5/24 | -1.38 |   0.0%         | 693
+   exit: a 2%+ holder sells its whole bag, under 1.5x             | +57.79 | -17.50 |  +9.17 +27.71 +20.90 | +48.42     |  4/24 | -1.72 |   0.0%         | 479
+   exit: a 3%+ holder sells its whole bag, under 1.5x             | +66.86 |  -8.43 | +12.56 +31.87 +22.43 | +57.46     |  3/24 | -0.92 |   1.6%         | 267
+== top: 0 of 8 ahead of the live setup, 0 in all three blocks
+   rule                                                           | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it
+   top: one of the 1 biggest known bags sells half+               | +64.45 | -10.83 | +11.89 +27.90 +24.66 | +55.77     |  2/24 | -1.07 |   2.4%         | 499
+   top: one of the 3 biggest known bags sells half+               | +50.76 | -24.52 |  +9.24 +21.45 +20.07 | +42.64     |  3/24 | -1.28 |   0.0%         | 721
+   top: one of the 5 biggest known bags sells half+               | +45.35 | -29.94 |  +8.72 +18.55 +18.07 | +37.71     |  4/24 | -0.68 |   0.0%         | 778
+   top: one of the 10 biggest known bags sells half+              | +40.63 | -34.65 |  +7.07 +16.77 +16.79 | +33.33     |  4/24 | -0.78 |   0.0%         | 817
+   top: one of the 1 biggest known bags sells half+, under 1.5x   | +67.59 |  -7.69 | +11.45 +30.65 +25.49 | +58.00     |  3/24 | -1.07 |   1.9%         | 453
+   top: one of the 3 biggest known bags sells half+, under 1.5x   | +57.32 | -17.97 | +10.16 +26.60 +20.56 | +47.93     |  4/24 | -1.05 |   0.0%         | 656
+   top: one of the 5 biggest known bags sells half+, under 1.5x   | +51.29 | -24.00 |  +9.16 +22.45 +19.67 | +41.90     |  4/24 | -0.57 |   0.0%         | 722
+   top: one of the 10 biggest known bags sells half+, under 1.5x  | +46.81 | -28.48 |  +7.22 +19.59 +20.00 | +37.46     |  6/24 | -1.03 |   0.0%         | 765
+== exits: 0 of 6 ahead of the live setup, 0 in all three blocks
+   rule                                                           | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it
+   exits: 2 whole-bag exits (0.5%+ bags) in 60 s                  | +36.95 | -38.33 |  +7.78 +14.85 +14.32 | +30.01     |  5/24 | -0.82 |   0.0%         | 769
+   exits: 2 whole-bag exits (0.5%+ bags) in 120 s                 | +36.61 | -38.68 |  +7.41 +14.94 +14.26 | +29.66     |  5/24 | -0.79 |   0.0%         | 784
+   exits: 3 whole-bag exits (0.5%+ bags) in 60 s                  | +36.63 | -38.66 |  +7.54 +15.42 +13.67 | +29.69     |  5/24 | -0.76 |   0.0%         | 695
+   exits: 3 whole-bag exits (0.5%+ bags) in 120 s                 | +36.60 | -38.69 |  +7.52 +14.91 +14.16 | +29.65     |  5/24 | -0.75 |   0.0%         | 720
+   exits: 5 whole-bag exits (0.5%+ bags) in 60 s                  | +40.83 | -34.46 |  +9.16 +15.56 +16.11 | +33.80     |  4/24 | -0.85 |   0.0%         | 581
+   exits: 5 whole-bag exits (0.5%+ bags) in 120 s                 | +41.37 | -33.92 |  +8.63 +15.95 +16.79 | +34.34     |  4/24 | -0.76 |   0.0%         | 616
+== tops: 0 of 3 ahead of the live setup, 0 in all three blocks
+   rule                                                           | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it
+   tops: 2 of the 10 biggest known bags sell half+ in 120 s       | +41.97 | -33.32 |  +8.15 +17.02 +16.80 | +34.66     |  4/24 | -0.80 |   0.0%         | 747
+   tops: 3 of the 10 biggest known bags sell half+ in 120 s       | +42.71 | -32.57 |  +8.09 +18.23 +16.39 | +35.41     |  5/24 | -0.79 |   0.0%         | 682
+   tops: 4 of the 10 biggest known bags sell half+ in 120 s       | +44.13 | -31.16 |  +8.44 +18.36 +17.33 | +36.76     |  5/24 | -0.83 |   0.0%         | 639
+== picked on two blocks, scored on the third (gain over the live setup in the held-out block)
+   held out A: picked 'whale: a 5%+ holder sells, under 1.5x' (-2.43 on the other two) -> -4.94; the 10 best picks on average -4.90
+   held out B: picked 'top: one of the 1 biggest known bags sells half+, under 1.5x' (-4.38 on the other two) -> -3.31; the 10 best picks on average -5.88
+   held out C: picked 'exit: a 3%+ holder sells its whole bag, under 1.5x' (-5.20 on the other two) -> -3.23; the 10 best picks on average -2.78
+   total out of sample: -11.48 SOL
+== the sellers' bags (landing 4): share of sells by bag size, and how many of them sold the whole bag
+   bag 0% to 0.2% of supply:  44.7% of sells,  83.1% of them the whole bag
+   bag 0.2% to 0.5% of supply:  18.5% of sells,  77.7% of them the whole bag
+   bag 0.5% to 1% of supply:  15.2% of sells,  74.1% of them the whole bag
+   bag 1% to 2% of supply:  12.9% of sells,  68.9% of them the whole bag
+   bag 2% to 5% of supply:   6.8% of sells,  55.7% of them the whole bag
+   bag 5% to 100% of supply:   1.9% of sells,  21.2% of them the whole bag
