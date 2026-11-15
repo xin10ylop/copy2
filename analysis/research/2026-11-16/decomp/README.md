@@ -17,6 +17,16 @@ No SOL-priced coin (part D) since Oct 29. B by the token it paid with: HYPE +21.
 +9.27 on 3, WXMRyRZh +8.55 on 21, USDC +6.74 on 21. Tokens at prices_full2.json (Nov 15). 79 coins traded together with
 another coin in one transaction are left out.
 
-**Next (running):** our copy of its 1.0-1.45 SOL buys. The scan at 1.0 SOL with the six kinds the bot holds finds 1,087
-routable buys in the band (Oct 21 - Nov 15); every third by time (363) is being fetched; `c_band.py CQ ALL` models
-them against the 1.45+ copies.
+**Our copy of its 1.0-1.45 SOL buys** (`c_band.py`, `out/c_band.txt`; every third of the 1,087 routable buys in the
+band, Oct 21 - Nov 15; every copy with no slot limit, the live rule, 0.5 SOL, mean of three landings):
+
+| | copies | take profits | A | B | C | all | a copy |
+|---|---|---|---|---|---|---|---|
+| its 1.0-1.45 SOL buys (a third) | 361 | 25 (7.3%) | +3.50 | −0.02 | +1.35 | +4.83 | +2.8% |
+| its 1.45+ SOL buys (all; copied now) | 896 | 86 (10.3%) | +10.34 | +17.86 | +16.96 | +45.16 | +10.8% |
+
+By size inside the band: 1.0-1.1 −2.1% a copy, 1.1-1.2 +5.5%, 1.2-1.3 −4.3%, **1.3-1.45 +9.8% (+2.38 / +1.61 / +0.71
+in the three blocks)**. By what we pay with: TTWO +20.5%, PUMP +10.7%, WBTC −0.3%, SOL −4.6%, SPCX −12.1%. Wallet 4
+makes +8.6% a coin on the band, about half its +16.7% on the 1.45+ buys; our copy keeps +2.8%, too little to give up
+slots of the 1.45+ copies for. The 1.3-1.45 slice is the one to test: the rest of it is being fetched (`routable.json`
+grows by every 1.3-1.45 buy not in the sample) for a run of the bot with `min_sol` 1.3 against 1.45.

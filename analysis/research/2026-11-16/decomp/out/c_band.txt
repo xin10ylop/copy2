@@ -1,0 +1,19 @@
+every copy, no slot limit, 0.5 SOL, mean of three landings; the 1.0-1.45 band is every third buy (2 without a path)
+   its 1.0-1.45 SOL buys (a third of them)         361 copies (20 refused),  25 tp ( 7.3%) | A  +3.50  B  -0.02  C  +1.35 | all   +4.83 (  +1.74 w/o best 3) |   +2.8% a copy
+     the same, fee rule on                         309 copies (17 refused),  23 tp ( 7.9%) | A  +3.76  B  -0.45  C  +1.16 | all   +4.47 (  +1.38 w/o best 3) |   +3.1% a copy
+   its 1.45+ SOL buys (all; the bot copies these)  896 copies (60 refused),  86 tp (10.3%) | A +10.34  B +17.86  C +16.96 | all  +45.16 ( +39.83 w/o best 3) |  +10.8% a copy
+     the same, fee rule on                         784 copies (52 refused),  80 tp (10.9%) | A +11.10  B +19.35  C +15.97 | all  +46.42 ( +42.70 w/o best 3) |  +12.7% a copy
+
+the 1.0-1.45 band by what we pay with:
+   DJTu7vi8                                         10 copies (0 refused),   2 tp (20.0%) | A  +0.06  B  +0.62  C  +0.09 | all   +0.76 (  -0.78 w/o best 3) |  +15.1% a copy
+   PUMP                                             80 copies (6 refused),   8 tp (10.8%) | A  +2.44  B  +2.17  C  -0.64 | all   +3.97 (  +1.14 w/o best 3) |  +10.7% a copy
+   SOL                                             102 copies (6 refused),   4 tp ( 4.2%) | A  +0.52  B  -1.57  C  -1.15 | all   -2.20 (  -4.93 w/o best 3) |   -4.6% a copy
+   SPCX                                             25 copies (3 refused),   1 tp ( 4.5%) | A  -0.14  B  -0.96  C  -0.23 | all   -1.33 (  -2.35 w/o best 3) |  -12.1% a copy
+   TTWofwAg                                         41 copies (4 refused),   4 tp (10.8%) | A  +1.41  B  -0.23  C  +2.62 | all   +3.80 (  +1.50 w/o best 3) |  +20.5% a copy
+   WBTC                                            103 copies (1 refused),   6 tp ( 5.9%) | A  -0.78  B  -0.04  C  +0.66 | all   -0.17 (  -2.83 w/o best 3) |   -0.3% a copy
+
+the 1.0-1.45 band by size:
+   1.0-1.1 SOL                                      83 copies (2 refused),   3 tp ( 3.7%) | A  -1.23  B  -1.41  C  +1.81 | all   -0.84 (  -3.53 w/o best 3) |   -2.1% a copy
+   1.1-1.2 SOL                                      99 copies (7 refused),   7 tp ( 7.6%) | A  +1.67  B  +1.00  C  -0.16 | all   +2.51 (  -0.25 w/o best 3) |   +5.5% a copy
+   1.2-1.3 SOL                                      78 copies (6 refused),   4 tp ( 5.6%) | A  +0.69  B  -1.22  C  -1.02 | all   -1.55 (  -3.77 w/o best 3) |   -4.3% a copy
+   1.3-1.45 SOL                                    101 copies (5 refused),  11 tp (11.5%) | A  +2.38  B  +1.61  C  +0.71 | all   +4.71 (  +1.80 w/o best 3) |   +9.8% a copy
