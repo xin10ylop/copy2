@@ -1,0 +1,104 @@
+1238 buys; the creator known for 1238; 0.5 SOL, 2 open; 75 additions to the live setup
+== the live setup (both signals, tp 4.0, 600 s)
+   rule                                                               | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it
+   live                                                               | +75.29 |  +0.00 | +15.66 +33.96 +25.66 | +65.65     |  3/24 | -1.23 |   0.0%         | 0
+== uniq: 5 of 12 ahead of the live setup, 1 in all three blocks
+   rule                                                               | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it
+   uniq: 2+ more selling wallets than buying in 60 s                  | +72.54 |  -2.74 | +15.25 +33.24 +24.05 | +63.07     |  4/24 | -0.97 |  14.7%         | 389
+   uniq: 2+ more selling wallets than buying in 90 s                  | +74.66 |  -0.63 | +16.17 +33.56 +24.93 | +65.02     |  4/24 | -1.05 |  34.8%         | 244
+   uniq: 2+ more selling wallets than buying in 120 s                 | +75.75 |  +0.46 | +16.09 +34.20 +25.46 | +66.11     |  3/24 | -1.29 |  73.9%         | 190
+   uniq: 3+ more selling wallets than buying in 60 s                  | +72.11 |  -3.17 | +15.36 +33.79 +22.97 | +62.64     |  3/24 | -0.94 |   7.1%         | 276
+   uniq: 3+ more selling wallets than buying in 90 s                  | +73.94 |  -1.35 | +15.26 +33.07 +25.62 | +64.31     |  3/24 | -0.87 |  13.4%         | 154
+   uniq: 3+ more selling wallets than buying in 120 s                 | +74.84 |  -0.45 | +15.46 +33.86 +25.52 | +65.20     |  3/24 | -1.08 |  29.0%         | 117
+   uniq: 5+ more selling wallets than buying in 60 s                  | +74.63 |  -0.65 | +15.70 +34.23 +24.70 | +65.00     |  3/24 | -1.24 |  38.9%         | 93
+   uniq: 5+ more selling wallets than buying in 90 s                  | +75.99 |  +0.70 | +15.58 +34.30 +26.11 | +66.35     |  3/24 | -1.08 |  99.4%         | 53
+   uniq: 5+ more selling wallets than buying in 120 s                 | +75.46 |  +0.17 | +15.67 +34.03 +25.76 | +65.82     |  3/24 | -1.24 |  83.2%         | 35
+   uniq: 8+ more selling wallets than buying in 60 s                  | +75.29 |  +0.00 | +15.66 +33.96 +25.66 | +65.65     |  3/24 | -1.23 |   0.0%         | 0
+   uniq: 8+ more selling wallets than buying in 90 s                  | +75.34 |  +0.05 | +15.67 +34.03 +25.64 | +65.70     |  3/24 | -1.23 |  76.1%         | 6
+   uniq: 8+ more selling wallets than buying in 120 s                 | +75.36 |  +0.07 | +15.65 +34.05 +25.66 | +65.72     |  3/24 | -1.23 |  86.7%         | 4
+== ratio: 2 of 8 ahead of the live setup, 1 in all three blocks
+   rule                                                               | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it
+   ratio: sells 2x the buys, 5+ sells, in 60 s                        | +74.90 |  -0.38 | +15.69 +34.07 +25.14 | +65.27     |  3/24 | -1.15 |  38.1%         | 170
+   ratio: sells 2x the buys, 5+ sells, in 120 s                       | +75.02 |  -0.26 | +15.33 +34.01 +25.67 | +65.39     |  3/24 | -1.42 |  19.2%         | 88
+   ratio: sells 3x the buys, 5+ sells, in 60 s                        | +75.45 |  +0.17 | +15.77 +34.00 +25.69 | +65.82     |  3/24 | -1.21 |  84.7%         | 96
+   ratio: sells 3x the buys, 5+ sells, in 120 s                       | +75.13 |  -0.16 | +15.56 +34.05 +25.51 | +65.49     |  3/24 | -1.44 |  29.9%         | 48
+   ratio: sells 2x the buys, 10+ sells, in 60 s                       | +75.29 |  +0.00 | +15.66 +33.96 +25.66 | +65.65     |  3/24 | -1.23 |   0.0%         | 51
+   ratio: sells 2x the buys, 10+ sells, in 120 s                      | +75.22 |  -0.07 | +15.54 +34.02 +25.66 | +65.58     |  3/24 | -1.23 |  27.0%         | 25
+   ratio: sells 3x the buys, 10+ sells, in 60 s                       | +75.29 |  +0.00 | +15.66 +33.96 +25.66 | +65.65     |  3/24 | -1.23 |   0.0%         | 18
+   ratio: sells 3x the buys, 10+ sells, in 120 s                      | +75.34 |  +0.05 | +15.66 +34.02 +25.66 | +65.70     |  3/24 | -1.23 |  65.3%         | 10
+== nettok: 0 of 8 ahead of the live setup, 0 in all three blocks
+   rule                                                               | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it
+   nettok: 2%+ of supply sold net in 60 s                             | +54.91 | -20.37 | +11.18 +23.42 +20.31 | +45.95     |  6/24 | -1.49 |   0.0%         | 701
+   nettok: 2%+ of supply sold net in 120 s                            | +58.94 | -16.34 | +11.93 +25.34 +21.68 | +49.78     |  4/24 | -1.61 |   0.0%         | 577
+   nettok: 3%+ of supply sold net in 60 s                             | +54.11 | -21.18 | +11.30 +23.55 +19.25 | +45.14     |  6/24 | -1.63 |   0.0%         | 638
+   nettok: 3%+ of supply sold net in 120 s                            | +59.48 | -15.80 | +12.06 +25.46 +21.96 | +50.28     |  6/24 | -0.68 |   0.0%         | 513
+   nettok: 5%+ of supply sold net in 60 s                             | +59.34 | -15.95 | +12.22 +27.38 +19.74 | +50.17     |  6/24 | -2.37 |   0.0%         | 518
+   nettok: 5%+ of supply sold net in 120 s                            | +63.62 | -11.67 | +12.32 +28.89 +22.41 | +54.41     |  3/24 | -1.03 |   0.0%         | 406
+   nettok: 8%+ of supply sold net in 60 s                             | +67.36 |  -7.93 | +15.07 +31.35 +20.94 | +58.18     |  4/24 | -2.52 |   0.0%         | 342
+   nettok: 8%+ of supply sold net in 120 s                            | +68.28 |  -7.01 | +14.76 +32.30 +21.22 | +58.93     |  4/24 | -1.23 |   0.1%         | 265
+== drought: 4 of 5 ahead of the live setup, 1 in all three blocks
+   rule                                                               | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it
+   drought: no buy for 30 s                                           | +75.06 |  -0.22 | +15.26 +33.81 +25.99 | +65.43     |  3/24 | -1.15 |  41.7%         | 394
+   drought: no buy for 60 s                                           | +75.88 |  +0.60 | +15.90 +33.74 +26.24 | +66.25     |  3/24 | -1.28 |  72.4%         | 241
+   drought: no buy for 90 s                                           | +76.21 |  +0.92 | +15.55 +34.60 +26.06 | +66.57     |  3/24 | -1.14 |  99.0%         | 168
+   drought: no buy for 120 s                                          | +75.97 |  +0.68 | +15.87 +34.26 +25.84 | +66.33     |  3/24 | -1.18 | 100.0%         | 134
+   drought: no buy for 180 s                                          | +75.45 |  +0.16 | +15.83 +33.93 +25.68 | +65.81     |  3/24 | -1.21 |  80.6%         | 92
+== quiet: 0 of 3 ahead of the live setup, 0 in all three blocks
+   rule                                                               | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it
+   quiet: under 2 trades in 60 s                                      | +72.51 |  -2.78 | +13.59 +32.74 +26.18 | +62.91     |  4/24 | -1.22 |   5.6%         | 285
+   quiet: under 3 trades in 60 s                                      | +71.68 |  -3.61 | +13.39 +31.99 +26.30 | +62.08     |  4/24 | -1.29 |   2.7%         | 325
+   quiet: under 5 trades in 60 s                                      | +70.85 |  -4.43 | +12.43 +31.73 +26.69 | +61.26     |  4/24 | -1.17 |   4.2%         | 362
+== tstop: 3 of 16 ahead of the live setup, 0 in all three blocks
+   rule                                                               | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it
+   tstop: under 0.5x after 60 s                                       | +75.07 |  -0.22 | +15.46 +34.00 +25.60 | +65.43     |  3/24 | -1.21 |  15.1%         | 9
+   tstop: under 0.5x after 120 s                                      | +75.28 |  -0.00 | +15.66 +34.03 +25.59 | +65.65     |  3/24 | -1.22 |  50.1%         | 5
+   tstop: under 0.5x after 180 s                                      | +75.19 |  -0.10 | +15.66 +33.96 +25.56 | +65.55     |  3/24 | -1.22 |  25.0%         | 2
+   tstop: under 0.5x after 300 s                                      | +75.29 |  +0.00 | +15.66 +33.96 +25.66 | +65.65     |  3/24 | -1.23 |   0.0%         | 1
+   tstop: under 0.6x after 60 s                                       | +75.14 |  -0.15 | +15.46 +34.05 +25.63 | +65.50     |  3/24 | -1.17 |  34.3%         | 22
+   tstop: under 0.6x after 120 s                                      | +75.36 |  +0.07 | +15.61 +34.07 +25.67 | +65.72     |  3/24 | -1.19 |  66.3%         | 12
+   tstop: under 0.6x after 180 s                                      | +75.21 |  -0.08 | +15.66 +33.96 +25.58 | +65.57     |  3/24 | -1.21 |  34.0%         | 4
+   tstop: under 0.6x after 300 s                                      | +75.30 |  +0.01 | +15.66 +33.96 +25.67 | +65.66     |  3/24 | -1.21 |  62.7%         | 2
+   tstop: under 0.7x after 60 s                                       | +74.60 |  -0.68 | +15.50 +33.97 +25.14 | +64.97     |  3/24 | -1.27 |   6.8%         | 47
+   tstop: under 0.7x after 120 s                                      | +75.04 |  -0.24 | +15.50 +34.16 +25.39 | +65.41     |  3/24 | -1.21 |  25.6%         | 25
+   tstop: under 0.7x after 180 s                                      | +75.20 |  -0.08 | +15.65 +33.97 +25.59 | +65.57     |  3/24 | -1.20 |  26.5%         | 10
+   tstop: under 0.7x after 300 s                                      | +75.33 |  +0.04 | +15.68 +33.96 +25.69 | +65.69     |  3/24 | -1.21 |  91.6%         | 5
+   tstop: under 0.8x after 60 s                                       | +73.46 |  -1.83 | +14.58 +33.30 +25.57 | +63.82     |  3/24 | -1.15 |   6.4%         | 96
+   tstop: under 0.8x after 120 s                                      | +74.73 |  -0.56 | +15.42 +33.92 +25.38 | +65.09     |  3/24 | -1.28 |  19.3%         | 46
+   tstop: under 0.8x after 180 s                                      | +75.15 |  -0.14 | +15.65 +33.93 +25.57 | +65.51     |  3/24 | -1.17 |  27.0%         | 19
+   tstop: under 0.8x after 300 s                                      | +75.28 |  -0.01 | +15.72 +33.91 +25.64 | +65.64     |  3/24 | -1.20 |  43.1%         | 10
+== dev: 0 of 2 ahead of the live setup, 0 in all three blocks
+   rule                                                               | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it
+   dev: the creator sells                                             | +73.76 |  -1.52 | +15.01 +32.95 +25.80 | +64.25     |  4/24 | -1.20 |  25.7%         | 73
+   dev: the creator sells 1%+                                         | +73.09 |  -2.20 | +14.76 +32.93 +25.40 | +63.58     |  4/24 | -1.20 |  15.8%         | 67
+== his: 0 of 7 ahead of the live setup, 0 in all three blocks
+   rule                                                               | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it
+   his: its sale followed 30-290 s at any price                       | +65.61 |  -9.68 | +15.61 +26.97 +23.03 | +56.35     |  3/24 | -1.23 |   0.1%         | 0
+   his: its sale followed 0-600 s under 1.5x                          | +66.18 |  -9.10 | +14.24 +29.70 +22.25 | +57.55     |  4/24 | -1.68 |   0.1%         | 0
+   his: its sale followed any time, any price                         | +52.43 | -22.86 | +11.77 +22.74 +17.92 | +44.65     |  4/24 | -2.40 |   0.0%         | 0
+   his: its sale followed 30-180 s under 1.5x                         | +74.65 |  -0.64 | +15.62 +33.72 +25.31 | +65.01     |  3/24 | -1.21 |   9.1%         | 0
+   his: its sale followed 30-290 s under 2.0x                         | +67.18 |  -8.11 | +16.09 +27.36 +23.73 | +57.85     |  3/24 | -1.23 |   0.7%         | 0
+   his: its sale followed 30-290 s under 3.0x                         | +65.48 |  -9.80 | +15.61 +26.85 +23.03 | +56.23     |  3/24 | -1.23 |   0.2%         | 0
+   his: its sale followed never                                       | +74.35 |  -0.94 | +15.36 +33.54 +25.45 | +64.71     |  3/24 | -1.32 |   8.5%         | 0
+== timer: 1 of 5 ahead of the live setup, 0 in all three blocks
+   rule                                                               | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it
+   timer: 300 s                                                       | +67.60 |  -7.68 | +13.97 +31.02 +22.62 | +58.39     |  5/24 | -2.13 |   0.0%         | 0
+   timer: 450 s                                                       | +73.67 |  -1.62 | +14.55 +34.10 +25.02 | +64.03     |  3/24 | -1.17 |   7.7%         | 0
+   timer: 900 s                                                       | +75.83 |  +0.55 | +16.11 +33.93 +25.79 | +66.20     |  3/24 | -1.18 |  61.9%         | 0
+   timer: 1200 s                                                      | +74.63 |  -0.66 | +15.83 +33.00 +25.79 | +64.99     |  3/24 | -1.19 |  29.5%         | 0
+   timer: 1790 s                                                      | +73.86 |  -1.43 | +15.06 +32.98 +25.81 | +64.22     |  4/24 | -1.19 |  18.0%         | 0
+== press: 2 of 9 ahead of the live setup, 0 in all three blocks
+   rule                                                               | total  | gain   | A      B      C      | w/o best 5 | days<0 | worst | ahead in draws | exits by it
+   press: 3+ more sells than buys in 60 s (in place of 5 in 60)       | +72.14 |  -3.15 | +14.16 +33.15 +24.83 | +62.50     |  3/24 | -1.44 |   3.8%         | 0
+   press: 3+ more sells than buys in 90 s (in place of 5 in 60)       | +73.45 |  -1.84 | +14.62 +34.14 +24.68 | +63.75     |  2/24 | -1.09 |  21.4%         | 0
+   press: 5+ more sells than buys in 90 s (in place of 5 in 60)       | +75.20 |  -0.08 | +15.23 +33.89 +26.08 | +65.51     |  2/24 | -1.27 |  45.4%         | 0
+   press: 4+ more sells than buys in 90 s (in place of 5 in 60)       | +75.71 |  +0.43 | +15.26 +33.84 +26.62 | +66.02     |  3/24 | -0.99 |  50.5%         | 0
+   press: 5+ more sells than buys in 120 s (in place of 5 in 60)      | +73.74 |  -1.55 | +15.03 +33.00 +25.70 | +64.04     |  3/24 | -1.78 |  25.1%         | 0
+   press: 3+ more sells than buys in 120 s (in place of 5 in 60)      | +70.93 |  -4.35 | +14.48 +31.98 +24.46 | +61.24     |  3/24 | -1.73 |   5.1%         | 0
+   press: stall 120 s (in place of 180)                               | +73.02 |  -2.27 | +15.45 +33.91 +23.66 | +63.51     |  3/24 | -1.93 |  11.7%         | 0
+   press: stall 150 s (in place of 180)                               | +73.63 |  -1.66 | +14.92 +34.41 +24.30 | +64.00     |  3/24 | -1.21 |  14.2%         | 0
+   press: stall 240 s (in place of 180)                               | +77.05 |  +1.76 | +16.82 +35.27 +24.96 | +67.41     |  3/24 | -1.31 |  88.5%         | 0
+== picked on two blocks, scored on the third (gain over the live setup in the held-out block)
+   held out A: picked 'drought: no buy for 90 s' (+1.04 on the other two) -> -0.12; the 10 best picks on average +0.01
+   held out B: picked 'drought: no buy for 60 s' (+0.82 on the other two) -> -0.23; the 10 best picks on average +0.14
+   held out C: picked 'press: stall 240 s (in place of 180)' (+2.45 on the other two) -> -0.69; the 10 best picks on average -0.11
+   total out of sample: -1.04 SOL

@@ -42,3 +42,26 @@ blocks and scored on the third: +2.94 / +1.90 / +2.11 (+6.94 SOL), each held-out
 Caution: picked out of about 470 rules on these same days; the two-block test and the wide plateaus are what speak for
 it. The bot can see both: it already receives every transaction of a coin it holds (`feed.rs`, the "mints" filter);
 "no new high" needs only the price. Neither is built.
+
+## Round 3: is there more of the same kind? (`round3.py`, `out/round3.txt`, Nov 15 night)
+
+The owner: "you sure there are no other stuff like the 2 signals?" 75 rules of ten families not tried before, each
+**added to the live setup** (both signals, tp 4.0, 600 s: +75.29 SOL), so a gain is a gain on top:
+
+| family | ahead of live | best | what it shows |
+|---|---|---|---|
+| more selling wallets than buying (wallets, not trades) | 5 of 12 | +0.70 | the trade count already says it |
+| sells 2-3x the buys | 2 of 8 | +0.17 | the same |
+| net tokens dumped over 1-2 min (2-8% of supply) | 0 of 8 | −7.01 | big dumps are followed by bounces: −7 to −21 |
+| no buy by anyone else for 30-180 s | 4 of 5 | +0.92 | the stall rule already covers a coin nobody buys |
+| under 2-5 trades in a minute | 0 of 3 | −2.78 | |
+| a stop that waits (under 0.5-0.8x after 1-5 min) | 3 of 16 | +0.07 | |
+| the coin's creator sells | 0 of 2 | −1.52 | the creator known for all 1,238 |
+| wallet 4's sale followed more widely | 0 of 7 | −0.64 | above 1.5x or at any time: −8 to −23; never: −0.94 |
+| timer 300-1790 s | 1 of 5 | +0.55 (900 s) | 300 s −7.68; 450-1790 s within ±1.6 |
+| the two live signals with other values | 2 of 9 | +1.76 (stall 240 s) | 5 in 60 s and 180 s sit on a flat top |
+
+Picked on two blocks and scored on the third: −0.12 / −0.23 / −0.69 (**−1.04 SOL**). **Nothing adds to the live setup;**
+its neighbours are all within about ±2 SOL of it, which is what a setup that is not a lucky pick looks like. Not
+testable from this data: what the top holders held before wallet 4's buy (the paths start at its buy; it would need
+each coin's full history from its creation).
