@@ -1,0 +1,6 @@
+896 buys of the six kinds; days 10-21 to 11-15 (the first and last partial, left out of the day counts)
+   0.5 SOL, no fee rule : total +45.52 / +34.44 / +49.10 | deepest fall -3.68 / -3.13 / -2.93 | losing days 6 / 6 / 5 of 24 | worst day -1.95 / -1.92 / -1.64 | the deepest fall at landing 4: 10-25 19:42 to 10-27 20:12 Beirut
+   0.5 SOL, fee rule on : total +45.16 / +35.99 / +50.31 | deepest fall -3.09 / -3.00 / -2.36 | losing days 4 / 3 / 4 of 24 | worst day -1.41 / -1.73 / -0.78 | the deepest fall at landing 4: 10-25 19:10 to 10-27 20:54 Beirut
+   0.7 SOL, no fee rule : total +63.36 / +48.05 / +68.29 | deepest fall -5.09 / -4.32 / -4.04 | losing days 6 / 6 / 5 of 24 | worst day -2.70 / -2.65 / -2.27 | the deepest fall at landing 4: 10-25 19:42 to 10-27 20:12 Beirut
+   0.7 SOL, fee rule on : total +62.85 / +50.17 / +69.96 | deepest fall -4.27 / -4.14 / -3.27 | losing days 4 / 3 / 4 of 24 | worst day -1.95 / -2.40 / -1.09 | the deepest fall at landing 4: 10-25 19:10 to 10-27 20:54 Beirut
+(each cell: landing 4 / 8 / one block late)
