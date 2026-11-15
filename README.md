@@ -154,7 +154,7 @@ hold 600s max_open 2`, six floats, feed connected; SOL 1.1135.
 **#36 `GGSWz3uu`** (SPCX float, bought 19:02:34 UTC): peak 2.56x, wallet 4 sold at 63 s at +107% (above 1.5x, so not
 followed), our timer sold at 600 s: −0.0864 SOL (chain −42,721 SPCX units and the fees, about −0.085). **#37
 `Da5Gbwd8`** (TTWO, the whole float, 127,753 units = 0.418 SOL): take profit 3.02x after 68 s, **+1.0501 SOL** (chain
-+323,105 TTWO units, about +1.048). A holder fee in SPCX for GGSWz3uu, +13,060 units (`2rtWCTbw`, from `HckQ93Xq...`).
++323,105 TTWO units, about +1.048). A holder fee in SPCX for GGSWz3uu, +13,060 units (`2rtWCTbw`, from `HckQ93Xq...`), booked with `float book` at +0.0252 SOL.
 Day +0.7906 SOL.
 **Nov 15 19:29:51 UTC (21:29 Beirut): take profit 4.0 and two exit signals** (`82d0768`; the owner's go after
 `analysis/research/2026-11-16/signals/`): `sell_pressure = [5, 60, 30]` (out when the other traders' sells outnumber
