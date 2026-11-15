@@ -1200,6 +1200,28 @@ pub fn token_close_account(token_program: &Pubkey, account: &Pubkey, destination
     }
 }
 
+/// `TransferChecked` (tag 12: u64 LE amount, u8 decimals) under
+/// `token_program` (SPL Token or Token-2022: same tag and accounts).
+pub fn token_transfer_checked(
+    token_program: &Pubkey,
+    source: &Pubkey,
+    mint: &Pubkey,
+    destination: &Pubkey,
+    owner: &Pubkey,
+    amount: u64,
+    decimals: u8,
+) -> Instruction {
+    let mut data = Vec::with_capacity(10);
+    data.push(12u8);
+    data.extend_from_slice(&amount.to_le_bytes());
+    data.push(decimals);
+    Instruction {
+        program_id: *token_program,
+        accounts: vec![w(*source), ro(*mint), w(*destination), AccountMeta::new_readonly(*owner, true)],
+        data,
+    }
+}
+
 /// Compute Budget `SetComputeUnitLimit` (tag 2, u32 LE).
 pub fn set_compute_unit_limit(units: u32) -> Instruction {
     let mut data = vec![2u8];
@@ -1291,6 +1313,16 @@ pub fn buy_v3_with_ata(
 
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn transfer_checked_layout() {
+        let k = |n: u8| Pubkey::new_from_array([n; 32]);
+        let ix = token_transfer_checked(&c::SPL_TOKEN_PROGRAM_ID, &k(1), &k(2), &k(3), &k(4), 1_000_000, 6);
+        assert_eq!(ix.data, [vec![12u8], 1_000_000u64.to_le_bytes().to_vec(), vec![6u8]].concat());
+        let w: Vec<(bool, bool)> = ix.accounts.iter().map(|a| (a.is_writable, a.is_signer)).collect();
+        assert_eq!(w, [(true, false), (false, false), (true, false), (false, true)]);
+        assert_eq!(ix.accounts[1].pubkey, k(2));
+    }
+
     use super::*;
 
     /// The `create_v2` argument bytes of a live launch (slot 460008810,

@@ -17,6 +17,9 @@
 //!     Send SOL from the long wallet to TO (funding another bot's wallet):
 //!     a plain transfer, refused if it would leave under 0.1 SOL. `all`
 //!     empties the wallet: its empty token accounts closed, every lamport sent.
+//! rugsnipe-long send-token MINT TO AMOUNT|all [--config ...]
+//!     Send a token from the long wallet to TO (AMOUNT in whole tokens, e.g.
+//!     1 or 0.5): creates TO's token account if missing (about 0.002 SOL).
 //! rugsnipe-long float book SIG [--config ...]
 //!     Book a sale already made (its SOL change) for `status`.
 //! rugsnipe-long copy [--config /etc/rugsnipe/copier.toml]
@@ -71,6 +74,7 @@ fn main() {
         Some("status") => status(&args[1..]),
         Some("float") => float(&args[1..]),
         Some("send") => send_sol(&args[1..]),
+        Some("send-token") => send_token(&args[1..]),
         Some("keygen") => keygen(&args[1..]),
         Some("copy") => copy_run(&args[1..]),
         Some("copy-status") => copy_status(&args[1..]),
@@ -949,6 +953,60 @@ fn send_sol(args: &[String]) -> Result<(), String> {
         }
     }
     Err("not landed after 60 s (check the signature)".into())
+}
+
+/// `send-token MINT TO AMOUNT|all`: a token from the long wallet to TO's
+/// associated account (created if missing; 2026-11-16: 1 USDT to a payee).
+fn send_token(args: &[String]) -> Result<(), String> {
+    let cfg = load_cfg(args)?;
+    let k = keys::api_keys(&cfg.api_keys)?;
+    let mut rpc = rpc_of(&cfg, &k)?;
+    let signer = keys::wallet(&cfg.wallet_file)?;
+    let me = signer.pubkey();
+    let usage = "send-token MINT TO AMOUNT|all";
+    let mint: Pubkey = args.first().ok_or(usage)?.parse().map_err(|_| "MINT is not an address")?;
+    let to: Pubkey = args.get(1).ok_or(usage)?.parse().map_err(|_| "TO is not an address")?;
+    if to == me {
+        return Err("TO is this wallet".into());
+    }
+    let prog = route::Chain::mint_program(&mut rpc, &mint).ok_or("unknown mint")?;
+    let dec = rpc.decimals(&mint).ok_or("the mint's decimals")?;
+    let held = rpc.token_balance(&me, &mint, &prog)?;
+    let amount = match args.get(2).map(String::as_str).ok_or(usage)? {
+        "all" => held,
+        x => {
+            let v: f64 = x.parse().map_err(|_| "AMOUNT (whole tokens) or all")?;
+            if !(v > 0.0) {
+                return Err("AMOUNT must be positive".into());
+            }
+            (v * 10f64.powi(dec as i32)).round() as u64
+        }
+    };
+    if amount == 0 || amount > held {
+        return Err(format!("this wallet holds {held} raw units of {}; asked {amount}", &mint.to_string()[..8]));
+    }
+    let src = pda::associated_token_address(&me, &mint, &prog);
+    let dst = pda::associated_token_address(&to, &mint, &prog);
+    let ixs = [
+        pump_codec::instructions::create_associated_token_account_idempotent(&me, &to, &mint, &prog),
+        pump_codec::instructions::token_transfer_checked(&prog, &src, &mint, &dst, &me, amount, dec),
+    ];
+    let (bh, _) = rpc.blockhash()?;
+    let (tx, _) = txb::sign(&me, &ixs, &bh, |m| signer.sign(m)).map_err(|e| e.to_string())?;
+    let s = rpc.send(&tx)?;
+    println!(
+        "sent {} {} ({amount} raw units) from {} to {to}: {s}",
+        amount as f64 / 10f64.powi(dec as i32),
+        &mint.to_string()[..8],
+        &me.to_string()[..8]
+    );
+    let slot = landed(&rpc, &s)?;
+    println!(
+        "landed in slot {slot}; ours now {} raw units, theirs {} raw units",
+        rpc.token_balance(&me, &mint, &prog).unwrap_or(0),
+        rpc.token_balance(&to, &mint, &prog).unwrap_or(0)
+    );
+    Ok(())
 }
 
 /// Wait up to 60 s for `s` to land.

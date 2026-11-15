@@ -123,6 +123,9 @@ within a slot** (`exits_pess.py`):
   (`DistributeFeeToHolders`, sent by `HckQ93Xq...`; the coins "airdropped" on Nov 12-13 were these). For a coin priced
   in a float they land in the float itself, and the trade's journal does not see them. `float book SIG` now adds the
   floats that came in that transaction, at the price API's rate, to the SOL change it books.
+- **`send-token MINT TO AMOUNT|all`** (Nov 16): a token from the long wallet to TO (AMOUNT in whole tokens), TO's token
+  account created if missing (about 0.002 SOL). First use: 1 USDT to a payee, bought with `float buy`. Checked by
+  simulation from a USDT holder before it was used.
 - **`send TO all`** (Nov 14): empties the wallet, for a bot paused for good (TAB16RxX's): closes its empty token
   accounts and any wrapped SOL (10 a transaction; their rent comes back; a close that fails is reported and skipped),
   lists accounts still holding tokens (sell them first with `float sell MINT all`), then sends every lamport but the
