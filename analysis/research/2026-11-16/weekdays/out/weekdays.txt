@@ -1,0 +1,10 @@
+24 full Beirut days, 2026-10-22 to 2026-11-14; per day: its transactions | its 1.45+ SOL buys in another token | of them copyable now
+   Mon (3 days: Oct 26, Nov 02, Nov 09):    1761 |  49.3 |  32.3   by day: 40 33 24
+   Tue (3 days: Oct 27, Nov 03, Nov 10):    2361 |  45.3 |  31.0   by day: 32 29 32
+   Wed (3 days: Oct 28, Nov 04, Nov 11):    2449 |  48.7 |  30.7   by day: 31 28 33
+   Thu (4 days: Oct 22, Oct 29, Nov 05, Nov 12):    2413 |  64.0 |  37.2   by day: 48 31 43 27
+   Fri (4 days: Oct 23, Oct 30, Nov 06, Nov 13):    2100 |  57.0 |  38.8   by day: 56 22 62 15
+   Sat (4 days: Oct 24, Oct 31, Nov 07, Nov 14):    1994 |  53.5 |  35.8   by day: 45 39 41 18
+   Sun (3 days: Oct 25, Nov 01, Nov 08):    1920 |  67.0 |  50.3   by day: 62 39 50
+   weekdays:    2221 |  53.8 |  34.5
+   weekend :    1962 |  59.3 |  42.0
