@@ -18,8 +18,8 @@ Wallet 4's strategies:
   (`fra-long`, user `ops`, prompt `ops@fra-long`): since Nov 15 14:12 UTC 0.7 SOL × 2 (its buys of 1.3+ SOL since 14:47), take profit 3.0, no stop, 600 s,
   daily stop 1.4, the early-sale rule (`follow_early_s = [30, 290]`), 3-hop routes (v0), floats WBTC, PUMP, SPCX, TTWO,
   DJT and HYPE (`float_min_frac = 0.5`; `float level MINT SOL` once a day; `analysis/research/2026-11-14/float_exits/`,
-  `2026-11-15/all_tokens/`), coins with a fee tier under 125 bps skipped (`min_fee_bps = 125`, Nov 15;
-  `2026-11-15/skip_filters/`); the second
+  `2026-11-15/all_tokens/`), every fee tier copied (`min_fee_bps = 0`: the 125 bps floor ran Nov 15 13:08 UTC to that
+  evening and was removed on the owner's call, for fear of overfitting; `2026-11-15/skip_filters/`); the second
   unit `rugsnipe-long-tab` (TAB16RxX) is paused since Nov 14 (README "Live again"). Wallet
   `Eao8T2Pk...` (its key copied to the owner's Mac first). Before that, **stopped on Oct 29 ~13:40 UTC: Cherry deleted the hourly
   Frankfurt box (`fra-long`) for a zero balance, and the wallet's only key file with it; 4.5 SOL at `E7KX1hcM...` are
