@@ -177,6 +177,12 @@ units). **The box's `cu_limit = 200000` (set Oct 28 for 2-hop routes) is too low
 buys use up to 177,930 units (2-hop float routes up to 274,262), and ours add about 40,000 for the token accounts.
 To be raised to 350,000 (about +0.0003 SOL a transaction). Day: 9 closed, 4 won, +0.8127; all real 32, +0.4295; with
 holder fees +1.1932 SOL.
+**The exit, studied one last time and frozen (Nov 15 night, `analysis/research/2026-11-16/final_exit/`):** each part
+changed alone against the live setup, the noise measured (±3.4 SOL when the days are drawn again). The 100 copies
+where wallet 4 sold at 1.5x or more and we stayed make +47.15 of the total (+94% a copy, 82% won); every way of
+leaving behind such a sale loses 2 to 19 SOL; following its sale in its first 30 s loses 9. Take profit under 4 loses
+in every block, 4 to 6 is the same. No combination beats the live setup walked forward. **Nothing changes; no more
+changes to the exit until about 50 real trades or two weeks have judged it** (the owner's rule).
 **The settings of the two signals, all of them, on the live setup** (`analysis/research/2026-11-16/signals/out/grid.txt`,
 520 settings): windows of 20-45 s lose 5 to 21 SOL, 60-120 s are flat, counting from 0-10 s after its buy loses 3 to
 5, SOL in place of the trade count loses everywhere, a stall under 120 s loses 2 to 17 and 180-300 s are flat (+3.1
