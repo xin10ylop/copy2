@@ -1,4 +1,4 @@
-# Where wallet 4 makes its money now (Nov 16; in progress)
+# Where wallet 4 makes its money now (Nov 16)
 
 The owner: "other than the floats we don't hold, see what makes him good money and we can engineer to copy".
 `decomp.py` redoes `02-decomposition/` on Oct 29 12:02 UTC - Nov 15 14:12 UTC (17.1 days) from its landed
@@ -28,5 +28,19 @@ band, Oct 21 - Nov 15; every copy with no slot limit, the live rule, 0.5 SOL, me
 By size inside the band: 1.0-1.1 −2.1% a copy, 1.1-1.2 +5.5%, 1.2-1.3 −4.3%, **1.3-1.45 +9.8% (+2.38 / +1.61 / +0.71
 in the three blocks)**. By what we pay with: TTWO +20.5%, PUMP +10.7%, WBTC −0.3%, SOL −4.6%, SPCX −12.1%. Wallet 4
 makes +8.6% a coin on the band, about half its +16.7% on the 1.45+ buys; our copy keeps +2.8%, too little to give up
-slots of the 1.45+ copies for. The 1.3-1.45 slice is the one to test: the rest of it is being fetched (`routable.json`
-grows by every 1.3-1.45 buy not in the sample) for a run of the bot with `min_sol` 1.3 against 1.45.
+slots of the 1.45+ copies for. The 1.3-1.45 slice was then fetched in full.
+
+**`min_sol` 1.3 against 1.45** (`min13.py`, `out/min13.txt`; the bot's run, the live rule, the six kinds, the fee rule
+on, 0.5 SOL, mean of three landings; 784 buys of 1.45+ and 257 of 1.3-1.45):
+
+| | net (without the best 5) | A | B | C | losing days | worst day | deepest fall | copies, take profits (landing 4) |
+|---|---|---|---|---|---|---|---|---|
+| 2 open, min_sol 1.45 (live) | +43.82 (+37.57) | +10.08 | +18.35 | +15.39 | 3.7 | −1.31 | −2.82 | 709, 75 |
+| **2 open, min_sol 1.3** | **+54.82 (+48.54)** | +12.60 | +20.93 | +21.29 | 4.7 | −1.11 | −2.89 | 916, 103 |
+| 3 open, min_sol 1.45 | +45.47 (+39.16) | +10.14 | +20.16 | +15.17 | 4.0 | −1.31 | −2.82 | 722, 75 |
+| 3 open, min_sol 1.3 | +56.31 (+49.98) | +13.46 | +21.78 | +21.07 | 4.7 | −0.87 | −2.65 | 943, 104 |
+
+The slice was chosen on the first sample (88 of its copies, +10.4% a copy); **the 169 it was not chosen on make +10.5% a
+copy, +8.88 SOL, positive in each block (A +2.54, B +1.56, C +4.78)**. The edge at 1.3 is not smooth (1.2-1.3 was −4.3%
+a copy in the sample, 78 copies), and in October (`02-decomposition/` §2) the 1.25-1.45 band lost: to be watched.
+Recommended Nov 16: `min_sol = 1.3`, 2 open.
