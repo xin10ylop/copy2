@@ -690,3 +690,51 @@ fn a_coin_under_the_fee_floor_is_skipped() {
     e.on_tx(Src::Copied, &tx);
     assert_eq!(e.book.positions.len(), 1, "at the floor: copied");
 }
+
+/// No new high for `stall_s` once the price has been back at our fill:
+/// out on the stall signal (2026-11-15, #36 GGSWz3uu peaked at 2.56x and
+/// drifted down for minutes; analysis/research/2026-11-16/signals/).
+#[test]
+fn a_coin_that_stops_making_highs_is_sold_on_the_stall() {
+    let mut e = opened("stall");
+    e.cfg.stall_s = 180;
+    let p = &e.book.positions[0];
+    assert!(p.entry_px > 0.0, "the fill price is kept");
+    let (seen, fill_ms) = (p.seen_ms, p.hi_ms);
+    // a high above our fill, then nothing higher
+    e.book.positions[0].hi = e.book.positions[0].entry_px * 1.8;
+    e.book.positions[0].hi_ms = fill_ms;
+    e.on_tick(fill_ms + 179_000);
+    assert_eq!(e.book.positions[0].state, State::Open);
+    e.on_tick(fill_ms + 180_000);
+    assert!(fill_ms + 180_000 < seen + e.cfg.max_hold_s * 1000, "before the timer");
+    let p = &e.book.positions[0];
+    assert_eq!((p.state, p.reason), (State::Selling, Some(Reason::Stall)));
+}
+
+/// The other traders' sells outnumber their buys by `n` over `w` seconds:
+/// out on the pressure signal; its own trades are not counted.
+#[test]
+fn other_traders_selling_more_than_buying_takes_us_out() {
+    let mut e = opened("pressure");
+    e.cfg.sell_pressure = vec![5, 60, 30];
+    // its own trade on the coin again: not part of the flow
+    e.on_tx(Src::Copied, &fx("w4_buy_wsol_multihop"));
+    assert!(e.book.positions[0].flow.is_empty());
+    let seen = e.book.positions[0].seen_ms;
+    for k in 0..4 {
+        e.book.positions[0].flow.push_back((seen + 40_000 + k * 1_000, true));
+    }
+    e.on_tick(seen + 45_000);
+    assert_eq!(e.book.positions[0].state, State::Open, "4 net is under 5");
+    e.book.positions[0].flow.push_back((seen + 46_000, true));
+    e.on_tick(seen + 46_000);
+    let p = &e.book.positions[0];
+    assert_eq!((p.state, p.reason), (State::Selling, Some(Reason::Pressure)));
+    land_sell(&mut e);
+    assert_eq!(e.book.positions[0].state, State::Closed);
+    let dir = std::path::PathBuf::from(&e.cfg.state_dir);
+    assert!(std::fs::read_to_string(dir.join("closed.jsonl"))
+        .unwrap()
+        .contains("\"sell_pressure\""));
+}

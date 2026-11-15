@@ -78,6 +78,11 @@ float_min_frac = 1.0
 # skip a coin whose fee tier (protocol + creator fee of its own buy, basis points) is under this; 0 = off. 125 skips
 # the coins priced in another coin with a creator fee of 1% or less (analysis/research/2026-11-15/skip_filters/).
 min_fee_bps = 0
+# exit signals (analysis/research/2026-11-16/signals/): out when the other traders' sells outnumber their buys by n
+# over w seconds, from `from` s after its buy ([n, w, from]; [] = off; live from Nov 15: [5, 60, 30]); and when the
+# price has made no new high for stall_s seconds once back at our fill price (0 = off; live from Nov 15: 180).
+sell_pressure = []
+stall_s = 0
 
 state_dir = "/var/lib/rugsnipe-long"
 price_api = "https://lite-api.jup.ag/price/v3"

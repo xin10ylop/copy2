@@ -190,6 +190,7 @@ impl Engine {
     pub fn on_tx(&mut self, src: Src, tx: &TxLite) {
         // the curve of every held coin
         if !tx.err {
+            let (me, copy, now) = (self.me, self.copy, now_ms());
             for t in tx.trades() {
                 for p in self
                     .book
@@ -210,6 +211,19 @@ impl Engine {
                         p.vq = t.vq;
                         p.last_slot = tx.slot;
                         p.peak = p.peak.max(p.price());
+                        // the high since our fill, for stall_s
+                        if p.state == State::Open && p.price() > p.hi {
+                            p.hi = p.price();
+                            p.hi_ms = now;
+                        }
+                    }
+                    // the other traders' side, for sell_pressure (ours and
+                    // its own left out, as the backtest leaves them out)
+                    if p.state == State::Open && t.user != me && t.user != copy {
+                        p.flow.push_back((now, !t.is_buy));
+                        while p.flow.front().is_some_and(|(m, _)| now.saturating_sub(*m) > 900_000) {
+                            p.flow.pop_front();
+                        }
                     }
                     if t.complete() {
                         // also while a sell is out: its curve sell fails, and
@@ -470,6 +484,10 @@ impl Engine {
             its_sell_net: 0,
             next_chase_ms: 0,
             recovered: false,
+            entry_px: 0.0,
+            hi: 0.0,
+            hi_ms: 0,
+            flow: Default::default(),
         };
         if paper {
             println!(
@@ -872,6 +890,8 @@ impl Engine {
             // the curve completed (sell on the pool), or it sold (out
             // behind it)
             if p.state == State::Open {
+                p.entry_px = p.price();
+                p.hi_ms = now_ms();
                 if p.graduated {
                     p.reason = Some(Reason::Complete);
                 } else if p.its_sold {
@@ -981,6 +1001,7 @@ impl Engine {
                     // is frozen, no rule of ours would fire (2RR6sfbi)
                     .or_else(|| p.graduated.then_some(Reason::Complete))
                     .or_else(|| pos::exit_due(p, now, cfg.take_profit, cfg.stop, cfg.max_hold_s))
+                    .or_else(|| pos::signal_due(p, now, &cfg.sell_pressure, cfg.stall_s))
                     .map(|r| (i, Act::Exit(r))),
                 _ => None,
             })
@@ -1021,6 +1042,8 @@ impl Engine {
                         continue;
                     }
                     p.state = State::Open;
+                    p.entry_px = p.price();
+                    p.hi_ms = now;
                     // what happened while the buy was out (paper too)
                     if p.graduated {
                         p.reason = Some(Reason::Complete);

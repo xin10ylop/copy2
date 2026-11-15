@@ -119,6 +119,15 @@ within a slot** (`exits_pess.py`):
   same rule (under 125 bps: 98 of 781 copies, 4 take profits, the bot's run +41 SOL against +36 over Oct 21 - Nov 14,
   our 9 real trades of that kind all lost); the 10 such copies after the data made +3.9 SOL in the model, so it stays
   off until more are seen (`analysis/research/2026-11-15/skip_filters/`).
+- **Two exit signals: `sell_pressure` and `stall_s`** (Nov 15, both off by default). `sell_pressure = [n, w, from]`:
+  out (`sell_pressure`) when the other traders' sells on the coin outnumber their buys by `n` or more over the `w`
+  seconds up to their latest trade, from `from` seconds after its buy (wallet 4's own trades and ours are not counted;
+  the feed already carries every transaction of a held coin). `stall_s`: out (`stall`) when the price has made no new
+  high for that many seconds, once it has been back at our fill price (the high and its time are tracked from our
+  fill; `entry_px`, `hi`, `hi_ms` in the book). Both come after take profit, stop and the timer. Oct 21 - Nov 15,
+  1,238 buys at 0.5 SOL: `[5, 60, 30]` +6.5 SOL, `180` +6.5, together with `take_profit = 4.0` +75.3 against +56.6,
+  3 losing days of 24 against 6, worst day −1.23 against −2.41; picked on two blocks, ahead on the third each time
+  (`analysis/research/2026-11-16/signals/`). Trailing stops and "a top holder sells" were tested too and do not help.
 - **Holder fees paid into a float** (Nov 14): pump distributes fees to a coin's holders in the coin's quote token
   (`DistributeFeeToHolders`, sent by `HckQ93Xq...`; the coins "airdropped" on Nov 12-13 were these). For a coin priced
   in a float they land in the float itself, and the trade's journal does not see them. `float book SIG` now adds the

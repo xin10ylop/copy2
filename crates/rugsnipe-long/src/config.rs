@@ -111,6 +111,18 @@ pub struct LongCfg {
     /// model, so it is off until more of them are seen
     /// (analysis/research/2026-11-15/skip_filters/).
     pub min_fee_bps: u32,
+    /// Sell when the other traders' sells outnumber their buys by `n` or more
+    /// over the last `w` seconds, from `from` seconds after its buy: `[n, w,
+    /// from]`; empty = off. Oct 21 - Nov 15, [5, 60, 30] made +6.5 SOL at 0.5
+    /// SOL over 24 days on its own, ahead in each block; any n from 2 to 10
+    /// over 60-120 s was ahead, over 10 s all lost
+    /// (analysis/research/2026-11-16/signals/).
+    pub sell_pressure: Vec<u64>,
+    /// Sell when the price has made no new high for this many seconds, once
+    /// it has been back at our fill price; 0 = off. 180 s: +6.5 SOL on its
+    /// own, 90-240 s all ahead; with sell_pressure and take_profit 4.0, +75.3
+    /// against +56.6 SOL, 3 losing days of 24 against 6 (the same study).
+    pub stall_s: u64,
     /// A float that holds less than the stake (a loss is paid back in it)
     /// still buys, with all it holds, when that is at least this share of
     /// the stake; under it the buy is skipped. 1.0 = the whole stake or
@@ -161,6 +173,8 @@ impl Default for LongCfg {
             float_stake_sol: 0.0,
             float_min_frac: 1.0,
             min_fee_bps: 0,
+            sell_pressure: vec![],
+            stall_s: 0,
             state_dir: "/var/lib/rugsnipe-long".into(),
             price_api: crate::oracle::API.into(),
         }
@@ -232,6 +246,11 @@ impl LongCfg {
             || (self.follow_early_s.len() == 2 && self.follow_early_s[0] < self.follow_early_s[1]))
         {
             return bad("follow_early_s must be [] or [from, to] seconds with from < to");
+        }
+        if !(self.sell_pressure.is_empty()
+            || (self.sell_pressure.len() == 3 && self.sell_pressure[0] > 0 && self.sell_pressure[1] > 0))
+        {
+            return bad("sell_pressure must be [] or [n, w, from] with n > 0 and w > 0 seconds");
         }
         if !(self.follow_early_below > 0.0) {
             return bad("follow_early_below must be positive");

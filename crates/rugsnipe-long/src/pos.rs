@@ -3,9 +3,13 @@
 //!
 //! **The exit rule** (docs/20): the curve price against the price its buy
 //! left, without our own tokens (`(vt_ref / (vt + ours))^2`): take profit
-//! at `take_profit`, stop at `stop`, and `max_hold_s` after its buy.
+//! at `take_profit`, stop at `stop`, and `max_hold_s` after its buy; and
+//! the two signals (`signal_due`): other traders selling more than they buy,
+//! and no new high for a while.
 //! A paper position's tokens are not out of the live curve, so nothing is
 //! added back.
+
+use std::collections::VecDeque;
 
 use pump_codec::multihop::{Hop, Route, Venue};
 use pump_codec::Pubkey;
@@ -40,6 +44,11 @@ pub enum Reason {
     ItsSell,
     /// By hand (`rugsnipe-long sell`).
     Manual,
+    /// Other traders sold more than they bought (`sell_pressure`).
+    #[serde(rename = "sell_pressure")]
+    Pressure,
+    /// No new high for `stall_s` seconds.
+    Stall,
 }
 
 impl Reason {
@@ -51,6 +60,8 @@ impl Reason {
             Self::Complete => "complete",
             Self::ItsSell => "its_sell",
             Self::Manual => "manual",
+            Self::Pressure => "sell_pressure",
+            Self::Stall => "stall",
         }
     }
 }
@@ -167,6 +178,21 @@ pub struct Position {
     /// whatever its age.
     #[serde(skip)]
     pub recovered: bool,
+    /// The price multiple at our fill, without our own tokens (0: not
+    /// filled yet). `stall_s` counts once the price is back at it.
+    #[serde(default)]
+    pub entry_px: f64,
+    /// The high since our fill (0: no trade since) and when it was made
+    /// (unix ms).
+    #[serde(default)]
+    pub hi: f64,
+    #[serde(default)]
+    pub hi_ms: u64,
+    /// The other traders' trades on the coin while we hold it, (unix ms,
+    /// a sell): the last minutes only (`sell_pressure`). Not kept across a
+    /// restart.
+    #[serde(skip)]
+    pub flow: VecDeque<(u64, bool)>,
 }
 
 /// How long to wait before the next sell of a position after `tries` failed
@@ -263,6 +289,40 @@ impl Position {
         let ours = if self.paper { 0 } else { self.tokens };
         pump_codec::multihop::curve_price_ratio(self.vt_ref, self.vt, ours)
     }
+}
+
+/// A signal exit due now, if any (analysis/research/2026-11-16/signals/):
+/// `pressure` = [n, w, from]: the other traders' sells outnumber their buys
+/// by `n` or more over the `w` seconds up to their latest trade, `from`
+/// seconds or more after its buy (checked as of that trade, as the backtest
+/// checks it at each trade); `stall_s`: the price has made no new high for
+/// that long, once it has been back at our fill price. Either off when
+/// empty / 0.
+pub fn signal_due(p: &Position, now_ms: u64, pressure: &[u64], stall_s: u64) -> Option<Reason> {
+    if p.state != State::Open {
+        return None;
+    }
+    if let (&[n, w, from], Some(&(last, _))) = (pressure, p.flow.back()) {
+        if last.saturating_sub(p.seen_ms) >= from * 1000 {
+            let net: i64 = p
+                .flow
+                .iter()
+                .filter(|(t, _)| last.saturating_sub(*t) <= w * 1000)
+                .map(|(_, sell)| if *sell { 1 } else { -1 })
+                .sum();
+            if net >= n as i64 {
+                return Some(Reason::Pressure);
+            }
+        }
+    }
+    if stall_s > 0
+        && p.entry_px > 0.0
+        && p.hi >= p.entry_px
+        && now_ms.saturating_sub(p.hi_ms) >= stall_s * 1000
+    {
+        return Some(Reason::Stall);
+    }
+    None
 }
 
 /// The exit due now, if any.
@@ -477,7 +537,55 @@ mod tests {
             its_sell_net: 0,
             next_chase_ms: 0,
             recovered: false,
+            entry_px: 0.0,
+            hi: 0.0,
+            hi_ms: 0,
+            flow: Default::default(),
         }
+    }
+
+    #[test]
+    fn sell_pressure_counts_the_last_window_from_its_age() {
+        let mut p = pos();
+        p.state = State::Open;
+        p.seen_ms = 1_000_000;
+        let cfg = [5, 60, 30];
+        // six sells and one buy in 20 s, from 40 s after its buy: 5 net
+        for k in 0..6 {
+            p.flow.push_back((1_040_000 + k * 3_000, true));
+        }
+        p.flow.push_back((1_058_000, false));
+        assert_eq!(signal_due(&p, 1_060_000, &cfg, 0), Some(Reason::Pressure));
+        assert_eq!(signal_due(&p, 1_060_000, &[], 0), None, "off");
+        // one more buy: 4 net, not enough
+        p.flow.push_back((1_059_000, false));
+        assert_eq!(signal_due(&p, 1_060_000, &cfg, 0), None);
+        // the same before 30 s after its buy is not counted
+        let mut q = pos();
+        q.state = State::Open;
+        q.seen_ms = 1_000_000;
+        for k in 0..6 {
+            q.flow.push_back((1_002_000 + k * 3_000, true));
+        }
+        assert_eq!(signal_due(&q, 1_020_000, &cfg, 0), None);
+        // sells older than the window ahead of the latest trade drop out
+        q.flow.push_back((1_100_000, true));
+        assert_eq!(signal_due(&q, 1_100_000, &cfg, 0), None);
+    }
+
+    #[test]
+    fn stall_counts_from_the_last_high_once_back_at_our_fill() {
+        let mut p = pos();
+        p.state = State::Open;
+        p.entry_px = 1.1;
+        p.hi = 1.05;
+        p.hi_ms = 1_000_000;
+        // its high since our fill is under our fill price: not armed
+        assert_eq!(signal_due(&p, 1_500_000, &[], 180), None);
+        p.hi = 1.6;
+        assert_eq!(signal_due(&p, 1_179_000, &[], 180), None);
+        assert_eq!(signal_due(&p, 1_180_000, &[], 180), Some(Reason::Stall));
+        assert_eq!(signal_due(&p, 1_180_000, &[], 0), None, "off");
     }
 
     #[test]

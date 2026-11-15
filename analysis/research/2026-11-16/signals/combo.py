@@ -22,11 +22,12 @@ for n in L.LAND:
     for r, net, why in run(None, 3.0, n): d0[day(r["t"])] += net / 3
 keys = sorted(d0)[1:-1]; random.seed(7)
 print(f"{len(S2.ROWS)} buys; 0.5 SOL, 2 open, 600 s, early 30-290 s; gain = against the live rule (tp 3.0, no signal)")
-for name, sig, tp in RULES:
-    s = score(sig, tp); d = collections.defaultdict(float)
-    for n in L.LAND:
-        for r, net, why in run(sig, tp, n): d[day(r["t"])] += net / 3
-    g = [d[k] - d0[k] for k in keys]; draws = [sum(random.choice(g) for _ in g) for _ in range(2000)]
-    print(f"   {name:32s}: {s['tot']:+6.2f} (gain {s['tot'] - L0['tot']:+6.2f}) | A {s['b'][0]:+6.2f} B {s['b'][1]:+6.2f} C {s['b'][2]:+6.2f} | w/o best 5 {s['wo5']:+6.2f}"
-          f" | losing days {s['neg']}/{s['nd']}, worst {s['worst']:+5.2f}, deepest fall {s['fall']:+5.2f} | ahead in {100 * sum(1 for x in draws if x > 0) / 2000:.1f}% of draws"
-          f" | take profits {s['whys'].get('tp', 0):.0f}, signal {s['whys'].get('signal', 0):.0f}, timer {s['whys'].get('time', 0):.0f}")
+if __name__ == "__main__":
+  for name, sig, tp in RULES:
+      s = score(sig, tp); d = collections.defaultdict(float)
+      for n in L.LAND:
+          for r, net, why in run(sig, tp, n): d[day(r["t"])] += net / 3
+      g = [d[k] - d0[k] for k in keys]; draws = [sum(random.choice(g) for _ in g) for _ in range(2000)]
+      print(f"   {name:32s}: {s['tot']:+6.2f} (gain {s['tot'] - L0['tot']:+6.2f}) | A {s['b'][0]:+6.2f} B {s['b'][1]:+6.2f} C {s['b'][2]:+6.2f} | w/o best 5 {s['wo5']:+6.2f}"
+            f" | losing days {s['neg']}/{s['nd']}, worst {s['worst']:+5.2f}, deepest fall {s['fall']:+5.2f} | ahead in {100 * sum(1 for x in draws if x > 0) / 2000:.1f}% of draws"
+            f" | take profits {s['whys'].get('tp', 0):.0f}, signal {s['whys'].get('signal', 0):.0f}, timer {s['whys'].get('time', 0):.0f}")
