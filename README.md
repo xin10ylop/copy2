@@ -100,7 +100,16 @@ max_open 2`, SOL 1.9478, feed connected. Before it, Nov 15: **#30 `BURn1o8x`, th
 float**, 3.00x at 330 s, +0.6038 SOL (its float held less than a stake, so +258%; wallet 4 +96.1%, sold at 157 s).
 Nov 14 also #22 `8FE3SQjW` −0.0924 and #23 `4A7n9wq8` (PUMP) −0.0703, both sold behind its early sale. By UTC day:
 Nov 12 +0.1830, Nov 13 +0.4946, **Nov 14 −1.0608**, Nov 15 +0.6038 to 12:00. All 24 real +0.2206; with the holder
-fees +0.9591 SOL. Numbers #21 and #24-#29 were buys skipped for lack of SOL after the number was taken. The TAB16RxX bot was paused by the owner on Nov 14 (14
+fees +0.9591 SOL. Numbers #21 and #24-#29 were buys skipped for lack of SOL after the number was taken.
+**Nov 15 13:08 UTC (15:08 Beirut): two more floats and the fee floor.** TTWO (`TTWofwAg...`, Take-Two tokenized stock)
+and DJT (`DJTu7vi8...`, Trump Media tokenized stock) held as floats at 0.5 SOL each
+(`analysis/research/2026-11-15/all_tokens/`: with both the bot's run is ahead in each of three blocks, +43.02 SOL
+against +34.94 over 24.7 days): DJT 7,953,726 units (slot 469735371); TTWO failed once on chain (Jupiter slippage,
+`Custom 6001`, a Sunday) and landed on the second try, 156,826 units (slot 469740926). **`min_fee_bps = 125`** (the
+owner's call after `analysis/research/2026-11-15/skip_filters/`: the same money over 26 days, 4 losing days against
+8, and all 9 real trades of that kind had lost; it would have skipped two winners on Nov 15). Code `3404441` (buy
+lines end with `fee N bps`). After it: SOL 0.9444, floats WBTC 0.997 / PUMP 0.600 / SPCX 0.598 / TTWO 0.499 / DJT 0.498
+SOL, about 4.14 SOL in all; 0.5 SOL × 2, tp 3.0, 600 s unchanged. The TAB16RxX bot was paused by the owner on Nov 14 (14
 real, −0.1665); `send TO all` built to return its balance.
 **A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
 branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet
