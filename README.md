@@ -195,6 +195,15 @@ day, −2.52 without its best 5 trades; its own sale is not wallet 4's (the 86 c
 The owner declined a paper run. Tested on wallet 4 the same night and not adopted: buy pressure as a guide for the
 take profit (`2026-11-16/buy_pressure/`, from 1.2x) and buying that slows or selling that rises
 (`2026-11-16/momentum/`).
+**#41-#48 (Nov 15 20:53-22:26 UTC), each by its rules and equal to the chain** (journal / chain at the status price):
+#41 `GqAzs7Pb` (SOL) sell_pressure +0.0725 / +0.0725 (wallet 4 −35.9% at 301 s); #42 `3DCv33mL` (SPCX) sell_pressure
+−0.0538 / −0.0530; #43 `DAnPxZ7s` (TTWO) sell_pressure −0.0252 / −0.0237; #44 `Z3kN3Xpm` (TTWO) sell_pressure at 1.49x
++0.2120 / +0.2137; #45 `GkJDPnXR` (TTWO) its early sale −0.0307 / −0.0313; #46 `Dy1ZHNtB` (TTWO) its early sale
+−0.1286 / −0.1292; #47 `wQPAb4FH` (SPCX) its early sale −0.1016 / −0.1020; #48 `AUtnQZej` (SPCX) sell_pressure −0.0740
+/ −0.0727. A round trip now costs 0.00306 SOL (0.00261 before `cu_limit` 350,000). **The frozen setup so far: 10 closed
+(#38-#48), −0.1073 SOL**; the seven `sell_pressure` exits +0.1536 together. Day: 17 closed, 6 won, +0.6833; all real
+40, +0.3001; with holder fees +1.0638 SOL. SPCX at 0.378 SOL after three losses: the floats are now levelled by
+themselves (`deploy/bin/rugsnipe-float-level`, a 10-minute timer, only while no copy is open; docs/20 §3).
 **The settings of the two signals, all of them, on the live setup** (`analysis/research/2026-11-16/signals/out/grid.txt`,
 520 settings): windows of 20-45 s lose 5 to 21 SOL, 60-120 s are flat, counting from 0-10 s after its buy loses 3 to
 5, SOL in place of the trade count loses everywhere, a stall under 120 s loses 2 to 17 and 180-300 s are flat (+3.1
