@@ -1,0 +1,49 @@
+wallet 4 = H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg; checked 11-15 16:16 Beirut; its transactions on file to 11-15 16:12 Beirut (4 min ago)
+
+1. gaps of 3+ hours with no transaction, last 10 days: 0
+
+2. balance now: 45.04 SOL; 31 token accounts with a balance, 21 worth 1+ SOL: EPjFWdd5 124.8 SOL, Pren1FvF 10.3 SOL, TTWofwAg 7.8 SOL, A7bdiYdS 6.2 SOL, AMC1qwR9 5.9 SOL, Pre8AREm 5.6 SOL, DJTu7vi8 5.3 SOL, So111111 5.0 SOL, XsqE9cRR 4.4 SOL, pumpCmXq 4.4 SOL; all tokens priced 220.2 SOL (SOL $72.25)
+
+3. by Beirut day (tokens at today's price): transactions | coin buys | buys of 1.45+ SOL | coin sales | its result on the coins it closed that day (coins of 0.05+ SOL, every leg priced)
+   11-05:   855 |  497 | 106 |  306 | 375 coins,  +1.0% a coin, 83 won
+   11-06:  2134 | 1303 | 216 |  814 | 358 coins,  -1.6% a coin, 96 won
+   11-07:  2042 | 1259 | 136 |  710 | 411 coins,  +0.6% a coin, 109 won
+   11-08:  1809 | 1011 | 143 |  714 | 430 coins,  -5.4% a coin, 106 won
+   11-09:  1673 |  997 | 103 |  615 | 402 coins,  +4.6% a coin, 113 won
+   11-10:  2663 | 1054 | 105 |  784 | 500 coins,  -2.2% a coin, 133 won
+   11-11:  2455 | 1180 | 128 | 1001 | 792 coins,  +6.4% a coin, 229 won
+   11-12:  2930 | 1623 | 125 | 1163 | 909 coins,  +2.0% a coin, 238 won
+   11-13:  2224 | 1104 | 130 |  840 | 635 coins,  +0.6% a coin, 180 won
+   11-14:  1932 | 1008 |  75 |  808 | 595 coins,  -5.4% a coin, 158 won
+   11-15:  1040 |  582 |  39 |  440 | 277 coins,  +2.8% a coin, 84 won
+
+4. money in and out that is not a coin trade, 1+ SOL (or its worth), last 10 days: 8
+   11-09 03:17 SOL -10.00 tokens {} | others: EXzuWDVb (its cash-out wallet since Oct 30) 10.0 | 3KZxf7uais
+   11-09 03:17 SOL -100.00 tokens {} | others: EXzuWDVb (its cash-out wallet since Oct 30) 100.0 | 2FUmAFy5bm
+   11-09 03:17 SOL -100.00 tokens {} | others: EXzuWDVb (its cash-out wallet since Oct 30) 100.0 | W2qag261oT
+   11-09 03:17 SOL -100.00 tokens {} | others: EXzuWDVb (its cash-out wallet since Oct 30) 100.0 | 52QbqBBZSa
+   11-09 03:18 SOL -100.00 tokens {} | others: EXzuWDVb (its cash-out wallet since Oct 30) 100.0 | 2KRL4kqXxD
+   11-13 03:46 SOL -0.00 tokens {'EPjFWdd5': -100.0} | others: EXzuWDVb (its cash-out wallet since Oct 30) +100.00 EPjFWdd5 | 4aooVHkmpc
+   11-13 03:47 SOL -0.00 tokens {'EPjFWdd5': -100.0} | others: EXzuWDVb (its cash-out wallet since Oct 30) +100.00 EPjFWdd5 | 5trn5enzSS
+   11-13 03:58 SOL -0.00 tokens {'EPjFWdd5': -15000.0} | others: EXzuWDVb (its cash-out wallet since Oct 30) +15000.00 EPjFWdd5 | 4MFqnyVG2J
+
+5. where it sent money, and what those wallets do:
+   EXzuWDVba3BQL14UYxSbvz1pZwZNYHXbyQwMBQutPFey (its cash-out wallet since Oct 30): received 413.00; its balance 0.00 SOL; 36 recent transactions, newest 11-13 03:58, oldest of these 10-30 02:15; pump trades in its last 25: 0
+
+6. EXzuWDVb's own moves in the last 10 days (28 transactions): where its money went
+   11-06 19:09 9jxYUDN9 2.00 SOL
+   11-06 19:11 66YZcK8x 4 WXMRyRZh (to token account)
+   11-06 19:11 3XbQodgC 2000 EPjFWdd5 (to token account)
+   11-06 19:12 yCWijBw1 1 5GgRAEmv (to token account)
+   11-06 19:14 3XbQodgC 13000 EPjFWdd5 (to token account)
+   11-06 19:14 3XbQodgC 13023.355753 EPjFWdd5 (to token account)
+   11-06 19:14 yCWijBw1 1.327232 5GgRAEmv (to token account)
+   11-06 19:14 66YZcK8x 5.224658325803 WXMRyRZh (to token account)
+   11-06 19:16 9jxYUDN9 47.99 SOL
+   11-09 03:19 FV1Uw92p 100.00 SOL; 6wWVbLeH 79.844028 So111111 (to token account); 44GW6aFi 20.135972 So111111 (to token account); 2oL6my4Q 20000000 ? (to token account)
+   11-09 03:19 FV1Uw92p 75.00 SOL; 6AMWTvaL 74925000000 ? (to token account); 6AMWTvaL 75000000 ? (to token account)
+   11-09 03:20 FV1Uw92p 75.00 SOL; 44GW6aFi 74.925 So111111 (to token account); 3kEUQ485 4249.302005 EPjFWdd5 (to token account); 8BECXqsv 2288.085695 EPjFWdd5 (to token account)
+   11-10 00:22 KUmJyCTh 1.595652 AymATz4T (to token account)
+   11-10 00:31 66YZcK8x 10.846468827709 WXMRyRZh (to token account)
+   11-10 00:31 3XbQodgC 8722.741437 EPjFWdd5 (to token account)
+   11-10 00:35 9jxYUDN9 160.00 SOL
