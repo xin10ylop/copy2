@@ -118,7 +118,11 @@ floats, feed connected. The backtest's deepest fall for this setup at 0.7 SOL: �
 **Nov 15 14:47 UTC (16:47 Beirut): `min_sol = 1.3`** (was 1.45; `analysis/research/2026-11-16/decomp/`: its 1.3-1.45 SOL
 buys copy at +10.5% a copy, as the 1.45+ ones do; the bot's run +54.82 against +43.82 SOL at 0.5 over Oct 21 - Nov 15,
 better in each block, and on the buys the threshold was not picked on). The restart: `min_sol 1.3 stake 0.7 SOL tp 3x
-… max_open 2`, five floats, feed connected. The TAB16RxX bot was paused by the owner on Nov 14 (14
+… max_open 2`, five floats, feed connected.
+**Nov 15 14:57 UTC (16:57 Beirut): a HYPE float** (`98sMhvDw...`, the owner's call; `analysis/research/2026-11-16/decomp/`
+`hype.py`: +57.75 against +54.82 SOL at 0.5 over 25 days, but only one block better): 795,530,045 units for 0.75 SOL
+(slot 469771258). The restart: six floats; SOL 0.9926, WBTC 1.406, PUMP 0.748, SPCX 0.759, TTWO 0.758, DJT 0.757, HYPE
+0.750 SOL (about 6.17 SOL in all); feed connected. The TAB16RxX bot was paused by the owner on Nov 14 (14
 real, −0.1665); `send TO all` built to return its balance.
 **A second copy, of `TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3`, in paper from Nov 12** (the lookalike search,
 branch `claude/dreamy-dijkstra-ln0wdk`, `analysis/research/2026-11-13/lookalikes/out/compare.txt`): the only wallet
