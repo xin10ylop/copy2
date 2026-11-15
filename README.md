@@ -204,6 +204,13 @@ take profit (`2026-11-16/buy_pressure/`, from 1.2x) and buying that slows or sel
 (#38-#48), −0.1073 SOL**; the seven `sell_pressure` exits +0.1536 together. Day: 17 closed, 6 won, +0.6833; all real
 40, +0.3001; with holder fees +1.0638 SOL. SPCX at 0.378 SOL after three losses: the floats are now levelled by
 themselves (`deploy/bin/rugsnipe-float-level`, a 10-minute timer, only while no copy is open; docs/20 §3).
+**#49 `CcV84RDz`** (SPCX, 22:49:40 UTC) sell_pressure at 1.02x after 61 s, −0.0211 SOL. **What the eight coins sold on
+`sell_pressure` did afterwards** (`analysis/research/2026-11-16/live_checks/after_exit.py`, `out/after_exit_nov15.txt`;
+each coin's trades for 31 minutes, the price in multiples of the price wallet 4's buy left): none reached 4x, before the
+600 s timer or after it. Six were lower at the timer than where we sold (our sale -> the timer: E3c6RqFX 0.44 -> 0.35x,
+GqAzs7Pb 1.05 -> 0.54x, 3DCv33mL 0.94 -> 0.82x, DAnPxZ7s 0.99 -> 0.81x, AUtnQZej 0.87 -> 0.85x, CcV84RDz 1.02 -> 0.86x),
+two higher (Dyc9zPSt 1.75 -> 1.79x after a high of 2.89x at 250 s; Z3kN3Xpm 1.49 -> 2.09x after 2.37x at 297 s).
+Day: 18 closed, 6 won, +0.6623; all real 41, +0.2790; with holder fees +1.0427 SOL; the frozen setup 11 closed, −0.1284.
 **The settings of the two signals, all of them, on the live setup** (`analysis/research/2026-11-16/signals/out/grid.txt`,
 520 settings): windows of 20-45 s lose 5 to 21 SOL, 60-120 s are flat, counting from 0-10 s after its buy loses 3 to
 5, SOL in place of the trade count loses everywhere, a stall under 120 s loses 2 to 17 and 180-300 s are flat (+3.1
