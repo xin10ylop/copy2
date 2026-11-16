@@ -1,0 +1,28 @@
+  # coin     |    real   model at our landing |  model 4 / 8 / slot+1 (backtest) | wallet 4 | our landing (trades after its buy) | exits real / model
+ 38 Dyc9zPSt |  +58.1%                 +57.2% |  +53.7% /  +48.0% /  +57.2% |  +101.5% |   5 | sell_pressure / sell_pressure
+ 39 E3c6RqFX |  -53.7%                 -54.0% |  -53.8% /  -53.1% /  -51.8% |   -36.5% |   7 | sell_pressure / sell_pressure
+ 41 GqAzs7Pb |  +14.5%                 +11.0% |   +5.5% /   +5.4% /  +16.2% |   -35.9% |   2 | sell_pressure / sell_pressure
+ 42 3DCv33mL |  -10.8%                 -13.7% |  -15.4% /  -20.1% /  -11.8% |   -14.2% |   5 | sell_pressure / sell_pressure
+ 43 DAnPxZ7s |   -5.0%                  +2.1% |  -11.1% /  -13.3% /   -7.8% |   -12.9% |   0 | sell_pressure / sell_pressure
+ 44 Z3kN3Xpm |  +42.4%                 +43.0% |  +38.1% /  +32.2% /  +43.0% |   +31.1% |   5 | sell_pressure / sell_pressure
+ 45 GkJDPnXR |   -6.1%                 -19.1% |   -0.1% /   -0.1% /  -19.1% |    +7.0% |   0 | its_sell / its_sell
+ 46 Dy1ZHNtB |  -25.7%                 -18.7% |  -31.6% /  -25.4% /  -29.2% |   -16.7% |   0 | its_sell / its_sell
+ 47 wQPAb4FH |  -20.3%                 -13.8% |  -25.9% /  -26.1% /  -15.1% |   -14.9% |   0 | its_sell / its_sell
+ 48 AUtnQZej |  -16.4%                 -17.7% |  -23.3% /   -0.1% /  -14.7% |   -10.1% |   0 | sell_pressure / its_sell
+ 49 CcV84RDz |   -4.2%                 -17.6% |   -0.1% /   -0.1% /  -16.4% |    -8.9% |   0 | sell_pressure / sell_pressure
+ 50 BUddYo5u |  -22.5%                 -26.5% |  -23.2% /  -23.4% /  -25.3% |   -24.1% |   0 | sell_pressure / sell_pressure
+ 51 CdM8ufFW |  -59.8%                 -36.2% |  -40.4% /  -27.5% /  -36.2% |   -66.0% |   2 | stall / stall
+ 52 3Pad5Fm3 |   -3.1%                 -11.2% |   -9.9% /  -14.3% /   -9.9% |          |   0 | sell_pressure / sell_pressure
+ 53 DqyALnyB |   -2.4%                 -14.0% |   -6.6% /  -15.3% /   +3.3% |   -74.9% |   0 | sell_pressure / sell_pressure
+ 54 76ZkaX1B |   +5.2%                 -33.2% |  -25.2% /  -17.7% /  -34.6% |    -2.6% |   0 | sell_pressure / sell_pressure
+ 55 4zGubjNG |  -22.3%                 -13.2% |  -28.5% /  -19.1% /  -27.2% |   -22.7% |   0 | sell_pressure / stall
+ 56 ScqzaRCp |  +16.1%                 +12.2% |  +16.2% /  +10.6% /  +12.2% |   +31.7% |   9 | its_sell / its_sell
+ 57 4NahCr5e |  +45.4%                 +38.8% |  +49.0% /   -0.1% /  +38.8% |   +64.9% |  14 | sell_pressure / sell_pressure
+ 58 GTA7n7Lx |   -7.0%                  -8.2% |   -0.1% /  -17.5% /   -8.2% |    +5.6% |   0 | its_sell / its_sell
+ 59 CFUwRZgT |  -26.0%                 -26.7% |   +2.8% /  -24.9% /  -24.9% |   -28.2% |   0 | its_sell / sell_pressure
+ 60 5pRtNCGM |   +1.4%                  +3.1% |   +4.1% /   -0.7% /   +9.9% |   +27.4% |   0 | sell_pressure / sell_pressure
+ 61 8nUF7NLv |  -31.1%                 -15.7% |  -39.9% /  -16.5% /  -39.7% |    +1.4% |   0 | its_sell / its_sell
+ 62 8izPeTka |  -29.2%                 -26.8% |  -23.7% /  -30.3% /  -26.8% |   -31.4% |   6 | sell_pressure / sell_pressure
+
+24 copies, the mean a copy: real -6.8% | model at our landing -8.3% | model at the backtest's landings -9.1% | wallet 4 on the same coins -5.6%
+real minus model at our landing: +1.5 points a copy (median +1.1)

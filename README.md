@@ -226,6 +226,13 @@ first `stall` exit, −0.2990: two sell tries failed on chain with `Custom 6004`
 landed). The float top-up ran by itself between trades (SPCX +114,359 units at 22:43, TTWO, WBTC, PUMP). #63 `9WoGxMZD`
 (SOL, 2 hops, filled 20.6% over its price) sold on `sell_pressure` at 34 s, −0.1469. **The frozen setup: 25 closed, 7
 won, −0.9512 SOL**; Nov 16 −0.3960 to then; all real 55, −0.5437; with holder fees +0.2200 SOL.
+**Is something wrong? No: the bot does what the backtest assumes** (`analysis/research/2026-11-16/live_checks/`
+`live_vs_model.py`, `stretch.py`). The backtest model run on the same 24 coins (#38-#62): real −6.8% a copy, the model
+at the exact place our buys landed −8.3%, at the backtest's landings −9.1%, wallet 4 on the same coins −5.6%; the exit
+reason the same on 21 of 24. The coins were bad, not the execution. In the backtest (1,163 copies, +13.6% a copy on
+average, **the median copy −7.1%**, the standard deviation 69.7 points) 6.0% of all runs of 24 consecutive copies are
+this bad or worse, and 32.5% have no take profit. A run of 50 copies under the backtest's 5th percentile would say the
+backtest no longer describes wallet 4.
 **The settings of the two signals, all of them, on the live setup** (`analysis/research/2026-11-16/signals/out/grid.txt`,
 520 settings): windows of 20-45 s lose 5 to 21 SOL, 60-120 s are flat, counting from 0-10 s after its buy loses 3 to
 5, SOL in place of the trade count loses everywhere, a stall under 120 s loses 2 to 17 and 180-300 s are flat (+3.1

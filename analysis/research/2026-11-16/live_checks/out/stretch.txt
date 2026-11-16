@@ -1,0 +1,32 @@
+1163 copies (landing 4): mean +13.6% a copy, median -7.1%, standard deviation 69.7 points; 4.4% take profits
+runs of 24 consecutive copies (1140): at -6.8% a copy or worse: 6.0%; the worst run -14.7%; 5th percentile -7.1%; median +11.8%
+runs of 24 with no take profit: 32.5%
+by day (Beirut): copies, mean a copy, take profits
+   10-21:   6 |  -13.4% | 0
+   10-22:  51 |   -5.7% | 0
+   10-23:  71 |  +10.3% | 4
+   10-24:  45 |   -4.2% | 0
+   10-25:  90 |  +10.2% | 3
+   10-26:  52 |   -0.1% | 2
+   10-27:  49 |   +6.5% | 2
+   10-28:  40 |  +32.9% | 4
+   10-29:  55 |  +32.0% | 6
+   10-30:  34 |  +38.1% | 3
+   10-31:  59 |  +11.8% | 2
+   11-01:  45 |  +24.4% | 3
+   11-02:  42 |   -5.3% | 0
+   11-03:  37 |  +26.0% | 4
+   11-04:  34 |   +8.2% | 1
+   11-05:  53 |  +18.3% | 1
+   11-06:  83 |   +7.3% | 1
+   11-07:  58 |   -2.0% | 1
+   11-08:  66 |  +19.5% | 3
+   11-09:  36 |  +10.1% | 1
+   11-10:  36 |  +17.3% | 2
+   11-11:  37 |  +34.1% | 4
+   11-12:  32 |  +28.4% | 2
+   11-13:  18 |   +8.9% | 1
+   11-14:  22 |   +6.3% | 1
+   11-15:  12 |  +83.3% | 0
+runs of 50 consecutive copies (1114): 5th percentile -2.8% a copy, 1st percentile -5.7%, the worst -7.6%, median +12.7%; no take profit in 9.5%
+runs of 100 consecutive copies (1064): 5th percentile +1.2% a copy, 1st percentile -1.6%, the worst -2.1%, median +12.7%; no take profit in 0.5%
