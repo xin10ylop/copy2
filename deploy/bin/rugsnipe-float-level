@@ -14,18 +14,22 @@ FLOOR=${SOL_FLOOR:-0.6}
 [ -r "$L" ] || { echo "float-level: no $L, nothing done"; exit 0; }
 # copies open now, over the book's lines ("...; N open; ..."); empty when the status cannot be read
 open_now() { "$B" status --config "$C" 2>/dev/null | sed -n 's/.*; \([0-9][0-9]*\) open;.*/\1/p' | awk '{s += $1} END {if (NR) print s}'; }
+# the wallet's SOL and the floats' SOL values, read once a run: each read prices every float through Jupiter's
+# public API, and one read a float drew its HTTP 429 (2026-11-16 16:55, a sale of TTWO refused)
+chain=$("$B" status --config "$C" --chain 2>/dev/null | grep -m1 '^ *wallet ')
+have=$(echo "$chain" | sed -n 's/^ *wallet \([0-9.]*\) SOL.*/\1/p')
 while read -r mint sol _; do
   case "$mint" in ''|\#*) continue ;; esac
   n=$(open_now)
   if [ "$n" != "0" ]; then echo "float-level: ${n:-?} open, stopping (the next run goes on)"; exit 0; fi
-  # the wallet's SOL and this float's SOL value now ("wallet X SOL  floats: MINT8 units (Y SOL), ...")
-  chain=$("$B" status --config "$C" --chain 2>/dev/null | grep -m1 '^ *wallet ')
-  have=$(echo "$chain" | sed -n 's/^ *wallet \([0-9.]*\) SOL.*/\1/p')
+  # this float's SOL value at the start of the run ("wallet X SOL  floats: MINT8 units (Y SOL), ...")
   now=$(echo "$chain" | grep -o "${mint:0:8} [0-9.]* ([0-9.]* SOL)" | sed -n 's/.*(\([0-9.]*\) SOL)/\1/p')
   if [ -n "$have" ] && [ -n "$now" ] && awk -v w="$have" -v v="$now" -v t="$sol" -v f="$FLOOR" 'BEGIN {exit !(t > v && w - (t - v) < f)}'; then
     echo "float-level: ${mint:0:8} at $now SOL, target $sol: not topped up, the wallet has $have SOL (keeps $FLOOR)"; continue
   fi
   out=$("$B" float level "$mint" "$sol" --config "$C" 2>&1 | sed -E 's#https?://[^ "]*#<url>#g')
+  # what a sale brings in or a top-up takes out, for the next float's floor check
+  if [ -n "$have" ] && [ -n "$now" ] && echo "$out" | grep -q 'landed in slot'; then have=$(awk -v w="$have" -v v="$now" -v t="$sol" 'BEGIN {printf "%.4f", w + v - t}'); fi
   # one line a float in the journal: what it did, or why not
   echo "float-level: ${mint:0:8} to $sol SOL: $(echo "$out" | tr '\n' ' ' | cut -c1-300)"
   sleep 5
