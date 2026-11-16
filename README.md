@@ -253,6 +253,12 @@ setup: 28 closed, 9 won, +0.3857 SOL**; Nov 16 +0.9405; all real 58, +0.7929; wi
 sat in the TTWO float (2.05 SOL). The top-up's sale of the excess was refused by Jupiter (HTTP 429) at 16:55: since
 `85c24e7` the script priced all seven floats once a float, a fault of mine; fixed in `b01919b` (one read a run). At
 16:59 it sold 464,011 TTWO units for 1.4395 SOL (slot 470207435): **SOL 2.0861**, WBTC 1.004, the six others 0.593-0.604.
+**#67 `8bGUGTEB`** (PUMP) `sell_pressure` at 0.90x after 54 s, −0.1038 (chain −2,491,062,499 PUMP units and the fees,
+−0.1034 at the rate of our buy); **#68 `6zBt4nSa`** (SOL, 2 hops, filled 32.9% under its price) `sell_pressure` at 1.20x
+after 222 s, **+0.3209** (chain −0.503219 + 0.824154); wallet 4 sold it at 13 s for −50.2%. **The frozen setup: 30
+closed, 10 won, +0.6028 SOL; against wallet 4 on the same coins (29 with its result): +4.2% a copy against its +3.0%,
+median −7.0% against −12.9%, better on 14, worse on 15** (its sale in its first 30 s not followed: #68 +64% against
+−50%; it held longer and won on #38, #60, #61). Nov 16 +1.1577; all real 60, +1.0100; with holder fees +1.7737 SOL.
 **The settings of the two signals, all of them, on the live setup** (`analysis/research/2026-11-16/signals/out/grid.txt`,
 520 settings): windows of 20-45 s lose 5 to 21 SOL, 60-120 s are flat, counting from 0-10 s after its buy loses 3 to
 5, SOL in place of the trade count loses everywhere, a stall under 120 s loses 2 to 17 and 180-300 s are flat (+3.1
