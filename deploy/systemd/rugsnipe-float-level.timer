@@ -1,9 +1,10 @@
-# Every 10 minutes: the long copy's floats back to their sizes (rugsnipe-float-level.service).
+# Every 5 minutes (minutes 2, 7, 12, ...; 10 until Nov 17, the owner's call): the long copy's floats back to their sizes
+# (rugsnipe-float-level.service). Off the minutes rugsnipe-pnl-tg starts on (0, 15, 30, 45).
 [Unit]
-Description=rugsnipe-long floats back to their sizes (every 10 min)
+Description=rugsnipe-long floats back to their sizes (every 5 min)
 
 [Timer]
-OnCalendar=*:5/10
+OnCalendar=*:2/5
 AccuracySec=15s
 Unit=rugsnipe-float-level.service
 

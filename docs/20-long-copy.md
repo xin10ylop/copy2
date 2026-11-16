@@ -128,8 +128,8 @@ within a slot** (`exits_pess.py`):
   1,238 buys at 0.5 SOL: `[5, 60, 30]` +6.5 SOL, `180` +6.5, together with `take_profit = 4.0` +75.3 against +56.6,
   3 losing days of 24 against 6, worst day −1.23 against −2.41; picked on two blocks, ahead on the third each time
   (`analysis/research/2026-11-16/signals/`). Trailing stops and "a top holder sells" were tested too and do not help.
-- **The floats levelled by themselves** (Nov 15): `deploy/bin/rugsnipe-float-level`, started every 10 minutes by
-  `rugsnipe-float-level.timer`, runs `float level MINT SOL` for each line of `/etc/rugsnipe/float-levels` ("MINT SOL"),
+- **The floats levelled by themselves** (Nov 15): `deploy/bin/rugsnipe-float-level`, started every 5 minutes by
+  `rugsnipe-float-level.timer` (10 until Nov 17: a run that fell while a copy was open left the float short 10 more minutes), runs `float level MINT SOL` for each line of `/etc/rugsnipe/float-levels` ("MINT SOL"),
   only while the book has no copy open (a float with a copy out looks short), and stops if one opens meanwhile. A float
   is topped up only if the wallet keeps `SOL_FLOOR` SOL after it (default 0.6, Nov 16); the excess is always sold. One
   journal line a float (`journalctl -u rugsnipe-float-level`). Before it a float that lost twice bought smaller copies

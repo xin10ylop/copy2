@@ -203,7 +203,7 @@ take profit (`2026-11-16/buy_pressure/`, from 1.2x) and buying that slows or sel
 / −0.0727. A round trip now costs 0.00306 SOL (0.00261 before `cu_limit` 350,000). **The frozen setup so far: 10 closed
 (#38-#48), −0.1073 SOL**; the seven `sell_pressure` exits +0.1536 together. Day: 17 closed, 6 won, +0.6833; all real
 40, +0.3001; with holder fees +1.0638 SOL. SPCX at 0.378 SOL after three losses: the floats are now levelled by
-themselves (`deploy/bin/rugsnipe-float-level`, a 10-minute timer, only while no copy is open; docs/20 §3).
+themselves (`deploy/bin/rugsnipe-float-level`, a 5-minute timer since Nov 17, 10 before; only while no copy is open; docs/20 §3).
 **#49 `CcV84RDz`** (SPCX, 22:49:40 UTC) sell_pressure at 1.02x after 61 s, −0.0211 SOL. **What the eight coins sold on
 `sell_pressure` did afterwards** (`analysis/research/2026-11-16/live_checks/after_exit.py`, `out/after_exit_nov15.txt`;
 each coin's trades for 31 minutes, the price in multiples of the price wallet 4's buy left): none reached 4x, before the
