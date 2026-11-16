@@ -13,7 +13,7 @@ transactions (`out/decomp.txt`): every coin it bought and sold out of, its own r
 | C: under 0.5 SOL | 4,009 | 234.6 | −7.09 | −0.5% | −23.92 | −1.77 / −5.32 |
 | E: no curve trade of its own | 816 | 47.7 | −2.84 | −0.4% | −38.23 | −31.67 / +28.83 |
 
-No SOL-priced coin (part D) since Oct 29. B by the token it paid with: HYPE +21.19 on 57, AAPLx +12.46 on 23, MNSTy46h
+SOL-priced coins (part D) are not in this table (wrong until Nov 17: "none since Oct 29"; it trades 350-780 a day, `../sol_coins/`). B by the token it paid with: HYPE +21.19 on 57, AAPLx +12.46 on 23, MNSTy46h
 +9.27 on 3, WXMRyRZh +8.55 on 21, USDC +6.74 on 21. Tokens at prices_full2.json (Nov 15). 79 coins traded together with
 another coin in one transaction are left out.
 
