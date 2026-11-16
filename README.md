@@ -242,6 +242,10 @@ sold it at 167 s at 0.98x. Every exit of the setup would have left it before the
 catches it, which the backtest prices (`final_exit/`: no signals −6.54, its sale never followed −0.94). The frozen
 setup: 27 closed, 8 won, −1.0680 SOL; Nov 16 −0.5131 to then; all real 57, −0.6608; with holder fees +0.1029 SOL.
 The float top-up now keeps 0.6 SOL in the wallet (`85c24e7`): on Nov 16 it had taken the wallet to 0.65 SOL.
+**Wallet 4's newest days, never studied (`analysis/research/2026-11-16/new_days/`):** Nov 15 13:04 - Nov 16 14:25 UTC,
+32 copies, +11.0% a copy (the backtest +13.6%; 46% of its 32-copy runs are as bad or worse); the bot's run +1.22 SOL in
+25.3 hours. **For the live hours the model gives −1.09 SOL on 26 copies; the bot's 27 real trades made −1.0680.** The
+setup works as built and the edge is still there on the new coins; the live hours were the bad half of them.
 **The settings of the two signals, all of them, on the live setup** (`analysis/research/2026-11-16/signals/out/grid.txt`,
 520 settings): windows of 20-45 s lose 5 to 21 SOL, 60-120 s are flat, counting from 0-10 s after its buy loses 3 to
 5, SOL in place of the trade count loses everywhere, a stall under 120 s loses 2 to 17 and 180-300 s are flat (+3.1

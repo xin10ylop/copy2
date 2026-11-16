@@ -1,0 +1,13 @@
+NEW: 33 copyable buys of 1.3+ SOL with a path, 11-15 13:04 to 11-16 14:25 UTC; kinds {'WBTC': 2, 'TTWofwAg': 12, 'SOL': 11, 'SPCX': 7, 'PUMP': 1}; load {'rows': 33, 'rebuy': 0, 'nopath': 0}
+== every copy (landing 4)
+   the backtest, Oct 21 - Nov 15 13:04 UTC     : 1163 copies |  +13.6% a copy (median   -7.1%) | won 34.2% | reached 2x 22.5%, 3x 11.6%, 4x  6.8% within 600 s | take profits 51
+   the backtest's last 5 days (Nov 10-15)      :  154 copies |  +26.9% a copy (median   -7.2%) | won 39.0% | reached 2x 27.3%, 3x 17.5%, 4x 10.4% within 600 s | take profits 10
+   NEW: Nov 15 13:04 UTC on                    :   32 copies |  +11.0% a copy (median   -6.0%) | won 43.8% | reached 2x 18.8%, 3x  6.2%, 4x  6.2% within 600 s | take profits 1
+   NEW, before the frozen setup went live (19:29):    7 copies |  +75.8% a copy (median  +48.8%) | won 71.4% | reached 2x 28.6%, 3x 14.3%, 4x 14.3% within 600 s | take profits 1
+   NEW, since the frozen setup went live       :   25 copies |   -7.2% a copy (median  -11.5%) | won 36.0% | reached 2x 16.0%, 3x  4.0%, 4x  4.0% within 600 s | take profits 0
+   runs of 32 consecutive copies in the backtest at +11.0% a copy or worse: 46.3%
+== the bot's run (2 open, caps), mean of three landings
+   NEW: 33 copies in 25.3 hours (31.3 a day), net +1.22 SOL (+1.16 a day); the backtest made +3.14 a day, 43 copies a day
+      11-15 (Beirut): +2.37 SOL
+      11-16 (Beirut): -1.15 SOL
+   since the frozen setup went live: the model's run 26 copies, -1.09 SOL (our real 27 closed #38-#65: -1.0680 SOL)
