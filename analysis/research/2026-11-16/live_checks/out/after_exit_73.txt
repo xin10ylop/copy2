@@ -1,0 +1,4 @@
+# Run Nov 16 23:25 UTC, after #73's 600 s window.
+coin     | its buy   | our sale: after, at | highest while we held | then, before the 600 s timer: highest (when) | at the timer | highest in 31 min (when) | first at 3x / 4x in its first 600 s | reached 4x after our sale
+HMZxy4XS | 23:14:09 |   70 s, 0.93x |  1.53x |  1.21x (at   70 s) |  0.87x |  1.21x (at   70 s) | - / - | no | 129 trades
+
