@@ -1,0 +1,9 @@
+== the copies its early-sale rule sold: the model at our landing, with the rule and without it (% of the stake)
+   #45 GkJDPnXR: real   -6.1% | with the rule  -19.1% (its_sell at 205 s) | without it  -17.8% (stall at 205 s)
+   #46 Dy1ZHNtB: real  -25.7% | with the rule  -18.7% (its_sell at 137 s) | without it  -15.8% (stall at 233 s)
+   #47 wQPAb4FH: real  -20.3% | with the rule  -13.8% (its_sell at 180 s) | without it  -13.8% (stall at 180 s)
+   #56 ScqzaRCp: real  +16.1% | with the rule  +12.2% (its_sell at 185 s) | without it  -12.8% (sell_pressure at 215 s)
+   #58 GTA7n7Lx: real   -7.0% | with the rule   -8.2% (its_sell at 31 s) | without it  -44.2% (sell_pressure at 66 s)
+   #59 CFUwRZgT: real  -26.0% | with the rule  -26.7% (sell_pressure at 170 s) | without it  -26.7% (sell_pressure at 170 s)
+   #61 8nUF7NLv: real  -31.1% | with the rule  -15.7% (its_sell at 128 s) | without it  -15.7% (time at 128 s)
+   together, SOL at 0.5: with the rule -0.450, without it -0.734
