@@ -1,0 +1,185 @@
+1238 buys, 1163 copied at landing 4 (the rest refused: its price already 25% up); 0.5 SOL a copy
+== the four groups
+   took profit at 4x     :   51 copies ( 4.4%), net  +60.56 SOL, +237.5% a copy
+   other winner          :  343 copies (29.5%), net  +73.39 SOL,  +42.8% a copy
+   small loss (to -20%)  :  549 copies (47.2%), net  -28.31 SOL,  -10.3% a copy
+   big loss (over -20%)  :  220 copies (18.9%), net  -35.58 SOL,  -32.3% a copy
+   all +70.05 SOL; the best 5% of the copies (58) make +72.39; the best 10% +103.68
+
+==== KNOWN WHEN WE BUY: every trait in four equal groups (or its kinds); net in % of the stake a copy
+-- its buy, SOL
+   1.3 to 1.46                 :  292 copies | took profit  4.5% | won 30.5% |  +11.1% a copy | blocks A   +6.4% B  +10.6% C  +18.6% | net +16.23 SOL
+   1.46 to 1.5                 :  330 copies | took profit  3.3% | won 26.1% |   +2.0% a copy | blocks A   +4.4% B   -2.8% C   -8.7% | net  +3.32 SOL
+   1.5 to 1.77                 :  251 copies | took profit  4.4% | won 37.8% |  +14.1% a copy | blocks A  +14.3% B  +20.6% C   +5.9% | net +17.72 SOL
+   1.77 to 3.39                :  290 copies | took profit  5.5% | won 42.8% |  +22.6% a copy | blocks A  -20.1% B  +28.7% C  +20.8% | net +32.78 SOL
+   => best '1.77 to 3.39' +22.6% against worst '1.46 to 1.5' +2.0%: the same order in all three blocks: no; the gap stays in 100% of redrawn days
+-- paid with
+   DJT                         :   48 copies | took profit  8.3% | won 35.4% |  +17.8% a copy | blocks A   +3.1% B  +38.5% C   -7.0% | net  +4.26 SOL
+   HYPE                        :   52 copies | took profit  7.7% | won 42.3% |  +21.7% a copy | blocks A   -0.1% B  +34.9% C   +3.2% | net  +5.65 SOL
+   PUMP                        :  206 copies | took profit  5.3% | won 44.2% |  +17.5% a copy | blocks A  +13.6% B  +31.0% C  +10.4% | net +17.99 SOL
+   SOL                         :  328 copies | took profit  2.7% | won 26.2% |   +3.7% a copy | blocks A   +5.2% B   -1.8% C   +5.3% | net  +6.09 SOL
+   SPCX                        :   89 copies | took profit  9.0% | won 34.8% |  +23.0% a copy | blocks A  -11.3% B  +32.1% C  +26.1% | net +10.22 SOL
+   TTWO                        :   82 copies | took profit  7.3% | won 35.4% |  +15.2% a copy | blocks A   +2.0% B   +2.9% C  +26.4% | net  +6.24 SOL
+   WBTC                        :  358 copies | took profit  2.5% | won 33.0% |  +11.0% a copy | blocks A   +6.2% B   +8.6% C  +29.7% | net +19.60 SOL
+   => best 'SPCX' +23.0% against worst 'SOL' +3.7%: the same order in all three blocks: no; the gap stays in 98% of redrawn days
+-- route
+   1 hop                       :  489 copies | took profit  7.6% | won 39.9% |  +19.3% a copy | blocks A   +7.5% B  +26.7% C  +19.9% | net +47.20 SOL
+   2 hops                      :  622 copies | took profit  1.9% | won 28.6% |   +5.9% a copy | blocks A   +4.7% B   +6.4% C   +7.4% | net +18.26 SOL
+   3 hops                      :   52 copies | took profit  3.8% | won 40.4% |  +17.7% a copy | blocks A   +8.6% B  +22.6% C   +8.3% | net  +4.60 SOL
+   => best '1 hop' +19.3% against worst '2 hops' +5.9%: the same order in all three blocks: YES; the gap stays in 100% of redrawn days
+-- fee tier, bps
+   1 to 130                    :  296 copies | took profit  5.1% | won 30.4% |  +10.9% a copy | blocks A   -1.8% B  +18.3% C  +17.6% | net +16.09 SOL
+   145 to 300                  :  542 copies | took profit  3.7% | won 31.5% |   +8.8% a copy | blocks A   +2.6% B  +18.8% C   +6.8% | net +23.85 SOL
+   317 to 395                  :  325 copies | took profit  4.9% | won 40.9% |  +18.5% a copy | blocks A  +18.6% B  +13.6% C  +26.0% | net +30.11 SOL
+   => best '317 to 395' +18.5% against worst '145 to 300' +8.8%: the same order in all three blocks: no; the gap stays in 100% of redrawn days
+-- the coin's size when we buy (its curve's quote reserve, SOL)
+   15.8 to 31.6                :  291 copies | took profit  2.1% | won 22.7% |   +1.1% a copy | blocks A   -0.4% B  +13.8% C   -8.0% | net  +1.65 SOL
+   31.7 to 39.8                :  291 copies | took profit  3.8% | won 29.6% |   +8.5% a copy | blocks A   +6.2% B  +10.2% C  +13.8% | net +12.43 SOL
+   39.8 to 49.9                :  291 copies | took profit  5.5% | won 39.2% |  +15.8% a copy | blocks A  +23.6% B  +14.1% C  +14.3% | net +22.97 SOL
+   49.9 to 164                 :  290 copies | took profit  6.2% | won 44.1% |  +22.8% a copy | blocks A   +9.3% B  +28.9% C  +21.8% | net +33.01 SOL
+   => best '49.9 to 164' +22.8% against worst '15.8 to 31.6' +1.1%: the same order in all three blocks: YES; the gap stays in 100% of redrawn days
+-- our price against its price
+   0.473 to 0.987              :  291 copies | took profit  3.4% | won 30.2% |  +13.6% a copy | blocks A   -6.0% B  +22.2% C  +25.2% | net +19.82 SOL
+   0.988 to 1.05               :  291 copies | took profit  2.1% | won 30.9% |   +7.0% a copy | blocks A   -1.0% B  +13.4% C  +11.7% | net +10.22 SOL
+   1.05 to 1.1                 :  291 copies | took profit  5.2% | won 35.4% |  +13.3% a copy | blocks A  +12.2% B  +10.8% C  +17.5% | net +19.42 SOL
+   1.1 to 1.25                 :  290 copies | took profit  6.9% | won 39.0% |  +14.2% a copy | blocks A  +17.1% B  +22.7% C   -3.3% | net +20.60 SOL
+   => best '1.1 to 1.25' +14.2% against worst '0.988 to 1.05' +7.0%: the same order in all three blocks: no; the gap stays in 92% of redrawn days
+-- hour (Beirut)
+   00-04                       :  263 copies | took profit  4.6% | won 30.0% |  +11.7% a copy | blocks A   +7.6% B  +15.0% C  +12.5% | net +15.35 SOL
+   04-08                       :  190 copies | took profit  3.2% | won 31.6% |   +8.7% a copy | blocks A   +9.1% B  +10.1% C   +6.4% | net  +8.29 SOL
+   08-12                       :  108 copies | took profit  4.6% | won 27.8% |  +11.6% a copy | blocks A   +6.0% B   +1.5% C  +26.8% | net  +6.26 SOL
+   12-16                       :  142 copies | took profit  3.5% | won 40.1% |  +15.6% a copy | blocks A   +2.4% B  +32.6% C  +10.3% | net +11.06 SOL
+   16-20                       :  210 copies | took profit  3.8% | won 35.7% |   +8.9% a copy | blocks A   +3.8% B   +9.2% C  +13.7% | net  +9.34 SOL
+   20-24                       :  250 copies | took profit  6.0% | won 37.2% |  +15.8% a copy | blocks A   +4.5% B  +27.3% C  +20.2% | net +19.75 SOL
+   => best '20-24' +15.8% against worst '04-08' +8.7%: the same order in all three blocks: no; the gap stays in 92% of redrawn days
+-- weekday
+   weekday                     :  766 copies | took profit  5.0% | won 33.6% |  +12.6% a copy | blocks A   +6.2% B  +17.3% C  +15.5% | net +48.29 SOL
+   weekend                     :  397 copies | took profit  3.3% | won 34.5% |  +11.0% a copy | blocks A   +4.4% B  +16.0% C  +13.2% | net +21.76 SOL
+   => best 'weekday' +12.6% against worst 'weekend' +11.0%: the same order in all three blocks: YES; the gap stays in 64% of redrawn days
+-- its copyable buys in the 10 minutes before
+   0                           :  709 copies | took profit  4.5% | won 35.3% |  +13.5% a copy | blocks A   +3.4% B  +17.8% C  +19.7% | net +47.93 SOL
+   1                           :  331 copies | took profit  4.8% | won 32.6% |  +10.8% a copy | blocks A  +11.7% B  +17.2% C   +1.7% | net +17.88 SOL
+   2 to 6                      :  123 copies | took profit  2.4% | won 29.3% |   +6.9% a copy | blocks A   +1.0% B  +11.9% C  +10.2% | net  +4.25 SOL
+   => best '0' +13.5% against worst '2 to 6' +6.9%: the same order in all three blocks: YES; the gap stays in 88% of redrawn days
+-- its copyable buys in the hour before
+   0 to 1                      :  382 copies | took profit  4.5% | won 36.6% |  +16.0% a copy | blocks A   +6.7% B  +17.8% C  +21.2% | net +30.56 SOL
+   2                           :  210 copies | took profit  4.8% | won 37.1% |  +12.9% a copy | blocks A   +8.4% B  +21.5% C   +7.8% | net +13.50 SOL
+   3 to 4                      :  309 copies | took profit  4.9% | won 32.7% |  +10.4% a copy | blocks A   +8.6% B  +13.6% C   +8.7% | net +16.01 SOL
+   5 to 12                     :  262 copies | took profit  3.4% | won 28.6% |   +7.6% a copy | blocks A   +0.8% B  +15.8% C  +13.2% | net  +9.98 SOL
+   => best '0 to 1' +16.0% against worst '5 to 12' +7.6%: the same order in all three blocks: YES; the gap stays in 98% of redrawn days
+-- seconds since its last copyable buy
+   1 to 362                    :  291 copies | took profit  4.5% | won 34.4% |   +8.3% a copy | blocks A   +6.0% B  +14.1% C   +2.8% | net +12.10 SOL
+   363 to 864                  :  291 copies | took profit  4.5% | won 31.6% |  +14.4% a copy | blocks A  +11.2% B  +23.1% C   +8.9% | net +20.96 SOL
+   869 to 2.11e+03             :  291 copies | took profit  5.2% | won 35.4% |  +14.0% a copy | blocks A   +3.2% B  +18.8% C  +22.4% | net +20.33 SOL
+   2.12e+03 to 1e+05           :  290 copies | took profit  3.4% | won 34.1% |  +11.5% a copy | blocks A   +0.1% B  +12.5% C  +18.7% | net +16.66 SOL
+   => best '363 to 864' +14.4% against worst '1 to 362' +8.3%: the same order in all three blocks: YES; the gap stays in 92% of redrawn days
+-- its last 5 copies that had closed: how many won
+   0 to 1                      :  505 copies | took profit  4.2% | won 30.1% |   +9.8% a copy | blocks A   +4.5% B  +14.4% C  +14.1% | net +24.84 SOL
+   2                           :  359 copies | took profit  4.5% | won 37.0% |  +13.0% a copy | blocks A  +10.5% B  +14.3% C  +14.5% | net +23.28 SOL
+   3                           :  232 copies | took profit  4.7% | won 38.8% |  +16.5% a copy | blocks A   +4.1% B  +26.5% C  +13.7% | net +19.18 SOL
+   4 to 5                      :   62 copies | took profit  4.8% | won 30.6% |  +10.1% a copy | blocks A   -9.1% B  +11.1% C  +24.4% | net  +3.13 SOL
+   => best '3' +16.5% against worst '0 to 1' +9.8%: the same order in all three blocks: no; the gap stays in 85% of redrawn days
+-- its last 5 copies that had closed: their net, SOL
+   -0.956 to -0.194            :  291 copies | took profit  3.8% | won 30.9% |   +7.8% a copy | blocks A   +9.6% B   +9.2% C   +4.6% | net +11.33 SOL
+   -0.193 to 0.0536            :  289 copies | took profit  4.8% | won 32.2% |  +11.6% a copy | blocks A   +2.3% B  +22.0% C  +17.5% | net +16.82 SOL
+   0.0553 to 0.768             :  289 copies | took profit  5.2% | won 36.7% |  +16.9% a copy | blocks A   +7.9% B  +17.4% C  +30.5% | net +24.48 SOL
+   0.768 to 4.41               :  289 copies | took profit  3.8% | won 36.3% |  +12.3% a copy | blocks A   +3.6% B  +19.1% C   +8.5% | net +17.80 SOL
+   => best '0.0553 to 0.768' +16.9% against worst '-0.956 to -0.194' +7.8%: the same order in all three blocks: no; the gap stays in 94% of redrawn days
+-- earlier coins of the same creator it bought
+   0                           : 1105 copies | took profit  4.5% | won 33.8% |  +12.4% a copy | blocks A   +5.5% B  +17.6% C  +15.2% | net +68.50 SOL
+   1 to 3                      :   58 copies | took profit  1.7% | won 36.2% |   +5.3% a copy | blocks A   +9.6% B   +4.7% C   +2.4% | net  +1.55 SOL
+   => best '0' +12.4% against worst '1 to 3' +5.3%: the same order in all three blocks: no; the gap stays in 96% of redrawn days
+-- TAB16RxX and the coin
+   bought it in the same slot  :  157 copies | took profit  4.5% | won 34.4% |  +10.8% a copy | blocks A   +nan% B   +9.3% C  +11.7% | net  +8.46 SOL
+   did not buy it              :  992 copies | took profit  4.3% | won 33.4% |  +11.7% a copy | blocks A   +5.6% B  +17.9% C  +14.1% | net +57.95 SOL
+   => best 'did not buy it' +11.7% against worst 'bought it in the same slot' +10.8%: the same order in all three blocks: no; the gap stays in 57% of redrawn days
+
+==== KNOWN WHEN WE BUY: which traits hold (the same order in all three blocks and the gap in 90%+ of redrawn days)
+   HOLDS  the coin's size when we buy (its curve's quote reserve, SOL)   gap  +21.6 points | blocks agree: yes | 100% of draws | best: 49.9 to 164; worst: 15.8 to 31.6
+   no     its buy, SOL                                                   gap  +20.6 points | blocks agree: no  | 100% of draws | best: 1.77 to 3.39; worst: 1.46 to 1.5
+   no     paid with                                                      gap  +19.2 points | blocks agree: no  |  98% of draws | best: SPCX; worst: SOL
+   HOLDS  route                                                          gap  +13.4 points | blocks agree: yes | 100% of draws | best: 1 hop; worst: 2 hops
+   no     fee tier, bps                                                  gap   +9.7 points | blocks agree: no  | 100% of draws | best: 317 to 395; worst: 145 to 300
+   no     its last 5 copies that had closed: their net, SOL              gap   +9.2 points | blocks agree: no  |  94% of draws | best: 0.0553 to 0.768; worst: -0.956 to -0.194
+   HOLDS  its copyable buys in the hour before                           gap   +8.4 points | blocks agree: yes |  98% of draws | best: 0 to 1; worst: 5 to 12
+   no     our price against its price                                    gap   +7.2 points | blocks agree: no  |  92% of draws | best: 1.1 to 1.25; worst: 0.988 to 1.05
+   no     hour (Beirut)                                                  gap   +7.1 points | blocks agree: no  |  92% of draws | best: 20-24; worst: 04-08
+   no     earlier coins of the same creator it bought                    gap   +7.1 points | blocks agree: no  |  96% of draws | best: 0; worst: 1 to 3
+   no     its last 5 copies that had closed: how many won                gap   +6.7 points | blocks agree: no  |  85% of draws | best: 3; worst: 0 to 1
+   no     its copyable buys in the 10 minutes before                     gap   +6.6 points | blocks agree: yes |  88% of draws | best: 0; worst: 2 to 6
+   HOLDS  seconds since its last copyable buy                            gap   +6.1 points | blocks agree: yes |  92% of draws | best: 363 to 864; worst: 1 to 362
+   no     weekday                                                        gap   +1.6 points | blocks agree: yes |  64% of draws | best: weekday; worst: weekend
+   no     TAB16RxX and the coin                                          gap   +0.9 points | blocks agree: no  |  57% of draws | best: did not buy it; worst: bought it in the same slot
+
+==== THE FIRST 30 SECONDS AFTER ITS BUY (not known when we buy): every trait in four equal groups (or its kinds); net in % of the stake a copy
+-- trades by others in the first 30 s
+   0 to 1                      :  312 copies | took profit  1.6% | won 11.9% |   -3.7% a copy | blocks A   -3.4% B   -1.4% C   -9.1% | net  -5.83 SOL
+   2 to 17                     :  285 copies | took profit  1.1% | won 28.1% |   -0.8% a copy | blocks A   +0.3% B   +2.9% C   -7.1% | net  -1.18 SOL
+   18 to 52                    :  283 copies | took profit  3.5% | won 42.4% |  +12.1% a copy | blocks A   +5.6% B  +21.8% C   +6.9% | net +17.09 SOL
+   53 to 722                   :  283 copies | took profit 11.7% | won 55.5% |  +42.4% a copy | blocks A  +62.9% B  +34.8% C  +42.6% | net +59.97 SOL
+   => best '53 to 722' +42.4% against worst '0 to 1' -3.7%: the same order in all three blocks: YES; the gap stays in 100% of redrawn days
+-- buys minus sells in the first 30 s
+   -73 to 0                    :  480 copies | took profit  1.2% | won 11.5% |   -8.2% a copy | blocks A   -6.4% B   -8.3% C  -13.1% | net -19.60 SOL
+   1 to 2                      :  116 copies | took profit  1.7% | won 26.7% |   +2.4% a copy | blocks A   -1.7% B   +4.5% C   +4.6% | net  +1.41 SOL
+   3 to 15                     :  283 copies | took profit  2.8% | won 43.8% |  +11.6% a copy | blocks A  +15.2% B  +17.2% C   +2.5% | net +16.38 SOL
+   16 to 276                   :  284 copies | took profit 12.3% | won 64.8% |  +50.6% a copy | blocks A  +66.0% B  +50.8% C  +45.0% | net +71.86 SOL
+   => best '16 to 276' +50.6% against worst '-73 to 0' -8.2%: the same order in all three blocks: YES; the gap stays in 100% of redrawn days
+-- price 30 s after its buy, against our price
+   0.346 to 0.978              :  291 copies | took profit  1.0% | won 13.7% |  -15.9% a copy | blocks A  -19.7% B  -12.5% C  -16.1% | net -23.13 SOL
+   0.978 to 1                  :  342 copies | took profit  2.3% | won 14.6% |   -0.6% a copy | blocks A   -2.6% B   +6.4% C   -3.0% | net  -1.03 SOL
+   1 to 1.17                   :  240 copies | took profit  0.8% | won 34.6% |   +6.0% a copy | blocks A   +7.6% B   +2.6% C   +8.3% | net  +7.17 SOL
+   1.17 to 7.44                :  290 copies | took profit 13.1% | won 76.2% |  +60.0% a copy | blocks A  +65.2% B  +58.5% C  +58.8% | net +87.04 SOL
+   => best '1.17 to 7.44' +60.0% against worst '0.346 to 0.978' -15.9%: the same order in all three blocks: YES; the gap stays in 100% of redrawn days
+-- highest price in the first 30 s, against our price
+   0.732 to 1                  :  374 copies | took profit  1.3% | won 12.0% |   -6.4% a copy | blocks A   -5.3% B   -4.1% C  -13.2% | net -11.94 SOL
+   1 to 1.07                   :  208 copies | took profit  2.4% | won 18.8% |   -4.9% a copy | blocks A  -10.8% B   -3.1% C   -1.3% | net  -5.12 SOL
+   1.08 to 1.3                 :  291 copies | took profit  2.1% | won 37.8% |   +6.1% a copy | blocks A   +3.7% B  +10.0% C   +3.7% | net  +8.94 SOL
+   1.3 to 7.59                 :  290 copies | took profit 12.1% | won 69.0% |  +53.9% a copy | blocks A  +60.2% B  +52.3% C  +51.7% | net +78.18 SOL
+   => best '1.3 to 7.59' +53.9% against worst '0.732 to 1' -6.4%: the same order in all three blocks: YES; the gap stays in 100% of redrawn days
+-- its own sale
+   290-600 s                   :  274 copies | took profit  2.6% | won 31.8% |   +4.2% a copy | blocks A  +37.4% B   +0.9% C   +1.1% | net  +5.74 SOL
+   30-290 s                    :  390 copies | took profit  7.2% | won 49.0% |  +25.8% a copy | blocks A  +29.8% B  +34.8% C  +16.6% | net +50.23 SOL
+   in its first 30 s           :   78 copies | took profit 15.4% | won 41.0% |  +31.8% a copy | blocks A  +20.6% B  +20.6% C  +66.6% | net +12.40 SOL
+   none in 600 s               :  421 copies | took profit  1.0% | won 20.0% |   +0.8% a copy | blocks A   -3.3% B   +7.2% C  +25.6% | net  +1.69 SOL
+   => best 'in its first 30 s' +31.8% against worst 'none in 600 s' +0.8%: the same order in all three blocks: YES; the gap stays in 99% of redrawn days
+
+==== THE FIRST 30 SECONDS AFTER ITS BUY (not known when we buy): which traits hold (the same order in all three blocks and the gap in 90%+ of redrawn days)
+   HOLDS  price 30 s after its buy, against our price                    gap  +75.9 points | blocks agree: yes | 100% of draws | best: 1.17 to 7.44; worst: 0.346 to 0.978
+   HOLDS  highest price in the first 30 s, against our price             gap  +60.3 points | blocks agree: yes | 100% of draws | best: 1.3 to 7.59; worst: 0.732 to 1
+   HOLDS  buys minus sells in the first 30 s                             gap  +58.8 points | blocks agree: yes | 100% of draws | best: 16 to 276; worst: -73 to 0
+   HOLDS  trades by others in the first 30 s                             gap  +46.1 points | blocks agree: yes | 100% of draws | best: 53 to 722; worst: 0 to 1
+   HOLDS  its own sale                                                   gap  +31.0 points | blocks agree: yes |  99% of draws | best: in its first 30 s; worst: none in 600 s
+
+==== CAN IT BE USED? the bot's run; gain = against the live setup (+75.29); * = ahead in all three blocks; the noise of one change is about +-3.4 SOL
+== at the buy: skip the weak group of a trait that holds
+                                                                | total  | gain    | by block A / B / C | w/o b5 | neg  | worst | draws ahead [5%, 95%]
+   skip coins under 31.6 SOL of reserve (the smallest quarter)  | +71.08 |  -4.21  | -1.17 -4.34 +1.31 | +61.48 | 2/24 | -0.90 |  11.7% [-10.4,  +1.5]
+   skip coins under 39.8 SOL of reserve (the smaller half)      | +58.08 | -17.21  | -6.65 -8.63 -1.93 | +49.71 | 2/24 | -0.88 |   2.0% [-27.8,  -2.8]
+   skip when it made 5+ copyable buys in the hour before        | +62.99 | -12.30  | -2.88 -5.84 -3.59 | +53.48 | 2/24 | -1.77 |   0.1% [-20.1,  -5.2]
+   skip when its last copyable buy was under 6 minutes ago      | +61.60 | -13.69  | -5.04 -8.60 -0.06 | +52.15 | 3/24 | -0.41 |   0.1% [-21.9,  -6.0]
+   skip 2-hop routes                                            | +53.20 | -22.09  | -8.74 -7.28 -6.07 | +44.93 | 2/24 | -0.52 |   0.7% [-30.2,  -6.4]
+   skip the coins paid with SOL                                 | +67.57 |  -7.72  | -4.81 +0.44 -3.35 | +59.26 | 3/24 | -0.65 |  17.8% [-10.0,  +3.0]
+   skip under 31.6 SOL of reserve and 5+ buys in the hour       | +60.41 | -14.88  | -3.47 -8.81 -2.60 | +50.98 | 3/24 | -1.42 |   0.1% [-25.1,  -5.9]
+== after the buy: a checkpoint T seconds after its buy, out if the coin has not started
+                                                                | total  | gain    | by block A / B / C | w/o b5 | neg  | worst | draws ahead [5%, 95%]
+   at 30 s: out if the price is under 0.9x ours                 | +70.01 |  -5.28  | -1.33 -3.27 -0.67 | +60.37 | 3/24 | -1.29 |   0.1% [ -8.8,  -2.4]
+   at 30 s: out if the price is under 0.98x ours                | +66.75 |  -8.54  | -1.70 -5.72 -1.13 | +57.11 | 4/24 | -1.08 |   0.1% [-13.7,  -4.5]
+   at 30 s: out if the price is under 1.0x ours                 | +63.87 | -11.42  | -3.04 -6.79 -1.59 | +54.23 | 4/24 | -1.02 |   0.0% [-18.3,  -5.9]
+   at 30 s: out if the price is under 1.1x ours                 | +54.96 | -20.32  | -5.30 -11.52 -3.51 | +45.46 | 6/24 | -1.72 |   0.0% [-30.2, -12.1]
+   at 30 s: out if buys minus sells since our buy is 0 or less  | +72.57 |  -2.72  | -0.67 -1.81 -0.23 | +62.93 | 3/24 | -1.32 |   3.7% [ -5.9,  -0.1]
+   at 30 s: out if buys minus sells since our buy is -3 or less | +73.72 |  -1.57  | -0.18 -0.68 -0.70 | +64.09 | 3/24 | -1.40 |   0.7% [ -2.8,  -0.4]
+   at 30 s: out if 1 trade or none by others since our buy      | +74.47 |  -0.81  | -0.92 +0.11 -0.00 | +64.84 | 3/24 | -1.24 |  15.0% [ -2.3,  +0.5]
+   at 45 s: out if the price is under 0.9x ours                 | +73.79 |  -1.49  | +0.12 -2.26 +0.64 | +64.16 | 3/24 | -1.39 |  17.2% [ -4.4,  +0.9]
+   at 45 s: out if the price is under 0.98x ours                | +71.54 |  -3.74  | -0.02 -4.85 +1.13 | +61.91 | 4/24 | -1.38 |   6.4% [ -8.1,  +0.3]
+   at 45 s: out if the price is under 1.0x ours                 | +69.81 |  -5.48  | -0.14 -5.80 +0.47 | +60.17 | 4/24 | -1.44 |   1.9% [-10.6,  -1.1]
+   at 45 s: out if the price is under 1.1x ours                 | +60.69 | -14.60  | -2.05 -10.84 -1.71 | +51.06 | 5/24 | -1.47 |   0.1% [-22.5,  -7.0]
+   at 45 s: out if buys minus sells since our buy is 0 or less  | +73.87 |  -1.42  | +0.66 -2.37 +0.29 | +64.23 | 3/24 | -1.47 |  24.4% [ -4.9,  +1.3]
+   at 45 s: out if buys minus sells since our buy is -3 or less | +74.37 |  -0.92  | -0.01 -1.06 +0.15 | +64.73 | 3/24 | -1.50 |  18.2% [ -2.6,  +0.4]
+   at 45 s: out if 1 trade or none by others since our buy      | +74.63 |  -0.66  | +0.17 -0.85 +0.02 | +64.99 | 4/24 | -1.18 |  22.9% [ -2.2,  +0.8]
+   at 60 s: out if the price is under 0.9x ours                 | +72.79 |  -2.50  | -0.43 -2.63 +0.57 | +63.15 | 3/24 | -1.07 |   4.8% [ -5.2,  -0.0]
+   at 60 s: out if the price is under 0.98x ours                | +67.96 |  -7.33  | -1.90 -4.88 -0.55 | +58.36 | 4/24 | -1.11 |   0.1% [-12.7,  -2.8]
+   at 60 s: out if the price is under 1.0x ours                 | +67.37 |  -7.92  | -2.42 -4.90 -0.60 | +57.77 | 4/24 | -1.11 |   0.1% [-13.5,  -3.1]
+   at 60 s: out if the price is under 1.1x ours                 | +61.32 | -13.96  | -3.93 -8.88 -1.16 | +51.74 | 5/24 | -1.47 |   0.0% [-21.9,  -7.2]
+   at 60 s: out if buys minus sells since our buy is 0 or less  | +73.49 |  -1.80  | -0.66 -1.66 +0.52 | +63.89 | 3/24 | -1.45 |  12.7% [ -4.7,  +0.5]
+   at 60 s: out if buys minus sells since our buy is -3 or less | +74.57 |  -0.72  | -0.17 -0.81 +0.27 | +64.93 | 3/24 | -1.20 |  23.4% [ -2.3,  +0.5]
+   at 60 s: out if 1 trade or none by others since our buy      | +73.38 |  -1.91  | -0.78 -1.23 +0.11 | +63.79 | 3/24 | -1.18 |   2.5% [ -3.9,  -0.2]
