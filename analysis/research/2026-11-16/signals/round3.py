@@ -92,7 +92,7 @@ def score(rule):
         for r in ROWS:
             open_ = [y for y in open_ if y[0] > r["t"]]
             if len(open_) >= 2 or sum(1 for y in open_ if y[1] == r["anchor"]) >= CAPS[r["anchor"]]: continue
-            net, why, held = model(PREP[r["key"], n], EX[r["key"], n], 0.5, sigs, tp, hold, early)
+            net, why, held = model(PREP[r["key"], n], EX[r["key"], n], float(os.environ.get("STAKE", "0.5")), sigs, tp, hold, early)
             if why != "refused": open_.append((r["t"] + held, r["anchor"]))
             out.append((r, net, why))
         v = sorted((y[1] for y in out), reverse=True); tot += sum(v) / 3; wo5 += sum(v[5:]) / 3
