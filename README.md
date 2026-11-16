@@ -233,6 +233,15 @@ reason the same on 21 of 24. The coins were bad, not the execution. In the backt
 average, **the median copy −7.1%**, the standard deviation 69.7 points) 6.0% of all runs of 24 consecutive copies are
 this bad or worse, and 32.5% have no take profit. A run of 50 copies under the backtest's 5th percentile would say the
 backtest no longer describes wallet 4.
+**#63-#65 (Nov 16 to 14:28 UTC), equal to the chain** (#65 `Lu5fUofk` −0.2803 in the journal, −0.2664 at the status
+price: the 14,000 lamports are TTWO's own fall since our buy; at the rate of our buy the chain gives −0.2802). **#64
+`J8Lutktx` (SOL, 2 hops) sold on `sell_pressure` at 1.06x after 131 s, +0.1632; the coin then fell to 0.71x at 240 s,
+went to 2.03x at 290 s and crossed 4x at 526 s (4.44x at 600 s)** (`live_checks/out/after_exit_nov16b.txt`). Wallet 4
+sold it at 167 s at 0.98x. Every exit of the setup would have left it before the run: its early sale (167 s, under
+1.5x), the stall (no new high from about 60 s, so about 240 s, at 0.71x); only holding to the timer with no other exit
+catches it, which the backtest prices (`final_exit/`: no signals −6.54, its sale never followed −0.94). The frozen
+setup: 27 closed, 8 won, −1.0680 SOL; Nov 16 −0.5131 to then; all real 57, −0.6608; with holder fees +0.1029 SOL.
+The float top-up now keeps 0.6 SOL in the wallet (`85c24e7`): on Nov 16 it had taken the wallet to 0.65 SOL.
 **The settings of the two signals, all of them, on the live setup** (`analysis/research/2026-11-16/signals/out/grid.txt`,
 520 settings): windows of 20-45 s lose 5 to 21 SOL, 60-120 s are flat, counting from 0-10 s after its buy loses 3 to
 5, SOL in place of the trade count loses everywhere, a stall under 120 s loses 2 to 17 and 180-300 s are flat (+3.1
