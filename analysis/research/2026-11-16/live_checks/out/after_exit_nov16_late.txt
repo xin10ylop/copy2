@@ -1,0 +1,4 @@
+# Run Nov 16 23:14 UTC: the 600 s window of both coins is complete; "highest in 31 min" only covers the trades up to then.
+coin     | its buy   | our sale: after, at | highest while we held | then, before the 600 s timer: highest (when) | at the timer | highest in 31 min (when) | first at 3x / 4x in its first 600 s | reached 4x after our sale
+66AxY3yj | 23:03:35 |  203 s, 2.56x |  2.89x |  2.56x (at  203 s) |  2.42x |  2.56x (at  203 s) | - / - | no | 958 trades
+A7UD9eRf | 22:50:10 |  126 s, 0.98x |  1.33x |  1.07x (at  583 s) |  1.03x |  1.70x (at  961 s) | - / - | no | 590 trades
