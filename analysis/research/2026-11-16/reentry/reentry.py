@@ -64,13 +64,14 @@ def line(nm, how):
     s = score(how); d = [a - c for a, c in zip(s["days"], B0["days"])]; dr = sorted(sum(random.choice(d) for _ in d) for _ in range(2000))
     star = "*" if all(s["b"][i] > B0["b"][i] for i in range(3)) else " "
     return f"   {nm:66s} | {s['tot']:+6.2f} | {s['tot'] - B0['tot']:+6.2f}{star} | {s['b'][0] - B0['b'][0]:+5.2f} {s['b'][1] - B0['b'][1]:+5.2f} {s['b'][2] - B0['b'][2]:+5.2f} | {s['wo5']:+6.2f} | {s['neg']} | {s['worst']:+5.2f} | {sum(1 for y in dr if y > 0) / 20:5.1f}% [{dr[100]:+5.1f}, {dr[1900]:+5.1f}]"
-print(f"{len(ROWS)} buys, 0.5 SOL, the bot's run; the live setup {B0['tot']:+.2f} (w/o best 5 {B0['wo5']:+.2f}, losing days {B0['neg']}, worst {B0['worst']:+.2f}); * = ahead in all three blocks; noise of one change about +-3.4")
-print(f"   {'':66s} | total  | gain    | by block A / B / C | w/o b5 | neg | worst | draws ahead [5%, 95%]")
-PR = (("press", 5, 60, 30),)
-print("== back in after a signal exit (or its early sale), once, before 480 s")
-for nm, k, lvl in (("a new high 10% over the high while we held", "newhigh", 1.1), ("a new high 30% over it", "newhigh", 1.3), ("the price back over 1.5x its price", "level", 1.5),
-                   ("the price back over 2x its price", "level", 2.0), ("10+ more buys than sells in 30 s, over our sale price", "buys", 10), ("20+ more buys than sells in 30 s, over our sale price", "buys", 20)):
-    print(line(f"{nm}; then tp 4 / timer", ("back", k, lvl, None)))
-    print(line(f"{nm}; then tp 4 / timer / pressure", ("back", k, lvl, PR)))
-print("== a runner: keep a share to the take profit or the timer")
-for f in (0.1, 0.2, 0.3, 0.5): print(line(f"keep {int(f * 100)}%", ("runner", f)))
+if __name__ == "__main__":
+    print(f"{len(ROWS)} buys, 0.5 SOL, the bot's run; the live setup {B0['tot']:+.2f} (w/o best 5 {B0['wo5']:+.2f}, losing days {B0['neg']}, worst {B0['worst']:+.2f}); * = ahead in all three blocks; noise of one change about +-3.4")
+    print(f"   {'':66s} | total  | gain    | by block A / B / C | w/o b5 | neg | worst | draws ahead [5%, 95%]")
+    PR = (("press", 5, 60, 30),)
+    print("== back in after a signal exit (or its early sale), once, before 480 s")
+    for nm, k, lvl in (("a new high 10% over the high while we held", "newhigh", 1.1), ("a new high 30% over it", "newhigh", 1.3), ("the price back over 1.5x its price", "level", 1.5),
+                       ("the price back over 2x its price", "level", 2.0), ("10+ more buys than sells in 30 s, over our sale price", "buys", 10), ("20+ more buys than sells in 30 s, over our sale price", "buys", 20)):
+        print(line(f"{nm}; then tp 4 / timer", ("back", k, lvl, None)))
+        print(line(f"{nm}; then tp 4 / timer / pressure", ("back", k, lvl, PR)))
+    print("== a runner: keep a share to the take profit or the timer")
+    for f in (0.1, 0.2, 0.3, 0.5): print(line(f"keep {int(f * 100)}%", ("runner", f)))

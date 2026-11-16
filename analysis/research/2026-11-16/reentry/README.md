@@ -13,6 +13,10 @@ against the live setup on the 1,238 buys, the bot's run (`reentry.py`, `out/reen
 
 The noise of one change is about ±3.4 SOL: the best re-entry (+1.59, the price back over 2x) is inside it and behind in
 one block. The runner loses in every setting: the share kept holds the slot for the full ten minutes (the next copies
-are missed) and most of the coins left on a signal keep falling. **Nothing to change.** On #64 the 2x re-entry would
+are missed) and most of the coins left on a signal keep falling. **Checked again (`runner_check.py`, `out/runner_check.txt`):** keeping 10% cost about as much as keeping 50%, so most
+of that cost was the runner holding a slot, not the coins. With the runner not counted against the two slots it still
+loses (−1.34 / −1.75 / −2.19 / −3.14 for 10 / 20 / 30 / 50%), and the kept share loses on its own: of 748 kept shares 22
+reach tp 4, and the kept shares net −0.80 to −0.39 SOL where sold with the rest they make +0.70 to +3.51. So the
+coins left on a signal do keep falling, as the first reading said, for the right reason now. **Nothing to change.** On #64 the 2x re-entry would
 have bought back at about 2.03x at 290 s and sold at 4x; on the other coins the same rule buys back into a bounce that
 fails about as often as not.
