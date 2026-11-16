@@ -4,10 +4,13 @@
 # Reads /etc/rugsnipe/float-levels, one "MINT SOL" a line (# = comment), and runs `rugsnipe-long float level MINT SOL`
 # for each (it buys what is missing or sells the excess through Jupiter, and does nothing within 5% of the size).
 # Only while no copy is open: a float with a copy out looks short, and levelling it then would buy what the sale
-# brings back a minute later. Started every 10 minutes by rugsnipe-float-level.timer; by hand:
+# brings back a minute later. A float is topped up only if the wallet keeps SOL_FLOOR SOL after it (default 0.6: a SOL
+# copy needs the stake plus the 0.05 reserve; 2026-11-16 the top-ups had taken the wallet to 0.65 SOL); selling the
+# excess of a float is always done. Started every 10 minutes by rugsnipe-float-level.timer; by hand:
 #   sudo rugsnipe-float-level [CONFIG] [LEVELS]
 set -u
 B=${RUGSNIPE_LONG:-/opt/rugsnipe/bin/rugsnipe-long}; C=${1:-/etc/rugsnipe/long.toml}; L=${2:-/etc/rugsnipe/float-levels}
+FLOOR=${SOL_FLOOR:-0.6}
 [ -r "$L" ] || { echo "float-level: no $L, nothing done"; exit 0; }
 # copies open now, over the book's lines ("...; N open; ..."); empty when the status cannot be read
 open_now() { "$B" status --config "$C" 2>/dev/null | sed -n 's/.*; \([0-9][0-9]*\) open;.*/\1/p' | awk '{s += $1} END {if (NR) print s}'; }
@@ -15,6 +18,13 @@ while read -r mint sol _; do
   case "$mint" in ''|\#*) continue ;; esac
   n=$(open_now)
   if [ "$n" != "0" ]; then echo "float-level: ${n:-?} open, stopping (the next run goes on)"; exit 0; fi
+  # the wallet's SOL and this float's SOL value now ("wallet X SOL  floats: MINT8 units (Y SOL), ...")
+  chain=$("$B" status --config "$C" --chain 2>/dev/null | grep -m1 '^ *wallet ')
+  have=$(echo "$chain" | sed -n 's/^ *wallet \([0-9.]*\) SOL.*/\1/p')
+  now=$(echo "$chain" | grep -o "${mint:0:8} [0-9.]* ([0-9.]* SOL)" | sed -n 's/.*(\([0-9.]*\) SOL)/\1/p')
+  if [ -n "$have" ] && [ -n "$now" ] && awk -v w="$have" -v v="$now" -v t="$sol" -v f="$FLOOR" 'BEGIN {exit !(t > v && w - (t - v) < f)}'; then
+    echo "float-level: ${mint:0:8} at $now SOL, target $sol: not topped up, the wallet has $have SOL (keeps $FLOOR)"; continue
+  fi
   out=$("$B" float level "$mint" "$sol" --config "$C" 2>&1 | sed -E 's#https?://[^ "]*#<url>#g')
   # one line a float in the journal: what it did, or why not
   echo "float-level: ${mint:0:8} to $sol SOL: $(echo "$out" | tr '\n' ' ' | cut -c1-300)"
