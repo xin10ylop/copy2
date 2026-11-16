@@ -221,6 +221,11 @@ difference to these 24. The owner's question on the pressure rule ("after his se
 `2026-11-16/final_exit/after_his_sale.py` — counted from 0 / 10 s −4.94 / −2.61, from 20 s +0.79 (noise); after its
 sale with no floor −0.37, with lower counts −3.09 to −12.04, out at once −26.70; its sale followed in its first 30 s
 −9.38. Unchanged.
+**#49-#63 checked on chain (Nov 16, to 11:59 UTC): all 15 equal the journal** within 0.002 SOL (#51 `CdM8ufFW`, the
+first `stall` exit, −0.2990: two sell tries failed on chain with `Custom 6004` for 0.000355 each before the third
+landed). The float top-up ran by itself between trades (SPCX +114,359 units at 22:43, TTWO, WBTC, PUMP). #63 `9WoGxMZD`
+(SOL, 2 hops, filled 20.6% over its price) sold on `sell_pressure` at 34 s, −0.1469. **The frozen setup: 25 closed, 7
+won, −0.9512 SOL**; Nov 16 −0.3960 to then; all real 55, −0.5437; with holder fees +0.2200 SOL.
 **The settings of the two signals, all of them, on the live setup** (`analysis/research/2026-11-16/signals/out/grid.txt`,
 520 settings): windows of 20-45 s lose 5 to 21 SOL, 60-120 s are flat, counting from 0-10 s after its buy loses 3 to
 5, SOL in place of the trade count loses everywhere, a stall under 120 s loses 2 to 17 and 180-300 s are flat (+3.1
