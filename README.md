@@ -250,7 +250,9 @@ setup works as built and the edge is still there on the new coins; the live hour
 4.09x after 15 s, **+1.4537 SOL (+290.7%)**; chain (slots 470199169, 470199241) −160,327 then +627,396 TTWO units,
 +467,069 units = +1.4535 SOL at the rate of our buy, less 0.00306 of fees. Wallet 4 +308.2%, sold at 92 s. **The frozen
 setup: 28 closed, 9 won, +0.3857 SOL**; Nov 16 +0.9405; all real 58, +0.7929; with holder fees +1.5565 SOL. The win
-sits in the TTWO float (2.05 SOL); the top-up sells the excess back to SOL once no copy is open.
+sat in the TTWO float (2.05 SOL). The top-up's sale of the excess was refused by Jupiter (HTTP 429) at 16:55: since
+`85c24e7` the script priced all seven floats once a float, a fault of mine; fixed in `b01919b` (one read a run). At
+16:59 it sold 464,011 TTWO units for 1.4395 SOL (slot 470207435): **SOL 2.0861**, WBTC 1.004, the six others 0.593-0.604.
 **The settings of the two signals, all of them, on the live setup** (`analysis/research/2026-11-16/signals/out/grid.txt`,
 520 settings): windows of 20-45 s lose 5 to 21 SOL, 60-120 s are flat, counting from 0-10 s after its buy loses 3 to
 5, SOL in place of the trade count loses everywhere, a stall under 120 s loses 2 to 17 and 180-300 s are flat (+3.1
