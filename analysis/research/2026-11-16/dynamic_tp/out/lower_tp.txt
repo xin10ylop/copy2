@@ -1,0 +1,40 @@
+check: the live setup here +73.72, in ../final_exit/ +75.29
+1238 buys, 0.5 SOL, the bot's run; the live setup +73.72 (this model; w/o best 5 +64.09, losing days 3, worst -1.29); 60 rules; * = ahead in all three blocks; noise about +-3.4
+== a lower take profit for the weak coins, by the level
+                                                      | total  | gain    | by block A / B / C | w/o b5 | neg | worst | ahead in draws
+   tp 1.3 for the weak coins: 12 settings, gain from -30.14 to -11.06; ahead 0, in all blocks 0
+   at 60 s, netbuy under 10: tp 1.3 (strong keep 4)   | +62.66 | -11.06  | -4.67 -6.36 -0.03 | +53.08 | 3 | -1.17 |   0.0%
+   tp 1.5 for the weak coins: 12 settings, gain from -24.38 to -8.42; ahead 0, in all blocks 0
+   at 60 s, price under 1.2: tp 1.5 (strong keep 4)   | +65.31 |  -8.42  | -1.17 -6.80 -0.45 | +55.72 | 4 | -1.70 |   0.5%
+   tp 2 for the weak coins: 12 settings, gain from -18.14 to -6.22; ahead 0, in all blocks 0
+   at 60 s, netbuy under 10: tp 2 (strong keep 4)     | +67.50 |  -6.22  | -1.72 -3.70 -0.79 | +57.92 | 3 | -1.29 |   0.0%
+   tp 2.5 for the weak coins: 12 settings, gain from -10.61 to -3.93; ahead 0, in all blocks 0
+   at 60 s, netbuy under 10: tp 2.5 (strong keep 4)   | +69.79 |  -3.93  | -1.06 -2.15 -0.72 | +60.21 | 3 | -1.29 |   0.7%
+== the take profit lowered with time, for every copy
+                                                      | total  | gain    | by block A / B / C | w/o b5 | neg | worst | ahead in draws
+   decay: tp 4 until 120 s, then 1.3                  | +50.58 | -23.14  | -5.93 -10.26 -6.96 | +42.96 | 3 | -1.86 |   0.0%
+   decay: tp 4 until 120 s, then 1.5                  | +51.80 | -21.93  | -4.83 -10.43 -6.67 | +44.17 | 4 | -1.59 |   0.0%
+   decay: tp 4 until 120 s, then 2                    | +52.81 | -20.91  | -3.61 -8.70 -8.59 | +44.98 | 5 | -2.30 |   0.0%
+   decay: tp 4 until 120 s, then 2.5                  | +60.57 | -13.15  | -1.78 -5.28 -6.09 | +52.28 | 4 | -1.93 |   0.0%
+   decay: tp 4 until 180 s, then 1.3                  | +55.75 | -17.98  | -4.91 -7.23 -5.83 | +47.28 | 4 | -2.48 |   0.0%
+   decay: tp 4 until 180 s, then 1.5                  | +56.33 | -17.40  | -4.45 -7.18 -5.76 | +47.86 | 3 | -2.12 |   0.0%
+   decay: tp 4 until 180 s, then 2                    | +58.05 | -15.68  | -2.75 -6.64 -6.29 | +49.58 | 4 | -2.30 |   0.0%
+   decay: tp 4 until 180 s, then 2.5                  | +62.74 | -10.98  | -1.60 -4.93 -4.46 | +54.19 | 4 | -1.93 |   0.0%
+   decay: tp 4 until 300 s, then 1.3                  | +65.31 |  -8.41  | -2.08 -3.08 -3.25 | +56.09 | 3 | -2.29 |   0.0%
+   decay: tp 4 until 300 s, then 1.5                  | +65.80 |  -7.93  | -1.43 -3.28 -3.21 | +56.58 | 3 | -2.29 |   0.0%
+   decay: tp 4 until 300 s, then 2                    | +66.63 |  -7.10  | -0.77 -3.56 -2.77 | +57.41 | 3 | -2.30 |   0.0%
+   decay: tp 4 until 300 s, then 2.5                  | +68.42 |  -5.31  | -0.58 -2.22 -2.51 | +59.20 | 3 | -1.93 |   0.1%
+== the 10 best of all
+                                                      | total  | gain    | by block A / B / C | w/o b5 | neg | worst | ahead in draws
+   at 60 s, netbuy under 10: tp 2.5 (strong keep 4)   | +69.79 |  -3.93  | -1.06 -2.15 -0.72 | +60.21 | 3 | -1.29 |   0.5%
+   at 60 s, price under 1.2: tp 2.5 (strong keep 4)   | +69.10 |  -4.62  | -0.43 -2.86 -1.34 | +59.52 | 3 | -1.71 |   0.3%
+   decay: tp 4 until 300 s, then 2.5                  | +68.42 |  -5.31  | -0.58 -2.22 -2.51 | +59.20 | 3 | -1.93 |   0.0%
+   at 60 s, netbuy under 20: tp 2.5 (strong keep 4)   | +67.63 |  -6.10  | -1.31 -3.74 -1.05 | +58.18 | 3 | -1.29 |   0.5%
+   at 60 s, netbuy under 10: tp 2 (strong keep 4)     | +67.50 |  -6.22  | -1.72 -3.70 -0.79 | +57.92 | 3 | -1.29 |   0.0%
+   at 60 s, trades under 50: tp 2.5 (strong keep 4)   | +67.17 |  -6.55  | -1.42 -4.20 -0.94 | +57.58 | 3 | -1.29 |   0.0%
+   decay: tp 4 until 300 s, then 2                    | +66.63 |  -7.10  | -0.77 -3.56 -2.77 | +57.41 | 3 | -2.30 |   0.0%
+   at 30 s, netbuy under 10: tp 2.5 (strong keep 4)   | +66.09 |  -7.64  | -2.75 -3.44 -1.45 | +56.50 | 4 | -1.29 |   0.0%
+   decay: tp 4 until 300 s, then 1.5                  | +65.80 |  -7.93  | -1.43 -3.28 -3.21 | +56.58 | 3 | -2.29 |   0.0%
+   at 60 s, price under 1.2: tp 2 (strong keep 4)     | +65.66 |  -8.06  | -0.88 -5.07 -2.12 | +56.08 | 3 | -1.95 |   0.0%
+== walk-forward: best on A+B 'decay: tp 4 until 300 s, then 2.5' -> on C -2.51; the 10 best on A+B -> on C -1.87, ahead on C 0 of 10
+== wallet 4's newest days (live setup +1.21): best on A+B +0.00; the 5 best of all: +0.00, +0.00, +0.00, +0.00, +0.00

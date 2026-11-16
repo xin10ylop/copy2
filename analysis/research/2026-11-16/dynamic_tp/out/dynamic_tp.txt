@@ -1,0 +1,75 @@
+check: the live setup here +73.72, in ../final_exit/ +75.29
+1238 buys, 0.5 SOL, the bot's run; the live setup +73.72 (w/o best 5 +64.09, losing days 3, worst -1.29); 162 rules; * = ahead in all three blocks; noise of one change about +-3.4
+== the 20 best by total
+                                                                          | total  | gain    | by block A / B / C | w/o b5 | neg | worst | ahead in draws
+   fast: 4x within 30 s -> tp none / 600 s                                | +78.21 |  +4.49* | +2.46 +1.10 +0.92 | +62.95 | 4 | -1.29 |  84.1%
+   fast: 4x within 30 s -> tp none / 1200 s                               | +78.21 |  +4.49* | +2.46 +1.10 +0.92 | +62.95 | 4 | -1.29 |  84.7%
+   at 60 s, trades >= 50: strong tp 6 / 600 s, weak tp 4                  | +77.89 |  +4.17* | +2.69 +1.11 +0.37 | +65.55 | 3 | -1.23 |  87.2%
+   at 60 s, trades >= 50: strong tp 6 / 1200 s, weak tp 4                 | +77.82 |  +4.10* | +2.69 +1.04 +0.37 | +65.48 | 3 | -1.23 |  87.1%
+   fast: 4x within 30 s -> tp 10 / 600 s                                  | +76.64 |  +2.92* | +1.35 +0.64 +0.92 | +62.95 | 4 | -1.29 |  79.5%
+   fast: 4x within 30 s -> tp 10 / 1200 s                                 | +76.64 |  +2.92* | +1.35 +0.64 +0.92 | +62.95 | 4 | -1.29 |  78.4%
+   at 60 s, netbuy >= 10: strong tp 6 / 600 s, weak tp 4                  | +76.54 |  +2.82  | +3.36 -0.58 +0.04 | +64.18 | 3 | -1.23 |  73.9%
+   at 60 s, netbuy >= 10: strong tp 6 / 1200 s, weak tp 4                 | +76.44 |  +2.71  | +3.34 -0.66 +0.04 | +64.07 | 3 | -1.23 |  73.6%
+   at 60 s, netbuy >= 20: strong tp 6 / 600 s, weak tp 4                  | +76.39 |  +2.66  | +3.02 -0.65 +0.29 | +64.29 | 3 | -1.23 |  76.8%
+   at 30 s, netbuy >= 20: strong tp 6 / 600 s, weak tp 4                  | +76.34 |  +2.62* | +1.80 +0.64 +0.18 | +64.34 | 3 | -1.29 |  82.9%
+   at 60 s, netbuy >= 20: strong tp 6 / 1200 s, weak tp 4                 | +76.32 |  +2.60  | +3.02 -0.71 +0.29 | +64.22 | 3 | -1.23 |  74.5%
+   at 30 s, netbuy >= 20: strong tp 6 / 1200 s, weak tp 4                 | +76.27 |  +2.55* | +1.80 +0.57 +0.18 | +64.27 | 3 | -1.29 |  81.8%
+   at 60 s, price >= 1.5: strong tp 6 / 600 s, weak tp 4                  | +76.26 |  +2.53  | +2.63 +0.56 -0.66 | +64.49 | 3 | -1.29 |  80.7%
+   at 60 s, price >= 1.5: strong tp 6 / 1200 s, weak tp 4                 | +76.19 |  +2.47  | +2.63 +0.49 -0.66 | +64.42 | 3 | -1.29 |  79.1%
+   at 60 s, price >= 1.2: strong tp 6 / 1200 s, weak tp 4                 | +75.67 |  +1.95  | +3.55 -2.10 +0.49 | +63.31 | 3 | -1.27 |  67.8%
+   at 60 s, price >= 1.2: strong tp 6 / 600 s, weak tp 4                  | +75.28 |  +1.56  | +3.06 -2.00 +0.49 | +62.92 | 3 | -1.27 |  65.4%
+   at 60 s, trades >= 50: strong tp 6 / 600 s, weak tp 3                  | +75.14 |  +1.41  | +3.09 -1.22 -0.46 | +62.79 | 3 | -1.23 |  63.1%
+   fast: 4x within 60 s -> tp none / 600 s                                | +75.11 |  +1.39  | +0.71 +0.69 -0.00 | +59.85 | 4 | -1.29 |  63.3%
+   fast: 4x within 60 s -> tp none / 1200 s                               | +75.11 |  +1.39  | +0.71 +0.69 -0.00 | +59.85 | 4 | -1.29 |  66.1%
+   fast: 4x within 30 s -> tp 6 / 600 s                                   | +75.11 |  +1.39  | +1.47 -1.01 +0.92 | +64.31 | 4 | -1.29 |  75.0%
+== ahead in all three blocks
+                                                                          | total  | gain    | by block A / B / C | w/o b5 | neg | worst | ahead in draws
+   fast: 4x within 30 s -> tp none / 600 s                                | +78.21 |  +4.49* | +2.46 +1.10 +0.92 | +62.95 | 4 | -1.29 |  83.6%
+   fast: 4x within 30 s -> tp none / 1200 s                               | +78.21 |  +4.49* | +2.46 +1.10 +0.92 | +62.95 | 4 | -1.29 |  84.2%
+   at 60 s, trades >= 50: strong tp 6 / 600 s, weak tp 4                  | +77.89 |  +4.17* | +2.69 +1.11 +0.37 | +65.55 | 3 | -1.23 |  87.0%
+   at 60 s, trades >= 50: strong tp 6 / 1200 s, weak tp 4                 | +77.82 |  +4.10* | +2.69 +1.04 +0.37 | +65.48 | 3 | -1.23 |  87.3%
+   fast: 4x within 30 s -> tp 10 / 600 s                                  | +76.64 |  +2.92* | +1.35 +0.64 +0.92 | +62.95 | 4 | -1.29 |  77.0%
+   fast: 4x within 30 s -> tp 10 / 1200 s                                 | +76.64 |  +2.92* | +1.35 +0.64 +0.92 | +62.95 | 4 | -1.29 |  78.9%
+   at 30 s, netbuy >= 20: strong tp 6 / 600 s, weak tp 4                  | +76.34 |  +2.62* | +1.80 +0.64 +0.18 | +64.34 | 3 | -1.29 |  78.2%
+   at 30 s, netbuy >= 20: strong tp 6 / 1200 s, weak tp 4                 | +76.27 |  +2.55* | +1.80 +0.57 +0.18 | +64.27 | 3 | -1.29 |  78.7%
+== the fast-runner rules
+                                                                          | total  | gain    | by block A / B / C | w/o b5 | neg | worst | ahead in draws
+   fast: 4x within 15 s -> tp 6 / 600 s                                   | +73.54 |  -0.18  | +0.00 -1.10 +0.92 | +63.54 | 3 | -1.29 |  49.5%
+   fast: 4x within 15 s -> tp 6 / 1200 s                                  | +73.54 |  -0.18  | +0.00 -1.10 +0.92 | +63.54 | 3 | -1.29 |  49.8%
+   fast: 4x within 15 s -> tp 10 / 600 s                                  | +73.54 |  -0.18  | +0.00 -1.10 +0.92 | +63.54 | 3 | -1.29 |  47.4%
+   fast: 4x within 15 s -> tp 10 / 1200 s                                 | +73.54 |  -0.18  | +0.00 -1.10 +0.92 | +63.54 | 3 | -1.29 |  48.4%
+   fast: 4x within 15 s -> tp none / 600 s                                | +73.54 |  -0.18  | +0.00 -1.10 +0.92 | +63.54 | 3 | -1.29 |  49.6%
+   fast: 4x within 15 s -> tp none / 1200 s                               | +73.54 |  -0.18  | +0.00 -1.10 +0.92 | +63.54 | 3 | -1.29 |  46.8%
+   fast: 4x within 30 s -> tp 6 / 600 s                                   | +75.11 |  +1.39  | +1.47 -1.01 +0.92 | +64.31 | 4 | -1.29 |  74.1%
+   fast: 4x within 30 s -> tp 6 / 1200 s                                  | +75.11 |  +1.39  | +1.47 -1.01 +0.92 | +64.31 | 4 | -1.29 |  75.3%
+   fast: 4x within 30 s -> tp 10 / 600 s                                  | +76.64 |  +2.92* | +1.35 +0.64 +0.92 | +62.95 | 4 | -1.29 |  80.1%
+   fast: 4x within 30 s -> tp 10 / 1200 s                                 | +76.64 |  +2.92* | +1.35 +0.64 +0.92 | +62.95 | 4 | -1.29 |  79.3%
+   fast: 4x within 30 s -> tp none / 600 s                                | +78.21 |  +4.49* | +2.46 +1.10 +0.92 | +62.95 | 4 | -1.29 |  83.4%
+   fast: 4x within 30 s -> tp none / 1200 s                               | +78.21 |  +4.49* | +2.46 +1.10 +0.92 | +62.95 | 4 | -1.29 |  83.6%
+   fast: 4x within 60 s -> tp 6 / 600 s                                   | +72.01 |  -1.71  | -0.28 -1.42 -0.00 | +61.21 | 4 | -1.29 |  20.2%
+   fast: 4x within 60 s -> tp 6 / 1200 s                                  | +72.01 |  -1.71  | -0.28 -1.42 -0.00 | +61.21 | 4 | -1.29 |  20.3%
+   fast: 4x within 60 s -> tp 10 / 600 s                                  | +73.54 |  -0.18  | -0.40 +0.23 -0.00 | +59.85 | 4 | -1.29 |  45.4%
+   fast: 4x within 60 s -> tp 10 / 1200 s                                 | +73.54 |  -0.18  | -0.40 +0.23 -0.00 | +59.85 | 4 | -1.29 |  45.9%
+   fast: 4x within 60 s -> tp none / 600 s                                | +75.11 |  +1.39  | +0.71 +0.69 -0.00 | +59.85 | 4 | -1.29 |  63.5%
+   fast: 4x within 60 s -> tp none / 1200 s                               | +75.11 |  +1.39  | +0.71 +0.69 -0.00 | +59.85 | 4 | -1.29 |  63.3%
+== by family (settings ahead of live / all; the best)
+   price  : 10/48 ahead, 0 in all blocks; best 'at 60 s, price >= 1.5: strong tp 6 / 600 s, weak tp 4' +2.53
+   netbuy : 12/48 ahead, 2 in all blocks; best 'at 60 s, netbuy >= 10: strong tp 6 / 600 s, weak tp 4' +2.82
+   trades : 10/48 ahead, 2 in all blocks; best 'at 60 s, trades >= 50: strong tp 6 / 600 s, weak tp 4' +4.17
+   fast   : 8/18 ahead, 4 in all blocks; best 'fast: 4x within 30 s -> tp none / 600 s' +4.49
+== walk-forward over all the rules (gain over the live setup in the blocks not picked on)
+   best on A 'at 60 s, price >= 1.2: strong tp 6 / 1200 s, weak tp 3' (+3.76) -> on B -4.50, on C -0.44
+   best on A+B 'at 60 s, trades >= 50: strong tp 6 / 600 s, weak tp 4' (+3.79) -> on C +0.37
+   the 10 best on A+B -> on C on average +0.18; ahead on C: 8 of 10
+== wallet 4's newest days (33 buys, Nov 15 13:04 - Nov 16 14:25; the live setup +1.21 SOL): the best on A+B and the 10 best on all three blocks
+   best on A+B 'at 60 s, trades >= 50: strong tp 6 / 600 s, weak tp 4': +0.54
+   'fast: 4x within 30 s -> tp none / 600 s': +0.00
+   'fast: 4x within 30 s -> tp none / 1200 s': +0.00
+   'at 60 s, trades >= 50: strong tp 6 / 600 s, weak tp 4': +0.54
+   'at 60 s, trades >= 50: strong tp 6 / 1200 s, weak tp 4': +0.54
+   'fast: 4x within 30 s -> tp 10 / 600 s': +0.00
+   'fast: 4x within 30 s -> tp 10 / 1200 s': +0.00
+   'at 60 s, netbuy >= 10: strong tp 6 / 600 s, weak tp 4': +0.54
+   'at 60 s, netbuy >= 10: strong tp 6 / 1200 s, weak tp 4': +0.54
+   'at 60 s, netbuy >= 20: strong tp 6 / 600 s, weak tp 4': +0.54
+   'at 30 s, netbuy >= 20: strong tp 6 / 600 s, weak tp 4': +0.54

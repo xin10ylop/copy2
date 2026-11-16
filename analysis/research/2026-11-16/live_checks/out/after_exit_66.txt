@@ -1,0 +1,2 @@
+coin     | its buy   | our sale: after, at | highest while we held | then, before the 600 s timer: highest (when) | at the timer | highest in 31 min (when) | first at 3x / 4x in its first 600 s | reached 4x after our sale
+GTa6uKEz | 16:30:01 |   15 s, 4.06x |  4.09x |  5.92x (at   58 s) |  3.85x |  5.92x (at   58 s) | 12 s / 15 s | YES, 15 s after its buy (before the timer) | 656 trades
