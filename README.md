@@ -246,6 +246,11 @@ The float top-up now keeps 0.6 SOL in the wallet (`85c24e7`): on Nov 16 it had t
 32 copies, +11.0% a copy (the backtest +13.6%; 46% of its 32-copy runs are as bad or worse); the bot's run +1.22 SOL in
 25.3 hours. **For the live hours the model gives −1.09 SOL on 26 copies; the bot's 27 real trades made −1.0680.** The
 setup works as built and the edge is still there on the new coins; the live hours were the bad half of them.
+**#66 `GTa6uKEz`, the frozen setup's first take profit (Nov 16 16:30 UTC):** TTWO float, bought in its slot (+0),
+4.09x after 15 s, **+1.4537 SOL (+290.7%)**; chain (slots 470199169, 470199241) −160,327 then +627,396 TTWO units,
++467,069 units = +1.4535 SOL at the rate of our buy, less 0.00306 of fees. Wallet 4 +308.2%, sold at 92 s. **The frozen
+setup: 28 closed, 9 won, +0.3857 SOL**; Nov 16 +0.9405; all real 58, +0.7929; with holder fees +1.5565 SOL. The win
+sits in the TTWO float (2.05 SOL); the top-up sells the excess back to SOL once no copy is open.
 **The settings of the two signals, all of them, on the live setup** (`analysis/research/2026-11-16/signals/out/grid.txt`,
 520 settings): windows of 20-45 s lose 5 to 21 SOL, 60-120 s are flat, counting from 0-10 s after its buy loses 3 to
 5, SOL in place of the trade count loses everywhere, a stall under 120 s loses 2 to 17 and 180-300 s are flat (+3.1
