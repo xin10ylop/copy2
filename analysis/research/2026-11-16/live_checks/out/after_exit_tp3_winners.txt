@@ -1,0 +1,3 @@
+coin     | its buy   | our sale: after, at | highest while we held | then, before the 600 s timer: highest (when) | at the timer | highest in 31 min (when) | first at 3x / 4x in its first 600 s | reached 4x after our sale
+BURn1o8x | 08:05:21 |  330 s, 3.01x |  3.02x |  3.23x (at  340 s) |  2.41x |  3.23x (at  340 s) | 311 s / - | no | 1665 trades
+Da5Gbwd8 | its buy not found in 0 trades
