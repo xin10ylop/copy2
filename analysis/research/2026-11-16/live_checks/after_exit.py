@@ -17,7 +17,7 @@ for s in reversed(mine):
             amt = lambda lst: sum(int(x["uiTokenAmount"]["amount"]) for x in lst or [] if x.get("owner") == ME and x["mint"] == b["mint"])
             d = amt(m.get("postTokenBalances")) - amt(m.get("preTokenBalances"))
             if d: legs.setdefault(b["mint"], {})["buy" if d > 0 else "sell"] = (t["slot"], t["blockTime"], s["signature"])
-print("coin     | its buy   | our sale: after, at | then, before the 600 s timer: highest (when) | at the timer | highest in 31 min (when) | reached 4x after our sale")
+print("coin     | its buy   | our sale: after, at | highest while we held | then, before the 600 s timer: highest (when) | at the timer | highest in 31 min (when) | first at 3x / 4x in its first 600 s | reached 4x after our sale")
 for c in COINS:
     mint = next((k for k in legs if k[:8] == c), None)
     if not mint or "buy" not in legs[mint] or "sell" not in legs[mint]: print(f"{c} | not found among our last {len(mine)} transactions"); continue
@@ -41,5 +41,9 @@ for c in COINS:
     hi = max(inwin, key=lambda q: q[1]) if inwin else (st - t0, ours); at600 = inwin[-1][1] if inwin else ours
     hi31 = max(aft, key=lambda q: q[1]) if aft else (st - t0, ours)
     hit = next((a for a, p in aft if p >= 4.0), None)
-    print(f"{c} | {f(t0)} | {st - t0:4d} s, {ours:4.2f}x | {hi[1]:5.2f}x (at {hi[0]:4d} s) | {at600:5.2f}x | {hi31[1]:5.2f}x (at {hi31[0]:4d} s) | "
-          + (f"YES, {hit} s after its buy" + (" (before the timer)" if hit <= 600 else " (after the timer)") if hit is not None else "no") + f" | {len(tr)} trades")
+    k0 = next((i for i, e in enumerate(tr) if e["user"] == ME and e["buy"]), k)
+    held = max((px(e) for e in tr[k0:j + 1]), default=ours)
+    early = [(e["t"] - t0, px(e)) for e in tr[k:] if e["t"] - t0 <= 600]
+    f3 = next((a for a, p in early if p >= 3.0), None); f4 = next((a for a, p in early if p >= 4.0), None)
+    print(f"{c} | {f(t0)} | {st - t0:4d} s, {ours:4.2f}x | {held:5.2f}x | {hi[1]:5.2f}x (at {hi[0]:4d} s) | {at600:5.2f}x | {hi31[1]:5.2f}x (at {hi31[0]:4d} s) | "
+          + (f"{'-' if f3 is None else str(f3) + ' s'} / {'-' if f4 is None else str(f4) + ' s'} | ") + (f"YES, {hit} s after its buy" + (" (before the timer)" if hit <= 600 else " (after the timer)") if hit is not None else "no") + f" | {len(tr)} trades")

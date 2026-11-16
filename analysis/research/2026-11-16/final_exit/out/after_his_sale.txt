@@ -1,0 +1,13 @@
+against the live setup +75.29 SOL (1238 buys, 0.5 SOL, the bot's run); * = ahead in all three blocks; the noise of one change is about +-3.4 SOL
+                                                                  | total  | gain    | by block A / B / C | w/o b5 | neg  | worst | draws ahead [5%, 95%]
+   the pressure rule counted from 0 s after its buy (live: 30 s)  | +70.34 |  -4.94  | -0.51 -2.47 -1.96 | +60.71 | 3/24 | -1.08 |   1.4% [ -9.2,  -1.2]
+   the pressure rule counted from 10 s after its buy (live: 30 s) | +72.68 |  -2.61  | -0.88 -0.44 -1.29 | +63.04 | 3/24 | -1.15 |   9.4% [ -6.3,  +0.5]
+   the pressure rule counted from 20 s after its buy (live: 30 s) | +76.08 |  +0.79* | +0.24 +0.53 +0.02 | +66.44 | 3/24 | -1.23 |  98.8% [ +0.2,  +1.4]
+   after its sale: the live count (5 in 60 s), no 30 s floor      | +74.92 |  -0.37  | -0.17 -0.09 -0.11 | +65.28 | 3/24 | -1.26 |  15.6% [ -1.0,  +0.2]
+   after its sale: 3 more sells than buys in 60 s                 | +72.20 |  -3.09  | -0.16 -1.16 -1.78 | +62.56 | 3/24 | -1.59 |   0.2% [ -5.6,  -1.1]
+   after its sale: 5 in 30 s                                      | +68.03 |  -7.26  | -0.02 -3.09 -4.15 | +59.51 | 3/24 | -1.48 |   2.5% [-12.2,  -0.8]
+   after its sale: 3 in 30 s                                      | +63.39 | -11.90  | +0.54 -8.09 -4.35 | +54.98 | 4/24 | -1.49 |   0.1% [-17.5,  -4.8]
+   after its sale: 2 in 30 s                                      | +63.24 | -12.04  | +0.25 -8.34 -3.96 | +54.88 | 4/24 | -1.44 |   0.0% [-17.3,  -5.3]
+   after its sale: out at once (on the next trade)                | +48.58 | -26.70  | -5.13 -13.40 -8.16 | +40.81 | 4/24 | -2.36 |   0.0% [-32.5, -16.6]
+   its sale followed in its first 30 s too (0-290 s under 1.5x)   | +65.91 |  -9.38  | -1.46 -4.37 -3.55 | +57.27 | 4/24 | -1.66 |   0.1% [-12.7,  -3.5]
+   its sale followed in its first 30 s at any price, and 30-290 s under 1.5x | +65.91 |  -9.38  | -1.46 -4.37 -3.55 | +57.27 | 4/24 | -1.66 |   0.1% [-12.7,  -3.4]

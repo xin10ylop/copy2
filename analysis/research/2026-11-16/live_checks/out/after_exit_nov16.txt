@@ -1,0 +1,25 @@
+coin     | its buy   | our sale: after, at | highest while we held | then, before the 600 s timer: highest (when) | at the timer | highest in 31 min (when) | first at 3x / 4x in its first 600 s | reached 4x after our sale
+Dyc9zPSt | 19:56:53 |   89 s, 1.75x |  1.93x |  2.89x (at  250 s) |  1.79x |  2.89x (at  250 s) | - / - | no | 290 trades
+E3c6RqFX | 20:26:37 |   63 s, 0.44x |  1.04x |  0.48x (at   85 s) |  0.35x |  0.48x (at   85 s) | - / - | no | 274 trades
+GqAzs7Pb | 20:53:50 |  116 s, 1.05x |  1.27x |  1.05x (at  117 s) |  0.54x |  1.05x (at  117 s) | - / - | no | 390 trades
+3DCv33mL | 21:03:04 |   62 s, 0.94x |  1.32x |  0.96x (at   62 s) |  0.82x |  0.96x (at   62 s) | - / - | no | 54 trades
+DAnPxZ7s | 21:31:45 |  106 s, 0.99x |  1.37x |  1.01x (at  106 s) |  0.81x |  1.01x (at  106 s) | - / - | no | 95 trades
+Z3kN3Xpm | 22:04:15 |   77 s, 1.49x |  1.94x |  2.37x (at  297 s) |  2.09x |  2.37x (at  297 s) | - / - | no | 465 trades
+GkJDPnXR | 22:10:22 |  169 s, 1.02x |  1.33x |  1.05x (at  169 s) |  1.00x |  1.05x (at  169 s) | - / - | no | 38 trades
+Dy1ZHNtB | 22:18:59 |  136 s, 0.81x |  1.19x |  0.82x (at  136 s) |  0.82x |  0.82x (at  136 s) | - / - | no | 55 trades
+wQPAb4FH | 22:19:24 |  180 s, 0.83x |  1.12x |  0.84x (at  180 s) |  0.84x |  0.84x (at  180 s) | - / - | no | 29 trades
+AUtnQZej | 22:25:21 |   61 s, 0.87x |  1.58x |  0.93x (at   61 s) |  0.85x |  0.93x (at   61 s) | - / - | no | 65 trades
+CcV84RDz | 22:49:40 |   62 s, 1.02x |  1.62x |  1.04x (at   62 s) |  0.86x |  1.04x (at   62 s) | - / - | no | 65 trades
+BUddYo5u | 23:18:08 |   61 s, 0.81x |  1.09x |  0.83x (at   61 s) |  0.75x |  0.83x (at   61 s) | - / - | no | 38 trades
+CdM8ufFW | 23:34:21 |  182 s, 0.84x |  1.29x |  0.71x (at  306 s) |  0.71x |  0.71x (at  306 s) | - / - | no | 42 trades
+3Pad5Fm3 | 23:43:06 |   66 s, 1.01x |  1.43x |  1.97x (at  372 s) |  1.77x |  2.19x (at  925 s) | - / - | no | 511 trades
+DqyALnyB | 23:59:46 |   52 s, 0.60x |  1.00x |  0.63x (at   62 s) |  0.29x |  0.63x (at   62 s) | - / - | no | 311 trades
+76ZkaX1B | 00:13:17 |  114 s, 1.03x |  1.13x |  1.65x (at  385 s) |  0.86x |  1.65x (at  385 s) | - / - | no | 685 trades
+4zGubjNG | 00:39:23 |   46 s, 0.84x |  1.13x |  0.84x (at  456 s) |  0.84x |  0.84x (at  456 s) | - / - | no | 40 trades
+ScqzaRCp | 01:23:13 |  184 s, 1.25x |  1.61x |  1.37x (at  583 s) |  1.33x |  2.88x (at  969 s) | - / - | no | 995 trades
+4NahCr5e | 02:20:28 |  155 s, 1.77x |  2.00x |  1.81x (at  155 s) |  1.24x |  1.81x (at  155 s) | - / - | no | 233 trades
+GTA7n7Lx | 03:57:19 |   31 s, 1.01x |  1.87x |  1.05x (at   31 s) |  0.57x |  1.05x (at   31 s) | - / - | no | 239 trades
+CFUwRZgT | 06:08:38 |  170 s, 0.70x |  1.07x |  0.73x (at  302 s) |  0.67x |  0.73x (at  302 s) | - / - | no | 57 trades
+5pRtNCGM | 06:19:12 |   68 s, 1.01x |  1.12x |  1.47x (at  209 s) |  1.13x |  1.47x (at  209 s) | - / - | no | 180 trades
+8nUF7NLv | 08:00:14 |  128 s, 0.72x |  1.22x |  0.72x (at  128 s) |  0.72x |  0.72x (at  128 s) | - / - | no | 14 trades
+8izPeTka | 08:32:39 |   70 s, 0.62x |  0.95x |  0.82x (at  198 s) |  0.41x |  0.82x (at  198 s) | - / - | no | 153 trades

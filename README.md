@@ -211,6 +211,16 @@ each coin's trades for 31 minutes, the price in multiples of the price wallet 4'
 GqAzs7Pb 1.05 -> 0.54x, 3DCv33mL 0.94 -> 0.82x, DAnPxZ7s 0.99 -> 0.81x, AUtnQZej 0.87 -> 0.85x, CcV84RDz 1.02 -> 0.86x),
 two higher (Dyc9zPSt 1.75 -> 1.79x after a high of 2.89x at 250 s; Z3kN3Xpm 1.49 -> 2.09x after 2.37x at 297 s).
 Day: 18 closed, 6 won, +0.6623; all real 41, +0.2790; with holder fees +1.0427 SOL; the frozen setup 11 closed, −0.1284.
+**Nov 16 to 08:34 UTC (#50-#62):** the frozen setup at 24 closed (#38-#62), 7 won, **−0.8043 SOL**; Nov 16 −0.2491 to
+then; all real 54, −0.3968; with holder fees +0.3669 SOL. **None of the 24 coins reached 3x**, while we held them or
+after, in the first 600 s after wallet 4's buy (`analysis/research/2026-11-16/live_checks/out/after_exit_nov16.txt`;
+highest while held 2.00x, #57 `4NahCr5e`; highest in the first 600 s 2.89x, #38 `Dyc9zPSt` at 250 s, after our sale).
+In the backtest 11.6% of the copies cross 3x within 600 s and 6.8% cross 4x (`2026-11-16/buy_pressure/`): 2.8 and 1.6
+expected in 24; none at 3x has about a 5% chance, none at 4x about 19%. So a take profit of 3x would have made no
+difference to these 24. The owner's question on the pressure rule ("after his sell and earlier than 30 seconds"):
+`2026-11-16/final_exit/after_his_sale.py` — counted from 0 / 10 s −4.94 / −2.61, from 20 s +0.79 (noise); after its
+sale with no floor −0.37, with lower counts −3.09 to −12.04, out at once −26.70; its sale followed in its first 30 s
+−9.38. Unchanged.
 **The settings of the two signals, all of them, on the live setup** (`analysis/research/2026-11-16/signals/out/grid.txt`,
 520 settings): windows of 20-45 s lose 5 to 21 SOL, 60-120 s are flat, counting from 0-10 s after its buy loses 3 to
 5, SOL in place of the trade count loses everywhere, a stall under 120 s loses 2 to 17 and 180-300 s are flat (+3.1
