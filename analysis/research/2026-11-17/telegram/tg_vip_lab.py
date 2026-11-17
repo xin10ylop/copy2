@@ -38,7 +38,7 @@ for t, m, P in load(D):
              s_big10=max(dq[w].max() if w.any() else 0, 0) / 1e9, s_sell10=float((dq[w] < 0).mean()) if w.any() else 0.5,
              a_p60=at(60), a_p120=at(120), a_flow2=dq[w2].sum() / 1e9, a_sells2=int((dq[w2] < 0).sum()) - int((dq[w2] > 0).sum()))
     r["s_run10"], r["s_run3"], r["s_run1"] = 1 / r["s_run10"], 1 / r["s_run3"], 1 / r["s_run1"]   # price at the post over before
-    r["s_accel"] = r["s_run1"] / max(r["s_run3"], 1e-9)   # the last minute's share of the 3-minute move: speeding up or not
+    r["s_accel"] = r["s_run1"] / max(r["s_run3"], 1e-9)   # (price at -3 min) / (price at -1 min): high = it did not climb in those 2 min
     r["s_hour"] = (t // 3600) % 24                         # UTC hour of the call
     r["s_pace"] = int(((ALLT > t - 3600) & (ALLT <= t)).sum()) if len(ALLT) else 0   # VIP calls in the hour before: a hot or quiet market
     hi_t = T[k0 + 1:][w2[k0 + 1:]]; hp = pr[k0 + 1:][w2[k0 + 1:]]
@@ -138,8 +138,8 @@ res = []
 for name, e in ents:
     a = run(FIL(TR), ent=e, tp=2); b = run(FIL(VA), ent=e, tp=2); res.append((name, e, a, b))
     print(f"   {name:10s}: TRAIN {S(a)} | VAL {S(b)}")
-def plateau(res):   # the best mean on TRAIN among those whose grid neighbours are positive on TRAIN too
-    m = [sum(a) / len(a) if a else -9 for _, _, a, _ in res]; best = None
+def plateau(res):   # the best mean on TRAIN among those whose grid neighbours are positive on TRAIN too (20+ copies each)
+    m = [sum(a) / len(a) if a and len(a) >= 20 else -9 for _, _, a, _ in res]; best = None
     for i in range(len(res)):
         nb = [m[j] for j in (i - 1, i, i + 1) if 0 <= j < len(res)]
         if min(nb) > 0 and (best is None or m[i] > m[best]): best = i

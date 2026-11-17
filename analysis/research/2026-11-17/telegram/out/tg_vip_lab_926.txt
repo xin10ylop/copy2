@@ -1,0 +1,124 @@
+413 VIP calls with a price path: TRAIN 206, VAL 103, TEST 104 (by time)
+
+1. SIGNS. winners (1.5x within the hour of the call): TRAIN 35%, VAL 26%, TEST 41%
+   by tier, TRAIN / VAL: Diamond 38%/33%, Safe 41%/28%, Gamble 31%/23%, Gamble Risk 24%/14%
+   sign        | cut      | winner rate low/high TRAIN | VAL        | n with it | kept
+   a_flow2     |    -1.25 |  18% /  52%              |  11% /  51% |  309 | YES: high
+   a_p120      |    0.954 |  17% /  53%              |  10% /  52% |  309 | YES: high
+   a_p60       |    0.986 |  20% /  50%              |  10% /  48% |  309 | YES: high
+   a_sells2    |        3 |  35% /  36%              |  30% /  23% |  309 | 
+   a_stall     |        1 |  35% / nan%              |  26% / nan% |  309 | 
+   s_accel     |    0.393 |  22% /  49%              |  13% /  45% |  309 | YES: high
+   s_age       |        1 |  38% /  27%              |  25% /  33% |  309 | 
+   s_avgbuy    |    0.473 |  44% /  29%              |  43% /  12% |  292 | YES: low
+   s_big10     |     13.3 |  34% /  37%              |  35% /  17% |  309 | 
+   s_bundle    |    0.318 |  36% /  37%              |  28% /  25% |  292 | 
+   s_buyers    |      192 |  28% /  45%              |  20% /  32% |  292 | YES: high
+   s_curve     |        1 |  35% / nan%              |  26% / nan% |  309 | 
+   s_dev       |        0 |  37% /  35%              |  27% /  25% |  292 | 
+   s_devbuy    |   0.0109 |  38% /  35%              |  30% /  24% |  292 | 
+   s_devsold   |        1 |  37% / nan%              |  27% / nan% |  292 | 
+   s_fee       |      125 |  37% /   0%              |  27% / nan% |  292 | 
+   s_flow10    |     16.7 |  25% /  46%              |  29% /  24% |  309 | 
+   s_holders   |       98 |  25% /  48%              |  19% /  33% |  292 | YES: high
+   s_hour      |       14 |  30% /  41%              |  26% /  27% |  309 | 
+   s_mc        | 1.03e+04 |  34% /  37%              |  28% /  23% |  309 | 
+   s_n10       |      404 |  28% /  43%              |  16% /  33% |  309 | YES: high
+   s_pace      |       29 |  33% /  38%              |  26% /  27% |  309 | 
+   s_prog      |    0.706 |  26% /  47%              |  26% /  27% |  292 | 
+   s_run1      |     1.06 |  27% /  44%              |  24% /  28% |  309 | 
+   s_run10     |     1.93 |  45% /  26%              |  48% /  13% |  309 | YES: low
+   s_run3      |      1.8 |  39% /  32%              |  43% /  15% |  309 | YES: low
+   s_sell10    |    0.526 |  41% /  30%              |  29% /  25% |  309 | 
+   s_sellers   |      106 |  37% /  36%              |  24% /  29% |  292 | 
+   s_smallbuys |    0.198 |  36% /  37%              |  16% /  37% |  292 | 
+   s_spotted   |        0 |  37% /  31%              |  25% /  32% |  309 | 
+   s_top1      |   0.0382 |  36% /  37%              |  27% /  26% |  292 | 
+   s_top10     |    0.218 |  34% /  39%              |  28% /  25% |  292 | 
+   s_txns      |      210 |  29% /  42%              |  21% /  30% |  309 | YES: high
+   s_vol       | 1.08e+04 |  35% /  36%              |  26% /  27% |  309 | 
+
+2. FILTER from the kept signs at the call (8: s_accel, s_avgbuy, s_buyers, s_holders, s_n10, s_run10, s_run3, s_txns); base trade: buy 1 s after, tp2, 60 min
+   at least 0: TRAIN  205  -14.22 (-13.9%) w/o5  -16.79 | VAL  102  -13.62 (-26.7%) w/o5  -16.51
+   at least 1: TRAIN  182   -6.61 ( -7.3%) w/o5   -9.18 | VAL   90   -9.18 (-20.4%) w/o5  -12.07
+   at least 2: TRAIN  170   -3.04 ( -3.6%) w/o5   -5.61 | VAL   78   -5.92 (-15.2%) w/o5   -8.65
+   at least 3: TRAIN  136   +3.53 ( +5.2%) w/o5   +0.96 | VAL   71   -4.15 (-11.7%) w/o5   -6.87
+   at least 4: TRAIN  115   +5.80 (+10.1%) w/o5   +3.23 | VAL   62   -1.61 ( -5.2%) w/o5   -4.34
+   at least 5: TRAIN   80   +9.01 (+22.5%) w/o5   +6.46 | VAL   47   +0.46 ( +1.9%) w/o5   -1.96
+   at least 6: TRAIN   60  +11.38 (+37.9%) w/o5   +8.87 | VAL   30   +4.18 (+27.9%) w/o5   +1.80
+   at least 7: TRAIN   40  +10.39 (+52.0%) w/o5   +7.95 | VAL   16   +2.95 (+36.9%) w/o5   +0.70
+   at least 8: TRAIN   19   +6.42 (+67.6%) w/o5   +4.00 | VAL    5   +1.22 (+48.6%) w/o5   +0.00
+   picked on TRAIN: at least 7 (the best mean a copy with 20+ copies)
+
+3. ENTRY (filtered calls, exit tp2 / 60 min)
+   delay 1s  : TRAIN   40  +10.39 (+52.0%) w/o5   +7.95 | VAL   16   +2.95 (+36.9%) w/o5   +0.70
+   delay 3s  : TRAIN   40  +10.40 (+52.0%) w/o5   +7.78 | VAL   16   +2.95 (+36.9%) w/o5   +0.62
+   delay 5s  : TRAIN   39   +9.57 (+49.1%) w/o5   +7.13 | VAL   16   +2.94 (+36.8%) w/o5   +0.76
+   delay 10s : TRAIN   40  +10.17 (+50.9%) w/o5   +7.71 | VAL   16   +2.89 (+36.1%) w/o5   +0.80
+   delay 20s : TRAIN   35   +8.69 (+49.6%) w/o5   +6.21 | VAL   16   +2.68 (+33.5%) w/o5   +0.54
+   delay 30s : TRAIN   31   +7.04 (+45.4%) w/o5   +4.46 | VAL   13   +1.97 (+30.3%) w/o5   +0.07
+   delay 60s : TRAIN   20   +4.73 (+47.3%) w/o5   +1.94 | VAL   10   +2.26 (+45.2%) w/o5   -0.12
+   delay 120s: TRAIN   17   +2.99 (+35.2%) w/o5   +0.16 | VAL    8   +0.85 (+21.3%) w/o5   -0.81
+   dip 0.95  : TRAIN   29   +6.63 (+45.8%) w/o5   +3.96 | VAL   14   +2.45 (+34.9%) w/o5   +0.37
+   dip 0.90  : TRAIN   25   +5.49 (+43.9%) w/o5   +2.97 | VAL   12   +2.21 (+36.8%) w/o5   -0.01
+   dip 0.85  : TRAIN   25   +6.22 (+49.8%) w/o5   +3.66 | VAL   10   +1.91 (+38.2%) w/o5   -0.40
+   dip 0.80  : TRAIN   17   +4.70 (+55.3%) w/o5   +2.05 | VAL    7   +0.82 (+23.5%) w/o5   -0.72
+   picked (plateau on TRAIN): dip 0.80
+
+4. EXITS (filtered calls, the picked entry)
+   tp            {'tp': 1.2}                       : TRAIN   17   +0.39 ( +4.6%) w/o5   -0.16 | VAL    7   +0.30 ( +8.7%) w/o5   -0.10
+   tp            {'tp': 1.3}                       : TRAIN   17   +0.88 (+10.3%) w/o5   +0.13 | VAL    7   +0.24 ( +6.8%) w/o5   -0.45
+   tp            {'tp': 1.5}                       : TRAIN   17   +2.20 (+25.9%) w/o5   +0.87 | VAL    7   +0.64 (+18.3%) w/o5   -0.45
+   tp            {'tp': 1.75}                      : TRAIN   17   +3.60 (+42.4%) w/o5   +1.68 | VAL    7   +0.45 (+12.8%) w/o5   -0.72
+   tp            {'tp': 2}                         : TRAIN   17   +4.70 (+55.3%) w/o5   +2.05 | VAL    7   +0.82 (+23.5%) w/o5   -0.72
+   tp            {'tp': 2.5}                       : TRAIN   17   +6.62 (+77.9%) w/o5   +2.82 | VAL    7   +1.36 (+39.0%) w/o5   -0.72
+   tp            {'tp': 3}                         : TRAIN   17   +6.62 (+77.9%) w/o5   +2.26 | VAL    7   +1.47 (+42.1%) w/o5   -0.72
+   tp            {'tp': 4}                         : TRAIN   17   +7.16 (+84.2%) w/o5   +2.26 | VAL    7   +2.05 (+58.5%) w/o5   -0.72
+   tp            {'tp': 5}                         : TRAIN   17   +7.16 (+84.2%) w/o5   +2.26 | VAL    7   +2.25 (+64.3%) w/o5   -0.72
+   -> tp: {'tp': 4} (plateau on TRAIN)
+   stop          {'tp': 2, 'sl': 0.9}              : TRAIN   17   +1.06 (+12.4%) w/o5   -0.94 | VAL    7   +0.12 ( +3.4%) w/o5   -0.15
+   stop          {'tp': 2, 'sl': 0.8}              : TRAIN   17   +0.72 ( +8.4%) w/o5   -1.28 | VAL    7   +0.01 ( +0.4%) w/o5   -0.31
+   stop          {'tp': 2, 'sl': 0.7}              : TRAIN   17   +1.76 (+20.7%) w/o5   -0.74 | VAL    7   +0.44 (+12.5%) w/o5   -0.35
+   stop          {'tp': 2, 'sl': 0.6}              : TRAIN   17   +3.89 (+45.7%) w/o5   +1.32 | VAL    7   +0.36 (+10.4%) w/o5   -0.47
+   stop          {'tp': 2, 'sl': 0.5}              : TRAIN   17   +3.63 (+42.7%) w/o5   +1.06 | VAL    7   +0.23 ( +6.7%) w/o5   -0.54
+   -> stop: {'tp': 2, 'sl': 0.6} (plateau on TRAIN)
+   time          {'tp': 2, 'cap': 120}             : TRAIN   17   +1.19 (+14.0%) w/o5   -0.63 | VAL    7   +0.62 (+17.8%) w/o5   -0.22
+   time          {'tp': 2, 'cap': 300}             : TRAIN   17   +1.92 (+22.6%) w/o5   -0.26 | VAL    7   +0.72 (+20.4%) w/o5   -0.28
+   time          {'tp': 2, 'cap': 600}             : TRAIN   17   +3.08 (+36.2%) w/o5   +0.53 | VAL    7   +1.26 (+36.0%) w/o5   -0.34
+   time          {'tp': 2, 'cap': 1200}            : TRAIN   17   +3.86 (+45.4%) w/o5   +1.29 | VAL    7   +1.05 (+30.0%) w/o5   -0.49
+   time          {'tp': 2, 'cap': 1800}            : TRAIN   17   +4.47 (+52.6%) w/o5   +1.82 | VAL    7   +0.84 (+24.0%) w/o5   -0.69
+   time          {'tp': 2, 'cap': 3600}            : TRAIN   17   +4.70 (+55.3%) w/o5   +2.05 | VAL    7   +0.82 (+23.5%) w/o5   -0.72
+   -> time: {'tp': 2, 'cap': 3600} (plateau on TRAIN)
+   trail         {'tp': None, 'trail': (1.2, 0.2)} : TRAIN   17   +1.67 (+19.6%) w/o5   -0.52 | VAL    7   +0.61 (+17.5%) w/o5   -0.11
+   trail         {'tp': None, 'trail': (1.2, 0.3)} : TRAIN   17   +3.19 (+37.5%) w/o5   +0.27 | VAL    7   +0.61 (+17.3%) w/o5   -0.19
+   trail         {'tp': None, 'trail': (1.2, 0.4)} : TRAIN   17   +5.56 (+65.4%) w/o5   +0.82 | VAL    7   +2.06 (+58.9%) w/o5   -0.28
+   trail         {'tp': None, 'trail': (1.3, 0.2)} : TRAIN   17   +2.61 (+30.7%) w/o5   +0.19 | VAL    7   +0.36 (+10.3%) w/o5   -0.45
+   trail         {'tp': None, 'trail': (1.3, 0.3)} : TRAIN   17   +4.57 (+53.8%) w/o5   +1.10 | VAL    7   +0.41 (+11.8%) w/o5   -0.45
+   trail         {'tp': None, 'trail': (1.3, 0.4)} : TRAIN   17   +7.22 (+85.0%) w/o5   +2.32 | VAL    7   +1.83 (+52.4%) w/o5   -0.51
+   trail         {'tp': None, 'trail': (1.5, 0.2)} : TRAIN   17   +4.37 (+51.4%) w/o5   +1.13 | VAL    7   +0.99 (+28.3%) w/o5   -0.45
+   trail         {'tp': None, 'trail': (1.5, 0.3)} : TRAIN   17   +4.57 (+53.8%) w/o5   +1.10 | VAL    7   +0.91 (+26.1%) w/o5   -0.45
+   trail         {'tp': None, 'trail': (1.5, 0.4)} : TRAIN   17   +7.22 (+85.0%) w/o5   +2.32 | VAL    7   +2.52 (+72.0%) w/o5   -0.45
+   trail         {'tp': None, 'trail': (2, 0.2)}   : TRAIN   17   +5.14 (+60.5%) w/o5   +1.73 | VAL    7   +1.01 (+28.8%) w/o5   -0.72
+   trail         {'tp': None, 'trail': (2, 0.3)}   : TRAIN   17   +5.15 (+60.6%) w/o5   +1.54 | VAL    7   +0.90 (+25.7%) w/o5   -0.72
+   trail         {'tp': None, 'trail': (2, 0.4)}   : TRAIN   17   +7.41 (+87.2%) w/o5   +2.51 | VAL    7   +2.25 (+64.3%) w/o5   -0.72
+   -> trail: {'tp': None, 'trail': (2, 0.4)} (plateau on TRAIN)
+   sell pressure {'tp': 2, 'sp': (3, 30)}          : TRAIN   17   +0.03 ( +0.4%) w/o5   -1.01 | VAL    7   +0.08 ( +2.2%) w/o5   -0.26
+   sell pressure {'tp': 2, 'sp': (3, 60)}          : TRAIN   17   +0.22 ( +2.6%) w/o5   -0.98 | VAL    7   +0.08 ( +2.2%) w/o5   -0.26
+   sell pressure {'tp': 2, 'sp': (5, 30)}          : TRAIN   17   +0.01 ( +0.1%) w/o5   -1.10 | VAL    7   +0.00 ( +0.0%) w/o5   -0.33
+   sell pressure {'tp': 2, 'sp': (5, 60)}          : TRAIN   17   +0.49 ( +5.7%) w/o5   -0.74 | VAL    7   +0.27 ( +7.8%) w/o5   -0.32
+   sell pressure {'tp': 2, 'sp': (8, 30)}          : TRAIN   17   +1.15 (+13.6%) w/o5   -0.61 | VAL    7   +0.32 ( +9.3%) w/o5   -0.31
+   sell pressure {'tp': 2, 'sp': (8, 60)}          : TRAIN   17   +1.32 (+15.5%) w/o5   -0.68 | VAL    7   +0.26 ( +7.3%) w/o5   -0.33
+   sell pressure {'tp': 2, 'sp': (12, 30)}         : TRAIN   17   +1.76 (+20.7%) w/o5   -0.29 | VAL    7   +0.35 (+10.1%) w/o5   -0.28
+   sell pressure {'tp': 2, 'sp': (12, 60)}         : TRAIN   17   +1.67 (+19.6%) w/o5   -0.38 | VAL    7   +0.04 ( +1.3%) w/o5   -0.41
+   -> sell pressure: {'tp': 2, 'sp': (12, 30)} (plateau on TRAIN)
+   stall         {'tp': 2, 'stall': 60}            : TRAIN   17   +0.82 ( +9.7%) w/o5   -1.04 | VAL    7   +0.37 (+10.5%) w/o5   -0.38
+   stall         {'tp': 2, 'stall': 120}           : TRAIN   17   +1.30 (+15.3%) w/o5   -0.71 | VAL    7   +0.24 ( +6.8%) w/o5   -0.47
+   stall         {'tp': 2, 'stall': 180}           : TRAIN   17   +2.67 (+31.4%) w/o5   +0.41 | VAL    7   +0.11 ( +3.3%) w/o5   -0.44
+   stall         {'tp': 2, 'stall': 300}           : TRAIN   17   +2.80 (+33.0%) w/o5   +0.25 | VAL    7   +1.09 (+31.2%) w/o5   -0.42
+   -> stall: {'tp': 2, 'stall': 300} (plateau on TRAIN)
+
+   the best family on TRAIN: {'tp': None, 'trail': (2, 0.4)}: TRAIN   17   +7.41 (+87.2%) w/o5   +2.51 | VAL    7   +2.25 (+64.3%) w/o5   -0.72
+
+5. TEST (the last 25%, never looked at): filter at least 7 of 8 signs, entry {'dip': 0.8}, exit {'tp': None, 'trail': (2, 0.4)}
+   the setup:    8   +6.02 (+150.5%) w/o5   -0.02
+   every call, buy 1 s after, tp2 (no setup):  103   -8.60 (-16.7%) w/o5  -11.04
