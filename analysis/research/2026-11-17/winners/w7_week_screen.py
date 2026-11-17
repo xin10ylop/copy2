@@ -46,18 +46,25 @@ for m in grad:
             if sol >= 0.25: B[u].append(dict(m=m, t=e["t"], p=pb, sol=sol, cr=mt["creator"], dt=e["t"] - mt["t"]))
         seen.add(u); pb = prog(e)
 cand = [(u, v) for u, v in B.items() if len(v) >= 3 and len({x["cr"] for x in v}) >= 3]
+tmin = max(tmin, int(time.time()) - 7 * 86400)
 print(f"{n} graduated coins read (launched {time.strftime('%m-%d %H:%M', time.gmtime(tmin))} to {time.strftime('%m-%d %H:%M', time.gmtime(tmax))} UTC); "
       f"{len(B)} wallets with a copyable early buy on one; {len(cand)} with 3+ from 3+ creators")
-def volume(u):
+T1 = int(time.time()); T0 = T1 - 7 * 86400   # the week (a few old coins graduated in it too; their launch time is not the window)
+def volume(u):   # at most 5 pages: 5,000+ transactions in a week is a bot whatever its hits; None = the RPC failed
     c, before = 0, None
-    for _ in range(20):
+    for _ in range(5):
         pg = call("getSignaturesForAddress", [u, {"limit": 1000, **({"before": before} if before else {})}])
+        if pg is None: return None
         if not pg: break
-        c += sum(1 for s in pg if s["err"] is None and tmin <= (s.get("blockTime") or 0) <= tmax + 86400)
+        c += sum(1 for s in pg if T0 <= (s.get("blockTime") or 0))
         before = pg[-1]["signature"]
-        if len(pg) < 1000 or (pg[-1].get("blockTime") or 0) < tmin: break
+        if len(pg) < 1000 or (pg[-1].get("blockTime") or 0) < T0: break
     return c
-with ThreadPoolExecutor(32) as ex: vol = dict(zip([u for u, _ in cand], ex.map(volume, [u for u, _ in cand])))
+with ThreadPoolExecutor(8) as ex: vol = dict(zip([u for u, _ in cand], ex.map(volume, [u for u, _ in cand])))
+failed = [u for u, c in vol.items() if c is None]
+for u in failed: vol[u] = volume(u)
+print(f"volume: {sum(1 for c in vol.values() if c is None)} wallets left out (the RPC failed twice)")
+cand = [(u, v) for u, v in cand if vol[u] is not None]
 rows = sorted(({"u": u, "hits": len(v), "cr": len({x["cr"] for x in v}), "tx": vol[u], "per100": 100 * len(v) / max(vol[u], 1),
                 "p": st.median(x["p"] for x in v), "dt": st.median(x["dt"] for x in v), "sol": st.median(x["sol"] for x in v),
                 "days": len({x["t"] // 86400 for x in v})} for u, v in cand), key=lambda r: -r["per100"])
