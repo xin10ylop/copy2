@@ -1,0 +1,6 @@
+coin     | its buy   | our sale: after, at | highest while we held | then, before the 600 s timer: highest (when) | at the timer | highest in 31 min (when) | first at 3x / 4x in its first 600 s | reached 4x after our sale
+GX4A6zov | 05:44:56 |  231 s, 1.53x |  3.55x |  1.95x (at  354 s) |  0.75x |  1.95x (at  354 s) | 63 s / - | no | 1504 trades
+9LCKgPPm | 06:17:11 |  213 s, 2.26x |  2.66x |  2.50x (at  221 s) |  0.98x |  2.50x (at  221 s) | - / - | no | 861 trades
+ageAy6zc | 02:41:58 |  180 s, 1.37x |  1.90x |  1.89x (at  587 s) |  1.72x |  1.96x (at  732 s) | - / - | no | 1018 trades
+4cWmLBig | 07:35:35 |   31 s, 1.16x |  1.62x |  1.58x (at  293 s) |  0.98x |  1.58x (at  293 s) | - / - | no | 534 trades
+uq9RjV5G | 06:57:58 |   94 s, 1.00x |  1.23x |  1.05x (at  110 s) |  0.83x |  1.05x (at  110 s) | - / - | no | 70 trades
