@@ -1,0 +1,97 @@
+design 429 calls (TRAIN 214, VAL 107, TEST 108), HOLDOUT 488; costs 0.0345 SOL a round trip, graduation haircut 0.8
+
+0. every call, bought at +121 s, tp 2.75 / 60 min: TRAIN  186  -21.64 (-23.3%) w/o5  -26.23 | VAL   93  -12.78 (-27.5%) w/o5  -15.68
+
+1. SIGNS (a copy at +121 s, tp 2.75 / 60 min): mean a copy below / above the TRAIN median, TRAIN | VAL
+   a_flow2     cut     -2.15 | -19.5% / -27.8% | -32.7% / -19.6% 
+   a_p120      cut     0.943 | -19.5% / -27.8% | -32.3% / -19.8% 
+   a_p60       cut     0.984 | -17.5% / -30.3% | -29.7% / -25.0% 
+   a_sells2    cut      -2.5 | -29.3% / -17.3% | -14.8% / -36.3% 
+   a_stall     cut         1 | -23.3% /  +0.0% | -27.5% /  +0.0% KEPT high
+   s_accel     cut     0.366 | -21.0% / -25.4% | -28.7% / -26.6% 
+   s_age       cut         1 | -23.0% / -24.1% | -29.0% / -21.1% 
+   s_avgbuy    cut     0.472 | -10.6% / -33.3% | -12.8% / -41.7% KEPT low
+   s_big10     cut      6.16 | -19.9% / -27.2% | -32.9% / -19.9% 
+   s_bundle    cut     0.314 | -20.0% / -24.6% | -29.3% / -24.4% 
+   s_buyers    cut       193 | -29.3% / -14.4% | -39.0% / -17.9% KEPT high
+   s_curve     cut         1 | -23.3% /  +0.0% | -27.5% /  +0.0% KEPT high
+   s_dev       cut         0 | -22.8% / -20.6% | -24.4% / -45.5% 
+   s_devbuy    cut    0.0104 | -28.8% / -15.0% | -19.3% / -35.1% 
+   s_devsold   cut         1 | -22.2% /  +0.0% | -27.1% /  +0.0% KEPT high
+   s_fee       cut       125 | -22.1% / -36.0% | -27.1% /  +0.0% 
+   s_flow10    cut      25.9 | -22.3% / -24.3% | -26.7% / -28.6% 
+   s_holders   cut        99 | -26.2% / -17.6% | -32.5% / -22.1% KEPT high
+   s_hour      cut        14 | -27.5% / -18.1% | -27.3% / -27.7% 
+   s_mc        cut  1.02e+04 | -21.2% / -25.5% | -22.3% / -34.1% 
+   s_n10       cut       408 | -29.9% / -16.3% | -41.7% / -16.2% KEPT high
+   s_pace      cut        29 | -25.6% / -20.3% | -27.0% / -27.9% 
+   s_prog      cut     0.706 | -20.3% / -24.2% | -22.8% / -32.0% 
+   s_run1      cut      1.05 | -21.0% / -25.9% | -25.4% / -29.3% 
+   s_run10     cut      3.01 | -22.8% / -23.7% | -26.3% / -29.2% 
+   s_run3      cut      2.44 | -19.6% / -27.2% | -25.3% / -29.6% 
+   s_sell10    cut     0.396 | -24.4% / -22.2% | -27.5% / -27.4% 
+   s_sellers   cut       106 | -28.4% / -15.4% | -38.1% / -15.8% KEPT high
+   s_smallbuys cut     0.198 | -26.2% / -18.6% | -35.5% / -18.9% KEPT high
+   s_spotted   cut         0 | -24.1% / -20.5% | -27.8% / -25.9% 
+   s_top1      cut    0.0376 | -19.0% / -25.1% | -34.6% / -17.8% 
+   s_top10     cut     0.218 | -20.3% / -24.0% | -22.8% / -31.5% 
+   s_txns      cut       212 | -34.8% / -12.5% | -47.0% / -15.7% KEPT high
+   s_vol       cut  1.09e+04 | -21.8% / -24.6% | -28.4% / -26.7% 
+
+2. FILTER: at least N of the 10 kept signs (a_stall, s_avgbuy, s_buyers, s_curve, s_devsold, s_holders, s_n10, s_sellers, s_smallbuys, s_txns)
+   at least 0: TRAIN  186  -21.64 (-23.3%) w/o5  -26.23 | VAL   93  -12.78 (-27.5%) w/o5  -15.68
+   at least 1: TRAIN  158  -13.71 (-17.3%) w/o5  -18.29 | VAL   82   -9.49 (-23.1%) w/o5  -12.39
+   at least 2: TRAIN  123   -8.70 (-14.1%) w/o5  -13.29 | VAL   64   -6.34 (-19.8%) w/o5   -9.24
+   at least 3: TRAIN  101   -6.87 (-13.6%) w/o5  -11.46 | VAL   57   -4.40 (-15.4%) w/o5   -7.30
+   at least 4: TRAIN   87   -6.79 (-15.6%) w/o5  -11.35 | VAL   51   -3.35 (-13.1%) w/o5   -6.25
+   at least 5: TRAIN   69   -5.38 (-15.6%) w/o5   -9.93 | VAL   43   -2.52 (-11.7%) w/o5   -5.42
+   at least 6: TRAIN   48   -2.12 ( -8.9%) w/o5   -6.68 | VAL   23   -1.43 (-12.5%) w/o5   -3.84
+   at least 7: TRAIN   25   -2.46 (-19.6%) w/o5   -5.04 | VAL   15   -0.96 (-12.7%) w/o5   -2.87
+   at least 8: TRAIN    0 | VAL    0
+   at least 9: TRAIN    0 | VAL    0
+   at least 10: TRAIN    0 | VAL    0
+   picked on TRAIN: at least 6
+
+3. ENTRY DELAY (filtered, tp 2.75 / 60 min)
+   +121 s: TRAIN   48   -2.12 ( -8.9%) w/o5   -6.68 | VAL   23   -1.43 (-12.5%) w/o5   -3.84
+   +150 s: TRAIN   48   -2.95 (-12.3%) w/o5   -7.40 | VAL   23   -0.46 ( -4.0%) w/o5   -3.14
+   +180 s: TRAIN   48   -2.07 ( -8.6%) w/o5   -6.30 | VAL   23   -0.76 ( -6.6%) w/o5   -3.04
+   +240 s: TRAIN   46   -2.60 (-11.3%) w/o5   -6.08 | VAL   22   -0.63 ( -5.7%) w/o5   -2.52
+   +300 s: TRAIN   45   -2.69 (-11.9%) w/o5   -6.51 | VAL   21   -0.56 ( -5.3%) w/o5   -2.32
+   picked: +180 s
+
+4. EXIT (filtered, the picked delay): tp x time limit, no stop
+   tp 1.5  10 min: TRAIN   48   -0.52 ( -2.2%) w/o5   -1.80 | VAL   23   -0.79 ( -6.9%) w/o5   -1.81
+   tp 2    10 min: TRAIN   48   -0.72 ( -3.0%) w/o5   -3.04 | VAL   23   -0.13 ( -1.1%) w/o5   -2.14
+   tp 2.5  10 min: TRAIN   48   -1.28 ( -5.3%) w/o5   -4.09 | VAL   23   -0.26 ( -2.3%) w/o5   -2.14
+   tp 2.75 10 min: TRAIN   48   -1.17 ( -4.9%) w/o5   -4.09 | VAL   23   -0.19 ( -1.6%) w/o5   -2.14
+   tp 3    10 min: TRAIN   48   -2.17 ( -9.1%) w/o5   -4.70 | VAL   23   -0.19 ( -1.6%) w/o5   -2.14
+   tp 4    10 min: TRAIN   48   -2.17 ( -9.1%) w/o5   -4.70 | VAL   23   -0.19 ( -1.6%) w/o5   -2.14
+   tp None 10 min: TRAIN   48   -2.17 ( -9.1%) w/o5   -4.70 | VAL   23   -0.19 ( -1.6%) w/o5   -2.14
+   tp 1.5  20 min: TRAIN   48   -0.41 ( -1.7%) w/o5   -1.69 | VAL   23   -0.75 ( -6.5%) w/o5   -1.77
+   tp 2    20 min: TRAIN   48   -1.28 ( -5.3%) w/o5   -3.64 | VAL   23   +0.64 ( +5.6%) w/o5   -1.64
+   tp 2.5  20 min: TRAIN   48   -3.20 (-13.3%) w/o5   -6.25 | VAL   23   +0.38 ( +3.3%) w/o5   -2.02
+   tp 2.75 20 min: TRAIN   48   -2.98 (-12.4%) w/o5   -6.25 | VAL   23   +0.45 ( +3.9%) w/o5   -2.02
+   tp 3    20 min: TRAIN   48   -4.11 (-17.1%) w/o5   -6.94 | VAL   23   +0.45 ( +3.9%) w/o5   -2.02
+   tp 4    20 min: TRAIN   48   -4.11 (-17.1%) w/o5   -6.94 | VAL   23   +0.45 ( +3.9%) w/o5   -2.02
+   tp None 20 min: TRAIN   48   -4.11 (-17.1%) w/o5   -6.94 | VAL   23   +0.45 ( +3.9%) w/o5   -2.02
+   tp 1.5  30 min: TRAIN   48   +0.23 ( +1.0%) w/o5   -1.24 | VAL   23   -0.97 ( -8.4%) w/o5   -1.99
+   tp 2    30 min: TRAIN   48   -1.33 ( -5.5%) w/o5   -3.68 | VAL   23   +0.42 ( +3.7%) w/o5   -1.86
+   tp 2.5  30 min: TRAIN   48   -3.11 (-13.0%) w/o5   -6.61 | VAL   23   +0.36 ( +3.1%) w/o5   -2.43
+   tp 2.75 30 min: TRAIN   48   -2.78 (-11.6%) w/o5   -6.61 | VAL   23   +0.09 ( +0.8%) w/o5   -2.43
+   tp 3    30 min: TRAIN   48   -3.91 (-16.3%) w/o5   -7.33 | VAL   23   +0.09 ( +0.8%) w/o5   -2.43
+   tp 4    30 min: TRAIN   48   -3.48 (-14.5%) w/o5   -7.33 | VAL   23   +0.09 ( +0.8%) w/o5   -2.43
+   tp None 30 min: TRAIN   48   -2.26 ( -9.4%) w/o5   -7.33 | VAL   23   +0.09 ( +0.8%) w/o5   -2.43
+   tp 1.5  60 min: TRAIN   48   +0.13 ( +0.5%) w/o5   -1.34 | VAL   23   -1.45 (-12.6%) w/o5   -2.47
+   tp 2    60 min: TRAIN   48   -1.36 ( -5.7%) w/o5   -3.72 | VAL   23   -0.06 ( -0.5%) w/o5   -2.35
+   tp 2.5  60 min: TRAIN   48   -2.63 (-10.9%) w/o5   -6.23 | VAL   23   -0.17 ( -1.5%) w/o5   -2.96
+   tp 2.75 60 min: TRAIN   48   -2.07 ( -8.6%) w/o5   -6.30 | VAL   23   -0.76 ( -6.6%) w/o5   -3.04
+   tp 3    60 min: TRAIN   48   -3.19 (-13.3%) w/o5   -7.10 | VAL   23   -0.76 ( -6.6%) w/o5   -3.04
+   tp 4    60 min: TRAIN   48   -2.84 (-11.8%) w/o5   -7.10 | VAL   23   -0.76 ( -6.6%) w/o5   -3.04
+   tp None 60 min: TRAIN   48   -1.62 ( -6.8%) w/o5   -7.10 | VAL   23   -0.76 ( -6.6%) w/o5   -3.04
+   picked: tp 1.5, 30 min
+
+5. SCORED ONCE: filter at least 6 of 10, buy at +180 s, tp 1.5 / 30 min
+   VAL       23   -0.97 ( -8.4%) w/o5   -1.99
+   TEST      26   -2.93 (-22.6%) w/o5   -3.97   (every call, same entry and exit:   90  -10.75 (-23.9%) w/o5  -11.91)
+   HOLDOUT  124  -10.01 (-16.1%) w/o5  -11.38   (every call:  391  -33.54 (-17.2%) w/o5  -34.97)

@@ -1,0 +1,64 @@
+/tmp/claude-0/-home-user-copy2/5735f118-428c-51f1-989c-5d5d23b0b4ec/scratchpad/lab_buggy.py: 429 calls compared
+  s_accel     : DIFFERS on 350 calls  e.g. 5YDN37NT: full 0.1644 vs cut 1.024
+  s_age       : SAME on all
+  s_avgbuy    : SAME on all
+  s_big10     : SAME on all
+  s_bundle    : SAME on all
+  s_buyers    : SAME on all
+  s_curve     : SAME on all
+  s_dev       : SAME on all
+  s_devbuy    : SAME on all
+  s_devsold   : SAME on all
+  s_fee       : SAME on all
+  s_flow10    : SAME on all
+  s_holders   : SAME on all
+  s_hour      : SAME on all
+  s_mc        : SAME on all
+  s_n10       : SAME on all
+  s_pace      : SAME on all
+  s_prog      : SAME on all
+  s_run1      : DIFFERS on 6 calls  e.g. J9fM573q: full 1.617 vs cut 1
+  s_run10     : DIFFERS on 394 calls  e.g. 5YDN37NT: full 6.23 vs cut 1
+  s_run3      : DIFFERS on 356 calls  e.g. 5YDN37NT: full 6.23 vs cut 1
+  s_sell10    : SAME on all
+  s_sellers   : SAME on all
+  s_smallbuys : SAME on all
+  s_spotted   : SAME on all
+  s_top1      : SAME on all
+  s_top10     : SAME on all
+  s_txns      : SAME on all
+  s_vol       : SAME on all
+VERDICT: LEAK: some signs at the call depend on data after it
+
+/home/user/copy2/analysis/research/2026-11-17/telegram/tg_vip_lab.py: 429 calls compared
+  s_accel     : SAME on all
+  s_age       : SAME on all
+  s_avgbuy    : SAME on all
+  s_big10     : SAME on all
+  s_bundle    : SAME on all
+  s_buyers    : SAME on all
+  s_curve     : SAME on all
+  s_dev       : SAME on all
+  s_devbuy    : SAME on all
+  s_devsold   : SAME on all
+  s_fee       : SAME on all
+  s_flow10    : SAME on all
+  s_holders   : SAME on all
+  s_hour      : SAME on all
+  s_mc        : SAME on all
+  s_n10       : SAME on all
+  s_pace      : SAME on all
+  s_prog      : SAME on all
+  s_run1      : SAME on all
+  s_run10     : SAME on all
+  s_run3      : SAME on all
+  s_sell10    : SAME on all
+  s_sellers   : SAME on all
+  s_smallbuys : SAME on all
+  s_spotted   : SAME on all
+  s_top1      : SAME on all
+  s_top10     : SAME on all
+  s_txns      : SAME on all
+  s_vol       : SAME on all
+VERDICT: NO LEAK: every sign at the call uses only data up to the call
+

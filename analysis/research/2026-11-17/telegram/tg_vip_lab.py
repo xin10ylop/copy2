@@ -13,6 +13,7 @@
 #   python3 -I tg_vip_lab.py TGDIR > out/tg_vip_lab.txt
 import sys, os, json, gzip, statistics as st, itertools, numpy as np
 TG = sys.argv[1]; D = f"{TG}/{os.environ.get('VDIR', 'vip')}"; STAKE = 0.5; SUPPLY = 1e15; HOLD = 3600
+COST = float(os.environ.get("COST", 0.0345))   # SOL a round trip: 0.0095 a transaction x2 + the 0.0155 fill bias (CLAUDE.md); was 0.0026
 HOLDOUT = os.environ.get("HOLDOUT")   # a frozen rule (prereg_signs.json) applied to calls the lab never saw
 here = os.path.dirname(os.path.abspath(__file__))
 src = open(os.path.join(here, "tg_channel.py")).read().split("for cj in sorted(glob.glob")[0]
@@ -111,7 +112,7 @@ def trade(r, k, tp=None, sl=None, cap=3600, trail=None, sp=None, stall=None):
         pk = np.maximum.accumulate(p_); newhi = np.concatenate([[True], pk[1:] > pk[:-1]])
         last = np.maximum.accumulate(np.where(newhi, t_, -1e9)); first((pk >= 1.0) & (t_ - last >= stall))
     j = min(cands) if cands else len(T) - 1
-    return Q[j] * tok / (B[j] + tok) * (1 - fee[j]) / 1e9 - STAKE - 0.0026
+    return Q[j] * tok / (B[j] + tok) * (1 - fee[j]) / 1e9 - STAKE - COST
 def run(R, ent=None, **ex):
     out = []
     for r in R:

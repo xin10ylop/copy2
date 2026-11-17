@@ -1,0 +1,6 @@
+HOLDOUT: 488 calls with a price path, never seen by the lab; frozen signs (214 TRAIN + 107 VAL calls): s_avgbuy, s_buyers, s_holders, s_hour, s_n10, s_sell10, s_txns
+  at least  0, {'tp': 2}   : all  482  -40.10 (-16.6%) w/o5  -42.95 | first half  240  -21.02 (-17.5%) w/o5  -23.48 | second half  242  -19.07 (-15.8%) w/o5  -21.90
+  at least  6, {'tp': 2}   : all  112  -10.27 (-18.3%) w/o5  -12.72 | first half   47   -5.69 (-24.2%) w/o5   -7.85 | second half   65   -4.59 (-14.1%) w/o5   -7.02
+  at least  7, {'tp': 2}   : all   28   -3.71 (-26.5%) w/o5   -5.82 | first half    9   -1.37 (-30.4%) w/o5   -1.86 | second half   19   -2.34 (-24.7%) w/o5   -4.00
+  at least  8, {'tp': 2}   : all    0 | first half    0 | second half    0
+  at least  9, {'tp': 2}   : all    0 | first half    0 | second half    0

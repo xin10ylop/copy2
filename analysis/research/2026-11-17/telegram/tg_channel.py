@@ -16,6 +16,28 @@
 #   python3 -I tg_channel.py TGDIR [MIN=10] > out/tg_channel.txt
 import sys, os, json, gzip, glob, statistics as st
 TG = sys.argv[1]; MIN = int(sys.argv[2]) if len(sys.argv) > 2 else 10; STAKE = 0.5; HOLD = 3600
+GRAD_HAIRCUT = float(os.environ.get("GRAD_HAIRCUT", 0.8))
+def order_slots(tr):
+    """The trades of one slot in their real order (the audit: tg_test.py's sort keeps them newest first). Each trade's
+    reserves before it follow from its own: a buy took `tok` out of vt, a sale put it back. Chained from the previous
+    slot's last trade; where no chain is found, the slot is reversed (newest first -> oldest first)."""
+    out, i = [], 0
+    while i < len(tr):
+        j = i
+        while j < len(tr) and tr[j]["slot"] == tr[i]["slot"]: j += 1
+        grp = tr[i:j]
+        if len(grp) > 1 and out:
+            cur, rest, chain = out[-1]["vt"], list(grp), []
+            while rest:
+                pre = lambda e: e["vt"] + e["tok"] if e["buy"] else e["vt"] - e["tok"]
+                k = next((n for n, e in enumerate(rest) if abs(pre(e) - cur) <= max(1, cur * 1e-6)), None)
+                if k is None: chain = None; break
+                e = rest.pop(k); chain.append(e); cur = e["vt"]
+            grp = chain if chain is not None else grp[::-1]
+        elif len(grp) > 1:
+            grp = grp[::-1]
+        out += grp; i = j
+    return out
 def load(D):
     out = []
     for m, t, _ in json.load(open(f"{D}/calls.json")):
@@ -24,14 +46,16 @@ def load(D):
             x = json.load(gzip.open(f))
             if x.get("venue") == "pump" and x.get("tr") and 25e9 < x["tr"][0]["vq"] * x["tr"][0]["vt"] / 1.073e15 < 35e9 \
                     and not (x.get("complete") and x.get("last_t") and x["last_t"] < t):
-                tr = x["tr"]
+                tr = order_slots(x["tr"])
                 if any(e["t"] <= t for e in tr) and any(e["t"] > t for e in tr):
                     P = [(e["t"], e["vq"], e["vt"], e["bps"] / 1e4) for e in tr]
                     g = next((i for i, e in enumerate(tr) if e.get("real") == 0 and e["t"] > t), None)
                     if g is not None:   # graduated while held: the price goes on in its pool (tg_pool.py's cache), else held at the curve's end
                         fp = f"{D}/pools/{m}.json.gz"; px = json.load(gzip.open(fp)).get("px") or [] if os.path.exists(fp) else []
                         after = [(a, q, b, 0.01) for a, q, b in px if a > tr[g]["t"]]
-                        P = P[:g + 1] + (after if after else [(t + HOLD + 1, tr[g]["vq"], tr[g]["vt"], 0.01)])
+                        # no pool data: sold an hour after the call at GRAD_HAIRCUT x the curve's end price (the audit: the price
+                        # usually falls after migration; 1.0 was the old, optimistic exit)
+                        P = P[:g + 1] + (after if after else [(t + HOLD + 1, tr[g]["vq"] * GRAD_HAIRCUT, tr[g]["vt"], 0.01)])
         if P is None:
             f = f"{D}/pools/{m}.json.gz"
             if os.path.exists(f):
