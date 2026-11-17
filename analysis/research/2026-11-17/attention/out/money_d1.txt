@@ -1,0 +1,10 @@
+250 addresses, 250 of them mints; 249 calls (a message's first mint); buy 1 s after the post
+  modelled: 191, no curve trade after the call: 39, curve priced in another token (not modelled): 19
+  refused (already 1.25x the post's price when we land): 16
+exit    | copies, net SOL, a copy, won | w/o best 5 | 1st half / 2nd half
+tp2     | 175, -15.72, -18.0%, 11% | -19.65 |  -8.16 /  -7.56
+tp3     | 175, -20.53, -23.5%,  6% | -25.21 | -11.86 /  -8.66
+tp5     | 175, -23.66, -27.0%,  3% | -28.87 | -14.15 /  -9.51
+grad    | 175, -23.44, -26.8%,  3% | -28.87 | -14.15 /  -9.29
+t10     | 175, -21.61, -24.7%,  5% | -26.93 | -12.94 /  -8.67
+t30     | 175, -23.27, -26.6%,  3% | -28.67 | -14.18 /  -9.08
