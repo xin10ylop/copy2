@@ -2,7 +2,7 @@
 # pool: the PumpSwap pool pump creates on migration, derived from the mint (pump-codec's canonical_pump_swap_pool). Its
 # price after every swap from its own vault balances in the transaction (the two token accounts the pool owns: the coin
 # and wrapped SOL), so any constant-product pool works (PumpSwap and others whose vaults the pool owns); a pool whose
-# vaults it does not own is counted, not modelled. Signatures newest first back past the post (at most 10 pages: a pool
+# vaults it does not own is counted, not modelled. Signatures newest first back past the post (at most 60 pages from an anchor at the end of the hour: a pool
 # busier than that is counted, not modelled); swaps from the post to an hour after. Cached in DIR/pools/.
 # Our copy: 0.5 SOL at the first swap DELAY s or more after the post, against the pool's reserves (constant product), a fee
 # of FEE each way and 0.0026 SOL of transaction costs; refused past 1.25x the price at the post. Exits fixed: tp2/tp3/tp5
@@ -13,7 +13,7 @@ import sys, os, json, gzip, time, base64, urllib.request, collections
 from concurrent.futures import ThreadPoolExecutor
 from solders.pubkey import Pubkey
 D = sys.argv[1]; DELAY = float(sys.argv[2]) if len(sys.argv) > 2 else 1; FEE = float(sys.argv[3]) if len(sys.argv) > 3 else 0.01
-URL = os.environ["RPC_URL"]; WSOL = "So11111111111111111111111111111111111111112"; HOLD = 3600; SAMPLE = int(os.environ.get("SAMPLE", 4)); PD = f"{D}/pools"; os.makedirs(PD, exist_ok=True)
+URL = os.environ["RPC_URL"]; WSOL = "So11111111111111111111111111111111111111112"; HOLD = 3600; SAMPLE = int(os.environ.get("SAMPLE", 4)); COST = float(os.environ.get("COST", 0.0345)); PD = f"{D}/pools"; os.makedirs(PD, exist_ok=True)
 PUMP = Pubkey.from_string("6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"); TOK = {"TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"}
 def call(m, p):
     for i in range(8):
@@ -56,6 +56,35 @@ def pair_of(m):   # the pool pump creates on migration (pump-codec pda::canonica
     acc = call("getAccountInfo", [str(pool), {"encoding": "base64"}])
     return (str(pool), "pumpswap") if acc and acc.get("value") else (None, None)
 POOL = ThreadPoolExecutor(48)
+ANCH = {}
+def anchor(t_end):
+    """A signature of a block about t_end (any signature works as `before`: the RPC uses its slot; cmodel.path relies on
+    the same). The slot is found from its block time by a secant search (a slot was about 0.2 s in Nov 2026). Cached by 5-minute bucket. None = read from now."""
+    k = int(t_end // 300)
+    if k in ANCH: return ANCH[k]
+    target = (k + 1) * 300; now_s = call("getSlot", []); now_t = call("getBlockTime", [now_s]) if now_s else None
+    sig = None
+    if now_s and now_t and target < now_t - 60:
+        rate, ps, pt = 0.4, now_s, now_t   # seconds a slot: measured from the last two points (a secant search)
+        s_ = int(now_s - (now_t - target) / rate)
+        for _ in range(10):
+            bt = None
+            for d in range(0, 40):
+                bt = call1("getBlockTime", [s_ + d])
+                if bt: s_ += d; break
+            if not bt: break
+            if abs(bt - target) <= 20: break
+            if s_ != ps and bt != pt: rate = max(0.05, min(1.0, (pt - bt) / (ps - s_)))
+            ps, pt = s_, bt; s_ = int(s_ + (target - bt) / rate)
+        for d in range(0, 40):
+            b = call1("getBlock", [s_ + d, {"transactionDetails": "signatures", "rewards": False, "maxSupportedTransactionVersion": 0}])
+            if b and b.get("signatures"): sig = b["signatures"][0]; break
+    ANCH[k] = sig; return sig
+def call1(m, p):   # one try (a skipped slot answers with an error: not worth 8 retries)
+    try:
+        rq = urllib.request.Request(URL, json.dumps({"jsonrpc": "2.0", "id": 1, "method": m, "params": p}).encode(), {"Content-Type": "application/json"})
+        return json.load(urllib.request.urlopen(rq, timeout=30)).get("result")
+    except Exception: return None
 def path(m, t):
     f = f"{PD}/{m}.json.gz"
     if os.path.exists(f): return json.load(gzip.open(f))
@@ -63,15 +92,21 @@ def path(m, t):
     if True:
         pa, dex = pair_of(m); out.update(pair=pa, dex=dex)
         if pa:
-            sigs, before, reached = [], None, False
-            for _ in range(10):
+            sigs, before, reached = [], anchor(t + HOLD + 120), False
+            for _ in range(60):
                 pg = call("getSignaturesForAddress", [pa, {"limit": 1000, **({"before": before} if before else {})}])
                 if not pg: reached = True; break
                 sigs += [s for s in pg if s["err"] is None]; before = pg[-1]["signature"]
                 if len(pg) < 1000 or (pg[-1].get("blockTime") or 0) < t - 600: reached = True; break
             out["reached"] = reached
             win = sorted((s for s in sigs if t - 600 <= (s.get("blockTime") or 0) <= t + HOLD + 60), key=lambda s: s["slot"])
-            win = [s for i, s in enumerate(win) if t - 60 <= s["blockTime"] <= t + 120 or i % SAMPLE == 0]   # every swap near the post, then 1 in SAMPLE
+            # a busy pool has thousands of swaps an hour: one price per time bucket is enough (2 s near the post, 15 s
+            # elsewhere), the first swap of each bucket
+            seen_b, keep = set(), []
+            for s in win:
+                bt = s["blockTime"]; b = (0, bt // 2) if t - 60 <= bt <= t + 120 else (1, bt // 15)
+                if b not in seen_b: seen_b.add(b); keep.append(s)
+            win = keep
             txs = list(POOL.map(lambda s: call("getTransaction", [s["signature"], {"encoding": "json", "maxSupportedTransactionVersion": 0}]), win))
             px = []
             for tx in txs:
@@ -81,7 +116,7 @@ def path(m, t):
             out["px"] = px
     with gzip.open(f + ".tmp", "wt") as fh: json.dump(out, fh)
     os.replace(f + ".tmp", f); return out
-with ThreadPoolExecutor(6) as ex: P = list(ex.map(lambda c: path(*c), C))
+with ThreadPoolExecutor(int(os.environ.get("COINS", 16))) as ex: P = list(ex.map(lambda c: path(*c), C))
 cnt = collections.Counter(); rows = []
 for (m, t), p in zip(C, P):
     if not p.get("pair"): cnt["no SOL pool found"] += 1; continue
@@ -97,17 +132,17 @@ def run(p0, path, ex, stake=0.5):
     t0, q, b = path[0]; pe = q / b
     if pe > 1.25 * p0: return None
     inn = stake * 1e9 * (1 - FEE); tok = b * inn / (q + inn)
-    def sell(i): _, q2, b2 = path[i]; return q2 * tok / (b2 + tok) * (1 - FEE) / 1e9 - stake - 0.0026
-    cap = {"t10": 600, "t30": 1800}.get(ex, HOLD)
+    def sell(i): _, q2, b2 = path[i]; return q2 * tok / (b2 + tok) * (1 - FEE) / 1e9 - stake - COST
+    cap = {"t1": 60, "t2": 120, "t5": 300, "t10": 600, "t30": 1800}.get(ex, HOLD)
     for i, (tt, q2, b2) in enumerate(path):
         if tt - t0 >= cap: return sell(i)
         if ex.startswith("tp") and (q2 / b2) >= float(ex[2:]) * p0: return sell(min(i + 1, len(path) - 1))
     return sell(len(path) - 1)
-print(f"{len(C)} calls; buy {DELAY:.0f} s after the post, fee {FEE:.1%} each way")
+print(f"{len(C)} calls; buy {DELAY:.0f} s after the post, fee {FEE:.1%} each way, costs {COST} SOL a round trip")
 print("  " + ", ".join(f"{k}: {v}" for k, v in cnt.most_common()))
 print("exit    | copies, net SOL, a copy, won | w/o best 5 | 1st half / 2nd half")
 rows.sort()
-for ex in ["tp2", "tp3", "tp5", "t10", "t30", "t60"]:
+for ex in ["tp1.2", "tp1.5", "tp2", "tp3", "tp5", "t1", "t2", "t5", "t10", "t30", "t60"]:
     v = [(t, run(p0, pa, ex)) for t, _, p0, pa in rows]; v = [(t, x) for t, x in v if x is not None]
     if not v: print(f"{ex:7s} | 0"); continue
     xs = [x for _, x in v]; s = sorted(xs, reverse=True); h = len(v) // 2
