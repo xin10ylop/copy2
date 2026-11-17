@@ -10,6 +10,7 @@
 # 1.25x, tp 4.0, its sale followed 30-290 s under 1.5x, sell_pressure [5, 60, 30], stall 180 s, 600 s, 0.5 SOL; and the
 # same with its sale never followed), every copy; halves by time; without the best 5. Wallet 4 is shown for reference.
 #   python3 -I m3_screen.py SP > ../out/market_screen.txt
+#   LAUNCH=1 python3 -I m3_screen.py SP > ../out/market_screen_launch.txt   (launch buyers kept instead)
 import sys, os, json, gzip, collections, urllib.request
 import numpy as np
 SP = sys.argv[1]; O = f"{SP}/market"
@@ -44,9 +45,11 @@ for m, x in L.items():
                          full=t_end - e["t"] >= 600))
 print(f"{len(L)} live coins with a path ({unpriced} with an unpriced quote left out); {len(B)} wallets with a 0.9+ SOL first buy")
 t_mid = np.median(t_all)
+# LAUNCH=1 (Nov 17, the owner: "plenty of wallet 4's we are not finding"): keep the launch buyers instead, wallet 4's own class
+LAUNCH = os.environ.get("LAUNCH") == "1"
 def keep(v):
     held = [y["held"] if y["held"] is not None else 1e9 for y in v]
-    return (len(v) >= 10 and len({y["m"] for y in v}) >= 8 and len({y["creator"] for y in v}) >= 4 and sum(y["launch"] for y in v) / len(v) < 0.5
+    return (len(v) >= 10 and len({y["m"] for y in v}) >= 8 and len({y["creator"] for y in v}) >= 4 and (sum(y["launch"] for y in v) / len(v) >= 0.5) == LAUNCH
             and np.median(held) >= 45 and sum(1 for h in held if h < 30) / len(v) < 0.4)
 K = {u: v for u, v in B.items() if keep(v) or u == W4}
 print(f"kept by the rule: {len(K) - (W4 in K)} wallets (+ wallet 4 for reference)")
@@ -71,4 +74,4 @@ print("wallet   | buys coins creators | at launch | held med, under 30 s | OUR C
 for (net, u, n, nc, ncr, la, hm, f30, wo5, h1, h2, n2, n2wo, nc_, won, sz) in sorted(rows, reverse=True):
     print(f"{u[:8]} | {n:4d} {nc:4d} {ncr:4d} | {100 * la:3.0f}% | {hm:5.0f} s {100 * f30:3.0f}% | ({nc_:3d}) {net:+6.2f} {100 * net / max(1, nc_) / 0.5:+6.1f}% {100 * won / max(1, nc_):3.0f}% |"
           f" {wo5:+6.2f} | {h1:+5.2f} / {h2:+5.2f} | {n2:+6.2f}, {n2wo:+6.2f} | {sz:4.2f}{'  <- wallet 4' if u == W4 else ''}")
-json.dump({u: v for u, v in K.items()}, gzip.open(f"{O}/screen_kept.json.gz", "wt"))
+json.dump({u: v for u, v in K.items()}, gzip.open(f"{O}/screen_kept{'_launch' if LAUNCH else ''}.json.gz", "wt"))
