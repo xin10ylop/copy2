@@ -13,6 +13,7 @@ SP = sys.argv[1]; HOURS = float(sys.argv[2]) if len(sys.argv) > 2 else 48; WIN =
 URL = os.environ["RPC_URL"]; O = f"{SP}/market"; os.makedirs(O, exist_ok=True)
 sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-13/tab_exits"); import cmodel as M, lib
 MINT_AUTH = "TSLvdd1pWpHVjahSpsvCXUbgwsL3JAcvokwaKt1eokM"; WSOL = "So11111111111111111111111111111111111111112"
+SOLQ = {WSOL, "11111111111111111111111111111111", None, "?"}   # a SOL curve's event carries the zero key as its quote
 def call(m, p):
     for i in range(8):
         try:
@@ -66,7 +67,7 @@ todo = [s for s in S if s[0] not in C]
 with ThreadPoolExecutor(32) as ex:
     for s, r in zip(todo, ex.map(create_of, todo)): C[s[0]] = r
 json.dump(C, open(f2, "w"))
-other = {r["mint"]: r for r in C.values() if r and r["quote"] not in (WSOL, None)}
+other = {r["mint"]: r for r in C.values() if r and r["quote"] not in SOLQ}
 import collections
 print(f"step 2: {sum(1 for r in C.values() if r)} creates read, {len(other)} priced in another token ({time.time() - t0:.0f} s);"
       f" quotes {collections.Counter(r['quote'][:8] for r in other.values()).most_common(8)}", flush=True)
