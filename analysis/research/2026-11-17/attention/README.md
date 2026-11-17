@@ -38,3 +38,22 @@ time (a creator's record counts only its earlier coins).
 
 A feature that predicts graduation is not yet a trade: a pass goes on to the copy model (entry price at the decision
 time, 0.0345 SOL a round trip) before it means money.
+
+## Results so far (Nov 17-18; `out/a2_create_time.txt`, `a3_w4_pick.txt`, `a5_create_features.txt`, `a6_w4_creators.txt`, `a7_bursts.txt`)
+
+- 82,790 launches, 1.83% graduated. Stable on both days: the creator's first launch of the day x1.8, no tips in the create
+  x1.7, a dev buy over 5 SOL x3.9. Narrative bursts (same-theme launches in the 30 min before): nothing (x0.8-1.1). Mayhem:
+  nothing on the full set.
+- Wallet 4 buys at the create (98% within 2 s) and its picks graduate 8.86%, the same creators' other coins 3.07%, the
+  rest 1.69%. It never buys a mayhem coin and never buys inside the create transaction.
+- The score (signals kept on day 1: no mayhem, no tips, dev buy > 2, first launch, 1-15 same-theme launches before):
+  score 4: 5.79% then 5.69%; score 5: 21.4% then 10.7%. Wallet 4's score 2-3 picks still graduate 6-8% against 1-2%:
+  it reads more than the score.
+
+## The money test, pre-registered (Nov 18 ~00:30 UTC, before any path is fetched)
+
+Graduating is not profit. **Buy every score 4+ coin at its create** (the first trade 1 s or more after the create, as a
+bot reading the creates would land; refused past 1.25x the create's price), 0.5 SOL, the fixed exits of `tg_test.py`
+(tp2/tp3/tp5, graduation, sell at 10/30 min). A random 250 of day 1's score 4+ coins and 250 of day 2's (seed 7,
+`a8_money.py`). **Pick the exit on day 1, score it on day 2 at 0.0345 SOL a round trip. Pass: positive on day 2, and
+positive without the best 5.**

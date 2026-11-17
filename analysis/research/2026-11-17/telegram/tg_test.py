@@ -86,7 +86,7 @@ for (m, t), p in zip(C, P):
     p0 = H.prep(tr, k0, rate, max(1, k - k0))
     cnt["modelled"] += 1; rows.append((t, m, p0))
 WHY = {}
-STAKE = float(os.environ.get("STAKE", 0.5))
+STAKE = float(os.environ.get("STAKE", 0.5)); COST = float(os.environ.get("COST", 0.0026))   # SOL a round trip (0.0345 realistic)
 def run(p, ex, stake=None, key=None):
     stake = stake or STAKE
     if p["refused"]: return None
@@ -94,7 +94,7 @@ def run(p, ex, stake=None, key=None):
     def out(i):
         vq, vt, b = (vq0, vt0, bps0) if i is None else (p["vq"][i], p["vt"][i], p["bps"][i])
         vq_r = vq + net_in; vt_r = vt * vq / vq_r
-        return (vq_r - vt_r * vq_r / (vt_r + tok)) * (1 - b / 1e4) / 1e9 - stake - 0.0026
+        return (vq_r - vt_r * vq_r / (vt_r + tok)) * (1 - b / 1e4) / 1e9 - stake - COST
     n = len(p["px"])
     if n == 0: return out(None)
     px, age = p["px"], p["age"]; c = []   # px: the price over the price at the post

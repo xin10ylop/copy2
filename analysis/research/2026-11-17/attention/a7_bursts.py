@@ -55,3 +55,12 @@ sig = {"no mayhem": lambda v: not v["mayhem"], "no tips": lambda v: v["tips"] ==
 keep = [k for k, f in sig.items() if g([v for v in A if f(v)]) > g(A)]
 print(f"\nsignals kept on the first 24 h: {keep}")
 show("score: how many kept signals", lambda v: sum(sig[k](v) for k in keep))
+# wallet 4's coins against the score (its picks to Nov 16 18:39 UTC, the end of its data)
+W4M = json.load(open(f"{SP}/hunt/w4_mints.json")); W4LAST = 1794858000
+for v in L: v["score"] = sum(sig[k](v) for k in keep)
+Lw = [v for v in L if v["t"] < W4LAST - 3600]
+print("\nwallet 4's picks by score:   score | its picks: share, graduated | everything else: graduated")
+Y = [v for v in Lw if v["m"] in W4M]; N = [v for v in Lw if v["m"] not in W4M]
+for s_ in range(6):
+    y = [v for v in Y if v["score"] == s_]; n = [v for v in N if v["score"] == s_]
+    print(f"   {s_} | {len(y) / max(1, len(Y)):5.1%} ({len(y):4d}), {g(y):6.2%} | {g(n):6.2%} ({len(n)})")
