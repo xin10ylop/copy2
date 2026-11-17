@@ -3,7 +3,9 @@
 #   winner = the price reached 1.5x the post's within the hour; loser = it did not (and "bad" = it was under 0.7x at 30 min).
 # Signs at the post: the run-up (price at the post over 10 min and 1 min before), the curve's progress (share of its
 # tokens sold), the 10 min before: trades, distinct buyers, net SOL flow, the biggest single buy, the share of sales.
-# Signs in the first minute after the post (for a later entry): net SOL flow, buyers, sellers, the price at +60 s.
+# Signs in the first minute after the post (for a later entry): net SOL flow, buyers, sellers, the price at +60 s; and in
+# the first 2 min (every trade kept there): the bot's sell pressure (5+ net sales in 60 s, from 30 s), a stall (no new high
+# in the last 90 s), the price at +120 s.
 # For each sign: the median for winners and for losers, and the winner rate in its lower and upper half (split at the
 # median of all calls), by channel group: the channels are split in two (A: the first half alphabetically, B: the other),
 # so a sign that only works in one group shows it.
@@ -30,6 +32,13 @@ for cj in sorted(glob.glob(f"{TG}/**/calls.json", recursive=True)):
         old = [e for e in tr if e["t"] <= t - 600]; m1 = [e for e in pre if e["t"] <= t - 60]
         a60 = [e for e in aft if e["t"] <= t + 60]
         pk = max(pr(e) for e in aft) / p0
+        a120 = [e for e in aft if e["t"] <= t + 120]   # every trade is kept to 2 min after the post: exact here
+        sp = False; stall = False; hi = p0; hi_t = t
+        for i, e in enumerate(a120):   # sell pressure as the bot uses it: 5+ net sales in 60 s, 30 s or more after the post
+            w = [x for x in a120[:i + 1] if x["t"] > e["t"] - 60]
+            if e["t"] - t >= 30 and sum(not x["buy"] for x in w) - sum(x["buy"] for x in w) >= 5: sp = True
+            if pr(e) > hi: hi, hi_t = pr(e), e["t"]
+        stall = hi <= p0 * 1.0001 or (t + 120) - hi_t >= 90   # no new high in the last 90 s of the first 2 min
         rows.append(dict(ch=ch, win=pk >= 1.5, bad=at(1800) < 0.7,
             run10=p0 / pr(old[-1]) if old else p0 / pr(tr[0]), run1=p0 / pr(m1[-1]) if m1 else 1.0,
             prog=max(0.0, 1 - (pre[-1].get("real") or INIT_REAL) / INIT_REAL),
@@ -37,14 +46,16 @@ for cj in sorted(glob.glob(f"{TG}/**/calls.json", recursive=True)):
             flow10=(sum(e["q"] for e in w10 if e["buy"]) - sum(e["q"] for e in w10 if not e["buy"])) / 1e9,
             big10=max([e["q"] for e in w10 if e["buy"]] or [0]) / 1e9, sellshare10=sum(not e["buy"] for e in w10) / max(1, len(w10)),
             flow60=(sum(e["q"] for e in a60 if e["buy"]) - sum(e["q"] for e in a60 if not e["buy"])) / 1e9,
-            buyers60=len({e["user"] for e in a60 if e["buy"]}), sellers60=len({e["user"] for e in a60 if not e["buy"]}), p60=at(60)))
+            buyers60=len({e["user"] for e in a60 if e["buy"]}), sellers60=len({e["user"] for e in a60 if not e["buy"]}), p60=at(60),
+            sp120=float(sp), stall120=float(stall), p120=at(120)))
 chs = sorted({r["ch"] for r in rows}); A = set(chs[:len(chs) // 2])
 print(f"{len(rows)} curve calls from {len(chs)} channels; winners (1.5x in the hour) {sum(r['win'] for r in rows)} ({sum(r['win'] for r in rows) / len(rows):.0%}); "
       f"bad (under 0.7x at 30 min) {sum(r['bad'] for r in rows)}")
 print(f"group A: {', '.join(sorted(A))}\ngroup B: the rest")
 SIGNS = [("run10", "at the post"), ("run1", "at the post"), ("prog", "at the post"), ("n10", "at the post"), ("buyers10", "at the post"),
          ("flow10", "at the post"), ("big10", "at the post"), ("sellshare10", "at the post"),
-         ("flow60", "first minute"), ("buyers60", "first minute"), ("sellers60", "first minute"), ("p60", "first minute")]
+         ("flow60", "first minute"), ("buyers60", "first minute"), ("sellers60", "first minute"), ("p60", "first minute"),
+         ("sp120", "first 2 min"), ("stall120", "first 2 min"), ("p120", "first 2 min")]
 print("\nsign          when          | median: winners / losers | winner rate below / above the median: group A | group B")
 for k, when in SIGNS:
     v = [r[k] for r in rows]; md = st.median(v)
