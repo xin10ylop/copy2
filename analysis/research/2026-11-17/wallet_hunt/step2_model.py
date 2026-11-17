@@ -38,6 +38,7 @@ def get(x):
     w, r, anchor = x
     m = full_buy(w, r)
     if not m: return None
+    if os.environ.get("NOFETCH") and not os.path.exists(f"{M.PC}/{r['slot']}_{m}.json.gz"): return None   # a read of what is fetched so far
     try: tr = M.path(m, r["slot"], anchor, threads=16)
     except Exception as e: return None
     k = next((i for i, e in enumerate(tr) if e["user"] == w and e["buy"] and e["slot"] == r["slot"]), None)
@@ -51,7 +52,7 @@ def get(x):
     return dict(w=w, m=m, t=r["t"], sol=r["sol"], frm=r["frm"][:8], hops=r["hops"], net=sum(q[0] for q in res) / 3, net2=sum(q[0] for q in res2) / 3, why=res[0][1],
                 held=(nxt["t"] - e["t"]) if nxt else None)
 with ThreadPoolExecutor(8) as ex: got = [g for g in ex.map(get, plan) if g]
-json.dump(got, open(f"{H}/step2_copies.json", "w"))
+if not os.environ.get("NOFETCH"): json.dump(got, open(f"{H}/step2_copies.json", "w"))
 f = lambda t: datetime.datetime.fromtimestamp(t, datetime.timezone.utc).strftime("%m-%d")
 print("wallet   | its own coins modelled | our copy: net SOL, a copy, won, tp | w/o best 5 | first half / second half | its sale never followed: net, w/o best 5 | held med | sizes med")
 by = {}
