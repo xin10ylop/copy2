@@ -102,4 +102,4 @@ for r in C:
     allv = [x for v in per.values() for x in v]
     early = sum(x["p"] < 0.02 for x in allv) / len(allv) if allv else 0
     print(f"{w[:8]} | {h['n_sigs']:5d} ({tf}) | " + " | ".join(parts) + f" | {early:4.0%}, {st.median(x['sol'] for x in allv) if allv else 0:.2f}", flush=True)
-json.dump(res, open(f"{W}/w4_res.json", "w"))
+    json.dump(res, open(f"{W}/w4_res.json", "w"))
