@@ -12,7 +12,8 @@
 # way (the curve's bps, 1% in a pool), 0.0026 SOL of transaction costs.
 #   python3 -I tg_vip_lab.py TGDIR > out/tg_vip_lab.txt
 import sys, os, json, gzip, statistics as st, itertools, numpy as np
-TG = sys.argv[1]; D = f"{TG}/vip"; STAKE = 0.5; SUPPLY = 1e15; HOLD = 3600
+TG = sys.argv[1]; D = f"{TG}/{os.environ.get('VDIR', 'vip')}"; STAKE = 0.5; SUPPLY = 1e15; HOLD = 3600
+HOLDOUT = os.environ.get("HOLDOUT")   # a frozen rule (prereg_signs.json) applied to calls the lab never saw
 here = os.path.dirname(os.path.abspath(__file__))
 src = open(os.path.join(here, "tg_channel.py")).read().split("for cj in sorted(glob.glob")[0]
 sys.argv = [sys.argv[0], TG]; ns = {}; exec(compile(src, "tg_channel.py", "exec"), ns); load = ns["load"]
@@ -63,6 +64,22 @@ for t, m, P in load(D):
                      s_sellers=len({e["user"] for e in tr if not e["buy"]}))
     rows.append(r)
 rows.sort(key=lambda r: r["t"]); n = len(rows)
+if HOLDOUT:
+    F = json.load(open(HOLDOUT)); ks = [tuple(x) for x in F["signs"]]
+    sc = lambda r: sum(1 for k, c, hi in ks if k in r and ((r[k] > c) if hi else (r[k] <= c)))
+    half = rows[len(rows) // 2]["t"] if rows else 0
+    print(f"HOLDOUT: {n} calls with a price path, never seen by the lab; frozen signs ({F['made_on']}): {', '.join(k for k, _, _ in ks)}")
+    print("pre-registered before this data: primary = at least 8 of 10 signs, buy 3 s after the call, tp2 or 60 min; also shown: 6, 7, 9 and tp4")
+    def run_(R, **ex):
+        out = []
+        for r in R:
+            k = int(np.searchsorted(r["T"], r["t"] + 3, side="left"))
+            if k < len(r["T"]) - 1 and r["pr"][k] <= 1.25 * r["p0"]: out.append(None)   # placeholder replaced below
+        return out
+    def S2(v):
+        if not v: return "   0"
+        s2 = sorted(v, reverse=True); return f"{len(v):4d} {sum(v):+7.2f} ({sum(v) / len(v) / STAKE:+6.1%}) w/o5 {sum(s2[5:]):+7.2f}"
+    HOLD_ROWS = (rows, sc, half, S2)
 TR, VA, TE = rows[: n // 2], rows[n // 2: 3 * n // 4], rows[3 * n // 4:]
 fmt_t = lambda v: f"{v[0]['t']:.0f}-{v[-1]['t']:.0f}" if v else "-"
 print(f"{n} VIP calls with a price path: TRAIN {len(TR)}, VAL {len(VA)}, TEST {len(TE)} (by time)")
@@ -104,6 +121,13 @@ def run(R, ent=None, **ex):
 def S(v):
     if not v: return "   0"
     s = sorted(v, reverse=True); return f"{len(v):4d} {sum(v):+7.2f} ({sum(v) / len(v) / STAKE:+6.1%}) w/o5 {sum(s[5:]):+7.2f}"
+if HOLDOUT:
+    rows, sc, half, S2 = HOLD_ROWS
+    for N in (0, 6, 7, 8, 9):
+        for ex in (dict(tp=2), dict(tp=4)):
+            R = [r for r in rows if sc(r) >= N]; a = run([r for r in R if r["t"] < half], ent=dict(delay=3), **ex); b = run([r for r in R if r["t"] >= half], ent=dict(delay=3), **ex)
+            print(f"  at least {N:2d}, {str(ex):12s}: all {S2(a + b)} | first half {S2(a)} | second half {S2(b)}")
+    sys.exit(0)
 # ---- 1. signs: winners (1.5x in the hour from the post) against losers
 win = lambda r: r["pr"][r["k0"] + 1:][r["T"][r["k0"] + 1:] <= r["t"] + 3600].max() / r["p0"] >= 1.5 if (r["T"] > r["t"]).any() else False
 for r in rows: r["win"] = win(r)
@@ -121,6 +145,7 @@ for k in keys:
     if ok: kept.append((k, cut, da > 0))
     print(f"   {k:11s} | {cut:8.3g} | {wr(L(a)):4.0%} / {wr(Hh(a)):4.0%}              | {wr(L(b)):4.0%} / {wr(Hh(b)):4.0%} | {len(a) + len(b):4d} | {'YES: ' + ('high' if da > 0 else 'low') if ok else ''}")
 pre = [x for x in kept if x[0].startswith("s_")]; post2 = [x for x in kept if x[0].startswith("a_")]
+json.dump(dict(signs=[[k, float(c), bool(h)] for k, c, h in pre], made_on=f"{len(TR)} TRAIN + {len(VA)} VAL calls"), open(f"{D}/prereg_signs.json", "w"))
 score = lambda r, ks: sum(1 for k, c, hi in ks if k in r and ((r[k] > c) if hi else (r[k] <= c)))
 # ---- 2. the filter: at least N of the kept signs at the call (N picked on TRAIN, base exit tp2 / 60 min)
 print(f"\n2. FILTER from the kept signs at the call ({len(pre)}: {', '.join(k for k, _, _ in pre)}); base trade: buy 1 s after, tp2, 60 min")

@@ -1,0 +1,1 @@
+{"signs": [["s_accel", 0.39260994552445166, true], ["s_avgbuy", 0.47186244434732827, false], ["s_buyers", 193.0, true], ["s_holders", 99.0, true], ["s_hour", 14.0, true], ["s_n10", 408.5, true], ["s_run10", 2.059898105411018, false], ["s_run3", 1.863209380614754, false], ["s_sell10", 0.5270933872440329, false], ["s_txns", 211.5, true]], "made_on": "214 TRAIN + 107 VAL calls"}
