@@ -1,5 +1,5 @@
-# Telegram call test, step 3: the calls that were trading in a pool at the post (a pump coin graduated before it, or
-# another venue). The pool: DexScreener's SOL pair for the coin (the one with the most liquidity; public API, no key). Its
+# Telegram call test, step 3: the calls that were trading in a pool at the post (a pump coin graduated before it). The
+# pool: the PumpSwap pool pump creates on migration, derived from the mint (pump-codec's canonical_pump_swap_pool). Its
 # price after every swap from its own vault balances in the transaction (the two token accounts the pool owns: the coin
 # and wrapped SOL), so any constant-product pool works (PumpSwap and others whose vaults the pool owns); a pool whose
 # vaults it does not own is counted, not modelled. Signatures newest first back past the post (at most 30 pages: a pool
@@ -48,15 +48,13 @@ def curve_state(m, t):   # 'curve' if its pump curve traded after the post (step
         x = json.load(gzip.open(f))
         if x.get("last_t") and x["last_t"] >= t: return "curve"
     return "pool"
-def pair_of(m):
-    for i in range(4):
-        try:
-            d = json.load(urllib.request.urlopen(f"https://api.dexscreener.com/latest/dex/tokens/{m}", timeout=30))
-            ps = [p for p in d.get("pairs") or [] if p.get("chainId") == "solana" and p["quoteToken"]["address"] == WSOL and p["baseToken"]["address"] == m]
-            ps.sort(key=lambda p: -(p.get("liquidity") or {}).get("usd", 0) or 0)
-            return (ps[0]["pairAddress"], ps[0]["dexId"]) if ps else (None, None)
-        except Exception: time.sleep(2 * (i + 1))
-    return None, None
+SWAP = Pubkey.from_string("pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA")
+def pair_of(m):   # the pool pump creates on migration (pump-codec pda::canonical_pump_swap_pool): index 0, creator = pool_authority(mint), quote WSOL
+    mk = Pubkey.from_string(m)
+    auth = Pubkey.find_program_address([b"pool-authority", bytes(mk)], PUMP)[0]
+    pool = Pubkey.find_program_address([b"pool", (0).to_bytes(2, "little"), bytes(auth), bytes(mk), bytes(Pubkey.from_string(WSOL))], SWAP)[0]
+    acc = call("getAccountInfo", [str(pool), {"encoding": "base64"}])
+    return (str(pool), "pumpswap") if acc and acc.get("value") else (None, None)
 POOL = ThreadPoolExecutor(48)
 def path(m, t):
     f = f"{PD}/{m}.json.gz"
