@@ -34,3 +34,21 @@ for name, f in segs.items():
     print(f"   {name:22s} {e:14s}: first half {S(va)} | second half {S(vb)}")
     if len(a) >= 20 and (pick is None or np.mean(va) > pick[0]): pick = (np.mean(va), name, e, vb)
 if pick: print(f"\n   PICKED on the first half: {pick[1]} + {pick[2]} -> second half {S(pick[3])}")
+# 4. the VIP (the owner, Nov 17: "don't forget the vip"): its alert times of Nov 1-6 and 10-17 against this wallet's buys
+VIP, SPANS = {}, []
+for f in (f"{SP}/tg/vip/meta.json", f"{SP}/tg/vip2/meta.json"):
+    try:
+        mv = json.load(open(f)); ts = [v["t"] for v in mv.values()]; SPANS.append((min(ts), max(ts) - 600))   # a buy needs its 10 min inside
+        for m, v in mv.items(): VIP.setdefault(m, v["t"])
+    except FileNotFoundError: pass
+cover = lambda t: any(a <= t <= b for a, b in SPANS)   # the exports' own spans (Oct 31 22:00 - Nov 6 19:49, Nov 9 22:01 - Nov 17 17:38 UTC)
+C = [r for r in R if cover(r["t"])]
+if C:
+    for r in C: r["vip"] = VIP.get(r["m"], None)
+    after = [r for r in C if r["vip"] is not None and 0 < r["vip"] - r["t"] <= 600]; before = [r for r in C if r["vip"] is not None and r["vip"] <= r["t"]]
+    never = [r for r in C if r["vip"] is None or r["vip"] - r["t"] > 600]
+    print(f"\n4. THE VIP: {len(C)} of its copies fall on the days of the VIP exports")
+    print(f"   the VIP alerted the coin within 10 min AFTER its buy: {len(after)} ({len(after) / len(C):.0%}), a median {st.median([r['vip'] - r['t'] for r in after]) if after else 0:.0f} s later"
+          f" | BEFORE its buy (it followed): {len(before)} ({len(before) / len(C):.0%}) | not within 10 min: {len(never)}")
+    for e in ("its-sale", best[0], "t10m", "tp3"):
+        print(f"   exit {e:14s}: alerted after {S([r['ex'][e] for r in after])} | alerted before {S([r['ex'][e] for r in before])} | not alerted {S([r['ex'][e] for r in never])}")
