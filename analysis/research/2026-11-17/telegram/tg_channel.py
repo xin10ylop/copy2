@@ -8,7 +8,9 @@
 #            skip5x = the same, but no buy if the price ran 5x+ in the 10 min before the post (a late call)
 #            dip    = the first trade within 10 min at 0.9x the post's price or lower (else no buy)
 #            confirm= the first trade within 5 min at 1.2x the post's price or higher (else no buy)
-#   exits:   tp1.5 / tp2 / tp3 (over our entry price; else 60 min), t10 / t30 / t60, tp2sl (tp2, or a stop at 0.6x)
+#            nospike= at the post, but no buy if the price rose 5%+ in the minute before it (tg_signs.py: such calls mostly lose)
+#   exits:   tp1.5 / tp2 / tp3 (over our entry price; else 60 min), t10 / t30 / t60, tp2sl (tp2, or a stop at 0.6x),
+#            st2tp2 (a stall at 2 min sells: no new high in its last 90 s, tg_signs.py; else tp2 or 60 min)
 # Per channel: the behaviour (run-up before the post, the median path, the peak), then each entry x exit on the first half
 # of its calls by time (the pick) and the second half (the score), and every result without its best 3 (small samples).
 #   python3 -I tg_channel.py TGDIR [MIN=10] > out/tg_channel.txt
@@ -44,20 +46,28 @@ def sim(t, P, entry, ex):
     run = p0 / pr(old[-1]) if old else p0 / pr(P[0])
     aft = [r for r in P if r[0] >= t + 1]
     if entry == "skip5x" and run >= 5: return None
-    if entry in ("post", "skip5x"): i = 0
+    m1 = [r for r in P if r[0] <= t - 60]
+    if entry == "nospike" and m1 and p0 / pr(m1[-1]) >= 1.05: return None   # the price jumped 5%+ in the minute before the post
+    if entry in ("post", "skip5x", "nospike"): i = 0
     elif entry == "dip": i = next((k for k, r in enumerate(aft) if r[0] <= t + 600 and pr(r) <= 0.9 * p0), None)
     else: i = next((k for k, r in enumerate(aft) if r[0] <= t + 300 and pr(r) >= 1.2 * p0), None)
     if i is None or i >= len(aft) - 1: return None
     t0, Q, B, f = aft[i]; inn = STAKE * 1e9 * (1 - f); tok = B * inn / (Q + inn); pe = pr(aft[i])
     def sell(j): _, Q2, B2, f2 = aft[j]; return Q2 * tok / (B2 + tok) * (1 - f2) / 1e9 - STAKE - 0.0026
-    cap = {"t10": 600, "t30": 1800}.get(ex, HOLD)
+    cap = {"t10": 600, "t30": 1800}.get(ex, HOLD); hi, hi_t, checked = pe, t0, False
     for j in range(i + 1, len(aft)):
         r = aft[j]
         if r[0] - t0 >= cap: return sell(j)
+        if ex == "st2tp2":   # a stall at 2 min (no new high in the last 90 s) sells; else tp2 or 60 min
+            if not checked and r[0] - t0 >= 120:
+                checked = True
+                if r[0] - hi_t >= 90: return sell(j)
+            if pr(r) > hi: hi, hi_t = pr(r), r[0]
+            if pr(r) >= 2 * pe: return sell(min(j + 1, len(aft) - 1))
         if ex.startswith("tp") and pr(r) >= float(ex[2:].replace("sl", "")) * pe: return sell(min(j + 1, len(aft) - 1))
         if ex == "tp2sl" and pr(r) <= 0.6 * pe: return sell(min(j + 1, len(aft) - 1))
     return sell(len(aft) - 1)
-EN = ["post", "skip5x", "dip", "confirm"]; EX = ["tp1.5", "tp2", "tp3", "t10", "t30", "t60", "tp2sl"]
+EN = ["post", "skip5x", "nospike", "dip", "confirm"]; EX = ["tp1.5", "tp2", "tp3", "t10", "t30", "t60", "tp2sl", "st2tp2"]
 def summ(v):
     if not v: return "   0              "
     s = sorted(v, reverse=True); return f"{len(v):3d} {sum(v):+6.2f} w/o3 {sum(s[3:]):+6.2f}"
