@@ -20,7 +20,7 @@ for b in raw.split('<div class="message default')[1:]:
     tier = next((name for name, key in TIERS if key in tail), "none")
     g = lambda pat: (re.search(pat, txt) or [None, None])[1]
     first[ca.group(1)] = t
-    meta[ca.group(1)] = dict(tier=tier, mc=num(g(r"Market Cap\s*:\s*([\d.,]+[KMB]?)") or "0"), age=g(r"Age\s*:\s*(\S+)"),
+    meta[ca.group(1)] = dict(t=t, tier=tier, mc=num(g(r"Market Cap\s*:\s*([\d.,]+[KMB]?)") or "0"), age=g(r"Age\s*:\s*(\S+)"),
                              pool=g(r"Pool\s*:\s*([^·]+)"), spotted=int(g(r"Spotted in\s*:\s*(\d+)") or 0),
                              vol=num(g(r"Volume \(24h\)\s*:\s*([\d.,]+[KMB]?)") or "0"), txns=num(g(r"Txns \(24h\)\s*:\s*([\d.,]+[KMB]?)") or "0"))
 by = collections.defaultdict(list)

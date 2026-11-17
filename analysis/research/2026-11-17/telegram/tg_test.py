@@ -18,7 +18,7 @@ from solders.pubkey import Pubkey
 D = sys.argv[1]; DELAY = float(sys.argv[2]) if len(sys.argv) > 2 else 3; PC = f"{D}/paths"; os.makedirs(PC, exist_ok=True)
 sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-13/tab_exits"); import cmodel as M
 sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-17/wallet_hunt"); import hunt_lib as H
-URL = os.environ["RPC_URL"]; PUMP = Pubkey.from_string("6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"); HOLD = 3600; SAMPLE = int(os.environ.get("SAMPLE", 4))   # busy coins: 1 trade in SAMPLE after the first 2 min (prices only; no signals)
+URL = os.environ["RPC_URL"]; PUMP = Pubkey.from_string("6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"); HOLD = 3600; SAMPLE = int(os.environ.get("SAMPLE", 4)); PRE = int(os.environ.get("PRE", 600)); FULL = int(os.environ.get("FULL", 120))   # busy coins: 1 trade in SAMPLE after the first 2 min (prices only; no signals)
 TOK = {"TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"}
 def call(m, p):
     for i in range(8):
@@ -56,15 +56,18 @@ def get(at):
             pg = call("getSignaturesForAddress", [c, {"limit": 1000, **({"before": before} if before else {})}])
             if not pg: break
             sigs += [s for s in pg if s["err"] is None]; before = pg[-1]["signature"]
-            if len(pg) < 1000 or (pg[-1].get("blockTime") or 0) < t - 600: break
+            if len(pg) < 1000 or (pg[-1].get("blockTime") or 0) < t - PRE: break
         first_t = min((s["blockTime"] for s in sigs if s.get("blockTime")), default=None) if len(sigs) % 1000 else None
-        win = sorted((s for s in sigs if t - 600 <= (s.get("blockTime") or 0) <= t + HOLD + 60), key=lambda s: s["slot"])
-        win = [s for i, s in enumerate(win) if s["blockTime"] <= t + 120 or i % SAMPLE == 0 or i == len(win) - 1]   # every trade to 2 min after the post, then 1 in SAMPLE
+        win = sorted((s for s in sigs if t - PRE <= (s.get("blockTime") or 0) <= t + HOLD + 60), key=lambda s: s["slot"])
+        win = [s for i, s in enumerate(win) if s["blockTime"] <= t + FULL or i % SAMPLE == 0 or i == len(win) - 1]   # every trade to 2 min after the post, then 1 in SAMPLE
         last_t = max((s["blockTime"] for s in sigs if s.get("blockTime")), default=None)
         txs = list(POOL.map(lambda s: call("getTransaction", [s["signature"], M.TXO]), win))
         tr = [e for tx in txs if tx for e in M.trades(tx, m)]
         d = base64.b64decode(acc["value"]["data"][0]); complete = len(d) > 48 and d[48] == 1
-        out = dict(venue="pump", tr=tr, first_t=first_t, last_t=last_t, complete=complete)
+        reached = len(sigs) % 1000 != 0 and first_t is not None and first_t >= t - PRE   # the window starts at the coin's creation
+        tx0 = next((x for x in txs if x), None)
+        out = dict(venue="pump", tr=tr, first_t=first_t, last_t=last_t, complete=complete, full_s=FULL, pre_s=PRE,
+                   creator=tx0["transaction"]["message"]["accountKeys"][0] if reached and tx0 else None, from_creation=reached)
     with gzip.open(f + ".tmp", "wt") as fh: json.dump(out, fh)
     os.replace(f + ".tmp", f); return out
 with ThreadPoolExecutor(6) as ex: P = list(ex.map(get, C))
