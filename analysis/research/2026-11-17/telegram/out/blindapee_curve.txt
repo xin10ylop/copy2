@@ -1,0 +1,38 @@
+486 messages, 132 first mentions of an address; 09-30 22:03 to 11-17 15:33 UTC
+132 addresses, 132 of them mints; 132 calls (a message's first mint); buy 1 s after the post
+  no curve trade after the call: 55, graduated before the call (pool): 26, modelled: 22, other venue: 15, curve priced in another token (not modelled): 14
+  refused (already 1.25x the post's price when we land): 0
+exit    | copies, net SOL, a copy, won | w/o best 5 | 1st half / 2nd half
+tp2     |  22,  +2.85, +25.9%, 64% |  +0.28 |  +1.08 /  +1.77
+tp3     |  22,  +2.46, +22.3%, 55% |  -0.71 |  +0.18 /  +2.27
+tp5     |  22,  +2.46, +22.3%, 55% |  -0.71 |  +0.18 /  +2.27
+grad    |  22,  +2.46, +22.3%, 55% |  -0.71 |  +0.18 /  +2.27
+t10     |  22,  +0.34,  +3.1%, 36% |  -0.95 |  -0.48 /  +0.82
+t30     |  22,  +2.89, +26.3%, 64% |  +0.03 |  +0.83 /  +2.06
+signals |  22,  -0.61,  -5.6%, 18% |  -1.11 |  -0.61 /  -0.01
+
+per copy, exit tp2: post (UTC), coin, net SOL, why it sold, held s, price at the sale / at the post
+  10-01 04:48 5gok7WzH +0.109 time         3580 s  1.26x
+  10-01 16:31 2dZCcPWh -0.413 end of data   3542 s  0.18x
+  10-01 18:23 DXZANbPn +0.462 tp2           905 s  1.98x
+  10-03 15:08 ggzv9wBJ +0.195 time         3524 s  1.44x
+  10-03 17:20 Dk3m5y5H +0.436 tp2          1345 s  1.96x
+  10-08 17:53 AdZ5Bkqw -0.173 time         3632 s  0.65x
+  10-11 20:36 EMkwJpcR +0.515 tp2          2019 s  2.09x
+  10-16 14:26 5xri1bAx -0.192 end of data   3548 s  0.63x
+  10-18 14:42 78oQrFVR -0.153 end of data   3244 s  0.75x
+  10-26 15:03 38DeTs6A +0.164 graduated     719 s  1.38x
+  10-29 15:08 ABkr21iD +0.132 graduated    1763 s  1.31x
+  11-04 14:51 3vajh3wX +0.314 graduated    2425 s  1.68x
+  11-06 21:48 BW1K4YTS +0.440 tp2           834 s  2.02x
+  11-08 15:10 ACQaUNAB -0.016 time         3564 s  0.98x
+  11-09 16:07 BXpidzC6 +0.658 tp2            92 s  2.43x
+  11-10 16:58 3WXWFpKj -0.390 time         3594 s  0.23x
+  11-10 20:42 E44vvifB +0.337 time         3574 s  1.76x
+  11-12 19:49 9mMa6VoL +0.073 graduated     434 s  1.18x
+  11-13 20:59 Gixc7u56 +0.160 graduated     737 s  1.24x
+  11-15 17:22 BYKvpKvp -0.019 end of data   2759 s  0.99x
+  11-16 18:06 3EDLvS4P -0.282 time         3599 s  0.45x
+  11-16 19:36 71djmB9F +0.497 tp2           195 s  2.06x
+
+[exited with code 0]
