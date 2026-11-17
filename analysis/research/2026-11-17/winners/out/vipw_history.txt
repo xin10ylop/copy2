@@ -1,0 +1,4 @@
+8 candidates (3+ hits from 3+ creators, lift est 1.5+, top 40 by hits)
+wallet   | transactions since Nov 3 (from) | period: copyable buys, graduated, expected, lift, P(by chance) | very early (<2%), size med
+6ua7w2Gv |  9839 (11-08 03:16) | before: 1864, 254, 222.0, 1.1x, 0.019 | screen: 965, 143, 115.7, 1.2x, 0.008 | after: 110, 15, 14.0, 1.1x, 0.430 |   2%, 0.50
+6anjqMeW | 12000 (11-12 01:53) | before: 1439, 82, 122.3, 0.7x, 1.000 | screen: 1420, 77, 117.3, 0.7x, 1.000 | after: 216, 5, 17.9, 0.3x, 1.000 |   0%, 0.51

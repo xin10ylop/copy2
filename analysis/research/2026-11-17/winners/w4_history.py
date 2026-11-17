@@ -77,7 +77,8 @@ def complete(ms):
             d = base64.b64decode(a["data"][0]) if a else b""
             OUT[m] = d[48] if len(d) >= 49 else None
 def ptail(k, lam):   # P(X >= k), X ~ Poisson(lam)
-    return 1 - sum(math.exp(-lam) * lam ** i / math.factorial(i) for i in range(k)) if lam > 0 else 0.0
+    if lam <= 0: return 0.0   # in logs: a busy wallet's counts overflow lam ** i
+    return max(0.0, 1 - sum(math.exp(-lam + i * math.log(lam) - math.lgamma(i + 1)) for i in range(k)))
 print(f"{len(C)} candidates (3+ hits from 3+ creators, lift est 1.5+, top 40 by hits)")
 print("wallet   | transactions since Nov 3 (from) | period: copyable buys, graduated, expected, lift, P(by chance) | very early (<2%), size med")
 res = {}
