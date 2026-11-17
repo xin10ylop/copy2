@@ -36,3 +36,7 @@ luck alone could make one or two look good in both halves; that is what the hold
 
 **Holdout:** `OFFSET=300 SUFFIX=_holdout` (the next 300 of the same shuffle) and `w9_buyctx.py` on it, scored once by
 `w11_holdout.py`. **Pass:** at least 40 copies kept; positive at 0.0345 SOL a round trip; positive without the best 5.
+
+Note (Nov 18 ~00:00 UTC): the first 300's run was stopped at 206 copies of 6ua7w2Gv (the rule above was found on those
+206), 150 of q2q38wAb and 191 of q2jJy82z (both fail at 0.0345 SOL a round trip, `out/study_*_partial.txt`), to give the
+RPC to the holdout and to the attention money test.
