@@ -15,7 +15,7 @@ for w8 in sorted(os.listdir(f"{H}/tx")):
     if not os.path.isdir(D) or w8 not in full or w8 not in done: continue
     out = f"{H}/scan/{w8}.out"
     if not os.path.exists(out):
-        r = subprocess.run([BIN, os.environ["RPC_URL"], D, f"{SP}/newq/prices.json", "0.9"], env=dict(os.environ, W=full[w8], FLOATS=FL), capture_output=True, text=True)
+        r = subprocess.run([BIN, os.environ["RPC_URL"], D, f"{SP}/newq/prices.json", os.environ.get("MINSOL", "0.9")], env=dict(os.environ, W=full[w8], FLOATS=FL), capture_output=True, text=True)
         open(out, "w").write(r.stdout)
     sigs = json.load(open(f"{H}/tx/{w8}_sigs.json"))[:6000]; t_of = {s[1]: s[2] for s in sigs}
     R = []

@@ -26,7 +26,7 @@ for w, R in rows.items():
     if ONLY and w[:8] not in ONLY: continue
     first = {}
     for r in sorted(R, key=lambda r: r["t"]): first.setdefault(r["m8"], r)
-    B = [r for r in first.values() if r["routable"] and r["w4"] == "no" and r["sol"] >= 0.9]
+    B = [r for r in first.values() if r["routable"] and r["w4"] == "no" and r["sol"] >= float(os.environ.get("MINSOL", 0.9))]   # MINSOL=0.5: the wide launch screen
     if len(B) > CAP: B = random.Random(7).sample(B, CAP)
     sigs = sorted(json.load(open(f"{H}/tx/{w[:8]}_sigs.json"))[:6000], key=lambda s: s[2]); T = [s[2] for s in sigs]
     for r in B:
