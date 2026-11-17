@@ -2,7 +2,7 @@
 # chosen on the first half of its copies by time and scored on the second; every result also without the best 5.
 #   python3 -I wallet_study_report.py SP WALLET8 > out/study_<w8>.txt
 import sys, json, numpy as np, statistics as st
-SP, W8 = sys.argv[1], sys.argv[2]; R = sorted(json.load(open(f"{SP}/winners/study_{W8}.json")), key=lambda r: r["t"])
+SP, W8 = sys.argv[1], sys.argv[2]; R = sorted(json.load(open(f"{SP}/winners/study_{W8}{sys.argv[3] if len(sys.argv) > 3 else ''}.json")), key=lambda r: r["t"])
 R = [r for r in R if not r["refused"]]; half = R[len(R) // 2]["t"]; A = [r for r in R if r["t"] < half]; B = [r for r in R if r["t"] >= half]
 EX = list(R[0]["ex"]); STAKE = 0.5
 def S(v):

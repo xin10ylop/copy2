@@ -56,6 +56,7 @@ for i, x in enumerate(items):
     if not b: continue
     rate = rate_of(b["quote"])
     if rate is None: continue
+    if os.environ.get("NOFETCH") and not os.path.exists(f"{ns['CP']}/{b['slot']}_{x['m']}.json.gz"): continue   # a report on what is cached
     tr = cpath(x["m"], b["slot"], b["t"])
     k = next((j for j, y in enumerate(tr) if y["user"] == full and y["buy"] and y["slot"] == b["slot"]), None)
     if k is None or k >= len(tr) - 1: continue
@@ -64,5 +65,5 @@ for i, x in enumerate(items):
     rows.append(dict(m=x["m"], t=b["t"], sol=x["sol"], prog=x["p"], quote=b["quote"] or "SOL", hour=(b["t"] // 3600) % 24,
                      held=(s1 - b["t"]) if s1 else None, refused=p["refused"], ex=o))
     if (i + 1) % 25 == 0: print(f"{W8}: {i + 1}/{len(items)} buys, {time.time() - t0:.0f} s", flush=True)
-json.dump(rows, open(f"{SP}/winners/study_{W8}.json", "w"))
+json.dump(rows, open(f"{SP}/winners/study_{W8}{os.environ.get('SUFFIX', '')}.json", "w"))
 print(f"{W8}: {len(rows)} copies saved")
