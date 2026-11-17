@@ -121,6 +121,30 @@ def run(R, ent=None, **ex):
 def S(v):
     if not v: return "   0"
     s = sorted(v, reverse=True); return f"{len(v):4d} {sum(v):+7.2f} ({sum(v) / len(v) / STAKE:+6.1%}) w/o5 {sum(s[5:]):+7.2f}"
+if HOLDOUT and os.environ.get("BUDGET"):   # the bot's time budget and its capacity: the frozen filter, tp 2.75, 60 min, no stop
+    rows, sc, half, S2 = HOLD_ROWS; R = [r for r in rows if sc(r) >= 8]
+    for d in (1, 3, 5, 10, 15, 20, 30, 45, 60):
+        v = run(R, ent=dict(delay=d), tp=2.75); s5 = sorted(v, reverse=True)
+        print(f"BUDGET buy {d:2d} s after the post: {len(v):3d} copies {sum(v):+7.2f} ({sum(v) / max(1, len(v)) / STAKE:+6.1%}) w/o5 {sum(s5[5:]):+7.2f}")
+    # capacity: walk the calls in time order with at most N open; a call is skipped while N are open
+    ev = []
+    for r in R:
+        k = entry(r, delay=3)
+        if k is None: continue
+        T, pr = r["T"], r["pr"]; pe = pr[k]; t0 = T[k]; j = len(T) - 1
+        hit = np.where((T > t0) & ((pr >= 2.75 * pe) | (T - t0 >= 3600)))[0]
+        if len(hit): j = min(int(hit[0]) + 1, len(T) - 1)
+        ev.append((t0, T[j], trade(r, k, tp=2.75)))
+    ev.sort(); days = (rows[-1]["t"] - rows[0]["t"]) / 86400 if rows else 1
+    hold = sorted(b - a for a, b, _ in ev)
+    print(f"CAPACITY {len(ev)} copies in {days:.1f} days ({len(ev) / days:.1f} a day; this sample only); hold median {hold[len(hold) // 2] / 60:.0f} min, 75% {hold[3 * len(hold) // 4] / 60:.0f} min")
+    for N in (1, 2, 3, 4, 6, 99):
+        open_, took = [], []
+        for a, b, x in ev:
+            open_ = [e for e in open_ if e > a]
+            if len(open_) < N: open_.append(b); took.append(x)
+        print(f"CAPACITY at most {N:2d} open: {len(took):3d} taken of {len(ev)}, {sum(took):+7.2f} SOL")
+    sys.exit(0)
 if HOLDOUT and os.environ.get("GRID"):   # every increment of the exit, the frozen filter (8+ of 10), buy 3 s after
     rows, sc, half, S2 = HOLD_ROWS; R = [r for r in rows if sc(r) >= 8]
     parts = [("first half", [r for r in R if r["t"] < half]), ("second half", [r for r in R if r["t"] >= half])]
