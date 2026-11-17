@@ -15,6 +15,7 @@ SP = sys.argv[1]; MAXSIG = int(sys.argv[2]) if len(sys.argv) > 2 else 12000; W =
 sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-13/tab_exits"); import cmodel as M
 URL = os.environ["RPC_URL"]; PUMP = Pubkey.from_string("6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P")
 T0, A, B = 1793664000, 1794704822, 1794877622          # Nov 3 00:00; the screen's 48 h = [A, B)
+if os.environ.get("WINDOW"): A, B = map(int, os.environ["WINDOW"].split(","))   # step 7's week instead
 INIT_REAL = 793_100_000_000_000; WSOL = "So11111111111111111111111111111111111111112"
 SOLQ = {WSOL, "11111111111111111111111111111111", None}
 PR = json.load(open(f"{SP}/market/prices.json")); sol_usd = PR[WSOL]["usdPrice"]
