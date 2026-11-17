@@ -1,0 +1,17 @@
+914 VIP calls bought 1 s after the post; costs 0.01 SOL a round trip; 590 segments x 3 exits scanned = 1770 tests
+every call: hold 2 min -10.5%, tp1.5 / 10 min -13.4%, tp2 / 60 min -16.9%
+
+segments with 30+ copies, both halves positive and positive without the best 5: 5 of 1770 tests
+  age (2, 5] & run10 (5, 1e+09]                | tp2 / 60 min   |  42 copies  +3.25 (+15.5%) | halves +22.6% /  +5.9% | w/o5  +0.83 | at 0.0345: +10.6%
+  tier Diamond & age (0, 1]                    | tp2 / 60 min   |  90 copies  +4.53 (+10.1%) | halves  +7.3% / +13.4% | w/o5  +1.83 | at 0.0345:  +5.2%
+  tier Diamond & prog (0.7, 0.85]              | tp2 / 60 min   |  72 copies  +2.98 ( +8.3%) | halves  +4.1% / +19.1% | w/o5  +0.22 | at 0.0345:  +3.4%
+  tier Diamond & top10 (0.2, 0.25]             | tp2 / 60 min   |  80 copies  +3.28 ( +8.2%) | halves  +3.0% / +16.4% | w/o5  +0.52 | at 0.0345:  +3.3%
+  mc (10000, 15000] & holders (200, 400]       | tp1.5 / 10 min |  39 copies  +1.25 ( +6.4%) | halves  +1.8% / +16.8% | w/o5  +0.04 | at 0.0345:  +1.5%
+
+the age the post gives (minutes), every call, by bucket:
+  age (0, 1] min: 696 calls | hold 2 min -10.9% | tp1.5 / 10 min -13.5% | tp2 / 60 min -16.8%
+  age (1, 2] min:  17 calls | hold 2 min -24.9% | tp1.5 / 10 min -21.4% | tp2 / 60 min -35.1%
+  age (2, 5] min:  63 calls | hold 2 min  -1.2% | tp1.5 / 10 min  -3.0% | tp2 / 60 min  +2.3%
+  age (5, 15] min:  53 calls | hold 2 min -13.0% | tp1.5 / 10 min -12.0% | tp2 / 60 min -21.6%
+  age (15, 1e+09] min:  70 calls | hold 2 min  -9.5% | tp1.5 / 10 min -19.5% | tp2 / 60 min -22.9%
+  age 0 (under a minute): 15 calls | hold 2 min -13.2% | tp1.5 / 10 min -17.4% | tp2 / 60 min -33.6%
