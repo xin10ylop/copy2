@@ -81,7 +81,8 @@ for (m, t), p in zip(C, P):
     if rate is None: cnt["curve priced in another token (not modelled)"] += 1; continue
     p0 = H.prep(tr, k0, rate, max(1, k - k0))
     cnt["modelled"] += 1; rows.append((t, m, p0))
-def run(p, ex, stake=0.5):
+WHY = {}
+def run(p, ex, stake=0.5, key=None):
     if p["refused"]: return None
     vt0, vq0, bps0 = p["ent"]; net_in = stake * 1e9 * 1e4 / (1e4 + bps0); tok = vt0 - vt0 * vq0 / (vq0 + net_in)
     def out(i):
@@ -100,8 +101,12 @@ def run(p, ex, stake=0.5):
         i = H.first((pk >= 1.0) & (age - lasthi >= 180)); c += [(i, 1)] if i is not None else []
     cap = {"t10": 600, "t30": 1800}.get(ex, HOLD)
     i = H.first(age >= cap); c += [(i, 0)] if i is not None else []
-    if not c: return out(n - 1)
-    i, d = min(c); return out(min(i + d, n - 1))
+    if not c: j = n - 1; why = "end of data"
+    else:
+        i, d = min(c); j = min(i + d, n - 1)
+        why = "graduated" if p["grad"][j - d] and d == 0 and age[i] < cap else ("time" if d == 0 else ex)
+    if key is not None: WHY[key] = (why, float(age[j] - p["last"]), float(px[j]))
+    return out(j)
 print(f"{len(calls)} addresses, {sum(info.values())} of them mints; {len(C)} calls (a message's first mint); buy {DELAY:.0f} s after the post")
 print("  " + ", ".join(f"{k}: {v}" for k, v in cnt.most_common()))
 ref = sum(1 for _, _, p in rows if p["refused"])
@@ -114,3 +119,9 @@ for ex in ["tp2", "tp3", "tp5", "grad", "t10", "t30", "signals"]:
     xs = [x for _, x in v]; s = sorted(xs, reverse=True); h = len(v) // 2
     print(f"{ex:7s} | {len(v):3d}, {sum(xs):+6.2f}, {sum(xs) / len(xs) / 0.5:+6.1%}, {sum(x > 0 for x in xs) / len(xs):3.0%} | {sum(s[5:]):+6.2f} | "
           f"{sum(x for _, x in v[:h]):+6.2f} / {sum(x for _, x in v[h:]):+6.2f}")
+if os.environ.get("DETAIL"):
+    ex = os.environ["DETAIL"]; print(f"\nper copy, exit {ex}: post (UTC), coin, net SOL, why it sold, held s, price at the sale / at the post")
+    for t, m, p in rows:
+        x = run(p, ex, key=m)
+        if x is None: print(f"  {time.strftime('%m-%d %H:%M', time.gmtime(t))} {m[:8]} refused"); continue
+        w, held, pxs = WHY[m]; print(f"  {time.strftime('%m-%d %H:%M', time.gmtime(t))} {m[:8]} {x:+.3f} {w:10s} {held:6.0f} s {pxs:5.2f}x")
