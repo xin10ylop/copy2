@@ -82,7 +82,9 @@ for (m, t), p in zip(C, P):
     p0 = H.prep(tr, k0, rate, max(1, k - k0))
     cnt["modelled"] += 1; rows.append((t, m, p0))
 WHY = {}
-def run(p, ex, stake=0.5, key=None):
+STAKE = float(os.environ.get("STAKE", 0.5))
+def run(p, ex, stake=None, key=None):
+    stake = stake or STAKE
     if p["refused"]: return None
     vt0, vq0, bps0 = p["ent"]; net_in = stake * 1e9 * 1e4 / (1e4 + bps0); tok = vt0 - vt0 * vq0 / (vq0 + net_in)
     def out(i):
@@ -117,7 +119,7 @@ for ex in ["tp2", "tp3", "tp5", "grad", "t10", "t30", "signals"]:
     v = [(t, run(p, ex)) for t, _, p in rows]; v = [(t, x) for t, x in v if x is not None]
     if not v: print(f"{ex:7s} | 0"); continue
     xs = [x for _, x in v]; s = sorted(xs, reverse=True); h = len(v) // 2
-    print(f"{ex:7s} | {len(v):3d}, {sum(xs):+6.2f}, {sum(xs) / len(xs) / 0.5:+6.1%}, {sum(x > 0 for x in xs) / len(xs):3.0%} | {sum(s[5:]):+6.2f} | "
+    print(f"{ex:7s} | {len(v):3d}, {sum(xs):+6.2f}, {sum(xs) / len(xs) / STAKE:+6.1%}, {sum(x > 0 for x in xs) / len(xs):3.0%} | {sum(s[5:]):+6.2f} | "
           f"{sum(x for _, x in v[:h]):+6.2f} / {sum(x for _, x in v[h:]):+6.2f}")
 if os.environ.get("DETAIL"):
     ex = os.environ["DETAIL"]; print(f"\nper copy, exit {ex}: post (UTC), coin, net SOL, why it sold, held s, price at the sale / at the post")
