@@ -30,7 +30,7 @@ for t, m, P in load(D):
     dq = np.concatenate([[0.0], np.diff(Q)])   # + a buy, - a sale (quote reserve change)
     k0 = int(np.searchsorted(T, t, side="right")) - 1
     if k0 < 0 or k0 >= len(P) - 1: continue
-    p0 = pr[k0]; at = lambda o: pr[int(np.searchsorted(T, t + o, side="right")) - 1] / p0
+    p0 = pr[k0]; at = lambda o: pr[max(0, int(np.searchsorted(T, t + o, side="right")) - 1)] / p0   # before the path starts: its first price (was pr[-1], the last: a look-ahead, found by the audit)
     w = (T > t - 600) & (T <= t); w2 = (T > t) & (T <= t + 120)
     r = dict(t=t, m=m, tier=mt.get("tier"), T=T, pr=pr, Q=Q, B=np.array([x[2] for x in P], dtype=float), fee=fee, dq=dq, k0=k0, p0=p0,
              s_mc=mt.get("mc", 0), s_age=age_min(mt.get("age")), s_curve=float((mt.get("pool") or "").strip() == "Pump.fun"),

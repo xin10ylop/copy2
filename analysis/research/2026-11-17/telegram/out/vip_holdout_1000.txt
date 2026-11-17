@@ -1,0 +1,13 @@
+HOLDOUT: 468 calls with a price path, never seen by the lab; frozen signs (214 TRAIN + 107 VAL calls): s_accel, s_avgbuy, s_buyers, s_holders, s_hour, s_n10, s_run10, s_run3, s_sell10, s_txns
+pre-registered before this data: primary = at least 8 of 10 signs, buy 3 s after the call, tp2 or 60 min; also shown: 6, 7, 9 and tp4
+468 VIP calls with a price path: TRAIN 234, VAL 117, TEST 117 (by time)
+  at least  0, {'tp': 2}   : all  460  -16.52 ( -7.2%) w/o5  -19.36 | first half  228  -10.32 ( -9.1%) w/o5  -12.92 | second half  232   -6.20 ( -5.3%) w/o5   -9.04
+  at least  0, {'tp': 4}   : all  460  -18.84 ( -8.2%) w/o5  -26.28 | first half  228  -13.43 (-11.8%) w/o5  -20.26 | second half  232   -5.41 ( -4.7%) w/o5  -12.11
+  at least  6, {'tp': 2}   : all  225  +11.82 (+10.5%) w/o5   +8.98 | first half  103   +4.14 ( +8.0%) w/o5   +1.60 | second half  122   +7.69 (+12.6%) w/o5   +4.88
+  at least  6, {'tp': 4}   : all  225  +24.43 (+21.7%) w/o5  +17.51 | first half  103   +8.57 (+16.6%) w/o5   +3.15 | second half  122  +15.86 (+26.0%) w/o5   +9.31
+  at least  7, {'tp': 2}   : all  172  +17.07 (+19.9%) w/o5  +14.29 | first half   77   +7.01 (+18.2%) w/o5   +4.54 | second half   95  +10.06 (+21.2%) w/o5   +7.33
+  at least  7, {'tp': 4}   : all  172  +28.13 (+32.7%) w/o5  +21.57 | first half   77   +9.71 (+25.2%) w/o5   +5.41 | second half   95  +18.42 (+38.8%) w/o5  +11.87
+  at least  8, {'tp': 2}   : all  102  +20.37 (+39.9%) w/o5  +17.58 | first half   50  +10.46 (+41.8%) w/o5   +7.98 | second half   52   +9.91 (+38.1%) w/o5   +7.17
+  at least  8, {'tp': 4}   : all  102  +28.94 (+56.7%) w/o5  +22.91 | first half   50  +13.15 (+52.6%) w/o5   +8.86 | second half   52  +15.79 (+60.7%) w/o5   +9.76
+  at least  9, {'tp': 2}   : all   52  +12.97 (+49.9%) w/o5  +10.47 | first half   25   +6.36 (+50.9%) w/o5   +3.93 | second half   27   +6.61 (+48.9%) w/o5   +4.20
+  at least  9, {'tp': 4}   : all   52  +17.17 (+66.1%) w/o5  +11.88 | first half   25   +7.86 (+62.8%) w/o5   +3.90 | second half   27   +9.32 (+69.0%) w/o5   +4.14

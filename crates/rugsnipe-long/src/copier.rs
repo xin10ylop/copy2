@@ -105,6 +105,12 @@ pub struct TargetCfg {
     pub max_open: usize,
     /// Quote mints never copied (`pump_unroutable`).
     pub quotes_deny: Vec<String>,
+    /// A signal target: instead of a wallet's buys it trades the coins appended to this file, one JSON line each
+    /// (`{"mint", "program", "id", "post_ms"}`, written by the VIP listener, `tools/vip/`). `wallet` is then empty and
+    /// `follow_sell` false; the stake is `stake_sol`; exits as any target (take profit, stop, timer).
+    pub signal: String,
+    /// A signal older than this (from its `post_ms`) when read is not traded (a backlog after a restart or a stall).
+    pub max_signal_age_s: u64,
 }
 
 impl Default for TargetCfg {
@@ -126,6 +132,8 @@ impl Default for TargetCfg {
             follow_sell: true,
             max_open: 3,
             quotes_deny: vec![],
+            signal: String::new(),
+            max_signal_age_s: 20,
         }
     }
 }
@@ -247,8 +255,11 @@ impl CopierCfg {
             if n.is_empty() || self.targets[..i].iter().any(|o| o.name == *n) {
                 return bad(format!("target {i}: a name, unique"));
             }
-            if t.wallet.parse::<Pubkey>().is_err() {
+            if t.signal.is_empty() && t.wallet.parse::<Pubkey>().is_err() {
                 return bad(format!("{n}: wallet"));
+            }
+            if !t.signal.is_empty() && (!t.wallet.is_empty() || t.follow_sell || t.stake_frac > 0.0 || t.max_signal_age_s == 0) {
+                return bad(format!("{n}: a signal target has no wallet, follow_sell false, no stake_frac, max_signal_age_s above 0"));
             }
             if t.stake_sol <= 0.0 && t.stake_frac <= 0.0 {
                 return bad(format!("{n}: stake_sol or stake_frac above 0"));
@@ -286,10 +297,11 @@ impl CopierCfg {
         Ok(())
     }
 
-    /// The wallets copied, in config order.
+    /// The wallets copied, in config order (signal targets have none).
     pub fn wallets(&self) -> Vec<Pubkey> {
         self.targets
             .iter()
+            .filter(|t| t.signal.is_empty())
             .filter_map(|t| t.wallet.parse().ok())
             .collect()
     }
@@ -909,6 +921,78 @@ pub const STUCK_TRIES: u32 = 20;
 const DAY_MS: u64 = 86_400_000;
 
 /// The copier's engine.
+/// One line of a signal file.
+#[derive(Debug, Clone, PartialEq)]
+pub struct Signal {
+    pub mint: Pubkey,
+    /// The coin's token program (SPL Token or Token-2022).
+    pub program: Pubkey,
+    /// Where it came from (journaled as `its_sig`), e.g. `vip:<message id>`.
+    pub id: String,
+    /// When the call was posted (unix ms): its age is checked before buying.
+    pub post_ms: u64,
+}
+
+impl Signal {
+    pub fn parse(line: &str) -> Result<Self, String> {
+        let v: Value = serde_json::from_str(line).map_err(|e| format!("signal: {e}"))?;
+        let key = |k: &str| v[k].as_str().ok_or(format!("signal: no {k}"))?.parse::<Pubkey>().map_err(|_| format!("signal: {k}"));
+        let program = key("program")?;
+        if program != c::SPL_TOKEN_PROGRAM_ID && program != c::TOKEN_2022_PROGRAM_ID {
+            return Err("signal: program is not a token program".into());
+        }
+        Ok(Self {
+            mint: key("mint")?,
+            program,
+            id: v["id"].as_str().unwrap_or("signal").to_string(),
+            post_ms: v["post_ms"].as_u64().ok_or("signal: no post_ms")?,
+        })
+    }
+}
+
+/// A signal file read from where it ended when opened (old lines are never traded), whole lines only.
+pub struct Inbox {
+    pub path: String,
+    pos: u64,
+    part: String,
+}
+
+impl Inbox {
+    pub fn open_at_end(path: &str) -> Self {
+        let pos = std::fs::metadata(path).map(|m| m.len()).unwrap_or(0);
+        Self { path: path.to_string(), pos, part: String::new() }
+    }
+
+    /// The whole lines appended since the last read (a file that shrank is read again from its start).
+    pub fn poll(&mut self) -> Vec<String> {
+        use std::io::{Read, Seek, SeekFrom};
+        let Ok(mut f) = std::fs::File::open(&self.path) else { return vec![] };
+        let len = f.metadata().map(|m| m.len()).unwrap_or(0);
+        if len < self.pos {
+            self.pos = 0;
+            self.part.clear();
+        }
+        if len == self.pos || f.seek(SeekFrom::Start(self.pos)).is_err() {
+            return vec![];
+        }
+        let mut buf = String::new();
+        if f.read_to_string(&mut buf).is_err() {
+            return vec![];
+        }
+        self.pos += buf.len() as u64;
+        self.part.push_str(&buf);
+        let mut out = vec![];
+        while let Some(i) = self.part.find('\n') {
+            let line = self.part[..i].trim().to_string();
+            self.part.drain(..=i);
+            if !line.is_empty() {
+                out.push(line);
+            }
+        }
+        out
+    }
+}
+
 pub struct Copier<E: Exec> {
     pub cfg: CopierCfg,
     targets: Vec<(Pubkey, TargetCfg)>,
@@ -933,7 +1017,10 @@ impl<E: Exec> Copier<E> {
         let targets = cfg
             .targets
             .iter()
-            .map(|t| (t.wallet.parse::<Pubkey>().expect("validated"), t.clone()))
+            .map(|t| {
+                let w = if t.signal.is_empty() { t.wallet.parse::<Pubkey>().expect("validated") } else { Pubkey::default() };
+                (w, t.clone())
+            })
             .collect();
         Ok(Self {
             cfg,
@@ -1049,7 +1136,7 @@ impl<E: Exec> Copier<E> {
     pub fn on_tx(&mut self, tx: &TxLite) {
         let Some(signer) = tx.signer() else { return };
         for i in 0..self.targets.len() {
-            if self.targets[i].0 != signer {
+            if self.targets[i].0 != signer || !self.targets[i].1.signal.is_empty() {
                 continue;
             }
             let w = self.targets[i].0;
@@ -1183,6 +1270,25 @@ impl<E: Exec> Copier<E> {
                 self.log("buy-failed", v);
             }
         }
+    }
+
+    /// A coin from a signal target's file: bought at `stake_sol` through the same checks as a copied buy (kill file,
+    /// held coin, max_open, daily stop), unless it is older than `max_signal_age_s`.
+    pub fn on_signal(&mut self, i: usize, sg: &Signal) {
+        let t = self.targets[i].1.clone();
+        let age_ms = self.exec.now_ms().saturating_sub(sg.post_ms);
+        if age_ms > t.max_signal_age_s * 1000 {
+            return self.skip(&t.name, &sg.mint, &sg.id, "stale-signal", json!({ "age_ms": age_ms }));
+        }
+        let stake = (t.stake_sol * 1e9) as u64;
+        let b = Buy { mint: sg.mint, program: sg.program, tokens: 0, sol_value: Some(stake), on_pump: true, pump_quote: None };
+        let slot = self.tip_slot; // no copied buy's slot: never "stale" by slots
+        self.on_buy(i, b, &sg.id, slot);
+    }
+
+    /// The index of the signal target reading `path`.
+    pub fn signal_target(&self, path: &str) -> Option<usize> {
+        self.targets.iter().position(|(_, t)| t.signal == path)
     }
 
     fn on_sell(&mut self, i: usize, mint: &Pubkey) {
@@ -1496,6 +1602,109 @@ max_hold_s = 1790
 
     fn buy(mint: &str, lamports: u64) -> Buy {
         Buy { mint: pk(mint), program: c::SPL_TOKEN_PROGRAM_ID, tokens: 1, sol_value: Some(lamports), on_pump: false, pump_quote: None }
+    }
+
+    fn cfg_signal(max_open: usize) -> CopierCfg {
+        CopierCfg::from_toml_str(&format!(
+            r#"
+mode = "log"
+journal = ""
+state = ""
+kill_file = ""
+daily_stop_sol = 1.0
+[[target]]
+name = "vip"
+signal = "/tmp/vip-signals.jsonl"
+follow_sell = false
+stake_sol = 0.25
+take_profit = 2.75
+exit_basis = "ours"
+max_hold_s = 3600
+max_open = {max_open}
+"#
+        ))
+        .unwrap()
+    }
+
+    fn sig(mint: &str, post_ms: u64) -> Signal {
+        Signal { mint: pk(mint), program: c::TOKEN_2022_PROGRAM_ID, id: format!("vip:{post_ms}"), post_ms }
+    }
+
+    #[test]
+    fn a_signal_target_needs_no_wallet_and_no_following_of_a_sale() {
+        let c = cfg_signal(2);
+        assert!(c.wallets().is_empty());
+        let bad = |extra: &str| {
+            CopierCfg::from_toml_str(&format!(
+                "mode = \"log\"\ndaily_stop_sol = 1.0\n[[target]]\nname = \"vip\"\nsignal = \"/tmp/x\"\nstake_sol = 0.25\n{extra}"
+            ))
+            .is_err()
+        };
+        assert!(bad(""), "follow_sell defaults to true: refused for a signal target");
+        assert!(bad(&format!("follow_sell = false\nwallet = \"{W2}\"")), "a wallet and a signal file at once");
+        assert!(!bad("follow_sell = false"));
+    }
+
+    #[test]
+    fn a_signal_buys_the_stake_and_exits_at_the_take_profit_of_what_we_paid() {
+        let mut e = Copier::new(cfg_signal(2), Fake::default()).unwrap();
+        e.exec.now = 10_000;
+        e.on_signal(0, &sig(DBC_COIN, 9_000));
+        assert_eq!(e.exec.buys, vec![(pk(DBC_COIN), 250_000_000)]);
+        let b = e.lines.last().unwrap();
+        assert_eq!((b["ev"].as_str(), b["its_sig"].as_str()), (Some("buy"), Some("vip:9000")));
+        // cost 0.251 SOL (the fake adds 0.001): a value of 2.75x of it sells; just under does not
+        e.exec.values.insert(pk(DBC_COIN), 690_000_000);
+        e.exec.now = 20_000;
+        e.on_tick();
+        assert!(e.exec.sells.is_empty());
+        e.exec.values.insert(pk(DBC_COIN), 691_000_000);
+        e.exec.now = 40_000;
+        e.on_tick();
+        assert_eq!(e.exec.sells, vec![pk(DBC_COIN)]);
+        assert_eq!(e.book[0].exit.as_deref(), Some("take-profit"));
+    }
+
+    #[test]
+    fn a_signal_is_sold_at_the_timer_and_a_stale_or_held_one_is_not_bought() {
+        let mut e = Copier::new(cfg_signal(1), Fake::default()).unwrap();
+        e.exec.now = 100_000;
+        e.on_signal(0, &sig(DBC_COIN, 70_000)); // 30 s old, over the 20 s default
+        assert!(e.exec.buys.is_empty());
+        assert_eq!(e.lines.last().unwrap()["why"], "stale-signal");
+        e.on_signal(0, &sig(DBC_COIN, 99_000));
+        e.on_signal(0, &sig(DBC_COIN, 99_500));
+        assert_eq!(e.lines.last().unwrap()["why"], "held");
+        e.on_signal(0, &sig(W4, 99_500));
+        assert_eq!(e.lines.last().unwrap()["why"], "max-open");
+        assert_eq!(e.exec.buys.len(), 1);
+        e.exec.now = 100_000 + 3_600_000;
+        e.on_tick();
+        assert_eq!(e.book[0].exit.as_deref(), Some("timer"));
+    }
+
+    #[test]
+    fn a_signal_file_is_read_from_its_end_whole_lines_only() {
+        let p = std::env::temp_dir().join(format!("vip-inbox-{}.jsonl", std::process::id()));
+        let path = p.to_string_lossy().into_owned();
+        std::fs::write(&p, "{\"old\": 1}\n").unwrap();
+        let mut ib = Inbox::open_at_end(&path);
+        assert!(ib.poll().is_empty(), "lines from before the start are never traded");
+        let mut f = std::fs::OpenOptions::new().append(true).open(&p).unwrap();
+        write!(f, "{{\"a\": 1}}\n{{\"b\":").unwrap();
+        assert_eq!(ib.poll(), vec!["{\"a\": 1}".to_string()]);
+        write!(f, " 2}}\n").unwrap();
+        assert_eq!(ib.poll(), vec!["{\"b\": 2}".to_string()]);
+        std::fs::remove_file(&p).ok();
+    }
+
+    #[test]
+    fn a_signal_line_needs_a_mint_a_token_program_and_its_time() {
+        let ok = format!("{{\"mint\":\"{DBC_COIN}\",\"program\":\"TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb\",\"id\":\"vip:1\",\"post_ms\":5}}");
+        assert_eq!(Signal::parse(&ok).unwrap().post_ms, 5);
+        assert!(Signal::parse(&ok.replace("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", "11111111111111111111111111111111")).is_err());
+        assert!(Signal::parse(&ok.replace(",\"post_ms\":5", "")).is_err());
+        assert!(Signal::parse("not json").is_err());
     }
 
     #[test]

@@ -1349,7 +1349,7 @@ fn grpc_of(
 }
 
 fn copy_run(args: &[String]) -> Result<(), String> {
-    use rugsnipe_long::copier::{Copier, Exec, LiveExec, PaperExec};
+    use rugsnipe_long::copier::{Copier, Exec, Inbox, LiveExec, PaperExec, Signal};
     let cfg = copy_cfg(args)?;
     let text = std::fs::read_to_string(&cfg.hot_config).map_err(|e| format!("{}: {e}", cfg.hot_config))?;
     let hot = rugsnipe_core::config::Config::from_toml_str(&text).map_err(|e| format!("{}: {e}", cfg.hot_config))?;
@@ -1358,8 +1358,10 @@ fn copy_run(args: &[String]) -> Result<(), String> {
         return Err("copier.toml: rpc_url is empty (a URL or cred:NAME)".into());
     }
     let rpc_url = keys::resolve_url(&k, &cfg.rpc_url)?;
-    let (url, x_token) = grpc_of(&hot, &k, &cfg.hot_config)?;
     let wallets = cfg.wallets();
+    // a config of signal targets only needs no feed
+    let (url, x_token) = if wallets.is_empty() { (String::new(), None) } else { grpc_of(&hot, &k, &cfg.hot_config)? };
+    let mut inboxes: Vec<Inbox> = cfg.targets.iter().filter(|t| !t.signal.is_empty()).map(|t| Inbox::open_at_end(&t.signal)).collect();
     let (exec, me): (Box<dyn Exec>, String) = match cfg.mode {
         Mode::On => {
             let signer = keys::copier_wallet(&cfg.wallet_file)
@@ -1383,7 +1385,8 @@ fn copy_run(args: &[String]) -> Result<(), String> {
         .map(|t| {
             format!(
                 "{} {} {:?} its buy >= {} SOL, stake {} (frac {} cap {}), tp {} stop {} hold {} s, follow its sale {}, max_open {}",
-                t.name, &t.wallet[..8], t.coins, t.min_sol, t.stake_sol, t.stake_frac, t.stake_cap_sol,
+                t.name, if t.signal.is_empty() { t.wallet.chars().take(8).collect::<String>() } else { format!("signals {}", t.signal) },
+                t.coins, t.min_sol, t.stake_sol, t.stake_frac, t.stake_cap_sol,
                 t.take_profit, t.stop, t.max_hold_s, t.follow_sell, t.max_open
             )
         })
@@ -1395,8 +1398,27 @@ fn copy_run(args: &[String]) -> Result<(), String> {
         cfg.max_open,
         rules.join(" | "),
         cfg.senders,
-        keys::redact(&url)
+        if url.is_empty() { "none (signals only)".to_string() } else { keys::redact(&url) }
     );
+    let mut read_signals = |cp: &mut Copier<Box<dyn Exec>>| {
+        for ib in inboxes.iter_mut() {
+            for line in ib.poll() {
+                match (Signal::parse(&line), cp.signal_target(&ib.path)) {
+                    (Ok(sg), Some(i)) => cp.on_signal(i, &sg),
+                    (Err(e), _) => eprintln!("copier: {}: {e}: {line}", ib.path),
+                    (_, None) => {}
+                }
+            }
+        }
+    };
+    if wallets.is_empty() {
+        cp.feed_up = true;
+        loop {
+            read_signals(&mut cp);
+            cp.on_tick();
+            std::thread::sleep(Duration::from_millis(100));
+        }
+    }
     let (tx, rx) = std::sync::mpsc::channel();
     let _h = feed::spawn(
         feed::FeedCfg {
@@ -1410,8 +1432,10 @@ fn copy_run(args: &[String]) -> Result<(), String> {
     );
     // no buys until the feed says it is up
     cp.feed_up = false;
+    let wait = Duration::from_millis(if inboxes_n(&cfg) > 0 { 100 } else { 500 });
     loop {
-        match rx.recv_timeout(Duration::from_millis(500)) {
+        read_signals(&mut cp);
+        match rx.recv_timeout(wait) {
             Ok(feed::FeedMsg::Tx(feed::Src::Copied, t)) => {
                 // the feed's newest slot now, not the queue's: a buy that waited behind a swap is seen as old
                 cp.tip_slot = feed::latest_slot();
@@ -1426,6 +1450,10 @@ fn copy_run(args: &[String]) -> Result<(), String> {
         }
         cp.on_tick();
     }
+}
+
+fn inboxes_n(cfg: &rugsnipe_long::copier::CopierCfg) -> usize {
+    cfg.targets.iter().filter(|t| !t.signal.is_empty()).count()
 }
 
 fn copy_status(args: &[String]) -> Result<(), String> {

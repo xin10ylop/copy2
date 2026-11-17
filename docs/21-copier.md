@@ -188,3 +188,13 @@ The engine tests cover:
 - a restart;
 - config refusals;
 - the example config.
+
+## 4. Signal targets (Nov 17, 2026)
+
+A `[[target]]` with `signal = "<file>"` (and no `wallet`, `follow_sell = false`) trades the coins appended to that file,
+one JSON line each: `{"mint", "program", "id", "post_ms"}`. The file is read from where it ended when the copier
+started (old lines are never traded), whole lines only. A signal older than `max_signal_age_s` (default 20) when read is
+skipped (`stale-signal`). Then the same path as a copied buy: kill file, held coin, `max_open`, daily stop, `stake_sol`,
+and the target's take profit, stop and timer. A config of signal targets only runs without the gRPC feed. Built for the
+SolHouse VIP calls (`analysis/research/2026-11-17/telegram/`), whose backtest then failed once a look-ahead bug was fixed:
+**nothing feeds a signal file; no unit uses it.** Engine tests: `copier::tests::a_signal_*`.
