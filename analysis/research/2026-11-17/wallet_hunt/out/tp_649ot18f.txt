@@ -1,0 +1,8 @@
+649ot18fccD6Mc9V4aHWTdoSVCuqAEtg9aWuxBA9cRoU: the copies of deep.py, the live setup (its sale followed 30-290 s under 1.5x, sell_pressure [5, 60, 30], stall 180 s, 600 s) with take profit:
+  tp 1.5                                      : 270 copies, net  -3.56 SOL,  -2.6% a copy, w/o best 5  -4.81
+  tp 2.0                                      : 270 copies, net  -1.35 SOL,  -1.0% a copy, w/o best 5  -3.88
+  tp 2.5                                      : 270 copies, net  -1.52 SOL,  -1.1% a copy, w/o best 5  -4.83
+  tp 3.0                                      : 270 copies, net  -0.78 SOL,  -0.6% a copy, w/o best 5  -5.06
+  tp 4.0                                      : 270 copies, net  -2.02 SOL,  -1.5% a copy, w/o best 5  -6.80
+  tp 6.0                                      : 270 copies, net  -2.35 SOL,  -1.7% a copy, w/o best 5  -7.04
+  tp none                                     : 270 copies, net  -2.35 SOL,  -1.7% a copy, w/o best 5  -7.04
