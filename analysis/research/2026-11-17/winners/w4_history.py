@@ -92,7 +92,7 @@ for r in C:
         rate = rate_of(e["quote"])
         if rate is None or OUT.get(m) is None: continue
         sol = e["q"] * (1 + e["bps"] / 1e4) * rate / 1e9; p = max(0.0, (INIT_REAL - e["real"] - e["tok"]) / INIT_REAL)
-        if sol < 0.25 or p >= 0.5: continue
+        if sol < float(os.environ.get("MINSOL", 0.25)) or p >= 0.5: continue
         k = "before" if e["t"] < A else "screen" if e["t"] < B else "after"
         per[k].append(dict(m=m, g=OUT[m], p=p, sol=sol, t=e["t"]))
     res[w] = {k: v for k, v in per.items()}
@@ -106,4 +106,4 @@ for r in C:
     allv = [x for v in per.values() for x in v]
     early = sum(x["p"] < 0.02 for x in allv) / len(allv) if allv else 0
     print(f"{w[:8]} | {h['n_sigs']:5d} ({tf}) | " + " | ".join(parts) + f" | {early:4.0%}, {st.median(x['sol'] for x in allv) if allv else 0:.2f}", flush=True)
-    json.dump(res, open(f"{W}/w4_res.json", "w"))
+    json.dump(res, open(os.environ.get("RES", f"{W}/w4_res.json"), "w"))

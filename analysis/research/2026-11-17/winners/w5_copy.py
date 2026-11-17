@@ -71,7 +71,7 @@ def run(p, ex, stake=0.5):
     if not c: return out(n - 1)
     i, d = min(c); return out(min(i + d, n - 1))
 EX = ["mirror", "grad", "live", "tp2", "tp3", "tp5", "signals"]
-res = json.load(open(f"{W}/w4_res.json"))
+res = json.load(open(os.environ.get("RES", f"{W}/w4_res.json")))
 def summ(v):
     if not v: return "   0"
     s = sorted(v, reverse=True); return f"{len(v):4d} {sum(v):+7.2f} ({sum(v) / len(v) / 0.5:+6.1%}) w/o5 {sum(s[5:]):+6.2f}"

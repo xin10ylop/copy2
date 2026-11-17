@@ -1,0 +1,14 @@
+12 candidates (3+ hits from 3+ creators, lift est 1.5+, top 40 by hits)
+wallet   | transactions since Nov 3 (from) | period: copyable buys, graduated, expected, lift, P(by chance) | very early (<2%), size med
+CzDqKnh2 | 12000 (11-15 06:16) | before: 0 | screen: 0 | after: 0 |   0%, 0.00
+66ynbLyV |  3181 (11-03 02:07) | before: 153, 10, 13.3, 0.8x, 0.851 | screen: 206, 6, 17.5, 0.3x, 1.000 | after: 0 |   0%, 0.25
+PyQvd32H |   551 (11-08 05:26) | before: 0 | screen: 54, 7, 4.1, 1.7x, 0.126 | after: 0 |   0%, 0.60
+WbTbjcUi |  1663 (11-03 00:00) | before: 59, 3, 4.4, 0.7x, 0.811 | screen: 56, 4, 4.5, 0.9x, 0.650 | after: 0 |   1%, 0.25
+8D92Hh7v | 12000 (11-07 07:19) | before: 0 | screen: 5, 0, 0.5, 0.0x, 1.000 | after: 0 |   0%, 2.00
+CWq9HRrM |  1877 (11-03 10:50) | before: 28, 4, 1.9, 2.1x, 0.133 | screen: 18, 2, 1.2, 1.6x, 0.349 | after: 0 |   7%, 0.72
+7MjNw27G |   401 (11-11 09:30) | before: 0 | screen: 43, 4, 2.9, 1.4x, 0.336 | after: 0 |   2%, 0.54
+HX25MYLE | 12000 (11-12 04:38) | before: 0 | screen: 6, 0, 0.7, 0.0x, 1.000 | after: 0 |   0%, 0.22
+9khkRvs7 |  4791 (11-03 03:47) | before: 87, 5, 7.2, 0.7x, 0.845 | screen: 108, 6, 9.2, 0.7x, 0.896 | after: 0 |   2%, 0.55
+2DvYztRT |  2729 (11-04 02:46) | before: 0 | screen: 1, 0, 0.1, 0.0x, 1.000 | after: 0 |   0%, 0.14
+5sVDxcxF |  4061 (11-04 02:46) | before: 0 | screen: 5, 0, 0.5, 0.0x, 1.000 | after: 0 |   0%, 0.17
+fNHtUUk3 |  3038 (11-04 02:46) | before: 0 | screen: 1, 0, 0.1, 0.0x, 1.000 | after: 0 |   0%, 0.16
