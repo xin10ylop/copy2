@@ -3,13 +3,18 @@
 #   python3 -I wallet_study_report.py SP WALLET8 > out/study_<w8>.txt
 import sys, json, numpy as np, statistics as st
 SP, W8 = sys.argv[1], sys.argv[2]; R = sorted(json.load(open(f"{SP}/winners/study_{W8}{sys.argv[3] if len(sys.argv) > 3 else ''}.json")), key=lambda r: r["t"])
+# COST (Nov 17): wallet_study.py's sim() charges 0.0026 SOL a round trip, the old optimistic figure; the report charges
+# COST instead (default 0.0345: 0.0095 a transaction x 2 and the 0.0155 fill bias; 0.01 for a copy that does not race)
+COST = float(__import__("os").environ.get("COST", 0.0345))
+for r in R:
+    if not r["refused"]: r["ex"] = {k: v - (COST - 0.0026) for k, v in r["ex"].items()}
 R = [r for r in R if not r["refused"]]; half = R[len(R) // 2]["t"]; A = [r for r in R if r["t"] < half]; B = [r for r in R if r["t"] >= half]
 EX = list(R[0]["ex"]); STAKE = 0.5
 def S(v):
     if not v: return "   0"
     s = sorted(v, reverse=True); return f"{len(v):3d} {sum(v):+6.2f} ({np.mean(v) / STAKE:+6.1%}) w/o5 {sum(s[5:]):+6.2f}"
 held = [r["held"] for r in R if r["held"] is not None]
-print(f"{W8}: {len(R)} copies (0.5 SOL, one slot after its buy); first half {len(A)}, second half {len(B)}")
+print(f"{W8}: {len(R)} copies (0.5 SOL, one slot after its buy, {COST} SOL a round trip); first half {len(A)}, second half {len(B)}")
 print(f"\n1. HOW IT TRADES: its size median {st.median(r['sol'] for r in R):.2f} SOL (quartiles {np.quantile([r['sol'] for r in R], [.25, .75]).round(2).tolist()}); "
       f"quote SOL {np.mean([r['quote'] in ('SOL', 'So11111111111111111111111111111111111111112') for r in R]):.0%}; curve sold at its buy median {st.median(r['prog'] for r in R):.0%}")
 print(f"   it sold (first sale) after a median {st.median(held):.0f} s; within 30 s {np.mean([h < 30 for h in held]):.0%}, within 2 min {np.mean([h < 120 for h in held]):.0%}, "

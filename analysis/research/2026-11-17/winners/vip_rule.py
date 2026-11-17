@@ -6,7 +6,9 @@
 #   python3 -I vip_rule.py SP WALLET8 [SUFFIX]
 import sys, json, numpy as np
 SP, W8 = sys.argv[1], sys.argv[2]; SUF = sys.argv[3] if len(sys.argv) > 3 else ""
+COST = float(__import__("os").environ.get("COST", 0.0345))   # sim() charged 0.0026; this charges COST
 R = [r for r in json.load(open(f"{SP}/winners/study_{W8}{SUF}.json")) if not r["refused"]]
+for r in R: r["ex"] = {k: v - (COST - 0.0026) for k, v in r["ex"].items()}
 VIP, SPANS = {}, []
 for f in (f"{SP}/tg/vip/meta.json", f"{SP}/tg/vip2/meta.json"):
     mv = json.load(open(f)); ts = [v["t"] for v in mv.values()]; SPANS.append((min(ts), max(ts) - 600))

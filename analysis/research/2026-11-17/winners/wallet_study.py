@@ -16,7 +16,8 @@ res = json.load(open(os.environ.get("RES", f"{SP}/winners/w4_res.json"))); full 
 h = json.load(open(f"{SP}/winners/hist/{full}.json"))
 own = {}
 for e in sorted(h["trades"], key=lambda e: e["t"]): own.setdefault(e["m"], []).append(e)
-items = [x for v in res[full].values() for x in v]; random.Random(7).shuffle(items); items = items[:N]
+items = [x for v in res[full].values() for x in v]; random.Random(7).shuffle(items)
+OFF = int(os.environ.get("OFFSET", 0)); items = items[OFF:OFF + N]   # OFFSET=300: the next 300 of the same shuffle, disjoint (the holdout)
 def sim(p, tp=None, hold=1800, its=False, sp=None, trail=None):
     """One exit, nothing hidden (hunt_lib.model always adds our bot's sell pressure and stall). Candidates: the curve
     completing (sold there), its own first sale after our buy (its), the take profit (px over ITS price), nn net sales by
