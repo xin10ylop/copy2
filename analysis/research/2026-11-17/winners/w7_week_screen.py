@@ -27,10 +27,11 @@ for m, v in json.load(open(f"{W}/week_meta.json")).items():
     if v and m not in meta: meta[m] = dict(v, quote=None)
 grad = set(json.load(open(f"{W}/sample.json"))["grad"]) | {m for m, _ in json.load(open(f"{W}/week_migrations.json"))}
 prog = lambda e: max(0.0, (INIT_REAL - e["real"]) / INIT_REAL)
-B = collections.defaultdict(list); n = 0; tmin, tmax = 1e18, 0
+B = collections.defaultdict(list); n = 0; tmin, tmax = 1e18, 0; WEEK0 = int(time.time()) - 7 * 86400
 for m in grad:
     f = f"{W}/paths/{m}.json.gz"
     if m not in meta or not os.path.exists(f): continue
+    if meta[m]["t"] < WEEK0: continue   # launched before the week (an old coin that graduated in it): its early buyers bought then
     tr = json.load(gzip.open(f)); mt = meta[m]; n += 1
     if not tr: continue
     q = mt["quote"]
