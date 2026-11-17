@@ -1,10 +1,10 @@
 # Scores the frozen hypothesis H1 (out/vip_prereg_h1.md) on its test calls (vip_h1: never priced before the freeze).
-#   python3 -I tg_vip_h1.py TGDIR
+#   python3 -I tg_vip_h1.py TGDIR [vip_h1 | vip_h1b]   (vip_h1b: the Nov 1-6 export, before the scan's days)
 import sys, os, numpy as np
-TG = sys.argv[1]; here = os.path.dirname(os.path.abspath(__file__))
+VD = sys.argv[2] if len(sys.argv) > 2 else "vip_h1"; TG = sys.argv[1]; here = os.path.dirname(os.path.abspath(__file__))
 src = open(os.path.join(here, "tg_vip_lab.py")).read().split("# ---- 1. signs")[0]
 for cost in ("0.01", "0.0345"):
-    os.environ["COST"] = cost; os.environ["VDIR"] = "vip_h1"; ns = {"__file__": os.path.join(here, "tg_vip_lab.py")}; sys.argv = ["x", TG]
+    os.environ["COST"] = cost; os.environ["VDIR"] = sys.argv[2] if len(sys.argv) > 2 else "vip_h1"; ns = {"__file__": os.path.join(here, "tg_vip_lab.py")}; sys.argv = ["x", TG]; os.environ["VDIR"] = VD
     exec(compile(src, "tg_vip_lab.py", "exec"), ns); R = sorted(ns["rows"], key=lambda r: r["t"]); entry, trade, STAKE = ns["entry"], ns["trade"], ns["STAKE"]
     R = [r for r in R if r["tier"] == "Diamond" and 0 < r.get("s_age", -1) <= 1]
     x = [(r["t"], trade(r, entry(r, delay=1), tp=2, cap=3600)) for r in R if entry(r, delay=1) is not None]
