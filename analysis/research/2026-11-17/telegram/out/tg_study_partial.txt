@@ -1,0 +1,31 @@
+140 calls on a SOL curve at the post, from 8 channels
+
+the price after the post over the price at the post: quartiles 25% / median / 75% (graduated coins held at the curve's end)
+  +    5 s:  0.99  1.00  1.02
+  +   15 s:  0.97  1.00  1.02
+  +   30 s:  0.95  1.00  1.07
+  +   60 s:  0.95  1.00  1.11
+  +  120 s:  0.94  1.00  1.16
+  +  300 s:  0.90  1.00  1.23
+  +  600 s:  0.84  1.03  1.26
+  + 1800 s:  0.70  1.09  1.38
+  + 3600 s:  0.63  1.11  1.41
+
+peak in the hour:  1.09  1.22  1.60; reached 2x 13%, 1.5x 28%; its time median 113 s; lowest before the peak  0.83  0.94  1.00
+first minute: buys  1.00 14.73 38.13 SOL, sales  2.36  9.66 36.33 SOL; buyers 28, sellers 18 (medians)
+
+by the run-up before the post (price at the post over 10 min before): calls, peak 2x+, price at +10 min and +30 min (median)
+     0-1.2 x:   40,   8%,  0.99,  0.99
+   1.2-2   x:   28,   7%,  0.92,  0.97
+     2-5   x:   54,  24%,  1.22,  1.25
+     5-    x:   18,   0%,  1.12,  1.12
+
+per channel: calls, peak 2x+, median price at +1 min / +10 min / +30 min, median run-up before
+  kolscope/solhousesignal            36,  17%,  0.99 /  1.00 /  1.09, run-up 2.23
+  kolscope/shark_apes_call           30,  10%,  1.00 /  0.99 /  0.99, run-up 2.22
+  blindapee                          22,  27%,  0.99 /  1.02 /  1.16, run-up 1.06
+  klevercalls                        20,   0%,  1.07 /  1.11 /  1.12, run-up 3.15
+  kolscope/pumpfunnevadie            14,   7%,  1.02 /  1.19 /  1.19, run-up 2.48
+  nopaidcallshere                    12,  17%,  1.02 /  1.07 /  0.97, run-up 1.55
+  shadowonchain                       5,   0%,  1.00 /  1.02 /  1.02, run-up 2.57
+  kolscope/Soniccall                  1,   0%,  1.00 /  1.12 /  1.13, run-up 1.27
