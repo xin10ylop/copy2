@@ -1,0 +1,83 @@
+wallet   name             | 1 d / 7 d / 30 d profit SOL (wins-losses 30 d) | newest 1,000 signatures: landed, span hours, last seen
+B3wagQZi xander           |       - /       - /   +1996 (  192-404) | 1000 in  429.2 h,   0.5 h ago
+4vw54BmA decu             |       - /    +451 /   +1667 (1663-1595) |   14 in    0.0 h,   0.0 h ago
+ardinRsN trunoest         |      +8 /    +366 /   +1341 (1191-1034) |   14 in    0.0 h,   0.0 h ago
+5hAgYC8T Schoen           |       - /    +546 /   +1324 (1045-1034) |    1 in    0.0 h,   0.0 h ago
+EqiFgyNw ban              |     +84 /    +336 /   +1320 (1861-1858) |  426 in   11.1 h,   0.1 h ago
+J23qr98G gr3g             |       - /   +1093 /   +1279 (  102-111) |  938 in   89.4 h,   0.0 h ago
+862TYSvR Wugi             |     +53 /    +299 /   +1104 (    84-30) |   17 in   12.0 h,   1.9 h ago
+4Be9Cvxq Mitch            |       - /   +3591 /    +864 (  107-231) |  992 in   47.2 h,   0.0 h ago
+BQVz7fQ1 Limfork.eth      |     +59 /    +460 /    +666 (  919-800) |    0 in    0.0 h,   0.0 h ago
+J9TYAsWW Johnson          |       - /    +251 /    +619 (  384-284) |  200 in   21.0 h,   0.0 h ago
+DfMxre4c Euris            |       - /       - /    +579 (    39-72) |   63 in    0.0 h,   1.5 h ago
+DYAn4XpA The Doc          |    +137 /    +220 /    +503 (  269-391) |    0 in    0.0 h,   0.0 h ago
+387FRwow Shawty           |      +5 /     +91 /    +485 (1501-1255) |  733 in   43.6 h,   0.3 h ago
+FzVQSzj8 DustNukes        |       - /       - /    +452 (  582-991) |   89 in    2.7 h,   0.1 h ago
+H31vEBxS Megga            |     +28 /    +215 /    +424 ( 861-1353) |   41 in    0.0 h,   0.0 h ago
+JDd3hy3g West             |       - /    +101 /    +403 (  408-670) |  745 in    8.3 h,   0.3 h ago
+4BdKaxN8 Jijo             |       - /     +92 /    +360 (  235-193) |    1 in    0.0 h,   0.0 h ago
+9iaawVBE Meechie          |     +32 /    +191 /    +323 (  658-952) |  905 in   79.0 h,   0.0 h ago
+G6fUXjMK clukz            |      +8 /     +77 /    +311 (  226-242) |  877 in  146.7 h,   1.7 h ago
+EeXvxkcG milito           |     +49 /     +48 /    +310 (  388-702) |  997 in   51.5 h,   0.0 h ago
+sAdNbe1c Ethan Prosper    |       - /    +328 /    +278 (  268-494) |  674 in    5.2 h,   0.0 h ago
+AuPp4YTM Dani             |     +18 /    +172 /    +266 (   94-219) |    1 in    0.0 h,   0.5 h ago
+8oQoMhfB big bags bobby   |       - /     +36 /    +245 (  105-123) |  912 in  308.2 h,   0.3 h ago
+78N177fz Sheep            |       - /     +93 /    +228 (  381-317) |  781 in   38.1 h,   0.0 h ago
+6FWhUybW WheresLodo       |     +29 /     +90 /    +226 (  512-537) |   93 in    3.5 h,   1.8 h ago
+CkPFGv2W Lynk             |       - /    +103 /    +224 (  392-663) |    0 in    0.0 h,   0.0 h ago
+FqojC24n CoCo             |     +25 /    +144 /    +213 (  338-567) |  975 in  102.5 h,   0.3 h ago
+8MaVa9kd Daumen           |     +15 /     +59 /    +188 ( 1143-850) |  172 in    7.7 h,   0.3 h ago
+BnfiHRDp M A M B A 🧲      |     +15 /     +38 /    +183 ( 702-1269) |  430 in    6.1 h,   0.1 h ago
+FqamE7xr EustazZ          |       - /       - /    +170 (1020-1401) |  389 in   28.4 h,   1.9 h ago
+7Js5gmq5 Yami 𓃵           |     +26 /    +123 /    +161 ( 854-1383) |  980 in   18.0 h,   0.1 h ago
+9udqZzeP MrDD             |       - /       - /    +160 (  244-458) |  691 in  166.5 h,   3.4 h ago
+FsG3BaPm Reljoo           |       - /       - /    +156 (  134-362) |  983 in  124.3 h,   0.7 h ago
+CgaA9a1J Art              |       - /     +44 /    +154 (  552-942) |   23 in    0.0 h,   0.0 h ago
+6S8Gezkx Nyhrox           |       - /       - /    +141 (  149-172) |    1 in    0.0 h,   0.0 h ago
+DNsh1UfJ Hash             |     +37 /    +167 /    +131 (   61-526) |  881 in  111.0 h,   0.3 h ago
+CAPn1yH4 cap              |     +32 /    +411 /    +125 (  264-511) |  588 in   64.7 h,   0.2 h ago
+39q2g5tT Walta            |       - /       - /    +122 (    24-56) |  996 in  194.0 h,   0.1 h ago
+4yo9CUuT Gfree            |      +8 /       - /    +120 (  393-594) |    0 in    0.0 h,   0.0 h ago
+EjtQrPTb Zef              |       - /       - /    +112 (  416-761) |  589 in   95.3 h,   0.6 h ago
+Ab2baagg leyko            |      +4 /       - /    +106 (  225-378) |  612 in  247.9 h,   0.5 h ago
+B9K2wTQc Xanse.           |     +20 /       - /     +95 (   81-276) |  997 in  254.9 h,   1.2 h ago
+719sfKUj Fashr            |       - /       - /     +90 ( 791-1382) |  205 in    9.3 h,   0.0 h ago
+GJA1HEbx Latuche          |     +13 /       - /     +82 (  214-271) |  585 in   31.9 h,   0.1 h ago
+BTf4A2ex Kev              |       - /     +41 /     +82 ( 775-1330) |  260 in   16.2 h,   0.1 h ago
+FeYVZPsD AsyncDuck        |       - /     +43 /     +78 (  135-174) |  563 in   81.6 h,   1.9 h ago
+5o3kAZLw neo.             |       - /       - /     +65 (    93-75) |  991 in  203.2 h,   0.5 h ago
+BJXjRq56 h14              |    +175 /    +104 /       - (        -) |  934 in  126.4 h,   0.0 h ago
+3LUfv2u5 Domy             |    +117 /       - /       - (        -) |  994 in  148.6 h,   0.4 h ago
+88e2kBDJ yeekidd          |     +59 /       - /       - (        -) |  968 in 1318.4 h,   1.9 h ago
+5T229oeP Tuults           |     +46 /     +43 /       - (        -) |  997 in   15.4 h,   0.0 h ago
+DrJ6SnDX Iced             |     +34 /    +128 /       - (        -) |  996 in   95.0 h,   0.3 h ago
+6aXFYXbF Flames           |     +32 /       - /       - (        -) |  352 in   25.9 h,   0.1 h ago
+4uCT4g7Y Esee06257        |     +24 /       - /       - (        -) |  942 in   73.0 h,   0.1 h ago
+2k7Mnf2K Setsu            |     +24 /     +40 /       - (        -) |  413 in   99.2 h,   0.8 h ago
+8fsKLLtv Stigman          |     +22 /     +60 /       - (        -) |  565 in   28.0 h,   0.3 h ago
+CCUcjek5 el charto        |     +22 /       - /       - (        -) |  871 in  151.0 h,   0.0 h ago
+As7HjL7d Otta             |     +21 /       - /       - (        -) |   96 in   33.0 h,   0.1 h ago
+8nqtxpFp dov 7            |     +17 /       - /       - (        -) |  469 in  121.8 h,   1.9 h ago
+CEUA7zVo Tom              |     +15 /    +124 /       - (        -) |  970 in  289.7 h,   0.6 h ago
+PMJA8UQD chester          |     +15 /       - /       - (        -) |  944 in  126.7 h,   0.9 h ago
+AVjEtg2E Putrick          |     +13 /       - /       - (        -) |  969 in  171.1 h,   3.8 h ago
+CDKJ35ZD dilla            |     +11 /       - /       - (        -) |  622 in   80.2 h,   1.2 h ago
+gangJEP5 Qavec            |      +8 /       - /       - (        -) |  988 in  112.1 h,   0.7 h ago
+6nhskL8R PattyIce         |      +8 /       - /       - (        -) |  744 in  402.0 h,   0.4 h ago
+4AHgEkTs BagCalls         |      +8 /     +50 /       - (        -) |  838 in  192.6 h,   1.3 h ago
+xyzfhxfy Gasp             |      +8 /       - /       - (        -) |  554 in  119.5 h,   1.5 h ago
+C4Svaa7d edward           |      +6 /       - /       - (        -) |  519 in   90.9 h,   0.2 h ago
+69z4qTgQ King             |      +5 /       - /       - (        -) |  995 in   64.2 h,   0.0 h ago
+DieowDJ1 appie            |      +4 /       - /       - (        -) |  423 in   19.4 h,   0.4 h ago
+4DdrfiDH Mr. Frog         |      +4 /       - /       - (        -) |  975 in  327.0 h,   0.0 h ago
+Cxe1d5zF DJ.Σn            |      +4 /       - /       - (        -) |  986 in  767.4 h,   3.8 h ago
+Be24Gbf5 Chairman ²       |       - /   +3437 /       - (        -) |  995 in   10.9 h,   0.0 h ago
+5YRgrP3m slingoor         |       - /    +745 /       - (        -) |  996 in    0.4 h,   0.0 h ago
+6HJetMbd LJC              |       - /    +658 /       - (        -) |  998 in  138.7 h,   0.4 h ago
+87rRdssF Dior             |       - /    +628 /       - (        -) |  673 in   21.0 h,   0.0 h ago
+89HbgWdu AlxCooks         |       - /    +167 /       - (        -) |   16 in    1.1 h,   0.3 h ago
+D1H83ueS Jeets            |       - /    +118 /       - (        -) |  940 in  106.7 h,   0.2 h ago
+BY58Z7N5 JB               |       - /    +104 /       - (        -) |  632 in  118.8 h,   0.2 h ago
+GM7Hrz2b Beaver           |       - /     +83 /       - (        -) |  998 in   94.8 h,   0.2 h ago
+34ZEH778 Groovy           |       - /     +53 /       - (        -) |  992 in   61.8 h,   0.0 h ago
+2W14ahXD Veloce           |       - /     +43 /       - (        -) |    6 in    0.6 h,   0.2 h ago
