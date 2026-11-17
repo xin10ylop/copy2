@@ -23,7 +23,9 @@ def batch(ms):
     r = call("getMultipleAccounts", [[pda(m) for m in ms], {"encoding": "base64"}])["value"]; out = {}
     for m, a in zip(ms, r):
         if not a: out[m] = None; continue
-        d = base64.b64decode(a["data"][0]); vt, vq, rt, rq, sup = struct.unpack_from("<5Q", d, 8)
+        d = base64.b64decode(a["data"][0])
+        if len(d) < 49: out[m] = None; continue   # an account with no curve data (lamports only): unknown
+        vt, vq, rt, rq, sup = struct.unpack_from("<5Q", d, 8)
         out[m] = [bool(d[48]), 1 - rt / 793.1e12 if not d[48] else 1.0]
     return out
 res = {}
