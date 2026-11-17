@@ -61,8 +61,8 @@ POOL = ThreadPoolExecutor(48)
 def path(m, t):
     f = f"{PD}/{m}.json.gz"
     if os.path.exists(f): return json.load(gzip.open(f))
-    out = dict(state=curve_state(m, t))
-    if out["state"] == "pool":
+    out = dict(state="pool")   # every call with a SOL pool; it counts as a pool call when the pool traded before the post
+    if True:
         pa, dex = pair_of(m); out.update(pair=pa, dex=dex)
         if pa:
             sigs, before, reached = [], None, False
@@ -70,9 +70,9 @@ def path(m, t):
                 pg = call("getSignaturesForAddress", [pa, {"limit": 1000, **({"before": before} if before else {})}])
                 if not pg: reached = True; break
                 sigs += [s for s in pg if s["err"] is None]; before = pg[-1]["signature"]
-                if len(pg) < 1000 or (pg[-1].get("blockTime") or 0) < t - 60: reached = True; break
+                if len(pg) < 1000 or (pg[-1].get("blockTime") or 0) < t - 600: reached = True; break
             out["reached"] = reached
-            win = sorted((s for s in sigs if t - 60 <= (s.get("blockTime") or 0) <= t + HOLD + 60), key=lambda s: s["slot"])
+            win = sorted((s for s in sigs if t - 600 <= (s.get("blockTime") or 0) <= t + HOLD + 60), key=lambda s: s["slot"])
             txs = list(POOL.map(lambda s: call("getTransaction", [s["signature"], {"encoding": "json", "maxSupportedTransactionVersion": 0}]), win))
             px = []
             for tx in txs:
@@ -85,14 +85,14 @@ def path(m, t):
 with ThreadPoolExecutor(6) as ex: P = list(ex.map(lambda c: path(*c), C))
 cnt = collections.Counter(); rows = []
 for (m, t), p in zip(C, P):
-    if p["state"] != "pool": cnt["on the curve at the post (step 2)"] += 1; continue
     if not p.get("pair"): cnt["no SOL pool found"] += 1; continue
     if not p.get("reached"): cnt["pool too busy to reach the post"] += 1; continue
     px = p.get("px") or []
     if not px: cnt["no swap read in the hour (pool does not own its vaults, or dead)"] += 1; continue
     k0 = [x for x in px if x[0] <= t]; k = [i for i, x in enumerate(px) if x[0] >= t + DELAY]
+    if not k0: cnt["no pool swap in the 10 min before the post (on the curve then, or quiet)"] += 1; continue
     if not k: cnt["no swap after the post"] += 1; continue
-    q0, b0 = (k0[-1][1], k0[-1][2]) if k0 else (px[0][1], px[0][2]); p0 = q0 / b0
+    q0, b0 = k0[-1][1], k0[-1][2]; p0 = q0 / b0
     cnt["modelled"] += 1; rows.append((t, m, p0, px[k[0]:]))
 def run(p0, path, ex, stake=0.5):
     t0, q, b = path[0]; pe = q / b
