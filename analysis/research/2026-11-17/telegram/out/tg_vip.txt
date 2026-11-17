@@ -1,0 +1,12 @@
+59 public calls with a curve path; VIP point found in the 10 min before the post for 44, earlier than that for 15
+lead of the VIP over the public post: median 139 s, quartiles [90, 139, 185]
+
+exit   | at the public post (all calls)      | at the VIP call (these winners only)
+tp1.5  |  58  -2.70 ( -9.3%), won 50%       |  44 +10.42 (+47.4%), won 100%
+tp2    |  58  -1.85 ( -6.4%), won 48%       |  44 +19.80 (+90.0%), won 98%
+tp3    |  58  -0.87 ( -3.0%), won 48%       |  44 +21.41 (+97.3%), won 70%
+t10    |  58  -2.45 ( -8.5%), won 41%       |  44 +18.60 (+84.5%), won 70%
+t30    |  58  -3.18 (-10.9%), won 45%       |  44 +17.24 (+78.4%), won 61%
+t60    |  58  -2.49 ( -8.6%), won 47%       |  44 +17.92 (+81.4%), won 61%
+
+break-even at tp2: a VIP winner here makes +0.450 SOL a copy; the average losing copy of the other channels' calls -0.233; so the VIP pays only if more than 34% of ALL its calls are such winners (73 losing copies averaged)
