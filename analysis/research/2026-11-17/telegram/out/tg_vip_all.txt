@@ -1,0 +1,22 @@
+917 VIP calls with a price path (both samples). Within the hour of the post: reached 1.5x 37%, 2x 18%, 5x 1%, 10x 0% (what members see)
+
+every call, buy 1 s after: the 12 best of 48 exits (a copy at 0.5 SOL; costs 0.0026 SOL a round trip, the optimistic figure)
+  tp None or 2 min: 912 copies  -28.37 SOL ( -6.2% a copy) | halves  -5.9% /  -6.5%
+  tp 5    or 2 min: 912 copies  -28.87 SOL ( -6.3% a copy) | halves  -5.9% /  -6.7%
+  tp 5    or 1 min: 912 copies  -30.22 SOL ( -6.6% a copy) | halves  -5.9% /  -7.4%
+  tp None or 1 min: 912 copies  -30.22 SOL ( -6.6% a copy) | halves  -5.9% /  -7.4%
+  tp 3    or 2 min: 912 copies  -30.80 SOL ( -6.8% a copy) | halves  -6.3% /  -7.2%
+  tp 3    or 1 min: 912 copies  -30.90 SOL ( -6.8% a copy) | halves  -6.2% /  -7.4%
+  tp 2    or 1 min: 912 copies  -31.12 SOL ( -6.8% a copy) | halves  -6.5% /  -7.2%
+  tp 2    or 2 min: 912 copies  -32.16 SOL ( -7.1% a copy) | halves  -6.9% /  -7.2%
+  tp 1.5  or 1 min: 912 copies  -33.61 SOL ( -7.4% a copy) | halves  -7.0% /  -7.8%
+  tp 1.5  or 2 min: 912 copies  -33.91 SOL ( -7.4% a copy) | halves  -8.0% /  -6.9%
+  tp 1.1  or 1 min: 912 copies  -34.08 SOL ( -7.5% a copy) | halves  -7.3% /  -7.7%
+  tp None or 5 min: 912 copies  -35.38 SOL ( -7.8% a copy) | halves  -8.6% /  -6.9%
+  ... the worst: tp 3 or 60 min -12.0% a copy
+
+by tier, the best exit above:
+  Diamond     : 279 copies   -0.73 ( -0.5% a copy)
+  Safe        : 267 copies  -11.08 ( -8.3% a copy)
+  Gamble      : 338 copies  -14.89 ( -8.8% a copy)
+  Gamble Risk :  28 copies   -1.67 (-11.9% a copy)
