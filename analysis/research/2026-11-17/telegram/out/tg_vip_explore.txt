@@ -1,0 +1,22 @@
+FIND: 1002 VIP calls (Nov 10-17); 19 entries x 7 exits = 133 tests; costs 0.01
+  delay    x=600    wait    0 s | tp 1.5  30 min | 498 copies -13.2% | halves -12.8% / -13.5% | w/o5 -35.50
+  delay    x=1200   wait    0 s | tp 1.5  30 min | 380 copies  -9.2% | halves  -8.4% / -10.0% | w/o5 -19.61
+  delay    x=1800   wait    0 s | tp 1.5  30 min | 318 copies  -7.1% | halves  -6.7% /  -7.6% | w/o5 -13.17
+  crash    x=0.8    wait  600 s | tp 1.5  30 min | 660 copies -22.8% | halves -26.9% / -18.7% | w/o5 -77.42
+  crash    x=0.8    wait 1800 s | tp 1.5  30 min | 691 copies -22.7% | halves -26.6% / -18.6% | w/o5 -80.49
+  crash    x=0.7    wait  600 s | tp 1.5  30 min | 547 copies -28.6% | halves -31.0% / -26.1% | w/o5 -80.04
+  crash    x=0.7    wait 1800 s | tp 1.5  30 min | 594 copies -27.8% | halves -30.5% / -24.8% | w/o5 -84.24
+  crash    x=0.6    wait  600 s | tp 1.5  30 min | 485 copies -26.4% | halves -25.4% / -27.4% | w/o5 -66.32
+  crash    x=0.6    wait 1800 s | tp 1.5  30 min | 544 copies -25.6% | halves -24.8% / -26.5% | w/o5 -72.03
+  crash    x=0.5    wait  600 s | tp 1.5  30 min | 404 copies -30.1% | halves -28.5% / -31.7% | w/o5 -62.65
+  crash    x=0.5    wait 1800 s | tp 1.5  30 min | 479 copies -27.2% | halves -25.6% / -29.0% | w/o5 -67.09
+  crash    x=0.4    wait  600 s | tp 1.5  30 min | 325 copies -29.1% | halves -28.1% / -30.1% | w/o5 -49.23
+  crash    x=0.4    wait 1800 s | tp 1.5  30 min | 406 copies -26.4% | halves -24.8% / -28.1% | w/o5 -55.52
+  strength x=1.2    wait  300 s | tp 1.5  30 min | 487 copies  -9.9% | halves  -8.6% / -11.2% | w/o5 -26.24
+  strength x=1.2    wait  600 s | tp 1.5  30 min | 521 copies  -9.4% | halves  -7.8% / -10.9% | w/o5 -26.46
+  strength x=1.5    wait  300 s | tp 1.5  30 min | 275 copies -14.1% | halves  -8.0% / -19.2% | w/o5 -20.94
+  strength x=1.5    wait  600 s | tp 1.5  30 min | 314 copies -13.8% | halves  -8.8% / -18.1% | w/o5 -23.23
+  strength x=2      wait  300 s | tp 1.5  30 min | 106 copies -17.3% | halves -21.5% / -13.1% | w/o5 -10.80
+  strength x=2      wait  600 s | tp 1.5  30 min | 145 copies -16.5% | halves -20.6% / -12.4% | w/o5 -13.67
+
+positive in both halves and without the best 5: 0 of 133
