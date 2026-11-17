@@ -1,0 +1,37 @@
+1011 VIP calls on the pump curve, Nov 10-17; a copy = 0.5 SOL bought 1 s after the post; costs 0.01 SOL
+
+1. THE PRICE AFTER THE ALERT (over the price at the post): median, mean, share above the post's price
+   +  10 s: median 1.00, mean 0.99, above the post's price 41%, under half of it 2%
+   +  60 s: median 0.99, mean 0.98, above the post's price 41%, under half of it 12%
+   + 120 s: median 0.96, mean 0.98, above the post's price 39%, under half of it 16%
+   + 300 s: median 0.89, mean 0.96, above the post's price 34%, under half of it 27%
+   + 600 s: median 0.80, mean 0.95, above the post's price 33%, under half of it 34%
+   +1800 s: median 0.70, mean 0.92, above the post's price 30%, under half of it 43%
+   +3600 s: median 0.64, mean 0.93, above the post's price 30%, under half of it 46%
+
+2. THE ARITHMETIC (sell at 2x or after 60 min): 1008 copies
+   won 30% of the copies, on average +67% each; of them reached 2x: 18% of all copies
+   lost 70% of the copies, on average -55% each; lost more than half: 43% of all copies
+   so a copy makes 0.30 x +0.67 + 0.70 x -0.55 = -17.9%
+   to break even with wins and losses of this size, 45% of the copies must win (they win 30%)
+
+3. WHO TRADES IN THE 2 MINUTES AFTER THE ALERT (1003 calls, SOL on the curve)
+   bought: 50844 SOL (67% by wallets new to the coin, 33% by wallets already in it)
+   sold:   53829 SOL (75% by wallets that had bought BEFORE the alert, 25% by wallets that bought after it; the dev 0%)
+   net: -2985 SOL; a call's net flow in those 2 min: median -0.89 SOL, negative on 61% of the calls
+
+4. WHAT THE WINNERS HAVE (a copy sold at 2x or 60 min): the median of each sign for copies that reached 2x / that lost more than half / all
+   holders at the call                 :        119 /        116 /        112
+   buyers since launch                 :        217 /        209 /        220
+   average buy, SOL                    :      0.451 /      0.476 /      0.476
+   top 10 holders' share               :      0.217 /      0.221 /      0.215
+   dev's share                         :          0 /          0 /          0
+   bought in the launch slot (share)   :      0.299 /        0.3 /      0.303
+   trades in the 10 min before         :        465 /        452 /        474
+   price run before the call           :       3.07 /        3.3 /       2.89
+   market cap in the post, $           :   9.34e+03 /   1.01e+04 /   1.08e+04
+   age in the post, min                :          1 /          1 /          1
+   curve sold                          :      0.728 /      0.745 /      0.719
+   price 2 min after / at the post     :       1.37 /      0.684 /      0.963
+   net SOL in the 2 min after          :       10.5 /      -11.4 /     -0.855
+   (179 copies reached 2x, 436 lost more than half, 1008 in all)
