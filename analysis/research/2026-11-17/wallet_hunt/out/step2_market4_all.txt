@@ -1,0 +1,6 @@
+328 coins to model
+wallet   | its own coins modelled | our copy: net SOL, a copy, won, tp | w/o best 5 | first half / second half | its sale never followed: net, w/o best 5 | held med | sizes med
+5QQ5Xi9i | 102 (11-06 to 11-16) |  +3.50 SOL   +7.0%, won  27%, tp 4 |  -3.05 | +3.59 / -0.09 |  +2.83,  -3.72 |    83 s | 1.44
+EqiFgyNw |  62 (11-11 to 11-16) |  +1.36 SOL   +5.2%, won  31%, tp 1 |  -1.68 | +0.40 / +0.96 |  +0.57,  -2.48 |    38 s | 1.23
+2rioswXV |  68 (11-15 to 11-16) |  -0.05 SOL   -0.1%, won  31%, tp 0 |  -2.51 | +0.48 / -0.52 |  -0.67,  -3.16 |    79 s | 1.07
+57XcaxB6 |  91 (11-08 to 11-16) |  -1.74 SOL   -3.8%, won  25%, tp 1 |  -4.78 | -0.56 / -1.17 |  -1.39,  -5.44 |    48 s | 1.98
