@@ -1,0 +1,86 @@
+
+=== blindapee: 132 calls in 47 days, 34 with a price path at the post (22 curve, the rest pool)
+  behaviour: run-up before the post median 0.99x (0 at 5x+); price at +10 min 1.02, +30 min 1.06 (medians); peak in the hour median 1.55, reached 2x 24%
+  entry   exit   | first half (pick)              | second half (score)
+  post    tp1.5  |  17  +0.46 w/o3  -0.61           |  17  +1.95 w/o3  +1.26
+  post    tp2    |  17  +0.39 w/o3  -0.99           |  17  +1.76 w/o3  +0.20
+  post    tp3    |  17  -0.69 w/o3  -1.69           |  17  +2.27 w/o3  +0.20
+  post    t10    |  17  -0.54 w/o3  -1.18           |  17  +0.98 w/o3  -0.12
+  post    t30    |  17  -0.54 w/o3  -1.66           |  17  +1.96 w/o3  +0.15
+  post    t60    |  17  -0.69 w/o3  -1.69           |  17  +2.27 w/o3  +0.20
+  post    tp2sl  |  17  +0.11 w/o3  -1.26           |  17  +0.61 w/o3  -0.96
+  dip     tp1.5  |  11  +0.72 w/o3  -0.29           |  10  +1.20 w/o3  +0.32
+  dip     tp2    |  11  +0.80 w/o3  -0.64           |  10  +2.01 w/o3  +0.62
+  PICKED on the first half: dip + tp2 -> second half  10  +2.01 w/o3  +0.62; a day at 0.5 SOL in the second half: +0.08 SOL
+
+=== klevercalls: 438 calls in 17 days, 20 with a price path at the post (20 curve, the rest pool)
+  behaviour: run-up before the post median 3.15x (7 at 5x+); price at +10 min 1.15, +30 min 1.17 (medians); peak in the hour median 1.18, reached 2x 0%
+  entry   exit   | first half (pick)              | second half (score)
+  post    tp1.5  |  10  -0.33 w/o3  -0.66           |  10  -0.33 w/o3  -0.64
+  post    tp2    |  10  -0.33 w/o3  -0.66           |  10  -0.33 w/o3  -0.64
+  post    tp3    |  10  -0.33 w/o3  -0.66           |  10  -0.33 w/o3  -0.64
+  post    t10    |  10  -0.31 w/o3  -0.64           |  10  -0.25 w/o3  -0.55
+  post    t30    |  10  -0.21 w/o3  -0.53           |  10  -0.17 w/o3  -0.48
+  post    t60    |  10  -0.33 w/o3  -0.66           |  10  -0.33 w/o3  -0.64
+  post    tp2sl  |  10  +0.18 w/o3  -0.15           |  10  -1.09 w/o3  -1.35
+  dip     tp2sl  |   6  +0.18 w/o3  -0.31           |   6  -1.33 w/o3  -0.69
+  PICKED on the first half: dip + tp2sl -> second half   6  -1.33 w/o3  -0.69; a day at 0.5 SOL in the second half: -0.16 SOL
+
+=== kolscope/pumpfunnevadie: 125 calls in 2 days, 22 with a price path at the post (22 curve, the rest pool)
+  behaviour: run-up before the post median 2.18x (3 at 5x+); price at +10 min 0.99, +30 min 0.99 (medians); peak in the hour median 1.17, reached 2x 5%
+  entry   exit   | first half (pick)              | second half (score)
+  post    tp1.5  |  11  -0.67 w/o3  -1.26           |  11  +0.03 w/o3  -0.74
+  post    tp2    |  11  -0.44 w/o3  -1.26           |  11  +0.25 w/o3  -0.74
+  post    tp3    |  11  -0.35 w/o3  -1.26           |  11  +0.25 w/o3  -0.74
+  post    t10    |  11  -0.09 w/o3  -0.83           |  11  -0.03 w/o3  -0.81
+  post    t30    |  11  -0.39 w/o3  -1.13           |  11  +0.11 w/o3  -0.88
+  post    t60    |  11  -0.35 w/o3  -1.26           |  11  +0.25 w/o3  -0.74
+  post    tp2sl  |  11  -0.11 w/o3  -0.93           |  11  +0.08 w/o3  -0.91
+  skip5x  tp3    |   9  -0.04 w/o3  -0.96           |  10  +0.23 w/o3  -0.76
+  skip5x  t10    |   9  +0.21 w/o3  -0.52           |  10  -0.05 w/o3  -0.83
+  dip     tp2    |   7  +0.45 w/o3  -0.68           |   5  -0.29 w/o3  -0.58
+  dip     tp3    |   7  +1.26 w/o3  -0.68           |   5  -0.29 w/o3  -0.58
+  PICKED on the first half: dip + tp3 -> second half   5  -0.29 w/o3  -0.58; a day at 0.5 SOL in the second half: -0.36 SOL
+
+=== kolscope/shark_apes_call: 139 calls in 2 days, 30 with a price path at the post (30 curve, the rest pool)
+  behaviour: run-up before the post median 2.22x (3 at 5x+); price at +10 min 0.99, +30 min 0.99 (medians); peak in the hour median 1.15, reached 2x 10%
+  entry   exit   | first half (pick)              | second half (score)
+  post    tp1.5  |  15  -0.69 w/o3  -1.35           |  14  -0.74 w/o3  -1.49
+  post    tp2    |  15  -0.24 w/o3  -1.35           |  14  -0.20 w/o3  -1.49
+  post    tp3    |  15  -0.14 w/o3  -1.35           |  14  -0.20 w/o3  -1.49
+  post    t10    |  15  +0.13 w/o3  -0.83           |  14  -0.48 w/o3  -1.38
+  post    t30    |  15  -0.20 w/o3  -1.24           |  14  -0.11 w/o3  -1.40
+  post    t60    |  15  -0.14 w/o3  -1.35           |  14  -0.20 w/o3  -1.49
+  post    tp2sl  |  15  +0.27 w/o3  -0.85           |  14  +0.27 w/o3  -1.02
+  skip5x  t10    |  13  +0.39 w/o3  -0.56           |  13  -0.45 w/o3  -1.35
+  skip5x  tp2sl  |  13  +0.48 w/o3  -0.63           |  13  +0.30 w/o3  -0.99
+  dip     tp3    |   8  +0.72 w/o3  -1.14           |  10  +0.10 w/o3  -1.29
+  PICKED on the first half: dip + tp3 -> second half  10  +0.10 w/o3  -1.29; a day at 0.5 SOL in the second half: +0.12 SOL
+
+=== kolscope/solhousesignal: 135 calls in 2 days, 37 with a price path at the post (37 curve, the rest pool)
+  behaviour: run-up before the post median 2.40x (4 at 5x+); price at +10 min 1.00, +30 min 1.04 (medians); peak in the hour median 1.33, reached 2x 16%
+  entry   exit   | first half (pick)              | second half (score)
+  post    tp1.5  |  18  +0.05 w/o3  -0.70           |  18  +0.49 w/o3  -0.87
+  post    tp2    |  18  -0.15 w/o3  -1.35           |  18  +1.20 w/o3  -0.37
+  post    tp3    |  18  -0.05 w/o3  -1.35           |  18  +1.46 w/o3  -0.34
+  post    t10    |  18  -0.03 w/o3  -1.09           |  18  +0.62 w/o3  -0.96
+  post    t30    |  18  -0.30 w/o3  -1.42           |  18  +1.12 w/o3  -0.52
+  post    t60    |  18  -0.05 w/o3  -1.35           |  18  +1.46 w/o3  -0.34
+  post    tp2sl  |  18  +0.03 w/o3  -1.17           |  18  +2.00 w/o3  +0.43
+  skip5x  tp1.5  |  16  +0.31 w/o3  -0.44           |  16  +0.13 w/o3  -1.06
+  dip     tp2    |  11  +0.38 w/o3  -1.09           |  12  +0.87 w/o3  -0.66
+  dip     tp3    |  11  +1.19 w/o3  -1.09           |  12  +1.06 w/o3  -0.66
+  PICKED on the first half: dip + tp3 -> second half  12  +1.06 w/o3  -0.66; a day at 0.5 SOL in the second half: +1.28 SOL
+
+=== nopaidcallshere: 70 calls in 14 days, 15 with a price path at the post (12 curve, the rest pool)
+  behaviour: run-up before the post median 1.56x (1 at 5x+); price at +10 min 1.01, +30 min 0.87 (medians); peak in the hour median 1.20, reached 2x 13%
+  entry   exit   | first half (pick)              | second half (score)
+  post    tp1.5  |   7  -0.31 w/o3  -0.81           |   8  +0.16 w/o3  -0.51
+  post    tp2    |   7  -0.66 w/o3  -0.97           |   8  +0.85 w/o3  -0.51
+  post    tp3    |   7  -0.66 w/o3  -0.97           |   8  +0.03 w/o3  -0.72
+  post    t10    |   7  -0.50 w/o3  -0.72           |   8  +0.77 w/o3  -0.13
+  post    t30    |   7  -0.72 w/o3  -0.83           |   8  +0.11 w/o3  -0.65
+  post    t60    |   7  -0.66 w/o3  -0.97           |   8  +0.03 w/o3  -0.72
+  post    tp2sl  |   7  -0.57 w/o3  -0.88           |   8  +0.84 w/o3  -0.51
+  dip     tp1.5  |   5  +0.18 w/o3  -0.27           |   3  +0.17 w/o3  +0.00
+  PICKED on the first half: dip + tp1.5 -> second half   3  +0.17 w/o3  +0.00; a day at 0.5 SOL in the second half: +0.02 SOL
