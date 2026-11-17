@@ -29,7 +29,7 @@ print("\n3. WHICH OF ITS BUYS PAY (thirds cut on the first half), with each segm
 pick = None
 for name, f in segs.items():
     a = [r for r in A if f(r)]; b = [r for r in B if f(r)]
-    if len(a) < 15: continue
+    if len(a) < 8: continue   # shown from 8 (size thirds were hidden at 15 on the partial data); the pick still needs 20
     e = max(EX, key=lambda e: np.mean([r["ex"][e] for r in a])); va = [r["ex"][e] for r in a]; vb = [r["ex"][e] for r in b]
     print(f"   {name:22s} {e:14s}: first half {S(va)} | second half {S(vb)}")
     if len(a) >= 20 and (pick is None or np.mean(va) > pick[0]): pick = (np.mean(va), name, e, vb)
@@ -52,3 +52,10 @@ if C:
           f" | BEFORE its buy (it followed): {len(before)} ({len(before) / len(C):.0%}) | not within 10 min: {len(never)}")
     for e in ("its-sale", best[0], "t10m", "tp3"):
         print(f"   exit {e:14s}: alerted after {S([r['ex'][e] for r in after])} | alerted before {S([r['ex'][e] for r in before])} | not alerted {S([r['ex'][e] for r in never])}")
+# 5. its buy size as a conviction signal (the owner, Nov 17: "why arent you filtering too by buy size?"); fixed bins, not fitted
+print("\n5. BY ITS BUY SIZE (fixed bins; our copy is always 0.5 SOL): first half | second half")
+for lo, hi in ((0, .3), (.3, .45), (.45, .7), (.7, 1.0), (1.0, 2.0), (2.0, 1e9)):
+    a = [r for r in A if lo <= r["sol"] < hi]; b = [r for r in B if lo <= r["sol"] < hi]
+    if not a and not b: continue
+    for e in ("its-sale", "t2m", "tp2", "sp5/60s"):
+        print(f"   size {lo:4.2f}-{hi if hi < 1e8 else 'up':<5} {e:9s}: {S([r['ex'][e] for r in a])} | {S([r['ex'][e] for r in b])}")
