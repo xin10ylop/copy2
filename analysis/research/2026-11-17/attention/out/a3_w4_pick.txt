@@ -1,0 +1,29 @@
+65157 launches to Nov 16 18:39 UTC; wallet 4 traded 1219 (1.9%)
+graduated: its coins 8.86% (108) | the rest 1.74%
+its first trade after the create: median 0 s; within 2 s 98%, within 60 s 98%, after 1 h 0%
+
+quote: share of its coins | share of the rest | graduated among its coins | among the rest
+   EPjFWdd5                   3.1% |   2.0% |  7.89% (38) |  1.92% (1250)
+   SOL                       58.9% |  76.1% | 10.86% (718) |  1.92% (48629)
+   SPCXxcqX                   3.1% |   2.0% |  2.63% (38) |  1.26% (1270)
+   So111111                   2.5% |   6.8% |  6.45% (31) |  0.09% (4363)
+   TTWofwAg                  11.2% |   2.7% |  4.38% (137) |  1.57% (1715)
+   other token (small)       18.1% |   9.7% |  8.14% (221) |  1.62% (6176)
+   pumpCmXq                   3.0% |   0.8% |  0.00% (36) |  1.31% (535)
+
+creator's launches in 24 h before: share of its coins | share of the rest | graduated among its coins | among the rest
+   0 (first)                 68.0% |  22.4% |  9.41% (829) |  2.95% (14317)
+   1-4                       17.7% |  16.1% |  8.33% (216) |  1.76% (10322)
+   20+                        5.5% |  42.1% |  5.97% (67) |  1.20% (26897)
+   5-19                       8.8% |  19.4% |  7.48% (107) |  1.47% (12402)
+
+creator's record (2 h+): share of its coins | share of the rest | graduated among its coins | among the rest
+   0 graduated               10.6% |  36.1% |  7.75% (129) |  0.95% (23110)
+   1+ graduated              11.6% |  16.3% |  8.45% (142) |  2.49% (10397)
+   none earlier              77.8% |  47.6% |  9.07% (948) |  2.08% (30431)
+
+when it first traded: share of its coins | share of the rest | graduated among its coins | among the rest
+   -                          0.0% | 100.0% |  0.00% (0) |  1.74% (63938)
+   <= 1 h                     1.7% |   0.0% |  4.76% (21) |  0.00% (0)
+   <= 2 s                    98.2% |   0.0% |  8.86% (1197) |  0.00% (0)
+   > 1 h                      0.1% |   0.0% | 100.00% (1) |  0.00% (0)
