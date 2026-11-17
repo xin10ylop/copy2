@@ -1,0 +1,2 @@
+H1 at 0.01 SOL a round trip: 163 copies -17.39 SOL (-21.3% a copy), won 31% | halves -21.0% / -21.7% | without the best 5 -20.30
+H1 at 0.0345 SOL a round trip: 163 copies -21.38 SOL (-26.2% a copy), won 31% | halves -25.9% / -26.6% | without the best 5 -24.17
