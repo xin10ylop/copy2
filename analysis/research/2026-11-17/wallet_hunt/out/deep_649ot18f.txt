@@ -1,0 +1,9 @@
+649ot18fccD6Mc9V4aHWTdoSVCuqAEtg9aWuxBA9cRoU: 19217 landed transactions 10-21 18:41 to 11-17 01:51 UTC (0 newly fetched)
+routable first buys of 0.9+ SOL: 280; modelled 270
+  every copy                        :  270 copies (10-21 to 11-16) | net  -2.02 SOL   -1.8% a copy, won  30%, tp 3 | w/o best 5  -6.80, w/o best 10  -9.15 | halves +0.17 / -2.20 | losing days 13 of 22 | its sale never followed  -4.86
+  coins wallet 4 did not trade      :  231 copies (10-21 to 11-16) | net  -1.55 SOL   -1.6% a copy, won  31%, tp 2 | w/o best 5  -5.77, w/o best 10  -7.95 | halves -0.24 / -1.30 | losing days 12 of 22 | its sale never followed  -3.52
+  coins wallet 4 traded too         :   39 copies (10-24 to 11-16) | net  -0.48 SOL   -2.6% a copy, won  24%, tp 1 | w/o best 5  -2.56, w/o best 10  -2.77 | halves -0.13 / -0.35 | losing days 13 of 15 | its sale never followed  -1.34
+  its buy 0.9-1.5 SOL               :   25 copies (10-21 to 11-06) | net  -0.17 SOL   -3.0% a copy, won   9%, tp 0 | w/o best 5  -0.67, w/o best 10  -0.66 | halves +0.30 / -0.47 | losing days 10 of 13 | its sale never followed  -0.38
+  its buy 1.5-3 SOL                 :  145 copies (10-21 to 11-16) | net  -4.67 SOL   -7.7% a copy, won  24%, tp 1 | w/o best 5  -7.62, w/o best 10  -8.43 | halves -1.34 / -3.33 | losing days 14 of 22 | its sale never followed  -6.49
+  its buy 3-99 SOL                  :  100 copies (10-21 to 11-16) | net  +2.81 SOL   +5.7% a copy, won  40%, tp 2 | w/o best 5  -1.23, w/o best 10  -3.05 | halves +0.88 / +1.93 | losing days 9 of 22 | its sale never followed  +2.01
+
