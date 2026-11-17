@@ -1,0 +1,31 @@
+coins: its buy under 1.3 SOL (the bot skips it) 40, quote not one of the bot's floats 33, modelled 18, wallet 4's buy not in the path 9
+
+Nov 1-6: 14 copies at 0.5 SOL; the alert came a median 130 s after wallet 4's buy
+  the bot's frozen exits:        +10.26 SOL (+146.6% a copy), won 93%
+  sell   0 s after the alert:     +10.04 SOL (+143.4% a copy), won 100% | better on 36%, worse on 21%
+  sell   5 s after the alert:     +10.34 SOL (+147.7% a copy), won 100% | better on 43%, worse on 14%
+  sell  15 s after the alert:     +10.51 SOL (+150.1% a copy), won 100% | better on 43%, worse on 14%
+  sell  30 s after the alert:     +10.80 SOL (+154.3% a copy), won 100% | better on 43%, worse on 14%
+  sell  60 s after the alert:     +10.04 SOL (+143.5% a copy), won 93% | better on 14%, worse on 14%
+  sell 120 s after the alert:      +9.67 SOL (+138.1% a copy), won 93% | better on 7%, worse on 7%
+  the frozen exits' reasons: sell_pressure 7, tp 5, its_sell 1, stall 1
+
+Nov 10-17: 4 copies at 0.5 SOL; the alert came a median 306 s after wallet 4's buy
+  the bot's frozen exits:         +0.51 SOL (+25.6% a copy), won 50%
+  sell   0 s after the alert:      +0.88 SOL (+44.0% a copy), won 75% | better on 50%, worse on 0%
+  sell   5 s after the alert:      +0.75 SOL (+37.5% a copy), won 75% | better on 50%, worse on 0%
+  sell  15 s after the alert:      +0.72 SOL (+36.2% a copy), won 75% | better on 50%, worse on 0%
+  sell  30 s after the alert:      +0.63 SOL (+31.6% a copy), won 75% | better on 50%, worse on 0%
+  sell  60 s after the alert:      +0.62 SOL (+30.8% a copy), won 75% | better on 25%, worse on 0%
+  sell 120 s after the alert:      +0.51 SOL (+25.6% a copy), won 50% | better on 0%, worse on 0%
+  the frozen exits' reasons: its_sell 2, sell_pressure 2
+
+both: 18 copies at 0.5 SOL; the alert came a median 162 s after wallet 4's buy
+  the bot's frozen exits:        +10.78 SOL (+119.7% a copy), won 83%
+  sell   0 s after the alert:     +10.92 SOL (+121.3% a copy), won 94% | better on 39%, worse on 17%
+  sell   5 s after the alert:     +11.09 SOL (+123.2% a copy), won 94% | better on 44%, worse on 11%
+  sell  15 s after the alert:     +11.23 SOL (+124.8% a copy), won 94% | better on 44%, worse on 11%
+  sell  30 s after the alert:     +11.43 SOL (+127.0% a copy), won 94% | better on 44%, worse on 11%
+  sell  60 s after the alert:     +10.66 SOL (+118.4% a copy), won 89% | better on 17%, worse on 11%
+  sell 120 s after the alert:     +10.18 SOL (+113.1% a copy), won 83% | better on 6%, worse on 6%
+  the frozen exits' reasons: sell_pressure 9, tp 5, its_sell 3, stall 1
