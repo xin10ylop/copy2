@@ -2,7 +2,7 @@
 # pool: the PumpSwap pool pump creates on migration, derived from the mint (pump-codec's canonical_pump_swap_pool). Its
 # price after every swap from its own vault balances in the transaction (the two token accounts the pool owns: the coin
 # and wrapped SOL), so any constant-product pool works (PumpSwap and others whose vaults the pool owns); a pool whose
-# vaults it does not own is counted, not modelled. Signatures newest first back past the post (at most 30 pages: a pool
+# vaults it does not own is counted, not modelled. Signatures newest first back past the post (at most 10 pages: a pool
 # busier than that is counted, not modelled); swaps from the post to an hour after. Cached in DIR/pools/.
 # Our copy: 0.5 SOL at the first swap DELAY s or more after the post, against the pool's reserves (constant product), a fee
 # of FEE each way and 0.0026 SOL of transaction costs; refused past 1.25x the price at the post. Exits fixed: tp2/tp3/tp5
@@ -64,7 +64,7 @@ def path(m, t):
         pa, dex = pair_of(m); out.update(pair=pa, dex=dex)
         if pa:
             sigs, before, reached = [], None, False
-            for _ in range(30):
+            for _ in range(10):
                 pg = call("getSignaturesForAddress", [pa, {"limit": 1000, **({"before": before} if before else {})}])
                 if not pg: reached = True; break
                 sigs += [s for s in pg if s["err"] is None]; before = pg[-1]["signature"]
