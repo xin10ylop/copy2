@@ -65,3 +65,4 @@ for r in rows[:80]:
     print(f"{r['u'][:8]} | {r['hits']:4d} {r['cr']:4d} | {r['miss_seen']:4d} -> {r['miss_est']:6.0f} | {r['rate']:6.1%} | {r['lift']:4.1f} | "
           f"{r['p']:4.0%} {r['dt']:6.0f} s {r['sol']:5.2f}")
 json.dump(rows, open(f"{W}/w3_rows.json", "w"), default=list)
+json.dump({str(b): v for b, v in bp.items()}, open(f"{W}/bp.json", "w"))
