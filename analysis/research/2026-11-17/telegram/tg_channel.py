@@ -26,7 +26,10 @@ def load(D):
                 if any(e["t"] <= t for e in tr) and any(e["t"] > t for e in tr):
                     P = [(e["t"], e["vq"], e["vt"], e["bps"] / 1e4) for e in tr]
                     g = next((i for i, e in enumerate(tr) if e.get("real") == 0 and e["t"] > t), None)
-                    if g is not None: P = P[:g + 1] + [(t + HOLD + 1, tr[g]["vq"], tr[g]["vt"], 0.01)]   # graduated: our tokens move to the pool at that price
+                    if g is not None:   # graduated while held: the price goes on in its pool (tg_pool.py's cache), else held at the curve's end
+                        fp = f"{D}/pools/{m}.json.gz"; px = json.load(gzip.open(fp)).get("px") or [] if os.path.exists(fp) else []
+                        after = [(a, q, b, 0.01) for a, q, b in px if a > tr[g]["t"]]
+                        P = P[:g + 1] + (after if after else [(t + HOLD + 1, tr[g]["vq"], tr[g]["vt"], 0.01)])
         if P is None:
             f = f"{D}/pools/{m}.json.gz"
             if os.path.exists(f):
