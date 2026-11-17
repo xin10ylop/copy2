@@ -16,7 +16,7 @@ from solders.pubkey import Pubkey
 SP = sys.argv[1]; WS = sys.argv[2].split(","); W = f"{SP}/winners"; CP = f"{W}/cpaths"; os.makedirs(CP, exist_ok=True)
 sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-13/tab_exits"); import cmodel as M
 sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-17/wallet_hunt"); import hunt_lib as H
-URL = os.environ["RPC_URL"]; PUMP = Pubkey.from_string("6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"); HOLD = 3600
+URL = os.environ["RPC_URL"]; PUMP = Pubkey.from_string("6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"); HOLD = int(os.environ.get("HOLD", 3600))
 WSOL = "So11111111111111111111111111111111111111112"; SOLQ = {WSOL, "11111111111111111111111111111111", None}
 PR = json.load(open(f"{SP}/market/prices.json")); sol_usd = PR[WSOL]["usdPrice"]
 def rate_of(q):
@@ -82,7 +82,8 @@ for w in WS:
         if e["buy"] and e["m"] not in buys: buys[e["m"]] = e
     R = {k: [] for k in ("before", "screen", "after")}
     items = [(k, x) for k, v in res[full].items() for x in v]
-    if os.environ.get("LIMIT"): items = items[:int(os.environ["LIMIT"])]   # a quick check of the code only
+    if os.environ.get("LIMIT"):   # a random sample of the copies (seed 7), for wallets with hundreds
+        import random; random.Random(7).shuffle(items); items = items[:int(os.environ["LIMIT"])]
     def one(kx):
         k, x = kx; e = buys[x["m"]]; rate = rate_of(e["quote"])
         tr = cpath(x["m"], e["slot"], e["t"])

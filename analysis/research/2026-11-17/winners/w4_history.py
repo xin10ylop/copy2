@@ -92,7 +92,7 @@ for r in C:
         rate = rate_of(e["quote"])
         if rate is None or OUT.get(m) is None: continue
         sol = e["q"] * (1 + e["bps"] / 1e4) * rate / 1e9; p = max(0.0, (INIT_REAL - e["real"] - e["tok"]) / INIT_REAL)
-        if sol < float(os.environ.get("MINSOL", 0.25)) or p >= 0.5: continue
+        if sol < float(os.environ.get("MINSOL", 0.25)) or p >= float(os.environ.get("MAXP", 0.5)): continue
         k = "before" if e["t"] < A else "screen" if e["t"] < B else "after"
         per[k].append(dict(m=m, g=OUT[m], p=p, sol=sol, t=e["t"]))
     res[w] = {k: v for k, v in per.items()}
