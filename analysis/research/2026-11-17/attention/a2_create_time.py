@@ -5,7 +5,8 @@
 #   python3 -I a2_create_time.py SP > out/a2_create_time.txt
 import sys, json, collections, datetime, bisect
 SP = sys.argv[1]
-C = {v["mint"]: v for v in json.load(open(f"{SP}/market/creates.json")).values() if v}
+sys.path.insert(0, __import__("os").path.dirname(__import__("os").path.abspath(__file__))); import creates
+C = {m: v for m, (s, v) in creates.load(SP).items()}
 OUT = json.load(open(f"{SP}/attn/outcomes.json"))
 L = sorted((v for m, v in C.items() if OUT.get(m)), key=lambda v: v["t"])
 for v in L: v["grad"] = OUT[v["mint"]][0]

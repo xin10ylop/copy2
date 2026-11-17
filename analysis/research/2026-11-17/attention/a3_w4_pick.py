@@ -5,7 +5,8 @@
 import sys, json, collections
 import numpy as np
 SP = sys.argv[1]; W4M = json.load(open(f"{SP}/hunt/w4_mints.json")); W4LAST = 1794858000
-C = {v["mint"]: v for v in json.load(open(f"{SP}/market/creates.json")).values() if v}; OUT = json.load(open(f"{SP}/attn/outcomes.json"))
+sys.path.insert(0, __import__("os").path.dirname(__import__("os").path.abspath(__file__))); import creates
+C = {m: v for m, (s, v) in creates.load(SP).items()}; OUT = json.load(open(f"{SP}/attn/outcomes.json"))
 L = sorted((v for m, v in C.items() if OUT.get(m) and v["t"] < W4LAST - 3600), key=lambda v: v["t"])
 SOL = "11111111111111111111111111111111"
 by_c = collections.defaultdict(list)

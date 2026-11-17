@@ -9,7 +9,8 @@ from concurrent.futures import ThreadPoolExecutor
 sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-13/tab_exits"); import lib
 SP = sys.argv[1]; NOTHER = int(sys.argv[2]) if len(sys.argv) > 2 else 4000; W4LAST = 1794858000
 W4M = json.load(open(f"{SP}/hunt/w4_mints.json")); CR = json.load(open(f"{SP}/market/creates.json")); OUT = json.load(open(f"{SP}/attn/outcomes.json"))
-sig_of = {v["mint"]: s for s, v in CR.items() if v and OUT.get(v["mint"]) and v["t"] < W4LAST - 3600}
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import creates
+sig_of = {m: s for m, (s, v) in creates.load(SP).items() if OUT.get(m) and v["t"] < W4LAST - 3600}
 mine = [m for m in sig_of if m in W4M]; rest = sorted(m for m in sig_of if m not in W4M)
 pick = mine + random.Random(7).sample(rest, min(NOTHER, len(rest)))
 CB = "ComputeBudget111111111111111111111111111111"; SYS = "11111111111111111111111111111111"

@@ -1,0 +1,7 @@
+its 1219 coins come from 921 creators; those creators made 3497 coins in the window
+graduated: the ones it bought 8.86% (1219) | the same creators' coins it did NOT buy 3.07% (2278) | all other creators 1.69%
+coins it bought per creator: [(1, 812), (2, 57), (3, 25), (4, 8), (5, 6), (6, 5), (8, 1), (9, 2), (13, 1), (14, 1), (15, 2), (43, 1)]
+share of a creator's coins it bought: median 100%; creators where it bought all: 680 of 921
+creators it bought 2+ times: 109, their coins 1687, bought 407
+its pick's place among the creator's coins in the window: {'first': 818, '3rd+': 300, '2nd': 101}
+creators with 5+ coins: 116; it bought 361 of their 2441 coins; graduated among its buys 28/361 = 7.8%, among all their coins 86/2441 = 3.5%
