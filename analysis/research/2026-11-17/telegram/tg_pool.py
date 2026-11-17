@@ -13,7 +13,7 @@ import sys, os, json, gzip, time, base64, urllib.request, collections
 from concurrent.futures import ThreadPoolExecutor
 from solders.pubkey import Pubkey
 D = sys.argv[1]; DELAY = float(sys.argv[2]) if len(sys.argv) > 2 else 1; FEE = float(sys.argv[3]) if len(sys.argv) > 3 else 0.01
-URL = os.environ["RPC_URL"]; WSOL = "So11111111111111111111111111111111111111112"; HOLD = 3600; PD = f"{D}/pools"; os.makedirs(PD, exist_ok=True)
+URL = os.environ["RPC_URL"]; WSOL = "So11111111111111111111111111111111111111112"; HOLD = 3600; SAMPLE = int(os.environ.get("SAMPLE", 4)); PD = f"{D}/pools"; os.makedirs(PD, exist_ok=True)
 PUMP = Pubkey.from_string("6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"); TOK = {"TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"}
 def call(m, p):
     for i in range(8):
@@ -71,6 +71,7 @@ def path(m, t):
                 if len(pg) < 1000 or (pg[-1].get("blockTime") or 0) < t - 600: reached = True; break
             out["reached"] = reached
             win = sorted((s for s in sigs if t - 600 <= (s.get("blockTime") or 0) <= t + HOLD + 60), key=lambda s: s["slot"])
+            win = [s for i, s in enumerate(win) if t - 60 <= s["blockTime"] <= t + 120 or i % SAMPLE == 0]   # every swap near the post, then 1 in SAMPLE
             txs = list(POOL.map(lambda s: call("getTransaction", [s["signature"], {"encoding": "json", "maxSupportedTransactionVersion": 0}]), win))
             px = []
             for tx in txs:

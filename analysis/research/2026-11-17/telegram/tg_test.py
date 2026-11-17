@@ -18,7 +18,7 @@ from solders.pubkey import Pubkey
 D = sys.argv[1]; DELAY = float(sys.argv[2]) if len(sys.argv) > 2 else 3; PC = f"{D}/paths"; os.makedirs(PC, exist_ok=True)
 sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-13/tab_exits"); import cmodel as M
 sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-17/wallet_hunt"); import hunt_lib as H
-URL = os.environ["RPC_URL"]; PUMP = Pubkey.from_string("6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"); HOLD = 3600
+URL = os.environ["RPC_URL"]; PUMP = Pubkey.from_string("6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"); HOLD = 3600; SAMPLE = int(os.environ.get("SAMPLE", 4))   # busy coins: 1 trade in SAMPLE after the first 2 min (prices only; no signals)
 TOK = {"TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"}
 def call(m, p):
     for i in range(8):
@@ -59,6 +59,7 @@ def get(at):
             if len(pg) < 1000 or (pg[-1].get("blockTime") or 0) < t - 600: break
         first_t = min((s["blockTime"] for s in sigs if s.get("blockTime")), default=None) if len(sigs) % 1000 else None
         win = sorted((s for s in sigs if t - 600 <= (s.get("blockTime") or 0) <= t + HOLD + 60), key=lambda s: s["slot"])
+        win = [s for i, s in enumerate(win) if s["blockTime"] <= t + 120 or i % SAMPLE == 0 or i == len(win) - 1]   # every trade to 2 min after the post, then 1 in SAMPLE
         last_t = max((s["blockTime"] for s in sigs if s.get("blockTime")), default=None)
         txs = list(POOL.map(lambda s: call("getTransaction", [s["signature"], M.TXO]), win))
         tr = [e for tx in txs if tx for e in M.trades(tx, m)]
@@ -115,7 +116,7 @@ ref = sum(1 for _, _, p in rows if p["refused"])
 print(f"  refused (already 1.25x the post's price when we land): {ref}")
 print("exit    | copies, net SOL, a copy, won | w/o best 5 | 1st half / 2nd half")
 rows.sort()
-for ex in ["tp2", "tp3", "tp5", "grad", "t10", "t30", "signals"]:
+for ex in ["tp2", "tp3", "tp5", "grad", "t10", "t30"] + (["signals"] if SAMPLE == 1 else []):
     v = [(t, run(p, ex)) for t, _, p in rows]; v = [(t, x) for t, x in v if x is not None]
     if not v: print(f"{ex:7s} | 0"); continue
     xs = [x for _, x in v]; s = sorted(xs, reverse=True); h = len(v) // 2
