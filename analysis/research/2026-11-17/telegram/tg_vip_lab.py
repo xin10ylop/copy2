@@ -121,6 +121,18 @@ def run(R, ent=None, **ex):
 def S(v):
     if not v: return "   0"
     s = sorted(v, reverse=True); return f"{len(v):4d} {sum(v):+7.2f} ({sum(v) / len(v) / STAKE:+6.1%}) w/o5 {sum(s[5:]):+7.2f}"
+if HOLDOUT and os.environ.get("GRID"):   # every increment of the exit, the frozen filter (8+ of 10), buy 3 s after
+    rows, sc, half, S2 = HOLD_ROWS; R = [r for r in rows if sc(r) >= 8]
+    parts = [("first half", [r for r in R if r["t"] < half]), ("second half", [r for r in R if r["t"] >= half])]
+    tps = [1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.5, 5, None]
+    for cap in (600, 1200, 1800, 3600):
+        for sl in (None, 0.7, 0.5):
+            for tp in tps:
+                v = [run(P_, ent=dict(delay=3), tp=tp, cap=cap, sl=sl) for _, P_ in parts]
+                m = lambda x: f"{sum(x) / len(x) / STAKE:+6.1%}" if x else "   -  "
+                a = v[0] + v[1]; s5 = sorted(a, reverse=True)
+                print(f"GRID cap {cap // 60:2d} min, stop {str(sl):4s}, tp {str(tp):5s}: {len(a):3d} copies {sum(a):+7.2f} ({m(a)}) w/o5 {sum(s5[5:]):+7.2f} | halves {m(v[0])} / {m(v[1])}")
+    sys.exit(0)
 if HOLDOUT:
     rows, sc, half, S2 = HOLD_ROWS
     for N in (0, 6, 7, 8, 9):
