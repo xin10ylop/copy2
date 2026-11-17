@@ -88,6 +88,7 @@ def call1(m, p):   # one try (a skipped slot answers with an error: not worth 8 
 def path(m, t):
     f = f"{PD}/{m}.json.gz"
     if os.path.exists(f): return json.load(gzip.open(f))
+    if os.environ.get("NOFETCH"): return dict(state="pool", pair=None, skipped=True)   # a report on what is cached
     out = dict(state="pool")   # every call with a SOL pool; it counts as a pool call when the pool traded before the post
     if True:
         pa, dex = pair_of(m); out.update(pair=pa, dex=dex)
@@ -119,7 +120,8 @@ def path(m, t):
 with ThreadPoolExecutor(int(os.environ.get("COINS", 16))) as ex: P = list(ex.map(lambda c: path(*c), C))
 cnt = collections.Counter(); rows = []
 for (m, t), p in zip(C, P):
-    if not p.get("pair"): cnt["no SOL pool found"] += 1; continue
+    if p.get("skipped"): cnt["not fetched yet"] += 1; continue
+    if not p.get("pair"): cnt["no canonical PumpSwap pool (another venue)"] += 1; continue
     if not p.get("reached"): cnt["pool too busy to reach the post"] += 1; continue
     px = p.get("px") or []
     if not px: cnt["no swap read in the hour (pool does not own its vaults, or dead)"] += 1; continue
