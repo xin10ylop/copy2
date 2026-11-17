@@ -1,62 +1,62 @@
-q2q38wAb: 59 copies (0.5 SOL, one slot after its buy); first half 29, second half 30
+q2q38wAb: 150 copies (0.5 SOL, one slot after its buy); first half 75, second half 75
 
-1. HOW IT TRADES: its size median 0.39 SOL (quartiles [0.24, 0.42]); quote SOL 0%; curve sold at its buy median 50%
-   it sold (first sale) after a median 121 s; within 30 s 12%, within 2 min 36%, never in the window 5%
+1. HOW IT TRADES: its size median 0.34 SOL (quartiles [0.25, 0.42]); quote SOL 0%; curve sold at its buy median 50%
+   it sold (first sale) after a median 121 s; within 30 s 9%, within 2 min 35%, never in the window 7%
 
 2. EXITS (every copy): first half | second half
-   its-sale      :  29  -1.32 ( -9.1%) w/o5  -3.10 |  30  -1.46 ( -9.7%) w/o5  -3.21
-   tp1.3         :  29  -0.55 ( -3.8%) w/o5  -1.83 |  30  -2.41 (-16.1%) w/o5  -3.49
-   tp1.5         :  29  +0.63 ( +4.3%) w/o5  -1.33 |  30  -3.37 (-22.4%) w/o5  -4.57   <- best on the first half
-   tp2           :  29  -1.51 (-10.4%) w/o5  -4.16 |  30  -3.68 (-24.5%) w/o5  -5.96
-   tp3           :  29  -3.69 (-25.5%) w/o5  -6.06 |  30  -2.91 (-19.4%) w/o5  -6.49
-   tp5           :  29  -2.69 (-18.6%) w/o5  -6.06 |  30  -4.19 (-28.0%) w/o5  -6.65
-   t1m           :  29  -0.65 ( -4.5%) w/o5  -2.86 |  30  -1.59 (-10.6%) w/o5  -3.14
-   t2m           :  29  -0.36 ( -2.5%) w/o5  -3.39 |  30  -1.14 ( -7.6%) w/o5  -3.70
-   t5m           :  29  -1.75 (-12.1%) w/o5  -4.67 |  30  -3.25 (-21.7%) w/o5  -5.34
-   t10m          :  29  -0.54 ( -3.7%) w/o5  -5.35 |  30  -2.64 (-17.6%) w/o5  -6.03
-   t30m          :  29  -1.36 ( -9.4%) w/o5  -6.06 |  30  -4.19 (-28.0%) w/o5  -6.65
-   its-sale+tp2  :  29  -1.69 (-11.6%) w/o5  -3.10 |  30  -1.15 ( -7.7%) w/o5  -3.03
-   trail1.3/25%  :  29  -1.93 (-13.3%) w/o5  -3.09 |  30  -1.13 ( -7.5%) w/o5  -3.77
-   trail1.5/35%  :  29  -2.34 (-16.1%) w/o5  -4.00 |  30  -2.82 (-18.8%) w/o5  -5.42
-   sp3/30s       :  29  -1.35 ( -9.3%) w/o5  -3.04 |  30  -1.40 ( -9.3%) w/o5  -2.95
-   sp5/60s       :  29  -1.44 (-10.0%) w/o5  -3.46 |  30  -0.98 ( -6.6%) w/o5  -3.20
-   sp10/60s      :  29  -1.55 (-10.7%) w/o5  -3.51 |  30  -1.40 ( -9.3%) w/o5  -3.59
+   its-sale      :  75  -1.43 ( -3.8%) w/o5  -5.13 |  75  -3.70 ( -9.9%) w/o5  -6.31
+   tp1.3         :  75  -0.63 ( -1.7%) w/o5  -2.16 |  75  -5.30 (-14.1%) w/o5  -6.61
+   tp1.5         :  75  +0.33 ( +0.9%) w/o5  -1.84 |  75  -5.46 (-14.6%) w/o5  -7.00
+   tp2           :  75  -2.38 ( -6.3%) w/o5  -5.17 |  75  -4.52 (-12.1%) w/o5  -7.31
+   tp3           :  75  -0.34 ( -0.9%) w/o5  -5.84 |  75  -4.72 (-12.6%) w/o5  -9.70
+   tp5           :  75  +3.77 (+10.1%) w/o5  -5.89 |  75  -3.70 ( -9.9%) w/o5 -10.57   <- best on the first half
+   t1m           :  75  -0.07 ( -0.2%) w/o5  -3.99 |  75  -2.31 ( -6.2%) w/o5  -4.44
+   t2m           :  75  +1.38 ( +3.7%) w/o5  -4.55 |  75  -2.61 ( -7.0%) w/o5  -6.53
+   t5m           :  75  +0.67 ( +1.8%) w/o5  -7.54 |  75  -6.86 (-18.3%) w/o5  -9.64
+   t10m          :  75  -0.61 ( -1.6%) w/o5  -9.46 |  75  -5.02 (-13.4%) w/o5 -10.39
+   t30m          :  75  +2.27 ( +6.1%) w/o5  -9.37 |  75  -6.01 (-16.0%) w/o5 -11.45
+   its-sale+tp2  :  75  -1.91 ( -5.1%) w/o5  -4.54 |  75  -2.01 ( -5.4%) w/o5  -4.69
+   trail1.3/25%  :  75  -2.55 ( -6.8%) w/o5  -4.40 |  75  -4.02 (-10.7%) w/o5  -6.81
+   trail1.5/35%  :  75  -0.36 ( -1.0%) w/o5  -6.61 |  75  -7.05 (-18.8%) w/o5  -9.75
+   sp3/30s       :  75  -0.41 ( -1.1%) w/o5  -4.43 |  75  -2.27 ( -6.0%) w/o5  -4.44
+   sp5/60s       :  75  -0.41 ( -1.1%) w/o5  -5.67 |  75  -3.13 ( -8.4%) w/o5  -5.58
+   sp10/60s      :  75  +0.66 ( +1.8%) w/o5  -5.49 |  75  -3.77 (-10.1%) w/o5  -6.54
 
 3. WHICH OF ITS BUYS PAY (thirds cut on the first half), with each segment's best exit on the first half:
-   sol <= 0.224           t10m          : first half  10  +2.73 (+54.7%) w/o5  -1.33 | second half    0
-   sol 0.224-0.3          tp1.5         : first half  11  +0.23 ( +4.1%) w/o5  -1.23 | second half    0
-   sol > 0.3              tp1.5         : first half   8  -0.25 ( -6.1%) w/o5  -0.87 | second half  30  -3.37 (-22.4%) w/o5  -4.57
-   prog <= 0.411          t10m          : first half  10  +1.93 (+38.6%) w/o5  -1.21 | second half   5  +0.66 (+26.3%) w/o5  +0.00
-   prog 0.411-0.599       tp1.5         : first half  10  +0.25 ( +5.1%) w/o5  -1.11 | second half  15  -1.86 (-24.8%) w/o5  -2.86
-   prog > 0.599           t2m           : first half   9  +1.18 (+26.2%) w/o5  -0.46 | second half  10  -1.07 (-21.4%) w/o5  -2.01
-   hour <= 8              t10m          : first half  11  +2.34 (+42.6%) w/o5  -1.59 | second half  10  -0.76 (-15.2%) w/o5  -1.68
-   hour 8-14              t1m           : first half   9  -0.29 ( -6.4%) w/o5  -1.04 | second half   7  -0.38 (-10.9%) w/o5  -0.69
-   hour > 14              tp1.5         : first half   9  +0.95 (+21.1%) w/o5  -0.38 | second half  13  -0.19 ( -2.8%) w/o5  -1.39
-   quote other            tp1.5         : first half  29  +0.63 ( +4.3%) w/o5  -1.33 | second half  30  -3.37 (-22.4%) w/o5  -4.57
+   sol <= 0.221           tp5           : first half  26  +2.10 (+16.1%) w/o5  -5.35 | second half    0
+   sol 0.221-0.3          tp1.5         : first half  25  +1.24 ( +9.9%) w/o5  -0.45 | second half   3  +0.14 ( +9.6%) w/o5  +0.00
+   sol > 0.3              t5m           : first half  24  +4.14 (+34.5%) w/o5  -1.81 | second half  72  -6.72 (-18.7%) w/o5  -9.50
+   prog <= 0.417          tp5           : first half  26  +6.00 (+46.1%) w/o5  -3.49 | second half  22  -0.78 ( -7.1%) w/o5  -3.30
+   prog 0.417-0.611       tp1.5         : first half  25  +0.68 ( +5.5%) w/o5  -0.97 | second half  29  -3.47 (-23.9%) w/o5  -4.85
+   prog > 0.611           t2m           : first half  24  +1.56 (+13.0%) w/o5  -1.51 | second half  24  -1.62 (-13.5%) w/o5  -2.81
+   hour <= 8              t5m           : first half  29  +4.97 (+34.3%) w/o5  -2.20 | second half  25  -1.94 (-15.5%) w/o5  -3.85
+   hour 8-16              tp1.5         : first half  24  -1.23 (-10.2%) w/o5  -2.67 | second half  24  -1.48 (-12.3%) w/o5  -2.89
+   hour > 16              tp5           : first half  22  +1.29 (+11.7%) w/o5  -4.05 | second half  26  -2.11 (-16.2%) w/o5  -5.05
+   quote other            tp5           : first half  75  +3.77 (+10.1%) w/o5  -5.89 | second half  75  -3.70 ( -9.9%) w/o5 -10.57
 
-   PICKED on the first half: quote other + tp1.5 -> second half  30  -3.37 (-22.4%) w/o5  -4.57
+   PICKED on the first half: prog <= 0.417 + tp5 -> second half  22  -0.78 ( -7.1%) w/o5  -3.30
 
-4. THE VIP: 50 of its copies fall on the days of the VIP exports
-   the VIP alerted the coin within 10 min AFTER its buy: 10 (20%), a median 78 s later | BEFORE its buy (it followed): 0 (0%) | not within 10 min: 40
-   exit its-sale      : alerted after  10  +1.83 (+36.5%) w/o5  +0.22 | alerted before    0 | not alerted  40  -4.63 (-23.1%) w/o5  -5.75
-   exit tp1.5         : alerted after  10  +2.10 (+41.9%) w/o5  +0.58 | alerted before    0 | not alerted  40  -5.69 (-28.5%) w/o5  -6.98
-   exit t10m          : alerted after  10  +1.54 (+30.8%) w/o5  -0.82 | alerted before    0 | not alerted  40  -7.12 (-35.6%) w/o5  -9.60
-   exit tp3           : alerted after  10  +1.44 (+28.7%) w/o5  -0.87 | alerted before    0 | not alerted  40  -7.73 (-38.6%) w/o5 -10.33
+4. THE VIP: 127 of its copies fall on the days of the VIP exports
+   the VIP alerted the coin within 10 min AFTER its buy: 27 (21%), a median 83 s later | BEFORE its buy (it followed): 0 (0%) | not within 10 min: 100
+   exit its-sale      : alerted after  27  +4.15 (+30.7%) w/o5  +1.36 | alerted before    0 | not alerted 100 -10.46 (-20.9%) w/o5 -12.03
+   exit tp5           : alerted after  27  +9.21 (+68.2%) w/o5  +1.33 | alerted before    0 | not alerted 100 -12.91 (-25.8%) w/o5 -19.31
+   exit t10m          : alerted after  27  +5.10 (+37.8%) w/o5  -0.05 | alerted before    0 | not alerted 100 -14.09 (-28.2%) w/o5 -17.58
+   exit tp3           : alerted after  27  +6.41 (+47.5%) w/o5  +1.21 | alerted before    0 | not alerted 100 -12.00 (-24.0%) w/o5 -17.10
 
 5. BY ITS BUY SIZE (fixed bins; our copy is always 0.5 SOL): first half | second half
-   size 0.00-0.3   its-sale :  21  -0.62 ( -5.9%) w/o5  -2.24 |    0
-   size 0.00-0.3   t2m      :  21  +0.51 ( +4.9%) w/o5  -2.40 |    0
-   size 0.00-0.3   tp2      :  21  -0.52 ( -4.9%) w/o5  -3.17 |    0
-   size 0.00-0.3   sp5/60s  :  21  -0.87 ( -8.2%) w/o5  -2.71 |    0
-   size 0.30-0.45  its-sale :   6  -1.00 (-33.2%) w/o5  -0.33 |  25  -1.38 (-11.0%) w/o5  -3.10
-   size 0.30-0.45  t2m      :   6  -1.16 (-38.6%) w/o5  -0.32 |  25  -0.72 ( -5.7%) w/o5  -3.26
-   size 0.30-0.45  tp2      :   6  -1.71 (-56.9%) w/o5  -0.35 |  25  -3.37 (-27.0%) w/o5  -5.65
-   size 0.30-0.45  sp5/60s  :   6  -0.81 (-27.1%) w/o5  -0.32 |  25  -0.94 ( -7.6%) w/o5  -3.16
-   size 0.45-0.7   its-sale :   2  +0.30 (+30.1%) w/o5  +0.00 |   3  -0.13 ( -8.7%) w/o5  +0.00
-   size 0.45-0.7   t2m      :   2  +0.29 (+28.6%) w/o5  +0.00 |   3  -0.16 (-10.7%) w/o5  +0.00
-   size 0.45-0.7   tp2      :   2  +0.72 (+71.8%) w/o5  +0.00 |   3  -0.04 ( -2.7%) w/o5  +0.00
-   size 0.45-0.7   sp5/60s  :   2  +0.23 (+23.4%) w/o5  +0.00 |   3  -0.16 (-10.8%) w/o5  +0.00
-   size 0.70-1.0   its-sale :    0 |   2  +0.05 ( +4.6%) w/o5  +0.00
-   size 0.70-1.0   t2m      :    0 |   2  -0.26 (-26.0%) w/o5  +0.00
-   size 0.70-1.0   tp2      :    0 |   2  -0.26 (-26.3%) w/o5  +0.00
-   size 0.70-1.0   sp5/60s  :    0 |   2  +0.12 (+12.4%) w/o5  +0.00
+   size 0.00-0.3   its-sale :  51  -3.12 (-12.2%) w/o5  -6.06 |   3  +0.04 ( +2.6%) w/o5  +0.00
+   size 0.00-0.3   t2m      :  51  -1.40 ( -5.5%) w/o5  -6.18 |   3  +0.26 (+17.2%) w/o5  +0.00
+   size 0.00-0.3   tp2      :  51  -1.82 ( -7.2%) w/o5  -4.62 |   3  +0.41 (+27.0%) w/o5  +0.00
+   size 0.00-0.3   sp5/60s  :  51  -2.51 ( -9.8%) w/o5  -5.90 |   3  -0.07 ( -4.5%) w/o5  +0.00
+   size 0.30-0.45  its-sale :  20  +1.16 (+11.6%) w/o5  -0.71 |  55  -3.54 (-12.9%) w/o5  -6.15
+   size 0.30-0.45  t2m      :  20  +2.56 (+25.6%) w/o5  -0.67 |  55  -2.33 ( -8.5%) w/o5  -6.08
+   size 0.30-0.45  tp2      :  20  -1.42 (-14.2%) w/o5  -3.33 |  55  -6.23 (-22.6%) w/o5  -8.99
+   size 0.30-0.45  sp5/60s  :  20  +1.95 (+19.5%) w/o5  -1.22 |  55  -2.61 ( -9.5%) w/o5  -5.05
+   size 0.45-0.7   its-sale :   4  +0.52 (+26.0%) w/o5  +0.00 |  14  -0.38 ( -5.5%) w/o5  -1.35
+   size 0.45-0.7   t2m      :   4  +0.22 (+11.1%) w/o5  +0.00 |  14  -0.42 ( -6.0%) w/o5  -1.36
+   size 0.45-0.7   tp2      :   4  +0.86 (+43.2%) w/o5  +0.00 |  14  +1.42 (+20.3%) w/o5  -0.68
+   size 0.45-0.7   sp5/60s  :   4  +0.14 ( +7.2%) w/o5  +0.00 |  14  -0.72 (-10.2%) w/o5  -1.55
+   size 0.70-1.0   its-sale :    0 |   3  +0.19 (+12.5%) w/o5  +0.00
+   size 0.70-1.0   t2m      :    0 |   3  -0.12 ( -7.9%) w/o5  +0.00
+   size 0.70-1.0   tp2      :    0 |   3  -0.12 ( -8.1%) w/o5  +0.00
+   size 0.70-1.0   sp5/60s  :    0 |   3  +0.26 (+17.7%) w/o5  +0.00

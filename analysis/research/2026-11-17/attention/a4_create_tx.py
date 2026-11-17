@@ -4,15 +4,17 @@
 # (name, symbol, uri, mayhem, cashback, creator fee, token program), the trades inside it (the dev buy, others in the
 # same transaction), the fee payer's SOL before, the priority fee and tips, the programs called.
 #   RPC_URL=... LK=SP/attn/lk python3 -I a4_create_tx.py SP [NOTHER=4000]   -> SP/attn/create_tx.json
+#   ALL=1 THREADS=32 RPC_URL=... LK=SP/attn/lk python3 -I a4_create_tx.py SP   -> SP/attn/create_tx_all.json (every launch)
 import sys, os, json, random, collections
 from concurrent.futures import ThreadPoolExecutor
 sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-13/tab_exits"); import lib
 SP = sys.argv[1]; NOTHER = int(sys.argv[2]) if len(sys.argv) > 2 else 4000; W4LAST = 1794858000
 W4M = json.load(open(f"{SP}/hunt/w4_mints.json")); CR = json.load(open(f"{SP}/market/creates.json")); OUT = json.load(open(f"{SP}/attn/outcomes.json"))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import creates
-sig_of = {m: s for m, (s, v) in creates.load(SP).items() if OUT.get(m) and v["t"] < W4LAST - 3600}
+ALL = os.environ.get("ALL") == "1"   # ALL=1: every launch of the 48 h (the narrative-burst test needs every name)
+sig_of = {m: s for m, (s, v) in creates.load(SP).items() if OUT.get(m) and (ALL or v["t"] < W4LAST - 3600)}
 mine = [m for m in sig_of if m in W4M]; rest = sorted(m for m in sig_of if m not in W4M)
-pick = mine + random.Random(7).sample(rest, min(NOTHER, len(rest)))
+pick = mine + (rest if ALL else random.Random(7).sample(rest, min(NOTHER, len(rest))))
 CB = "ComputeBudget111111111111111111111111111111"; SYS = "11111111111111111111111111111111"
 def feat(m):
     try: t = lib.tx(sig_of[m])
@@ -38,7 +40,7 @@ def feat(m):
                    other_buy=sum(e["sol"] for e in tr if e["user"] != payer) / 1e9, payer_sol=meta["preBalances"][0] / 1e9,
                    fee=meta["fee"] / 1e9, cu_price=cu_price, transfers=tips / 1e9, n_ix=len(ixs), progs=sorted(set(progs)), n_sig=len(t["transaction"]["signatures"]))
 res = {}
-with ThreadPoolExecutor(12) as ex:
+with ThreadPoolExecutor(int(os.environ.get("THREADS", 12))) as ex:
     for m, f in ex.map(feat, pick): res[m] = f
-json.dump(dict(mine=mine, rows=res), open(f"{SP}/attn/create_tx.json", "w"))
+json.dump(dict(mine=mine, rows=res), open(f"{SP}/attn/create_tx{'_all' if ALL else ''}.json", "w"))
 print(f"{len(mine)} of wallet 4's coins, {len(pick) - len(mine)} others; read {sum(1 for v in res.values() if v)}")
