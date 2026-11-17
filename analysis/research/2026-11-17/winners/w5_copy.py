@@ -82,6 +82,7 @@ for w in WS:
         if e["buy"] and e["m"] not in buys: buys[e["m"]] = e
     R = {k: [] for k in ("before", "screen", "after")}
     items = [(k, x) for k, v in res[full].items() for x in v]
+    if os.environ.get("LIMIT"): items = items[:int(os.environ["LIMIT"])]   # a quick check of the code only
     def one(kx):
         k, x = kx; e = buys[x["m"]]; rate = rate_of(e["quote"])
         tr = cpath(x["m"], e["slot"], e["t"])

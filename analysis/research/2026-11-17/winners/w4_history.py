@@ -25,6 +25,7 @@ bp = {float(k): v for k, v in json.load(open(f"{W}/bp.json")).items()}
 b_of = lambda p: bp[max(b for b in bp if b <= p)]
 rows = json.load(open(f"{W}/w3_rows.json"))
 C = [r for r in rows if r["hits"] >= 3 and r["cr"] >= 3 and r["lift"] >= 1.5][:40]
+if os.environ.get("ONLY"): C = [r for r in rows if r["u"][:8] in os.environ["ONLY"].split(",")]   # a rerun of some (cached)
 def call(m, p):
     for i in range(8):
         try:
