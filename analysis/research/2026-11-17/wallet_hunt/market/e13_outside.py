@@ -45,3 +45,23 @@ for s_ in SETS:
 V = np.array([r["vl"].mean(axis=0) for r in rows]); best = np.unravel_index(int(np.argmax(V.sum(axis=0))), V.shape[1:])
 print(f"\nthis period's own best exit (0.5+, no price limit; hindsight, for scale only): tp {TP[best[0]]}, {HOLD[best[1]]} s, sp {SPS[best[2]]}, stall {STALL[best[3]]}, its {ITS[best[4]]}: "
       f"{V.sum(axis=0)[best]:+.2f} SOL; exits positive in total: {int((V.sum(axis=0) > 0).sum())} of {V[0].size}")
+# the full grid from scratch on these days (Nov 18, the owner: "engineer the exit from scratch"): every buy size x price
+# limit x exit, for all coins, floats only and the others; the settings that make money, and the best (hindsight)
+SOLA = np.array([r["sol"] for r in rows]); VL3 = np.array([r["vl"] for r in rows]); PM3 = np.array([r["prems"] for r in rows])
+print("\nTHE FULL GRID FROM SCRATCH (13 sizes x 4 price limits x 9,720 exits = 505,440 settings), on these days:")
+for lab, cm in (("all coins", np.ones(len(rows), bool)), ("floats only", CL == "float"), ("others only", CL == "wsol")):
+    npos = nboth = 0; best = (-1e9, None)
+    for a, sz in enumerate(SIZE):
+        for b_, pm in enumerate(PREM):
+            f = cm & (SOLA >= sz)
+            if f.sum() < 20: continue
+            ok3 = PM3[f] <= pm                                    # per landing: refused above the limit
+            v = np.where(ok3[:, :, None, None, None, None, None], VL3[f], -0.0004).mean(axis=1)
+            s = v.sum(axis=0); h1 = v[A[f]].sum(axis=0); h2 = v[~A[f]].sum(axis=0)
+            npos += int((s > 0).sum()); nboth += int(((h1 > 0) & (h2 > 0)).sum())
+            j = np.unravel_index(int(np.argmax(s)), s.shape)
+            if s[j] > best[0]: best = (s[j], (sz, pm, j, int(f.sum()), h1[j], h2[j]))
+    sz, pm, j, n, a1, a2 = best[1]
+    print(f"   {lab:12s}: settings making money {npos:,}, on both halves {nboth:,}; the best (hindsight): its buy {sz}+, limit {'none' if pm > 1e8 else pm}, "
+          f"tp {'none' if TP[j[0]] > 1e8 else TP[j[0]]}, {HOLD[j[1]]} s, sp {SPS[j[2]] or 'off'}, stall {STALL[j[3]] or 'off'}, its {ITS[j[4]]}: "
+          f"{n} copies {best[0]:+.2f} SOL (half 1 {a1:+.2f}, half 2 {a2:+.2f})")

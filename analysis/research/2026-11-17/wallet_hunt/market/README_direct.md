@@ -218,3 +218,6 @@ priced in another token outside the screen's 48 h: 353 copies (Nov 1-18; 154 flo
 days (tp 2x, 300 s, no sell pressure, stall 240): −27.69 SOL, −15.7% a copy, both halves negative, P 0.0%; floats alone
 −13.74. Wallet 4's live exit −13.66, TAB's −15.53. **Not one of the 9,720 exits makes money over these days**, even
 picked with hindsight (the best −5.71). Its 4 days (+23-28% a copy on 33) were luck.
+From scratch on these days (the owner: engineer the exit from scratch; the full grid, 505,440 settings): floats only,
+**0 settings make money on both halves**; all coins 4,700 (0.9%, all on thin size cuts of ~20 copies: the best, 1.4+
+SOL, 22 copies, +1.90 SOL, half 1 −0.82); at 0.5+ none of the 9,720 exits makes money. Rejected stands.
