@@ -1,0 +1,14 @@
+before Nov 17 13:49: 458 coins; bundle wallets median 10
+   no bundle sale by  5 s: 276 (60%)
+   no bundle sale by 10 s: 77 (17%)
+   no bundle sale by 20 s: 29 (6%)
+   no bundle sale by 30 s: 20 (4%)
+   no bundle sale by 60 s: 6 (1%)
+   first bundle sale: median 6.0 s; quartiles 4.0 / 8.0 s
+after: 108 coins; bundle wallets median 10
+   no bundle sale by  5 s: 41 (38%)
+   no bundle sale by 10 s: 14 (13%)
+   no bundle sale by 20 s: 7 (6%)
+   no bundle sale by 30 s: 5 (5%)
+   no bundle sale by 60 s: 2 (2%)
+   first bundle sale: median 5.0 s; quartiles 3.0 / 7.0 s
