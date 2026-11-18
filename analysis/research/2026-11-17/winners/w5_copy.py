@@ -13,7 +13,7 @@
 import sys, os, json, gzip, time, urllib.request, numpy as np
 from concurrent.futures import ThreadPoolExecutor
 from solders.pubkey import Pubkey
-SP = sys.argv[1]; WS = sys.argv[2].split(","); W = f"{SP}/winners"; CP = f"{W}/cpaths"; os.makedirs(CP, exist_ok=True)
+SP = sys.argv[1]; WS = sys.argv[2].split(","); W = f"{SP}/winners"; CP = os.environ.get("CPDIR", f"{W}/cpaths"); CP0 = f"{W}/cpaths"; os.makedirs(CP, exist_ok=True)   # CPDIR + SAMPLE: a sampled cache (Nov 18)
 sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-13/tab_exits"); import cmodel as M
 sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-17/wallet_hunt"); import hunt_lib as H
 URL = os.environ["RPC_URL"]; PUMP = Pubkey.from_string("6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"); HOLD = int(os.environ.get("HOLD", 3600))
@@ -36,6 +36,7 @@ def curve(m): return str(Pubkey.find_program_address([b"bonding-curve", bytes(Pu
 def cpath(m, slot, t):
     f = f"{CP}/{slot}_{m}.json.gz"
     if os.path.exists(f): return json.load(gzip.open(f))
+    if os.path.exists(f"{CP0}/{slot}_{m}.json.gz"): return json.load(gzip.open(f"{CP0}/{slot}_{m}.json.gz"))   # a full path is fine too
     c, sigs, before = curve(m), [], None
     for _ in range(10):
         pg = call("getSignaturesForAddress", [c, {"limit": 1000, **({"before": before} if before else {})}])
@@ -44,6 +45,9 @@ def cpath(m, slot, t):
         before = pg[-1]["signature"]
         if len(pg) < 1000 or pg[-1]["slot"] < slot: break
     sigs = sorted(sigs, key=lambda s: s["slot"])
+    if os.environ.get("SAMPLE"):   # every trade to FULL s after t, then 1 in SAMPLE (prices only: no sell-pressure counts)
+        SM, FU = int(os.environ["SAMPLE"]), int(os.environ.get("FULL", 60))
+        sigs = [s for i, s in enumerate(sigs) if (s.get("blockTime") or 0) <= t + FU or i % SM == 0 or i == len(sigs) - 1]
     txs = list(POOL.map(lambda s: call("getTransaction", [s["signature"], M.TXO]), sigs))
     tr = [e for tx in txs if tx for e in M.trades(tx, m)]
     with gzip.open(f + ".tmp", "wt") as fh: json.dump(tr, fh)
