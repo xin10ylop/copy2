@@ -317,7 +317,7 @@ async fn status(cfg: Config, args: &[String]) -> Result<(), String> {
         println!("   open now:");
         println!("     {:>4}  {:6}  {:8}  {:10}  {:>7}  {:8}  {:>6}  {:>6}", "#", "wallet", "bought", "coin", "its ETH", "state", "peak", "held");
         for p in &d.open {
-            println!("     {:>4}  {:6}  {:8}  {:10}  {:>7.4}  {:8}  {:>5.2}x  {:>5}s", p["id"], wn(p["leader"].as_str().unwrap_or("")), hhmm(p["its_ms"].as_u64().unwrap_or(0), off),
+            println!("     {:>4}  {:6}  {:8}  {:10}  {:>7.4}  {:8}  {:>5.2}x  {:>5}s", p["id"].as_u64().unwrap_or(0), wn(p["leader"].as_str().unwrap_or("")), hhmm(p["its_ms"].as_u64().unwrap_or(0), off),
                 short(p["curve"].as_str().unwrap_or("")), p["its_eth"].as_f64().unwrap_or(0.0), p["state"].as_str().unwrap_or(""), p["peak"].as_f64().unwrap_or(0.0),
                 now.saturating_sub(p["its_ms"].as_u64().unwrap_or(0)) / 1000);
         }
@@ -343,7 +343,7 @@ async fn status(cfg: Config, args: &[String]) -> Result<(), String> {
                 None => None };
             let e_in = c["eth_in"].as_f64().unwrap_or(0.0);
             println!("     {:>4}  {:5}  {:6}  {:8}  {:10}  {:>7.4}  {:16}  {:>5.2}x  {:>5}s  {:>+9.5}  {:>+6.1}%  {:>7}  {:>8}  {:>8}",
-                c["id"], if c["paper"].as_bool().unwrap_or(false) { "paper" } else { "REAL" }, wn(leader), hhmm(c["its_ms"].as_u64().unwrap_or(0), off), short(curve),
+                c["id"].as_u64().unwrap_or(0), if c["paper"].as_bool().unwrap_or(false) { "paper" } else { "REAL" }, wn(leader), hhmm(c["its_ms"].as_u64().unwrap_or(0), off), short(curve),
                 c["its_eth"].as_f64().unwrap_or(0.0), c["why"].as_str().unwrap_or("?"), c["peak"].as_f64().unwrap_or(0.0), c["held_s"].as_u64().unwrap_or(0), pnl(c),
                 100.0 * pnl(c) / e_in.max(1e-12), eth_usd.map_or(String::new(), |u| format!("{:+.2}", pnl(c) * u)),
                 its.as_ref().and_then(|t| t.pct).map_or(String::new(), |x| format!("{x:+.1}%")),
