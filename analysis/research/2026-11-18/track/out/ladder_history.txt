@@ -2,3 +2,4 @@
 wallet   | transactions since Nov 3 (from) | period: copyable buys, graduated, expected, lift, P(by chance) | very early (<2%), size med
 Gf9gk8sZ |  2291 (11-16 11:13) | before: 0 | screen: 39, 5, 1.6, 3.2x, 0.022 | after: 3, 0, 0.1, 0.0x, 1.000 |   0%, 1.11
 EhS8bGVC |  1156 (11-04 11:18) | before: 0 | screen: 42, 10, 1.7, 5.9x, 0.000 | after: 0 |   0%, 1.11
+H2nsBdjF | 12000 (11-12 03:02) | before: 16, 16, 0.5, 32.3x, 0.000 | screen: 3, 1, 0.1, 8.3x, 0.114 | after: 92, 11, 3.7, 3.0x, 0.002 |   6%, 1.11
