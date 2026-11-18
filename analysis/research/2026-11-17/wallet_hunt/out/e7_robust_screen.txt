@@ -1,0 +1,26 @@
+4397 float-quote coins; 225 wallets with 30+ copies (+ wallet 4, TAB16RxX); 64 exit settings; halves at the median copy time
+
+== THE YARDSTICKS ==
+wallet       size  copies | settings + on both halves | median setting: a copy, w/o 2%, P | creators, at launch | steadiest setting (its weaker half)
+H9kuqGKNYgPF 0.5+   187 |    20% |   +3.0%  -2.00  77.1% |  135   97% | tp 3x, stall off, sp off, 600 s, its sale not (+7.2%)
+TAB16RxXmazW 0.5+   140 |    98% |   +8.0%  +2.29  96.2% |  123   96% | tp 6x, stall off, sp 5/60, 300 s, its sale not (+11.7%)
+TAB16RxXmazW 1.0+    60 |    52% |   +2.3%  +0.02  66.5% |   55   98% | tp 3x, stall 180, sp off, 300 s, its sale not (+6.8%)
+H9kuqGKNYgPF 1.0+    74 |    27% |   +2.5%  -0.28  63.5% |   51   96% | tp 3x, stall off, sp off, 600 s, its sale not (+9.4%)
+TAB16RxXmazW 1.3+    43 |    67% |   +8.1%  +1.09  88.5% |   40   98% | tp 3x, stall 180, sp off, 300 s, its sale not (+13.9%)
+H9kuqGKNYgPF 1.3+    43 |    55% |   +8.2%  +0.90  85.9% |   35  100% | tp 3x, stall off, sp off, 600 s, its sale not (+13.1%)
+
+== QUALIFY: 0 of 403 wallets ==
+wallet       size  copies | settings + on both halves | median setting: a copy, w/o 2%, P | creators, at launch | steadiest setting (its weaker half)
+
+== the 10 nearest that do not qualify ==
+wallet       size  copies | settings + on both halves | median setting: a copy, w/o 2%, P | creators, at launch | steadiest setting (its weaker half)
+5KcKcGczDGsF 0.5+    33 |    53% |  +12.0%  +1.31  95.4% |   32    0% | tp 2x, stall 180, sp off, 300 s, its sale not (+25.5%)
+AMDEmVocLtN5 0.5+    51 |    45% |   +4.2%  +0.08  68.0% |   44   96% | tp 3x, stall off, sp off, 600 s, its sale not (+7.6%)
+54YNHFVt3Vwx 1.0+    42 |    12% |   +5.7%  +0.74  85.4% |   39  100% | tp 2x, stall off, sp off, 300 s, its sale not (+3.7%)
+4GCtzCQb6XDW 1.3+    39 |    41% |   +1.2%  -0.68  53.0% |   34    0% | tp 6x, stall 180, sp off, 600 s, its sale not (+15.6%)
+54YNHFVt3Vwx 0.5+   146 |    33% |   +0.1%  -2.45  49.5% |  125   98% | tp 2x, stall off, sp off, 300 s, its sale not (+7.8%)
+FiFawHqxeTVB 0.5+    47 |    25% |   -2.0%  -1.94  37.8% |   35  100% | tp 2x, stall off, sp off, 600 s, its sale not (+9.7%)
+6Weygqd9fBi3 1.0+    35 |    23% |   -0.1%  -1.24  46.2% |   28    0% | tp 3x, stall off, sp 5/60, 300 s, its sale followed (+5.4%)
+4GCtzCQb6XDW 1.0+    54 |    19% |   -2.3%  -1.18  35.2% |   47    0% | tp 6x, stall 180, sp off, 600 s, its sale not (+6.1%)
+FiFawHqxeTVB 1.0+    46 |    16% |   -3.7%  -1.84  25.4% |   34  100% | tp 2x, stall off, sp off, 600 s, its sale not (+7.7%)
+GPV5BRKC5ram 0.5+   127 |    14% |   -0.6%  -5.49  43.4% |  104    9% | tp 6x, stall 180, sp 5/60, 600 s, its sale not (+4.3%)
