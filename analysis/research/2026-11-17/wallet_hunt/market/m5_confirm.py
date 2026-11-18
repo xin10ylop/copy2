@@ -6,7 +6,7 @@
 #   RPC_URL=... [NS=150] python3 -I m5_confirm.py SP WALLET ... > ../out/m5_confirm.txt   (NS: a random sample of the buys, seed 7)
 import sys, os, json, glob, numpy as np, datetime as d
 from concurrent.futures import ThreadPoolExecutor
-SP = sys.argv[1]; os.environ["HOLD"] = "900"; A, B = 1794704822, 1794877622
+SP = sys.argv[1]; WALLETS = sys.argv[2:]; os.environ["HOLD"] = "900"; A, B = 1794704822, 1794877622
 # NOT_W4=1 (Nov 18, the same-slot wallets): only coins wallet 4 never bought (its history and its research paths), every
 # date (these wallets were picked on wallet 4's coins, so their other coins are all out of sample): the extra trades.
 NOT_W4 = os.environ.get("NOT_W4") == "1"; W4C = set()
@@ -25,7 +25,7 @@ def S(v):
     if not n: return "  0"
     s = np.sort(v); k = max(1, round(0.02 * n)); bs = np.random.default_rng(7).choice(v, size=(10000, n)).mean(axis=1)
     return f"{n:3d} {v.sum():+6.2f} SOL ({100 * v.mean() / 0.5:+6.1f}% a copy) w/o 2% {s[:-k].sum() if n > 1 else 0:+6.2f} | won {100 * np.mean(v > 0):3.0f}% | P(mean>0) {100 * np.mean(bs > 0):5.1f}%"
-for w in sys.argv[2:]:
+for w in WALLETS:   # saved before w5_copy's exec rewrites sys.argv (the Nov 18 bug: it scored 6ua7w2Gv)
     h = json.load(open(glob.glob(f"{SP}/winners/hist/{w}*.json")[0])); first = {}
     for e in sorted(h["trades"], key=lambda e: e["t"]):
         if e["buy"]: first.setdefault(e["m"], e)
