@@ -13,4 +13,12 @@ for cost in (0.0345, 0.01):
     v = [r["ex"]["sp5/60s"] - (cost - 0.0026) for r in K]; w = [r["ex"]["sp5/60s"] - (cost - 0.0026) for r in R]
     print(f"   cost {cost}: the rule {S(v)} | its halves {S(v[:h])} / {S(v[h:])} | every copy, same exit {S(w)}")
 v = [r["ex"]["sp5/60s"] - 0.0319 for r in K]; s = sorted(v)
+# the fairer measures (the owner, Nov 18: a fixed best 5 is a different share for each wallet): the best 2% out, a bootstrap
+def fair(v, name):
+    v = np.array(v); n = len(v)
+    if n == 0: return print(f"   {name}: no copies")
+    k = max(1, int(round(0.02 * n))); s = np.sort(v); bs = np.random.default_rng(7).choice(v, size=(10000, n)).mean(axis=1)
+    print(f"   {name}: {n} copies, without the best 2% ({k}) {s[:-k].sum():+.2f} SOL; P(mean > 0) {np.mean(bs > 0):.1%}; 5th pct {100 * np.percentile(bs, 5) / 0.5:+.1f}% a copy")
 print(f"   PASS: {len(K) >= 40 and sum(v) > 0 and sum(s[:-5]) > 0}  (40+ kept, positive at 0.0345, positive without the best 5)")
+
+fair([r["ex"]["sp5/60s"] - 0.0319 for r in K], "FAIRER MEASURES, the rule's copies at 0.0345")

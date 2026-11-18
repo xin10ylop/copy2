@@ -16,4 +16,12 @@ A = [r for r in X if r["t"] >= 1794877620]   # after the screen (Nov 17 01:07 UT
 for cost in (0.0345, 0.01):
     print(f"   AFTER THE SCREEN only, cost {cost}: {S([r['ex']['sp5/60s'] - (cost - 0.0026) for r in A])}")
 a = sorted(r["ex"]["sp5/60s"] - 0.0319 for r in A)
+# the fairer measures (the owner, Nov 18: a fixed best 5 is a different share for each wallet): the best 2% out, a bootstrap
+def fair(v, name):
+    v = np.array(v); n = len(v)
+    if n == 0: return print(f"   {name}: no copies")
+    k = max(1, int(round(0.02 * n))); s = np.sort(v); bs = np.random.default_rng(7).choice(v, size=(10000, n)).mean(axis=1)
+    print(f"   {name}: {n} copies, without the best 2% ({k}) {s[:-k].sum():+.2f} SOL; P(mean > 0) {np.mean(bs > 0):.1%}; 5th pct {100 * np.percentile(bs, 5) / 0.5:+.1f}% a copy")
 print(f"PASS (the amendment: after-screen buys, 20+, positive at 0.0345, positive without the best 5): {len(A) >= 20 and sum(a) > 0 and sum(a[:-5]) > 0}")
+
+fair([r["ex"]["sp5/60s"] - 0.0319 for r in A], "FAIRER MEASURES, after-screen copies at 0.0345")
