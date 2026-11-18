@@ -1,0 +1,17 @@
+94JRjXuRjdo62mcyaxqmmYAFe9E73UZw5sRyJvQzzG2e: 39 copies outside the screen (other-token coins, 0.5+ SOL), 11-01 to 11-18; float-quoted 20
+
+4day_like: 0.5,1.5,4,600,5/60,180,never
+   all     39 copies | -2.96 SOL (-15.2% a copy) | half 1 -2.29 half 2 -0.66 | w/o 2% -4.55 | won 18% | P(mean>0) 8.8%
+   floats  20 copies | +0.33 SOL (+3.3% a copy) | half 1 -0.47 half 2 +0.80 | w/o 2% -1.27 | won 30% | P(mean>0) 53.2%
+   others  19 copies | -3.28 SOL (-34.6% a copy) | half 1 -1.82 half 2 -1.46 | w/o 2% -3.39 | won 5% | P(mean>0) 0.0%
+
+this period's own best exit (0.5+, no price limit; hindsight, for scale only): tp 8, 600 s, sp (3, 60), stall 0, its early: -0.93 SOL; exits positive in total: 0 of 9720
+
+THE FULL GRID FROM SCRATCH (13 sizes x 4 price limits x 9,720 exits = 505,440 settings), on these days:
+   all coins   : settings making money 66, on both halves 0; the best (hindsight): its buy 1.5+, limit 1.25, tp 8, 600 s, sp (3, 60), stall off, its early: 28 copies +0.38 SOL (half 1 -0.98, half 2 +1.36)
+   floats only : settings making money 80,772, on both halves 5,740; the best (hindsight): its buy 0.5+, limit 1.25, tp 8, 600 s, sp off, stall off, its early: 20 copies +2.43 SOL (half 1 -0.24, half 2 +2.67)
+Traceback (most recent call last):
+  File "/home/user/copy2/analysis/research/2026-11-17/wallet_hunt/market/e13_outside.py", line 64, in <module>
+    sz, pm, j, n, a1, a2 = best[1]
+    ^^^^^^^^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object

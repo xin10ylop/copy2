@@ -221,3 +221,29 @@ picked with hindsight (the best −5.71). Its 4 days (+23-28% a copy on 33) were
 From scratch on these days (the owner: engineer the exit from scratch; the full grid, 505,440 settings): floats only,
 **0 settings make money on both halves**; all coins 4,700 (0.9%, all on thin size cuts of ~20 copies: the best, 1.4+
 SOL, 22 copies, +1.90 SOL, half 1 −0.82); at 0.5+ none of the 9,720 exits makes money. Rejected stands.
+
+## Wallet 4's look-alikes by their own trading (Nov 18 afternoon; `p1_profile.py`, `e13_outside.py`, `../out/p1_*`, `../out/p2_*`)
+
+The owner: find wallets that make SOL like wallet 4, buy float-quoted coins and hold. `p1_profile.py` reads every
+wallet's OWN trading on the 4 days of paths (7,263 other-token coins, 24,964 wallets; no copy model, no fetch) and
+keeps those shaped like wallet 4, the filters calibrated on wallet 4 itself (it passes them): own result positive and
+without its best 2 coins, 3+ days active, 2+ positive, a median hold of 60/90-1,200 s (wallet 4 180 s), under 10% sold
+within 10 s (wallet 4 3%), no fixed sale delay (TAB's 210 s), the create slot allowed (wallet 4 53%), half or more on
+float-quoted coins. Wallet 4 is alone in size (+47.45 SOL without its best 2; the next +12.90); the big earners are all
+1-2 s snipers. 17 look-alikes tested on their other days (the screen's 4 days left out), the full grid from scratch:
+
+| wallet | other-day copies | floats only: settings positive on both halves | verdict |
+|---|---|---|---|
+| CuDe51GP | 223 (137 float) | 5,425 of ~500,000 (1%); best with hindsight +3.61 on 137 | fails |
+| FZU56d9i | 975 (558) | 0 | fails |
+| 4xPvbD8z, 5Y5nsbGf, 8pdyvAy2, DsGJkPzF, EgYa22bN, 75gEU53q | 38-117 | 0 | fail |
+| 94JRjXuR | 39 (20) | 5,740 (1%) | fails |
+| 6GGytYh7 | 29 (19) | too few | not judged |
+| 5hAgYC8T, AfUULgXg, 965Nk2u3, D4HZgnoP | 4-13 | too few (new wallets) | not judged |
+| 4vw54BmA, 6DQAGJT7 | - | their signature lists hold no pump trades of their own | not judged |
+| **9H692HgE** (with ApEGuisw, GkqnbJYm: one operator, the same coin in the same slot on 196 of 197 buys, all three born Nov 12 07:09 UTC) | 35 (26) | **185,259 (37%)** | **promising, too young** |
+
+9H692HgE on its 2.7 other days (Nov 12-14, Nov 18), float-paid: held 600 s with no tp, sell pressure or stall, 26
+copies +6.80 SOL (+52% a copy), w/o 2% +3.74, P 91.5%; with wallet 4's exit +0.25. Every part has a plateau
+(tp 8x-none, 600 s, sell pressure off). Too few days for the rule (the days outside the screen must pass on their own
+without their best day): re-score from the chain in a few days.

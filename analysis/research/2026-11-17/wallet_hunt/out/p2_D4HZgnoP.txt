@@ -1,0 +1,15 @@
+D4HZgnoPHNfYyLEUz4UGkwkW7bfTo7C4qNf9TmKAwjUa: 8 copies outside the screen (other-token coins, 0.5+ SOL), 11-11 to 11-18; float-quoted 6
+
+4day_like: 0.5,1.5,4,600,5/60,180,never
+   all     8 copies | +0.03 SOL (+0.8% a copy) | half 1 +0.26 half 2 -0.23 | w/o 2% -0.16 | won 50% | P(mean>0) 54.1%
+   floats  6 copies | -0.29 SOL (-9.7% a copy) | half 1 -0.06 half 2 -0.23 | w/o 2% -0.39 | won 33% | P(mean>0) 13.6%
+   others  2 copies | +0.32 SOL (+32.3% a copy) | half 1 +0.32 half 2 +0.00 | w/o 2% +0.13 | won 100% | P(mean>0) 100.0%
+
+this period's own best exit (0.5+, no price limit; hindsight, for scale only): tp 2, 60 s, sp None, stall 0, its always: +1.16 SOL; exits positive in total: 7616 of 9720
+
+THE FULL GRID FROM SCRATCH (13 sizes x 4 price limits x 9,720 exits = 505,440 settings), on these days:
+Traceback (most recent call last):
+  File "/home/user/copy2/analysis/research/2026-11-17/wallet_hunt/market/e13_outside.py", line 64, in <module>
+    sz, pm, j, n, a1, a2 = best[1]
+    ^^^^^^^^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object

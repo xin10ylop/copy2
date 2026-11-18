@@ -1,0 +1,33 @@
+/home/user/copy2/analysis/research/2026-11-17/wallet_hunt/market/e13_outside.py:86: RuntimeWarning: All-NaN slice encountered
+  cells.append(f"{vl} {np.nanmax(g):+.2f}|{np.nanmax(w):+.2f}" if np.isfinite(np.nanmax(g)) else f"{vl} -")
+EgYa22bNrcQGRJny4rGJz8eJe5CSFKtXEqB9qPQQGN9p: 118 copies outside the screen (other-token coins, 0.5+ SOL), 11-01 to 11-18; float-quoted 63
+
+4day_like: 0.5,1.5,4,600,5/60,180,never
+   all     118 copies | -10.66 SOL (-18.1% a copy) | half 1 -4.52 half 2 -6.14 | w/o 2% -12.79 | won 16% | P(mean>0) 0.0%
+   floats  63 copies | -7.36 SOL (-23.4% a copy) | half 1 -3.93 half 2 -3.43 | w/o 2% -7.63 | won 13% | P(mean>0) 0.0%
+   others  55 copies | -3.30 SOL (-12.0% a copy) | half 1 -0.59 half 2 -2.71 | w/o 2% -4.58 | won 20% | P(mean>0) 5.7%
+
+this period's own best exit (0.5+, no price limit; hindsight, for scale only): tp 2.5, 300 s, sp (3, 60), stall 60, its early: -2.22 SOL; exits positive in total: 0 of 9720
+
+THE FULL GRID FROM SCRATCH (13 sizes x 4 price limits x 9,720 exits = 505,440 settings), on these days:
+   all coins   : settings making money 103,808, on both halves 51,917; the best (hindsight): its buy 0.9+, limit 1.1, tp 5, 300 s, sp off, stall 180, its early: 117 copies +2.56 SOL (half 1 +1.81, half 2 +0.76)
+   floats only : settings making money 56,084, on both halves 0; the best (hindsight): its buy 1.4+, limit 1.1, tp 2.5, 120 s, sp off, stall 60, its never: 44 copies +0.92 SOL (half 1 +0.94, half 2 -0.01)
+   others only : settings making money 85,969, on both halves 48,392; the best (hindsight): its buy 0.5+, limit 1.1, tp 5, 300 s, sp off, stall off, its early: 55 copies +2.32 SOL (half 1 +1.55, half 2 +0.77)
+
+EACH PART, EVERY VALUE (all coins): the best setting with that value (the rest picked with hindsight): SOL all | its weaker half
+   its buy size : 0.5+ +2.56|+0.79   0.6+ +2.56|+0.79   0.7+ +2.56|+0.79   0.8+ +2.56|+0.79   0.9+ +2.56|+0.79   1.0+ +1.23|+0.55   1.1+ +1.23|+0.55   1.2+ +1.28|+0.59   1.3+ +1.28|+0.59   1.4+ +1.44|+0.65   1.5+ +0.70|+0.22   1.75+ +1.84|+0.57   2.0+ -
+   price limit  : 1.1x +2.56|+0.79   1.25x +0.88|-0.02   1.5x +1.83|+0.57   none +1.84|+0.57
+   take profit  : 1.5x +0.81|+0.15   2x +1.35|+0.37   2.5x +1.73|+0.59   3x +2.06|+0.79   3.5x +2.11|+0.76   4x +2.34|+0.76   5x +2.56|+0.76   6x +2.34|+0.76   8x +2.32|+0.76   none +2.32|+0.76
+   time         : 60s +0.74|-0.06   120s +2.13|+0.23   180s +1.98|+0.50   300s +2.56|+0.79   450s +2.31|+0.79   600s +2.34|+0.79
+   sell pressure: off +2.56|+0.79   3/30s +1.49|+0.42   3/60s +2.34|+0.79   5/30s +1.65|+0.21   5/60s +2.32|+0.79   8/30s +2.20|+0.79   8/60s +2.30|+0.79   10/30s +2.25|+0.79   10/60s +2.28|+0.79
+   stall        : off +2.34|+0.79   60s +2.34|+0.79   90s +2.22|+0.79   120s +2.35|+0.79   180s +2.56|+0.79   240s +2.32|+0.79
+   its sale     : never +2.27|+0.79   early +2.56|+0.79   always +1.84|+0.76
+
+EACH PART, EVERY VALUE (floats only): the best setting with that value (the rest picked with hindsight): SOL all | its weaker half
+   its buy size : 0.5+ +0.79|-0.01   0.6+ +0.79|-0.01   0.7+ +0.79|-0.01   0.8+ +0.79|-0.01   0.9+ +0.79|-0.01   1.0+ +0.79|-0.01   1.1+ +0.79|-0.01   1.2+ +0.81|-0.01   1.3+ +0.81|-0.01   1.4+ +0.92|-0.01   1.5+ +0.20|-0.01   1.75+ -   2.0+ -
+   price limit  : 1.1x +0.92|-0.01   1.25x -0.08|-0.10   1.5x -0.33|-0.24   none -0.20|-0.19
+   take profit  : 1.5x +0.51|-0.01   2x +0.71|-0.01   2.5x +0.92|-0.01   3x +0.77|-0.01   3.5x +0.77|-0.01   4x +0.77|-0.01   5x +0.77|-0.01   6x +0.77|-0.01   8x +0.77|-0.01   none +0.77|-0.01
+   time         : 60s +0.72|-0.01   120s +0.92|-0.01   180s +0.69|-0.01   300s +0.74|-0.01   450s +0.77|-0.01   600s +0.77|-0.01
+   sell pressure: off +0.92|-0.01   3/30s +0.72|-0.01   3/60s +0.81|-0.01   5/30s +0.85|-0.01   5/60s +0.81|-0.01   8/30s +0.82|-0.01   8/60s +0.81|-0.01   10/30s +0.81|-0.01   10/60s +0.81|-0.01
+   stall        : off +0.91|-0.01   60s +0.92|-0.01   90s +0.92|-0.01   120s +0.91|-0.01   180s +0.91|-0.01   240s +0.91|-0.01
+   its sale     : never +0.92|-0.01   early +0.85|-0.01   always +0.09|-0.01

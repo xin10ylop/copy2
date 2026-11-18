@@ -61,6 +61,7 @@ for lab, cm in (("all coins", np.ones(len(rows), bool)), ("floats only", CL == "
             npos += int((s > 0).sum()); nboth += int(((h1 > 0) & (h2 > 0)).sum())
             j = np.unravel_index(int(np.argmax(s)), s.shape)
             if s[j] > best[0]: best = (s[j], (sz, pm, j, int(f.sum()), h1[j], h2[j]))
+    if best[1] is None: print(f"   {lab:12s}: under 20 copies"); continue
     sz, pm, j, n, a1, a2 = best[1]
     print(f"   {lab:12s}: settings making money {npos:,}, on both halves {nboth:,}; the best (hindsight): its buy {sz}+, limit {'none' if pm > 1e8 else pm}, "
           f"tp {'none' if TP[j[0]] > 1e8 else TP[j[0]]}, {HOLD[j[1]]} s, sp {SPS[j[2]] or 'off'}, stall {STALL[j[3]] or 'off'}, its {ITS[j[4]]}: "
@@ -73,7 +74,7 @@ for lab, cm in (("all coins", np.ones(len(rows), bool)), ("floats only", CL == "
     for a, sz in enumerate(SIZE):
         for b_, pm in enumerate(PREM):
             f = cm & (SOLA >= sz)
-            if f.sum() < 20: continue
+            if f.sum() < 20 or (A & f).sum() == 0 or (~A & f).sum() == 0: continue
             v = np.where((PM3[f] <= pm)[:, :, None, None, None, None, None], VL3[f], -0.0004).mean(axis=1)
             G[a, b_] = v.sum(axis=0); W_[a, b_] = np.minimum(v[A[f]].sum(axis=0), v[~A[f]].sum(axis=0))
     print(f"\nEACH PART, EVERY VALUE ({lab}): the best setting with that value (the rest picked with hindsight): SOL all | its weaker half")

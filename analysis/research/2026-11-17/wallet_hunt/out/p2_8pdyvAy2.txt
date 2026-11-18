@@ -1,0 +1,33 @@
+/home/user/copy2/analysis/research/2026-11-17/wallet_hunt/market/e13_outside.py:86: RuntimeWarning: All-NaN slice encountered
+  cells.append(f"{vl} {np.nanmax(g):+.2f}|{np.nanmax(w):+.2f}" if np.isfinite(np.nanmax(g)) else f"{vl} -")
+8pdyvAy2rj7vyNpDNVfs4MoBp6GHFcwLZaj5EWB98RPo: 53 copies outside the screen (other-token coins, 0.5+ SOL), 11-01 to 11-18; float-quoted 31
+
+4day_like: 0.5,1.5,4,600,5/60,180,never
+   all     53 copies | -1.31 SOL (-5.0% a copy) | half 1 +0.89 half 2 -2.21 | w/o 2% -2.87 | won 26% | P(mean>0) 25.9%
+   floats  31 copies | -1.99 SOL (-12.8% a copy) | half 1 -0.92 half 2 -1.07 | w/o 2% -2.69 | won 26% | P(mean>0) 5.2%
+   others  22 copies | +0.67 SOL (+6.1% a copy) | half 1 +1.81 half 2 -1.14 | w/o 2% -0.88 | won 27% | P(mean>0) 60.1%
+
+this period's own best exit (0.5+, no price limit; hindsight, for scale only): tp 5, 450 s, sp None, stall 240, its early: +1.28 SOL; exits positive in total: 127 of 9720
+
+THE FULL GRID FROM SCRATCH (13 sizes x 4 price limits x 9,720 exits = 505,440 settings), on these days:
+   all coins   : settings making money 12,290, on both halves 3,158; the best (hindsight): its buy 1.2+, limit 1.1, tp 5, 600 s, sp (8, 60), stall off, its never: 26 copies +2.70 SOL (half 1 +2.48, half 2 +0.22)
+   floats only : settings making money 252, on both halves 0; the best (hindsight): its buy 1.1+, limit 1.1, tp 2.5, 600 s, sp (10, 30), stall 240, its never: 23 copies +0.39 SOL (half 1 -0.16, half 2 +0.55)
+   others only : settings making money 10,664, on both halves 676; the best (hindsight): its buy 0.5+, limit 1.25, tp 5, 600 s, sp off, stall off, its never: 22 copies +2.85 SOL (half 1 +2.38, half 2 +0.47)
+
+EACH PART, EVERY VALUE (all coins): the best setting with that value (the rest picked with hindsight): SOL all | its weaker half
+   its buy size : 0.5+ +1.35|+0.50   0.6+ +1.18|+0.50   0.7+ +1.13|+0.50   0.8+ +1.66|+0.73   0.9+ +1.78|+0.73   1.0+ +1.69|+0.64   1.1+ +1.99|+0.65   1.2+ +2.70|+0.97   1.3+ -   1.4+ -   1.5+ -   1.75+ -   2.0+ -
+   price limit  : 1.1x +2.70|+0.97   1.25x +2.62|+0.89   1.5x +2.62|+0.89   none +2.62|+0.89
+   take profit  : 1.5x -0.37|-0.34   2x +1.12|+0.48   2.5x +2.06|+0.97   3x +2.22|+0.65   3.5x +2.14|+0.56   4x +2.40|+0.59   5x +2.70|+0.73   6x +2.70|+0.73   8x +2.70|+0.73   none +2.70|+0.73
+   time         : 60s -0.38|-0.25   120s -0.40|-0.29   180s +0.21|-0.41   300s +1.63|+0.50   450s +2.47|+0.83   600s +2.70|+0.97
+   sell pressure: off +2.12|+0.73   3/30s -0.48|-0.32   3/60s +1.49|-0.25   5/30s -0.29|-0.18   5/60s +2.32|+0.73   8/30s +0.94|+0.43   8/60s +2.70|+0.97   10/30s +1.21|+0.39   10/60s +2.58|+0.92
+   stall        : off +2.70|+0.97   60s -0.00|-0.07   90s +1.23|+0.16   120s +0.81|+0.05   180s +1.95|+0.19   240s +2.63|+0.87
+   its sale     : never +2.70|+0.97   early +2.37|+0.73   always +1.63|+0.76
+
+EACH PART, EVERY VALUE (floats only): the best setting with that value (the rest picked with hindsight): SOL all | its weaker half
+   its buy size : 0.5+ -0.30|-0.45   0.6+ -0.30|-0.45   0.7+ -0.20|-0.40   0.8+ +0.00|-0.30   0.9+ +0.00|-0.30   1.0+ +0.15|-0.13   1.1+ +0.39|-0.00   1.2+ -   1.3+ -   1.4+ -   1.5+ -   1.75+ -   2.0+ -
+   price limit  : 1.1x +0.39|-0.00   1.25x +0.28|-0.06   1.5x +0.22|-0.06   none +0.22|-0.06
+   take profit  : 1.5x -0.71|-0.41   2x -0.07|-0.15   2.5x +0.39|-0.04   3x +0.29|-0.00   3.5x +0.11|-0.09   4x +0.11|-0.09   5x +0.11|-0.09   6x +0.11|-0.09   8x +0.11|-0.09   none +0.11|-0.09
+   time         : 60s -0.37|-0.37   120s -0.72|-0.60   180s -0.72|-0.60   300s +0.12|-0.04   450s +0.38|-0.09   600s +0.39|-0.00
+   sell pressure: off +0.31|-0.04   3/30s -0.49|-0.46   3/60s -0.37|-0.39   5/30s -0.47|-0.33   5/60s +0.03|-0.16   8/30s +0.18|-0.00   8/60s +0.30|-0.14   10/30s +0.39|-0.09   10/60s +0.26|-0.18
+   stall        : off +0.36|-0.00   60s -0.37|-0.37   90s -0.12|-0.13   120s +0.12|-0.13   180s -0.12|-0.20   240s +0.39|-0.08
+   its sale     : never +0.39|-0.00   early +0.25|-0.17   always +0.31|-0.17
