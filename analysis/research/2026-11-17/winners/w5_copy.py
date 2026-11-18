@@ -32,6 +32,27 @@ def call(m, p):
         except Exception: time.sleep(1.5 * (i + 1))
     return None
 POOL = ThreadPoolExecutor(64)
+# Nov 18: batches of 100 getTransaction on a kept-alive connection (one request per transaction through the proxy was
+# ~150x slower). BATCH=0 for the old one-by-one fetch.
+import threading, requests as _rq
+_tl = threading.local()
+def _batch(sigs):
+    if not hasattr(_tl, "s"): _tl.s = _rq.Session()
+    out = {}
+    for i in range(6):
+        need = [x for x in sigs if x not in out]
+        if not need: break
+        try:
+            j = _tl.s.post(URL, json=[{"jsonrpc": "2.0", "id": k, "method": "getTransaction", "params": [x, M.TXO]} for k, x in enumerate(need)], timeout=60).json()
+            for x in j:
+                if isinstance(x, dict) and x.get("result"): out[need[x["id"]]] = x["result"]
+        except Exception: pass
+        if len(out) < len(sigs): time.sleep(1.0 * (i + 1))
+    return [out.get(x) for x in sigs]
+def _txs(sigs):
+    if os.environ.get("BATCH") == "0": return list(POOL.map(lambda s: call("getTransaction", [s["signature"], M.TXO]), sigs))
+    ch = [[x["signature"] for x in sigs[i:i + 100]] for i in range(0, len(sigs), 100)]
+    return [t for part in POOL.map(_batch, ch) for t in part]
 def curve(m): return str(Pubkey.find_program_address([b"bonding-curve", bytes(Pubkey.from_string(m))], PUMP)[0])
 def cpath(m, slot, t):
     f = f"{CP}/{slot}_{m}.json.gz"
@@ -48,7 +69,7 @@ def cpath(m, slot, t):
     if os.environ.get("SAMPLE"):   # every trade to FULL s after t, then 1 in SAMPLE (prices only: no sell-pressure counts)
         SM, FU = int(os.environ["SAMPLE"]), int(os.environ.get("FULL", 60))
         sigs = [s for i, s in enumerate(sigs) if (s.get("blockTime") or 0) <= t + FU or i % SM == 0 or i == len(sigs) - 1]
-    txs = list(POOL.map(lambda s: call("getTransaction", [s["signature"], M.TXO]), sigs))
+    txs = _txs(sigs)
     tr = [e for tx in txs if tx for e in M.trades(tx, m)]
     with gzip.open(f + ".tmp", "wt") as fh: json.dump(tr, fh)
     os.replace(f + ".tmp", f); return tr
