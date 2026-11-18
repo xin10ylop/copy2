@@ -1,0 +1,6 @@
+B4BMZH3T: 42 copies, 0 not seen by the rule; cost 0.0345:   0  +0.00 (  +0.0%) w/o5  +0.00 | halves   0  +0.00 (  +0.0%) w/o5  +0.00 /   0  +0.00 (  +0.0%) w/o5  +0.00
+B4BMZH3T: 42 copies, 0 not seen by the rule; cost 0.01:   0  +0.00 (  +0.0%) w/o5  +0.00 | halves   0  +0.00 (  +0.0%) w/o5  +0.00 /   0  +0.00 (  +0.0%) w/o5  +0.00
+   (all unseen copies, in-sample to the screen for those of Nov 15-17: 40+, positive, positive without the best 5: False)
+   AFTER THE SCREEN only, cost 0.0345:   0  +0.00 (  +0.0%) w/o5  +0.00
+   AFTER THE SCREEN only, cost 0.01:   0  +0.00 (  +0.0%) w/o5  +0.00
+PASS (the amendment: after-screen buys, 20+, positive at 0.0345, positive without the best 5): False

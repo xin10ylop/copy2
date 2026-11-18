@@ -17,3 +17,5 @@ those days graduated, so their copies of those days are biased upward. The clean
 01:07 UTC** (unseen by the screen). `w14_score.py` reports both; **the pass is judged on the after-screen buys only**,
 with the same bar (positive at 0.0345, positive without the best 5; 20+ copies, the after period being one day). The
 same applies to every launch picker (B4BMZH3T has no buy after the screen yet: its result so far is in-sample only).
+
+B4BMZH3T (Nov 18 ~01:25 UTC): its last pump trade is Nov 16 08:13 UTC (its later transactions are not pump trades), so it has no buy after the screen: its 42 copies (in-sample, +21% then +33% under its own sale at 2x) cannot be scored fairly. Parked, with 8QzUkGJi (quiet since Nov 16 21:41).
