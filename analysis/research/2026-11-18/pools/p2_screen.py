@@ -6,7 +6,7 @@
 # Nov 15 00:00 UTC, judged on the coins after; the fair measures (best 2% out, bootstrap).
 #   python3 -I p2_screen.py SP [D] > out/p2_screen.txt
 import sys, os, glob, gzip, json, collections, bisect, numpy as np
-SP = sys.argv[1]; D = float(sys.argv[2]) if len(sys.argv) > 2 else 3; T15 = 1795219200; FEE = 0.003; Q = 0.5e9
+SP = sys.argv[1]; D = float(sys.argv[2]) if len(sys.argv) > 2 else 3; T15 = 1794700800; FEE = 0.003; Q = 0.5e9
 def copy(tr, ts, i_buy, t_sell):
     j = bisect.bisect_right(ts, tr[i_buy]["t"] + D) - 1
     if j < i_buy: j = i_buy
