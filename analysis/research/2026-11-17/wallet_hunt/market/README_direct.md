@@ -123,3 +123,10 @@ float the copy pays with: wSOL-routed (its coin's quote reached through a pool f
 kept float-quote coins only) 467 copies −9.4%; float-paid 230 copies about +2% (WBTC +4.7% on 91, PUMP +3.2% on 56,
 TTWO +2.2% on 49, SPCX −9.5% on 13, HYPE −23.2% on 17, DJT +75.6% on 4). The +10.8% of Nov 14-18 is not its usual
 result: on float-quote coins it was about break-even before, and the live unit also takes wSOL-routed coins, which lost.
+
+**wSOL-paid copies, the check by period (Nov 18):** TAB16RxX, deployed exit (tp 3.5x): Oct 31 - Nov 5 55 copies −9.0%
+(P 5.6%), Nov 6 - 13 412 copies −9.5% (P 0.0%), Nov 15-17 its coins quoted in a non-float token 21 copies −11.1% (P 1.3%):
+negative in every period, hence `float_only = true` on `rugsnipe-long-tab` (06:11 UTC). Wallet 4 is different: its
+real trades since Nov 12 (the box's journal, Nov 18): wSOL-paid 35 trades +2.1636 SOL, float-paid 54 trades +2.4500;
+the float study had wSOL-paid +4.34 SOL on Oct 21-29 (149) and −1.71 on Oct 29 - Nov 13 (135). Wallet 4 keeps paying
+from wSOL.
