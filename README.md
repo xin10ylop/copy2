@@ -189,6 +189,15 @@ call, as `analysis/research/2026-11-15/all_tokens/` recommended once 0.5 SOL was
 at 0.5, block by block −0.20 / +2.86 / +0.39, simulated on chain Nov 15): 12,036,623 units for 0.6 SOL (slot
 469883188). The exit is not touched. The restart: seven floats, feed connected; SOL 1.8689, WBTC 0.992, PUMP 0.612,
 SPCX 0.549, TTWO 0.580, DJT 0.596, HYPE 0.603, AAPLx 0.598 SOL. Day: 12 closed, 5 won, +0.8062 SOL.
+**Nov 18 ~06:45 UTC (08:45 Beirut): both units re-engineered, every combination by payment** (the owner's rule: floats
+win and wSOL breaks even or loses, so wSOL goes; `analysis/research/2026-11-17/wallet_hunt/market/README_direct.md`,
+"e8 v2" and "The double check"). Wallet 4's unit: `float_only = true`, `min_sol 1.2`, `max_premium 0.5` (backtest Oct 21 -
+Nov 18: +53.17 SOL against +45.78 running, P(better) 91.4%, better at every landing; its wSOL-paid copies −0.81 SOL on
+302); the exit not touched. TAB's unit: `max_premium 0.5`, tp 6 then **4.0** (the owner: 6x fires once in 2 days; 4x
+about once a day, +0.94 SOL a day against +1.05, worst day −1.96; `out/e12c_TAB16RxX_tp_days.txt`); sell pressure 10/60
+and stall 240 tested and not taken (their gain rested on a few copies); its sale not followed (following it: −6.00 SOL,
+worse every week). TAB live so far: 19 real, −0.4908 SOL.
+
 **Nov 18 03:52 UTC (05:52 Beirut): TAB16RxX copied live again, on wallet 4's wallet** (the owner's call: no second
 wallet). The 4-day direct screen of every market wallet (Nov 14 01:07 - Nov 18 01:07 UTC, float-quote coins;
 `analysis/research/2026-11-17/wallet_hunt/market/README_direct.md`) passed it alone on a real sample: 140 copies,
