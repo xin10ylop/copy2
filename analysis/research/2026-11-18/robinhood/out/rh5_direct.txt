@@ -1,0 +1,47 @@
+26845 ETH-quoted curves, 24134 wallets with a copyable first buy, 534 with 20+
+halves at 11-04 10:31 UTC (older = score, newer = pick); our 0.02 ETH a copy
+wallets with 10+ copies in each half: 230; (wallet, exit) pairs making money on the newer half: 376; also on the older half without its best 2%: 141
+
+PASSED (picked on the newer half, scored on the older), by the older half without its best 2%:
+   0xc54d3914f91f984d61b63d491f38934c4e706b79  held 600 s, no tp        newer   25 copies +0.1221 ETH (+24.4%) | older   66 copies +0.3727 (+28.2%), w/o 2% +0.3254
+   0xc54d3914f91f984d61b63d491f38934c4e706b79  wallet 4's live exit     newer   25 copies +0.1250 ETH (+25.0%) | older   66 copies +0.3606 (+27.3%), w/o 2% +0.3116
+   0xc54d3914f91f984d61b63d491f38934c4e706b79  its sale followed, tp 4  newer   25 copies +0.1284 ETH (+25.7%) | older   66 copies +0.3530 (+26.7%), w/o 2% +0.3041
+   0xc54d3914f91f984d61b63d491f38934c4e706b79  tp 2 in 120 s            newer   25 copies +0.1194 ETH (+23.9%) | older   66 copies +0.2603 (+19.7%), w/o 2% +0.2417
+   0x9a3955a122ab8a649a8511df2dce169471fd0ec1  held 600 s, no tp        newer  249 copies +1.1563 ETH (+23.2%) | older  206 copies +0.4195 (+10.2%), w/o 2% +0.2353
+   0x5bc235acecff3dde394f4bfc696f7c35efd502f0  its sale followed, tp 4  newer  307 copies +0.1772 ETH ( +2.9%) | older  207 copies +0.4022 ( +9.7%), w/o 2% +0.2182
+   0x5bc235acecff3dde394f4bfc696f7c35efd502f0  wallet 4's live exit     newer  307 copies +0.2529 ETH ( +4.1%) | older  207 copies +0.3920 ( +9.5%), w/o 2% +0.2079
+   0x5bc235acecff3dde394f4bfc696f7c35efd502f0  held 600 s, no tp        newer  307 copies +0.7848 ETH (+12.8%) | older  207 copies +0.4489 (+10.8%), w/o 2% +0.1507
+   0x9710a6531a5c4c6c3e14f4c1e9fe6ce12da09ff2  wallet 4's live exit     newer   24 copies +0.0030 ETH ( +0.6%) | older   18 copies +0.2039 (+56.6%), w/o 2% +0.1497
+   0x9710a6531a5c4c6c3e14f4c1e9fe6ce12da09ff2  its sale followed, tp 4  newer   24 copies +0.0030 ETH ( +0.6%) | older   18 copies +0.2039 (+56.6%), w/o 2% +0.1497
+   0x5e990044b25d3d6c0e656735862db44fc3b534ae  tp 2 in 120 s            newer   25 copies +0.0437 ETH ( +8.7%) | older   25 copies +0.1662 (+33.2%), w/o 2% +0.1448
+   0x1ea93f598555edbd7b084ea9af284afedb360dc7  tp 2 in 120 s            newer   23 copies +0.0394 ETH ( +8.6%) | older   16 copies +0.1641 (+51.3%), w/o 2% +0.1434
+   0x9e0771d4a5fe0c5dbd03e6175807b8290c2e40b0  wallet 4's live exit     newer   89 copies +0.4739 ETH (+26.6%) | older   30 copies +0.1601 (+26.7%), w/o 2% +0.1188
+   0x9e0771d4a5fe0c5dbd03e6175807b8290c2e40b0  its sale followed, tp 4  newer   89 copies +0.4739 ETH (+26.6%) | older   30 copies +0.1601 (+26.7%), w/o 2% +0.1188
+   0x8f39bb0356d1fd776d681bf6a61df834f9163789  tp 2 in 120 s            newer   22 copies +0.0220 ETH ( +5.0%) | older   18 copies +0.1377 (+38.2%), w/o 2% +0.1155
+   0x4a9af053936475f37fbc121e34d364a8f5648266  tp 2 in 120 s            newer   30 copies +0.0388 ETH ( +6.5%) | older   35 copies +0.1343 (+19.2%), w/o 2% +0.1123
+   0xa11f3a9a4c1222923e97b4be9a839030501420db  tp 2 in 120 s            newer   21 copies +0.0407 ETH ( +9.7%) | older   15 copies +0.1293 (+43.1%), w/o 2% +0.1098
+   0x4c91fa9f9f851359d15cf89cf395ddbbb3dcd831  wallet 4's live exit     newer   20 copies +0.0145 ETH ( +3.6%) | older   21 copies +0.1477 (+35.2%), w/o 2% +0.1020
+   0x4c91fa9f9f851359d15cf89cf395ddbbb3dcd831  its sale followed, tp 4  newer   20 copies +0.0145 ETH ( +3.6%) | older   21 copies +0.1477 (+35.2%), w/o 2% +0.1020
+   0x9e0771d4a5fe0c5dbd03e6175807b8290c2e40b0  tp 2 in 120 s            newer   89 copies +0.2474 ETH (+13.9%) | older   30 copies +0.1176 (+19.6%), w/o 2% +0.1018
+   0x5388c6b8d47cbadc384c364710fc7512e1e41307  wallet 4's live exit     newer   16 copies +0.0156 ETH ( +4.9%) | older   49 copies +0.1633 (+16.7%), w/o 2% +0.1013
+   0x5388c6b8d47cbadc384c364710fc7512e1e41307  its sale followed, tp 4  newer   16 copies +0.0156 ETH ( +4.9%) | older   49 copies +0.1633 (+16.7%), w/o 2% +0.1013
+   0x5bc235acecff3dde394f4bfc696f7c35efd502f0  tp 2 in 120 s            newer  307 copies +0.1257 ETH ( +2.0%) | older  207 copies +0.1758 ( +4.2%), w/o 2% +0.1010
+   0x563d25663663fbd1e2bbebb0ed201e20c27a165b  tp 2 in 120 s            newer   24 copies +0.0300 ETH ( +6.3%) | older   22 copies +0.1208 (+27.5%), w/o 2% +0.1005
+   0x9c01c1d0ea7f90eb84415be10c410fbe6fd520b3  tp 2 in 120 s            newer   26 copies +0.0100 ETH ( +1.9%) | older   19 copies +0.1186 (+31.2%), w/o 2% +0.0982
+   0x983e4b3c8552bfef1cdf1b0b596c21887e3b04dc  held 600 s, no tp        newer   27 copies +0.0886 ETH (+16.4%) | older   30 copies +0.1390 (+23.2%), w/o 2% +0.0976
+   0x131f5997fba3b8867b10c3ca3b842de25adfbd0e  wallet 4's live exit     newer   13 copies +0.0540 ETH (+20.8%) | older   33 copies +0.1486 (+22.5%), w/o 2% +0.0950
+   0x131f5997fba3b8867b10c3ca3b842de25adfbd0e  its sale followed, tp 4  newer   13 copies +0.0540 ETH (+20.8%) | older   33 copies +0.1486 (+22.5%), w/o 2% +0.0950
+   0x131f5997fba3b8867b10c3ca3b842de25adfbd0e  held 600 s, no tp        newer   13 copies +0.0505 ETH (+19.4%) | older   33 copies +0.1431 (+21.7%), w/o 2% +0.0874
+   0xa7e77d56c14f74609396998a752f557de2b4b931  wallet 4's live exit     newer   13 copies +0.0338 ETH (+13.0%) | older   15 copies +0.1358 (+45.3%), w/o 2% +0.0802
+
+FOR SCALE, the 10 best on the newer half that failed the older:
+   0xa9c2de9f87893ab1123c09a9e594bb3fc4ebc096  held 600 s, no tp        newer +0.3301 (+31.7%) | older -0.1027 ( -8.3%), w/o 2% -0.1677
+   0x538c3fdc8c9b56bb02faa42a576a4405229b2829  held 600 s, no tp        newer +0.2927 (+18.1%) | older +0.0102 ( +2.0%), w/o 2% -0.0139
+   0x8e4789dedc0c6684a45c0e0c7db8cdb451c95e62  held 600 s, no tp        newer +0.2531 (+28.8%) | older -0.2258 (-19.5%), w/o 2% -0.2850
+   0x9689992f5b5c09447f15906d8d11214944488341  held 600 s, no tp        newer +0.2500 ( +3.9%) | older -0.2962 ( -4.5%), w/o 2% -0.5158
+   0x1d047f47f1e0e1c70f359429e4b7d5f9a813c653  held 600 s, no tp        newer +0.2477 (+10.2%) | older -0.0495 ( -9.5%), w/o 2% -0.0632
+   0x8e4789dedc0c6684a45c0e0c7db8cdb451c95e62  wallet 4's live exit     newer +0.2416 (+27.5%) | older -0.0184 ( -1.6%), w/o 2% -0.0750
+   0x8e4789dedc0c6684a45c0e0c7db8cdb451c95e62  its sale followed, tp 4  newer +0.2416 (+27.5%) | older -0.0184 ( -1.6%), w/o 2% -0.0750
+   0x49bad0a23d1347c84631776b2e5aae843cc64df4  wallet 4's live exit     newer +0.2410 (+20.8%) | older -0.0060 ( -1.6%), w/o 2% -0.0167
+   0x49bad0a23d1347c84631776b2e5aae843cc64df4  its sale followed, tp 4  newer +0.2410 (+20.8%) | older -0.0060 ( -1.6%), w/o 2% -0.0167
+   0xd6e05fd8d89c6bb4b53e42abb8684705ab1e6d96  wallet 4's live exit     newer +0.2396 (+19.6%) | older -0.0210 ( -4.6%), w/o 2% -0.0338

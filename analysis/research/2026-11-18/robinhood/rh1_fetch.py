@@ -25,12 +25,19 @@ tip = int(call("eth_blockNumber", []), 16); B = {}
 def btime(n):
     if n not in B: B[n] = int(call("eth_getBlockByNumber", [hex(n), False])["timestamp"], 16)
     return B[n]
-span = 29_999; t_tip = btime(tip); n_chunks = int(DAYS * 86400 / (span * 0.1026)) + 1
+def get_logs(lo, hi):
+    """eth_getLogs, split in halves when the range holds more than the RPC's 10,000 logs."""
+    try: return call("eth_getLogs", [{"fromBlock": hex(lo), "toBlock": hex(hi), "topics": [list(T.values())]}])
+    except RuntimeError as e:
+        if "exceeds limit" not in str(e) or hi <= lo: raise
+        mid = (lo + hi) // 2; return get_logs(lo, mid) + get_logs(mid + 1, hi)
+span = 30_000; t_tip = btime(tip); n_chunks = int(DAYS * 86400 / (span * 0.1026)) + 1
+top = tip // span * span                      # fixed chunk boundaries (multiples of span): a restart skips what is on disk
 for i in range(n_chunks):
-    hi = tip - i * (span + 1); lo = hi - span; f = f"{OUT}/logs_{lo}_{hi}.json.gz"
+    lo = top - (i + 1) * span; hi = lo + span - 1; f = f"{OUT}/logs_{lo}_{hi}.json.gz"
     btime(lo)
     if os.path.exists(f): continue
-    logs = call("eth_getLogs", [{"fromBlock": hex(lo), "toBlock": hex(hi), "topics": [list(T.values())]}])
+    logs = get_logs(lo, hi)
     with gzip.open(f + ".tmp", "wt") as fh: json.dump(logs, fh)
     os.replace(f + ".tmp", f)
     if i % 20 == 0:
