@@ -17,12 +17,16 @@ rows = []
 for c in mine:
     tr = path(c); k = next((j for j, e in enumerate(tr) if e["user"] == WAL and e["buy"]), None)
     if k is None or tr[k]["q"] / 1e9 < 0.03 or tr[-1]["t"] - tr[k]["t"] < 600: continue
-    ps = [H.prep(tr, k, RATE, n, pmax=1000) for n in (4, 8, "slot+1")]
+    if os.environ.get("LANDB"):   # our buy lands D blocks after its buy, for each D (never inside its block): a copier sees the block, then sends
+        js = [next((j for j in range(k + 1, len(tr)) if tr[j]["slot"] >= tr[k]["slot"] + int(d_)), None) for d_ in os.environ["LANDB"].split(",")]
+        if any(j is None for j in js): continue
+        ps = [H.prep(tr, k, RATE, j - k, pmax=1000) for j in js]
+    else: ps = [H.prep(tr, k, RATE, n, pmax=1000) for n in (4, 8, "slot+1")]
     for p in ps: p["rate"] = RATE
     rows.append(dict(t=tr[k]["t"], sz=tr[k]["q"] / 1e9, prog=tr[k]["vq"] / 1e9 - V0 - tr[k]["q"] / 1e9, prem=[(tr[k]["vt"] / p["ent"][0]) ** 2 for p in ps], vl=[copy_vals(p) - COST for p in ps]))
 rows.sort(key=lambda r: r["t"]); Tt = np.array([r["t"] for r in rows]); N = len(rows)
 SPLIT = float(os.environ["SPLIT"]) if os.environ.get("SPLIT") else float(np.median(Tt)); A = Tt < SPLIT
-print(f"{WAL}: {N} copies of its first buys of 0.03+ ETH, {dt.datetime.fromtimestamp(Tt.min(), dt.UTC):%m-%d} to {dt.datetime.fromtimestamp(Tt.max(), dt.UTC):%m-%d}; halves at {dt.datetime.fromtimestamp(SPLIT, dt.UTC):%m-%d %H:%M} UTC ({int(A.sum())} / {int((~A).sum())}); our {STAKE} ETH, {GAS} ETH gas a round trip")
+print(f"[landing: {('blocks +' + os.environ['LANDB']) if os.environ.get('LANDB') else '4 / 8 trades or the next block'}] " + f"{WAL}: {N} copies of its first buys of 0.03+ ETH, {dt.datetime.fromtimestamp(Tt.min(), dt.UTC):%m-%d} to {dt.datetime.fromtimestamp(Tt.max(), dt.UTC):%m-%d}; halves at {dt.datetime.fromtimestamp(SPLIT, dt.UTC):%m-%d %H:%M} UTC ({int(A.sum())} / {int((~A).sum())}); our {STAKE} ETH, {GAS} ETH gas a round trip")
 SZ = np.array([r["sz"] for r in rows]); PG = np.array([r["prog"] for r in rows])
 VP = {pm: np.array([np.mean([r["vl"][l] if r["prem"][l] <= pm else np.full(r["vl"][l].shape, -0.0004) for l in range(3)], axis=0) for r in rows]) / RATE for pm in PMS}   # ETH
 ex_shape = VP[1.5].shape[1:]; MINN = 15
