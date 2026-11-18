@@ -6,9 +6,11 @@ import sys, json, gzip, glob, numpy as np
 D = sys.argv[1]; T = json.load(open(f"{D}/topics.json")); FACTORY = "0x7ed598bcef8bd9edd8c97a195c6d13f40801ec7e"
 words = lambda d: [int(d[2 + 64 * i: 2 + 64 * (i + 1)], 16) for i in range((len(d) - 2) // 64)]
 L, TR = {}, {}
+SEEN = set()
 for f in glob.glob(f"{D}/logs_*.json.gz"):
     for l in json.load(gzip.open(f)):
-        t0 = l["topics"][0]
+        if (l["blockNumber"], l["logIndex"]) in SEEN: continue   # overlapping chunks (a later fetch from a newer tip)
+        SEEN.add((l["blockNumber"], l["logIndex"])); t0 = l["topics"][0]
         if t0 == T["TokenLaunched"] and l["address"].lower() == FACTORY:
             w = words(l["data"])
             if len(w) >= 3 and w[0] == 0: L["0x" + l["topics"][2][-40:]] = int(l["blockNumber"], 16)

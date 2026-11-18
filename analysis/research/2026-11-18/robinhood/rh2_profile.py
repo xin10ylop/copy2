@@ -14,9 +14,11 @@ def tm(n):   # block -> unix time, linear between the sampled blocks
     return B[a] + (B[b] - B[a]) * (n - a) / max(1, b - a)
 addr = lambda h: "0x" + h[-40:]; words = lambda d: [int(d[2 + 64 * i: 2 + 64 * (i + 1)], 16) for i in range((len(d) - 2) // 64)]
 L, TR, GRAD = {}, collections.defaultdict(list), {}
+SEEN = set()
 for f in glob.glob(f"{D}/logs_*.json.gz"):
     for l in json.load(gzip.open(f)):
-        t0, n = l["topics"][0], int(l["blockNumber"], 16)
+        if (l["blockNumber"], l["logIndex"]) in SEEN: continue   # overlapping chunks (a later fetch from a newer tip)
+        SEEN.add((l["blockNumber"], l["logIndex"])); t0, n = l["topics"][0], int(l["blockNumber"], 16)
         if t0 == T["TokenLaunched"]:
             w = words(l["data"])
             if l["address"].lower() != FACTORY or len(w) < 3: continue   # the same event name from another launchpad
