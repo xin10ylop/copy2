@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/user/copy2/analysis/research/2026-11-17/winners/wallet_study_report.py", line 11, in <module>
+    R = [r for r in R if not r["refused"]]; half = R[len(R) // 2]["t"]; A = [r for r in R if r["t"] < half]; B = [r for r in R if r["t"] >= half]
+                                                   ~^^^^^^^^^^^^^
+IndexError: list index out of range

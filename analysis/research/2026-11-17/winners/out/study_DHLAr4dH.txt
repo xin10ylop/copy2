@@ -1,0 +1,10 @@
+DHLAr4dH: 11 copies (0.5 SOL, one slot after its buy, 0.0345 SOL a round trip); first half 5, second half 6
+
+1. HOW IT TRADES: its size median 4.15 SOL (quartiles [4.15, 4.15]); quote SOL 0%; curve sold at its buy median 0%
+Traceback (most recent call last):
+  File "/home/user/copy2/analysis/research/2026-11-17/winners/wallet_study_report.py", line 20, in <module>
+    print(f"   it sold (first sale) after a median {st.median(held):.0f} s; within 30 s {np.mean([h < 30 for h in held]):.0%}, within 2 min {np.mean([h < 120 for h in held]):.0%}, "
+                                                    ~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/statistics.py", line 637, in median
+    raise StatisticsError("no median for empty data")
+statistics.StatisticsError: no median for empty data
