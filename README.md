@@ -189,6 +189,14 @@ call, as `analysis/research/2026-11-15/all_tokens/` recommended once 0.5 SOL was
 at 0.5, block by block −0.20 / +2.86 / +0.39, simulated on chain Nov 15): 12,036,623 units for 0.6 SOL (slot
 469883188). The exit is not touched. The restart: seven floats, feed connected; SOL 1.8689, WBTC 0.992, PUMP 0.612,
 SPCX 0.549, TTWO 0.580, DJT 0.596, HYPE 0.603, AAPLx 0.598 SOL. Day: 12 closed, 5 won, +0.8062 SOL.
+**Nov 18 03:52 UTC (05:52 Beirut): TAB16RxX copied live again, on wallet 4's wallet** (the owner's call: no second
+wallet). The 4-day direct screen of every market wallet (Nov 14 01:07 - Nov 18 01:07 UTC, float-quote coins;
+`analysis/research/2026-11-17/wallet_hunt/market/README_direct.md`) passed it alone on a real sample: 140 copies,
+under the deployed exits +10.8% a copy (days 1-2 +5.7%, days 3-4 +13.9%), w/o 2% +3.72, P 99%. Unit `rugsnipe-long-tab`:
+`min_sol 0.5`, 0.5 SOL x 2 (0.1 for its first 3 minutes), daily stop 1.5, tp 4.0, 600 s, sell pressure [5, 60, 30],
+stall 180, its sale never followed, the main unit's 7 floats; the two units keep apart with `other_state_dirs`
+(commit `6bc6120`: a coin the other holds is skipped; no account close while the other holds the coin). TTWO float
+raised to 1.2 SOL in `/etc/rugsnipe/float-levels` (69% of its coins). Wallet 2.45 SOL + floats.
 **TAB16RxX studied again and left paused (Nov 15 night, `analysis/research/2026-11-16/tab/`):** 890 copyable buys over
 15 days (nothing copyable before Oct 31); what it would add to wallet 4 is +0.37 SOL a day at 0.5 SOL on 18.8 copies a
 day, −2.52 without its best 5 trades; its own sale is not wallet 4's (the 86 copies it sold at 30-60 s lose 24% each).

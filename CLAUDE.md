@@ -22,7 +22,8 @@ Wallet 4's strategies:
   DJT, HYPE and AAPLx (Apple, since Nov 15 21:38 UTC) (`float_min_frac = 0.5`; `float level MINT SOL` once a day; `analysis/research/2026-11-14/float_exits/`,
   `2026-11-15/all_tokens/`), every fee tier copied (`min_fee_bps = 0`: the 125 bps floor ran Nov 15 13:08 to 15:14 UTC
   and was removed on the owner's call, for fear of overfitting; `2026-11-15/skip_filters/`); the second
-  unit `rugsnipe-long-tab` (TAB16RxX) is paused since Nov 14 (README "Live again"). Wallet
+  unit `rugsnipe-long-tab` (TAB16RxX) is live again since Nov 18 03:52 UTC on wallet 4's wallet, 0.5 SOL x 2, its sale
+  not followed (README, Nov 18). Wallet
   `Eao8T2Pk...` (its key copied to the owner's Mac first). Before that, **stopped on Oct 29 ~13:40 UTC: Cherry deleted the hourly
   Frankfurt box (`fra-long`) for a zero balance, and the wallet's only key file with it; 4.5 SOL at `E7KX1hcM...` are
   lost** (`03-strategy-A-long-copy/deploy-frankfurt.md`, top). It had run live Oct 28 18:34 to Oct 29 11:52 UTC at 0.1,
