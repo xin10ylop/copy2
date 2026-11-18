@@ -738,3 +738,35 @@ fn other_traders_selling_more_than_buying_takes_us_out() {
         .unwrap()
         .contains("\"sell_pressure\""));
 }
+
+/// Two units on one wallet (Nov 18: the TAB16RxX unit on wallet 4's wallet): a coin the
+/// other unit holds is not bought; once its position there is closed and over an hour
+/// old, it is.
+#[test]
+fn a_coin_the_other_unit_on_this_wallet_holds_is_not_bought() {
+    let mut a = opened("other-a");
+    let a_dir = a.cfg.state_dir.clone();
+    let a_book = std::path::Path::new(&a_dir).join("positions.json");
+    a.book.save(&a_book).unwrap();
+    let with_other = |tag: &str| {
+        let dir = std::env::temp_dir().join(format!("long-engine-{tag}-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let cfg = LongCfg {
+            mode: Mode::Log,
+            state_dir: dir.to_string_lossy().into(),
+            other_state_dirs: vec![a_dir.clone()],
+            ..Default::default()
+        };
+        Engine::new(cfg, Default::default(), None, Rpc::new("http://127.0.0.1:9"), Oracle::default(), None, None).unwrap()
+    };
+    let mut b = with_other("other-b");
+    b.on_tx(Src::Copied, &fx("w4_buy_wsol_multihop"));
+    assert!(b.book.positions.is_empty(), "held by the other unit: skipped");
+    // the other unit's position closed and seen two hours ago: the coin is free again
+    a.book.positions[0].state = State::Closed;
+    a.book.positions[0].seen_ms = now_ms().saturating_sub(2 * 3_600_000);
+    a.book.save(&a_book).unwrap();
+    let mut c = with_other("other-c");
+    c.on_tx(Src::Copied, &fx("w4_buy_wsol_multihop"));
+    assert_eq!(c.book.positions.len(), 1, "no longer held: bought");
+}

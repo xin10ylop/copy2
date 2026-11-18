@@ -469,8 +469,23 @@ impl Book {
     }
 }
 
+/// Whether a sale also closes the coin's token account: on its first two tries, and never
+/// while another unit on the same wallet still holds the coin (the close would fail on its
+/// tokens and cost the sale a try; Nov 18, two units on one wallet).
+pub fn close_on_sale(sell_tries: u32, other_unit_holds: bool) -> bool {
+    sell_tries < 2 && !other_unit_holds
+}
+
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn a_sale_keeps_the_account_while_the_other_unit_holds_the_coin() {
+        assert!(super::close_on_sale(0, false));
+        assert!(super::close_on_sale(1, false));
+        assert!(!super::close_on_sale(2, false), "the third try never closes (as before)");
+        assert!(!super::close_on_sale(0, true), "the other unit's tokens are in the account");
+    }
+
     #[test]
     fn the_buy_floor_is_the_curve_at_the_premium_over_the_price_its_buy_left() {
         // a fresh v2 curve after its 1.5 SOL buy: 31.48 SOL of virtual quote,

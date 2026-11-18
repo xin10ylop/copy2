@@ -72,6 +72,17 @@ pub struct Engine {
     buyback_rr: usize,
     /// The ladder detector (`cfg.ladder.enabled`): every pump launch's create slot.
     ladder: Option<crate::ladder::Ladder>,
+    /// The other units on this wallet (`cfg.other_state_dirs`): each one's positions
+    /// file, its modification time when last read, and the coins it held then.
+    others: Vec<Other>,
+}
+
+/// Another unit trading from the same wallet, read from its positions file.
+struct Other {
+    path: PathBuf,
+    mtime: Option<std::time::SystemTime>,
+    /// (mint, seen_ms, live) of each of its positions.
+    held: Vec<(Pubkey, u64, bool)>,
 }
 
 fn m8(k: &Pubkey) -> String {
@@ -123,8 +134,15 @@ impl Engine {
             watched: BTreeSet::new(),
             buyback_rr: 0,
             ladder: None,
+            others: vec![],
         })
         .map(|mut e: Self| {
+            e.others = e
+                .cfg
+                .other_state_dirs
+                .iter()
+                .map(|d| Other { path: PathBuf::from(d).join("positions.json"), mtime: None, held: vec![] })
+                .collect();
             if e.cfg.ladder.enabled {
                 e.ladder = Some(crate::ladder::Ladder::new(e.cfg.ladder.clone()));
             }
@@ -144,6 +162,28 @@ impl Engine {
 
     fn real(&self) -> bool {
         self.cfg.mode == Mode::On
+    }
+
+    /// Does another unit on this wallet hold `mint`: seen in the last hour (`live_only`
+    /// false, the buy guard), or still open (`live_only` true, the sale's account close)?
+    /// Each positions file is reread only when it changed; one that cannot be read
+    /// counts as holding nothing (a missing file: that unit has no book yet).
+    fn other_holds(&mut self, mint: &Pubkey, now: u64, live_only: bool) -> bool {
+        for o in self.others.iter_mut() {
+            let mt = std::fs::metadata(&o.path).and_then(|m| m.modified()).ok();
+            if mt != o.mtime {
+                o.mtime = mt;
+                o.held = Book::load(&o.path)
+                    .map(|b| b.positions.iter().map(|p| (p.mint_pk(), p.seen_ms, p.live())).collect())
+                    .unwrap_or_default();
+            }
+            if o.held.iter().any(|(m, seen, live)| {
+                m == mint && if live_only { *live } else { *live || now.saturating_sub(*seen) < 3_600_000 }
+            }) {
+                return true;
+            }
+        }
+        false
     }
 
     fn killed(&self) -> bool {
@@ -390,6 +430,9 @@ impl Engine {
             .any(|p| p.mint_pk() == t.mint && now.saturating_sub(p.seen_ms) < 3_600_000)
         {
             return self.skip(&t, "coin already ours");
+        }
+        if !self.others.is_empty() && self.other_holds(&t.mint, now, false) {
+            return self.skip(&t, "coin held by the other unit on this wallet");
         }
         if t.real_token_post == Some(0) {
             return self.skip(&t, "curve complete");
@@ -903,7 +946,8 @@ impl Engine {
                 .collect();
             r = pump_codec::multihop::Route::new(r.input, hops).map_err(|e| format!("{e:?}"))?;
         }
-        let close_coin = p.sell_tries < 2;
+        let other = !self.others.is_empty() && self.other_holds(&p.mint_pk(), now_ms(), true);
+        let close_coin = pos::close_on_sale(p.sell_tries, other);
         let min_out = self.sell_min_out(&p);
         let (fees, _) = self.fees(false);
         let on_curve = r.hops.iter().all(|h| h.venue == pump_codec::multihop::Venue::Curve);

@@ -1,7 +1,7 @@
 # rugsnipe-long-tab -- hot role. A second long copy, of TAB16RxX (analysis/research/2026-11-13/lookalikes/):
 # the same binary with /etc/rugsnipe/long-tab.toml, its own state (/var/lib/rugsnipe-long-tab) and its own wallet
-# (/etc/rugsnipe/keys/tab-wallet.json, loaded under the same credential name). Without that wallet it runs paper
-# only (mode = "log"). `rugsnipe-long status --config /etc/rugsnipe/long-tab.toml` shows its book.
+# (since Nov 18 the main long wallet, loaded under the same credential name). Without it it runs paper only
+# (mode = "log"). `rugsnipe-long status --config /etc/rugsnipe/long-tab.toml` shows its book.
 [Unit]
 Description=rugsnipe long copy of TAB16RxX (a second copied wallet)
 Documentation=file:/opt/rugsnipe/src/docs/20-long-copy.md
@@ -30,7 +30,10 @@ LimitNOFILE=65536
 # user never reads /etc/rugsnipe/keys); ABSENT is the fallback when a file is missing.
 LoadCredential=api-keys:/etc/rugsnipe/keys/api-keys.toml
 SetCredential=api-keys:ABSENT
-LoadCredential=long-wallet:/etc/rugsnipe/keys/tab-wallet.json
+# Nov 18: the same wallet as rugsnipe-long (the owner's call: no second wallet to fund). The two units keep apart
+# with other_state_dirs in each config (a coin the other holds is not bought; a sale never closes an account the
+# other still uses).
+LoadCredential=long-wallet:/etc/rugsnipe/keys/long-wallet.json
 SetCredential=long-wallet:ABSENT
 # hardening
 NoNewPrivileges=yes

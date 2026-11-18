@@ -84,5 +84,8 @@ min_fee_bps = 0
 sell_pressure = []
 stall_s = 0
 
+# other units trading from this same wallet (their state dirs): a coin one of them holds is not bought, and a sale
+# never closes a coin account one of them still uses (Nov 18: rugsnipe-long and rugsnipe-long-tab on one wallet)
+other_state_dirs = []
 state_dir = "/var/lib/rugsnipe-long"
 price_api = "https://lite-api.jup.ag/price/v3"

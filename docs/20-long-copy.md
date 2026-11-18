@@ -110,6 +110,11 @@ within a slot** (`exits_pess.py`):
   the stake; under it the buy is skipped (`float ... under the stake`). For several small floats (PUMP, SPCX), which
   would otherwise stop copying after one loss until topped up. `status --chain` shows each float's SOL value.
   `examples/scan.rs` takes `FLOATS=MINT,...` and prints each route's hops and kind.
+- **Two units on one wallet, `other_state_dirs`** (Nov 18): `rugsnipe-long-tab` (TAB16RxX) trades from the main long
+  wallet. Each config lists the other's state dir; a coin the other unit holds (live, or seen in the last hour) is
+  skipped (`coin held by the other unit on this wallet`), and a sale never closes the coin's token account while the
+  other unit still holds it (`pos::close_on_sale`): the close would fail on the other's tokens and cost the sale a try.
+  Their overlapping copies made nothing (`analysis/research/2026-11-16/tab/`: +0.24 SOL on 35 coins).
 - **`float level MINT SOL`** (Nov 14): brings a float to a SOL value through Jupiter, buying what is missing or selling
   the excess (nothing within 5% of the target or 0.02 SOL); the daily rebalance with three floats (wins and losses
   stay in the float the trade was paid from).
