@@ -4189,6 +4189,7 @@ dependencies = [
  "alloy-signer-local",
  "futures-util",
  "reqwest",
+ "rustls",
  "serde",
  "serde_json",
  "tokio",

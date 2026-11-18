@@ -23,6 +23,9 @@ fn wallet_path(cfg: &Config) -> String {
 fn arg(args: &[String], k: &str) -> Option<String> { args.iter().position(|a| a == k).and_then(|i| args.get(i + 1)).cloned() }
 
 fn main() {
+    // the TLS engine, chosen once: the workspace build gives rustls both aws-lc-rs and ring (other crates bring ring),
+    // and with two it refuses to pick and panics on the first TLS connection (the crash of Nov 18 22:03 UTC on the box)
+    let _ = rustls::crypto::aws_lc_rs::default_provider().install_default();
     let args: Vec<String> = std::env::args().collect();
     let cfg_path = arg(&args, "--config").unwrap_or("/etc/rugsnipe/rh-copier.toml".into());
     let cmd = args.get(1).map(String::as_str).unwrap_or("");
