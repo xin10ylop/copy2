@@ -48,3 +48,13 @@ mechanical exit (time, take profit, sell pressure, stall) loses on both halves; 
 only positive ones (7djZvJGN "its sale + tp 4x": 1st half +13.2%, 2nd +2.7%, w/o 2% −0.36; the filter "tradable now,
 its 1.0+ SOL": 2nd half +4.7% / +5.9% on 21 copies, negative w/o 2%). Its sale carries information; the copy is about
 break-even at 0.0345 SOL a round trip. Not a wallet 4.
+
+## The 4-day screen (Nov 14 01:07 - Nov 18 01:07 UTC, float-quote coins; `../out/m4_direct_4days.txt`)
+
+4,397 coins (one with 15,409 transactions skipped: 32 min on Alchemy's cap), 2,172 wallets with 6+ copies; all pooled
+−2,720 SOL on 44,127 copies. Wallet 4: all 0.5+ buys +2.6% (187), its 1.45+ buys +7.1% (30, P 72%). 30 wallets pass
+(both halves, w/o 2%); most on 6-8 copies. **The one with numbers: TAB16RxX, 140 copies, +9.0% a copy, w/o 2% +2.48,
+halves +1.99 / +4.32, 123 creators, P 97.2%** — the wallet of the unit `rugsnipe-long-tab`, paused Nov 14 (14 real at
+0.1 SOL, −0.1665) and studied again Nov 15 (`2026-11-16/tab/`: +8.8% a copy on the coins it buys alone). These 4 days
+are after that study's data: an out-of-sample confirmation under wallet 4's frozen exits. Next: FDhoU1DE (21 copies,
++22.3%, halves equal, P 92.7%). The engineering (`e2_market_exits.py`) is running on the same paths.
