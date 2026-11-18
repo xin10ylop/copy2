@@ -30,6 +30,7 @@ Their own sales are ignored (`its_sale = "never"` won for all three). The full a
 | Exits, first one wins | graduation guard (3.8 ETH in the curve), take profit, sell pressure (other wallets' sales minus buys over the window, after `from` s), stall (no new high for `stall_s`), time (`hold_s` after its buy). All measured against its price, as the research did. |
 | Sale | `sell(balance, minQuoteOut, us)`: sells the wallet's exact token balance; minimum = the expected ETH less 30%, then half that, then 0. Three failed tries: retried 5 s later, again and again. |
 | Sends | Signed here (EIP-1559, chain 4663, the fee cap 3x the gas price); each goes to PublicNode and the official RPC; the receipt confirms it. Gas on Nov 18: 0.02 gwei, a buy ~100k gas, a sale ~80k: about 0.000003 ETH a trade. |
+| Lag | Each fill logs `lag N blocks behind its buy` (our buy's block minus its buy's); `status` shows it per trade. The backtest assumed 2, 3 and 5. |
 | Book | `/var/lib/rh-copier`: `state.json` (open positions, kept across restarts), `closed.jsonl`, `failed.jsonl`, `its.json`. |
 
 Checked on Nov 18 against the chain: our buy call simulated on a live curve (6.07M tokens for 0.02 ETH; a too-high

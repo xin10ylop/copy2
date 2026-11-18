@@ -53,6 +53,7 @@ pub struct Position {
     pub leader: String,
     pub its_eth: f64,  // its buy, ETH
     pub its_block: u64,
+    pub our_block: u64, // the block our buy landed in (0 = not yet / paper)
     pub its_price: f64,
     pub its_ms: u64,
     pub eth_in: f64,
@@ -149,7 +150,7 @@ impl Engine {
         let r = lim.sqrt(); let at_lim = CurveSt { q: at_its.q * r, t: at_its.t / r, real_q: 0.0 };
         let mut min_tokens = at_lim.tokens_for(eth, FEE) * 0.99;
         if l.max_premium <= 0.0 { min_tokens = min_tokens.max(c.tokens_for(eth, FEE) * (1.0 - self.cfg.slippage)) }
-        self.pos.insert(curve.to_string(), Position { id: 0, curve: curve.to_string(), leader: l.address.to_lowercase(), its_eth: its_quote, its_block, its_price, its_ms, eth_in: eth, tokens: 0.0,
+        self.pos.insert(curve.to_string(), Position { id: 0, curve: curve.to_string(), leader: l.address.to_lowercase(), its_eth: its_quote, its_block, our_block: 0, its_price, its_ms, eth_in: eth, tokens: 0.0,
             peak: 1.0, hi_ms: its_ms, state: PosState::Buying, flow: VecDeque::new(), retry_ms: 0 });
         Some(Action::Buy { curve: curve.to_string(), leader: l.address.to_lowercase(), eth, min_tokens })
     }

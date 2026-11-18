@@ -42,7 +42,7 @@ fn main() {
 struct Disk { open: Vec<Value>, day: u64, day_pnl: f64, seq: u64 }
 fn load_disk(dir: &str) -> Disk { std::fs::read_to_string(format!("{dir}/state.json")).ok().and_then(|s| serde_json::from_str(&s).ok()).unwrap_or_default() }
 fn pos_json(p: &Position) -> Value {
-    json!({"id": p.id, "curve": p.curve, "leader": p.leader, "its_eth": p.its_eth, "its_block": p.its_block, "its_price": p.its_price, "its_ms": p.its_ms,
+    json!({"id": p.id, "curve": p.curve, "leader": p.leader, "its_eth": p.its_eth, "its_block": p.its_block, "our_block": p.our_block, "its_price": p.its_price, "its_ms": p.its_ms,
         "eth_in": p.eth_in, "tokens": p.tokens, "peak": p.peak, "hi_ms": p.hi_ms, "state": format!("{:?}", p.state).to_lowercase()})
 }
 async fn save(ctx: &Ctx) {
@@ -74,7 +74,7 @@ async fn run(cfg: Config) -> Result<(), String> {
     for p in d.open {
         let c = p["curve"].as_str().unwrap_or("").to_string(); if c.is_empty() { continue }
         let f = |k: &str| p[k].as_f64().unwrap_or(0.0); let u = |k: &str| p[k].as_u64().unwrap_or(0);
-        eng.pos.insert(c.clone(), Position { id: u("id"), curve: c, leader: p["leader"].as_str().unwrap_or("").into(), its_eth: f("its_eth"), its_block: u("its_block"),
+        eng.pos.insert(c.clone(), Position { id: u("id"), curve: c, leader: p["leader"].as_str().unwrap_or("").into(), its_eth: f("its_eth"), its_block: u("its_block"), our_block: u("our_block"),
             its_price: f("its_price"), its_ms: u("its_ms"), eth_in: f("eth_in"), tokens: f("tokens"), peak: p["peak"].as_f64().unwrap_or(1.0), hi_ms: u("hi_ms"),
             state: PosState::Open, flow: Default::default(), retry_ms: 0 });
     }
@@ -220,7 +220,11 @@ async fn act(ctx: Arc<Ctx>, a: Action) {
             match r {
                 Ok(rc) => {
                     let got = rc["logs"].as_array().into_iter().flatten().filter_map(|l| chain::decode_trade(l, now_ms())).find(|t| t.buy && t.user == me && t.curve == curve);
-                    match got { Some(t) => { log(&format!("fill #{id} {:.0} tokens for {:.4} ETH", t.tokens, t.quote)); ctx.eng.lock().await.on_bought(&curve, t.tokens, now_ms()) }
+                    match got { Some(t) => {
+                                    // the lag: blocks between its buy and ours (the backtest assumed 2, 3 and 5; a block is ~0.1 s)
+                                    let blk = t.block; let lag = { let mut e = ctx.eng.lock().await; e.on_bought(&curve, t.tokens, now_ms());
+                                        e.pos.get_mut(&curve).map_or(0, |p| { p.our_block = blk; blk.saturating_sub(p.its_block) }) };
+                                    log(&format!("fill #{id} {:.0} tokens for {:.4} ETH, block {blk}, lag {lag} blocks behind its buy", t.tokens, t.quote)) }
                                 None => { log(&format!("buy-failed #{id}: no CurveBuy in the receipt")); ctx.eng.lock().await.on_bought(&curve, 0.0, now_ms()) } }
                 }
                 Err(e) => {
@@ -329,8 +333,8 @@ async fn status(cfg: Config, args: &[String]) -> Result<(), String> {
         let tip = hist.u64_of("eth_blockNumber", json!([])).await.unwrap_or(0) as u64;
         let mut its_err: Option<String> = None;
         println!("   last {} closed, newest first:", last.min(closed.len()));
-        println!("     {:>4}  {:5}  {:6}  {:8}  {:10}  {:>7}  {:16}  {:>6}  {:>6}  {:>9}  {:>7}  {:>7}  {:>8}  {:>8}",
-            "#", "side", "wallet", "bought", "coin", "its ETH", "exit", "peak", "held", "net ETH", "pct", "net $", "its pct", "it sold");
+        println!("     {:>4}  {:5}  {:6}  {:8}  {:10}  {:>7}  {:>4}  {:16}  {:>6}  {:>6}  {:>9}  {:>7}  {:>7}  {:>8}  {:>8}",
+            "#", "side", "wallet", "bought", "coin", "its ETH", "lag", "exit", "peak", "held", "net ETH", "pct", "net $", "its pct", "it sold");
         for c in closed.iter().take(last) {
             let curve = c["curve"].as_str().unwrap_or(""); let leader = c["leader"].as_str().unwrap_or(""); let blk = c["its_block"].as_u64().unwrap_or(0);
             let key = format!("{curve}:{leader}");
@@ -342,9 +346,10 @@ async fn status(cfg: Config, args: &[String]) -> Result<(), String> {
                 } }
                 None => None };
             let e_in = c["eth_in"].as_f64().unwrap_or(0.0);
-            println!("     {:>4}  {:5}  {:6}  {:8}  {:10}  {:>7.4}  {:16}  {:>5.2}x  {:>5}s  {:>+9.5}  {:>+6.1}%  {:>7}  {:>8}  {:>8}",
+            let lag = match (c["our_block"].as_u64().unwrap_or(0), blk) { (o, b) if o > 0 && b > 0 => format!("{}", o.saturating_sub(b)), _ => String::new() };
+            println!("     {:>4}  {:5}  {:6}  {:8}  {:10}  {:>7.4}  {:>4}  {:16}  {:>5.2}x  {:>5}s  {:>+9.5}  {:>+6.1}%  {:>7}  {:>8}  {:>8}",
                 c["id"].as_u64().unwrap_or(0), if c["paper"].as_bool().unwrap_or(false) { "paper" } else { "REAL" }, wn(leader), hhmm(c["its_ms"].as_u64().unwrap_or(0), off), short(curve),
-                c["its_eth"].as_f64().unwrap_or(0.0), c["why"].as_str().unwrap_or("?"), c["peak"].as_f64().unwrap_or(0.0), c["held_s"].as_u64().unwrap_or(0), pnl(c),
+                c["its_eth"].as_f64().unwrap_or(0.0), lag, c["why"].as_str().unwrap_or("?"), c["peak"].as_f64().unwrap_or(0.0), c["held_s"].as_u64().unwrap_or(0), pnl(c),
                 100.0 * pnl(c) / e_in.max(1e-12), eth_usd.map_or(String::new(), |u| format!("{:+.2}", pnl(c) * u)),
                 its.as_ref().and_then(|t| t.pct).map_or(String::new(), |x| format!("{x:+.1}%")),
                 its.as_ref().map_or(String::new(), |t| match (t.sold_s, t.holding) { (Some(s), _) => format!("{s}s"), (None, true) => "holding".into(), _ => "?".into() }));
