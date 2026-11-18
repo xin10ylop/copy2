@@ -5,6 +5,9 @@
 # copy row averaged). The exit menu is fixed here, before any result is read; each exit is PICKED on the first half of
 # the copies by time and SCORED on the second; 0.0345 SOL a round trip; take profits from OUR entry; every exit capped
 # at 600 s unless it is a shorter time cap. Wallet 4 can be run the same way as the yardstick.
+# Then (the owner: "also on which coins to copy and buy size, wallet 4 we use floats and 1.2 sol+ buys"): a grid of the
+# coin class (all / other-token / SOL / the quotes we can trade today: SOL or a float we hold) x its buy size (0.5+ /
+# 1.0+ / 1.3+ / 2.0+ SOL) x the exits, the best picked on the 1st half (8+ copies in each half), scored on the 2nd.
 #   RPC_URL=... CPDIR=... NS=100 python3 -I e1_exits.py SP WALLET ... > ../out/e1_exits.txt
 import sys, os, json, glob, random, re, numpy as np
 SP = sys.argv[1]; WALLETS = sys.argv[2:]; os.environ["HOLD"] = "900"; A, B = 1794704822, 1794877622; NS = int(os.environ.get("NS", 100))
@@ -63,7 +66,7 @@ for w in WALLETS:
                 ex = exits(p, e0)
             if ex is None: ex = {kk: -0.0004 - COST * 0 for kk in NAMES}   # a refused landing: no trade, ~0 in every exit
             acc = ex if acc is None else {kk: acc[kk] + ex[kk] for kk in NAMES}
-        rows.append(dict(t=e["t"], other=e["quote"] not in SOLQ, ex={kk: v / 3 for kk, v in acc.items()}))
+        rows.append(dict(t=e["t"], other=e["quote"] not in SOLQ, quote=e["quote"] or "", sol=sol, ex={kk: v / 3 for kk, v in acc.items()}))
     rows = [r_ for r_ in rows if any(abs(v + 0.0004) > 1e-9 for v in r_["ex"].values())]; rows.sort(key=lambda r_: r_["t"]); hf = len(rows) // 2; P1, P2 = rows[:hf], rows[hf:]
     print(f"\n== {w}: {len(rows)} copies (outside the screen; 1st half {len(P1)}, 2nd {len(P2)}); 0.0345 SOL a round trip")
     names = NAMES if rows else []
@@ -73,3 +76,20 @@ for w in WALLETS:
         best = max(names, key=lambda e_: np.mean([r_["ex"][e_] for r_ in P1 if e_ in r_["ex"]]))
         v = np.array([r_["ex"][best] for r_ in P2 if best in r_["ex"]]); bs = np.random.default_rng(7).choice(v, size=(10000, len(v))).mean(axis=1) if len(v) else np.zeros(1)
         print(f"   PICKED on the 1st half: {best} -> 2nd half {S(v)}; P(mean>0) {100 * np.mean(bs > 0):.1f}%")
+
+        FLOATS = ("3NZ9JMVB", "pumpCmXq", "SPCXxcqX", "TTWofwAg", "DJTu7vi8", "98sMhvDw", "XsbEhLAt")   # the box's floats, Nov 18 status
+        CLS = {"all": lambda r_: True, "other-token": lambda r_: r_["other"], "SOL": lambda r_: not r_["other"],
+               "tradable now": lambda r_: (not r_["other"]) or r_["quote"][:8] in FLOATS}
+        cand = []
+        for cn, cf in CLS.items():
+            for mn in (0.5, 1.0, 1.3, 2.0):
+                a1 = [r_ for r_ in P1 if cf(r_) and r_["sol"] >= mn]; a2 = [r_ for r_ in P2 if cf(r_) and r_["sol"] >= mn]
+                if len(a1) < 8 or len(a2) < 8: continue
+                for e_ in NAMES: cand.append((np.mean([r_["ex"][e_] for r_ in a1]), cn, mn, e_, a1, a2))
+        cand.sort(key=lambda c: -c[0])
+        print(f"   FILTER x EXIT grid ({len(cand)} options with 8+ copies in each half): the 5 best on the 1st half, and how they score on the 2nd")
+        for c in cand[:5]:
+            print(f"     {c[1]:12s} its {c[2]:.1f}+ SOL | {c[3]:38s} | 1st {S([r_['ex'][c[3]] for r_ in c[4]])} | 2nd {S([r_['ex'][c[3]] for r_ in c[5]])}")
+        if cand:
+            c = cand[0]; v = np.array([r_["ex"][c[3]] for r_ in c[5]]); bs = np.random.default_rng(7).choice(v, size=(10000, len(v))).mean(axis=1)
+            print(f"   PICKED (filter + exit) on the 1st half: {c[1]}, its {c[2]:.1f}+ SOL, {c[3]} -> 2nd half {S(v)}; P(mean>0) {100 * np.mean(bs > 0):.1f}%")
