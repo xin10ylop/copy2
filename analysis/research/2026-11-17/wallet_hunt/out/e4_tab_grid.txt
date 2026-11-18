@@ -1,0 +1,44 @@
+140 copies (days 1-2 53, days 3-4 87); check: the deployed setting through hunt_lib.model +10.8% a copy, through this grid +10.8%
+settings positive on both halves: 128 of 128
+
+THE DEPLOYED SETTING:
+   tp 4x, stall 180, sp 5/60, 600 s       | days 1-2   +5.6% (w/o 2% +0.67) | days 3-4  +14.0% (w/o 2% +3.44) | all  +10.8% 
+   its rank by the weaker half: 56 of 128; by all 4 days: 23
+
+THE 12 BEST BY THE WEAKER HALF (a setting that holds on both):
+   tp 3x, stall 60, sp off, 600 s         | days 1-2   +9.9% (w/o 2% +1.52) | days 3-4  +10.2% (w/o 2% +2.87) | all  +10.1% 
+   tp 3x, stall 60, sp off, 300 s         | days 1-2   +9.4% (w/o 2% +1.41) | days 3-4   +9.8% (w/o 2% +2.70) | all   +9.7% 
+   tp 3x, stall 60, sp 5/60, 600 s        | days 1-2   +9.3% (w/o 2% +1.37) | days 3-4   +9.6% (w/o 2% +2.63) | all   +9.5% 
+   tp 3x, stall 60, sp 10/60, 600 s       | days 1-2   +9.2% (w/o 2% +1.36) | days 3-4  +10.4% (w/o 2% +2.96) | all  +10.0% 
+   tp 3x, stall off, sp 10/60, 300 s      | days 1-2   +9.1% (w/o 2% +1.33) | days 3-4   +9.7% (w/o 2% +2.46) | all   +9.5% 
+   tp 6x, stall off, sp off, 300 s        | days 1-2   +9.0% (w/o 2% +1.21) | days 3-4  +12.2% (w/o 2% +1.54) | all  +11.0% 
+   tp 3x, stall 180, sp off, 300 s        | days 1-2   +9.0% (w/o 2% +1.30) | days 3-4   +8.9% (w/o 2% +2.09) | all   +8.9% 
+   tp 3x, stall 60, sp 5/60, 300 s        | days 1-2   +8.8% (w/o 2% +1.25) | days 3-4   +9.5% (w/o 2% +2.59) | all   +9.3% 
+   tp 3x, stall 60, sp 10/60, 300 s       | days 1-2   +8.8% (w/o 2% +1.25) | days 3-4  +10.0% (w/o 2% +2.78) | all   +9.5% 
+   tp 4x, stall off, sp off, 300 s        | days 1-2   +8.7% (w/o 2% +1.04) | days 3-4   +8.8% (w/o 2% +1.50) | all   +8.8% 
+   tp 4x, stall 60, sp off, 600 s         | days 1-2   +8.5% (w/o 2% +1.34) | days 3-4  +11.5% (w/o 2% +2.89) | all  +10.4% 
+   tp 6x, stall 60, sp off, 600 s         | days 1-2   +8.5% (w/o 2% +1.34) | days 3-4  +13.8% (w/o 2% +2.55) | all  +11.8% 
+
+PICKED ON DAYS 1-2 ALONE:
+   tp 3x, stall off, sp off, 300 s        | days 1-2  +11.3% (w/o 2% +1.92) | days 3-4   +6.9% (w/o 2% +1.23) | all   +8.6% 
+   its days 3-4 rank: 119 of 128
+
+ONE PART AT A TIME (the others as deployed):
+  take profit:
+   tp 2x, stall 180, sp 5/60, 600 s       | days 1-2   +3.5% (w/o 2% +0.37) | days 3-4   +7.7% (w/o 2% +1.97) | all   +6.1% 
+   tp 3x, stall 180, sp 5/60, 600 s       | days 1-2   +8.1% (w/o 2% +1.06) | days 3-4  +10.6% (w/o 2% +2.82) | all   +9.6% 
+   tp 4x, stall 180, sp 5/60, 600 s       | days 1-2   +5.6% (w/o 2% +0.67) | days 3-4  +14.0% (w/o 2% +3.44) | all  +10.8% <- deployed
+   tp 6x, stall 180, sp 5/60, 600 s       | days 1-2   +3.1% (w/o 2% +0.01) | days 3-4  +20.4% (w/o 2% +4.41) | all  +13.8% 
+  stall:
+   tp 4x, stall off, sp 5/60, 600 s       | days 1-2   +3.9% (w/o 2% +0.22) | days 3-4  +11.3% (w/o 2% +2.27) | all   +8.5% 
+   tp 4x, stall 60, sp 5/60, 600 s        | days 1-2   +7.2% (w/o 2% +0.99) | days 3-4  +11.1% (w/o 2% +2.71) | all   +9.7% 
+   tp 4x, stall 120, sp 5/60, 600 s       | days 1-2   +3.6% (w/o 2% +0.12) | days 3-4  +12.1% (w/o 2% +2.90) | all   +8.9% 
+   tp 4x, stall 180, sp 5/60, 600 s       | days 1-2   +5.6% (w/o 2% +0.67) | days 3-4  +14.0% (w/o 2% +3.44) | all  +10.8% <- deployed
+  sell pressure:
+   tp 4x, stall 180, sp off, 600 s        | days 1-2   +3.8% (w/o 2% -0.25) | days 3-4  +11.6% (w/o 2% +2.38) | all   +8.7% 
+   tp 4x, stall 180, sp 3/30, 600 s       | days 1-2   +4.6% (w/o 2% +0.47) | days 3-4   +9.5% (w/o 2% +1.99) | all   +7.6% 
+   tp 4x, stall 180, sp 5/60, 600 s       | days 1-2   +5.6% (w/o 2% +0.67) | days 3-4  +14.0% (w/o 2% +3.44) | all  +10.8% <- deployed
+   tp 4x, stall 180, sp 10/60, 600 s      | days 1-2   +5.7% (w/o 2% +0.69) | days 3-4  +13.8% (w/o 2% +3.36) | all  +10.7% 
+  time:
+   tp 4x, stall 180, sp 5/60, 300 s       | days 1-2   +5.0% (w/o 2% +0.53) | days 3-4  +12.3% (w/o 2% +2.98) | all   +9.5% 
+   tp 4x, stall 180, sp 5/60, 600 s       | days 1-2   +5.6% (w/o 2% +0.67) | days 3-4  +14.0% (w/o 2% +3.44) | all  +10.8% <- deployed

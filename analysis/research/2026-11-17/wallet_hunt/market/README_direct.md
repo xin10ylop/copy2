@@ -84,3 +84,14 @@ never followed, all its 0.5+ SOL first buys on the 4 days' float-quote coins, 0.
 (53), days 3-4 +13.9% (87), all 140 +10.8% a copy, +7.55 SOL at 0.5, w/o 2% +3.72, P(mean>0) 99.0%. With its sale
 followed as the main unit does: +3.7% / +12.2%, all +9.0%. Quotes of the 140: TTWofwAg 97, pumpCmXq 21, SPCXxcqX 14,
 3NZ9JMVB (WBTC) 6, 98sMhvDw (HYPE) 2.
+
+## Is the TAB unit's exit the best? (`e4_tab_grid.py`, `../out/e4_tab_grid.txt`, Nov 18)
+
+hunt_lib's live model with every setting free (tp 2/3/4/6x x stall off/60/120/180 x sell pressure off/3-30/5-60/10-60
+x 300/600 s = 128), its sale never followed, TAB16RxX's 140 copies. **All 128 are positive on both halves**: the edge
+does not hang on the exit. The deployed setting (tp 4, stall 180, sp 5/60, 600 s): +5.6% / +14.0%, all +10.8% a copy;
+rank 23 of 128 on all four days, 56 of 128 by its weaker half. The steadiest (tp 3x, stall 60, no sell pressure, 600 s):
++9.9% / +10.2%, all +10.1%. The best on all four days (tp 6x, others as deployed): +13.8%, but +3.1% on days 1-2. The
+setting picked on days 1-2 alone (tp 3x, no stall, no sell pressure, 300 s) ranks 119 of 128 on days 3-4: the gaps of a
+few points between settings are the noise of 140 copies. One part at a time, no change beats the deployed one on both
+halves. **Kept as deployed**; re-judged on the unit's own real trades (the main unit's rule: about 50).
