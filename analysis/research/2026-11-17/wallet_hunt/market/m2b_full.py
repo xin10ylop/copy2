@@ -13,6 +13,7 @@ sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-18/churn"); impor
 O = f"{SP}/market/paths_full"; os.makedirs(O, exist_ok=True)
 L = {m: x for m, x in json.load(open(f"{SP}/market/launches.json")).items() if x and len(x["sigs"]) >= MIN}
 todo = [m for i, m in enumerate(sorted(L)) if i % b == a and not os.path.exists(f"{O}/{m}.json.gz")]
+if os.environ.get("REVERSE"): todo = todo[::-1]   # a second fetcher on the same shard from the other end
 print(f"{len(L)} live coins, {sum(len(x['sigs']) for x in L.values())} transactions; this shard {len(todo)} to fetch", flush=True)
 _tl = threading.local()
 def batch(sigs):
@@ -29,6 +30,7 @@ def batch(sigs):
     return [out.get(x) for x in sigs]
 POOL = ThreadPoolExecutor(24); t0 = time.time(); done = [0, 0]
 def coin(m):
+    if os.path.exists(f"{O}/{m}.json.gz"): return   # done by the other fetcher of this shard
     s = [x[0] for x in L[m]["sigs"]]; ch = [s[i:i + 100] for i in range(0, len(s), 100)]
     txs = [t for p in POOL.map(batch, ch) for t in p]
     tr = SO.reorder([e for tx in txs if tx for e in M.trades(tx, m)])
