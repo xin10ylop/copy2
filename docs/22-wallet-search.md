@@ -127,6 +127,12 @@ way. This is what killed 5mWe9kLZ, Z6BLE1zw, AMDEmVoc, the same-slot wallets and
 
 ## 4. Pass criteria (all of them)
 
+- **(Nov 18, after TAB16RxX) The days outside the screen must pass on their own, without their best day.** TAB was
+  found on Nov 14-18, which held two of its three best days; its 12 older days at the deployed setting made +5.58 SOL,
+  and without Nov 11 alone +1.24 over 11 days (about breakeven). Live it lost −0.88 SOL in 31 trades, and its first
+  live day was the worst in its record (its own trades −4.7% a coin, 27% won; the model on all 49 copies −5.09). The
+  bot and the model were checked and agree (`analysis/research/2026-11-17/wallet_hunt/out/e14_*`, `e16_path_check.txt`).
+
 - 50+ copies over 4+ days, positive on both halves by time;
 - positive without the best 2% of copies;
 - bootstrap (10,000 resamples, seed 7) P(mean > 0) of 95% or more;

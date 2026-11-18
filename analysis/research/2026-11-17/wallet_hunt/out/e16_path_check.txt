@@ -1,0 +1,9 @@
+Bg5oh7St its buy not in the cpath path
+AnjovhbQ its buy not in the cpath path
+9W4DZDeW its buy not in the cpath path
+9Qk5sLdE its buy not in the cpath path
+93WvR3qP its buy not in the cpath path
+H6YKejU3 its buy not in the cpath path
+54 copies scored on both: paths_full +2.552 SOL, cpath +2.480 SOL; same within 0.005 SOL: 53
+coin      paths_full   cpath   trades in 600 s (full / cpath)  its index (full / cpath)
+CNQefHiH  +0.0007  -0.0782   9 / 9   2 / 2
