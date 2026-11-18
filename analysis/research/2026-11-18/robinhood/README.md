@@ -46,3 +46,16 @@ else (a group), and it stopped on Nov 8: dropped.
 **Real money** (`out/rh9_real_copiers.txt`): the bot copying 0x9a3955a1 within 2 blocks made +0.66 ETH on 235 of
 its coins in the newer half (won 48%; −0.08 on 48 in the older). The other two copiers' sales are not seen on the
 curve (0-6% won), so their results are not readable here.
+
+**Their stakes** (`rh10_sizes.py`, `out/rh10_sizes.txt`): one buy a coin each; median 0.100 ETH (0x9a3955a1, 56.4 ETH
+put in over 30 days), 0.050 (0x5bc235ac, 35.3 ETH), 0.042 (0xc54d3914, 13.7 ETH).
+
+**The last 3 days** (`rh11_days.py`, `out/rh11_*.txt`; STAKE=0.05, LANDB=2,3,5, each wallet's chosen setting):
+
+| wallet | before the last 3 days | the last 3 days |
+|---|---|---|
+| 0x9a3955a1 | 294 copies, +22.8% a copy, won 51% | 45 copies (15 a day), +26.5% a copy, won 60% |
+| 0x5bc235ac | 443 copies, +10.5% a copy, won 33% | 71 copies (24 a day), +21.1% a copy, won 46% |
+| 0xc54d3914 | 178 copies, +25.2% a copy, won 60% | 19 copies (6 a day), +39.2% a copy, won 68% |
+
+All three behaved as before, so the owner had the bot built with no paper phase: `crates/rh-copier`, `docs/23-rh-copier.md`.

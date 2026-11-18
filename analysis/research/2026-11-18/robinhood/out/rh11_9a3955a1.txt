@@ -1,0 +1,13 @@
+0x9a3955a122ab8a649a8511df2dce169471fd0ec1  setting 0.1,<0.5,1.5,4,600,off,off,never, our 0.05 ETH a copy, landing blocks +2,3,5
+   11-09:  19 copies +0.3962 ETH ( +41.7% a copy), won  68%
+   11-10:   8 copies +0.3408 ETH ( +85.2% a copy), won  88%
+   11-11:   9 copies +0.0198 ETH (  +4.4% a copy), won  56%
+   11-12:  16 copies +0.2787 ETH ( +34.8% a copy), won  44%
+   11-13:   9 copies -0.0348 ETH (  -7.7% a copy), won  33%
+   11-14:  11 copies +0.1281 ETH ( +23.3% a copy), won  64%
+   11-15:   1 copies -0.0115 ETH ( -23.1% a copy), won   0%
+   11-16:  20 copies +0.1350 ETH ( +13.5% a copy), won  55%
+   11-17:  13 copies +0.3094 ETH ( +47.6% a copy), won  62%
+   11-18:  12 copies +0.1510 ETH ( +25.2% a copy), won  67%
+   before the last 3 days: 294 copies (10.7 a day), +3.3462 ETH (+22.8% a copy), w/o 2% +2.5657, won 51%
+   THE LAST 3 DAYS: 45 copies (15.0 a day), +0.5954 ETH (+26.5% a copy), w/o 2% +0.4636, won 60%

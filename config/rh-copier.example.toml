@@ -1,0 +1,54 @@
+# rh-copier: copies three Pons V2 traders on Robinhood Chain (chain 4663) from ONE wallet.
+# Box: /etc/rugsnipe/rh-copier.toml (root:rugsnipe 0640). Research and every figure below:
+# analysis/research/2026-11-18/robinhood/README.md (rh6_engineer.py = the exit grid, rh7_check.py = the check,
+# rh11_days.py = the last 3 days). docs/23-rh-copier.md is the operator's page.
+
+mode = "on"                  # "on" = real transactions; "log" = decisions only (the owner chose no paper phase, Nov 18)
+ws_url = "wss://robinhood-rpc.publicnode.com"          # live CurveBuy / CurveSell logs (eth_subscribe)
+rpc_url = "https://robinhood-rpc.publicnode.com"        # reads, receipts, nonces: 7-10 blocks (~1 s) ahead of the official one
+logs_url = "https://rpc.mainnet.chain.robinhood.com"    # history for `status` (the official RPC keeps it)
+send_urls = ["https://robinhood-rpc.publicnode.com", "https://rpc.mainnet.chain.robinhood.com"]   # each send goes to both
+chain_id = 4663
+wallet_file = "/etc/rugsnipe/keys/rh-wallet.key"        # one line, the 0x hex key (rh-copier keygen); never printed
+state_dir = "/var/lib/rh-copier"
+
+stake_eth = 0.02             # each copy (the owner's call, Nov 18)
+max_open = 4
+daily_stop_eth = 0.06        # no new copies after a day's closed result reaches -0.06 ETH (3 stakes)
+slippage = 0.25              # a buy's minimum tokens = expected x 0.75
+sell_slippage = 0.30         # a sale's minimum ETH = expected x 0.70; retries at half, then 0
+grad_guard_eth = 3.8         # the curve graduates at 4.2 ETH into a Uniswap v4 pool this bot does not trade
+fee_mult = 3.0               # the fee cap: 3x the chain's gas price (0.02 gwei on Nov 18: a trade costs ~0.000003 ETH)
+
+# wallet 1: its buys of 0.1+ ETH on coins with under 0.5 ETH in the curve, price limit 1.5x; tp 4x, 10 min, its sale ignored.
+# Backtest: +24.2% a copy over 339 copies; last 3 days +26.5% (45 copies).
+[[leaders]]
+address = "0x9a3955a122ab8a649a8511df2dce169471fd0ec1"
+min_its_eth = 0.1
+max_curve_eth = 0.5
+max_premium = 1.5           # our fill at most 1.5x the price its buy left
+take_profit = 4.0
+hold_s = 600
+its_sale = "never"
+
+# wallet 2: its buys of 0.05+ ETH, any coin, price limit 1.5x; tp 3.5x, 10 min, out when others' sales outnumber their buys by 10
+# over 30 s (from 30 s); its sale ignored. Backtest +12.5% a copy; last 3 days +21.1%.
+[[leaders]]
+address = "0x5bc235acecff3dde394f4bfc696f7c35efd502f0"
+min_its_eth = 0.05
+max_premium = 1.5
+take_profit = 3.5
+hold_s = 600
+sell_pressure = [10, 30, 30]
+its_sale = "never"
+
+# wallet 3: its buys of 0.03+ ETH, any coin, no price limit (3x bounds it); tp 2.5x, 5 min, sell pressure 8 over 60 s (from 30 s), out after 240 s
+# without a new high; its sale ignored. Backtest +26.7% a copy; last 3 days +39.2%.
+[[leaders]]
+address = "0xc54d3914f91f984d61b63d491f38934c4e706b79"
+min_its_eth = 0.03
+take_profit = 2.5
+hold_s = 300
+sell_pressure = [8, 60, 30]
+stall_s = 240
+its_sale = "never"

@@ -1,0 +1,51 @@
+# rh-copier -- copies three Pons V2 traders on Robinhood Chain (chain 4663) from one wallet, 0.02 ETH a copy.
+# docs/23-rh-copier.md; research in analysis/research/2026-11-18/robinhood/.
+#
+# Its own wallet (/etc/rugsnipe/keys/rh-wallet.key, from `rh-copier keygen`), its own state
+# (/var/lib/rh-copier: state.json, closed.jsonl, failed.jsonl, its.json, KILL). Stop new buys:
+# touch /var/lib/rh-copier/KILL (exits continue). `rh-copier status` shows the book.
+# Installed by deploy/install.sh but never enabled by it: the owner starts it.
+[Unit]
+Description=rh-copier (Robinhood Chain, Pons copy)
+Documentation=file:/opt/rugsnipe/src/docs/23-rh-copier.md
+Wants=network-online.target
+After=network-online.target time-sync.target chrony.service
+ConditionPathExists=/etc/rugsnipe/rh-copier.toml
+StartLimitIntervalSec=300
+StartLimitBurst=20
+
+[Service]
+Type=simple
+User=rugsnipe
+Group=rugsnipe
+StateDirectory=rh-copier
+StateDirectoryMode=0750
+WorkingDirectory=/var/lib/rh-copier
+Environment=RUST_BACKTRACE=1
+ExecStart=/opt/rugsnipe/bin/rh-copier run --config /etc/rugsnipe/rh-copier.toml
+Restart=always
+RestartSec=2
+TimeoutStopSec=10
+UMask=0027
+LimitNOFILE=65536
+# the key: copied by PID 1 into $CREDENTIALS_DIRECTORY/rh-wallet (the service user never reads /etc/rugsnipe/keys)
+LoadCredential=rh-wallet:/etc/rugsnipe/keys/rh-wallet.key
+# hardening
+CapabilityBoundingSet=
+AmbientCapabilities=
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+SystemCallArchitectures=native
+ReadWritePaths=/var/lib/rh-copier
+
+[Install]
+WantedBy=multi-user.target

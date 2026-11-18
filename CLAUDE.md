@@ -10,6 +10,9 @@ Two copied wallets, kept apart, and the bots that copy them:
   `config/copier.example.toml`, unit `rugsnipe-copier`), which trades any venue through Jupiter.
 - **The next box** (`08-new-box/`): both bots, 4 SOL. The long copy runs wallet 4's part A at 1 SOL with 2 open. The
   copier runs Rafinhaaaaaa at 1 SOL with 1 open. Prepared Nov 3, not started; the owner says when to deploy live.
+- **Robinhood Chain** (chain 4663, Pons V2 launchpad): three wallets copied by `crates/rh-copier` from ONE wallet at
+  0.02 ETH a copy, no paper phase (the owner's call, Nov 18); `docs/23-rh-copier.md`, unit `rh-copier`, check command
+  `rhq`; research `analysis/research/2026-11-18/robinhood/`. Built Nov 18, not started yet.
 - Keep them apart: a wallet's study, docs and data go in its own folder; shared code stays in `crates/`, `deploy/`,
   `config/`, `docs/`.
 
@@ -72,6 +75,7 @@ of `claude/magical-einstein-k78idp`). A code change meant to run on the box goes
 
 ```
 cargo build --release -p rugsnipe-long          # toolchain pinned in rust-toolchain.toml
+cargo test -p rh-copier                         # Robinhood copier: 13 engine tests
 cargo test -p rugsnipe-long                     # 21 engine tests + 56 library tests (23 of them the copier's)
 cargo run --release -p rugsnipe-long -- simulate --rpc RPC_URL --tx SIG --user WALLET --sol 0.1 --buyback 3 --close   # our buy + round trip, simulated
 cargo run --release -p rugsnipe-long -- simulate-sell --rpc RPC_URL --mint MINT --quote QUOTE --user HOLDER --graduated --close

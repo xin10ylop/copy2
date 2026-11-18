@@ -1,0 +1,18 @@
+
+0x9a3955a122ab8a649a8511df2dce169471fd0ec1: 653 buys on 653 coins (1.00 buys a coin)
+   first buy on a coin (ETH): median 0.100, middle half 0.050-0.100, max 0.150, mean 0.086
+   every buy (ETH):           median 0.100, middle half 0.050-0.100, max 0.150, mean 0.086
+   total in a coin (ETH):     median 0.100, middle half 0.050-0.100, max 0.150, mean 0.086; ETH put in over 30 days 56.4
+   first buys by size: <0.03: 17%, <0.05: 17%, <0.1: 33%, <0.2: 100%, <0.5: 100%
+
+0x5bc235acecff3dde394f4bfc696f7c35efd502f0: 641 buys on 631 coins (1.02 buys a coin)
+   first buy on a coin (ETH): median 0.050, middle half 0.050-0.050, max 0.100, mean 0.055
+   every buy (ETH):           median 0.050, middle half 0.050-0.050, max 0.100, mean 0.055
+   total in a coin (ETH):     median 0.050, middle half 0.050-0.050, max 0.199, mean 0.056; ETH put in over 30 days 35.3
+   first buys by size: <0.03: 0%, <0.05: 0%, <0.1: 92%, <0.2: 100%, <0.5: 100%
+
+0xc54d3914f91f984d61b63d491f38934c4e706b79: 222 buys on 222 coins (1.00 buys a coin)
+   first buy on a coin (ETH): median 0.042, middle half 0.035-0.060, max 0.180, mean 0.062
+   every buy (ETH):           median 0.042, middle half 0.035-0.060, max 0.180, mean 0.062
+   total in a coin (ETH):     median 0.042, middle half 0.035-0.060, max 0.180, mean 0.062; ETH put in over 30 days 13.7
+   first buys by size: <0.03: 0%, <0.05: 55%, <0.1: 79%, <0.2: 100%, <0.5: 100%
