@@ -1,0 +1,56 @@
+401 calls on pump coins at least 1,000 s old; modelled 229; not modelled: {'under 30 s of trades after the call': 64, 'not a SOL curve (priced in another token)': 84, 'no curve trade near the call (graduated or dead)': 88}
+from 11-15 21:26 to 11-18 10:59 UTC; halves at 11-17 17:13; our buy 3 s after the call, then 4 / 8 trades or the next slot
+
+ALL CALLS: 229 copies (halves 114 / 115); settings making money 0 of 12,960, on both halves 0
+   best by its weaker half (hindsight): limit 1.1x, tp 2.5x, 120 s, sell pressure 10/60s, stall 60: -6.10 SOL (-5.3% a copy), halves -3.15 / -2.95, w/o 2% -8.69, won 30%, P(mean>0) 0.2%
+   wallet 4's exit (limit 1.5x): -7.46 SOL (-6.5% a copy), won 28%
+   quick: tp 2x, 120 s (limit 1.5x): -9.06 SOL (-7.9% a copy), won 31%
+
+CALLED FIRST (#1): 113 copies (halves 39 / 74); settings making money 435 of 12,960, on both halves 152
+   best by its weaker half (hindsight): limit 1.1x, tp 1.5x, 300 s, sell pressure 10/60s, stall off: +0.94 SOL (+1.7% a copy), halves +0.43 / +0.51, w/o 2% -1.28, won 44%, P(mean>0) 65.0%
+   wallet 4's exit (limit 1.5x): -1.46 SOL (-2.6% a copy), won 35%
+   quick: tp 2x, 120 s (limit 1.5x): -2.60 SOL (-4.6% a copy), won 39%
+
+CALLED LATER (#2+): 116 copies (halves 75 / 41); settings making money 0 of 12,960, on both halves 0
+   best by its weaker half (hindsight): limit 1.1x, tp 1.5x, 60 s, sell pressure 10/30s, stall off: -4.07 SOL (-7.0% a copy), halves -2.99 / -1.08, w/o 2% -4.59, won 23%, P(mean>0) 0.0%
+   wallet 4's exit (limit 1.5x): -6.00 SOL (-10.3% a copy), won 22%
+   quick: tp 2x, 120 s (limit 1.5x): -6.47 SOL (-11.1% a copy), won 24%
+
+ON THE CURVE AT THE CALL: 128 copies (halves 67 / 61); settings making money 0 of 12,960, on both halves 0
+   best by its weaker half (hindsight): limit 1.1x, tp 1.5x, 180 s, sell pressure 10/60s, stall 60: -2.25 SOL (-3.5% a copy), halves -1.12 / -1.13, w/o 2% -3.35, won 33%, P(mean>0) 3.1%
+   wallet 4's exit (limit 1.5x): -4.30 SOL (-6.7% a copy), won 28%
+   quick: tp 2x, 120 s (limit 1.5x): -3.34 SOL (-5.2% a copy), won 28%
+
+IN THE POOL AT THE CALL (graduated): 101 copies (halves 47 / 54); settings making money 0 of 12,960, on both halves 0
+   best by its weaker half (hindsight): limit 1.1x, tp 4x, 600 s, sell pressure 3/30s, stall 180: -1.18 SOL (-2.3% a copy), halves -0.79 / -0.39, w/o 2% -3.80, won 30%, P(mean>0) 31.5%
+   wallet 4's exit (limit 1.5x): -3.15 SOL (-6.2% a copy), won 28%
+   quick: tp 2x, 120 s (limit 1.5x): -5.73 SOL (-11.3% a copy), won 36%
+
+caller alphax100callers: 24 copies, one half empty
+
+caller gemsmineeth: 40 copies, one half empty
+
+caller klevercalls: 25 copies (halves 5 / 20); settings making money 0 of 12,960, on both halves 0
+   best by its weaker half (hindsight): limit 1.1x, tp 1.5x, 180 s, sell pressure 8/60s, stall 60: -0.73 SOL (-5.9% a copy), halves -0.35 / -0.38, w/o 2% -0.81, won 40%, P(mean>0) 0.5%
+   wallet 4's exit (limit 1.5x): -1.04 SOL (-8.3% a copy), won 32%
+   quick: tp 2x, 120 s (limit 1.5x): -0.95 SOL (-7.6% a copy), won 28%
+
+caller kolsignal: 22 copies, one half empty
+
+caller onchainalphatrench: 17 copies, one half empty
+
+caller pnuthiddengems: 25 copies, one half empty
+
+caller pumpdotfunalert: 17 copies (halves 12 / 5); settings making money 0 of 12,960, on both halves 0
+   best by its weaker half (hindsight): limit 1.1x, tp 2.5x, 300 s, sell pressure 5/60s, stall off: -0.32 SOL (-3.8% a copy), halves -0.18 / -0.15, w/o 2% -0.78, won 47%, P(mean>0) 29.8%
+   wallet 4's exit (limit 1.5x): -0.53 SOL (-6.2% a copy), won 35%
+   quick: tp 2x, 120 s (limit 1.5x): -0.53 SOL (-6.2% a copy), won 35%
+
+caller seekrtrending: 12 copies, one half empty
+
+caller solearlytrending: 20 copies, one half empty
+
+caller solhousesignal: 27 copies (halves 21 / 6); settings making money 0 of 12,960, on both halves 0
+   best by its weaker half (hindsight): limit 1.1x, tp 2x, 120 s, sell pressure off, stall 90: -0.07 SOL (-0.5% a copy), halves -0.07 / +0.00, w/o 2% -0.69, won 30%, P(mean>0) 42.7%
+   wallet 4's exit (limit 1.5x): -1.26 SOL (-9.3% a copy), won 19%
+   quick: tp 2x, 120 s (limit 1.5x): -0.16 S
