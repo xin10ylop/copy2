@@ -92,6 +92,27 @@ sale is the weakest (+4.4% / +4.3%, negative w/o 2% on days 3-4); its 0.5+ buys 
 token alone does not hold. **An edge that is positive under most exits on both halves is real; one that needs a
 single exit is luck.**
 
+### Step 5b. Every combination, three ways by payment (`e8_engineer.py`; mandatory, Nov 18)
+
+The owner's rule: test every part at small steps, in every combination, and choose by logic. Run it three times:
+```
+PAY=all   LIVE=<running setting> python3 -I e8_engineer.py SP WALLET > ../out/e10_<w8>_all.txt
+PAY=float LIVE=... python3 -I e8_engineer.py SP WALLET > ../out/e10_<w8>_float.txt
+PAY=wsol  LIVE=... python3 -I e8_engineer.py SP WALLET > ../out/e10_<w8>_wsol.txt
+```
+- The grid: its buy size 0.5 to 2.0 SOL in 0.1 steps (then 1.75, 2.0) x price limit 1.1 / 1.25 / 1.5x / none x tp
+  1.5 to 8x / none x 60 to 600 s x sell pressure off or 3/5/8/10 over 30/60 s x stall off or 60 to 240 s x its sale
+  never / early / always: 505,440 settings. `LIVE="1.3,1.25,4,600,5/60,180,early"` scores the running setting.
+- The ranking: the SOL the **weaker half** makes **without its best 2%** of copies, then smoothed over the
+  neighbours (a lone spike cannot win). Not the mean a copy: a thin filter raises the mean while it drops copies that
+  still make money.
+- Read, then choose by logic: each part varied alone (a plateau, take its middle; parts within noise keep the running
+  or simplest value); what each size band adds (a filter that keeps one narrow band is luck); the setting picked on the
+  first half alone and its rank on the second (the overfitting check).
+- **Payment:** if the floats make money and wSOL breaks even or loses (its own best setting not positive on both
+  halves), the copy pays with floats only (`float_only = true`). Nov 18: TAB wSOL 0 of 486,000 settings positive on
+  both halves, −24.39 SOL on 466 copies; wallet 4 wSOL −0.81 SOL on 302, its best setting −0.7% a copy.
+
 ### Step 6. The exact config, backtested as deployed (`e3_tab_exact.py`)
 
 Score the exact rule that will run, with the bot's own exit logic (`hunt_lib.model`; `early=None` = its sale never
@@ -129,8 +150,9 @@ way. This is what killed 5mWe9kLZ, Z6BLE1zw, AMDEmVoc, the same-slot wallets and
 
 ## 6. Cost and the RPCs
 
-- **Alchemy** (free tier): about 8 transactions a second, about 16 coin paths a minute. Fine for histories and
-  confirmations; a day of launches takes most of a day.
+- **Alchemy** (paid): 650-1,100 transactions a second when batched (100 getTransaction a request, a kept-alive
+  session, up to 8 in parallel: no 429s, Nov 18 test). The 8 a second seen first was our own one-call-per-request
+  client. Always batch.
 - **Triton**: hundreds of paths a minute, but paid by use. On Nov 18 a burst of about a million transactions in minutes
   emptied the balance and then got this machine refused (HTTP 403 "Your IP or provider is blocked from this endpoint")
   for about 15 minutes; Triton documents per-IP blocks for sources with many 403/429 errors and filters on data-centre
