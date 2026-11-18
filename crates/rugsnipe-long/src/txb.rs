@@ -171,6 +171,62 @@ pub fn sell_ixs(
     v
 }
 
+/// The keys of a trade on a SOL-priced curve (the ladder flip, 2026-11-18):
+/// pump's own `buy_exact_quote_in_v3` / `sell_v3`, as the hot bot's live
+/// templates use them (`rugsnipe-tx`), with the first listed buyback
+/// recipient (as the hot bot's setup does on SOL coins).
+pub fn sol_keys(user: &Pubkey, mint: &Pubkey, coin_program: &Pubkey) -> pi::SolV3Keys {
+    pi::SolV3Keys::derive(*mint, *user, *coin_program, c::BUYBACK_FEE_RECIPIENTS[0])
+}
+
+/// The buy on a SOL-priced curve: `lamports` (fees included) for at least
+/// `min_out` coin tokens; the coin account is created first (idempotent).
+pub fn sol_buy_ixs(
+    user: &Pubkey,
+    mint: &Pubkey,
+    coin_program: &Pubkey,
+    lamports: u64,
+    min_out: u64,
+    fees: &Fees,
+) -> Vec<Instruction> {
+    let mut v = budget(fees);
+    v.push(pi::create_associated_token_account_idempotent(
+        user,
+        user,
+        mint,
+        coin_program,
+    ));
+    v.push(pi::buy_exact_quote_in_v3(
+        &sol_keys(user, mint, coin_program),
+        lamports,
+        min_out,
+        None,
+    ));
+    v.extend(tip(user, fees));
+    v
+}
+
+/// The sell on a SOL-priced curve: `tokens` for at least `min_sol` lamports
+/// (after fees); with `close_coin` the coin account is closed after.
+pub fn sol_sell_ixs(
+    user: &Pubkey,
+    mint: &Pubkey,
+    coin_program: &Pubkey,
+    tokens: u64,
+    min_sol: u64,
+    fees: &Fees,
+    close_coin: bool,
+) -> Vec<Instruction> {
+    let mut v = budget(fees);
+    v.push(pi::sell_v3(&sol_keys(user, mint, coin_program), tokens, min_sol));
+    if close_coin {
+        let coin_ata = pda::associated_token_address(user, mint, coin_program);
+        v.push(pi::token_close_account(coin_program, &coin_ata, user, user));
+    }
+    v.extend(tip(user, fees));
+    v
+}
+
 /// Compile and sign: legacy, or v0 with pump's lookup table when legacy is
 /// too long (a 3-hop route). `sign` signs the message bytes.
 pub fn sign(

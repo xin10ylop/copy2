@@ -21,6 +21,7 @@ pub mod feed;
 pub mod its;
 pub mod jup;
 pub mod keys;
+pub mod ladder;
 pub mod oracle;
 pub mod pos;
 pub mod route;

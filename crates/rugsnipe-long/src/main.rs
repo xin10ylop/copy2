@@ -70,6 +70,7 @@ fn main() {
     let r = match args.first().map(String::as_str) {
         Some("simulate") => simulate(&args[1..]),
         Some("simulate-sell") => simulate_sell(&args[1..]),
+        Some("simulate-sol") => simulate_sol(&args[1..]),
         Some("run") => run(&args[1..]),
         Some("status") => status(&args[1..]),
         Some("float") => float(&args[1..]),
@@ -278,6 +279,66 @@ fn simulate(args: &[String]) -> Result<(), String> {
                 }
             }
         }
+    }
+    Ok(())
+}
+
+/// `simulate-sol --rpc URL --mint MINT --user WALLET [--sol 0.1]`: the ladder
+/// flip's buy on a SOL-priced curve (`txb::sol_buy_ixs`), then the buy and
+/// the sell of every token back with the coin account closed, in one
+/// transaction, simulated on mainnet (nothing sent; WALLET's signature not
+/// checked). 2026-11-18: the long bot had never traded a SOL-priced curve.
+fn simulate_sol(args: &[String]) -> Result<(), String> {
+    let url = arg(args, "--rpc").ok_or("--rpc URL")?;
+    let mint: Pubkey = arg(args, "--mint").ok_or("--mint MINT")?.parse().map_err(|_| "--mint")?;
+    let user: Pubkey = arg(args, "--user").ok_or("--user WALLET")?.parse().map_err(|_| "--user")?;
+    let sol: f64 = arg(args, "--sol").unwrap_or("0.1".into()).parse().map_err(|_| "--sol")?;
+    let lamports = (sol * 1e9) as u64;
+    let rpc = Rpc::new(&url);
+    let acc = rpc.accounts(&[mint])?;
+    let coin_program = acc
+        .first()
+        .and_then(|a| a.as_ref())
+        .map(|a| a.owner)
+        .ok_or("the mint account is not there")?;
+    let fees = Fees { cu_limit: 300_000, cu_price: 1, tip: None };
+    let coin_ata = pda::associated_token_address(&user, &mint, &coin_program);
+    let buy = txb::sol_buy_ixs(&user, &mint, &coin_program, lamports, 1, &fees);
+    let (bytes, _) = txb::sign(&user, &buy, &[0; 32], |_| [0; 64]).map_err(|e| e.to_string())?;
+    let v = rpc.simulate(&bytes, &[coin_ata])?;
+    let tokens = v["accounts"][0]["data"][0]
+        .as_str()
+        .map(|s| token_amount(&base64::Engine::decode(&base64::engine::general_purpose::STANDARD, s).unwrap_or_default()))
+        .unwrap_or(0);
+    println!("buy ({} bytes): err {} units {} tokens {}", bytes.len(), v["err"], v["unitsConsumed"], tokens);
+    let logs = |v: &serde_json::Value| {
+        for l in v["logs"].as_array().into_iter().flatten().rev().take(12).collect::<Vec<_>>().into_iter().rev() {
+            println!("   {}", l.as_str().unwrap_or(""));
+        }
+    };
+    if !v["err"].is_null() || tokens == 0 {
+        logs(&v);
+        return Err("the buy does not simulate".into());
+    }
+    let sell = txb::sol_sell_ixs(&user, &mint, &coin_program, tokens, 1, &fees, true);
+    let mut both = buy.clone();
+    both.extend(sell.into_iter().skip(2));
+    let (bytes, _) = txb::sign(&user, &both, &[0; 32], |_| [0; 64]).map_err(|e| e.to_string())?;
+    let before = rpc.balance(&user)?;
+    let v = rpc.simulate(&bytes, &[user])?;
+    let after = v["accounts"][0]["lamports"].as_u64().unwrap_or(0);
+    println!(
+        "round trip ({} bytes): err {} units {} SOL {} -> {} ({:+.2}% of the stake)",
+        bytes.len(),
+        v["err"],
+        v["unitsConsumed"],
+        before,
+        after,
+        (after as f64 - before as f64) / lamports as f64 * 100.0
+    );
+    if !v["err"].is_null() {
+        logs(&v);
+        return Err("the round trip does not simulate".into());
     }
     Ok(())
 }

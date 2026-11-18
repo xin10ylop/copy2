@@ -61,6 +61,15 @@ impl Trade {
     }
 }
 
+/// A pump create, owned (`TxLite::creates`).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Create {
+    pub mint: Pubkey,
+    pub token_program: Pubkey,
+    pub sol_quoted: bool,
+    pub mayhem: bool,
+}
+
 /// See the module docs.
 #[derive(Debug, Clone, PartialEq, Eq, Default)]
 pub struct TxLite {
@@ -124,6 +133,34 @@ impl TxLite {
                         .fee_basis_points
                         .map(|f| (f + t.creator_fee_basis_points.unwrap_or(0)).min(10_000) as u32),
                     outer: *o,
+                });
+            }
+        }
+        out
+    }
+
+    /// The pump coins this transaction created (the ladder detector needs each
+    /// coin's create slot): the mint, its token program, and whether its
+    /// curve is priced in SOL.
+    pub fn creates(&self) -> Vec<Create> {
+        let mut out = vec![];
+        for (_, ix) in &self.inner {
+            let Some(program) = self.keys.get(ix.program as usize) else {
+                continue;
+            };
+            if EventSource::from_program(program) != Some(EventSource::Pump) {
+                continue;
+            }
+            let first = ix.accounts.first().and_then(|i| self.keys.get(*i as usize));
+            if first != Some(&c::EVENT_AUTHORITY) {
+                continue;
+            }
+            if let Ok(Some(PumpEvent::Create(e))) = decode_cpi_event(program, &ix.data) {
+                out.push(Create {
+                    mint: e.mint,
+                    token_program: e.token_program.unwrap_or(c::SPL_TOKEN_PROGRAM_ID),
+                    sol_quoted: e.quote_mint.is_none_or(|q| c::is_sol_like_quote_mint(&q)),
+                    mayhem: e.is_mayhem_mode.unwrap_or(false),
                 });
             }
         }
