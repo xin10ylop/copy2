@@ -73,6 +73,6 @@ funds without the box. Fund it with ETH on Robinhood Chain (chain 4663): the off
 sudo install -m 0640 -o root -g rugsnipe ~/rugsnipe/config/rh-copier.example.toml /etc/rugsnipe/rh-copier.toml
 sudo systemctl enable --now rh-copier && sleep 10 && sudo journalctl -u rh-copier -n 8 --no-pager
 ```
-Reading it: `rhq` (the same as `qqq`; wallet column 1-3, each wallet's result and the total). Stop new buys:
+Reading it: `www` (the same as `qqq`; wallet column 1-3, each wallet's result and the total). Stop new buys:
 `sudo touch /var/lib/rh-copier/KILL` (exits continue). Stop all: `sudo systemctl stop rh-copier` (open coins stay in
 the wallet; a restart picks them up from `state.json`).
