@@ -60,7 +60,7 @@ coins that complete do so a median 131 s after the ladder), so the curve-top gra
 slot after the ladder and sells into the trades that followed, with our own buy's weight on the curve and the 0.0155
 fill bias, but the live bot does not detect a ladder today (it follows wallets): a new trigger is needed.
 
-## CORRECTION (Nov 18, ~04:30 UTC): the RESULT above is void, a model error
+## CORRECTION (Nov 18, ~02:00 UTC): the RESULT above is void, a model error
 
 The paths listed the transactions inside a slot in reverse order. The slot+1 entry took the launch slot's first
 state, and "the next trade" was the ladder's second bundle doubling the price. In the true order, the same 108 coins
