@@ -1,0 +1,16 @@
+108 pooled coins after the cutoff; the curve completed within the data for 18 (17%), a median 131 s after the ladder
+our entry over the ladder buy's price: median 1.07x
+
+sp10/60s: all 108: +58.36 SOL (+108.1% a copy); on the coins that completed: +58.69 (+652.1%)
+   graduation sold at 0.8x of the curve's last value: +44.97 SOL (+83.3% a copy); exits set by the graduation: 16
+   graduation sold at 0.5x of the curve's last value: +24.88 SOL (+46.1% a copy); exits set by the graduation: 16
+
+trail1.3/25%: all 108: +56.53 SOL (+104.7% a copy); on the coins that completed: +62.36 (+692.9%)
+   graduation sold at 0.8x of the curve's last value: +42.21 SOL (+78.2% a copy); exits set by the graduation: 17
+   graduation sold at 0.5x of the curve's last value: +20.75 SOL (+38.4% a copy); exits set by the graduation: 17
+
+FLIP ours x1.2 cap 30s: all 108: +27.59 SOL (+51.1% a copy); on the coins that completed: +6.66 (+74.0%)
+   graduation sold at 0.8x of the curve's last value: +27.59 SOL (+51.1% a copy); exits set by the graduation: 0
+   graduation sold at 0.5x of the curve's last value: +27.59 SOL (+51.1% a copy); exits set by the graduation: 0
+
+THE FROZEN FLIP after the cutoff: 108 coins, +27.59 SOL (+51.1% a copy); halves +42.2% / +60.0%; without the best 2% +25.73; P(mean > 0) 100.0%
