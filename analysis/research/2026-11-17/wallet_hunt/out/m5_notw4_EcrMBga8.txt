@@ -1,0 +1,7 @@
+   (coins wallet 4 bought, left out: 6160)
+== EcrMBga8HvSiCX2jQNiTfDuvrqkSE7ABQQ7YN5JTKcTb: 3000 signatures since 11-07 14:41 UTC; first buys 0.5+ SOL outside the screen: 150, modelled 133
+   before the screen  other-token coins:   0
+   before the screen  SOL coins:           0
+   after the screen   other-token coins: 133  -7.29 SOL ( -11.0% a copy) w/o 2%  -9.29 | won  28% | P(mean>0)   0.0%
+   after the screen   SOL coins:           0
+   ALL OUTSIDE, other-token coins:    133  -7.29 SOL ( -11.0% a copy) w/o 2%  -9.29 | won  28% | P(mean>0)   0.0%
