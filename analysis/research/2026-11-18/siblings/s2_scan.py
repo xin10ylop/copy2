@@ -9,7 +9,7 @@ from concurrent.futures import ThreadPoolExecutor
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); from s1_fingerprint import fp, lib
 sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-17/attention"); import creates
 SP = sys.argv[1]; PER = int(sys.argv[2]) if len(sys.argv) > 2 else 6; W4 = lib.W4
-CR = {m: v for m, (s, v) in creates.load(SP).items()}; meta = json.load(open(f"{SP}/winners/week_meta.json"))
+CR = {m: v for m, (s, v) in creates.load(SP).items()}; meta = {m: v for m, v in json.load(open(os.environ.get("META", f"{SP}/winners/week_meta.json"))).items() if v}   # META: a saved copy (w6_week.py rewrites the file while it runs)
 cslot = {m: (v["slot"], v["creator"]) for m, v in CR.items()}; cslot.update({m: (v["slot"], v["creator"]) for m, v in meta.items()})
 B = collections.defaultdict(list); nc = 0
 for f in glob.glob(f"{SP}/winners/paths/*.json.gz") + glob.glob(f"{SP}/market/paths/*.json.gz"):
