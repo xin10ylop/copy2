@@ -1,0 +1,7 @@
+4sgdNABj: 265 copies, 201 not seen by the rule; cost 0.0345: 201 +23.63 ( +23.5%) w/o5  +9.93 | halves 100 +20.60 ( +41.2%) w/o5  +6.90 / 101  +3.03 (  +6.0%) w/o5  -6.17
+4sgdNABj: 265 copies, 201 not seen by the rule; cost 0.01: 201 +28.56 ( +28.4%) w/o5 +14.73 | halves 100 +23.05 ( +46.1%) w/o5  +9.23 / 101  +5.51 ( +10.9%) w/o5  -3.82
+   (all unseen copies, in-sample to the screen for those of Nov 15-17: 40+, positive, positive without the best 5: True)
+   AFTER THE SCREEN only, cost 0.0345:  80  -0.28 (  -0.7%) w/o5  -7.01
+   AFTER THE SCREEN only, cost 0.01:  80  +1.68 (  +4.2%) w/o5  -5.17
+PASS (the amendment: after-screen buys, 20+, positive at 0.0345, positive without the best 5): False
+   FAIRER MEASURES, after-screen copies at 0.0345: 80 copies, without the best 2% (2) -3.98 SOL; P(mean > 0) 44.5%; 5th pct -15.3% a copy

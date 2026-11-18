@@ -1,0 +1,31 @@
+AsDCYFPT: 67 copies after the screen (1st half 33, 2nd 34), 0.0345 SOL a round trip
+   its-sale (followed)   : 1st  33  -2.02 ( -12.2%) w/o 2%  -2.06 | 2nd  34  +2.16 ( +12.7%) w/o 2%  +1.63
+   sell at the next trade: 1st  33  -1.21 (  -7.3%) w/o 2%  -1.19 | 2nd  34  +2.16 ( +12.7%) w/o 2%  +1.70
+   team-sale             : 1st  33  -1.40 (  -8.5%) w/o 2%  -1.43 | 2nd  34  +2.06 ( +12.1%) w/o 2%  +1.54
+   ours x1.1 cap 30s     : 1st  33  -1.51 (  -9.1%) w/o 2%  -1.54 | 2nd  34  +2.25 ( +13.2%) w/o 2%  +1.79
+   ours x1.1 cap 60s     : 1st  33  -1.53 (  -9.3%) w/o 2%  -1.56 | 2nd  34  +1.84 ( +10.8%) w/o 2%  +1.39
+   ours x1.1 cap 300s    : 1st  33  -1.90 ( -11.5%) w/o 2%  -1.93 | 2nd  34  +0.18 (  +1.1%) w/o 2%  -0.28
+   ours x1.1 or team-sale: 1st  33  -1.29 (  -7.8%) w/o 2%  -1.32 | 2nd  34  +1.90 ( +11.2%) w/o 2%  +1.44
+   ours x1.2 cap 30s     : 1st  33  -1.59 (  -9.6%) w/o 2%  -1.64 | 2nd  34  +2.29 ( +13.4%) w/o 2%  +1.83
+   ours x1.2 cap 60s     : 1st  33  -2.07 ( -12.5%) w/o 2%  -2.12 | 2nd  34  +1.93 ( +11.3%) w/o 2%  +1.47
+   ours x1.2 cap 300s    : 1st  33  -6.56 ( -39.8%) w/o 2%  -6.65 | 2nd  34  -0.75 (  -4.4%) w/o 2%  -1.20
+   ours x1.2 or team-sale: 1st  33  -1.40 (  -8.5%) w/o 2%  -1.43 | 2nd  34  +1.94 ( +11.4%) w/o 2%  +1.48
+   ours x1.3 cap 30s     : 1st  33  -1.61 (  -9.8%) w/o 2%  -1.65 | 2nd  34  +2.28 ( +13.4%) w/o 2%  +1.83
+   ours x1.3 cap 60s     : 1st  33  -2.06 ( -12.5%) w/o 2%  -2.12 | 2nd  34  +1.95 ( +11.5%) w/o 2%  +1.50
+   ours x1.3 cap 300s    : 1st  33  -8.35 ( -50.6%) w/o 2%  -8.46 | 2nd  34  -1.74 ( -10.2%) w/o 2%  -2.20
+   ours x1.3 or team-sale: 1st  33  -1.40 (  -8.5%) w/o 2%  -1.43 | 2nd  34  +1.94 ( +11.4%) w/o 2%  +1.49
+   ours x1.5 cap 30s     : 1st  33  -1.61 (  -9.8%) w/o 2%  -1.65 | 2nd  34  +2.28 ( +13.4%) w/o 2%  +1.83
+   ours x1.5 cap 60s     : 1st  33  -2.06 ( -12.5%) w/o 2%  -2.12 | 2nd  34  +1.95 ( +11.5%) w/o 2%  +1.50
+   ours x1.5 cap 300s    : 1st  33  -8.83 ( -53.5%) w/o 2%  -8.84 | 2nd  34  -3.21 ( -18.9%) w/o 2%  -3.67
+   ours x1.5 or team-sale: 1st  33  -1.40 (  -8.5%) w/o 2%  -1.43 | 2nd  34  +1.94 ( +11.4%) w/o 2%  +1.49
+
+entry filter: outside buyers before our entry (exit tp1.3 and team-sale+tp1.3):
+   0    sell at the next trade: 1st   0  +0.00 (  +0.0%) w/o 2%  +0.00 | 2nd   0  +0.00 (  +0.0%) w/o 2%  +0.00
+   0    ours x1.2 cap 60s: 1st   0  +0.00 (  +0.0%) w/o 2%  +0.00 | 2nd   0  +0.00 (  +0.0%) w/o 2%  +0.00
+   1-2  sell at the next trade: 1st   0  +0.00 (  +0.0%) w/o 2%  +0.00 | 2nd   0  +0.00 (  +0.0%) w/o 2%  +0.00
+   1-2  ours x1.2 cap 60s: 1st   0  +0.00 (  +0.0%) w/o 2%  +0.00 | 2nd   0  +0.00 (  +0.0%) w/o 2%  +0.00
+   3-5  sell at the next trade: 1st   0  +0.00 (  +0.0%) w/o 2%  +0.00 | 2nd   0  +0.00 (  +0.0%) w/o 2%  +0.00
+   3-5  ours x1.2 cap 60s: 1st   0  +0.00 (  +0.0%) w/o 2%  +0.00 | 2nd   0  +0.00 (  +0.0%) w/o 2%  +0.00
+   6+   sell at the next trade: 1st  33  -1.21 (  -7.3%) w/o 2%  -1.19 | 2nd  34  +2.16 ( +12.7%) w/o 2%  +1.70
+   6+   ours x1.2 cap 60s: 1st  33  -2.07 ( -12.5%) w/o 2%  -2.12 | 2nd  34  +1.93 ( +11.3%) w/o 2%  +1.47
+ladder wallets seen: {3: 67}
