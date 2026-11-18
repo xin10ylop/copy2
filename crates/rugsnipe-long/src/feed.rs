@@ -51,6 +51,9 @@ pub struct FeedCfg {
     pub more: Vec<Pubkey>,
     /// Our wallet (`None` in paper without one: nothing of ours to see).
     pub ours: Option<Pubkey>,
+    /// Every pump transaction (the ladder flip watches every launch's create
+    /// slot; only its own unit turns this on).
+    pub pump: bool,
 }
 
 /// Changes the held set.
@@ -87,6 +90,12 @@ pub fn request(cfg: &FeedCfg, mints: &BTreeSet<Pubkey>) -> SubscribeRequest {
     transactions.insert("copied".to_string(), f(copied, Some(false)));
     if let Some(o) = cfg.ours {
         transactions.insert("ours".to_string(), f(vec![o.to_string()], None));
+    }
+    if cfg.pump {
+        transactions.insert(
+            "pump".to_string(),
+            f(vec![pump_codec::constants::PUMP_PROGRAM_ID.to_string()], Some(false)),
+        );
     }
     if !mints.is_empty() {
         transactions.insert(
@@ -257,6 +266,23 @@ mod tests {
     use super::*;
 
     #[test]
+    fn the_ladder_unit_subscribes_to_every_pump_transaction() {
+        let mut cfg = FeedCfg {
+            url: String::new(),
+            x_token: None,
+            copied: Pubkey::new_from_array([1; 32]),
+            more: vec![],
+            ours: None,
+            pump: false,
+        };
+        assert!(!request(&cfg, &BTreeSet::new()).transactions.contains_key("pump"));
+        cfg.pump = true;
+        let r = request(&cfg, &BTreeSet::new());
+        assert_eq!(r.transactions["pump"].account_include, vec![pump_codec::constants::PUMP_PROGRAM_ID.to_string()]);
+        assert_eq!(r.transactions["pump"].failed, Some(false));
+    }
+
+    #[test]
     fn our_own_stream_carries_failed_and_successful_transactions() {
         let cfg = FeedCfg {
             url: String::new(),
@@ -264,6 +290,7 @@ mod tests {
             copied: Pubkey::new_from_array([1; 32]),
             more: vec![Pubkey::new_from_array([4; 32])],
             ours: Some(Pubkey::new_from_array([2; 32])),
+            pump: false,
         };
         let mut mints = BTreeSet::new();
         mints.insert(Pubkey::new_from_array([3; 32]));

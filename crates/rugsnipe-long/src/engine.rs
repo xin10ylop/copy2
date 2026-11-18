@@ -70,6 +70,8 @@ pub struct Engine {
     last_save_ms: u64,
     watched: BTreeSet<Pubkey>,
     buyback_rr: usize,
+    /// The ladder detector (`cfg.ladder.enabled`): every pump launch's create slot.
+    ladder: Option<crate::ladder::Ladder>,
 }
 
 fn m8(k: &Pubkey) -> String {
@@ -120,6 +122,13 @@ impl Engine {
             last_save_ms: 0,
             watched: BTreeSet::new(),
             buyback_rr: 0,
+            ladder: None,
+        })
+        .map(|mut e: Self| {
+            if e.cfg.ladder.enabled {
+                e.ladder = Some(crate::ladder::Ladder::new(e.cfg.ladder.clone()));
+            }
+            e
         })
     }
 
@@ -238,6 +247,15 @@ impl Engine {
         }
         if src == Src::Ours || tx.signer() == Some(self.me) {
             self.on_ours(tx);
+        }
+        // the ladder flip: a unit of its own (the copied wallet's buys are
+        // not copied there)
+        if let Some(d) = self.ladder.as_mut() {
+            let hits = d.on_tx(tx);
+            for h in hits {
+                self.on_ladder(h);
+            }
+            return;
         }
         if tx.signer() == Some(self.copy) && !tx.err {
             let o = self.oracle.clone();
@@ -488,6 +506,7 @@ impl Engine {
             hi: 0.0,
             hi_ms: 0,
             flow: Default::default(),
+            sol_curve: false,
         };
         if paper {
             println!(
@@ -544,6 +563,144 @@ impl Engine {
                 Err(e) => return self.skip(&t, &format!("send: {e}")),
             }
         }
+        self.book.positions.push(p);
+        self.rewatch();
+        self.save();
+    }
+
+    /// The ladder flip's buy (`ladder.rs`, 2026-11-18): `stake_sol` on the
+    /// SOL-priced curve at once, whoever the ladder's wallets are. The same
+    /// guards as a copy (mode, KILL, the coin already ours, `max_open`, the
+    /// daily stop, the balance); the exits are the configured ones (the flip:
+    /// `tp_from_fill` with `take_profit` 1.2 and `max_hold_s` 30, from now).
+    fn on_ladder(&mut self, h: crate::ladder::Hit) {
+        let now = now_ms();
+        let t0 = std::time::Instant::now();
+        let tag = format!("ladder {} slot {} wallets {}", m8(&h.mint), h.slot, h.wallets.len());
+        let skip = |why: &str| println!("long skip {tag}: {why}");
+        if self.cfg.mode == Mode::Off {
+            return skip("mode off");
+        }
+        if self.killed() {
+            return skip("KILL file");
+        }
+        if self.book.positions.iter().any(|p| p.live() && p.mint_pk() == h.mint) {
+            return skip("coin already ours");
+        }
+        let paper = !self.real();
+        let open = self.book.live().filter(|p| p.paper == paper).count();
+        if open >= self.cfg.max_open {
+            return skip(&format!("{open} open (max_open)"));
+        }
+        let today = self.book.realized_today(now, paper);
+        if (today as f64) <= -self.cfg.daily_stop_sol * 1e9 {
+            return skip(&format!("daily stop ({} SOL today)", sol(today as i128)));
+        }
+        let stake = self.cfg.stake_for(false);
+        // the curve's SOL our buy moves (its fee off the input), and the
+        // fewest tokens it may return: the state after the ladder, up to
+        // `max_premium` higher
+        let quote_in_est = stake * 10_000 / (10_000 + CURVE_FEE_BPS as u64);
+        let min_out = pos::buy_min_out(h.vt, h.vq, quote_in_est, self.cfg.max_premium);
+        let route = match pump_codec::multihop::Route::new(
+            c::WSOL_MINT,
+            vec![pump_codec::multihop::Hop::curve(&h.mint, &h.token_program, &c::WSOL_MINT, &c::SPL_TOKEN_PROGRAM_ID)],
+        ) {
+            Ok(r) => r,
+            Err(e) => return skip(&format!("route: {e:?}")),
+        };
+        let (input, hops) = Position::store_route(&route);
+        let id = self.book.next_id;
+        let mut p = Position {
+            id,
+            paper,
+            mint: h.mint.to_string(),
+            quote_mint: c::WSOL_MINT.to_string(),
+            quote_program: c::SPL_TOKEN_PROGRAM_ID.to_string(),
+            coin_program: h.token_program.to_string(),
+            anchor: c::WSOL_MINT.to_string(),
+            anchor_program: c::SPL_TOKEN_PROGRAM_ID.to_string(),
+            route_input: input,
+            route: hops,
+            how: "ladder".to_string(),
+            its_sig: String::new(),
+            its_slot: h.slot,
+            its_lamports: stake,
+            its_quote_in: quote_in_est,
+            its_tokens: 0,
+            seen_ms: now,
+            vt_ref: h.vt,
+            vq_ref: h.vq,
+            amount_in: stake,
+            stake_lamports: stake,
+            tokens: 0,
+            state: State::Buying,
+            buy_sig: None,
+            buy_sent_ms: now,
+            sell_sigs: vec![],
+            sell_sent_ms: 0,
+            sell_tries: 0,
+            reason: None,
+            vt: h.vt,
+            vq: h.vq,
+            last_slot: h.slot,
+            peak: 1.0,
+            out_anchor: 0,
+            out_lamports: 0,
+            net_lamports: 0,
+            closed_ms: 0,
+            costs: 0,
+            quote_in: quote_in_est,
+            sell_next_ms: 0,
+            dropped: false,
+            graduated: false,
+            land_slot: h.slot.max(self.slot) + self.cfg.paper_land_slots,
+            applied: vec![],
+            send_fails: 0,
+            its_sold: false,
+            fee_bps: CURVE_FEE_BPS,
+            sell_land_slot: 0,
+            its_sell_px: 0.0,
+            its_sell_net: 0,
+            next_chase_ms: 0,
+            recovered: false,
+            entry_px: 0.0,
+            hi: 0.0,
+            hi_ms: 0,
+            flow: Default::default(),
+            sol_curve: true,
+        };
+        if paper {
+            println!(
+                "long paper-buy #{id} {tag} stake {:.3} SOL; seen at the ladder's slot +{}, fills at the end of +{}",
+                stake as f64 / 1e9,
+                self.slot.saturating_sub(h.slot),
+                p.land_slot - h.slot
+            );
+        } else {
+            let reserve = (self.cfg.reserve_sol * 1e9) as u64;
+            if self.sol_balance < stake + reserve {
+                return skip(&format!(
+                    "SOL balance {:.3} under the stake + reserve {:.3}",
+                    self.sol_balance as f64 / 1e9,
+                    reserve as f64 / 1e9
+                ));
+            }
+            match self.send_buy(&p, &route, min_out) {
+                Ok(sig) => {
+                    println!(
+                        "long buy #{id} {tag} in {stake} lamports min_out {min_out} sent {} in {} ms; seen at the ladder's slot +{}",
+                        &sig[..8.min(sig.len())],
+                        t0.elapsed().as_millis(),
+                        self.slot.saturating_sub(h.slot)
+                    );
+                    p.buy_sig = Some(sig);
+                    self.sol_balance = self.sol_balance.saturating_sub(stake);
+                }
+                Err(e) => return skip(&format!("send: {e}")),
+            }
+        }
+        self.book.next_id += 1;
         self.book.positions.push(p);
         self.rewatch();
         self.save();
@@ -664,6 +821,14 @@ impl Engine {
         self.buyback_rr = self.buyback_rr.wrapping_add(1);
         let bb = self.buyback_rr;
         let r = r.clone();
+        if p.sol_curve {
+            let mint = p.mint_pk();
+            return self
+                .send_signed(VariantKind::Buy, &move |tip| {
+                    txb::sol_buy_ixs(&me, &mint, &cp, amount_in, min_out, &Fees { tip, ..fees })
+                })
+                .map(|v| v.into_iter().next().unwrap_or_default());
+        }
         // one buy sender: one transaction (two landing would double the position)
         self.send_signed(VariantKind::Buy, &move |tip| {
             txb::buy_ixs(
@@ -741,6 +906,13 @@ impl Engine {
         let close_coin = p.sell_tries < 2;
         let min_out = self.sell_min_out(&p);
         let (fees, _) = self.fees(false);
+        let on_curve = r.hops.iter().all(|h| h.venue == pump_codec::multihop::Venue::Curve);
+        if p.sol_curve && on_curve {
+            let (mint, cp, me, tokens) = (p.mint_pk(), Position::pk(&p.coin_program), self.me, p.tokens);
+            return self.send_signed(VariantKind::Sell, &move |tip| {
+                txb::sol_sell_ixs(&me, &mint, &cp, tokens, min_out, &Fees { tip, ..fees }, close_coin)
+            });
+        }
         let (ap, cp, me, tokens) = (
             Position::pk(&p.anchor_program),
             Position::pk(&p.coin_program),
@@ -1000,7 +1172,7 @@ impl Engine {
                     // the curve completed while our buy was out: the price
                     // is frozen, no rule of ours would fire (2RR6sfbi)
                     .or_else(|| p.graduated.then_some(Reason::Complete))
-                    .or_else(|| pos::exit_due(p, now, cfg.take_profit, cfg.stop, cfg.max_hold_s))
+                    .or_else(|| pos::exit_due_fill(p, now, cfg.take_profit, cfg.stop, cfg.max_hold_s, cfg.tp_from_fill))
                     .or_else(|| pos::signal_due(p, now, &cfg.sell_pressure, cfg.stall_s))
                     .map(|r| (i, Act::Exit(r))),
                 _ => None,

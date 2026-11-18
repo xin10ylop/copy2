@@ -632,6 +632,7 @@ fn run(args: &[String]) -> Result<(), String> {
             copied: copy,
             more: vec![],
             ours: (me != Pubkey::default()).then_some(me),
+            pump: eng.cfg.ladder.enabled,
         },
         tx,
     );
@@ -1488,6 +1489,7 @@ fn copy_run(args: &[String]) -> Result<(), String> {
             copied: wallets[0],
             more: wallets[1..].to_vec(),
             ours: None,
+            pump: false,
         },
         tx,
     );

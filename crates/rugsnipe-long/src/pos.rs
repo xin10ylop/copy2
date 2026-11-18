@@ -188,6 +188,11 @@ pub struct Position {
     pub hi: f64,
     #[serde(default)]
     pub hi_ms: u64,
+    /// A coin on a SOL-priced curve (the ladder flip): bought and sold with
+    /// pump's own SOL instructions (`txb::sol_buy_ixs` / `sol_sell_ixs`); its
+    /// stored route is the one curve hop, so a graduation sells in its pool.
+    #[serde(default)]
+    pub sol_curve: bool,
     /// The other traders' trades on the coin while we hold it, (unix ms,
     /// a sell): the last minutes only (`sell_pressure`). Not kept across a
     /// restart.
@@ -333,11 +338,26 @@ pub fn exit_due(
     stop: f64,
     max_hold_s: u64,
 ) -> Option<Reason> {
+    exit_due_fill(p, now_ms, take_profit, stop, max_hold_s, false)
+}
+
+/// `exit_due`, with the take profit over our own fill price when
+/// `from_fill` (the ladder flip: +20% over what we paid) instead of over the
+/// price its buy left.
+pub fn exit_due_fill(
+    p: &Position,
+    now_ms: u64,
+    take_profit: f64,
+    stop: f64,
+    max_hold_s: u64,
+    from_fill: bool,
+) -> Option<Reason> {
     if p.state != State::Open {
         return None;
     }
     let px = p.price();
-    if px >= take_profit {
+    let base = if from_fill && p.entry_px > 0.0 { p.entry_px } else { 1.0 };
+    if px >= take_profit * base {
         Some(Reason::Tp)
     } else if stop > 0.0 && px <= stop && px > 0.0 {
         Some(Reason::Stop)
@@ -541,6 +561,7 @@ mod tests {
             hi: 0.0,
             hi_ms: 0,
             flow: Default::default(),
+            sol_curve: false,
         }
     }
 

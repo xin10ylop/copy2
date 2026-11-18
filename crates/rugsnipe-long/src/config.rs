@@ -134,6 +134,12 @@ pub struct LongCfg {
     /// Float prices (Jupiter Price API v3; with a key: `https://api.jup.ag/price/v3`
     /// and `cred:` is not supported here, so the free endpoint by default).
     pub price_api: String,
+    /// The take profit over our own fill price instead of the price its buy
+    /// left (the ladder flip sells at +20% over what we paid).
+    pub tp_from_fill: bool,
+    /// The ladder flip (`ladder.rs`): watch every pump launch's create slot;
+    /// when enabled the copied wallet's buys are not copied (a unit of its own).
+    pub ladder: crate::ladder::LadderCfg,
 }
 
 impl Default for LongCfg {
@@ -177,6 +183,8 @@ impl Default for LongCfg {
             stall_s: 0,
             state_dir: "/var/lib/rugsnipe-long".into(),
             price_api: crate::oracle::API.into(),
+            tp_from_fill: false,
+            ladder: crate::ladder::LadderCfg::default(),
         }
     }
 }
@@ -190,6 +198,9 @@ impl LongCfg {
 
     pub fn validate(&self) -> Result<(), String> {
         let bad = |w: &str| Err(format!("long.toml: {w}"));
+        if self.ladder.enabled {
+            self.ladder.validate().map_err(|e| format!("long.toml: {e}"))?;
+        }
         if self.copy_wallet.parse::<pump_codec::Pubkey>().is_err() {
             return bad("copy_wallet is not a pubkey");
         }
