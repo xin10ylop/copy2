@@ -1,0 +1,34 @@
+/home/user/copy2/analysis/research/2026-11-18/robinhood/rh7_check.py:44: RuntimeWarning: All-NaN slice encountered
+  print(f"  coins {len(coins)} | its hold: median {np.nanmedian(h):.0f} s (quartiles {np.nanpercentile(h, 25):.0f} - {np.nanpercentile(h, 75):.0f} s), mean {np.nanmean(h):.0f} s; never sold in the data {never}; sold within 10 s {np.mean(h <= 10) * 100:.0f}%, within 30 s {np.mean(h <= 30) * 100:.0f}%")
+/usr/local/lib/python3.13/dist-packages/numpy/lib/_nanfunctions_impl.py:1396: RuntimeWarning: All-NaN slice encountered
+  return _nanquantile_unchecked(
+/home/user/copy2/analysis/research/2026-11-18/robinhood/rh7_check.py:44: RuntimeWarning: Mean of empty slice
+  print(f"  coins {len(coins)} | its hold: median {np.nanmedian(h):.0f} s (quartiles {np.nanpercentile(h, 25):.0f} - {np.nanpercentile(h, 75):.0f} s), mean {np.nanmean(h):.0f} s; never sold in the data {never}; sold within 10 s {np.mean(h <= 10) * 100:.0f}%, within 30 s {np.mean(h <= 30) * 100:.0f}%")
+
+0x9a3955a122ab8a649a8511df2dce169471fd0ec1
+  coins 541 | its hold: median 70 s (quartiles 47 - 121 s), mean 100 s; never sold in the data 3; sold within 10 s 7%, within 30 s 16%
+  creators: its own launches 0 (0%), 540 different creators, the top creator 2 coins (0%)
+  buyers after it (300 s): median 19 other wallets, 0.577 ETH; the 20 most frequent co-buyers appear in 96% of its coins; the most frequent one in 69%
+
+0x5bc235acecff3dde394f4bfc696f7c35efd502f0
+  coins 630 | its hold: median 33 s (quartiles 12 - 105 s), mean 78 s; never sold in the data 532; sold within 10 s 18%, within 30 s 49%
+  creators: its own launches 0 (0%), 627 different creators, the top creator 2 coins (0%)
+  buyers after it (300 s): median 10 other wallets, 0.244 ETH; the 20 most frequent co-buyers appear in 88% of its coins; the most frequent one in 41%
+
+0x9e0771d4a5fe0c5dbd03e6175807b8290c2e40b0
+  coins 174 | its hold: median nan s (quartiles nan - nan s), mean nan s; never sold in the data 174; sold within 10 s 0%, within 30 s 0%
+  creators: its own launches 0 (0%), 174 different creators, the top creator 1 coins (1%)
+  buyers after it (300 s): median 35 other wallets, 1.292 ETH; the 20 most frequent co-buyers appear in 95% of its coins; the most frequent one in 74%
+
+0xc54d3914f91f984d61b63d491f38934c4e706b79
+  coins 222 | its hold: median 130 s (quartiles 45 - 182 s), mean 123 s; never sold in the data 8; sold within 10 s 1%, within 30 s 13%
+  creators: its own launches 0 (0%), 222 different creators, the top creator 1 coins (0%)
+  buyers after it (300 s): median 27 other wallets, 1.114 ETH; the 20 most frequent co-buyers appear in 97% of its coins; the most frequent one in 82%
+
+0x9689992f5b5c09447f15906d8d11214944488341
+  coins 1455 | its hold: median 94 s (quartiles 24 - 360 s), mean 2303 s; never sold in the data 36; sold within 10 s 14%, within 30 s 29%
+  creators: its own launches 0 (0%), 1418 different creators, the top creator 5 coins (0%)
+  buyers after it (300 s): median 9 other wallets, 0.262 ETH; the 20 most frequent co-buyers appear in 81% of its coins; the most frequent one in 49%
+
+FOR SCALE, random coins (a random buyer of 0.03+ ETH on each, 400 coins):
+  median 5 other buyers and 0.087 ETH in the 300 s after a buy

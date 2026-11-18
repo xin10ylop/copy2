@@ -1,0 +1,18 @@
+
+copier 0x840672e7760937d25c103866acd0ba931af39201 following 0x9a3955a122ab8a649a8511df2dce169471fd0ec1:
+   after the leader older half:   48 coins, its result -0.0816 ETH, won 29%
+   after the leader newer half:  235 coins, its result +0.6562 ETH, won 48%
+   other coins      older half:  154 coins, its result -0.2115 ETH, won 31%
+   other coins      newer half:  112 coins, its result +0.1074 ETH, won 28%
+
+copier 0xff335b2c27f66910e67808382de6a1fd2389321d following 0x5bc235acecff3dde394f4bfc696f7c35efd502f0:
+   after the leader older half:   18 coins, its result -0.0401 ETH, won 0%
+   after the leader newer half:  220 coins, its result -0.1084 ETH, won 6%
+   other coins      older half:   14 coins, its result -0.0314 ETH, won 7%
+   other coins      newer half:  829 coins, its result -1.0396 ETH, won 3%
+
+copier 0x538c3fdc8c9b56bb02faa42a576a4405229b2829 following 0x9e0771d4a5fe0c5dbd03e6175807b8290c2e40b0:
+   after the leader older half:   35 coins, its result -1.6386 ETH, won 0%
+   after the leader newer half:  106 coins, its result -5.4439 ETH, won 0%
+   other coins      older half:   26 coins, its result -0.4697 ETH, won 0%
+   other coins      newer half:   22 coins, its result -0.6655 ETH, won 0%

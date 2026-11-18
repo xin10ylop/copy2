@@ -1,0 +1,31 @@
+CurveSell: seller == recipient in 856235 of 872922 sales; the top 5 'sellers': [('0x65050a9b', 130448), ('0xd6d35b56', 74965), ('0x92475293', 42702), ('0x9689992f', 41333), ('0x0005ea38', 24903)]
+
+0x9a3955a122ab8a649a8511df2dce169471fd0ec1: 653 coins; its top co-buyers:
+   0x92475293e578c7d88651d160d2b0e45e04e4528b  in  68% of its coins, median 8 blocks after it (0.8 s), 1% within 2 blocks; it also bought 4511 coins this wallet never touched
+   0x840672e7760937d25c103866acd0ba931af39201  in  43% of its coins, median 2 blocks after it (0.2 s), 84% within 2 blocks; it also bought 266 coins this wallet never touched
+   0xe4a727d2cca580d95e52d55930f6aac12ec61075  in  42% of its coins, median 11 blocks after it (1.1 s), 0% within 2 blocks; it also bought 6056 coins this wallet never touched
+   0x2abdd72b5bb40ba0df894d33d40aee918da551ae  in  38% of its coins, median 10 blocks after it (1.0 s), 9% within 2 blocks; it also bought 1318 coins this wallet never touched
+   0x5136067ccc0065c20ac16cd7191d08564e19d71e  in  38% of its coins, median 10 blocks after it (1.0 s), 9% within 2 blocks; it also bought 1333 coins this wallet never touched
+
+0x5bc235acecff3dde394f4bfc696f7c35efd502f0: 631 coins; its top co-buyers:
+   0x92475293e578c7d88651d160d2b0e45e04e4528b  in  41% of its coins, median 178 blocks after it (18.3 s), 7% within 2 blocks; it also bought 4667 coins this wallet never touched
+   0xff335b2c27f66910e67808382de6a1fd2389321d  in  37% of its coins, median 2 blocks after it (0.2 s), 70% within 2 blocks; it also bought 841 coins this wallet never touched
+   0xe4a727d2cca580d95e52d55930f6aac12ec61075  in  37% of its coins, median 11 blocks after it (1.1 s), 1% within 2 blocks; it also bought 6095 coins this wallet never touched
+   0x9689992f5b5c09447f15906d8d11214944488341  in  31% of its coins, median 199 blocks after it (20.4 s), 2% within 2 blocks; it also bought 3617 coins this wallet never touched
+   0x5136067ccc0065c20ac16cd7191d08564e19d71e  in  26% of its coins, median 10 blocks after it (1.0 s), 12% within 2 blocks; it also bought 1411 coins this wallet never touched
+
+0x9e0771d4a5fe0c5dbd03e6175807b8290c2e40b0: 198 coins; its top co-buyers:
+   0x538c3fdc8c9b56bb02faa42a576a4405229b2829  in  71% of its coins, median 4 blocks after it (0.4 s), 47% within 2 blocks; it also bought 1 coins this wallet never touched
+   0xbcd4e7eb85cd2806cd2ad438a41d935937a79e19  in  70% of its coins, median 92 blocks after it (9.4 s), 27% within 2 blocks; it also bought 1 coins this wallet never touched
+   0xc310fc986934913cc84ec25499d5b859a3a31937  in  63% of its coins, median 139 blocks after it (14.3 s), 18% within 2 blocks; it also bought 1 coins this wallet never touched
+   0xd6e05fd8d89c6bb4b53e42abb8684705ab1e6d96  in  62% of its coins, median 173 blocks after it (17.7 s), 18% within 2 blocks; it also bought 0 coins this wallet never touched
+   0x49bad0a23d1347c84631776b2e5aae843cc64df4  in  53% of its coins, median 198 blocks after it (20.3 s), 9% within 2 blocks; it also bought 0 coins this wallet never touched
+
+0xc54d3914f91f984d61b63d491f38934c4e706b79: 222 coins; its top co-buyers:
+   0x92475293e578c7d88651d160d2b0e45e04e4528b  in  82% of its coins, median 15 blocks after it (1.5 s), 0% within 2 blocks; it also bought 4799 coins this wallet never touched
+   0x9689992f5b5c09447f15906d8d11214944488341  in  52% of its coins, median 72 blocks after it (7.4 s), 0% within 2 blocks; it also bought 3721 coins this wallet never touched
+   0x2abdd72b5bb40ba0df894d33d40aee918da551ae  in  38% of its coins, median 13 blocks after it (1.3 s), 1% within 2 blocks; it also bought 1481 coins this wallet never touched
+   0x5136067ccc0065c20ac16cd7191d08564e19d71e  in  38% of its coins, median 13 blocks after it (1.3 s), 1% within 2 blocks; it also bought 1496 coins this wallet never touched
+   0xe4a727d2cca580d95e52d55930f6aac12ec61075  in  36% of its coins, median 14 blocks after it (1.4 s), 0% within 2 blocks; it also bought 6246 coins this wallet never touched
+
+co-buyers following more than one of these wallets: {'0x92475293': ['0x5bc235ac', '0x9a3955a1', '0xc54d3914'], '0xe4a727d2': ['0x5bc235ac', '0x9a3955a1', '0xc54d3914'], '0x2abdd72b': ['0x9a3955a1', '0xc54d3914'], '0x5136067c': ['0x5bc235ac', '0x9a3955a1', '0xc54d3914'], '0x9689992f': ['0x5bc235ac', '0xc54d3914']}
