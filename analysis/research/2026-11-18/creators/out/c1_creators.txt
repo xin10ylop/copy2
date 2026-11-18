@@ -1,0 +1,5 @@
+2955 coins with a launch buy modelled; 1116 creators (352 with 2+ coins in the 48 h)
+(a) coins wallet 4 bought (1.3+ SOL), our buy at launch:         27    -0.01 SOL (  -0.1% a buy) w/o 2%    -1.24 | won  33% | P(mean>0)  46.3%
+(b) later coins of creators wallet 4 had bought, it skipped:    27    -1.47 SOL ( -10.9% a buy) w/o 2%    -1.66 | won  26% | P(mean>0)   0.9%
+(c) every other coin:                                          2901  -155.77 SOL ( -10.7% a buy) w/o 2%  -254.11 | won  19% | P(mean>0)   0.0%
+wallet 4's coins whose creator made 2+ coins in the 48 h: 9 of 27
