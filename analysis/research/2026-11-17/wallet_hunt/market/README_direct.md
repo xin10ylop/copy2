@@ -112,3 +112,14 @@ between two winning bands: noise). None is large or clean enough to filter on. M
 positive over the 4 days. Coins wallet 4 also bought: +47.6% (13), skipped by the unit only while the main unit holds
 the coin (the main unit trades it then). **No filter changed**; to re-check on more days or ~50 real trades: the 1.0-1.3
 SOL band, SPCX, the 125 bps tier.
+
+## TAB16RxX on its 14 earlier days: it does NOT hold (`e6_tab_older.py`, `../out/e6_tab_older.txt`, Nov 18)
+
+No fetch: the Nov 15 study's paths (`SP/tab/lk/paths`) and the bot's own detection of its buys with the floats of then
+(`SP/tab2/scan_all.out`: ROUTABLE, the float it pays with). Its routable first buys of 0.5+ SOL from Oct 31 12:43 to Nov
+14 01:00 UTC (before the 4 days that found it), true in-slot order, 0.0345 SOL a round trip: **697 copies, −5.6% a copy
+under the deployed exit (−19.46 SOL at 0.5), P(mean > 0) 0.2%; all 160 exit settings negative over the 14 days.** By the
+float the copy pays with: wSOL-routed (its coin's quote reached through a pool from SOL: not in the 4-day test, which
+kept float-quote coins only) 467 copies −9.4%; float-paid 230 copies about +2% (WBTC +4.7% on 91, PUMP +3.2% on 56,
+TTWO +2.2% on 49, SPCX −9.5% on 13, HYPE −23.2% on 17, DJT +75.6% on 4). The +10.8% of Nov 14-18 is not its usual
+result: on float-quote coins it was about break-even before, and the live unit also takes wSOL-routed coins, which lost.
