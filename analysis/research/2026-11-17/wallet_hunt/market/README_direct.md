@@ -95,3 +95,9 @@ rank 23 of 128 on all four days, 56 of 128 by its weaker half. The steadiest (tp
 setting picked on days 1-2 alone (tp 3x, no stall, no sell pressure, 300 s) ranks 119 of 128 on days 3-4: the gaps of a
 few points between settings are the noise of 140 copies. One part at a time, no change beats the deployed one on both
 halves. **Kept as deployed**; re-judged on the unit's own real trades (the main unit's rule: about 50).
+
+Take profit in fine steps (`TPS=1.5,...,8 e4_tab_grid.py`, `../out/e4_tab_tp_fine.txt`; stall 180 / sp 5-60 / 600 s as
+deployed): 1.5x +1.8%, 2x +6.1%, 2.5x +7.7%, 2.75x +9.4%, 3x +9.6%, 3.25x +10.9%, 3.5x +11.2%, 4x +10.8% (deployed),
+4.5x +12.6%, 5x +14.2%, 6x +13.8%, 8x +11.1% a copy. Below about 2.75x it is clearly worse; from 2.75x to 6x a plateau
+whose ups and downs differ by half (3.25-3.5x the same on both halves, about +10-12%; 4.5-6x higher only on days 3-4).
+Kept at 4.0, inside the plateau and the same as the main unit.

@@ -1,0 +1,31 @@
+TAKE PROFIT, FINE (stall 180 / sell pressure 5-60 / 600 s as deployed; then the same with stall 60):
+   tp 1.5x, stall 180, sp 5/60, 600 s     | days 1-2   -0.6% (w/o 2% -0.47) | days 3-4   +3.2% (w/o 2% +0.85) | all   +1.8% 
+   tp 1.75x, stall 180, sp 5/60, 600 s    | days 1-2   +2.4% (w/o 2% +0.17) | days 3-4   +5.2% (w/o 2% +1.52) | all   +4.2% 
+   tp 2.0x, stall 180, sp 5/60, 600 s     | days 1-2   +3.5% (w/o 2% +0.37) | days 3-4   +7.7% (w/o 2% +1.97) | all   +6.1% 
+   tp 2.25x, stall 180, sp 5/60, 600 s    | days 1-2   +2.4% (w/o 2% +0.07) | days 3-4   +9.1% (w/o 2% +2.59) | all   +6.6% 
+   tp 2.5x, stall 180, sp 5/60, 600 s     | days 1-2   +5.8% (w/o 2% +0.79) | days 3-4   +8.9% (w/o 2% +2.25) | all   +7.7% 
+   tp 2.75x, stall 180, sp 5/60, 600 s    | days 1-2   +8.8% (w/o 2% +1.48) | days 3-4   +9.8% (w/o 2% +2.55) | all   +9.4% 
+   tp 3.0x, stall 180, sp 5/60, 600 s     | days 1-2   +8.1% (w/o 2% +1.06) | days 3-4  +10.6% (w/o 2% +2.82) | all   +9.6% 
+   tp 3.25x, stall 180, sp 5/60, 600 s    | days 1-2  +10.6% (w/o 2% +1.60) | days 3-4  +11.0% (w/o 2% +2.76) | all  +10.9% 
+   tp 3.5x, stall 180, sp 5/60, 600 s     | days 1-2   +9.8% (w/o 2% +1.36) | days 3-4  +12.1% (w/o 2% +3.12) | all  +11.2% 
+   tp 4.0x, stall 180, sp 5/60, 600 s     | days 1-2   +5.6% (w/o 2% +0.67) | days 3-4  +14.0% (w/o 2% +3.44) | all  +10.8% <- deployed
+   tp 4.5x, stall 180, sp 5/60, 600 s     | days 1-2   +6.0% (w/o 2% +0.70) | days 3-4  +16.6% (w/o 2% +3.90) | all  +12.6% 
+   tp 5.0x, stall 180, sp 5/60, 600 s     | days 1-2   +6.6% (w/o 2% +0.70) | days 3-4  +18.9% (w/o 2% +4.40) | all  +14.2% 
+   tp 6.0x, stall 180, sp 5/60, 600 s     | days 1-2   +3.1% (w/o 2% +0.01) | days 3-4  +20.4% (w/o 2% +4.41) | all  +13.8% 
+   tp 8.0x, stall 180, sp 5/60, 600 s     | days 1-2   +3.1% (w/o 2% +0.01) | days 3-4  +16.0% (w/o 2% +2.51) | all  +11.1% 
+
+   tp 1.5x, stall 60, sp 5/60, 600 s      | days 1-2   +0.0% (w/o 2% -0.31) | days 3-4   +3.3% (w/o 2% +0.90) | all   +2.1% 
+   tp 1.75x, stall 60, sp 5/60, 600 s     | days 1-2   +3.7% (w/o 2% +0.51) | days 3-4   +6.1% (w/o 2% +1.93) | all   +5.2% 
+   tp 2.0x, stall 60, sp 5/60, 600 s      | days 1-2   +5.4% (w/o 2% +0.89) | days 3-4   +7.9% (w/o 2% +2.06) | all   +7.0% 
+   tp 2.25x, stall 60, sp 5/60, 600 s     | days 1-2   +4.8% (w/o 2% +0.71) | days 3-4   +9.7% (w/o 2% +2.83) | all   +7.8% 
+   tp 2.5x, stall 60, sp 5/60, 600 s      | days 1-2   +7.4% (w/o 2% +1.22) | days 3-4   +9.6% (w/o 2% +2.54) | all   +8.8% 
+   tp 2.75x, stall 60, sp 5/60, 600 s     | days 1-2   +9.0% (w/o 2% +1.55) | days 3-4   +9.9% (w/o 2% +2.64) | all   +9.5% 
+   tp 3.0x, stall 60, sp 5/60, 600 s      | days 1-2   +9.3% (w/o 2% +1.37) | days 3-4   +9.6% (w/o 2% +2.63) | all   +9.5% 
+   tp 3.25x, stall 60, sp 5/60, 600 s     | days 1-2  +11.0% (w/o 2% +1.70) | days 3-4   +9.5% (w/o 2% +2.42) | all  +10.0% 
+   tp 3.5x, stall 60, sp 5/60, 600 s      | days 1-2  +11.0% (w/o 2% +1.68) | days 3-4  +10.3% (w/o 2% +2.66) | all  +10.6% 
+   tp 4.0x, stall 60, sp 5/60, 600 s      | days 1-2   +7.2% (w/o 2% +0.99) | days 3-4  +11.1% (w/o 2% +2.71) | all   +9.7% 
+   tp 4.5x, stall 60, sp 5/60, 600 s      | days 1-2   +7.2% (w/o 2% +0.99) | days 3-4  +12.2% (w/o 2% +2.85) | all  +10.3% 
+   tp 5.0x, stall 60, sp 5/60, 600 s      | days 1-2   +7.2% (w/o 2% +0.99) | days 3-4  +13.9% (w/o 2% +3.01) | all  +11.4% 
+   tp 6.0x, stall 60, sp 5/60, 600 s      | days 1-2   +7.2% (w/o 2% +0.99) | days 3-4  +13.4% (w/o 2% +2.38) | all  +11.1% 
+   tp 8.0x, stall 60, sp 5/60, 600 s      | days 1-2   +7.2% (w/o 2% +0.99) | days 3-4  +12.0% (w/o 2% +2.38) | all  +10.2% 
+

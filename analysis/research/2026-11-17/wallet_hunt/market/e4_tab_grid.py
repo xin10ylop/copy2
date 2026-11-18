@@ -35,7 +35,8 @@ def model(p, tp, hold, sp, stall, stake=0.5):
     i = H.first(age >= hold); c += [(i, 0)] if i is not None else []
     if not c: return out(n - 1)
     i, d = min(c); return out(min(i + d, n - 1))
-G = list(itertools.product((2, 3, 4, 6), (0, 60, 120, 180), (None, (3, 30, 30), (5, 60, 30), (10, 60, 30)), (300, 600)))
+TPS = tuple(float(x) for x in os.environ["TPS"].split(",")) if os.environ.get("TPS") else (2, 3, 4, 6)   # TPS=...: a finer take-profit grid
+G = list(itertools.product(TPS, (0, 60, 120, 180), (None, (3, 30, 30), (5, 60, 30), (10, 60, 30)), (300, 600))) if not os.environ.get("TPS") else [(t, 180, (5, 60, 30), 600) for t in TPS] + [(t, 60, (5, 60, 30), 600) for t in TPS]
 DEP = (4, 180, (5, 60, 30), 600)
 P = []
 for m, x in L.items():
@@ -67,6 +68,12 @@ rk = sorted(rows, key=lambda r: -r[6]); print(f"   its rank by the weaker half: 
 print("\nTHE 12 BEST BY THE WEAKER HALF (a setting that holds on both):")
 for r in rk[:12]: print(line(r, "<- deployed" if r[0] == DEP else ""))
 b1 = max(rows, key=lambda r: r[1]); print("\nPICKED ON DAYS 1-2 ALONE:"); print(line(b1)); print(f"   its days 3-4 rank: {1 + sorted(rows, key=lambda r: -r[2]).index(b1)} of {len(rows)}")
+if os.environ.get("TPS"):
+    print("\nTAKE PROFIT, FINE (stall 180 / sell pressure 5-60 / 600 s as deployed; then the same with stall 60):")
+    for st_ in (180, 60):
+        for t in TPS: print(line(next(r for r in rows if r[0] == (t, st_, (5, 60, 30), 600)), "<- deployed" if (t, st_, (5, 60, 30), 600) == DEP else ""))
+        print()
+    sys.exit()
 print("\nONE PART AT A TIME (the others as deployed):")
 for lab, gs in (("take profit", [(t, 180, (5, 60, 30), 600) for t in (2, 3, 4, 6)]), ("stall", [(4, s, (5, 60, 30), 600) for s in (0, 60, 120, 180)]),
                 ("sell pressure", [(4, 180, s, 600) for s in (None, (3, 30, 30), (5, 60, 30), (10, 60, 30))]), ("time", [(4, 180, (5, 60, 30), h) for h in (300, 600)])):
