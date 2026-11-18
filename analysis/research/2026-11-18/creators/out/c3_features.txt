@@ -1,0 +1,7 @@
+4737 coins; wallet 4 bought 30 (1.3+ SOL)
+   creator's own buy, SOL            : wallet 4's coins median   1.35 (quartiles 0.45-2.60) | the rest median   2.88 (0.95-4.84)
+   other buyers in the create slot   : wallet 4's coins median   4.00 (quartiles 2.00-6.00) | the rest median   2.00 (0.00-3.00)
+   their SOL                         : wallet 4's coins median   6.04 (quartiles 0.98-7.27) | the rest median   2.64 (0.00-5.39)
+   buyers in the next slot           : wallet 4's coins median   3.00 (quartiles 2.00-5.00) | the rest median   0.00 (0.00-1.00)
+   their SOL                         : wallet 4's coins median   1.70 (quartiles 1.02-2.88) | the rest median   0.00 (0.00-0.50)
+   quote token: share of wallet 4's coins / of the rest: [('TTWofwAg', '43% / 23%'), ('EPjFWdd5', '17% / 14%'), ('SPCXxcqX', '13% / 16%'), ('pumpCmXq', '7% / 8%'), ('3NZ9JMVB', '7% / 3%'), ('BPxxfRCX', '3% / 4%')]

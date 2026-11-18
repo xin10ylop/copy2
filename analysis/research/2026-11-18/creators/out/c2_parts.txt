@@ -1,0 +1,4 @@
+(1) copy, its sale followed (live)      : 24  +1.79 SOL ( +14.9% a copy) w/o 2%  +0.40
+(2) copy, its sale never followed       : 24  +1.92 SOL ( +16.0% a copy) w/o 2%  +0.53
+(3) buy at launch, its sale followed    : 24  +1.57 SOL ( +13.1% a copy) w/o 2%  +0.35
+trades between the launch slot's end and wallet 4's buy: median -1

@@ -23,7 +23,7 @@ def one(m):
     s0 = x["slot"]; k = max((j for j, e in enumerate(tr) if e["slot"] <= s0), default=None)
     if k is None or tr[-1]["t"] - tr[k]["t"] < 300: return None
     p = H.prep(tr, k, r, "slot+1", pmax=1000)
-    v = H.model(p)[0] - COST if not p["refused"] else None
+    v = H.model(p, early=None)[0] - COST if not p["refused"] else None   # no "its sale" at a launch buy (the Nov 18 fix: a random trader's sale was followed)
     w4 = [e for e in tr if e["user"] == W4 and e["buy"]]
     w4sol = (w4[0]["q"] * (1 + w4[0]["bps"] / 1e4) * r / 1e9) if w4 else 0
     return m, x["creator"], x["t"], v, w4sol

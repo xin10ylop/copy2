@@ -1,0 +1,13 @@
+2956 coins with a launch buy; day 1 / day 2 split at the median launch time
+baseline, every coin: day 1 1478  -75.73 ( -10.2%) w/o 2% -138.49 | day 2 1478  -77.28 ( -10.5%) w/o 2% -122.41
+wallet 4's coins:     day 1   15   +1.31 ( +17.5%) w/o 2%   +0.09 | day 2   12   -0.17 (  -2.8%) w/o 2%   -1.39
+
+154 rules with 10+ day-1 buys (not wallet 4's coins); the 5 best on day 1:
+   buyers>=6 SOL>=0 dev<=1 quote any     : day 1   27   -1.14 (  -8.4%) w/o 2%   -2.16 | day 2   23   -1.93 ( -16.8%) w/o 2%   -2.77
+   buyers>=6 SOL>=0 dev<=3 quote any     : day 1   81   -3.73 (  -9.2%) w/o 2%   -6.16 | day 2   91   -3.71 (  -8.2%) w/o 2%   -6.72
+   buyers>=2 SOL>=0 dev<=2 quote TTWofwAg: day 1   88   -4.25 (  -9.7%) w/o 2%   -6.33 | day 2   72   -3.53 (  -9.8%) w/o 2%   -4.95
+   buyers>=4 SOL>=0 dev<=1 quote TTWofwAg: day 1   25   -1.27 ( -10.2%) w/o 2%   -2.66 | day 2   16   -0.42 (  -5.2%) w/o 2%   -1.74
+   buyers>=2 SOL>=0 dev<=2 quote any     : day 1  308  -15.72 ( -10.2%) w/o 2%  -23.29 | day 2  261   -4.00 (  -3.1%) w/o 2%  -12.17
+
+PICKED on day 1: buyers>=6 SOL>=0 dev<=1 quote any -> day 2, coins wallet 4 skipped:   23   -1.93 ( -16.8%) w/o 2%   -2.77; P(mean>0) 5.4%
+   the same rule on all coins, day 2 (wallet 4's included):   25   -2.37 ( -18.9%) w/o 2%   -3.20

@@ -1,0 +1,7 @@
+
+== CzsxDQz6kPqrUoChLE1HYFJvj9HpgBrMys4vFFDqNdM5: 9775 signatures since 11-03 00:44 UTC; first buys 0.5+ SOL outside the screen: 100, modelled 91
+   before the screen  other-token coins:  19  +1.49 SOL ( +15.7% a copy) w/o 2%  +0.11 | won  32% | P(mean>0)  79.7%
+   before the screen  SOL coins:          64  -1.45 SOL (  -4.5% a copy) w/o 2%  -2.79 | won  27% | P(mean>0)  22.7%
+   after the screen   other-token coins:   2  +0.03 SOL (  +2.6% a copy) w/o 2%  -0.17 | won  50% | P(mean>0)  75.6%
+   after the screen   SOL coins:           6  -0.81 SOL ( -27.1% a copy) w/o 2%  -0.82 | won  17% | P(mean>0)   0.0%
+   ALL OUTSIDE, other-token coins:     21  +1.51 SOL ( +14.4% a copy) w/o 2%  +0.14 | won  33% | P(mean>0)  80.1%
