@@ -15,3 +15,18 @@ then +15.6% (+5.8% a copy overall).
 **Scored once** on groups C-F (one wallet each: 64Dn57gX, H2nsBdjF, EhS8bGVC, Gf9gk8sZ; never used to pick the exit), all
 their copies and those after Nov 17 01:07 UTC separately (`t5_angles.py`, exit "ours x1.2 cap 30s").
 **Pass:** positive; positive without the best 2%; bootstrap P(mean > 0) 95%+.
+
+## The same flip on the dropped wallets (Nov 18 ~01:50 UTC, `out/t5_dropped_*.txt`, every copy of each)
+
+| wallet | copies | the frozen flip | without the best 2% | P(mean > 0) |
+|---|---|---|---|---|
+| 6ua7w2Gv holdout | 274 | −10.4% | −15.06 | 0% |
+| 6ua7w2Gv exploration | 206 | −7.7% | −8.37 | 0% |
+| 8Fux3NDf | 299 | −18.6% | −37.85 | 0% |
+| Dj216RQs | 300 | −10.2% | −41.41 | 14% |
+| AnHnjfGJ | 149 | −5.4% | −4.91 | 0% |
+| q2jJy82z | 191 | −6.2% | −6.89 | 0% |
+| q2q38wAb | 150 | −11.5% | −9.38 | 0% |
+
+Every one fails; selling at the very next trade loses too (−4% to −9%). The flip's edge on group A is specific to the
+ladder's launches (buyers arrive right after the ladder), not a property of the exit.

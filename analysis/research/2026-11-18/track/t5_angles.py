@@ -34,7 +34,7 @@ h = len(rows) // 2; A, B = rows[:h], rows[h:]
 def S(v):
     v = np.array(v); s = np.sort(v); k = max(1, round(0.02 * len(v))) if len(v) else 0
     return f"{len(v):3d} {v.sum():+6.2f} ({100 * v.mean() / 0.5 if len(v) else 0:+6.1f}%) w/o 2% {s[:-k].sum() if len(v) > 1 else 0:+6.2f}"
-print(f"{W8}: {len(rows)} copies after the screen (1st half {len(A)}, 2nd {len(B)}), 0.0345 SOL a round trip")
+print(f"{W8}: {len(rows)} copies {'(all periods)' if os.environ.get('ALL') else 'after the screen'} (1st half {len(A)}, 2nd {len(B)}), 0.0345 SOL a round trip")
 for e in rows[0]["ex"]: print(f"   {e:22s}: 1st {S([r['ex'][e] - 0.0319 for r in A])} | 2nd {S([r['ex'][e] - 0.0319 for r in B])}")
 print("\nentry filter: outside buyers before our entry (exit tp1.3 and team-sale+tp1.3):")
 cut = lambda x: "0" if x == 0 else ("1-2" if x <= 2 else ("3-5" if x <= 5 else "6+"))
