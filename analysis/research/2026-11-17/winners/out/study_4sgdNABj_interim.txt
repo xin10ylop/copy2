@@ -1,0 +1,38 @@
+4sgdNABj: 8 copies (0.5 SOL, one slot after its buy, 0.0345 SOL a round trip); first half 4, second half 4
+
+1. HOW IT TRADES: its size median 1.56 SOL (quartiles [1.56, 1.56]); quote SOL 0%; curve sold at its buy median 24%
+   it sold (first sale) after a median 56 s; within 30 s 12%, within 2 min 100%, never in the window 0%
+
+2. EXITS (every copy): first half | second half
+   its-sale      :   4  +1.37 (+68.5%) w/o5  +0.00 |   4  +1.90 (+95.2%) w/o5  +0.00
+   tp1.3         :   4  +1.69 (+84.6%) w/o5  +0.00 |   4  +1.75 (+87.3%) w/o5  +0.00
+   tp1.5         :   4  +1.69 (+84.6%) w/o5  +0.00 |   4  +1.75 (+87.3%) w/o5  +0.00
+   tp2           :   4  +2.56 (+128.0%) w/o5  +0.00 |   4  +1.27 (+63.7%) w/o5  +0.00
+   tp3           :   4  +1.83 (+91.7%) w/o5  +0.00 |   4  +7.16 (+357.8%) w/o5  +0.00
+   tp5           :   4  +1.83 (+91.7%) w/o5  +0.00 |   4  +7.16 (+357.8%) w/o5  +0.00
+   t1m           :   4  +0.91 (+45.6%) w/o5  +0.00 |   4  +1.90 (+94.8%) w/o5  +0.00
+   t2m           :   4  +1.04 (+52.0%) w/o5  +0.00 |   4  +1.32 (+66.1%) w/o5  +0.00
+   t5m           :   4  +4.05 (+202.3%) w/o5  +0.00 |   4  +4.86 (+242.8%) w/o5  +0.00
+   t10m          :   4  +3.46 (+172.8%) w/o5  +0.00 |   4 +12.00 (+599.9%) w/o5  +0.00
+   t30m          :   4  +3.46 (+172.8%) w/o5  +0.00 |   4 +12.00 (+599.9%) w/o5  +0.00
+   its-sale+tp2  :   4  +1.37 (+68.5%) w/o5  +0.00 |   4  +1.89 (+94.4%) w/o5  +0.00
+   trail1.3/25%  :   4  +4.81 (+240.6%) w/o5  +0.00 |   4 +12.01 (+600.7%) w/o5  +0.00
+   trail1.5/35%  :   4  +4.52 (+226.0%) w/o5  +0.00 |   4 +12.01 (+600.7%) w/o5  +0.00
+   sp3/30s       :   4  +4.85 (+242.4%) w/o5  +0.00 |   4  +8.43 (+421.7%) w/o5  +0.00
+   sp5/60s       :   4  +4.90 (+244.9%) w/o5  +0.00 |   4  +8.42 (+420.9%) w/o5  +0.00
+   sp10/60s      :   4  +5.09 (+254.3%) w/o5  +0.00 |   4  +8.60 (+430.2%) w/o5  +0.00   <- best on the first half
+
+3. WHICH OF ITS BUYS PAY (thirds cut on the first half), with each segment's best exit on the first half:
+
+4. THE VIP: 8 of its copies fall on the days of the VIP exports
+   the VIP alerted the coin within 10 min AFTER its buy: 0 (0%), a median 0 s later | BEFORE its buy (it followed): 0 (0%) | not within 10 min: 8
+   exit its-sale      : alerted after    0 | alerted before    0 | not alerted   8  +3.27 (+81.8%) w/o5  +0.95
+   exit sp10/60s      : alerted after    0 | alerted before    0 | not alerted   8 +13.69 (+342.2%) w/o5  +0.48
+   exit t10m          : alerted after    0 | alerted before    0 | not alerted   8 +15.45 (+386.3%) w/o5  -0.61
+   exit tp3           : alerted after    0 | alerted before    0 | not alerted   8  +8.99 (+224.8%) w/o5  -0.61
+
+5. BY ITS BUY SIZE (fixed bins; our copy is always 0.5 SOL): first half | second half
+   size 1.00-2.0   its-sale :   4  +1.37 (+68.5%) w/o5  +0.00 |   4  +1.90 (+95.2%) w/o5  +0.00
+   size 1.00-2.0   t2m      :   4  +1.04 (+52.0%) w/o5  +0.00 |   4  +1.32 (+66.1%) w/o5  +0.00
+   size 1.00-2.0   tp2      :   4  +2.56 (+128.0%) w/o5  +0.00 |   4  +1.27 (+63.7%) w/o5  +0.00
+   size 1.00-2.0   sp5/60s  :   4  +4.90 (+244.9%) w/o5  +0.00 |   4  +8.42 (+420.9%) w/o5  +0.00

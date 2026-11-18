@@ -61,7 +61,7 @@ def one(ix):   # one buy -> its row or None (8 buys at a time, Nov 18: the same 
     tr = cpath(x["m"], b["slot"], b["t"])
     k = next((j for j, y in enumerate(tr) if y["user"] == full and y["buy"] and y["slot"] == b["slot"]), None)
     if k is None or k >= len(tr) - 1: return None
-    p = H.prep(tr, k, rate, "slot+1"); s1 = next((e["t"] for e in mine if not e["buy"] and e["t"] >= b["t"]), None)
+    p = H.prep(tr, k, rate, "slot+1", pmax=float(os.environ.get("PMAX", 1.25))); s1 = next((e["t"] for e in mine if not e["buy"] and e["t"] >= b["t"]), None)
     o = menu(p)
     return dict(m=x["m"], t=b["t"], sol=x["sol"], prog=x["p"], quote=b["quote"] or "SOL", hour=(b["t"] // 3600) % 24,
                 held=(s1 - b["t"]) if s1 else None, refused=p["refused"], ex=o)
