@@ -40,3 +40,10 @@ luck alone could make one or two look good in both halves; that is what the hold
 Note (Nov 18 ~00:00 UTC): the first 300's run was stopped at 206 copies of 6ua7w2Gv (the rule above was found on those
 206), 150 of q2q38wAb and 191 of q2jJy82z (both fail at 0.0345 SOL a round trip, `out/study_*_partial.txt`), to give the
 RPC to the holdout and to the attention money test.
+
+## The holdout result (Nov 18 ~01:15 UTC, `out/holdout_6ua7w2Gv.txt`): FAIL
+
+300 disjoint buys, 274 copies, the create read for 251, 139 kept by the rule (dev buy in (0, 2] SOL). At 0.0345 SOL a round
+trip: **−9.30 SOL, −13.4% a copy**, both halves negative (−11.5%, −15.3%); at 0.01 −8.5%. Without the best 2%: −11.63;
+bootstrap P(mean > 0) 0.0%. Every copy under the same exit: −13.3%. The exploration's +15.7% was luck among about 40
+groups compared. 6ua7w2Gv is dropped.

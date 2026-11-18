@@ -1,0 +1,5 @@
+6ua7w2Gv_holdout: 274 copies, 251 with the create read, 139 kept by the rule
+   cost 0.0345: the rule 139  -9.30 ( -13.4%) w/o5 -12.70 | its halves  69  -3.96 ( -11.5%) w/o5  -6.74 /  70  -5.34 ( -15.3%) w/o5  -7.14 | every copy, same exit 274 -18.21 ( -13.3%) w/o5 -22.61
+   cost 0.01: the rule 139  -5.89 (  -8.5%) w/o5  -9.41 | its halves  69  -2.27 (  -6.6%) w/o5  -5.17 /  70  -3.62 ( -10.4%) w/o5  -5.55 | every copy, same exit 274 -11.50 (  -8.4%) w/o5 -16.02
+   PASS: False  (40+ kept, positive at 0.0345, positive without the best 5)
+   FAIRER MEASURES, the rule's copies at 0.0345: 139 copies, without the best 2% (3) -11.63 SOL; P(mean > 0) 0.0%; 5th pct -18.2% a copy
