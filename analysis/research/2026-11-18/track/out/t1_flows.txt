@@ -1,0 +1,53 @@
+
+== B4BMZH3TYSjVTfbR1corEvu3Zn29p4BdQJqwQumkbFCv: 1588 transactions read, 11-07 to 11-18
+   11-07: other: AToken,Tokenk 2
+   11-08: other: AToken,Tokenk 2, other: AToken,Tokenk,pAMMBa 2, other: 6EF8rr,pAMMBa 1, other: Tokenz 1
+   11-10: other: AToken,Tokenk 2, other: AToken,Tokenk,pAMMBa 2, other: 6EF8rr,pAMMBa 1, other: Tokenz 1
+   11-12: other: AToken,Tokenk 6, other: AToken,Tokenk,pAMMBa 2, other: 6EF8rr,pAMMBa 1, other: Tokenz 1
+   11-15: pump trade 468, other: 6EF8rr 28, other: Tokenz 28, other: AToken,Tokenk 15
+   11-16: pump trade 499, other: Tokenz 16, other: AToken,Tokenk 15, other: 6EF8rr 14
+   11-17: other: AToken,Tokenz 342, other: Tokenk 22, other: AToken 20, other: Tokenz 9
+   11-18: other: Tokenk 8, other: AToken 8, other: Tokenz 3, other: pAMMBa 2
+   SOL moves of 0.1+ (UTC, change, the other side, it signed):
+      11-17 19:34    -43.476  F91oJ9z5UuAwYbcZ7hTNpMj6eS9SLaDJZnn7HkRZR6zY  yes
+      11-17 19:49    +50.000  2LCmHsb71ovqUwJXUyHBen8kbNNSQiPwfndR2TDa38q2  no
+      11-17 20:06     -5.000  ymXJ4LoH62K55iAxh3SXMcU9LUyNWgccnmTyAeGSYyD  yes
+      11-17 20:06     +5.001  ymXJ4LoH62K55iAxh3SXMcU9LUyNWgccnmTyAeGSYyD  yes
+      11-17 20:06     -5.000  ymXJ4LoH62K55iAxh3SXMcU9LUyNWgccnmTyAeGSYyD  yes
+      11-17 20:27     +0.305  DymFNwJaaCj6vJPgRsUs5kfsnN4pHghx3hBxd2HyYHuK  yes
+      11-17 20:34    -45.302  9wErtB5Wy4nD8VbMh5cf3wbh9hR9ptHiSB3ctjkM88MM  yes
+      11-17 20:36    +50.000  3wyqi434bcMCGjSsAEsKmVZPQ8ykTLNd7pfhV7ggVfVH  no
+      11-17 21:55     -5.000  ymXJ4LoH62K55iAxh3SXMcU9LUyNWgccnmTyAeGSYyD  yes
+      11-17 21:55     +5.001  ymXJ4LoH62K55iAxh3SXMcU9LUyNWgccnmTyAeGSYyD  yes
+      11-17 21:59     -5.000  ymXJ4LoH62K55iAxh3SXMcU9LUyNWgccnmTyAeGSYyD  yes
+      11-17 21:59     +5.001  ymXJ4LoH62K55iAxh3SXMcU9LUyNWgccnmTyAeGSYyD  yes
+      11-17 22:00     -5.000  ymXJ4LoH62K55iAxh3SXMcU9LUyNWgccnmTyAeGSYyD  yes
+      11-17 22:34     +0.697  DwzPx1kCAKGk2JpHjjLRvFVy7NvnGitmEUjh1EUYfF67  yes
+      11-17 23:04     -5.000  ymXJ4LoH62K55iAxh3SXMcU9LUyNWgccnmTyAeGSYyD  yes
+      11-17 23:57     +1.088  A6REcGRuLPjt3VSHeN7hm3KRMtqNdABkA1qscJZXT1sS  yes
+      11-18 00:11     -5.000  ymXJ4LoH62K55iAxh3SXMcU9LUyNWgccnmTyAeGSYyD  yes
+      11-18 00:30     +0.927  8DN56WHaAsBAQEAoHfhyruEnpSco2v712jcWCqcqTzwt  yes
+      11-18 00:44     -5.000  ymXJ4LoH62K55iAxh3SXMcU9LUyNWgccnmTyAeGSYyD  yes
+      11-18 00:44     +5.001  ymXJ4LoH62K55iAxh3SXMcU9LUyNWgccnmTyAeGSYyD  yes
+      11-18 00:48     -5.000  ymXJ4LoH62K55iAxh3SXMcU9LUyNWgccnmTyAeGSYyD  yes
+      11-18 00:48     +5.001  ymXJ4LoH62K55iAxh3SXMcU9LUyNWgccnmTyAeGSYyD  yes
+      11-18 00:51    -37.704  8Rc1G1jnw6A8kvazu82ByPXCy5cDRjaL1wNhDqqRPBw4  yes
+      11-18 00:53    +50.000  8j8zyLoaj8UqvwGV1eZ7DJQGjyBjWH74DWbHEoQQSLdz  no
+      11-18 00:55     -5.000  ymXJ4LoH62K55iAxh3SXMcU9LUyNWgccnmTyAeGSYyD  yes
+
+== 8QzUkGJiXw31x84fo2cpgjTFzFMW8jsuNjqXafLw5Qw8: 2999 transactions read, 11-15 to 11-16
+   11-15: other: AToken,Tokenk,pAMMBa 660, pump trade 220, other: Tokenz 15, other:  9
+   11-16: other: AToken,Tokenz 1304, pump trade 610, other: Tokenz 79, other: 6EF8rr 73
+   SOL moves of 0.1+ (UTC, change, the other side, it signed):
+      11-16 21:23     +0.528  Gf54npPnNk1dCwm2sqt7eQhN6maa93YyPaZrNvDiia3c  yes
+      11-16 21:23     +0.768  Gf54npPnNk1dCwm2sqt7eQhN6maa93YyPaZrNvDiia3c  yes
+      11-16 21:23     +0.740  Gf54npPnNk1dCwm2sqt7eQhN6maa93YyPaZrNvDiia3c  yes
+      11-16 21:27     +0.285  Gf54npPnNk1dCwm2sqt7eQhN6maa93YyPaZrNvDiia3c  yes
+      11-16 21:28     -1.113  4Zx23vv45ndqQowZVm1afLMtBYyN8vtN4LnW43aGZMH8  no
+      11-16 21:29     +0.123  4Zx23vv45ndqQowZVm1afLMtBYyN8vtN4LnW43aGZMH8  yes
+      11-16 21:30     +0.123  4Zx23vv45ndqQowZVm1afLMtBYyN8vtN4LnW43aGZMH8  yes
+      11-16 21:31     +0.102  4Zx23vv45ndqQowZVm1afLMtBYyN8vtN4LnW43aGZMH8  yes
+      11-16 21:32     +0.123  4Zx23vv45ndqQowZVm1afLMtBYyN8vtN4LnW43aGZMH8  yes
+      11-16 21:32     +0.102  4Zx23vv45ndqQowZVm1afLMtBYyN8vtN4LnW43aGZMH8  yes
+      11-16 21:33     +0.123  4Zx23vv45ndqQowZVm1afLMtBYyN8vtN4LnW43aGZMH8  yes
+      11-16 21:33     +0.956  4Zx23vv45ndqQowZVm1afLMtBYyN8vtN4LnW43aGZ
