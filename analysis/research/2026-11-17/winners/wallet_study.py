@@ -52,19 +52,23 @@ def menu(p):
     for nn, w in ((3, 30), (5, 60), (10, 60)): o[f"sp{nn}/{w}s"] = sim(p, sp=(nn, w))
     return o
 rows = []; t0 = time.time()
-for i, x in enumerate(items):
-    mine = own.get(x["m"], []); b = next((e for e in mine if e["buy"]), None)
-    if not b: continue
+def one(ix):   # one buy -> its row or None (8 buys at a time, Nov 18: the same rows in the same order, faster)
+    i, x = ix; mine = own.get(x["m"], []); b = next((e for e in mine if e["buy"]), None)
+    if not b: return None
     rate = rate_of(b["quote"])
-    if rate is None: continue
-    if os.environ.get("NOFETCH") and not os.path.exists(f"{ns['CP']}/{b['slot']}_{x['m']}.json.gz"): continue   # a report on what is cached
+    if rate is None: return None
+    if os.environ.get("NOFETCH") and not os.path.exists(f"{ns['CP']}/{b['slot']}_{x['m']}.json.gz"): return None   # a report on what is cached
     tr = cpath(x["m"], b["slot"], b["t"])
     k = next((j for j, y in enumerate(tr) if y["user"] == full and y["buy"] and y["slot"] == b["slot"]), None)
-    if k is None or k >= len(tr) - 1: continue
+    if k is None or k >= len(tr) - 1: return None
     p = H.prep(tr, k, rate, "slot+1"); s1 = next((e["t"] for e in mine if not e["buy"] and e["t"] >= b["t"]), None)
     o = menu(p)
-    rows.append(dict(m=x["m"], t=b["t"], sol=x["sol"], prog=x["p"], quote=b["quote"] or "SOL", hour=(b["t"] // 3600) % 24,
-                     held=(s1 - b["t"]) if s1 else None, refused=p["refused"], ex=o))
-    if (i + 1) % 25 == 0: print(f"{W8}: {i + 1}/{len(items)} buys, {time.time() - t0:.0f} s", flush=True)
+    return dict(m=x["m"], t=b["t"], sol=x["sol"], prog=x["p"], quote=b["quote"] or "SOL", hour=(b["t"] // 3600) % 24,
+                held=(s1 - b["t"]) if s1 else None, refused=p["refused"], ex=o)
+from concurrent.futures import ThreadPoolExecutor as _TPE
+with _TPE(int(os.environ.get("BUYS_AT_ONCE", 8))) as _ex:
+    for i, r in enumerate(_ex.map(one, list(enumerate(items)))):
+        if r: rows.append(r)
+        if (i + 1) % 25 == 0: print(f"{W8}: {i + 1}/{len(items)} buys, {time.time() - t0:.0f} s", flush=True)
 json.dump(rows, open(f"{SP}/winners/study_{W8}{os.environ.get('SUFFIX', '')}.json", "w"))
 print(f"{W8}: {len(rows)} copies saved")
