@@ -49,6 +49,7 @@ for w in WALLETS:
         r = rate_of(e["quote"])
         if r is None or A <= e["t"] < B: continue
         sol = e["q"] * (1 + e["bps"] / 1e4) * r / 1e9
+        if os.environ.get("OTHER_ONLY") and e["quote"] in SOLQ: continue   # OTHER_ONLY=1: its other-token coins only (wallet 4's class)
         if sol >= 0.5: buys.append((m, e, r, sol))
     random.Random(7).shuffle(buys); buys = buys[:NS]
     rows = []

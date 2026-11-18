@@ -1,0 +1,7 @@
+
+== HjuSthanedLrVgPBF2CkwPf9FCDinLj7r3i3jeaefSve: 3000 signatures since 11-09 13:35 UTC; first buys 0.5+ SOL outside the screen: 78, modelled 76
+   before the screen  other-token coins:  22  -1.11 SOL ( -10.1% a copy) w/o 2%  -1.83 | won  14% | P(mean>0)  10.7%
+   before the screen  SOL coins:          34  +0.29 SOL (  +1.7% a copy) w/o 2%  -0.91 | won  21% | P(mean>0)  53.9%
+   after the screen   other-token coins:   6  -0.20 SOL (  -6.5% a copy) w/o 2%  -0.46 | won  17% | P(mean>0)  25.8%
+   after the screen   SOL coins:          14  -0.60 SOL (  -8.6% a copy) w/o 2%  -0.66 | won  21% | P(mean>0)   0.6%
+   ALL OUTSIDE, other-token coins:     28  -1.30 SOL (  -9.3% a copy) w/o 2%  -2.02 | won  14% | P(mean>0)   8.2%

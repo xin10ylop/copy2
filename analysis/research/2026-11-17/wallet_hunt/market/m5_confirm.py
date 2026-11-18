@@ -35,6 +35,7 @@ for w in WALLETS:   # saved before w5_copy's exec rewrites sys.argv (the Nov 18 
         if r is None or A <= e["t"] < B: continue
         if m in W4C: continue
         sol = e["q"] * (1 + e["bps"] / 1e4) * r / 1e9
+        if os.environ.get("OTHER_ONLY") and e["quote"] in SOLQ: continue   # OTHER_ONLY=1: its other-token coins only (wallet 4's class)
         if sol >= 0.5: buys.append((m, e, r, sol))
     if os.environ.get("NS"): import random; random.Random(7).shuffle(buys); buys = buys[:int(os.environ["NS"])]   # a fixed random sample (seed 7)
     def one(x):
