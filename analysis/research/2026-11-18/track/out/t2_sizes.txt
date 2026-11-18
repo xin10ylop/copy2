@@ -1,0 +1,36 @@
+
+== size 1.1 SOL: 8 wallets with 3+ launch buys of it
+   AsDCYFPT |   48 buys,   48 coins, graduated  45 | 11-15 05:51 to 11-17 09:53
+   8QzUkGJi |   23 buys,   23 coins, graduated  21 | 11-15 06:56 to 11-16 20:23
+   64Dn57gX |   12 buys,   12 coins, graduated  12 | 11-16 21:49 to 11-17 09:47
+   EhS8bGVC |   10 buys,   10 coins, graduated   9 | 11-15 14:35 to 11-16 04:11
+   Gf9gk8sZ |    5 buys,    5 coins, graduated   5 | 11-16 12:08 to 11-16 21:17
+   H2nsBdjF |    4 buys,    4 coins, graduated   4 | 11-16 09:22 to 11-17 12:15
+   4EcNgdoM |    3 buys,    3 coins, graduated   3 | 11-10 14:32 to 11-17 13:03
+   6SHf2w54 |    3 buys,    3 coins, graduated   3 | 11-11 13:48 to 11-13 18:49
+
+== size 1.54 SOL: 7 wallets with 3+ launch buys of it
+   4sgdNABj |   48 buys,   48 coins, graduated  45 | 11-15 05:51 to 11-17 09:53
+   BrEg8pnB |   23 buys,   23 coins, graduated  21 | 11-15 06:56 to 11-16 20:23
+   6UJrxXdr |   12 buys,   12 coins, graduated  12 | 11-16 21:49 to 11-17 09:47
+   5WQqjqJY |   10 buys,   10 coins, graduated   9 | 11-15 14:35 to 11-16 04:11
+   2idebqyp |    5 buys,    5 coins, graduated   5 | 11-16 12:08 to 11-16 21:17
+   6hFo8UYX |    4 buys,    4 coins, graduated   4 | 11-16 09:22 to 11-17 12:15
+   6SHf2w54 |    3 buys,    3 coins, graduated   3 | 11-11 00:39 to 11-12 20:29
+
+== size 2.18 SOL: 7 wallets with 3+ launch buys of it
+   HbovEh3L |   48 buys,   48 coins, graduated  45 | 11-15 05:51 to 11-17 09:53
+   FkH6xBBp |   23 buys,   23 coins, graduated  21 | 11-15 06:56 to 11-16 20:23
+   jomnbotq |   12 buys,   12 coins, graduated  12 | 11-16 21:49 to 11-17 09:47
+   B4BMZH3T |   10 buys,   10 coins, graduated   9 | 11-15 14:35 to 11-16 04:11
+   BHbWGLJM |    5 buys,    5 coins, graduated   5 | 11-16 12:08 to 11-16 21:17
+   8ZUm1sUG |    5 buys,    5 coins, graduated   2 | 11-12 19:00 to 11-15 21:01
+   FbWwk6eh |    4 buys,    4 coins, graduated   4 | 11-16 09:22 to 11-17 12:15
+
+== size 2.21 SOL: 6 wallets with 3+ launch buys of it
+   HbovEh3L |   48 buys,   48 coins, graduated  45 | 11-15 05:51 to 11-17 09:53
+   FkH6xBBp |   23 buys,   23 coins, graduated  21 | 11-15 06:56 to 11-16 20:23
+   jomnbotq |   12 buys,   12 coins, graduated  12 | 11-16 21:49 to 11-17 09:47
+   B4BMZH3T |   10 buys,   10 coins, graduated   9 | 11-15 14:35 to 11-16 04:11
+   BHbWGLJM |    5 buys,    5 coins, graduated   5 | 11-16 12:08 to 11-16 21:17
+   FbWwk6eh |    4 buys,    4 coins, graduated   4 | 11-16 09:22 to 11-17 12:15

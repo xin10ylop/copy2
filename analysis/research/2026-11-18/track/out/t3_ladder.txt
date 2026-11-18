@@ -1,0 +1,6 @@
+ladder coins on disk: 117; graduated 109; 11-11 04:05 to 11-17 13:03
+creators: 116 distinct; [('cashcTxr', 2), ('G6Q7KGst', 1), ('3hTyBxEg', 1), ('J6ZENfSE', 1), ('ZPom1bJK', 1)]
+ladder wallets per coin: [(3, 106), (2, 11)]
+ladder slots after the create: [((0,), 117)]
+price at the end of the ladder / at the first trade: median 1.4491458721716584
+per day: [('11-11', 1), ('11-13', 1), ('11-14', 2), ('11-15', 45), ('11-16', 45), ('11-17', 23)]
