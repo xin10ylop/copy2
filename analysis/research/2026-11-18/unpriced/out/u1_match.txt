@@ -1,0 +1,32 @@
+180 skips; matched to wallet 4's own buy (same coin, within 5 s): 178; its history ends Nov 18 00:04 UTC
+paid in   | skips | its size at today's price: 1.3+ SOL, under 1.3, unpriced | median SOL
+EPjFWdd5  |    31 |    3    28    0 |   0.60
+GTA6ot7g  |    25 |    2    23    0 |   0.56
+Pren1FvF  |    21 |    0    21    0 |   0.05
+Xsc9qvGR  |    14 |    0    14    0 |   0.56
+BPxxfRCX  |    11 |    0    11    0 |   0.47
+A7bdiYdS  |    10 |    1     9    0 |   0.82
+Pre8AREm  |     9 |    0     9    0 |   0.42
+XsDoVfqe  |     8 |    0     8    0 |   0.40
+FVzqGqRm  |     8 |    0     8    0 |   0.69
+ERiM8NiC  |     8 |    1     7    0 |   0.61
+WXMRyRZh  |     4 |    0     4    0 |   0.64
+pSo1f9nQ  |     3 |    1     2    0 |   1.20
+Xs7ZdzSH  |     3 |    1     2    0 |   0.87
+4B8CdHPZ  |     2 |    0     2    0 |   1.09
+FG3sAP59  |     2 |    0     2    0 |   0.75
+dFd7ZtyJ  |     2 |    0     2    0 |   0.21
+XspzcW1P  |     2 |    0     2    0 |   0.43
+3PNQaC87  |     2 |    0     2    0 |   0.47
+B62fkmVt  |     2 |    1     1    0 |   1.87
+Xsv9hRk1  |     1 |    0     1    0 |   0.57
+85RhcSEM  |     1 |    0     1    0 |   0.05
+NVDAVuiB  |     1 |    0     1    0 |   0.36
+he1iusmf  |     1 |    0     1    0 |   0.37
+58QyXQ1U  |     1 |    0     1    0 |   0.24
+Xs3eBt7u  |     1 |    0     1    0 |   0.57
+GjCwbxMX  |     1 |    0     1    0 |   0.22
+AWY6oLUy  |     1 |    0     1    0 |   0.16
+XsgSaSvN  |     1 |    0     1    0 |   0.75
+GwZaMuX8  |     1 |    1     0    0 |   1.56
+H2jKD3Pe  |     1 |    1     0    0 |   2.06
