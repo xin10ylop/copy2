@@ -5,6 +5,8 @@
 # {off, 180 s} x sell pressure {off, 5/60 from 30 s} x {300, 600} s x its sale {never followed, followed 30-290 s under
 # 1.5x}. A wallet with 30+ copies qualifies when 75%+ of the settings are positive on both halves (days 1-2 / 3-4), the
 # median setting is positive without the best 2%, and its bootstrap P(mean > 0) is 90%+. Wallet 4 and TAB16RxX shown.
+# BY ITS BUY SIZE (the owner: "for wallet 4, 1.3+ SOL buys were found profitable, you are filtering that?"): each
+# wallet judged on its 0.5+, 1.0+ and 1.3+ SOL buys separately, 30+ copies in the band; wallet 4's yardstick is 1.3+.
 #   python3 -I e7_robust_screen.py SP LAUNCHES,... > ../out/e7_robust_screen.txt
 import sys, os, json, gzip, itertools, collections, numpy as np
 from multiprocessing import Pool
@@ -61,7 +63,7 @@ def firsts(m):
     return out
 def job(a):
     m, items = a; x = L[m]; r = rate_of(x["quote"]); tr = json.load(gzip.open(f"{PD}/{m}.json.gz"))
-    return [(u, t, np.mean([vals(H.prep(tr, i, r, n)) for n in (4, 8, "slot+1")], axis=0) - COST, x["creator"], tr[i]["slot"] - x["slot"]) for u, i, t in items]
+    return [(u, t, np.mean([vals(H.prep(tr, i, r, n)) for n in (4, 8, "slot+1")], axis=0) - COST, x["creator"], tr[i]["slot"] - x["slot"], tr[i]["q"] * (1 + tr[i]["bps"] / 1e4) * r / 1e9) for u, i, t in items]
 if __name__ == "__main__":
     with Pool(8) as P: F = [b for part in P.map(firsts, sorted(L), chunksize=20) for b in part]
     cnt = collections.Counter(u for u, m, i, t in F); keep = {u for u, n in cnt.items() if n >= MINC} | {W4, TAB}
@@ -69,22 +71,25 @@ if __name__ == "__main__":
     for u, m, i, t in F:
         if u in keep: jobs[m].append((u, i, t))
     with Pool(8) as P: R = [z for part in P.map(job, list(jobs.items()), chunksize=4) for z in part]
-    tmid = np.median([t for u, t, v, c, l in R]); W = collections.defaultdict(list)
-    for u, t, v, c, l in R: W[u].append((t, v, c, l))
+    tmid = np.median([z[1] for z in R]); W = collections.defaultdict(list)
+    for u, t, v, c, l, sol in R:
+        for band in (0.5, 1.0, 1.3):
+            if sol >= band: W[(u, band)].append((t, v, c, l))
     print(f"{len(L)} float-quote coins; {len(keep) - 2} wallets with {MINC}+ copies (+ wallet 4, TAB16RxX); {len(G)} exit settings; halves at the median copy time")
     rows = []
-    for u, v in W.items():
+    for (u, band), v in W.items():
+        if len(v) < MINC and u not in (W4, TAB): continue
         T = np.array([z[0] for z in v]); V = np.array([z[1] for z in v]); A = T < tmid
         if A.sum() < 5 or (~A).sum() < 5: continue
         both = np.mean((V[A].mean(axis=0) > 0) & (V[~A].mean(axis=0) > 0))
         tot = V.mean(axis=0); med = int(np.argsort(tot)[len(G) // 2]); vm = V[:, med]; s = np.sort(vm); k = max(1, round(0.02 * len(vm)))
         boot = float(np.mean(np.random.default_rng(7).choice(vm, size=(4000, len(vm))).mean(axis=1) > 0))
         best = int(np.argmax(np.minimum(V[A].mean(axis=0), V[~A].mean(axis=0))))
-        rows.append(dict(u=u, n=len(v), both=both, med=100 * vm.mean() / 0.5, wo=s[:-k].sum(), boot=boot, best=G[best], bmin=100 * min(V[A, best].mean(), V[~A, best].mean()) / 0.5,
+        rows.append(dict(u=u, band=band, n=len(v), both=both, med=100 * vm.mean() / 0.5, wo=s[:-k].sum(), boot=boot, best=G[best], bmin=100 * min(V[A, best].mean(), V[~A, best].mean()) / 0.5,
                          cre=len({z[2] for z in v}), launch=np.mean([z[3] <= 1 for z in v]), ok=both >= 0.75 and s[:-k].sum() > 0 and boot >= 0.90))
     nm = lambda g: f"tp {g[0]}x, stall {g[1] or 'off'}, sp {'5/60' if g[2] else 'off'}, {g[3]} s, its sale {'followed' if g[4] else 'not'}"
-    hdr = "wallet        copies | settings + on both halves | median setting: a copy, w/o 2%, P | creators, at launch | steadiest setting (its weaker half)"
-    line = lambda r: f"{r['u'][:12]}  {r['n']:5d} | {100 * r['both']:5.0f}% | {r['med']:+6.1f}% {r['wo']:+6.2f} {100 * r['boot']:5.1f}% | {r['cre']:4d} {100 * r['launch']:4.0f}% | {nm(r['best'])} ({r['bmin']:+.1f}%)"
+    hdr = "wallet       size  copies | settings + on both halves | median setting: a copy, w/o 2%, P | creators, at launch | steadiest setting (its weaker half)"
+    line = lambda r: f"{r['u'][:12]} {r['band']:.1f}+ {r['n']:5d} | {100 * r['both']:5.0f}% | {r['med']:+6.1f}% {r['wo']:+6.2f} {100 * r['boot']:5.1f}% | {r['cre']:4d} {100 * r['launch']:4.0f}% | {nm(r['best'])} ({r['bmin']:+.1f}%)"
     print("\n== THE YARDSTICKS ==\n" + hdr)
     for r in rows:
         if r["u"] in (W4, TAB): print(line(r))
