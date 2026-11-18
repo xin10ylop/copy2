@@ -1,0 +1,18 @@
+=== DELAY 0 s
+ALL CALLS: 165 copies (halves 82 / 83); settings making money 0 of 12,960, on both halves 0
+   best by its weaker half (hindsight): limit 1.1x, tp 1.5x, 120 s, sell pressure 3/60s, stall 60: -3.02 SOL (-3.7% a copy), halves -1.59 / -1.43, w/o 2% -4.20, won 28%, P(mean>0) 1.4%
+--
+CALLED FIRST (#1): 80 copies (halves 31 / 49); settings making money 1,178 of 12,960, on both halves 609
+   best by its weaker half (hindsight): limit 1.1x, tp 2.5x, 300 s, sell pressure 8/60s, stall 120: +1.80 SOL (+4.5% a copy), halves +0.79 / +1.01, w/o 2% -0.41, won 44%, P(mean>0) 79.3%
+=== DELAY 10 s
+ALL CALLS: 165 copies (halves 82 / 83); settings making money 0 of 12,960, on both halves 0
+   best by its weaker half (hindsight): limit 1.25x, tp 1.5x, 180 s, sell pressure off, stall 60: -3.98 SOL (-4.8% a copy), halves -2.13 / -1.85, w/o 2% -5.31, won 29%, P(mean>0) 0.8%
+--
+CALLED FIRST (#1): 80 copies (halves 31 / 49); settings making money 890 of 12,960, on both halves 703
+   best by its weaker half (hindsight): limit 1.25x, tp 2.5x, 300 s, sell pressure 10/30s, stall 120: +0.83 SOL (+2.1% a copy), halves +0.41 / +0.42, w/o 2% -1.41, won 35%, P(mean>0) 62.5%
+=== DELAY 30 s
+ALL CALLS: 165 copies (halves 82 / 83); settings making money 0 of 12,960, on both halves 0
+   best by its weaker half (hindsight): limit 1.1x, tp 2x, 180 s, sell pressure off, stall 60: -4.47 SOL (-5.4% a copy), halves -2.08 / -2.39, w/o 2% -5.96, won 22%, P(mean>0) 0.7%
+--
+CALLED FIRST (#1): 80 copies (halves 31 / 49); settings making money 657 of 12,960, on both halves 408
+   best by its weaker half (hindsight): limit 1.1x, tp 2x, 300 s, sell pressure 10/60s, stall 180: +1.50 SOL (+3.7% a copy), halves +1.08 / +0.41, w/o 2% -0.58, won 35%, P(mean>0) 74.9%
