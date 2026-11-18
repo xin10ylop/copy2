@@ -76,9 +76,13 @@ keep = {c["mint"]: c for c in C if c["quote"][:8] in FLOATS}
 import collections
 print(f"step 2: {len(C)} creates read, {len(keep)} with a float quote ({time.time() - t0:.0f} s); quotes {collections.Counter(c['quote'][:8] for c in C).most_common(6)}", flush=True)
 # 3. each kept coin's first WIN s
+PREV = {}
+if os.path.exists(f"{O}/launches_{T0}.json"): PREV = {m: x for m, x in json.load(open(f"{O}/launches_{T0}.json")).items() if x}   # a rerun keeps the coins listed
+MAXP = int(os.environ.get("MAXPAGES", 10))   # MAXPAGES=60 (Nov 18): the coins with 10,000+ signatures since (the busiest, often the winners) are not left out
 def life(r):
+    if r["mint"] in PREV: return PREV[r["mint"]]
     out, before = [], None
-    for _ in range(10):
+    for _ in range(MAXP):
         page = call("getSignaturesForAddress", [r["mint"], {"limit": 1000, **({"before": before} if before else {})}])
         if not page: break
         out += page; before = page[-1]["signature"]
