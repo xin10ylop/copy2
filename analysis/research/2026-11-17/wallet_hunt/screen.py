@@ -13,6 +13,9 @@
 import sys, os, json, gzip, collections, datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np
+# FIX=1 (Nov 18): every path put in its true in-slot order first (the cached paths list a busy slot's transactions in
+# reverse); writes hunt_screen_fixed.json.gz. Without it, the original run.
+FIX = os.environ.get("FIX") == "1"; sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-18/churn"); import slot_order as _SO
 SP = sys.argv[1]; MINSOL = float(sys.argv[2]) if len(sys.argv) > 2 else 0.9
 W4 = "H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg"; ME = "Eao8T2Pk2aDzPWUFCA8si7oWd5ndFKfnX3HjYMpERst6"
 TAB = "TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3"
@@ -24,6 +27,7 @@ for d in ["allq", "cq", "since_stop", "newq"]:
     for k, v in P.items():
         if not v or k not in R: continue
         m, tr = v
+        if FIX: tr = _SO.reorder(tr)   # the true in-slot order (Nov 18, 2026-11-18/churn/)
         if m in coins and len(coins[m][1]) >= len(tr): continue
         k4 = next((i for i, e in enumerate(tr) if e["user"] == W4 and e["buy"] and e["slot"] == R[k]["slot"]), None)
         if k4 is None: continue
@@ -62,4 +66,4 @@ print(row(W4, W[W4]))
 print("== every other wallet with 20+ buys, by our copy's total")
 for u, v in sorted(((u, v) for u, v in W.items() if len(v) >= 20 and u != W4), key=lambda x: -sum(y["net"] for y in x[1])):
     print(row(u, v))
-json.dump({u: v for u, v in W.items() if len(v) >= 10}, gzip.open(f"{SP}/hunt_screen.json.gz", "wt"))
+json.dump({u: v for u, v in W.items() if len(v) >= 10}, gzip.open(f"{SP}/hunt_screen{'_fixed' if FIX else ''}.json.gz", "wt"))

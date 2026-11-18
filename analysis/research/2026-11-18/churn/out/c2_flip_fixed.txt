@@ -1,0 +1,121 @@
+108 coins, -4.21 SOL (-7.8% a copy at 0.5 SOL)
+exit reason: {'tp': 13, '30s': 93, 'end': 2}
+   fill over our entry    0-0.9   :   5 coins,   -1.82 SOL
+   fill over our entry  0.9-1.0   :  36 coins,   -2.01 SOL
+   fill over our entry  1.0-1.1   :  54 coins,   -1.92 SOL
+   fill over our entry  1.1-1.2   :   4 coins,   +0.16 SOL
+   fill over our entry  1.2-1.5   :   8 coins,   +0.92 SOL
+   fill over our entry  1.5-3     :   1 coins,   +0.45 SOL
+   fill over our entry    3-1000000000.0:   0 coins,   +0.00 SOL
+
+the first trade after our entry over our entry: median 1.001
+
+per coin (time UTC, mint, e0 = our entry over its price, exit, the trigger and fill over our entry, fill age, value):
+   11-17 13:50 5H2CBnjq e0  2.14 30s n= 265 first  1.00 trig  1.21 fill  1.04 @ 31.0s -0.026
+   11-17 13:50 2Zx6K35g e0  2.16 30s n= 298 first  1.00 trig  1.35 fill  1.03 @ 30.0s -0.032
+   11-17 13:51 3TLFeyrY e0  2.15 30s n=  72 first  1.00 trig  0.00 fill  1.07 @ 32.0s -0.013
+   11-17 13:52 8Z8v448y e0  2.18 30s n= 220 first  1.00 trig  0.00 fill  1.02 @ 30.0s -0.038
+   11-17 13:55 GMxgokGj e0  1.86 30s n= 208 first  1.00 trig  1.21 fill  1.02 @ 31.0s -0.035
+   11-17 13:58 GgYnHsUX e0  2.15 30s n= 146 first  1.00 trig  1.21 fill  1.03 @ 30.0s -0.031
+   11-17 13:59 83drh1ym e0  2.15 30s n= 432 first  1.00 trig  1.20 fill  1.02 @ 30.0s -0.036
+   11-17 14:05 6KwivCev e0  2.09 30s n= 596 first  1.00 trig  1.23 fill  1.04 @ 31.0s -0.026
+   11-17 14:12 LuRcWVt7 e0  2.19 30s n= 341 first  1.00 trig  1.21 fill  1.03 @ 31.0s -0.032
+   11-17 14:12 4cDM6Xmz e0  2.14 30s n= 244 first  1.00 trig  1.26 fill  1.03 @ 31.0s -0.031
+   11-17 14:12 8G136gLi e0  2.17 30s n= 201 first  1.00 trig  1.21 fill  1.02 @ 32.0s -0.037
+   11-17 14:16 BkeWpFuD e0  1.87 30s n= 238 first  1.00 trig  1.20 fill  0.99 @ 30.0s -0.052
+   11-17 14:22 9YTnpNvg e0  2.08 30s n= 533 first  1.00 trig  0.00 fill  0.99 @ 30.0s -0.051
+   11-17 14:23 F2SYu5Aa e0  2.15 30s n= 294 first  1.01 trig  1.21 fill  1.06 @ 30.0s -0.018
+   11-17 14:24 FPFReRS3 e0  1.86 30s n= 109 first  1.00 trig  1.25 fill  1.02 @ 31.0s -0.038
+   11-17 14:25 FDNECyMP e0  2.16 30s n= 226 first  1.00 trig  1.25 fill  0.98 @ 30.0s -0.054
+   11-17 14:34 33Sanhom e0  1.89 30s n= 283 first  1.00 trig  1.21 fill  0.99 @ 31.0s -0.052
+   11-17 14:34 637PsZze e0  2.15 30s n= 284 first  1.00 trig  0.00 fill  1.03 @ 31.0s -0.032
+   11-17 14:34 2Liv8tJp e0  2.08 30s n= 400 first  1.00 trig  1.29 fill  1.00 @ 30.0s -0.046
+   11-17 14:34 H3NfNvNy e0  1.85 30s n=2324 first  1.00 trig  1.21 fill  1.03 @ 31.0s -0.035
+   11-17 14:40 DgqPdFXL e0  1.85 30s n= 419 first  1.00 trig  1.21 fill  1.02 @ 30.0s -0.035
+   11-17 14:43 DbgQSumB e0  1.84 30s n= 197 first  1.00 trig  1.24 fill  0.98 @ 30.0s -0.059
+   11-17 14:53 HpGbZ85q e0  2.09 30s n= 546 first  1.00 trig  0.00 fill  1.00 @ 30.0s -0.046
+   11-17 15:02 F8S9ZkQW e0  2.08 30s n= 534 first  1.00 trig  1.35 fill  1.01 @ 30.0s -0.044
+   11-17 15:20 Dn4ZWmae e0  2.08 30s n= 473 first  1.00 trig  0.00 fill  1.00 @ 30.0s -0.048
+   11-17 15:30 FTwt1ipt e0  2.08 30s n= 357 first  1.00 trig  0.00 fill  1.00 @ 30.0s -0.047
+   11-17 15:31 9RnNNDCE e0  2.16 tp  n= 235 first  1.00 trig  1.20 fill  1.19 @ 13.0s +0.042
+   11-17 15:31 3brauYhf e0  1.86 tp  n=2301 first  1.00 trig  1.20 fill  1.20 @ 18.0s +0.047
+   11-17 15:32 3ZgBsHkJ e0  2.18 30s n= 180 first  1.00 trig  1.20 fill  1.05 @ 30.0s -0.024
+   11-17 15:39 7FYEMqbK e0  2.08 30s n= 315 first  1.00 trig  1.28 fill  0.99 @ 30.0s -0.051
+   11-17 15:45 HHJ6vvow e0  1.88 30s n= 201 first  1.00 trig  1.21 fill  1.18 @ 31.0s +0.038
+   11-17 16:24 EATWADur e0  2.09 30s n= 121 first  1.00 trig  0.00 fill  1.01 @ 30.0s -0.043
+   11-17 16:28 2V5EpUuF e0  2.09 30s n=  82 first  1.00 trig  0.00 fill  0.35 @ 48.0s -0.363
+   11-17 16:31 2JMeL4Dg e0  2.09 30s n= 261 first  1.00 trig  0.00 fill  1.01 @ 30.0s -0.040
+   11-17 16:34 HzMcX4Xu e0  2.09 30s n= 271 first  1.00 trig  0.00 fill  1.03 @ 30.0s -0.035
+   11-17 16:35 43TKebaW e0  2.08 30s n= 491 first  1.00 trig  0.00 fill  1.00 @ 30.0s -0.049
+   11-17 16:36 7guHMc3T e0  2.09 30s n= 263 first  1.00 trig  0.00 fill  1.00 @ 30.0s -0.048
+   11-17 16:38 69ZB6joM e0  2.08 30s n= 494 first  1.00 trig  1.30 fill  1.00 @ 30.0s -0.046
+   11-17 16:39 CDdBsXf7 e0  2.09 30s n= 181 first  1.00 trig  1.29 fill  1.01 @ 30.0s -0.040
+   11-17 16:48 71jmEKak e0  2.08 30s n= 597 first  1.00 trig  1.21 fill  1.16 @ 30.0s +0.031
+   11-17 16:57 ENqFXtDL e0  2.08 30s n= 505 first  1.00 trig  0.00 fill  1.02 @ 30.0s -0.039
+   11-17 17:02 93j1hkpA e0  2.08 30s n= 231 first  1.00 trig  0.00 fill  0.99 @ 30.0s -0.050
+   11-17 17:05 64sH9UDD e0  2.08 30s n= 486 first  1.00 trig  0.00 fill  1.01 @ 31.0s -0.044
+   11-17 17:10 4gTM1TCo e0  2.09 30s n= 455 first  1.00 trig  1.47 fill  1.01 @ 30.0s -0.041
+   11-17 17:24 9fWcL6EL e0  2.09 30s n= 305 first  1.00 trig  0.00 fill  0.96 @ 30.0s -0.064
+   11-17 17:27 3jCreMTE e0  2.09 30s n= 178 first  1.00 trig  1.28 fill  0.97 @ 30.0s -0.063
+   11-17 19:05 HGkUkAns e0  2.09 30s n= 299 first  1.00 trig  0.00 fill  1.01 @ 30.0s -0.041
+   11-17 19:12 HpWaf1GB e0  2.09 30s n= 310 first  1.00 trig  0.00 fill  0.99 @ 30.0s -0.051
+   11-17 19:28 EnjgY8LG e0  2.09 30s n= 271 first  1.00 trig  0.00 fill  1.01 @ 30.0s -0.042
+   11-17 19:38 CTR4P49i e0  2.08 tp  n=  80 first  1.00 trig  1.43 fill  1.01 @  5.0s -0.044
+   11-17 19:38 5bT3aCj1 e0  2.09 30s n= 201 first  1.00 trig  0.00 fill  1.01 @ 30.0s -0.041
+   11-17 19:40 HhKq1Dkd e0  2.08 tp  n=  74 first  1.00 trig  1.43 fill  1.46 @  6.0s +0.172
+   11-17 19:40 5MfXPDno e0  2.09 30s n= 288 first  1.00 trig  0.00 fill  1.00 @ 30.0s -0.047
+   11-17 19:44 7NiJp3cp e0  2.25 tp  n=  57 first  0.93 trig  1.41 fill  1.41 @  7.0s +0.149
+   11-17 19:51 DmgFPx5E e0  2.09 tp  n=  81 first  1.00 trig  2.04 fill  2.05 @  6.0s +0.454
+   11-17 19:51 CJ8aZqjJ e0  2.08 tp  n= 153 first  1.00 trig  1.33 fill  1.34 @  8.0s +0.114
+   11-17 19:54 GHxXWjLy e0  2.09 tp  n=  72 first  1.00 trig  1.43 fill  1.45 @  7.0s +0.171
+   11-17 19:55 5VXhSA9A e0  2.09 30s n= 196 first  1.00 trig  1.28 fill  0.98 @ 30.0s -0.055
+   11-17 20:01 4jo93Zcw e0  2.09 30s n=  87 first  1.00 trig  1.45 fill  1.02 @ 31.0s -0.038
+   11-17 20:04 HPQ52Uwp e0  2.11 tp  n= 113 first  1.00 trig  1.43 fill  0.94 @ 16.0s -0.076
+   11-17 20:06 EssmJN59 e0  2.10 30s n=  42 first  1.00 trig  1.22 fill  1.22 @ 31.0s +0.057
+   11-17 20:38 DXpRZvJg e0  2.10 30s n= 585 first  1.00 trig  0.00 fill  1.01 @ 30.0s -0.042
+   11-17 20:39 HrXCon1X e0  2.08 30s n= 519 first  1.00 trig  1.20 fill  1.02 @ 30.0s -0.040
+   11-17 20:46 FewPnARB e0  2.09 end n= 126 first  1.00 trig  0.00 fill  0.35 @ 29.0s -0.363
+   11-17 20:48 37dJqSpp e0  2.09 30s n= 201 first  1.00 trig  0.00 fill  1.01 @ 30.0s -0.043
+   11-17 20:50 7hzPDHT8 e0  2.10 30s n= 522 first  1.00 trig  0.00 fill  0.93 @ 34.0s -0.079
+   11-17 21:00 C3UQRnRm e0  2.08 30s n= 498 first  1.00 trig  0.00 fill  1.01 @ 30.0s -0.041
+   11-17 21:00 5wHuEytQ e0  2.09 30s n= 124 first  1.00 trig  0.00 fill  0.35 @ 31.0s -0.361
+   11-17 21:02 5Lc2kAPT e0  2.09 30s n= 222 first  1.00 trig  0.00 fill  0.94 @ 30.0s -0.076
+   11-17 21:03 GLGMqgmk e0  2.09 30s n= 254 first  1.01 trig  0.00 fill  0.98 @ 30.0s -0.057
+   11-17 21:04 DHLUCSFe e0  2.09 tp  n= 703 first  1.00 trig  1.21 fill  1.22 @ 10.0s +0.057
+   11-17 21:06 5BsQxk5u e0  2.09 30s n= 371 first  1.00 trig  0.00 fill  0.99 @ 30.0s -0.052
+   11-17 21:10 CD5pxibt e0  2.09 30s n= 191 first  1.01 trig  0.00 fill  0.99 @ 30.0s -0.051
+   11-17 21:12 DCEGJcPZ e0  2.09 30s n= 846 first  1.00 trig  1.20 fill  1.01 @ 30.0s -0.044
+   11-17 21:12 B45iRibr e0  2.09 30s n= 300 first  1.00 trig  0.00 fill  0.98 @ 30.0s -0.059
+   11-17 21:15 HURx5xTq e0  2.09 30s n= 289 first  1.00 trig  0.00 fill  0.98 @ 30.0s -0.055
+   11-17 21:16 71dsfiMX e0  2.09 30s n= 281 first  1.00 trig  0.00 fill  1.03 @ 30.0s -0.033
+   11-17 21:19 Ydkbbhb7 e0  2.09 30s n= 122 first  1.01 trig  0.00 fill  1.01 @ 36.0s -0.040
+   11-17 21:23 DWD5eA2V e0  2.09 30s n= 218 first  1.01 trig  0.00 fill  1.02 @ 30.0s -0.038
+   11-17 21:29 DzNLqCja e0  2.09 30s n= 223 first  1.01 trig  1.25 fill  1.00 @ 30.0s -0.048
+   11-17 21:30 9tNAewNt e0  2.08 30s n= 515 first  0.99 trig  0.00 fill  0.99 @ 30.0s -0.052
+   11-17 21:34 9UMxY7fJ e0  2.08 tp  n= 527 first  1.00 trig  1.46 fill  0.96 @  9.0s -0.068
+   11-17 21:49 2Q3LAuao e0  2.08 30s n= 472 first  1.00 trig  0.00 fill  1.00 @ 30.0s -0.045
+   11-17 21:52 7DWGGtHq e0  2.10 30s n= 253 first  1.00 trig  0.00 fill  0.98 @ 30.0s -0.058
+   11-17 21:53 BBF4jPdf e0  2.09 30s n= 242 first  1.00 trig  0.00 fill  1.01 @ 30.0s -0.044
+   11-17 21:55 D4nohutq e0  2.09 30s n= 262 first  1.00 trig  0.00 fill  1.05 @ 30.0s -0.023
+   11-17 21:56 EXjWDotq e0  2.09 30s n= 168 first  1.00 trig  1.29 fill  0.97 @ 30.0s -0.060
+   11-17 21:56 FM5zGmwE e0  2.08 30s n= 329 first  1.00 trig  1.27 fill  1.00 @ 30.0s -0.045
+   11-17 22:15 EGGozBmu e0  2.10 30s n= 256 first  1.00 trig  0.00 fill  1.04 @ 30.0s -0.026
+   11-17 22:17 5JQF6Ciu e0  2.11 30s n= 111 first  1.00 trig  0.00 fill  0.34 @ 35.0s -0.364
+   11-17 22:18 3hz4aXzd e0  2.11 30s n= 231 first  1.00 trig  0.00 fill  1.09 @ 30.0s -0.005
+   11-17 22:19 5pX5XGLj e0  2.11 30s n= 227 first  1.00 trig  0.00 fill  1.09 @ 30.0s -0.004
+   11-17 22:21 HDMZh4R5 e0  2.10 30s n= 190 first  1.00 trig  0.00 fill  1.04 @ 30.0s -0.027
+   11-17 22:24 8DjNokqz e0  2.10 30s n= 232 first  1.01 trig  0.00 fill  1.04 @ 30.0s -0.030
+   11-17 22:28 4HXPWHi8 e0  2.11 30s n= 317 first  1.00 trig  0.00 fill  1.04 @ 30.0s -0.028
+   11-17 22:38 BSQFeKWy e0  2.09 30s n= 486 first  1.00 trig  0.00 fill  1.01 @ 30.0s -0.044
+   11-17 22:45 6CggN9JS e0  2.10 30s n= 623 first  1.00 trig  1.31 fill  0.99 @ 30.0s -0.050
+   11-17 22:47 6VVudYVM e0  2.11 end n=  25 first  1.00 trig  0.00 fill  0.34 @ 18.0s -0.365
+   11-17 22:48 7xjov9TA e0  2.11 tp  n= 139 first  1.00 trig  1.28 fill  1.39 @ 29.0s +0.141
+   11-17 22:56 EAV5gGfc e0  2.11 30s n= 304 first  1.00 trig  0.00 fill  0.99 @ 41.0s -0.053
+   11-17 23:00 9biciutt e0  2.10 30s n= 297 first  1.00 trig  1.24 fill  0.99 @ 30.0s -0.054
+   11-18 00:04 2GnvDA3G e0  2.10 30s n= 427 first  1.00 trig  0.00 fill  0.99 @ 30.0s -0.052
+   11-18 00:08 3p3MCchZ e0  2.09 30s n= 287 first  1.00 trig  1.36 fill  0.99 @ 30.0s -0.053
+   11-18 00:32 6CpPjAcp e0  2.09 tp  n= 343 first  1.00 trig  1.21 fill  1.22 @ 27.0s +0.059
+   11-18 00:37 21GcTin9 e0  2.08 30s n= 351 first  1.00 trig  0.00 fill  0.99 @ 30.0s -0.050
+   11-18 00:40 HJ8rNwqU e0  2.08 30s n= 383 first  1.00 trig  0.00 fill  1.00 @ 30.0s -0.046
+   11-18 00:45 4JBGmN9i e0  2.08 30s n= 397 first  1.00 trig  0.00 fill  1.00 @ 30.0s -0.048
+   11-18 00:53 9u38pGHG e0  2.08 30s n= 987 first  1.00 trig  1.24 fill  0.97 @ 30.0s -0.061

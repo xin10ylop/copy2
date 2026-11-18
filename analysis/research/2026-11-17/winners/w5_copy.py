@@ -52,6 +52,14 @@ def cpath(m, slot, t):
     tr = [e for tx in txs if tx for e in M.trades(tx, m)]
     with gzip.open(f + ".tmp", "wt") as fh: json.dump(tr, fh)
     os.replace(f + ".tmp", f); return tr
+# The in-slot order fix (Nov 18, 2026-11-18/churn/): getSignaturesForAddress lists newest first and the sort above is by
+# slot only, so the transactions inside a busy slot came out reversed (a slot+1 entry took the slot's first state, not
+# its last). Every path is put back in the true order from the curve's reserves; RAW_ORDER=1 gives the old order.
+sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-18/churn"); import slot_order as _SO
+_cpath_raw = cpath
+def cpath(m, slot, t):
+    tr = _cpath_raw(m, slot, t)
+    return tr if os.environ.get("RAW_ORDER") else _SO.reorder(tr)
 def run(p, ex, stake=0.5):
     if ex == "live": return H.model(p)[0]
     if p["refused"]: return -0.0004

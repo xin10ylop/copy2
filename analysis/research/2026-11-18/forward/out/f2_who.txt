@@ -1,0 +1,130 @@
+
+== LIVE (Nov 18 01:34-01:46 UTC): 14 coins; wallets trading 3+ of these coins in their 30 s (cross-coin bots): 132
+   11-18 01:34 7XVGH4ZZ | ladder  0b/17s  -7.48 | bots  59b/ 85s  -6.99 | others (  9 wallets)   8b/  7s  -6.56 SOL | high 1.06x
+   11-18 01:34 6jo5fAiw | ladder  0b/ 1s  -0.11 | bots   6b/  1s  +0.23 | others ( 12 wallets)   6b/  7s  -0.50 SOL | high 1.00x
+   11-18 01:36 BFb6yYmg | ladder  0b/18s  -5.99 | bots  77b/ 44s  +6.09 | others (  6 wallets)   6b/  0s  +0.49 SOL | high 1.06x
+   11-18 01:38 9X5VPHTR | ladder  0b/18s  -6.00 | bots  81b/ 42s  +6.66 | others (  4 wallets)   4b/  1s  +0.23 SOL | high 1.06x
+   11-18 01:38 4dTVWyVk | ladder  0b/12s  -3.93 | bots  68b/ 49s  +2.93 | others (  5 wallets)   5b/  1s  +0.54 SOL | high 1.01x
+   11-18 01:38 988CKptP | ladder  0b/ 0s  +0.00 | bots   8b/  1s  +0.49 | others (  7 wallets)   9b/  0s  +2.01 SOL | high 1.10x
+   11-18 01:39 7EHp3sW6 | ladder  0b/18s  -5.98 | bots  73b/ 37s  +6.31 | others (  7 wallets)   9b/  0s  +0.67 SOL | high 1.05x
+   11-18 01:40 Fq1PtJ45 | ladder  0b/13s  -4.29 | bots  67b/ 51s  +2.61 | others (  9 wallets)  10b/  1s  +1.11 SOL | high 1.01x
+   11-18 01:42 7Z9ubUPQ | ladder  0b/18s  -6.01 | bots  77b/ 44s  +5.81 | others (  5 wallets)   4b/  1s  +0.15 SOL | high 1.04x
+   11-18 01:42 7QyT3o9o | ladder  0b/13s  -4.28 | bots  59b/ 51s  +0.96 | others (  8 wallets)  15b/  0s  +1.66 SOL | high 1.00x
+   11-18 01:43 G6LSCRtb | ladder  0b/10s  -1.76 | bots  12b/  1s  +0.61 | others ( 46 wallets)  43b/ 30s  +1.23 SOL | high 1.03x
+   11-18 01:44 G73Kv6Nz | ladder  0b/21s  -7.55 | bots  59b/ 64s  -4.63 | others ( 13 wallets)  11b/  7s  -6.42 SOL | high 1.04x
+   11-18 01:46 J9KQbTVQ | ladder  0b/ 0s  +0.00 | bots  11b/  1s  +0.30 | others ( 10 wallets)   9b/  1s  +1.26 SOL | high 1.06x
+   11-18 01:46 2eJtJdta | ladder  0b/18s  -5.95 | bots  65b/ 40s  +4.21 | others (  9 wallets)   9b/  0s  +2.29 SOL | high 1.05x
+   per coin: ladder 0.0b/12.6s, bots 51.6b/36.5s, others 10.6b/4.0s
+   the busiest cross-coin bots: [('CCCTPKGN', 14), ('AuFATHV3', 14), ('4uXSggbV', 14), ('G9HvvpGg', 13), ('2c6AzmxY', 12), ('EDBMUojN', 9)]
+
+== THE +51% PERIOD (Nov 17 13:49 - Nov 18 ~00:50 UTC): 108 coins; wallets trading 3+ of these coins in their 30 s (cross-coin bots): 335
+   11-17 13:50 5H2CBnjq | ladder  0b/ 1s  -0.24 | bots  20b/  6s  +1.20 | others (  4 wallets)   4b/  1s  +0.14 SOL | high 1.06x
+   11-17 13:50 2Zx6K35g | ladder  0b/ 4s  -1.01 | bots  18b/  5s  +1.76 | others (  4 wallets)   3b/  1s  -0.31 SOL | high 1.03x
+   11-17 13:51 3TLFeyrY | ladder  0b/ 2s  -0.91 | bots  16b/  6s  +0.59 | others (  2 wallets)   1b/  1s  +1.86 SOL | high 1.09x
+   11-17 13:52 8Z8v448y | ladder  0b/ 2s  -0.91 | bots  18b/  5s  +1.18 | others (  4 wallets)   4b/  1s  +0.13 SOL | high 1.02x
+   11-17 13:55 GMxgokGj | ladder  0b/ 1s  -0.24 | bots  15b/  6s  +1.00 | others (  3 wallets)   2b/  1s  +0.08 SOL | high 1.04x
+   11-17 13:58 GgYnHsUX | ladder  0b/ 4s  -1.01 | bots  20b/  5s  +1.84 | others (  1 wallets)   1b/  0s  +0.00 SOL | high 1.06x
+   11-17 13:59 83drh1ym | ladder  0b/ 2s  -0.92 | bots  29b/ 15s  +1.51 | others (  1 wallets)   0b/  1s  -0.10 SOL | high 1.03x
+   11-17 14:05 6KwivCev | ladder  0b/ 6s  -1.05 | bots  29b/ 19s  +1.62 | others (  3 wallets)   3b/  0s  +0.24 SOL | high 1.05x
+   11-17 14:12 LuRcWVt7 | ladder  0b/ 1s  -0.24 | bots  19b/  8s  +0.70 | others (  4 wallets)   3b/  1s  +0.13 SOL | high 1.04x
+   11-17 14:12 4cDM6Xmz | ladder  0b/ 4s  -1.00 | bots  16b/  5s  +1.75 | others (  1 wallets)   1b/  0s  +0.10 SOL | high 1.07x
+   11-17 14:12 8G136gLi | ladder  0b/ 2s  -0.92 | bots  17b/  6s  +0.90 | others (  3 wallets)   3b/  0s  +0.24 SOL | high 1.02x
+   11-17 14:16 BkeWpFuD | ladder  0b/ 2s  -0.91 | bots  23b/ 13s  +0.41 | others (  4 wallets)   4b/  0s  +0.49 SOL | high 1.02x
+   11-17 14:22 9YTnpNvg | ladder  0b/ 7s  -1.25 | bots  35b/ 21s  +1.03 | others (  1 wallets)   1b/  0s  +0.20 SOL | high 1.00x
+   11-17 14:23 F2SYu5Aa | ladder  0b/ 1s  -0.24 | bots  16b/  7s  +0.77 | others (  4 wallets)   4b/  1s  +0.36 SOL | high 1.05x
+   11-17 14:24 FPFReRS3 | ladder  0b/ 4s  -1.00 | bots  15b/  6s  +1.39 | others (  1 wallets)   1b/  0s  +0.10 SOL | high 1.06x
+   11-17 14:25 FDNECyMP | ladder  0b/ 2s  -0.92 | bots  16b/  6s  +0.35 | others (  1 wallets)   1b/  0s  +0.05 SOL | high 1.02x
+   11-17 14:34 33Sanhom | ladder  0b/ 1s  -0.24 | bots  20b/  8s  +0.77 | others (  4 wallets)   3b/  3s  -0.72 SOL | high 1.00x
+   11-17 14:34 637PsZze | ladder  0b/ 4s  -1.00 | bots  22b/  5s  +2.47 | others (  1 wallets)   1b/  0s  +0.02 SOL | high 1.06x
+   11-17 14:34 2Liv8tJp | ladder  0b/ 6s  -1.04 | bots  22b/ 17s  +0.79 | others (  2 wallets)   2b/  0s  +0.30 SOL | high 1.01x
+   11-17 14:34 H3NfNvNy | ladder  0b/ 2s  -0.91 | bots  16b/  5s  +1.19 | others (  2 wallets)   2b/  0s  +0.38 SOL | high 1.02x
+   11-17 14:40 DgqPdFXL | ladder  0b/ 4s  -1.01 | bots  31b/ 13s  +1.47 | others (  2 wallets)   2b/  0s  +0.08 SOL | high 1.05x
+   11-17 14:43 DbgQSumB | ladder  0b/ 2s  -0.91 | bots  25b/ 12s  +0.48 | others (  1 wallets)   1b/  1s  +0.00 SOL | high 1.01x
+   11-17 14:53 HpGbZ85q | ladder  0b/ 7s  -1.25 | bots  31b/ 22s  +0.98 | others (  5 wallets)   5b/  1s  +0.24 SOL | high 1.00x
+   11-17 15:02 F8S9ZkQW | ladder  0b/ 8s  -1.36 | bots  26b/ 22s  +0.91 | others (  4 wallets)   4b/  0s  +0.36 SOL | high 1.01x
+   11-17 15:20 Dn4ZWmae | ladder  0b/ 7s  -1.25 | bots  27b/ 19s  +0.74 | others (  2 wallets)   2b/  0s  +0.28 SOL | high 1.00x
+   11-17 15:30 FTwt1ipt | ladder  0b/ 8s  -1.37 | bots  29b/ 22s  +1.13 | others (  2 wallets)   2b/  0s  +0.12 SOL | high 1.01x
+   11-17 15:31 9RnNNDCE | ladder  0b/ 1s  -0.24 | bots  20b/  8s  +4.93 | others (  8 wallets)   6b/ 29s  -0.24 SOL | high 1.21x
+   11-17 15:31 3brauYhf | ladder  0b/ 2s  -0.36 | bots  20b/  8s  +5.24 | others (  2 wallets)   1b/  1s  -0.30 SOL | high 1.21x
+   11-17 15:32 3ZgBsHkJ | ladder  0b/ 1s  -0.48 | bots  16b/  7s  +4.02 | others (  3 wallets)   1b/  3s  -2.23 SOL | high 1.07x
+   11-17 15:39 7FYEMqbK | ladder  0b/ 9s  -1.84 | bots  27b/ 19s  +1.41 | others (  1 wallets)   1b/  0s  +0.23 SOL | high 1.01x
+   11-17 15:45 HHJ6vvow | ladder  0b/ 1s  -0.18 | bots   8b/  3s  +0.51 | others (  3 wallets)   3b/  0s  +4.05 SOL | high 1.18x
+   11-17 16:24 EATWADur | ladder  0b/ 8s  -2.63 | bots  31b/ 19s  +1.68 | others (  3 wallets)   3b/  0s  +1.15 SOL | high 1.02x
+   11-17 16:28 2V5EpUuF | ladder  0b/ 6s  -5.37 | bots  23b/ 36s  -7.90 | others (  5 wallets)   9b/  3s  -7.80 SOL | high 1.06x
+   11-17 16:31 2JMeL4Dg | ladder  0b/ 9s  -2.97 | bots  36b/ 19s  +3.01 | others (  0 wallets)   0b/  0s  +0.00 SOL | high 1.04x
+   11-17 16:34 HzMcX4Xu | ladder  0b/ 8s  -2.64 | bots  29b/ 17s  +3.05 | others (  1 wallets)   1b/  0s  +0.55 SOL | high 1.05x
+   11-17 16:35 43TKebaW | ladder  0b/ 7s  -1.24 | bots  30b/ 21s  +1.14 | others (  0 wallets)   0b/  0s  +0.00 SOL | high 1.00x
+   11-17 16:36 7guHMc3T | ladder  0b/ 9s  -2.97 | bots  32b/ 19s  +2.55 | others (  1 wallets)   1b/  0s  +0.00 SOL | high 1.01x
+   11-17 16:38 69ZB6joM | ladder  0b/ 8s  -1.73 | bots  30b/ 17s  +1.87 | others (  0 wallets)   0b/  0s  +0.00 SOL | high 1.02x
+   11-17 16:39 CDdBsXf7 | ladder  0b/ 8s  -2.63 | bots  31b/ 17s  +2.62 | others (  2 wallets)   2b/  1s  +0.02 SOL | high 1.03x
+   11-17 16:48 71jmEKak | ladder  0b/ 2s  -0.42 | bots  33b/  7s  +3.59 | others (  4 wallets)   4b/  0s  +0.60 SOL | high 1.16x
+   11-17 16:57 ENqFXtDL | ladder  0b/ 8s  -1.37 | bots  40b/ 22s  +1.38 | others (  5 wallets)   5b/  0s  +0.18 SOL | high 1.02x
+   11-17 17:02 93j1hkpA | ladder  0b/ 7s  -1.24 | bots  29b/ 24s  +0.04 | others (  7 wallets)   7b/  0s  +1.25 SOL | high 1.00x
+   11-17 17:05 64sH9UDD | ladder  0b/ 6s  -0.99 | bots  22b/ 21s  -0.98 | others ( 10 wallets)  10b/  0s  +2.12 SOL | high 1.02x
+   11-17 17:10 4gTM1TCo | ladder  0b/ 6s  -1.03 | bots  12b/ 16s  -1.50 | others ( 13 wallets)  13b/  1s  +2.57 SOL | high 1.01x
+   11-17 17:24 9fWcL6EL | ladder  0b/14s  -4.66 | bots  45b/ 30s  +3.57 | others (  3 wallets)   3b/  1s  +0.10 SOL | high 1.01x
+   11-17 17:27 3jCreMTE | ladder  0b/14s  -4.65 | bots  42b/ 26s  +3.95 | others (  1 wallets)   1b/  0s  +0.10 SOL | high 1.01x
+   11-17 19:05 HGkUkAns | ladder  0b/ 5s  -1.65 | bots  24b/  9s  +1.91 | others (  1 wallets)   1b/  0s  +0.01 SOL | high 1.03x
+   11-17 19:12 HpWaf1GB | ladder  0b/ 4s  -1.35 | bots  15b/  8s  +1.07 | others (  0 wallets)   0b/  0s  +0.00 SOL | high 1.02x
+   11-17 19:28 EnjgY8LG | ladder  0b/ 5s  -1.65 | bots  23b/  9s  +1.87 | others (  2 wallets)   2b/  0s  +0.06 SOL | high 1.01x
+   11-17 19:38 CTR4P49i | ladder  0b/ 0s  +0.00 | bots   8b/  1s  +0.32 | others (  1 wallets)   1b/  1s  +0.00 SOL | high 1.43x
+   11-17 19:38 5bT3aCj1 | ladder  0b/14s  -4.66 | bots  54b/ 29s  +5.19 | others (  2 wallets)   1b/  1s  -0.01 SOL | high 1.06x
+   11-17 19:40 HhKq1Dkd | ladder  0b/ 0s  +0.00 | bots  13b/  5s  -1.53 | others (  0 wallets)   0b/  0s  +0.00 SOL | high 1.45x
+   11-17 19:40 5MfXPDno | ladder  0b/12s  -3.94 | bots  47b/ 26s  +3.97 | others (  2 wallets)   2b/  1s  +0.10 SOL | high 1.04x
+   11-17 19:44 7NiJp3cp | ladder  0b/ 3s  -9.72 | bots  12b/  9s  -1.25 | others (  2 wallets)   2b/  1s  +0.15 SOL | high 1.56x
+   11-17 19:51 DmgFPx5E | ladder  0b/ 3s -12.50 | bots  16b/ 18s  +2.85 | others (  8 wallets)   8b/  5s  +0.41 SOL | high 2.07x
+   11-17 19:51 CJ8aZqjJ | ladder  1b/ 1s  -2.78 | bots   8b/  0s  +0.25 | others (  1 wallets)   1b/  0s  +0.10 SOL | high 1.33x
+   11-17 19:54 GHxXWjLy | ladder  0b/ 0s  +0.00 | bots   7b/  3s  -1.68 | others (  1 wallets)   1b/  0s  +0.07 SOL | high 1.45x
+   11-17 19:55 5VXhSA9A | ladder  0b/14s  -4.64 | bots  58b/ 36s  +3.68 | others (  2 wallets)   1b/  1s  +0.19 SOL | high 1.02x
+   11-17 20:01 4jo93Zcw | ladder  0b/ 0s  +0.00 | bots  11b/  0s  +0.33 | others (  2 wallets)   2b/  0s  +0.15 SOL | high 1.01x
+   11-17 20:04 HPQ52Uwp | ladder  0b/ 0s  +0.00 | bots  19b/ 10s  -1.35 | others (  0 wallets)   0b/  0s  +0.00 SOL | high 1.43x
+   11-17 20:06 EssmJN59 | ladder  0b/ 0s  +0.00 | bots  15b/ 10s  +0.98 | others ( 16 wallets)  16b/  0s +62.65 SOL | high 5.01x
+   11-17 20:38 DXpRZvJg | ladder  0b/ 7s  -1.24 | bots  42b/ 26s  +1.72 | others (  2 wallets)   2b/  1s  +0.08 SOL | high 1.02x
+   11-17 20:39 HrXCon1X | ladder  0b/ 8s  -1.73 | bots  42b/ 28s  +1.90 | others (  2 wallets)   3b/  0s  +0.27 SOL | high 1.04x
+   11-17 20:46 FewPnARB | ladder  0b/12s  -6.07 | bots  43b/ 65s  -7.13 | others (  2 wallets)   1b/  4s  -7.89 SOL | high 1.02x
+   11-17 20:48 37dJqSpp | ladder  0b/13s  -4.34 | bots  54b/ 31s  +5.31 | others (  2 wallets)   1b/  1s  -0.84 SOL | high 1.03x
+   11-17 20:50 7hzPDHT8 | ladder  0b/ 0s  +0.00 | bots  18b/ 18s  +0.08 | others (  2 wallets)   1b/  2s  -1.86 SOL | high 1.02x
+   11-17 21:00 C3UQRnRm | ladder  0b/ 9s  -1.85 | bots  42b/ 21s  +1.69 | others (  5 wallets)   5b/  1s  +0.55 SOL | high 1.03x
+   11-17 21:00 5wHuEytQ | ladder  0b/11s  -6.02 | bots  42b/ 62s  -7.41 | others (  3 wallets)   4b/  3s  -7.62 SOL | high 1.07x
+   11-17 21:02 5Lc2kAPT | ladder  0b/14s  -4.66 | bots  52b/ 32s  +3.60 | others (  1 wallets)   0b/  1s  -0.96 SOL | high 1.01x
+   11-17 21:03 GLGMqgmk | ladder  0b/14s  -4.65 | bots  56b/ 31s  +4.15 | others (  1 wallets)   1b/  1s  +0.04 SOL | high 1.02x
+   11-17 21:04 DHLUCSFe | ladder  0b/ 5s  -1.12 | bots  31b/ 16s  +6.09 | others (  4 wallets)   4b/  0s  +0.17 SOL | high 1.21x
+   11-17 21:06 5BsQxk5u | ladder  0b/14s  -4.68 | bots  57b/ 34s  +5.27 | others (  3 wallets)   3b/  2s  -0.95 SOL | high 1.01x
+   11-17 21:10 CD5pxibt | ladder  0b/14s  -4.66 | bots  54b/ 33s  +4.75 | others (  2 wallets)   1b/  1s  -0.97 SOL | high 0.99x
+   11-17 21:12 DCEGJcPZ | ladder  0b/ 8s  -1.55 | bots  32b/ 21s  +0.63 | others (  6 wallets)   6b/  0s  +1.15 SOL | high 1.02x
+   11-17 21:12 B45iRibr | ladder  0b/14s  -4.64 | bots  47b/ 32s  +4.53 | others (  0 wallets)   0b/  0s  +0.00 SOL | high 1.01x
+   11-17 21:15 HURx5xTq | ladder  0b/14s  -4.66 | bots  52b/ 30s  +5.00 | others (  3 wallets)   2b/  2s  -0.87 SOL | high 1.01x
+   11-17 21:16 71dsfiMX | ladder  0b/14s  -4.65 | bots  58b/ 29s  +5.29 | others (  2 wallets)   2b/  2s  -0.01 SOL | high 1.05x
+   11-17 21:19 Ydkbbhb7 | ladder  0b/ 3s  -0.97 | bots  17b/  7s  +1.45 | others (  0 wallets)   0b/  0s  +0.00 SOL | high 1.04x
+   11-17 21:23 DWD5eA2V | ladder  0b/14s  -4.66 | bots  47b/ 29s  +4.56 | others (  0 wallets)   0b/  0s  +0.00 SOL | high 1.04x
+   11-17 21:29 DzNLqCja | ladder  0b/18s  -6.00 | bots  75b/ 44s  +5.19 | others (  3 wallets)   3b/  2s  +0.32 SOL | high 1.02x
+   11-17 21:30 9tNAewNt | ladder  0b/10s  -2.13 | bots  25b/ 20s  -0.14 | others ( 12 wallets)  12b/  0s  +2.06 SOL | high 1.02x
+   11-17 21:34 9UMxY7fJ | ladder  0b/ 0s  +0.00 | bots  14b/ 12s  -1.78 | others (  3 wallets)   3b/  1s  +0.49 SOL | high 1.45x
+   11-17 21:49 2Q3LAuao | ladder  0b/ 8s  -1.36 | bots  22b/ 22s  -1.79 | others ( 18 wallets)  18b/  1s  +2.99 SOL | high 1.01x
+   11-17 21:52 7DWGGtHq | ladder  0b/17s  -5.64 | bots  65b/ 40s  +5.25 | others (  1 wallets)   1b/  0s  +0.10 SOL | high 1.01x
+   11-17 21:53 BBF4jPdf | ladder  0b/17s  -5.64 | bots  70b/ 42s  +5.35 | others (  1 wallets)   1b/  0s  +0.10 SOL | high 1.03x
+   11-17 21:55 D4nohutq | ladder  0b/17s  -5.63 | bots  80b/ 51s  +6.37 | others (  5 wallets)   5b/  1s  +0.90 SOL | high 1.08x
+   11-17 21:56 EXjWDotq | ladder  0b/17s  -5.65 | bots  72b/ 41s  +5.74 | others (  2 wallets)   2b/  1s  +0.09 SOL | high 1.03x
+   11-17 21:56 FM5zGmwE | ladder  0b/ 9s  -1.84 | bots  37b/ 19s  +1.94 | others (  0 wallets)   0b/  0s  +0.00 SOL | high 1.02x
+   11-17 22:15 EGGozBmu | ladder  0b/17s  -5.67 | bots  73b/ 39s  +6.29 | others (  2 wallets)   2b/  0s  +0.10 SOL | high 1.04x
+   11-17 22:17 5JQF6Ciu | ladder  0b/11s  -5.82 | bots  33b/ 57s  -8.28 | others (  5 wallets)   4b/  2s  -6.67 SOL | high 1.09x
+   11-17 22:18 3hz4aXzd | ladder  0b/17s  -5.66 | bots  76b/ 48s  +6.29 | others (  6 wallets)   6b/  2s  +0.81 SOL | high 1.09x
+   11-17 22:19 5pX5XGLj | ladder  0b/16s  -5.35 | bots  72b/ 46s  +6.54 | others (  7 wallets)   7b/  2s  +0.91 SOL | high 1.10x
+   11-17 22:21 HDMZh4R5 | ladder  0b/17s  -5.65 | bots  66b/ 39s  +6.23 | others (  2 wallets)   2b/  1s  +0.10 SOL | high 1.05x
+   11-17 22:24 8DjNokqz | ladder  0b/17s  -5.66 | bots  73b/ 45s  +6.52 | others (  2 wallets)   2b/  1s  +0.32 SOL | high 1.08x
+   11-17 22:28 4HXPWHi8 | ladder  0b/17s  -5.65 | bots  72b/ 51s  +4.50 | others (  6 wallets)   7b/  2s  +1.61 SOL | high 1.05x
+   11-17 22:38 BSQFeKWy | ladder  0b/ 6s  -1.33 | bots  31b/ 18s  +1.61 | others (  2 wallets)   2b/  0s  +0.09 SOL | high 1.03x
+   11-17 22:45 6CggN9JS | ladder  0b/10s  -2.13 | bots  32b/ 22s  +1.30 | others (  2 wallets)   2b/  0s  +0.27 SOL | high 1.00x
+   11-17 22:47 6VVudYVM | ladder  0b/ 3s  -4.70 | bots   6b/ 12s -11.23 | others (  2 wallets)   1b/  2s  -5.39 SOL | high 1.00x
+   11-17 22:48 7xjov9TA | ladder  0b/17s  -5.67 | bots  64b/ 37s +11.36 | others ( 18 wallets)  19b/  1s +57.97 SOL | high 5.02x
+   11-17 22:56 EAV5gGfc | ladder  0b/ 0s  +0.00 | bots  10b/  7s  +0.05 | others (  2 wallets)   2b/  1s  +0.00 SOL | high 1.00x
+   11-17 23:00 9biciutt | ladder  0b/ 9s  -1.75 | bots  35b/ 22s  +1.16 | others (  0 wallets)   0b/  0s  +0.00 SOL | high 1.01x
+   11-18 00:04 2GnvDA3G | ladder  0b/ 7s  -1.36 | bots  29b/ 18s  +0.66 | others (  0 wallets)   0b/  0s  +0.00 SOL | high 1.01x
+   11-18 00:08 3p3MCchZ | ladder  0b/ 8s  -1.63 | bots  35b/ 20s  +1.45 | others (  1 wallets)   1b/  0s  +0.00 SOL | high 1.01x
+   11-18 00:32 6CpPjAcp | ladder  0b/ 0s  +0.00 | bots  34b/  2s  +6.08 | others (  0 wallets)   0b/  0s  +0.00 SOL | high 1.25x
+   11-18 00:37 21GcTin9 | ladder  0b/10s  -2.09 | bots  35b/ 21s  +0.80 | others (  7 wallets)   7b/  3s  +0.84 SOL | high 1.11x
+   11-18 00:40 HJ8rNwqU | ladder  0b/ 9s  -1.75 | bots  30b/ 18s  +0.71 | others (  5 wallets)   6b/  0s  +1.15 SOL | high 1.02x
+   11-18 00:45 4JBGmN9i | ladder  0b/ 9s  -1.76 | bots  32b/ 20s  +0.50 | others (  4 wallets)   4b/  0s  +1.21 SOL | high 1.01x
+   11-18 00:53 9u38pGHG | ladder  0b/ 9s  -1.76 | bots  34b/ 22s  +0.92 | others (  1 wallets)   1b/  1s  +0.00 SOL | high 1.01x
+   per coin: ladder 0.0b/7.4s, bots 33.1b/20.5s, others 3.0b/1.0s
+   the busiest cross-coin bots: [('CCCTPKGN', 58), ('G9HvvpGg', 53), ('6UJrxXdr', 42), ('Bc6MrmWe', 42), ('2P6BHFcy', 42), ('jomnbotq', 42)]

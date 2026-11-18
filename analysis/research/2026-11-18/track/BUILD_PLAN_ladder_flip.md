@@ -38,3 +38,8 @@ The research: `PREREG_ladder_flip.md` (frozen on group A; passes on groups C-F +
   stops finding coins if it stops).
 - Speed: the model enters at the first trade after the create slot + 1; a slower landing pays more.
 - The feed's load: every pump transaction, parsed in the hot path (to measure in paper).
+
+## STOPPED (Nov 18): not to be deployed
+
+The backtest behind this plan was a model error (`PREREG_ladder_flip.md`, CORRECTION; `../churn/README.md`). The code
+stays in the tree, off by default.
