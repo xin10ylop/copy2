@@ -1,0 +1,35 @@
+7263 coins, 24964 wallets with a first buy of 0.5+ SOL on an other-token coin; 4411 with 5+ coins
+
+THE YARDSTICK, wallet 4:
+wallet   coins  SOL in   result  w/o 2 best  won days/+ hold_s timer  <=10s cslot float  never sold
+H9kuqGKN  224   223.9  +56.97  +47.45   54% 5/4    180   25%    3%   53%   83%    0%
+
+WALLET-4-LIKE (9): 15+ coins on 3+ of the 4 days, its own result positive and without its best 2 coins, positive on 2+ days, holds 90-1200 s (median; wallet 4 180), no fixed timer (under 50% of sales on one 10 s delay), under 10% sold within 10 s (wallet 4 3%), the create slot allowed (wallet 4 53%), half or more on float-quoted coins; by the result without its best 2:
+wallet   coins  SOL in   result  w/o 2 best  won days/+ hold_s timer  <=10s cslot float  never sold
+H9kuqGKN  224   223.9  +56.97  +47.45   54% 5/4    180   25%    3%   53%   83%    0%
+6DQAGJT7   30   145.2  +13.92   +6.05   57% 4/3    113   10%    5%    0%   57%   30%
+DsGJkPzF   45    29.2   +5.52   +2.25   49% 4/4    158   20%    0%   58%   73%    0%
+5Y5nsbGf   19    27.6   +5.26   +1.57   68% 4/3    125   16%    0%    0%   89%    0%
+FZU56d9i   95   112.1   +6.85   +1.18   34% 4/4    261    7%    6%    1%   79%   29%
+94JRjXuR   15    30.7   +8.11   +1.09   60% 4/4    126   13%    0%    0%   53%    0%
+75gEU53q   15    30.7   +9.31   +1.03   60% 4/4    126   13%    0%    0%   53%    0%
+4xPvbD8z   16    25.5   +3.41   +0.98   62% 4/2    154   13%    0%    0%   56%    6%
+EgYa22bN   19    27.0   +5.76   +0.55   63% 4/3    102   17%    0%    0%   89%    5%
+
+FOR SCALE, the 15 biggest own results among all wallets with 15+ coins (no behaviour filter):
+wallet   coins  SOL in   result  w/o 2 best  won days/+ hold_s timer  <=10s cslot float  never sold
+Fhbh1DTU  519  1967.3 +287.17 +268.54   71% 5/5      1   79%   89%   42%   66%    0%
+6Z91Dgiz  386  1526.4 +259.49 +235.48   73% 4/4      2   92%  100%   38%   66%    0%
+sssssyv2  847  3889.2 +236.60 +226.31   62% 5/5     16   27%   38%    0%   77%    0%
+bwamJzzt  125  1002.0 +311.93 +223.86   83% 3/3      2   95%   96%  100%   66%    0%
+STorreSu 1031  3244.6 +190.25 +181.65   55% 5/5     28   16%   25%    0%   79%    0%
+dtrzJPj7   56   419.0 +221.00 +159.24   88% 3/3      1  100%  100%  100%   75%    0%
+sssssCUP  855  3252.6 +113.80 +106.82   58% 5/5     14   27%   42%    0%   81%    0%
+dKMjeGJ4  190   898.2 +134.92 +101.51   69% 5/4      2   98%  100%   53%   71%    0%
+8YcbyX92   45   159.6 +112.46  +94.91   98% 4/4      4   82%   98%   96%   69%    0%
+haqq6qnV 1012  1485.6  +85.91  +81.42   51% 5/5      2   87%   93%   16%   79%    0%
+whamNNP9   41   200.5 +109.32  +81.11   98% 4/4      2   93%   95%  100%   73%    0%
+G9gmk9ms  913  4149.4  +78.14  +67.13   48% 5/4     33   21%   22%    0%   81%    0%
+2jjfHSRe  730  1309.4  +67.11  +62.87   62% 5/5      9   40%   55%    0%   78%    0%
+BCyNgSB1   35   122.5  +66.78  +57.88   94% 3/3      7   71%   77%   91%   66%    0%
+Cf4dxUu7  715  2524.3  +60.94  +54.05   51% 5/4     17   28%   34%    0%   81%    0%

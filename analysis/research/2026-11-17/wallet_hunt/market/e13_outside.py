@@ -8,7 +8,7 @@ e8 = open(os.path.join(here, "e8_engineer.py")).read().split("rows = []")[0]
 sys.argv = ["x", SP, WL]; exec(e8)
 m5 = open(os.path.join(here, "m5_confirm.py")).read(); pre = m5.split("def S(v):")[0]
 sys.argv = ["x", SP, WL]; exec(pre)
-A_, B_ = 1794704822, 1794877622; h = json.load(open(f"{SP}/winners/hist/{WL}.json")); fb = {}
+A_, B_ = map(int, os.environ.get("SCREEN", "1794704822,1794877622").split(",")); h = json.load(open(f"{SP}/winners/hist/{WL}.json")); fb = {}
 for e in sorted(h["trades"], key=lambda e: e["t"]):
     if e["buy"]: fb.setdefault(e["m"], e)
 rows = []
