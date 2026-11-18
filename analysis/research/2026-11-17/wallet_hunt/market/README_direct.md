@@ -76,3 +76,11 @@ Wallet 4 on the same days: its live model +6.8% on days 3-4 (96 copies).
 **Reading:** TAB16RxX is a real, modest edge that survives a sample never used to pick it, and wallet 4's frozen exits
 suit it. What would run it: the paused unit `rugsnipe-long-tab` with `min_sol` 0.5, the main unit's exits, floats in its
 own wallet (63 of its 80 days-3-4 copies are TTWofwAg coins). The owner's call.
+
+## TAB16RxX, the exact config to deploy (`e3_tab_exact.py`, `../out/e3_tab_exact.txt`)
+
+hunt_lib's live model (tp 4.0, 600 s, sell pressure [5, 60, 30], stall 180 s once back at our fill) with its sale
+never followed, all its 0.5+ SOL first buys on the 4 days' float-quote coins, 0.0345 SOL a round trip: days 1-2 +5.7%
+(53), days 3-4 +13.9% (87), all 140 +10.8% a copy, +7.55 SOL at 0.5, w/o 2% +3.72, P(mean>0) 99.0%. With its sale
+followed as the main unit does: +3.7% / +12.2%, all +9.0%. Quotes of the 140: TTWofwAg 97, pumpCmXq 21, SPCXxcqX 14,
+3NZ9JMVB (WBTC) 6, 98sMhvDw (HYPE) 2.

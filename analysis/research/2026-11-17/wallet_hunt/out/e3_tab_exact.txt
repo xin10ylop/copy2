@@ -1,0 +1,9 @@
+TO DEPLOY: live exits, its sale never followed:
+   days 1-2:  53  +1.50 SOL (  +5.7% a copy) w/o 2%  +0.70 | won  30% | P(mean>0)  79.2%
+   days 3-4:  87  +6.05 SOL ( +13.9% a copy) w/o 2%  +3.39 | won  39% | P(mean>0)  98.8%
+   all 4:    140  +7.55 SOL ( +10.8% a copy) w/o 2%  +3.72 | won  36% | P(mean>0)  99.0%
+the live model as it is (its sale followed 30-290 s):
+   days 1-2:  53  +0.98 SOL (  +3.7% a copy) w/o 2%  +0.17 | won  26% | P(mean>0)  69.4%
+   days 3-4:  87  +5.33 SOL ( +12.2% a copy) w/o 2%  +2.67 | won  36% | P(mean>0)  97.4%
+   all 4:    140  +6.30 SOL (  +9.0% a copy) w/o 2%  +2.48 | won  32% | P(mean>0)  97.1%
+quotes: [('TTWofwAg', 97), ('pumpCmXq', 21), ('SPCXxcqX', 14), ('3NZ9JMVB', 6), ('98sMhvDw', 2)]
