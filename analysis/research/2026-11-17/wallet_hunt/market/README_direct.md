@@ -247,3 +247,17 @@ float-quoted coins. Wallet 4 is alone in size (+47.45 SOL without its best 2; th
 copies +6.80 SOL (+52% a copy), w/o 2% +3.74, P 91.5%; with wallet 4's exit +0.25. Every part has a plateau
 (tp 8x-none, 600 s, sell pressure off). Too few days for the rule (the days outside the screen must pass on their own
 without their best day): re-score from the chain in a few days.
+
+### 9H692HgE: August against November (Nov 18, cached paths only after the owner asked to spare Alchemy)
+
+The trio is not new: it traded Aug 9-24 (1,038 buys, all SOL-priced coins), was quiet until Nov 12. August, 568
+copies of its 0.5+ SOL first buys (Aug 9-20, 552 of 714 paths fetched before the fetch was stopped):
+- the November exit (600 s, no tp, sell pressure or stall, its sale never): **−18.12 SOL**, P 6.6%;
+- its sale followed (always) is the exit that works there: tp 3.5x, sell pressure 10/60, stall 180, 600 s, its sale
+  always **+26.86 SOL**, +9.5% a copy, both halves (+18.49 / +8.37), w/o 2% +14.27, P 100%; 151,746 of ~500,000
+  settings positive on both halves; "its sale always" is the part that matters (never +12.21, early +14.91, always
+  +30.95 at best);
+- that August exit on November's 26 float copies outside the screen: +1.14 SOL, P 75%, w/o 2% +0.14 (the November
+  exit +6.80 there).
+No exit is strong in both periods: it changed style (coin class, and how its own sales time the top). Not deployed.
+Paper copy (no money, no RPC credits) proposed to gather November-style data with the August exit and both policies.
