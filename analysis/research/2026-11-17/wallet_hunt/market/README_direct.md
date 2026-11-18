@@ -130,3 +130,13 @@ negative in every period, hence `float_only = true` on `rugsnipe-long-tab` (06:1
 real trades since Nov 12 (the box's journal, Nov 18): wSOL-paid 35 trades +2.1636 SOL, float-paid 54 trades +2.4500;
 the float study had wSOL-paid +4.34 SOL on Oct 21-29 (149) and −1.71 on Oct 29 - Nov 13 (135). Wallet 4 keeps paying
 from wSOL.
+
+## The re-screen with no exit assumed, by buy size (`e7_robust_screen.py`, `../out/e7_robust_screen.txt`, Nov 18)
+
+The 4 days' float-quote coins, 64 exit settings (tp x stall x sell pressure x time x its sale), each wallet on its
+0.5+ / 1.0+ / 1.3+ SOL buys (30+ copies a band): 225 wallets, 403 wallet-bands. The bar (75%+ of the settings positive on
+both halves, the median setting positive w/o 2%, P 90%+) is passed by TAB16RxX 0.5+ alone (98%, median +8.0% a copy,
+w/o 2% +2.29, P 96.2%) — and wallet 4's own 1.3+ buys would not pass it on these 4 days (43 copies: 55%, +8.2%, +0.90,
+P 85.9%). With the bar set at wallet 4's level (50%+, w/o 2% positive, P 85%+) one more: **5KcKcGcz 0.5+** (33 copies,
+53%, median +12.0%, w/o 2% +1.31, P 95.4%, 32 creators, never at the launch: a later buyer). The next ones fall well
+short (AMDEmVoc 45% / +0.08 / 68%; 54YNHFVt 1.0+ 12%). Every steadiest setting has its sale NOT followed.
