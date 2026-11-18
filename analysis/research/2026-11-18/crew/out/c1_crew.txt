@@ -1,0 +1,10 @@
+15730 coins bought by the crew inside the VIP exports' spans
+   1 crew wallet(s) within 120 s: 11693 coins, alerted after  911 ( 7.8%), already alerted before  202 | alert 81 s after the first crew buy | 2nd crew buy - s after the first
+   2 crew wallet(s) within 120 s:  2628 coins, alerted after  353 (13.4%), already alerted before    8 | alert 83 s after the first crew buy | 2nd crew buy 5 s after the first
+   3 crew wallet(s) within 120 s:   959 coins, alerted after  180 (18.8%), already alerted before    3 | alert 84 s after the first crew buy | 2nd crew buy 2 s after the first
+   4 crew wallet(s) within 120 s:   350 coins, alerted after   95 (27.1%), already alerted before    0 | alert 82 s after the first crew buy | 2nd crew buy 2 s after the first
+   5 crew wallet(s) within 120 s:    86 coins, alerted after   31 (36.0%), already alerted before    1 | alert 79 s after the first crew buy | 2nd crew buy 2 s after the first
+   6 crew wallet(s) within 120 s:    13 coins, alerted after    2 (15.4%), already alerted before    0 | alert 74 s after the first crew buy | 2nd crew buy 2 s after the first
+   7 crew wallet(s) within 120 s:     1 coins, alerted after    1 (100.0%), already alerted before    0 | alert 76 s after the first crew buy | 2nd crew buy 0 s after the first
+
+which wallets buy together (2+ within 120 s): [(('q2jJ', 'q2q3'), 368), (('2NUM', '7777'), 331), (('7777', 'q2jJ'), 297), (('6ua7', '7777'), 283), (('2NUM', 'q2jJ'), 269), (('2NUM', '6anj'), 221), (('7777', 'q2jJ', 'q2q3'), 183), (('7777', 'q2q3'), 141)]
