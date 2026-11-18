@@ -1,0 +1,14 @@
+125 pickers with a history; 12436 of the 48 h's launches bought by 1+ of them; base graduation rate 1.83%
+   1 picker(s) within 300 s:  8451 coins, graduated  310 (  3.7%, x 2.0) | 2nd picker 966 s after the first
+   2 picker(s) within 300 s:  1864 coins, graduated  128 (  6.9%, x 3.8) | 2nd picker 8 s after the first
+   3 picker(s) within 300 s:   885 coins, graduated   63 (  7.1%, x 3.9) | 2nd picker 4 s after the first
+   4 picker(s) within 300 s:   531 coins, graduated   57 ( 10.7%, x 5.9) | 2nd picker 3 s after the first
+   5 picker(s) within 300 s:   285 coins, graduated   36 ( 12.6%, x 6.9) | 2nd picker 2 s after the first
+   6 picker(s) within 300 s:   174 coins, graduated   40 ( 23.0%, x12.6) | 2nd picker 1 s after the first
+   7 picker(s) within 300 s:   115 coins, graduated   29 ( 25.2%, x13.8) | 2nd picker 1 s after the first
+   8 picker(s) within 300 s:    62 coins, graduated   16 ( 25.8%, x14.1) | 2nd picker 1 s after the first
+   9 picker(s) within 300 s:    33 coins, graduated   16 ( 48.5%, x26.5) | 2nd picker 1 s after the first
+   10 picker(s) within 300 s:    21 coins, graduated    7 ( 33.3%, x18.3) | 2nd picker 0 s after the first
+   11 picker(s) within 300 s:     7 coins, graduated    1 ( 14.3%, x 7.8) | 2nd picker 0 s after the first
+   12 picker(s) within 300 s:     6 coins, graduated    3 ( 50.0%, x27.4) | 2nd picker 0 s after the first
+   13 picker(s) within 300 s:     2 coins, graduated    1 ( 50.0%, x27.4) | 2nd picker 1 s after the first

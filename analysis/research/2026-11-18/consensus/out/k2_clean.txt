@@ -1,0 +1,14 @@
+
+BEFORE the screen (Nov 3 - Nov 15): 32086 coins with an outcome
+   1-1 pickers:  23213 coins, graduated  1102 (  4.7%)
+   2-3 pickers:   6614 coins, graduated   621 (  9.4%)
+   4-5 pickers:   1708 coins, graduated   222 ( 13.0%)
+   6-8 pickers:    475 coins, graduated    85 ( 17.9%)
+   9-99 pickers:     76 coins, graduated    27 ( 35.5%)
+
+AFTER the screen (Nov 17 01:07 on): 3878 coins with an outcome
+   1-1 pickers:   2543 coins, graduated    95 (  3.7%)
+   2-3 pickers:    929 coins, graduated    45 (  4.8%)
+   4-5 pickers:    270 coins, graduated    29 ( 10.7%)
+   6-8 pickers:    114 coins, graduated    18 ( 15.8%)
+   9-99 pickers:     22 coins, graduated     7 ( 31.8%)
