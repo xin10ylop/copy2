@@ -1,5 +1,5 @@
 //! The decisions, without any I/O (unit-tested in tests/engine.rs). Fed every Pons curve trade the feed sees and a
-//! clock tick; returns actions for the executor (fetch a curve's reserves, buy, sell). Mirrors the research model
+//! clock tick; returns actions for the executor (buy, sell). Mirrors the research model
 //! (analysis/research/2026-11-18/robinhood/rh6_engineer.py): prices are the curve's marginal price (quote reserve /
 //! token reserve, both virtual), "its price" is the price its buy left, and every exit is measured against it;
 //! the age of a position counts from its buy.
@@ -13,6 +13,7 @@ pub struct Trade {
     pub buy: bool,
     pub user: String,   // a buy's recipient, a sale's seller (lowercase)
     pub quote: f64,     // ETH: a buy's quoteIn, a sale's quoteOut
+    pub net_q: f64,     // ETH the curve's reserve gained (a buy: quoteIn - fee - tax) or lost (a sale: quoteOut + fee + tax)
     pub tokens: f64,    // whole tokens
     pub block: u64,
     pub t_ms: u64,      // when we saw it
@@ -20,9 +21,6 @@ pub struct Trade {
 
 #[derive(Clone, Debug, PartialEq)]
 pub enum Action {
-    /// read quoteReserve / tokenReserve / realQuoteReserve of this curve now and at the end of `block` (its buy's),
-    /// then call `set_signal`
-    FetchCurve { curve: String, block: u64 },
     Buy { curve: String, leader: String, eth: f64, min_tokens: f64 },
     Sell { curve: String, tokens: f64, min_eth: f64, why: &'static str },
 }
@@ -33,12 +31,28 @@ pub struct CurveSt {
     pub t: f64,      // virtual token reserve, tokens
     pub real_q: f64, // real quote in the curve, ETH (graduation at 4.2 for ETH-quoted coins)
 }
+/// An ETH-quoted Pons curve (measured on Nov 18 from reserves before and after single trades): virtual quote x virtual
+/// tokens = 1.68e9 exactly, starting at 1.68 ETH and 1B tokens; the fee and the creator's tax come out of the quote.
+/// Curves quoted in other tokens have other constants (one seen: 147.6 x 1e9, graduating at 369).
+pub const V0: f64 = 1.68;
+pub const K: f64 = 1.68e9;
 impl CurveSt {
     pub fn price(&self) -> f64 { if self.t > 0.0 { self.q / self.t } else { 0.0 } }
     fn apply(&mut self, tr: &Trade) {
-        if tr.buy { self.q += tr.quote; self.real_q += tr.quote; self.t -= tr.tokens } else { self.q -= tr.quote; self.real_q -= tr.quote; self.t += tr.tokens }
+        if tr.buy { self.q += tr.net_q; self.real_q += tr.net_q; self.t -= tr.tokens } else { self.q -= tr.net_q; self.real_q -= tr.net_q; self.t += tr.tokens }
     }
-    /// tokens out for `eth` in (fees and the creator's tax are about 3% of the quote, taken from the tokens)
+    /// The curve right after a buy, from the buy alone (no read): with q·t = K, the net quote dq and the tokens n out,
+    /// the quote before q0 solves n = K/q0 - K/(q0 + dq), i.e. q0² + dq·q0 - K·dq/n = 0. None when the buy does not fit
+    /// an ETH curve (another quote token, or bad numbers): such a coin is not copied.
+    pub fn after_buy(tr: &Trade) -> Option<CurveSt> {
+        let (dq, n) = (tr.net_q, tr.tokens);
+        if !tr.buy || !(dq > 0.0) || !(n > 0.0) { return None }
+        let q0 = (-dq + (dq * dq + 4.0 * K * dq / n).sqrt()) / 2.0;
+        let q = q0 + dq; let real = q - V0;
+        if !(q0 >= V0 * 0.999 && real <= 4.21) { return None }
+        Some(CurveSt { q, t: K / q, real_q: real.max(0.0) })
+    }
+    /// tokens out for `eth` in (the fee and the creator's tax, 2-3% of the quote, come out of the quote)
     pub fn tokens_for(&self, eth: f64, fee: f64) -> f64 { let net = eth * (1.0 - fee); self.t - self.t * self.q / (self.q + net) }
     pub fn eth_for(&self, tokens: f64, fee: f64) -> f64 { (self.q - self.q * self.t / (self.t + tokens)) * (1.0 - fee) }
 }
@@ -65,16 +79,11 @@ pub struct Position {
     pub retry_ms: u64, // after a failed sale: no new try before this
 }
 
-/// A leader's buy waiting for the curve's reserves
-#[derive(Clone, Debug)]
-struct Pending { leader: String, its_ms: u64, its_quote: f64, block: u64 }
-
 pub struct Engine {
     pub cfg: Config,
     me: String,
     pub curves: HashMap<String, CurveSt>,
     pub pos: HashMap<String, Position>,
-    pending: HashMap<String, Pending>,
     seen: HashMap<String, u64>, // curves a leader bought: never a second copy of a coin (ms)
     pub day: u64,
     pub day_pnl: f64,
@@ -84,10 +93,10 @@ pub const FEE: f64 = 0.03; // the curve fee + the creator's tax a buy or sale pa
 
 impl Engine {
     pub fn new(cfg: Config, me: &str) -> Self {
-        Engine { cfg, me: me.to_lowercase(), curves: HashMap::new(), pos: HashMap::new(), pending: HashMap::new(), seen: HashMap::new(), day: 0, day_pnl: 0.0 }
+        Engine { cfg, me: me.to_lowercase(), curves: HashMap::new(), pos: HashMap::new(), seen: HashMap::new(), day: 0, day_pnl: 0.0 }
     }
     fn leader(&self, a: &str) -> Option<&Leader> { self.cfg.leaders.iter().find(|l| l.address.eq_ignore_ascii_case(a)) }
-    fn open_count(&self) -> usize { self.pos.len() + self.pending.len() }
+    fn open_count(&self) -> usize { self.pos.len() }
     fn stopped(&self) -> bool { self.cfg.daily_stop_eth > 0.0 && self.day_pnl <= -self.cfg.daily_stop_eth }
 
     /// Every curve trade the feed sees.
@@ -116,29 +125,23 @@ impl Engine {
     }
 
     fn consider(&mut self, l: &Leader, tr: &Trade, now_ms: u64) -> Option<Action> {
-        if tr.quote < l.min_its_eth || self.seen.contains_key(&tr.curve) || self.pos.contains_key(&tr.curve) || self.pending.contains_key(&tr.curve) { return None }
+        if tr.quote < l.min_its_eth || self.seen.contains_key(&tr.curve) || self.pos.contains_key(&tr.curve) { return None }
         if self.open_count() >= self.cfg.max_open || self.stopped() { log(&format!("skip {} of {}: {}", short(&tr.curve), short(&l.address), if self.stopped() { "daily stop" } else { "max_open" })); return None }
         self.seen.insert(tr.curve.clone(), now_ms);
-        match self.curves.get(&tr.curve).copied() {
-            Some(c) => self.decide(l, &tr.curve, c, c, now_ms, tr.quote, tr.block),
-            None => { self.pending.insert(tr.curve.clone(), Pending { leader: l.address.to_lowercase(), its_ms: now_ms, its_quote: tr.quote, block: tr.block }); Some(Action::FetchCurve { curve: tr.curve.clone(), block: tr.block }) }
-        }
+        // the curve right after its buy, from its buy itself (no read): its price exactly, at once
+        let Some(c) = CurveSt::after_buy(tr) else { log(&format!("skip {} of {}: not an ETH-quoted curve", short(&tr.curve), short(&l.address))); return None };
+        self.curves.insert(tr.curve.clone(), c);
+        self.decide(l, &tr.curve, c, now_ms, tr.net_q, tr.quote, tr.block)
     }
 
-    /// the reserves of a curve read from the chain now (a refresh, or a signal's reserves when only these are known)
-    pub fn set_curve(&mut self, curve: &str, st: CurveSt, now_ms: u64) -> Vec<Action> { self.set_signal(curve, st, st, now_ms) }
-    /// a signal's reserves: `now` = the latest block's, `at_its` = at the end of its buy's block (its price)
-    pub fn set_signal(&mut self, curve: &str, now: CurveSt, at_its: CurveSt, now_ms: u64) -> Vec<Action> {
-        self.curves.insert(curve.to_string(), now);
-        let _ = now_ms;
-        let Some(p) = self.pending.remove(curve) else { return vec![] };
-        let Some(l) = self.leader(&p.leader).cloned() else { return vec![] };
-        self.decide(&l, curve, now, at_its, p.its_ms, p.its_quote, p.block).into_iter().collect()
-    }
+    /// the reserves of a held curve read from the chain (the 15 s refresh, and after a restart)
+    pub fn set_curve(&mut self, curve: &str, st: CurveSt) { self.curves.insert(curve.to_string(), st); }
 
-    fn decide(&mut self, l: &Leader, curve: &str, c: CurveSt, at_its: CurveSt, its_ms: u64, its_quote: f64, its_block: u64) -> Option<Action> {
+    /// `at_its` = the curve right after its buy; `its_net` its net quote in, `its_quote` its quoteIn
+    fn decide(&mut self, l: &Leader, curve: &str, at_its: CurveSt, its_ms: u64, its_net: f64, its_quote: f64, its_block: u64) -> Option<Action> {
+        let c = at_its;
         // the coin type: ETH in the curve before its buy
-        let before = at_its.real_q - its_quote;
+        let before = at_its.real_q - its_net;
         if l.max_curve_eth > 0.0 && before >= l.max_curve_eth { log(&format!("skip {} of {}: {:.3} ETH in the curve before its buy (max {})", short(curve), short(&l.address), before, l.max_curve_eth)); return None }
         if c.real_q >= self.cfg.grad_guard_eth { log(&format!("skip {}: {:.3} ETH in the curve, near graduation", short(curve), c.real_q)); return None }
         let its_price = at_its.price();
@@ -155,8 +158,6 @@ impl Engine {
         Some(Action::Buy { curve: curve.to_string(), leader: l.address.to_lowercase(), eth, min_tokens })
     }
 
-    /// the reserves could not be read: the signal is dropped (the coin stays seen: no late copy)
-    pub fn drop_pending(&mut self, curve: &str) { self.pending.remove(curve); }
     /// our buy landed (tokens received) or failed (tokens = 0)
     pub fn on_bought(&mut self, curve: &str, tokens: f64, now_ms: u64) {
         if tokens <= 0.0 { self.pos.remove(curve); return }

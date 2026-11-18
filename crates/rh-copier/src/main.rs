@@ -84,7 +84,7 @@ async fn run(cfg: Config) -> Result<(), String> {
     let ctx = Arc::new(Ctx { cfg: cfg.clone(), rpc, wallet, eng: Mutex::new(eng), nonce: AtomicU64::new(nonce), gas: AtomicU64::new(gas), seq: AtomicU64::new(d.seq), dir: cfg.state_dir.clone() });
     // reserves of the curves held after a restart
     let held: Vec<String> = ctx.eng.lock().await.pos.keys().cloned().collect();
-    for c in held { if let Ok((q, t, r)) = ctx.rpc.reserves(&c).await { ctx.eng.lock().await.set_curve(&c, CurveSt { q, t, real_q: r }, now_ms()); } }
+    for c in held { if let Ok((q, t, r)) = ctx.rpc.reserves(&c).await { ctx.eng.lock().await.set_curve(&c, CurveSt { q, t, real_q: r }); } }
 
     let (tx, mut rx) = mpsc::channel::<Value>(10_000);
     tokio::spawn(feed(cfg.ws_url.clone(), tx));
@@ -93,7 +93,7 @@ async fn run(cfg: Config) -> Result<(), String> {
         tokio::time::sleep(std::time::Duration::from_secs(15)).await;
         if let Ok(g) = ctx.rpc.u64_of("eth_gasPrice", json!([])).await { ctx.gas.store(g as u64, Ordering::Relaxed) }
         let held: Vec<String> = ctx.eng.lock().await.pos.keys().cloned().collect();
-        for c in held { if let Ok((q, t, r)) = ctx.rpc.reserves(&c).await { ctx.eng.lock().await.set_curve(&c, CurveSt { q, t, real_q: r }, now_ms()); } }
+        for c in held { if let Ok((q, t, r)) = ctx.rpc.reserves(&c).await { ctx.eng.lock().await.set_curve(&c, CurveSt { q, t, real_q: r }); } }
     } }); }
     let mut tick = tokio::time::interval(std::time::Duration::from_millis(500));
     // the heartbeat: every 10 minutes, the trades the feed brought (Pons trades all day: 0 means a dead feed)
@@ -189,18 +189,6 @@ fn closed_rec(p: &Position, eth_out: f64, pnl: f64, why: &str, paper: bool) -> V
 
 async fn act(ctx: Arc<Ctx>, a: Action) {
     match a {
-        Action::FetchCurve { curve, block } => {
-            // now, and at the end of its buy's block (its price); the latter falls back to now if the node lacks it
-            let (a, b) = tokio::join!(ctx.rpc.reserves(&curve), ctx.rpc.reserves_at(&curve, Some(block)));
-            match a {
-                Ok((q, t, r)) => {
-                    let now = CurveSt { q, t, real_q: r };
-                    let its = b.map(|(q, t, r)| CurveSt { q, t, real_q: r }).unwrap_or_else(|e| { log(&format!("reserves of {} at its block failed ({e}); its price = now", short(&curve))); now });
-                    let acts = ctx.eng.lock().await.set_signal(&curve, now, its, now_ms()); for a in acts { Box::pin(act(ctx.clone(), a)).await }
-                }
-                Err(e) => { log(&format!("reserves of {} failed: {e}", short(&curve))); ctx.eng.lock().await.drop_pending(&curve) }
-            }
-        }
         Action::Buy { curve, leader, eth, min_tokens } => {
             let id = ctx.seq.fetch_add(1, Ordering::SeqCst) + 1;
             let n = ctx.cfg.leaders.iter().position(|l| l.address.eq_ignore_ascii_case(&leader)).map_or(0, |i| i + 1);

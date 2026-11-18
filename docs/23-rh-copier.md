@@ -23,8 +23,8 @@ Their own sales are ignored (`its_sale = "never"` won for all three). The full a
 | Step | What it does |
 |---|---|
 | Feed | PublicNode's WebSocket (`eth_subscribe` logs), every Pons CurveBuy and CurveSell. A drop reconnects in 1 s; 180 s with no message counts as a drop. A `heartbeat` line every 10 min gives the trades seen. |
-| Signal | A copied wallet's buy (CurveBuy's recipient) of at least `min_its_eth`. One copy per coin within an hour; `max_open` (4); `daily_stop_eth` (0.06); the `KILL` file. |
-| Its price | The curve's reserves at the end of its buy's block (eth_call at that block). The coin type is the ETH that was in the curve before its buy. |
+| Signal | A copied wallet's buy, acted on the moment the feed brings it (CurveBuy's recipient) of at least `min_its_eth`. One copy per coin within an hour; `max_open` (4); `daily_stop_eth` (0.06); the `KILL` file. |
+| Its price | From its buy alone, no read: an ETH curve keeps virtual ETH × virtual tokens = 1.68e9 exactly, and its buy moves the ETH by quoteIn − fee − tax, so the curve right after its buy follows from its two numbers (checked on 20 real buys: equal to the chain's reserve). A buy that does not fit (a coin priced in USDG, cbBTC or a stock) is not copied. The coin type is the ETH in the curve before its buy. |
 | Buy | `buy(quoteIn, minTokensOut, recipient)` with value = the stake. `minTokensOut` is what the stake buys at the price limit (1.5x its price), so a buy that would fill higher reverts on chain. With no limit (wallet 3), the expected amount less 25%. No buy when the price is already over the limit, or the curve holds 3.8+ ETH (it graduates at 4.2 into a Uniswap v4 pool the bot does not trade). |
 | Approve | `approve(curve, max)` on the coin goes out right behind the buy (the next nonce), so the sale is ready at once. |
 | Exits, first one wins | graduation guard (3.8 ETH in the curve), take profit, sell pressure (other wallets' sales minus buys over the window, after `from` s), stall (no new high for `stall_s`), time (`hold_s` after its buy). All measured against its price, as the research did. |
@@ -37,7 +37,7 @@ Checked on Nov 18 against the chain: our buy call simulated on a live curve (6.0
 minimum reverts); our sale call simulated one block before two real sales gave their exact ETH out; every RPC method on
 both nodes. A 7-minute log-mode run on the live feed (two very active bots added as test wallets) copied 2 buys and
 closed both. The official RPC ran 7-10 blocks behind PublicNode, so reads and receipts use PublicNode
-(`rpc_url`) and history the official RPC (`logs_url`). Engine tests: `cargo test -p rh-copier` (13).
+(`rpc_url`) and history the official RPC (`logs_url`). Engine tests: `cargo test -p rh-copier` (14).
 
 ## 3. Risks, said plainly
 

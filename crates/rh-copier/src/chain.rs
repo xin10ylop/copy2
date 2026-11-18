@@ -36,8 +36,12 @@ pub fn decode_trade(log: &Value, t_ms: u64) -> Option<Trade> {
     let buy = if t[0] == topic_buy() { true } else if t[0] == topic_sell() { false } else { return None };
     let w = words(log["data"].as_str()?); if w.len() < 2 { return None }
     let user = format!("0x{}", &t[if buy { 2 } else { 1 }][26..]).to_lowercase();
+    // data: (quoteIn, tokensOut, fee, tax) for a buy, (tokensIn, quoteOut, fee, tax) for a sale; the fee and the tax come
+    // out of the quote, so the curve's reserve moves by quoteIn - fee - tax, or quoteOut + fee + tax (measured Nov 18)
+    let (fee, tax) = (w.get(2).copied().unwrap_or(0), w.get(3).copied().unwrap_or(0));
     let (quote, tokens) = if buy { (w[0], w[1]) } else { (w[1], w[0]) };
-    Some(Trade { curve: log["address"].as_str()?.to_lowercase(), buy, user, quote: quote as f64 / 1e18, tokens: tokens as f64 / 1e18,
+    let net_q = if buy { quote.saturating_sub(fee).saturating_sub(tax) } else { quote.saturating_add(fee).saturating_add(tax) };
+    Some(Trade { curve: log["address"].as_str()?.to_lowercase(), buy, user, quote: quote as f64 / 1e18, net_q: net_q as f64 / 1e18, tokens: tokens as f64 / 1e18,
         block: u64::from_str_radix(log["blockNumber"].as_str().unwrap_or("0x0").trim_start_matches("0x"), 16).unwrap_or(0), t_ms })
 }
 
