@@ -11,3 +11,9 @@ completing. 0.0345 SOL a round trip; the sale valued on the curve with our buy's
 **Pick** the best mean a trade on the coins before Nov 17 13:49 UTC (458 coins; the week the ladder was found, never
 used to pick this rule); **score once** on the 108 coins after it. **Pass:** positive; positive without the best 2%;
 bootstrap P(mean > 0) 95%+; at least 10 trades (the after-set is small: a pass is a lead for a forward check, not a go).
+
+## RESULT (Nov 18 ~02:25 UTC): FAIL
+
+`out/b1_money.txt`. Before the cutoff every one of the 36 settings loses about 10% a trade (77 coins at X=10, 276 at
+X=5): the bundle starts selling right after we buy. Picked X=20 tp=2 cap=300 → after: 7 trades, +5.8%, negative
+without the best 2%, P(mean > 0) 66.4%. The "after" positives at tp=none (+15% / +40%) are one coin. The ladder is closed.
