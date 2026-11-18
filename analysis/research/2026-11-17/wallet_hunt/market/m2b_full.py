@@ -11,7 +11,7 @@ a, b = map(int, os.environ.get("SHARD", "0/1").split("/"))
 sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-13/tab_exits"); import cmodel as M
 sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-18/churn"); import slot_order as SO
 O = f"{SP}/market/paths_full"; os.makedirs(O, exist_ok=True)
-L = {m: x for m, x in json.load(open(f"{SP}/market/launches.json")).items() if x and len(x["sigs"]) >= MIN}
+L = {m: x for m, x in json.load(open(os.environ.get("LAUNCHES", f"{SP}/market/launches.json"))).items() if x and len(x["sigs"]) >= MIN}   # LAUNCHES: another day's list (m1c_days.py)
 todo = [m for i, m in enumerate(sorted(L)) if i % b == a and not os.path.exists(f"{O}/{m}.json.gz")]
 if os.environ.get("REVERSE"): todo = todo[::-1]   # a second fetcher on the same shard from the other end
 print(f"{len(L)} live coins, {sum(len(x['sigs']) for x in L.values())} transactions; this shard {len(todo)} to fetch", flush=True)

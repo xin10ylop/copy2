@@ -11,7 +11,11 @@ SP = sys.argv[1]; O = f"{SP}/market"; PD = f"{O}/{os.environ.get('PATHS', 'paths
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")); import hunt_lib as H
 W4 = "H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg"; ME = H.ME; WSOL = "So11111111111111111111111111111111111111112"
 MINSOL = float(os.environ.get("MINSOL", 0.5)); MINC = int(os.environ.get("MINC", 6)); COST = 0.0345 - 0.0026   # the model already pays 0.0026
-L = {m: x for m, x in json.load(open(f"{O}/launches.json")).items() if x and os.path.exists(f"{PD}/{m}.json.gz")}
+# LAUNCHES (Nov 18, the 4 days): comma-separated launch lists (launches.json and m1c_days.py's); FLOATQ=1 keeps the
+# coins whose quote we hold as a float (the coins a copy can trade), the same universe on every day
+FLOATS = ("3NZ9JMVB", "pumpCmXq", "SPCXxcqX", "TTWofwAg", "DJTu7vi8", "98sMhvDw", "XsbEhLAt"); L = {}
+for f_ in os.environ.get("LAUNCHES", f"{O}/launches.json").split(","):
+    L.update({m: x for m, x in json.load(open(f_)).items() if x and os.path.exists(f"{PD}/{m}.json.gz") and (os.environ.get("FLOATQ") != "1" or x["quote"][:8] in FLOATS)})
 PR = json.load(open(f"{O}/prices.json")); sol_usd = PR[WSOL]["usdPrice"]
 rate_of = lambda q: PR[q]["usdPrice"] / sol_usd * 1e9 / 10 ** PR[q]["decimals"] if q in PR else None
 def firsts(m):
