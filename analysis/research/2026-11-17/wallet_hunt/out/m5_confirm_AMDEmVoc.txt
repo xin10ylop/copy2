@@ -1,0 +1,7 @@
+
+== AMDEmVocLtN5ji2gBY7BrmSHEyM5vt6TGszBbg4crMXg: 3000 signatures since 11-16 02:07 UTC; first buys 0.5+ SOL outside the screen: 100, modelled 94
+   before the screen  other-token coins:   0
+   before the screen  SOL coins:           0
+   after the screen   other-token coins:  30  -1.70 SOL ( -11.4% a copy) w/o 2%  -2.53 | won  17% | P(mean>0)   6.2%
+   after the screen   SOL coins:          64  -6.07 SOL ( -19.0% a copy) w/o 2%  -7.45 | won   8% | P(mean>0)   0.2%
+   ALL OUTSIDE, other-token coins:     30  -1.70 SOL ( -11.4% a copy) w/o 2%  -2.53 | won  17% | P(mean>0)   6.2%

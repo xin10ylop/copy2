@@ -1,0 +1,7 @@
+
+== 8TPkrBcRayR3EJzaxXb87XGmJs9k1U8tdc7wX3GJgw1z: 3000 signatures since 11-11 18:04 UTC; first buys 0.5+ SOL outside the screen: 100, modelled 87
+   before the screen  other-token coins:  19  +0.37 SOL (  +3.9% a copy) w/o 2%  -0.30 | won  42% | P(mean>0)  63.8%
+   before the screen  SOL coins:          48  -3.96 SOL ( -16.5% a copy) w/o 2%  -4.63 | won  23% | P(mean>0)   0.4%
+   after the screen   other-token coins:  10  -0.26 SOL (  -5.2% a copy) w/o 2%  -0.96 | won  20% | P(mean>0)  31.3%
+   after the screen   SOL coins:          10  -0.99 SOL ( -19.9% a copy) w/o 2%  -1.16 | won  10% | P(mean>0)   0.7%
+   ALL OUTSIDE, other-token coins:     29  +0.11 SOL (  +0.8% a copy) w/o 2%  -0.59 | won  34% | P(mean>0)  51.1%
