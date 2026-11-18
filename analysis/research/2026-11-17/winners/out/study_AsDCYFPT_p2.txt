@@ -1,0 +1,41 @@
+AsDCYFPT: 18 copies (0.5 SOL, one slot after its buy, 0.0345 SOL a round trip); first half 9, second half 9
+
+1. HOW IT TRADES: its size median 1.11 SOL (quartiles [1.11, 1.11]); quote SOL 0%; curve sold at its buy median 17%
+   it sold (first sale) after a median 54 s; within 30 s 17%, within 2 min 94%, never in the window 0%
+
+2. EXITS (every copy): first half | second half
+   its-sale      :   9  +3.09 (+68.7%) w/o5  +0.95 |   9  +4.51 (+100.3%) w/o5  +1.81
+   tp1.3         :   9  +3.78 (+84.0%) w/o5  +1.66 |   9  +3.93 (+87.4%) w/o5  +1.71
+   tp1.5         :   9  +3.78 (+84.0%) w/o5  +1.66 |   9  +3.93 (+87.4%) w/o5  +1.71
+   tp2           :   9  +3.78 (+84.0%) w/o5  +1.66 |   9  +3.93 (+87.4%) w/o5  +1.71
+   tp3           :   9  +4.66 (+103.6%) w/o5  -0.82 |   9  +3.68 (+81.9%) w/o5  -0.81
+   tp5           :   9  +3.47 (+77.0%) w/o5  -0.82 |   9  +3.68 (+81.9%) w/o5  -0.81
+   t1m           :   9  +2.98 (+66.3%) w/o5  +0.85 |   9  +4.50 (+100.1%) w/o5  +1.80
+   t2m           :   9  +6.22 (+138.2%) w/o5  +0.36 |   9  +2.48 (+55.2%) w/o5  -0.16
+   t5m           :   9  +8.64 (+191.9%) w/o5  -0.81 |   9  +4.45 (+98.8%) w/o5  -0.81
+   t10m          :   9  +6.71 (+149.2%) w/o5  -0.81 |   9  +6.88 (+152.8%) w/o5  -0.81
+   t30m          :   9  +6.71 (+149.1%) w/o5  -0.82 |   9  +6.93 (+154.0%) w/o5  -0.81
+   its-sale+tp2  :   9  +3.78 (+84.0%) w/o5  +1.66 |   9  +3.93 (+87.4%) w/o5  +1.71
+   trail1.3/25%  :   9  +9.38 (+208.4%) w/o5  -0.01 |   9  +8.10 (+180.1%) w/o5  -0.49
+   trail1.5/35%  :   9  +9.01 (+200.3%) w/o5  -0.18 |   9  +7.75 (+172.2%) w/o5  -0.49
+   sp3/30s       :   9 +10.46 (+232.5%) w/o5  +0.84 |   9  +5.72 (+127.2%) w/o5  -0.02   <- best on the first half
+   sp5/60s       :   9 +10.13 (+225.0%) w/o5  +0.46 |   9  +6.08 (+135.1%) w/o5  +0.08
+   sp10/60s      :   9 +10.23 (+227.4%) w/o5  +0.41 |   9  +9.26 (+205.7%) w/o5  -0.19
+
+3. WHICH OF ITS BUYS PAY (thirds cut on the first half), with each segment's best exit on the first half:
+   sol <= 1.11            sp3/30s       : first half   9 +10.46 (+232.5%) w/o5  +0.84 | second half   9  +5.72 (+127.2%) w/o5  -0.02
+   prog <= 0.169          sp3/30s       : first half   9 +10.46 (+232.5%) w/o5  +0.84 | second half   9  +5.72 (+127.2%) w/o5  -0.02
+   quote other            sp3/30s       : first half   9 +10.46 (+232.5%) w/o5  +0.84 | second half   9  +5.72 (+127.2%) w/o5  -0.02
+
+4. THE VIP: 18 of its copies fall on the days of the VIP exports
+   the VIP alerted the coin within 10 min AFTER its buy: 0 (0%), a median 0 s later | BEFORE its buy (it followed): 0 (0%) | not within 10 min: 18
+   exit its-sale      : alerted after    0 | alerted before    0 | not alerted  18  +7.60 (+84.5%) w/o5  +4.90
+   exit sp3/30s       : alerted after    0 | alerted before    0 | not alerted  18 +16.19 (+179.9%) w/o5  +2.89
+   exit t10m          : alerted after    0 | alerted before    0 | not alerted  18 +13.59 (+151.0%) w/o5  -2.63
+   exit tp3           : alerted after    0 | alerted before    0 | not alerted  18  +8.35 (+92.7%) w/o5  -2.43
+
+5. BY ITS BUY SIZE (fixed bins; our copy is always 0.5 SOL): first half | second half
+   size 1.00-2.0   its-sale :   9  +3.09 (+68.7%) w/o5  +0.95 |   9  +4.51 (+100.3%) w/o5  +1.81
+   size 1.00-2.0   t2m      :   9  +6.22 (+138.2%) w/o5  +0.36 |   9  +2.48 (+55.2%) w/o5  -0.16
+   size 1.00-2.0   tp2      :   9  +3.78 (+84.0%) w/o5  +1.66 |   9  +3.93 (+87.4%) w/o5  +1.71
+   size 1.00-2.0   sp5/60s  :   9 +10.13 (+225.0%) w/o5  +0.46 |   9  +6.08 (+135.1%) w/o5  +0.08

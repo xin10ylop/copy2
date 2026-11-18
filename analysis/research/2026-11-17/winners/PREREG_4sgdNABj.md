@@ -19,3 +19,5 @@ with the same bar (positive at 0.0345, positive without the best 5; 20+ copies, 
 same applies to every launch picker (B4BMZH3T has no buy after the screen yet: its result so far is in-sample only).
 
 B4BMZH3T (Nov 18 ~01:25 UTC): its last pump trade is Nov 16 08:13 UTC (its later transactions are not pump trades), so it has no buy after the screen: its 42 copies (in-sample, +21% then +33% under its own sale at 2x) cannot be scored fairly. Parked, with 8QzUkGJi (quiet since Nov 16 21:41).
+
+AsDCYFPT (Nov 18 ~01:15 UTC, group A of the ladder, the 1.1 SOL wallet): at 1.25-2x, 132 of 150 copies refused (the rest of the ladder buys after it in the same slot); paying any price, 150 copies +20.5% a copy, but after the screen 67 copies -13.6% a copy at 0.0345. Fails the clean test.

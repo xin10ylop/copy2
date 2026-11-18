@@ -1,0 +1,7 @@
+AsDCYFPT: 18 copies, 18 not seen by the rule; cost 0.0345:  18 +16.21 (+180.1%) w/o5  +2.61 | halves   9 +10.13 (+225.0%) w/o5  +0.46 /   9  +6.08 (+135.1%) w/o5  +0.08
+AsDCYFPT: 18 copies, 18 not seen by the rule; cost 0.01:  18 +16.65 (+185.0%) w/o5  +2.92 | halves   9 +10.35 (+229.9%) w/o5  +0.56 /   9  +6.30 (+140.0%) w/o5  +0.18
+   (all unseen copies, in-sample to the screen for those of Nov 15-17: 40+, positive, positive without the best 5: False)
+   AFTER THE SCREEN only, cost 0.0345:   7  +5.59 (+159.7%) w/o5  -0.06
+   AFTER THE SCREEN only, cost 0.01:   7  +5.76 (+164.6%) w/o5  -0.02
+PASS (the amendment: after-screen buys, 20+, positive at 0.0345, positive without the best 5): False
+   FAIRER MEASURES, after-screen copies at 0.0345: 7 copies, without the best 2% (1) +1.52 SOL; P(mean > 0) 99.9%; 5th pct +33.9% a copy
