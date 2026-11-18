@@ -16,7 +16,7 @@ rows = json.load(open(f"{SP}/crew_rows.json")); VIP = {}
 for f in (f"{SP}/tg/vip/meta.json", f"{SP}/tg/vip2/meta.json"):
     for m, v in json.load(open(f)).items(): VIP.setdefault(m, v["t"])
 EXP1 = (1793404800, 1794009600)   # Oct 31 00:00 - Nov 7 00:00 UTC
-C = [r for r in rows if r["n"] >= 2]
+C = [r for r in rows if r["n"] >= 3]   # narrowed before any path was read (PREREG)
 def one(r):
     es = sorted((first[(r["m"], w)] for w in r["crew"]), key=lambda e: e["t"]); e0 = es[0]
     if (e0.get("quote") or "1111")[:4] not in ("1111", "So11"): return None   # SOL curves only
@@ -28,7 +28,7 @@ def val(tr, i_in, i_out):
     tok = 0.5 * 1e9 * (1 - fee) * a["vt"] / (a["vq"] + 0.5e9)   # tokens for 0.5 SOL at the entry reserves (constant product)
     out = b["vq"] - b["vq"] * b["vt"] / (b["vt"] + tok); return out * (1 - fee) / 1e9 - 0.5 - 0.0345
 with ThreadPoolExecutor(8) as ex: D = [x for x in ex.map(one, C) if x]
-grid = [(k, d, cap) for k in (2, 3, 4) for d in (0, 15, 30) for cap in (90, 120, 180)]
+grid = [(k, d, cap) for k in (3, 4) for d in (0, 15, 30) for cap in (90, 120, 180)]
 res = {g: [] for g in grid}
 for r, es, tr in D:
     if not tr: continue

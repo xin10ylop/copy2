@@ -11,3 +11,5 @@ at its last curve trade. 0.0345 SOL a round trip.
 **Grid (picked on export 1, Oct 31 - Nov 6 UTC):** k in {2, 3, 4}; d in {0, 15, 30}; cap in {90, 120, 180}.
 **Scored once on export 2 (Nov 9 - 17 UTC)** with the one setting picked. **Pass:** positive; positive without the best
 2%; bootstrap P(mean > 0) 95%+; 40+ trades.
+
+**Narrowed before any path is read (Nov 18 ~02:05 UTC):** k in {3, 4} only (k=2 means about 4,000 coins to fetch); each path the first 300 s after the first crew buy (every exit falls by then: cap 180 s + d 30 s).
