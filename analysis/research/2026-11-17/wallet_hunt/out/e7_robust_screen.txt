@@ -1,0 +1,22 @@
+4397 float-quote coins; 225 wallets with 30+ copies (+ wallet 4, TAB16RxX); 64 exit settings; halves at the median copy time
+
+== THE YARDSTICKS ==
+wallet        copies | settings + on both halves | median setting: a copy, w/o 2%, P | creators, at launch | steadiest setting (its weaker half)
+H9kuqGKNYgPF    187 |    20% |   +3.0%  -2.00  77.1% |  135   97% | tp 3x, stall off, sp off, 600 s, its sale not (+7.2%)
+TAB16RxXmazW    140 |    98% |   +8.0%  +2.29  96.2% |  123   96% | tp 6x, stall off, sp 5/60, 300 s, its sale not (+11.7%)
+
+== QUALIFY: 0 of 211 wallets ==
+wallet        copies | settings + on both halves | median setting: a copy, w/o 2%, P | creators, at launch | steadiest setting (its weaker half)
+
+== the 10 nearest that do not qualify ==
+wallet        copies | settings + on both halves | median setting: a copy, w/o 2%, P | creators, at launch | steadiest setting (its weaker half)
+5KcKcGczDGsF     33 |    53% |  +12.0%  +1.31  95.4% |   32    0% | tp 2x, stall 180, sp off, 300 s, its sale not (+25.5%)
+AMDEmVocLtN5     51 |    45% |   +4.2%  +0.08  68.0% |   44   96% | tp 3x, stall off, sp off, 600 s, its sale not (+7.6%)
+54YNHFVt3Vwx    146 |    33% |   +0.1%  -2.45  49.5% |  125   98% | tp 2x, stall off, sp off, 300 s, its sale not (+7.8%)
+FiFawHqxeTVB     47 |    25% |   -2.0%  -1.94  37.8% |   35  100% | tp 2x, stall off, sp off, 600 s, its sale not (+9.7%)
+GPV5BRKC5ram    127 |    14% |   -0.6%  -5.49  43.4% |  104    9% | tp 6x, stall 180, sp 5/60, 600 s, its sale not (+4.3%)
+6Kj5ChEZnyNj     80 |    12% |   -6.0%  -4.67  14.2% |   46   60% | tp 2x, stall 180, sp 5/60, 300 s, its sale not (+2.9%)
+8ptvshQRZPRa     42 |    12% |   -9.1%  -2.75  12.2% |   29  100% | tp 2x, stall off, sp 5/60, 600 s, its sale not (+4.5%)
+EcrMBga8HvSi     51 |    12% |   -1.5%  -1.78  40.6% |   42   98% | tp 2x, stall off, sp off, 600 s, its sale not (+5.8%)
+8vMo5AWZMN6J     49 |    12% |   -7.5%  -2.77  17.5% |   42    0% | tp 2x, stall 180, sp 5/60, 300 s, its sale not (+5.0%)
+8LtfL447f2ww     38 |     9% |   -4.4%  -1.59  22.4% |   36    0% | tp 2x, stall off, sp 5/60, 600 s, its sale followed (+5.7%)
