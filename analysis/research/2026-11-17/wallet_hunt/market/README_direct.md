@@ -33,3 +33,18 @@ again ~15 min later. Triton documents per-IP blocks for sources that generate ma
 data-centre ranges and proxies (this machine goes out through a data-centre egress proxy), and a stop of service at a
 zero pay-as-you-go balance (the balance was ~$5 before the burst). From now on: no Triton bursts; batches, a few
 fetchers, and Alchemy for the bulk.
+
+## The 8 confirmed, then engineered like wallet 4 (Nov 18, `m5_confirm.py`, `e1_exits.py`)
+
+NS=100 random buys outside the screen, wallet 4's live model: AMDEmVoc −11.4% (30 other-token copies), 8TPkrBcR +0.8%,
+3P3XSWAA +4.8%, 8Y3segeZ +1.9%, H1xshmCR +3.5%, HjuSthan −9.3% (all negative without the best 2%); 7djZvJGN +22.7%
+and CzsxDQz6 +14.4% (21 copies each). The exit engineering (23 exits x 16 coin/size filters, picked on the 1st half)
+passes none; AMDEmVoc loses under every exit.
+
+**7djZvJGN and CzsxDQz6 on their other-token buys** (OTHER_ONLY, 127 and 130 of their 339 / 350 copies, the fetch
+stopped there to save Triton; `../out/m5_other_partial_*.txt`, `../out/e1_exits_other_partial.txt`): +0.6% and −0.3% a
+copy under wallet 4's live model, −3.23 / −4.09 without the best 2%. The 21-copy results were luck. Engineered: every
+mechanical exit (time, take profit, sell pressure, stall) loses on both halves; the exits built on ITS sale are the
+only positive ones (7djZvJGN "its sale + tp 4x": 1st half +13.2%, 2nd +2.7%, w/o 2% −0.36; the filter "tradable now,
+its 1.0+ SOL": 2nd half +4.7% / +5.9% on 21 copies, negative w/o 2%). Its sale carries information; the copy is about
+break-even at 0.0345 SOL a round trip. Not a wallet 4.

@@ -1,0 +1,68 @@
+
+== 7djZvJGNvke9AwcBqZeUvoFVi7fT1kLW7x7BW6geCApC: 120 copies (outside the screen; 1st half 60, 2nd 60); 0.0345 SOL a round trip
+   exit                                     | 1st half (pick)                    | 2nd half (score)
+   its sale                                 |  60  +2.44 (  +8.1%) w/o 2%  +1.31 |  60  +0.81 (  +2.7%) w/o 2%  -0.36
+   time 30s                                 |  60  -0.13 (  -0.4%) w/o 2%  -0.61 |  60  -2.47 (  -8.2%) w/o 2%  -2.63
+   time 60s                                 |  60  -0.63 (  -2.1%) w/o 2%  -1.22 |  60  -3.20 ( -10.7%) w/o 2%  -3.54
+   time 120s                                |  60  -1.02 (  -3.4%) w/o 2%  -1.71 |  60  -4.19 ( -14.0%) w/o 2%  -4.91
+   time 300s                                |  60  -3.72 ( -12.4%) w/o 2%  -4.94 |  60  -3.62 ( -12.1%) w/o 2%  -4.44
+   time 600s                                |  60  -3.92 ( -13.1%) w/o 2%  -5.05 |  60  -3.96 ( -13.2%) w/o 2%  -5.35
+   tp 1.2x                                  |  60  -1.57 (  -5.2%) w/o 2%  -2.21 |  60  -3.03 ( -10.1%) w/o 2%  -3.19
+   tp 1.5x                                  |  60  -2.97 (  -9.9%) w/o 2%  -3.61 |  60  -3.64 ( -12.1%) w/o 2%  -3.94
+   tp 2x                                    |  60  -3.45 ( -11.5%) w/o 2%  -4.20 |  60  -3.59 ( -12.0%) w/o 2%  -4.12
+   tp 3x                                    |  60  -2.49 (  -8.3%) w/o 2%  -3.49 |  60  -2.96 (  -9.9%) w/o 2%  -3.97
+   tp 4x                                    |  60  -1.46 (  -4.9%) w/o 2%  -2.94 |  60  -3.65 ( -12.2%) w/o 2%  -5.07
+   sp 3/30s                                 |  60  -0.14 (  -0.5%) w/o 2%  -1.19 |  60  -2.44 (  -8.1%) w/o 2%  -3.03
+   sp 5/60s                                 |  60  -0.44 (  -1.5%) w/o 2%  -1.57 |  60  -2.52 (  -8.4%) w/o 2%  -3.31
+   sp 10/60s                                |  60  -0.77 (  -2.6%) w/o 2%  -1.90 |  60  -1.01 (  -3.4%) w/o 2%  -2.39
+   stall 60s                                |  60  -2.62 (  -8.7%) w/o 2%  -3.36 |  60  -3.92 ( -13.1%) w/o 2%  -4.50
+   stall 120s                               |  60  -3.68 ( -12.3%) w/o 2%  -4.40 |  60  -4.17 ( -13.9%) w/o 2%  -5.01
+   stall 180s                               |  60  -3.54 ( -11.8%) w/o 2%  -4.29 |  60  -2.37 (  -7.9%) w/o 2%  -3.75
+   its sale + tp 2x                         |  60  +1.05 (  +3.5%) w/o 2%  +0.30 |  60  +0.06 (  +0.2%) w/o 2%  -0.46
+   its sale + tp 4x                         |  60  +3.95 ( +13.2%) w/o 2%  +2.48 |  60  +0.81 (  +2.7%) w/o 2%  -0.36
+   its sale + sp 5/60                       |  60  +2.39 (  +8.0%) w/o 2%  +1.26 |  60  +0.01 (  +0.0%) w/o 2%  -0.80
+   sp 5/60 + stall 180 + tp 4x              |  60  +0.23 (  +0.8%) w/o 2%  -1.18 |  60  -1.60 (  -5.3%) w/o 2%  -2.39
+   its sale + sp 5/60 + stall 180 + tp 4x   |  60  +2.32 (  +7.7%) w/o 2%  +0.94 |  60  +0.38 (  +1.3%) w/o 2%  -0.43
+   wallet 4's live model                    |  60  +1.20 (  +4.0%) w/o 2%  -0.07 |  60  -0.26 (  -0.9%) w/o 2%  -1.43
+   PICKED on the 1st half: its sale + tp 4x -> 2nd half  60  +0.81 (  +2.7%) w/o 2%  -0.36; P(mean>0) 62.9%
+   FILTER x EXIT grid (184 options with 8+ copies in each half): the 5 best on the 1st half, and how they score on the 2nd
+     tradable now its 1.0+ SOL | its sale + tp 4x                       | 1st  17  +4.25 ( +50.0%) w/o 2%  +2.78 | 2nd  21  +0.49 (  +4.7%) w/o 2%  -0.31
+     tradable now its 1.0+ SOL | its sale                               | 1st  17  +3.91 ( +46.0%) w/o 2%  +2.78 | 2nd  21  +0.49 (  +4.7%) w/o 2%  -0.31
+     tradable now its 1.0+ SOL | its sale + sp 5/60                     | 1st  17  +2.44 ( +28.7%) w/o 2%  +1.31 | 2nd  21  +0.03 (  +0.2%) w/o 2%  -0.78
+     tradable now its 1.0+ SOL | its sale + tp 2x                       | 1st  17  +2.13 ( +25.1%) w/o 2%  +1.38 | 2nd  21  +0.36 (  +3.5%) w/o 2%  -0.12
+     tradable now its 1.0+ SOL | tp 4x                                  | 1st  17  +2.12 ( +25.0%) w/o 2%  +0.65 | 2nd  21  -1.55 ( -14.7%) w/o 2%  -2.33
+   PICKED (filter + exit) on the 1st half: tradable now, its 1.0+ SOL, its sale + tp 4x -> 2nd half  21  +0.49 (  +4.7%) w/o 2%  -0.31; P(mean>0) 64.4%
+
+== CzsxDQz6kPqrUoChLE1HYFJvj9HpgBrMys4vFFDqNdM5: 122 copies (outside the screen; 1st half 61, 2nd 61); 0.0345 SOL a round trip
+   exit                                     | 1st half (pick)                    | 2nd half (score)
+   its sale                                 |  61  +0.27 (  +0.9%) w/o 2%  -0.81 |  61  -0.80 (  -2.6%) w/o 2%  -1.62
+   time 30s                                 |  61  -0.99 (  -3.3%) w/o 2%  -1.46 |  61  -2.08 (  -6.8%) w/o 2%  -2.32
+   time 60s                                 |  61  -1.48 (  -4.8%) w/o 2%  -1.96 |  61  -2.79 (  -9.1%) w/o 2%  -3.13
+   time 120s                                |  61  -1.22 (  -4.0%) w/o 2%  -1.91 |  61  -3.45 ( -11.3%) w/o 2%  -4.18
+   time 300s                                |  61  -4.26 ( -14.0%) w/o 2%  -5.46 |  61  -2.88 (  -9.4%) w/o 2%  -3.71
+   time 600s                                |  61  -4.63 ( -15.2%) w/o 2%  -5.71 |  61  -4.14 ( -13.6%) w/o 2%  -5.52
+   tp 1.2x                                  |  61  -3.14 ( -10.3%) w/o 2%  -3.58 |  61  -2.99 (  -9.8%) w/o 2%  -3.13
+   tp 1.5x                                  |  61  -3.51 ( -11.5%) w/o 2%  -4.16 |  61  -3.84 ( -12.6%) w/o 2%  -4.13
+   tp 2x                                    |  61  -3.98 ( -13.1%) w/o 2%  -4.75 |  61  -3.81 ( -12.5%) w/o 2%  -4.35
+   tp 3x                                    |  61  -3.19 ( -10.4%) w/o 2%  -4.18 |  61  -2.78 (  -9.1%) w/o 2%  -3.86
+   tp 4x                                    |  61  -2.29 (  -7.5%) w/o 2%  -3.70 |  61  -3.76 ( -12.3%) w/o 2%  -5.11
+   sp 3/30s                                 |  61  -0.68 (  -2.2%) w/o 2%  -1.74 |  61  -2.22 (  -7.3%) w/o 2%  -2.80
+   sp 5/60s                                 |  61  -1.74 (  -5.7%) w/o 2%  -2.82 |  61  -1.86 (  -6.1%) w/o 2%  -2.68
+   sp 10/60s                                |  61  -2.32 (  -7.6%) w/o 2%  -3.40 |  61  -0.60 (  -2.0%) w/o 2%  -1.97
+   stall 60s                                |  61  -2.65 (  -8.7%) w/o 2%  -3.25 |  61  -3.41 ( -11.2%) w/o 2%  -4.00
+   stall 120s                               |  61  -3.99 ( -13.1%) w/o 2%  -4.72 |  61  -3.87 ( -12.7%) w/o 2%  -4.73
+   stall 180s                               |  61  -3.93 ( -12.9%) w/o 2%  -4.70 |  61  -1.95 (  -6.4%) w/o 2%  -3.33
+   its sale + tp 2x                         |  61  +0.05 (  +0.2%) w/o 2%  -0.72 |  61  -0.24 (  -0.8%) w/o 2%  -0.78
+   its sale + tp 4x                         |  61  +2.58 (  +8.5%) w/o 2%  +1.17 |  61  -0.80 (  -2.6%) w/o 2%  -1.62
+   its sale + sp 5/60                       |  61  +0.75 (  +2.4%) w/o 2%  -0.33 |  61  +0.38 (  +1.2%) w/o 2%  -0.44
+   sp 5/60 + stall 180 + tp 4x              |  61  -0.46 (  -1.5%) w/o 2%  -1.87 |  61  -1.55 (  -5.1%) w/o 2%  -2.37
+   its sale + sp 5/60 + stall 180 + tp 4x   |  61  +1.47 (  +4.8%) w/o 2%  +0.06 |  61  +0.25 (  +0.8%) w/o 2%  -0.57
+   wallet 4's live model                    |  61  +0.34 (  +1.1%) w/o 2%  -1.04 |  61  -0.04 (  -0.1%) w/o 2%  -1.26
+   PICKED on the 1st half: its sale + tp 4x -> 2nd half  61  -0.80 (  -2.6%) w/o 2%  -1.62; P(mean>0) 30.3%
+   FILTER x EXIT grid (184 options with 8+ copies in each half): the 5 best on the 1st half, and how they score on the 2nd
+     tradable now its 1.0+ SOL | its sale + tp 4x                       | 1st  16  +2.41 ( +30.1%) w/o 2%  +1.33 | 2nd  21  +0.62 (  +5.9%) w/o 2%  -0.20
+     tradable now its 1.0+ SOL | its sale                               | 1st  16  +2.19 ( +27.4%) w/o 2%  +1.11 | 2nd  21  +0.62 (  +5.9%) w/o 2%  -0.20
+     tradable now its 1.0+ SOL | its sale + sp 5/60                     | 1st  16  +1.55 ( +19.3%) w/o 2%  +0.47 | 2nd  21  +0.17 (  +1.6%) w/o 2%  -0.65
+     tradable now its 1.0+ SOL | tp 3x                                  | 1st  16  +1.51 ( +18.9%) w/o 2%  +0.51 | 2nd  21  -0.50 (  -4.8%) w/o 2%  -1.48
+     all          its 1.0+ SOL | its sale + tp 4x                       | 1st  35  +3.16 ( +18.0%) w/o 2%  +1.74 | 2nd  45  +0.20 (  +0.9%) w/o 2%  -0.62
+   PICKED (filter + exit) on the 1st half: tradable now, its 1.0+ SOL, its sale + tp 4x -> 2nd half  21  +0.62 (  +5.9%) w/o 2%  -0.20; P(mean>0) 67.3%
