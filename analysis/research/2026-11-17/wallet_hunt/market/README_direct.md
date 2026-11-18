@@ -210,3 +210,11 @@ TAB16RxX (370 float-paid copies, Oct 31 - Nov 18; running = 0.5+, 1.25x, tp 3.5,
 
 Deployed by this check: wallet 4 floats only + 1.5x (+ 1.2+, the weakest of the three); TAB tp 6 + 1.5x, sell pressure
 and stall unchanged, its sale not followed.
+
+## 5KcKcGcz on its other days: rejected (Nov 18, `e13_outside.py`, `../out/e13_5KcKcGcz.txt`, `../out/m5_5KcKcGcz.txt`)
+
+Its history since Nov 1 (Alchemy, batched: 7,121 transactions, 2,592 first buys), its first buys of 0.5+ SOL on coins
+priced in another token outside the screen's 48 h: 353 copies (Nov 1-18; 154 float-quoted). The exit picked on its 4
+days (tp 2x, 300 s, no sell pressure, stall 240): −27.69 SOL, −15.7% a copy, both halves negative, P 0.0%; floats alone
+−13.74. Wallet 4's live exit −13.66, TAB's −15.53. **Not one of the 9,720 exits makes money over these days**, even
+picked with hindsight (the best −5.71). Its 4 days (+23-28% a copy on 33) were luck.

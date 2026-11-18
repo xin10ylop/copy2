@@ -1,0 +1,28 @@
+5KcKcGczDGsFjPDvZdCSWavQrpC6YhkBkv1rD7Jv1THR: 353 copies outside the screen (other-token coins, 0.5+ SOL), 11-01 to 11-18; float-quoted 154
+
+4-day_choice: 0.5,1.5,2,300,off,240,never
+   all     353 copies | -27.69 SOL (-15.7% a copy) | half 1 -16.12 half 2 -11.57 | w/o 2% -31.68 | won 22% | P(mean>0) 0.0%
+   floats  154 copies | -13.74 SOL (-17.8% a copy) | half 1 -9.94 half 2 -3.80 | w/o 2% -15.14 | won 20% | P(mean>0) 0.0%
+   others  199 copies | -13.95 SOL (-14.0% a copy) | half 1 -6.17 half 2 -7.77 | w/o 2% -16.37 | won 24% | P(mean>0) 0.0%
+
+4-day_best: 0.5,1.25,2,300,off,off,never
+   all     353 copies | -28.06 SOL (-15.9% a copy) | half 1 -16.41 half 2 -11.65 | w/o 2% -32.05 | won 22% | P(mean>0) 0.0%
+   floats  154 copies | -13.63 SOL (-17.7% a copy) | half 1 -9.82 half 2 -3.81 | w/o 2% -15.03 | won 19% | P(mean>0) 0.0%
+   others  199 copies | -14.42 SOL (-14.5% a copy) | half 1 -6.59 half 2 -7.83 | w/o 2% -16.85 | won 24% | P(mean>0) 0.0%
+
+4-day_tp3: 0.5,1.1,3,300,off,120,never
+   all     353 copies | -24.11 SOL (-13.7% a copy) | half 1 -14.49 half 2 -9.62 | w/o 2% -30.61 | won 15% | P(mean>0) 0.0%
+   floats  154 copies | -12.98 SOL (-16.9% a copy) | half 1 -8.91 half 2 -4.07 | w/o 2% -15.66 | won 10% | P(mean>0) 0.0%
+   others  199 copies | -11.13 SOL (-11.2% a copy) | half 1 -5.58 half 2 -5.55 | w/o 2% -14.95 | won 18% | P(mean>0) 0.1%
+
+wallet4_live: 0.5,1.25,4,600,5/60,180,early
+   all     353 copies | -13.66 SOL (-7.7% a copy) | half 1 -11.04 half 2 -2.62 | w/o 2% -24.14 | won 18% | P(mean>0) 1.4%
+   floats  154 copies | -6.59 SOL (-8.6% a copy) | half 1 -5.64 half 2 -0.95 | w/o 2% -10.96 | won 16% | P(mean>0) 4.8%
+   others  199 copies | -7.07 SOL (-7.1% a copy) | half 1 -5.41 half 2 -1.67 | w/o 2% -13.18 | won 20% | P(mean>0) 6.9%
+
+tab_live: 0.5,1.5,4,600,5/60,180,never
+   all     353 copies | -15.53 SOL (-8.8% a copy) | half 1 -11.81 half 2 -3.72 | w/o 2% -26.00 | won 16% | P(mean>0) 0.9%
+   floats  154 copies | -8.18 SOL (-10.6% a copy) | half 1 -6.35 half 2 -1.83 | w/o 2% -12.55 | won 14% | P(mean>0) 2.1%
+   others  199 copies | -7.35 SOL (-7.4% a copy) | half 1 -5.47 half 2 -1.88 | w/o 2% -13.45 | won 18% | P(mean>0) 7.0%
+
+this period's own best exit (0.5+, no price limit; hindsight, for scale only): tp 1000000000.0, 300 s, sp (3, 60), stall 120, its early: -5.71 SOL; exits positive in total: 0 of 9720

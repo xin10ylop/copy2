@@ -1,0 +1,8 @@
+5KcKcGcz: 7121 transactions since 11-01 00:00 UTC, 6701 own trades, 3060 buys
+
+== 5KcKcGczDGsFjPDvZdCSWavQrpC6YhkBkv1rD7Jv1THR: 7121 signatures since 11-01 00:00 UTC; first buys 0.5+ SOL outside the screen: 513, modelled 353
+   before the screen  other-token coins: 314 -14.04 SOL (  -8.9% a copy) w/o 2% -22.95 | won  18% | P(mean>0)   0.8%
+   before the screen  SOL coins:           0
+   after the screen   other-token coins:  39  +0.05 SOL (  +0.2% a copy) w/o 2%  -1.52 | won  21% | P(mean>0)  47.1%
+   after the screen   SOL coins:           0
+   ALL OUTSIDE, other-token coins:    353 -13.99 SOL (  -7.9% a copy) w/o 2% -24.47 | won  18% | P(mean>0)   1.3%
