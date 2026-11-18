@@ -1,0 +1,1 @@
+## RESULT (Nov 18): FAIL. 552 pool coins: 8 wallets picked before Nov 15 (positive, positive without the best 2%, held 30 s+); their 18 copies after Nov 15: -1.72 SOL (-19.2% a copy), P(mean > 0) 0.2% (out/p2_screen_700.txt). Most pool wallets lose on their own trades too. The fetch was stopped at ~700 of 1,200 coins.
