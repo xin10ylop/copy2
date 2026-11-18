@@ -101,3 +101,14 @@ deployed): 1.5x +1.8%, 2x +6.1%, 2.5x +7.7%, 2.75x +9.4%, 3x +9.6%, 3.25x +10.9%
 4.5x +12.6%, 5x +14.2%, 6x +13.8%, 8x +11.1% a copy. Below about 2.75x it is clearly worse; from 2.75x to 6x a plateau
 whose ups and downs differ by half (3.25-3.5x the same on both halves, about +10-12%; 4.5-6x higher only on days 3-4).
 Kept at 4.0, inside the plateau and the same as the main unit.
+
+## The TAB unit's filters reviewed (`e5_tab_filters.py`, `../out/e5_tab_filters.txt`, Nov 18; tp 3.5x as set)
+
+As deployed (refused past 1.25x): 139 copies, +12.7% a copy. Bands that lose on both halves: its buy size 1.0-1.3 SOL
+(17 copies: −5.6% / −14.6%), HYPE and WBTC quotes (2 and 6 copies), our price 1.05-1.1x its price (33: −6.4% / −3.6%,
+between two winning bands: noise). None is large or clean enough to filter on. Mixed: SPCX (+1.9% / −13.0%, 14), TTWO
+(−7.2% / +18.7%, 97). Steady: PUMP (+76.6% / +25.5%, 21), its 1.3-2.0 SOL buys (+24.4% / +15.8%, 43), fee tier 195 bps
+(+28.2% / +15.9%) over 125 (−0.5% / +8.1%). It buys in the create slot (135 of 140; all within 10 s). Every 6-hour block
+positive over the 4 days. Coins wallet 4 also bought: +47.6% (13), skipped by the unit only while the main unit holds
+the coin (the main unit trades it then). **No filter changed**; to re-check on more days or ~50 real trades: the 1.0-1.3
+SOL band, SPCX, the 125 bps tier.

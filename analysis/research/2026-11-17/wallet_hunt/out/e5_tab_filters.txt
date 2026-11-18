@@ -1,0 +1,48 @@
+140 copies with no price refusal (1 past 1.25x); tp 3.5x. As deployed (refused past 1.25x): 139 copies, +12.7% a copy
+
+1. Its buy size (SOL; deployed: 0.5+):
+   0.5-0.75                   | days 1-2  34   +9.5% | days 3-4   4  +36.0% | all  38  +12.3%
+   0.75-1.0                   | days 1-2   1   -5.6% | days 3-4  41  +21.2% | all  42  +20.5%
+   1.0-1.3                    | days 1-2   6   -5.6% | days 3-4  11  -14.6% | all  17  -11.4%   <- loses on both halves
+   1.3-2.0                    | days 1-2  12  +24.4% | days 3-4  31  +15.8% | all  43  +18.2%
+   2.0-99                     | days 1-2    0 | days 3-4    0 | all    0
+
+2. The quote token (deployed: all floats):
+   HYPE                       | days 1-2   1  -14.1% | days 3-4   1  -19.1% | all   2  -16.6%   <- loses on both halves
+   PUMP                       | days 1-2  11  +76.6% | days 3-4  10  +25.5% | all  21  +52.3%
+   SPCX                       | days 1-2   7   +1.9% | days 3-4   7  -13.0% | all  14   -5.5%
+   TTWO                       | days 1-2  32   -7.2% | days 3-4  65  +18.7% | all  97  +10.1%
+   WBTC                       | days 1-2   2  -17.5% | days 3-4   4   -4.5% | all   6   -8.8%   <- loses on both halves
+
+3. Our price over its price (deployed: refused past 1.25x):
+   0-1.05x                    | days 1-2  25  +15.4% | days 3-4  35   -0.4% | all  60   +6.2%
+   1.05-1.1x                  | days 1-2  12   -6.4% | days 3-4  21   -3.6% | all  33   -4.6%   <- loses on both halves
+   1.1-1.25x                  | days 1-2  16  +16.6% | days 3-4  30  +42.8% | all  46  +33.7%
+   1.25-1.5x                  | days 1-2    0 | days 3-4   1 +145.9% | all   1 +145.9%
+   1.5-99x                    | days 1-2    0 | days 3-4    0 | all    0
+
+4. The coin's fee tier (bps; deployed: all):
+   125                        | days 1-2  32   -0.5% | days 3-4  47   +8.1% | all  79   +4.6%
+   195                        | days 1-2  21  +28.2% | days 3-4  37  +15.9% | all  58  +20.4%
+   other                      | days 1-2    0 | days 3-4   3 +124.1% | all   3 +124.1%
+
+5a. When it buys: slots after the create:
+   create slot or next        | days 1-2  51   +7.1% | days 3-4  84  +14.4% | all 135  +11.6%
+   2-10 slots                 | days 1-2   2 +108.1% | days 3-4   2  -29.0% | all   4  +39.6%
+   11+ slots                  | days 1-2    0 | days 3-4   1 +191.6% | all   1 +191.6%
+
+5b. The coin's age at its buy:
+   under 10 s                 | days 1-2  53  +10.9% | days 3-4  87  +15.4% | all 140  +13.7%
+   10-60 s                    | days 1-2    0 | days 3-4    0 | all    0
+   60-300 s                   | days 1-2    0 | days 3-4    0 | all    0
+   300 s+                     | days 1-2    0 | days 3-4    0 | all    0
+
+6. Time of day (UTC):
+   00-06                      | days 1-2   6  +58.9% | days 3-4  20  +18.6% | all  26  +27.9%
+   06-12                      | days 1-2  14   +2.8% | days 3-4  23  +28.9% | all  37  +19.0%
+   12-18                      | days 1-2  19  +12.6% | days 3-4  25   +5.9% | all  44   +8.8%
+   18-24                      | days 1-2  14   -4.0% | days 3-4  19   +8.3% | all  33   +3.1%
+
+7. Coins wallet 4 also bought (1.3+ SOL; deployed: skipped when the main unit holds it):
+   wallet 4 bought it too     | days 1-2   5  +53.5% | days 3-4   8  +43.9% | all  13  +47.6%
+   TAB16RxX alone             | days 1-2  48   +6.4% | days 3-4  79  +12.5% | all 127  +10.2%
