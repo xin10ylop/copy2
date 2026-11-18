@@ -11,4 +11,9 @@ for cost in (0.0345, 0.01):
     v = [r["ex"]["sp5/60s"] - (cost - 0.0026) for r in X]; h = len(v) // 2
     print(f"{W8}: {len(F)} copies, {len(X)} not seen by the rule; cost {cost}: {S(v)} | halves {S(v[:h])} / {S(v[h:])}")
 v = sorted(r["ex"]["sp5/60s"] - 0.0319 for r in X)
-print(f"PASS: {len(X) >= 40 and sum(v) > 0 and sum(v[:-5]) > 0}")
+print(f"   (all unseen copies, in-sample to the screen for those of Nov 15-17: 40+, positive, positive without the best 5: {len(X) >= 40 and sum(v) > 0 and sum(v[:-5]) > 0})")
+A = [r for r in X if r["t"] >= 1794877620]   # after the screen (Nov 17 01:07 UTC): the clean test (the amendment)
+for cost in (0.0345, 0.01):
+    print(f"   AFTER THE SCREEN only, cost {cost}: {S([r['ex']['sp5/60s'] - (cost - 0.0026) for r in A])}")
+a = sorted(r["ex"]["sp5/60s"] - 0.0319 for r in A)
+print(f"PASS (the amendment: after-screen buys, 20+, positive at 0.0345, positive without the best 5): {len(A) >= 20 and sum(a) > 0 and sum(a[:-5]) > 0}")

@@ -17,6 +17,7 @@ held = [r["held"] for r in R if r["held"] is not None]
 print(f"{W8}: {len(R)} copies (0.5 SOL, one slot after its buy, {COST} SOL a round trip); first half {len(A)}, second half {len(B)}")
 print(f"\n1. HOW IT TRADES: its size median {st.median(r['sol'] for r in R):.2f} SOL (quartiles {np.quantile([r['sol'] for r in R], [.25, .75]).round(2).tolist()}); "
       f"quote SOL {np.mean([r['quote'] in ('SOL', 'So11111111111111111111111111111111111111112') for r in R]):.0%}; curve sold at its buy median {st.median(r['prog'] for r in R):.0%}")
+held = held or [1e9]   # never sold within the window
 print(f"   it sold (first sale) after a median {st.median(held):.0f} s; within 30 s {np.mean([h < 30 for h in held]):.0%}, within 2 min {np.mean([h < 120 for h in held]):.0%}, "
       f"never in the window {1 - len(held) / len(R):.0%}")
 print("\n2. EXITS (every copy): first half | second half")

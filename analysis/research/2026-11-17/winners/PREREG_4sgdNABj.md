@@ -9,3 +9,11 @@ without the best 5 negative in both halves under every exit.
 in 60 s** (the plateau with 10/60; our standard), else 1,800 s.
 **Scored once on the copies not in the first 64** (`w14_score.py`, the full study minus the interim's coins).
 **Pass:** 40+ copies; positive at 0.0345; positive without the best 5.
+
+## Amendment, Nov 18 ~01:15 UTC, before the score (stricter, not looser)
+
+A flaw: the candidates were picked on the 48 h screen (Nov 15 01:07 - Nov 17 01:07 UTC) **because** their buys of
+those days graduated, so their copies of those days are biased upward. The clean test is **only the buys after Nov 17
+01:07 UTC** (unseen by the screen). `w14_score.py` reports both; **the pass is judged on the after-screen buys only**,
+with the same bar (positive at 0.0345, positive without the best 5; 20+ copies, the after period being one day). The
+same applies to every launch picker (B4BMZH3T has no buy after the screen yet: its result so far is in-sample only).

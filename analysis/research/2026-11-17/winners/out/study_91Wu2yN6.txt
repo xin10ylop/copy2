@@ -1,10 +1,38 @@
 91Wu2yN6: 14 copies (0.5 SOL, one slot after its buy, 0.0345 SOL a round trip); first half 7, second half 7
 
 1. HOW IT TRADES: its size median 4.10 SOL (quartiles [4.1, 4.1]); quote SOL 0%; curve sold at its buy median 0%
-Traceback (most recent call last):
-  File "/home/user/copy2/analysis/research/2026-11-17/winners/wallet_study_report.py", line 20, in <module>
-    print(f"   it sold (first sale) after a median {st.median(held):.0f} s; within 30 s {np.mean([h < 30 for h in held]):.0%}, within 2 min {np.mean([h < 120 for h in held]):.0%}, "
-                                                    ~~~~~~~~~^^^^^^
-  File "/usr/lib/python3.13/statistics.py", line 637, in median
-    raise StatisticsError("no median for empty data")
-statistics.StatisticsError: no median for empty data
+   it sold (first sale) after a median 1000000000 s; within 30 s 0%, within 2 min 0%, never in the window 93%
+
+2. EXITS (every copy): first half | second half
+   its-sale      :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09   <- best on the first half
+   tp1.3         :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   tp1.5         :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   tp2           :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   tp3           :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   tp5           :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   t1m           :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   t2m           :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   t5m           :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   t10m          :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   t30m          :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   its-sale+tp2  :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   trail1.3/25%  :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   trail1.5/35%  :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   sp3/30s       :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   sp5/60s       :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   sp10/60s      :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+
+3. WHICH OF ITS BUYS PAY (thirds cut on the first half), with each segment's best exit on the first half:
+
+4. THE VIP: 14 of its copies fall on the days of the VIP exports
+   the VIP alerted the coin within 10 min AFTER its buy: 0 (0%), a median 0 s later | BEFORE its buy (it followed): 0 (0%) | not within 10 min: 14
+   exit its-sale      : alerted after    0 | alerted before    0 | not alerted  14  -0.66 ( -9.4%) w/o5  -0.42
+   exit its-sale      : alerted after    0 | alerted before    0 | not alerted  14  -0.66 ( -9.4%) w/o5  -0.42
+   exit t10m          : alerted after    0 | alerted before    0 | not alerted  14  -0.66 ( -9.4%) w/o5  -0.42
+   exit tp3           : alerted after    0 | alerted before    0 | not alerted  14  -0.66 ( -9.4%) w/o5  -0.42
+
+5. BY ITS BUY SIZE (fixed bins; our copy is always 0.5 SOL): first half | second half
+   size 2.00-up    its-sale :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   size 2.00-up    t2m      :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   size 2.00-up    tp2      :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
+   size 2.00-up    sp5/60s  :   7  -0.33 ( -9.4%) w/o5  -0.09 |   7  -0.33 ( -9.4%) w/o5  -0.09
