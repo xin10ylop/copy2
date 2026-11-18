@@ -41,7 +41,9 @@ closed both. The official RPC ran 7-10 blocks behind PublicNode, so reads and re
 
 ## 3. Risks, said plainly
 
-- Nothing has been sent from it yet. The first real trades are its mechanics test: check them on chain (Blockscout),
+- **Live since Nov 18 22:10 UTC** on `fra-long`, wallet `0x35bb5c55a531d14213380fd978a501f0e239a77e`, 0.15 ETH (bridged from 3.8 SOL
+  of wallet 4's bot wallet). The first start (22:03) crashed before sending anything: the workspace build gave rustls two
+  crypto engines and it panicked on the first TLS connection; fixed in `3e1b321`. The first real trades are its mechanics test: check them on chain (Blockscout),
   as `03-strategy-A-long-copy/deploy-frankfurt.md` §6 did for wallet 4.
 - Other copy bots already follow wallets 1 and 2 within 2 blocks (`out/rh8_cobuyers.txt`). The backtest landed us 2,
   3 and 5 blocks late; the feed adds about 1 s (10 blocks) at worst on a slow moment. The price limit protects the buy.

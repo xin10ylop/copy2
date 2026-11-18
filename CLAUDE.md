@@ -12,7 +12,8 @@ Two copied wallets, kept apart, and the bots that copy them:
   copier runs Rafinhaaaaaa at 1 SOL with 1 open. Prepared Nov 3, not started; the owner says when to deploy live.
 - **Robinhood Chain** (chain 4663, Pons V2 launchpad): three wallets copied by `crates/rh-copier` from ONE wallet at
   0.02 ETH a copy, no paper phase (the owner's call, Nov 18); `docs/23-rh-copier.md`, unit `rh-copier`, check command
-  `rhq`; research `analysis/research/2026-11-18/robinhood/`. Built Nov 18, not started yet.
+  `rhq`; research `analysis/research/2026-11-18/robinhood/`. **Live since Nov 18 22:10 UTC** on `fra-long` (wallet `0x35bb5c55...`, funded 0.15 ETH from 3.8 SOL
+  of wallet 4's bot wallet; the first start crashed on a TLS-engine panic, fixed in `3e1b321`, nothing was sent).
 - Keep them apart: a wallet's study, docs and data go in its own folder; shared code stays in `crates/`, `deploy/`,
   `config/`, `docs/`.
 
