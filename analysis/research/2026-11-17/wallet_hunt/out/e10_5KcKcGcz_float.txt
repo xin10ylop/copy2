@@ -1,0 +1,95 @@
+# rows by what we pay with, before the PAY filter: {'float': 33, 'wsol': 8}
+5KcKcGczDGsFjPDvZdCSWavQrpC6YhkBkv1rD7Jv1THR: 33 copies (0.5+ SOL, paid with a float), 11-14 to 11-17; halves at 11-17 03:16 UTC; 0.0345 SOL a round trip
+combinations: 505,440 (13 sizes x 4 price limits x 9,720 exits)
+
+settings positive on both halves: 0 of 0 with 20+ copies in each half
+
+THE CHOICE (the best neighbourhood by the weaker half):
+   its buy 0.5+ SOL, price limit 1.1x, tp 1.5x, 60 s, sell pressure off, stall off, its sale never
+   29 copies (15 / 14) | +2.02 SOL; w/o 2% half 1 +nan, half 2 +nan | half 1 +nan% | half 2 +nan% | all +nan% | w/o 2% +1.71 SOL | P(mean>0) 99.5%
+   its neighbourhood's weaker half: -inf SOL w/o its best 2%
+
+THE RUNNING SETTING: its buy 0.5+ SOL, price limit 1.25x, tp 3.5x, 600 s, sell pressure 5/60s, stall 180, its sale never
+   too few copies in a half
+
+the single best weaker half (no smoothing): its buy 0.5+ SOL, price limit 1.1x, tp 1.5x, 60 s, sell pressure off, stall off, its sale never
+   29 copies (15 / 14) | +2.02 SOL; w/o 2% half 1 +nan, half 2 +nan | half 1 +nan% | half 2 +nan% | all +nan% | w/o 2% +1.71 SOL | P(mean>0) 99.5%
+
+the overfitting check: picked on half 1 alone: its buy 0.5+ SOL, price limit 1.1x, tp 1.5x, 60 s, sell pressure off, stall off, its sale never
+   29 copies (15 / 14) | +2.02 SOL; w/o 2% half 1 +nan, half 2 +nan | half 1 +nan% | half 2 +nan% | all +nan% | w/o 2% +1.71 SOL | P(mean>0) 99.5%
+   its rank on half 2: 1 of 0
+
+EACH PART VARIED ALONE (the others as chosen): a copy half 1 / half 2 / all | SOL all | w/o 2% SOL half 1 / half 2
+  its buy size:
+     0.5+      too few copies
+     0.6+      too few copies
+     0.7+      too few copies
+     0.8+      too few copies
+     0.9+      too few copies
+     1.0+      too few copies
+     1.1+      too few copies
+     1.2+      too few copies
+     1.3+      too few copies
+     1.4+      too few copies
+     1.5+      too few copies
+     1.75+     too few copies
+     2.0+      too few copies
+  price limit:
+     1.1x      too few copies
+     1.25x     too few copies
+     1.5x      too few copies
+     none      too few copies
+  take profit:
+     1.5x      too few copies
+     2x        too few copies
+     2.5x      too few copies
+     3x        too few copies
+     3.5x      too few copies
+     4x        too few copies
+     5x        too few copies
+     6x        too few copies
+     8x        too few copies
+     none      too few copies
+  time:
+     60s       too few copies
+     120s      too few copies
+     180s      too few copies
+     300s      too few copies
+     450s      too few copies
+     600s      too few copies
+  sell pressure:
+     off       too few copies
+     3/30s     too few copies
+     3/60s     too few copies
+     5/30s     too few copies
+     5/60s     too few copies
+     8/30s     too few copies
+     8/60s     too few copies
+     10/30s    too few copies
+     10/60s    too few copies
+  stall:
+     off       too few copies
+     60s       too few copies
+     90s       too few copies
+     120s      too few copies
+     180s      too few copies
+     240s      too few copies
+  its sale:
+     never     too few copies
+     early     too few copies
+     always    too few copies
+
+WHAT EACH SIZE BAND ADDS (its buy in [a, b) SOL; the chosen exit and price limit): copies | a copy half 1 / half 2 / all | SOL
+     [0.5, 0.6):   20 |  +24.9% (8) /   +8.8% (12) /  +15.2% |  +1.52
+     [0.6, 0.7): 0 copies
+     [0.7, 0.8): 0 copies
+     [0.8, 0.9): 0 copies
+     [0.9, 1.0): 0 copies
+     [1.0, 1.1):    5 |   +7.1% (5) /    none (0) /   +7.1% |  +0.18
+     [1.1, 1.2): 2 copies
+     [1.2, 1.3): 0 copies
+     [1.3, 1.4): 0 copies
+     [1.4, 1.5): 0 copies
+     [1.5, 1.75): 1 copies
+     [1.75, 2.0): 0 copies
+     [2.0, up): 1 copies

@@ -1,0 +1,80 @@
+# rows by what we pay with, before the PAY filter: {'float': 33, 'wsol': 8}
+5KcKcGczDGsFjPDvZdCSWavQrpC6YhkBkv1rD7Jv1THR: 8 copies (0.5+ SOL, paid from wSOL), 11-15 to 11-16; halves at 11-16 14:52 UTC; 0.0345 SOL a round trip
+combinations: 505,440 (13 sizes x 4 price limits x 9,720 exits)
+
+settings positive on both halves: 0 of 0 with 20+ copies in each half
+
+THE CHOICE (the best neighbourhood by the weaker half):
+   its buy 0.5+ SOL, price limit 1.1x, tp 1.5x, 60 s, sell pressure off, stall off, its sale never
+   8 copies (4 / 4) | half 1 +nan% | half 2 +nan% | all +nan% | w/o 2% -0.29 SOL | P(mean>0) 44.7%
+   its neighbourhood's weaker half: -inf% a copy
+
+THE RUNNING SETTING: its buy 0.5+ SOL, price limit 1.25x, tp 3.5x, 600 s, sell pressure 5/60s, stall 180, its sale never
+   too few copies in a half
+
+the single best weaker half (no smoothing): its buy 0.5+ SOL, price limit 1.1x, tp 1.5x, 60 s, sell pressure off, stall off, its sale never
+   8 copies (4 / 4) | half 1 +nan% | half 2 +nan% | all +nan% | w/o 2% -0.29 SOL | P(mean>0) 44.7%
+
+the overfitting check: picked on half 1 alone: its buy 0.5+ SOL, price limit 1.1x, tp 1.5x, 60 s, sell pressure off, stall off, its sale never
+   8 copies (4 / 4) | half 1 +nan% | half 2 +nan% | all +nan% | w/o 2% -0.29 SOL | P(mean>0) 44.7%
+   its rank on half 2: 1 of 0
+
+EACH PART VARIED ALONE (the others as chosen): half 1 / half 2 / all, a copy
+  its buy size:
+     0.5+      too few copies
+     0.6+      too few copies
+     0.7+      too few copies
+     0.8+      too few copies
+     0.9+      too few copies
+     1.0+      too few copies
+     1.1+      too few copies
+     1.2+      too few copies
+     1.3+      too few copies
+     1.4+      too few copies
+     1.5+      too few copies
+     1.75+     too few copies
+     2.0+      too few copies
+  price limit:
+     1.1x      too few copies
+     1.25x     too few copies
+     1.5x      too few copies
+     none      too few copies
+  take profit:
+     1.5x      too few copies
+     2x        too few copies
+     2.5x      too few copies
+     3x        too few copies
+     3.5x      too few copies
+     4x        too few copies
+     5x        too few copies
+     6x        too few copies
+     8x        too few copies
+     none      too few copies
+  time:
+     60s       too few copies
+     120s      too few copies
+     180s      too few copies
+     300s      too few copies
+     450s      too few copies
+     600s      too few copies
+  sell pressure:
+     off       too few copies
+     3/30s     too few copies
+     3/60s     too few copies
+     5/30s     too few copies
+     5/60s     too few copies
+     8/30s     too few copies
+     8/60s     too few copies
+     10/30s    too few copies
+     10/60s    too few copies
+  stall:
+     off       too few copies
+     60s       too few copies
+     90s       too few copies
+     120s      too few copies
+     180s      too few copies
+     240s      too few copies
+  its sale:
+     never     too few copies
+     early     too few copies
+     always    too few copies

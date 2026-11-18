@@ -7,7 +7,7 @@
 #   its sale: never / early (30-290 s under 1.5x) / always
 # Our 0.5 SOL at the three landings (hunt_lib's fills: our buy's weight on the curve, the fee of its trade), 0.0345 SOL a
 # round trip, take profit and the 1.5x of the early rule against ITS price (as the live bot), stall once back at its price.
-# The choice, by logic: (1) every setting ranked by its WEAKER half (halves by time); (2) smoothed: the mean of its
+# The choice, by logic: (1) every setting ranked by the SOL its WEAKER half makes without its best 2% of copies (halves by time); (2) smoothed: the mean of its
 # neighbours one step either way on each part, so a lone spike cannot win (the middle of a plateau); (3) a part that
 # changes nothing within the noise is set to its simplest value; (4) shown: each part varied alone around the choice,
 # and the setting picked on the first half alone with its rank on the second (the overfitting check).
@@ -15,7 +15,7 @@
 # (tab/lk paths with the bot's scan).
 #   python3 -I e8_engineer.py SP WALLET > ../out/e8_<wallet8>.txt
 import sys, os, re, json, gzip, itertools, functools, numpy as np
-SP, W = sys.argv[1], sys.argv[2]; PAY = os.environ.get("PAY", "float")   # PAY=wsol: only the copies paid from wSOL (the owner: "test with wsol too")
+SP, W = sys.argv[1], sys.argv[2]; PAY = os.environ.get("PAY", "float")   # float / wsol / all: which copies by what we pay with (the owner, Nov 18: "test with all coins, all sizes")
 O = f"{SP}/market"; PD = f"{O}/paths_full"; COST = 0.0345 - 0.0026
 here = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(here, "..")); import hunt_lib as H
 sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-18/churn"); import slot_order as SO
@@ -48,21 +48,21 @@ def copy_vals(p):
                            st_i[None, None, None, :, None], it_i[None, None, None, None, :], np.full(shape, g)])
     return val[np.clip(E, 0, n - 1)]
 rows = []
-def add(tr, k, rate, sol, quote8):
+def add(tr, k, rate, sol, quote8, cls):
     ps = [H.prep(tr, k, rate, n, pmax=1000) for n in (4, 8, "slot+1")]
     prem = float(np.mean([(tr[k]["vt"] / p["ent"][0]) ** 2 for p in ps]))
-    rows.append(dict(t=tr[k]["t"], sol=sol, prem=prem, q=quote8, v=np.mean([copy_vals(p) for p in ps], axis=0) - COST))
+    rows.append(dict(t=tr[k]["t"], sol=sol, prem=prem, q=quote8, cls=cls, v=np.mean([copy_vals(p) for p in ps], axis=0) - COST))
 # source 1: the 4 days of float-quote coins
 L = {}
 for f_ in (f"{O}/launches_1794618422.json", f"{O}/launches.json", f"{O}/launches_1794877622.json"):
-    L.update({m: x for m, x in json.load(open(f_)).items() if x and ((x["quote"][:8] in FLOATS) == (PAY == "float")) and os.path.exists(f"{PD}/{m}.json.gz")})   # PAY=wsol: the coins quoted in a token we hold no float of (reached from SOL when a pool exists)
+    L.update({m: x for m, x in json.load(open(f_)).items() if x and os.path.exists(f"{PD}/{m}.json.gz")})   # PAY=wsol: the coins quoted in a token we hold no float of (reached from SOL when a pool exists)
 PR = json.load(open(f"{O}/prices.json")); su = PR[WSOL]["usdPrice"]; rate_of = lambda q: PR[q]["usdPrice"] / su * 1e9 / 10 ** PR[q]["decimals"] if q in PR else None
 for m, x in L.items():
     r = rate_of(x["quote"]); tr = json.load(gzip.open(f"{PD}/{m}.json.gz")) if r else []
     k = next((j for j, e in enumerate(tr) if e["user"] == W), None)
     if k is None or not tr[k]["buy"] or tr[-1]["t"] - tr[k]["t"] < 600: continue
     sol = tr[k]["q"] * (1 + tr[k]["bps"] / 1e4) * r / 1e9
-    if sol >= 0.5: add(tr, k, r, sol, x["quote"][:8])
+    if sol >= 0.5: add(tr, k, r, sol, x["quote"][:8], "float" if x["quote"][:8] in FLOATS else "wsol")   # wsol: quoted in a token we hold no float of (reached from SOL)
 # source 2 (TAB16RxX): its 14 earlier days, float-paid, the bot's own routes
 if W.startswith("TAB16RxX") and os.path.exists(f"{SP}/tab2/scan_all.out"):
     TD = f"{SP}/tab/lk/paths"; files = {}
@@ -71,14 +71,14 @@ if W.startswith("TAB16RxX") and os.path.exists(f"{SP}/tab2/scan_all.out"):
     last = {}
     for l in open(f"{SP}/tab2/scan_all.out"):
         m = re.match(r"(\d+) (\S{8}) ([\d.]+) SOL from (\S+) quote (\S+) jupiter (\S+): ROUTABLE hops (\d+) how (\S+) .*?input: (\w{8})", l)
-        if not m or float(m.group(3)) < 0.5 or ((m.group(9) == "So111111") != (PAY == "wsol")): continue
+        if not m or float(m.group(3)) < 0.5: continue
         key = f"{m.group(1)}_{m.group(2)}"
         if key not in files: continue
         tr = SO.reorder(json.load(gzip.open(f"{TD}/{files[key]}"))); k = next((i for i, e in enumerate(tr) if e["user"] == W and e["buy"] and e["slot"] == int(m.group(1))), None)
         if k is None or tr[k]["t"] >= 1794618422: continue
         if m.group(2) in last and tr[k]["t"] - last[m.group(2)] < 3600: last[m.group(2)] = tr[k]["t"]; continue
         last[m.group(2)] = tr[k]["t"]
-        add(tr, k, float(m.group(3)) * 1e9 / (tr[k]["q"] * (1 + tr[k]["bps"] / 1e4)), float(m.group(3)), m.group(9))
+        add(tr, k, float(m.group(3)) * 1e9 / (tr[k]["q"] * (1 + tr[k]["bps"] / 1e4)), float(m.group(3)), m.group(9), "wsol" if m.group(9) == "So111111" else "float")
 # source 3 (wallet 4): its research corpus, Oct 21 - Nov 16 (allq / cq / since_stop / newq: every trade for 31 minutes from
 # its buy; the rate from routable.json's SOL value), true in-slot order; the 4 days above are then not added twice
 if W.startswith("H9kuqGKN"):
@@ -91,6 +91,13 @@ if W.startswith("H9kuqGKN"):
             m_, tr = vv
             if m_ in got and got[m_] >= len(tr): continue
             got[m_] = len(tr)
+    INP = {}   # what the bot pays with: the planner's route input (scan_hops.out / scan.out); a coin quoted in a float is float-paid today (7 floats)
+    for d_ in ("allq", "cq", "since_stop", "newq"):
+        for f_ in ("scan_hops.out", "scan.out"):
+            if not os.path.exists(f"{SP}/{d_}/{f_}"): continue
+            for l in open(f"{SP}/{d_}/{f_}"):
+                m = re.match(r"(\d+) (\S{8}) .*? quote (\S+) .*?ROUTABLE.*?input: (\w{8})", l)
+                if m: INP.setdefault(f"{d_}/{m.group(1)}_{m.group(2)}", "float" if m.group(4) in FLOATS or m.group(3)[:8] in FLOATS else "wsol")
     for d_ in ("allq", "cq", "since_stop", "newq"):
         try: P = json.load(gzip.open(f"{SP}/{d_}/paths.json.gz")); R_ = {f"{r['slot']}_{r['mint8']}": r for r in json.load(open(f"{SP}/{d_}/routable.json"))}
         except Exception: continue
@@ -102,21 +109,28 @@ if W.startswith("H9kuqGKN"):
             k = next((i for i, e in enumerate(tr) if e["user"] == W and e["buy"] and e["slot"] == R_[kk]["slot"]), None)
             if k is None or tr[k]["t"] in seen or tr[-1]["t"] - tr[k]["t"] < 600: continue
             rate = R_[kk]["sol"] * 1e9 / (tr[k]["q"] * (1 + tr[k]["bps"] / 1e4))
-            add(tr, k, rate, R_[kk]["sol"], str(R_[kk].get("quote", "?"))[:8])
+            q8 = str(R_[kk].get("quote", "?"))[:8]
+            add(tr, k, rate, R_[kk]["sol"], q8, INP.get(f"{d_}/{kk}", "float" if q8 in FLOATS else "wsol"))
+import collections; print("# rows by what we pay with, before the PAY filter:", dict(collections.Counter(r["cls"] for r in rows)))
+if PAY != "all": rows = [r for r in rows if r["cls"] == PAY]
 rows.sort(key=lambda r: r["t"]); T = np.array([r["t"] for r in rows]); tmid = np.median(T) if len(T) else 0
-V = np.array([r["v"] for r in rows]); SOL = np.array([r["sol"] for r in rows]); PRM = np.array([r["prem"] for r in rows]); A = T < tmid
+V = np.array([r["v"] for r in rows]); CLS = np.array([r["cls"] for r in rows]); SOL = np.array([r["sol"] for r in rows]); PRM = np.array([r["prem"] for r in rows]); A = T < tmid
 import datetime as dt
-print(f"{W}: {len(rows)} copies (0.5+ SOL, paid {'from wSOL' if PAY == 'wsol' else 'with a float'}), {dt.datetime.fromtimestamp(T.min(), dt.UTC):%m-%d} to {dt.datetime.fromtimestamp(T.max(), dt.UTC):%m-%d}; halves at {dt.datetime.fromtimestamp(tmid, dt.UTC):%m-%d %H:%M} UTC; 0.0345 SOL a round trip")
+print(f"{W}: {len(rows)} copies (0.5+ SOL, paid {dict(wsol='from wSOL', float='with a float', all='either way')[PAY]}), {dt.datetime.fromtimestamp(T.min(), dt.UTC):%m-%d} to {dt.datetime.fromtimestamp(T.max(), dt.UTC):%m-%d}; halves at {dt.datetime.fromtimestamp(tmid, dt.UTC):%m-%d %H:%M} UTC; 0.0345 SOL a round trip")
 # the full grid: [size, prem, tp, hold, sp, stall, its]
 full = len(SIZE) * len(PREM) * V[0].size; print(f"combinations: {full:,} ({len(SIZE)} sizes x {len(PREM)} price limits x {V[0].size:,} exits)")
-MINN = 12
-M1 = np.full((len(SIZE), len(PREM)) + V.shape[1:], np.nan); M2 = M1.copy(); MA = M1.copy(); NN = np.zeros((len(SIZE), len(PREM)), int)
+MINN = 20   # copies in each half (12 let a 1.75+ band win on a thin first half, Nov 18)
+M1 = np.full((len(SIZE), len(PREM)) + V.shape[1:], np.nan); M2 = M1.copy(); MA = M1.copy(); S1 = M1.copy(); S2 = M1.copy(); NN = np.zeros((len(SIZE), len(PREM)), int)
 for a, sz in enumerate(SIZE):
     for b_, pm in enumerate(PREM):
         f = (SOL >= sz) & (PRM <= pm); NN[a, b_] = f.sum()
         if (f & A).sum() >= MINN and (f & ~A).sum() >= MINN:
             M1[a, b_] = V[f & A].mean(axis=0); M2[a, b_] = V[f & ~A].mean(axis=0); MA[a, b_] = V[f].mean(axis=0)
-weak = np.minimum(M1, M2)
+            for SS, g in ((S1, f & A), (S2, f & ~A)):   # the SOL a half makes without its best 2% of copies
+                X = V[g]; k = max(1, round(0.02 * len(X))); SS[a, b_] = X.sum(axis=0) - np.partition(X, len(X) - k, axis=0)[len(X) - k:].sum(axis=0)
+# The ranking (Nov 18): the SOL the WEAKER half makes without its best 2% of copies. Not the mean a copy: a thin filter can
+# raise the mean while it drops copies that still make money (wallet 4: 1.75+ SOL +37% a copy on 162 = 30 SOL; 1.3+ +13% on 545 = 36).
+weak = np.minimum(S1, S2)
 def _edge(shape, d, sh):
     """1 where np.roll along axis d by sh brought a real neighbour, 0 where it wrapped around."""
     m = np.ones(shape); sl = [slice(None)] * len(shape); sl[d] = 0 if sh == 1 else -1; m[tuple(sl)] = 0; return m
@@ -134,15 +148,36 @@ def name(ix):
 def stats(ix):
     a, b_ = ix[0], ix[1]; f = (SOL >= SIZE[a]) & (PRM <= PREM[b_]); v = V[f][(slice(None),) + tuple(ix[2:])]; s = np.sort(v); k = max(1, round(0.02 * len(v)))
     bs = np.random.default_rng(7).choice(v, size=(5000, len(v))).mean(axis=1)
-    return f"{len(v)} copies | half 1 {100 * M1[ix] / 0.5:+.1f}% | half 2 {100 * M2[ix] / 0.5:+.1f}% | all {100 * MA[ix] / 0.5:+.1f}% | w/o 2% {s[:-k].sum():+.2f} SOL | P(mean>0) {100 * np.mean(bs > 0):.1f}%"
+    n1 = int((f & A).sum())
+    return f"{len(v)} copies ({n1} / {len(v) - n1}) | {v.sum():+.2f} SOL; w/o 2% half 1 {S1[ix]:+.2f}, half 2 {S2[ix]:+.2f} | half 1 {100 * M1[ix] / 0.5:+.1f}% | half 2 {100 * M2[ix] / 0.5:+.1f}% | all {100 * MA[ix] / 0.5:+.1f}% | w/o 2% {s[:-k].sum():+.2f} SOL | P(mean>0) {100 * np.mean(bs > 0):.1f}%"
 print(f"\nsettings positive on both halves: {np.nansum((M1 > 0) & (M2 > 0)):,} of {np.sum(ok):,} with {MINN}+ copies in each half")
-print(f"\nTHE CHOICE (the best neighbourhood by the weaker half):\n   {name(idx)}\n   {stats(idx)}\n   its neighbourhood's weaker half: {100 * smooth[idx] / 0.5:+.1f}% a copy")
+print(f"\nTHE CHOICE (the best neighbourhood by the weaker half):\n   {name(idx)}\n   {stats(idx)}\n   its neighbourhood's weaker half: {smooth[idx]:+.2f} SOL w/o its best 2%")
 raw = np.unravel_index(int(np.nanargmax(np.where(ok, weak, -np.inf))), weak.shape)
+def pay_slice(ix, lab):
+    """The setting's copies split by what we pay with (the owner: remove wSOL when the floats win and wSOL breaks even or loses)."""
+    a, b_ = ix[0], ix[1]; f0 = (SOL >= SIZE[a]) & (PRM <= PREM[b_])
+    for c in ("float", "wsol"):
+        f = f0 & (CLS == c); v = V[f][(slice(None),) + tuple(ix[2:])]
+        if len(v) < 5: print(f"   {lab} {c}-paid: {len(v)} copies"); continue
+        s = np.sort(v); k = max(1, round(0.02 * len(v))); bs = np.random.default_rng(7).choice(v, size=(5000, len(v))).mean(axis=1)
+        h1, h2 = V[f & A][(slice(None),) + tuple(ix[2:])], V[f & ~A][(slice(None),) + tuple(ix[2:])]
+        m_ = lambda x: f"{100 * x.mean() / 0.5:+.1f}% ({len(x)})" if len(x) else "none"
+        print(f"   {lab} {c}-paid: {len(v)} copies | half 1 {m_(h1)} | half 2 {m_(h2)} | all {100 * v.mean() / 0.5:+.1f}% | {v.sum():+.2f} SOL | w/o 2% {s[:-k].sum():+.2f} SOL | P(mean>0) {100 * np.mean(bs > 0):.1f}%")
+if PAY == "all": pay_slice(idx, "the choice,")
+LIVE = os.environ.get("LIVE")   # the running setting, to set beside the choice: "size,prem,tp,hold,sp,stall,its", e.g. "1.3,1.25,4,600,5/60,180,early"
+if LIVE:
+    z = LIVE.split(","); g = lambda L, v: L.index(1e9 if v == "none" else float(v)) if v != "none" or 1e9 in L else None
+    lix = (SIZE.index(float(z[0])), PREM.index(1e9 if z[1] == "none" else float(z[1])), TP.index(1e9 if z[2] == "none" else float(z[2])), HOLD.index(int(z[3])),
+           SPS.index(None if z[4] == "off" else tuple(int(x) for x in z[4].split("/"))), STALL.index(0 if z[5] == "off" else int(z[5])), ITS.index(z[6]))
+    print(f"\nTHE RUNNING SETTING: {name(lix)}")
+    print(f"   {stats(lix) if not np.isnan(MA[lix]) else 'too few copies in a half'}")
+    if not np.isnan(MA[lix]): print(f"   its rank by the weaker half: {int(np.sum(np.where(ok, weak, -np.inf) > weak[lix])) + 1:,} of {np.sum(ok):,}")
+    if PAY == "all": pay_slice(lix, "the running setting,")
 print(f"\nthe single best weaker half (no smoothing): {name(raw)}\n   {stats(raw)}")
-h1 = np.unravel_index(int(np.nanargmax(np.where(ok, M1, -np.inf))), M1.shape)
-rank2 = int(np.sum(np.where(ok, M2, -np.inf) > M2[h1])) + 1
+h1 = np.unravel_index(int(np.nanargmax(np.where(ok, S1, -np.inf))), S1.shape)
+rank2 = int(np.sum(np.where(ok, S2, -np.inf) > S2[h1])) + 1
 print(f"\nthe overfitting check: picked on half 1 alone: {name(h1)}\n   {stats(h1)}\n   its rank on half 2: {rank2:,} of {np.sum(ok):,}")
-print("\nEACH PART VARIED ALONE (the others as chosen): half 1 / half 2 / all, a copy")
+print("\nEACH PART VARIED ALONE (the others as chosen): a copy half 1 / half 2 / all | SOL all | w/o 2% SOL half 1 / half 2")
 labels = [("its buy size", [f"{x}+" for x in SIZE]), ("price limit", ["1.1x", "1.25x", "1.5x", "none"]), ("take profit", [("none" if x > 1e8 else f"{x}x") for x in TP]),
           ("time", [f"{x}s" for x in HOLD]), ("sell pressure", ["off"] + [f"{n}/{w}s" for n, w in SPS[1:]]), ("stall", ["off"] + [f"{x}s" for x in STALL[1:]]), ("its sale", ITS)]
 for d, (lab, vals) in enumerate(labels):
@@ -151,4 +186,12 @@ for d, (lab, vals) in enumerate(labels):
         ix = list(idx); ix[d] = j; ix = tuple(ix)
         if np.isnan(MA[ix]): print(f"     {vl:8s}  too few copies"); continue
         mark = "   <- chosen" if j == idx[d] else ""
-        print(f"     {vl:8s}  {100 * M1[ix] / 0.5:+6.1f}% / {100 * M2[ix] / 0.5:+6.1f}% / {100 * MA[ix] / 0.5:+6.1f}%  (copies {NN[ix[0], ix[1]]}){mark}")
+        print(f"     {vl:8s}  {100 * M1[ix] / 0.5:+6.1f}% / {100 * M2[ix] / 0.5:+6.1f}% / {100 * MA[ix] / 0.5:+6.1f}% | {MA[ix] * NN[ix[0], ix[1]]:+6.2f} | {S1[ix]:+6.2f} / {S2[ix]:+6.2f}  (copies {NN[ix[0], ix[1]]}){mark}")
+# what each band of its buy size adds (the copies between two steps), at the chosen exit and price limit
+print("\nWHAT EACH SIZE BAND ADDS (its buy in [a, b) SOL; the chosen exit and price limit): copies | a copy half 1 / half 2 / all | SOL")
+ex = (slice(None),) + tuple(idx[2:])
+for j, a in enumerate(SIZE):
+    b = SIZE[j + 1] if j + 1 < len(SIZE) else 1e9; f = (SOL >= a) & (SOL < b) & (PRM <= PREM[idx[1]])
+    if f.sum() < 5: print(f"     [{a}, {b if b < 1e8 else 'up'}): {f.sum()} copies"); continue
+    v = V[f][ex]; h1_, h2_ = V[f & A][ex], V[f & ~A][ex]; mm = lambda x: f"{100 * x.mean() / 0.5:+6.1f}%" if len(x) else "   none"
+    print(f"     [{a}, {b if b < 1e8 else 'up'}): {f.sum():4d} | {mm(h1_)} ({len(h1_)}) / {mm(h2_)} ({len(h2_)}) / {mm(v)} | {v.sum():+6.2f}")

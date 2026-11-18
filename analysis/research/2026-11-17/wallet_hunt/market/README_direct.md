@@ -140,3 +140,45 @@ w/o 2% +2.29, P 96.2%) — and wallet 4's own 1.3+ buys would not pass it on the
 P 85.9%). With the bar set at wallet 4's level (50%+, w/o 2% positive, P 85%+) one more: **5KcKcGcz 0.5+** (33 copies,
 53%, median +12.0%, w/o 2% +1.31, P 95.4%, 32 creators, never at the launch: a later buyer). The next ones fall well
 short (AMDEmVoc 45% / +0.08 / 68%; 54YNHFVt 1.0+ 12%). Every steadiest setting has its sale NOT followed.
+
+## e8 v2: every combination, three ways by payment, ranked by SOL (Nov 18, morning)
+
+The owner: "test with all coins, all sizes; if floats win and wSOL breaks even or loses, remove them; be structured;
+same for future wallets". `e8_engineer.py` now runs each wallet three times (`PAY=all / float / wsol`, outputs
+`../out/e10_<wallet>_<pay>.txt`; `LIVE=` scores the running setting beside the choice). Two fixes over the first run
+(`e9_*`, kept): wallet 4's corpus was not split by payment (the route planner's `input:` from each folder's scan is
+now used; a coin quoted in one of the 7 floats counts as float-paid), and the ranking is now the SOL the **weaker half
+makes without its best 2% of copies** (the mean a copy let a thin 1.75+ band win: +37% on 162 copies = 30 SOL, against
+1.3+ at +13% on 545 = 36). At least 20 copies in each half. A table of what each buy-size band adds is printed.
+
+**What we pay with** (the running setting; all coins in the window):
+
+| wallet | float-paid | wSOL-paid | wSOL's own best setting |
+|---|---|---|---|
+| TAB16RxX (Oct 31 - Nov 18) | 363 copies, +6.7%, +12.19 SOL, P 98.3% | 466, −10.5%, −24.39 SOL, P 0.0% | 0 of 486,000 settings positive on both halves |
+| wallet 4 (Oct 21 - Nov 18) | 749, +12.6%, +47.27 SOL, P 100% | 302, −0.5%, −0.81 SOL, w/o 2% −9.14, P 41% | 21 of 427,680 positive on both halves; the choice −0.7% |
+| 5KcKcGcz (Nov 14-17) | 33, −0.9% (its own choice +28.5%) | 8, too few | too few |
+
+wSOL loses for TAB and breaks even at best for wallet 4 (its live 35 wSOL-paid trades since Nov 12 made +2.16 SOL;
+the 302-copy history says that was the lucky side of a coin that breaks even). By the owner's rule: floats only for both.
+
+**Wallet 4, float-paid** (1,071 copies): the choice is 1.2+ SOL, no price limit, tp 4, 600 s, sell pressure 10/60,
+stall 240, its sale never (+59.15 SOL, weaker half w/o 2% +17.50). Each part varied alone: tp 4 is the middle of the
+3.5-5 plateau (the running value); 600 s best; sell pressure 5/60, 8/60 and 10/60 within 3 SOL; stall off/180/240
+within 3 SOL; its sale never or early equal. So the exit stays (frozen anyway). Entry: buy size 1.0+ to 1.3+ is one
+plateau (+57 to +59 SOL), the bands [1.0, 1.2) add 0.05 SOL on 132 copies and [1.2, 1.3) +2.21 on 47 (positive in
+both halves); price limit 1.5x or none +57 to +59 against 1.25x +52. Scored: running 1.3+ / 1.25x +47.27 (w/o 2%
++11.88 / +13.69); **1.2+ / 1.5x +53.20 (+15.02 / +15.18), rank 326 of 466,560**; 1.3+ / 1.5x +50.14; 1.2+ / 1.25x +48.35.
+
+**TAB16RxX, float-paid** (370 copies): the choice 1.2+ rests on one band, [1.3, 1.4) SOL (74 copies, +11.85 of the
++19.57), a narrow pick, so the size stays 0.5+. Exit: tp 5 to none is a plateau (6 its middle), stall 240 and sell
+pressure 10/60 beat the running 180 and 5/60, its sale never. Scored at 0.5+: running (1.25x, tp 3.5, 5/60, 180)
++12.19 SOL, weaker half w/o 2% −3.97; **1.5x, tp 6, 10/60, 240: +19.50, w/o 2% +0.06 / +2.22, P 99.4%, rank 685 of
+437,400**; tp 6 alone (5/60, 180) +15.52; 10/60 + 240 alone (tp 3.5) +14.14. Its edge without its best copies is thin.
+
+**5KcKcGcz**: 33 float-paid copies in 4 days; the choice (tp 2-3, 300 s) +23-28% a copy, P 99.8%. Too few to deploy;
+it needs its earlier days fetched (Alchemy, batched).
+
+**Alchemy speed** (`alch_bench.py`, scratchpad): one batch of 100 getTransaction 0.14 s (726 tx/s); 8 batches of 50 in
+parallel 556 tx/s, no 429s; week-old transactions 650-1,100 tx/s. The 8 tx/s seen before was our one-call-per-request
+client; batched fetching (m1c, m2b, w5) runs near the plan's speed.

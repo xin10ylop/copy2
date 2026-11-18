@@ -1,0 +1,81 @@
+# rows by what we pay with, before the PAY filter: {'float': 370, 'wsol': 488}
+TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3: 370 copies (0.5+ SOL, paid with a float), 10-31 to 11-18; halves at 11-11 20:15 UTC; 0.0345 SOL a round trip
+combinations: 505,440 (13 sizes x 4 price limits x 9,720 exits)
+
+settings positive on both halves: 149,836 of 437,400 with 20+ copies in each half
+
+THE CHOICE (the best neighbourhood by the weaker half):
+   its buy 1.2+ SOL, price limit 1.5x, tp none, 600 s, sell pressure 10/60s, stall 240, its sale never
+   198 copies (132 / 66) | half 1 +12.5% | half 2 +14.5% | all +13.2% | w/o 2% +1.52 SOL | P(mean>0) 97.1%
+   its neighbourhood's weaker half: +11.4% a copy
+
+THE RUNNING SETTING: its buy 0.5+ SOL, price limit 1.25x, tp 3.5x, 600 s, sell pressure 5/60s, stall 180, its sale never
+   363 copies (181 / 182) | half 1 +1.1% | half 2 +12.3% | all +6.7% | w/o 2% +3.23 SOL | P(mean>0) 98.3%
+   its rank by the weaker half: 94,620 of 437,400
+
+the single best weaker half (no smoothing): its buy 1.3+ SOL, price limit 1.25x, tp 6x, 600 s, sell pressure 10/60s, stall 240, its sale never
+   183 copies (129 / 54) | half 1 +13.3% | half 2 +15.2% | all +13.9% | w/o 2% +3.48 SOL | P(mean>0) 98.1%
+
+the overfitting check: picked on half 1 alone: its buy 1.0+ SOL, price limit none, tp none, 600 s, sell pressure off, stall off, its sale never
+   206 copies (133 / 73) | half 1 +14.1% | half 2 +4.8% | all +10.8% | w/o 2% -0.43 SOL | P(mean>0) 92.6%
+   its rank on half 2: 164,874 of 437,400
+
+EACH PART VARIED ALONE (the others as chosen): half 1 / half 2 / all, a copy
+  its buy size:
+     0.5+        +9.6% /   +9.4% /   +9.5%  (copies 369)
+     0.6+        +7.6% /  +13.1% /  +10.0%  (copies 275)
+     0.7+        +8.4% /  +14.5% /  +11.0%  (copies 266)
+     0.8+        +8.4% /  +14.5% /  +11.0%  (copies 266)
+     0.9+        +9.4% /  +13.8% /  +11.2%  (copies 249)
+     1.0+       +12.5% /  +11.3% /  +12.1%  (copies 205)
+     1.1+       +12.5% /  +14.5% /  +13.2%  (copies 198)
+     1.2+       +12.5% /  +14.5% /  +13.2%  (copies 198)   <- chosen
+     1.3+       +12.5% /  +19.4% /  +14.6%  (copies 188)
+     1.4+        -0.7% /  +10.1% /   +2.4%  (copies 114)
+     1.5+        -0.6% /  +15.1% /   +3.7%  (copies 100)
+     1.75+       -0.6% /  +12.6% /   +2.3%  (copies 93)
+     2.0+      too few copies
+  price limit:
+     1.1x        +8.4% /  +20.3% /  +12.0%  (copies 144)
+     1.25x      +12.8% /  +13.3% /  +13.0%  (copies 193)
+     1.5x       +12.5% /  +14.5% /  +13.2%  (copies 198)   <- chosen
+     none       +12.5% /  +14.5% /  +13.2%  (copies 199)
+  take profit:
+     1.5x        -4.7% /   +3.5% /   -2.0%  (copies 198)
+     2x          -1.8% /   +4.3% /   +0.2%  (copies 198)
+     2.5x        +2.4% /   +3.8% /   +2.9%  (copies 198)
+     3x          +4.2% /   +8.3% /   +5.6%  (copies 198)
+     3.5x        +5.4% /   +9.5% /   +6.8%  (copies 198)
+     4x          +7.2% /   +8.6% /   +7.7%  (copies 198)
+     5x         +10.3% /  +10.5% /  +10.4%  (copies 198)
+     6x         +13.1% /  +12.0% /  +12.7%  (copies 198)
+     8x         +10.8% /  +14.5% /  +12.0%  (copies 198)
+     none       +12.5% /  +14.5% /  +13.2%  (copies 198)   <- chosen
+  time:
+     60s         +3.3% /   +5.5% /   +4.0%  (copies 198)
+     120s        +6.4% /   +7.0% /   +6.6%  (copies 198)
+     180s        +7.2% /   +5.3% /   +6.6%  (copies 198)
+     300s       +10.5% /   +4.9% /   +8.6%  (copies 198)
+     450s        +9.8% /  +10.1% /   +9.9%  (copies 198)
+     600s       +12.5% /  +14.5% /  +13.2%  (copies 198)   <- chosen
+  sell pressure:
+     off        +13.9% /   +8.2% /  +12.0%  (copies 198)
+     3/30s       +5.8% /   +2.9% /   +4.8%  (copies 198)
+     3/60s      +11.1% /  +13.1% /  +11.8%  (copies 198)
+     5/30s       +9.2% /  +12.2% /  +10.2%  (copies 198)
+     5/60s      +10.4% /  +11.3% /  +10.7%  (copies 198)
+     8/30s      +10.8% /  +15.8% /  +12.5%  (copies 198)
+     8/60s      +11.3% /  +14.6% /  +12.4%  (copies 198)
+     10/30s     +11.5% /  +14.8% /  +12.6%  (copies 198)
+     10/60s     +12.5% /  +14.5% /  +13.2%  (copies 198)   <- chosen
+  stall:
+     off        +12.1% /  +17.3% /  +13.8%  (copies 198)
+     60s         +6.0% /   +6.2% /   +6.1%  (copies 198)
+     90s         +7.3% /   +6.1% /   +6.9%  (copies 198)
+     120s        +9.0% /   +7.6% /   +8.5%  (copies 198)
+     180s       +10.2% /  +15.8% /  +12.0%  (copies 198)
+     240s       +12.5% /  +14.5% /  +13.2%  (copies 198)   <- chosen
+  its sale:
+     never      +12.5% /  +14.5% /  +13.2%  (copies 198)   <- chosen
+     early       +9.9% /   +8.5% /   +9.5%  (copies 198)
+     always      -1.4% /   -3.2% /   -2.0%  (copies 198)
