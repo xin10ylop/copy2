@@ -1,5 +1,1 @@
-Traceback (most recent call last):
-  File "/home/user/copy2/analysis/research/2026-11-17/winners/wallet_study_report.py", line 5, in <module>
-    SP, W8 = sys.argv[1], sys.argv[2]; R = sorted(json.load(open(f"{SP}/winners/study_{W8}{sys.argv[3] if len(sys.argv) > 3 else ''}.json")), key=lambda r: r["t"])
-                                                            ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: '/tmp/claude-0/-home-user-copy2/5735f118-428c-51f1-989c-5d5d23b0b4ec/scratchpad/winners/study_4sgdNABj.json'
+4sgdNABj: the study is still running (Nov 18 00:40 UTC); this file is replaced by its report when it ends.
