@@ -1,0 +1,26 @@
+5337 coins with a path; 14302 wallets with a 0.5+ SOL first buy; 1869 with 6+; copies to model: 35858
+
+== THE YARDSTICK: wallet 4, all its 0.5+ SOL buys, and its 1.45+ SOL buys (what the live bot copies) ==
+wallet       copies | our copy net (a copy) | w/o best 2% | day 1 / day 2 (copies) | won | creators | at launch | size med | P(mean>0)
+H9kuqGKNYgPF   126 |   -0.55 (  -0.9%) |   -4.35 |  +0.67 (73) /  -1.22 (53) |  31% |  100 |  96% |  0.90 |  40.8%
+H9kuqGKNYgPF    19 |   +2.39 ( +25.2%) |   +1.00 |  +1.67 (11) /  +0.72 (8) |  37% |   19 | 100% |  1.70 |  88.1%
+
+== FOUND: our copy positive on both days and without its best 2% (15 of 1869 wallets), by w/o best 2% ==
+wallet       copies | our copy net (a copy) | w/o best 2% | day 1 / day 2 (copies) | won | creators | at launch | size med | P(mean>0)
+DnkLKQtYXi4L    11 |   +1.55 ( +28.2%) |   +0.75 |  +1.21 (6) /  +0.35 (5) |  45% |    1 | 100% |  0.84 |  94.2%
+5mWe9kLZMvvB    60 |   +2.18 (  +7.3%) |   +0.74 |  +0.56 (28) /  +1.62 (32) |  27% |   46 |   0% |  0.76 |  77.8%
+AMDEmVocLtN5    49 |   +2.49 ( +10.1%) |   +0.63 |  +2.05 (30) /  +0.43 (19) |  24% |   45 |  96% |  0.79 |  79.3%
+TAB16RxXmazW    72 |   +2.05 (  +5.7%) |   +0.57 |  +0.32 (40) /  +1.73 (32) |  31% |   63 |  96% |  0.89 |  78.0%
+F5XvCe4233m6    12 |   +1.26 ( +21.0%) |   +0.57 |  +0.98 (6) /  +0.28 (6) |  42% |    1 | 100% |  2.97 |  91.6%
+HjuSthanedLr    11 |   +1.54 ( +28.0%) |   +0.36 |  +0.54 (6) /  +1.00 (5) |  36% |   10 |   9% |  4.63 |  84.1%
+7djZvJGNvke9    22 |   +1.61 ( +14.7%) |   +0.32 |  +0.10 (12) /  +1.51 (10) |  36% |   20 |   0% |  1.23 |  81.2%
+BCyNgSB1njYW    30 |   +1.68 ( +11.2%) |   +0.32 |  +0.17 (17) /  +1.51 (13) |  43% |    4 |  90% |  3.48 |  84.4%
+8Y3segeZTfx1     6 |   +1.44 ( +48.2%) |   +0.28 |  +0.53 (2) /  +0.91 (4) |  33% |    5 |   0% |  1.57 |  90.8%
+A9H4qn1LvXXY    11 |   +1.05 ( +19.0%) |   +0.26 |  +0.77 (6) /  +0.28 (5) |  45% |    1 | 100% |  0.74 |  88.9%
+H1xshmCRBDLz     9 |   +0.92 ( +20.5%) |   +0.22 |  +0.60 (6) /  +0.32 (3) |  44% |    9 |   0% |  0.90 |  88.5%
+8TPkrBcRayR3    36 |   +1.53 (  +8.5%) |   +0.21 |  +0.45 (15) /  +1.08 (21) |  28% |   32 |   0% |  0.59 |  74.5%
+rNAUS5wm8CqF    11 |   +0.88 ( +16.0%) |   +0.11 |  +0.75 (6) /  +0.13 (5) |  27% |    1 | 100% |  0.69 |  83.5%
+3P3XSWAA8rNh     9 |   +0.51 ( +11.4%) |   +0.11 |  +0.46 (4) /  +0.05 (5) |  33% |    9 |   0% |  0.63 |  86.5%
+CzsxDQz6kPqr    22 |   +1.32 ( +12.0%) |   +0.01 |  +0.36 (12) /  +0.96 (10) |  27% |   20 |   0% |  1.22 |  76.0%
+
+== for scale: the 1869 wallets' copies pooled: -2618.13 SOL on 35858 copies
