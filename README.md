@@ -189,6 +189,14 @@ call, as `analysis/research/2026-11-15/all_tokens/` recommended once 0.5 SOL was
 at 0.5, block by block −0.20 / +2.86 / +0.39, simulated on chain Nov 15): 12,036,623 units for 0.6 SOL (slot
 469883188). The exit is not touched. The restart: seven floats, feed connected; SOL 1.8689, WBTC 0.992, PUMP 0.612,
 SPCX 0.549, TTWO 0.580, DJT 0.596, HYPE 0.603, AAPLx 0.598 SOL. Day: 12 closed, 5 won, +0.8062 SOL.
+**Nov 18 ~11:00 UTC (13:00 Beirut): TAB16RxX removed, wallet 4 back to paying from wSOL too** (the owner's call). TAB's
+day: 17 real closed, 3 won, −0.7099 SOL; all 31 real −0.8764. The model on every one of its 49 copyable buys of the day
+(`analysis/research/2026-11-17/wallet_hunt/out/e14_TAB16RxX_nov18.txt`, fetched from the chain) is −5.09 SOL, far below
+the backtest's worst day (−2.20); on the 14 coins the bot traded, model −1.21 and live −0.71: the bot followed its
+rules, the wallet's coins stopped running (a 210 s seller since Nov 17). Wallet 4: `float_only = false`, `min_sol`
+back to 1.3 (1.2 was tested better only with floats only: with wSOL coins, +0.75 SOL, P 64.5%, worse at landing 8),
+`max_premium 0.5` kept (+4.01 SOL with wSOL coins, P 98.4%, 4 of 5 weeks).
+
 **Nov 18 ~06:45 UTC (08:45 Beirut): both units re-engineered, every combination by payment** (the owner's rule: floats
 win and wSOL breaks even or loses, so wSOL goes; `analysis/research/2026-11-17/wallet_hunt/market/README_direct.md`,
 "e8 v2" and "The double check"). Wallet 4's unit: `float_only = true`, `min_sol 1.2`, `max_premium 0.5` (backtest Oct 21 -
