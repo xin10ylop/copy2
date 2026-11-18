@@ -34,6 +34,7 @@ def get(c):
     try: return m, es, cpath(m, es[0]["slot"], es[0]["t"])
     except Exception: return m, es, None
 order = SEL[::-1] if PRE else SEL
+if PRE and os.environ.get("SHUFFLE"): order = list(SEL); random.Random(int(os.environ["SHUFFLE"])).shuffle(order)   # another fetcher in another order
 with ThreadPoolExecutor(8) as ex: D = [x for x in ex.map(get, order) if x[2]]
 if PRE: print("prefetched", len(D)); sys.exit()
 def trade(tr, es, k, tpo, cap):

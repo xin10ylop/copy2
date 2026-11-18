@@ -26,7 +26,8 @@ else:
     for x in items:
         b = next((e for e in own.get(x["m"], []) if e["buy"]), None)
         if b: jobs.append((x["m"], b["slot"], b["t"]))
-jobs.reverse(); print(f"{len(jobs)} coins, from the end", flush=True)
+if os.environ.get("SHUFFLE"): random.Random(int(os.environ["SHUFFLE"])).shuffle(jobs); print(f"{len(jobs)} coins, shuffled (seed {os.environ['SHUFFLE']})", flush=True)
+else: jobs.reverse(); print(f"{len(jobs)} coins, from the end", flush=True)
 def get(j):
     try: cpath(*j)
     except Exception: pass

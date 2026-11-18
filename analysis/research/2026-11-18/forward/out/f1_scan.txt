@@ -1,0 +1,4 @@
+2878 creates since Nov 18 00:00 UTC
+2409 SOL-priced coins
+26 ladder coins (1.1% of the SOL-priced launches)
+THE FROZEN FLIP, forward: 26 ladder coins, -1.62 SOL (-12.4% a copy); halves -12.0% / -12.8%; without the best 2% -1.67; P(mean > 0) 0.0%; won 4%; exits: tp 1, 30 s 25, grad 0
