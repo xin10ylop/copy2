@@ -69,3 +69,16 @@ or less (665 copies, -3.31 then -1.42 SOL); the creator fee 30 bps (77 copies, -
 0.5 SOL or less" is checked on our own live trades after Nov 16 14:25 UTC (outside the backtest), their real result on
 chain (`a10_live_check.py`). It is only proposed to the owner if the skipped live trades lose in sum. A live change is the
 owner's call.
+
+**The live check (Nov 18, `out/live_closed.txt` = the owner's journal paste, `a10_live_check.py`): the filter fails.**
+Live trades #66-#93 (#65 left out: bought 14:25:07, the backtest's last buy; #77 has no close line), the create's payer
+read for 21 of 27:
+
+| create paid by a wallet holding | live trades | net | won |
+|---|---|---|---|
+| 0.5 SOL or less (the filter would skip them) | 12 | **+3.97 SOL** | 10 |
+| more than 0.5 SOL | 9 | −1.18 SOL | 0 |
+| unknown (busy coins, the create past 15 pages) | 6 | +2.65 SOL | 3 |
+
+The opposite of the backtest. The filter is dropped. Its reverse is not adopted either: it was not the pre-registered
+rule, and 21 trades against 1,559 modelled copies say the payer's balance is noise, not a signal.
