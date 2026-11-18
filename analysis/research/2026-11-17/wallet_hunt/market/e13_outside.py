@@ -14,7 +14,7 @@ for e in sorted(h["trades"], key=lambda e: e["t"]):
 rows = []
 for m, e in fb.items():
     r = rate_of(e["quote"])
-    if r is None or A_ <= e["t"] < B_ or e["quote"] in SOLQ: continue
+    if r is None or A_ <= e["t"] < B_ or (e["quote"] in SOLQ and os.environ.get("SOLCOINS") != "1"): continue   # SOLCOINS=1: its SOL-priced coins too (paid from wSOL)
     sol = e["q"] * (1 + e["bps"] / 1e4) * r / 1e9
     if sol < 0.5: continue
     try: tr = cpath(m, e["slot"], e["t"])
