@@ -58,3 +58,21 @@ halves +1.99 / +4.32, 123 creators, P 97.2%** — the wallet of the unit `rugsni
 0.1 SOL, −0.1665) and studied again Nov 15 (`2026-11-16/tab/`: +8.8% a copy on the coins it buys alone). These 4 days
 are after that study's data: an out-of-sample confirmation under wallet 4's frozen exits. Next: FDhoU1DE (21 copies,
 +22.3%, halves equal, P 92.7%). The engineering (`e2_market_exits.py`) is running on the same paths.
+
+## The engineering on the 4 days (`e2_market_exits.py`; `../out/e2_market_exits_4days.txt`, `../out/e2_focus_TAB16.txt`)
+
+The grid's automatic pick (best of exit x quote token x size on days 1-2) overfits: its 4 "passes" score on 5-7 copies,
+and for TAB16RxX it picked pumpCmXq coins only (+65% on 13 copies, then −4.2% on 8). The full table is the evidence.
+
+**TAB16RxX, all its 0.5+ SOL buys on float-quote coins, 140 copies (days 1-2: 60, days 3-4: 80):** nearly every exit is
+positive on both halves. Wallet 4's live model +6.7% / +11.2% a copy (w/o 2% +0.85 / +1.81); time 60 s +8.6% / +9.6%;
+time 120 s (the best on days 1-2) +14.7% / +7.8%; stall 60 s +11.7% / +10.3% (w/o 2% +1.98 / +2.10); sell pressure 5/60
++ stall 180 + tp 4x +10.0% / +13.9%. Its sale is the weakest exit (+4.4% / +4.3%, w/o 2% −0.71 on days 3-4), as the
+Nov 15 study found. Size: the 0.5+ set beats 1.0+ and 1.3+ (fewer copies, mixed). One quote token alone does not hold.
+Wallet 4 on the same days: its live model +6.8% on days 3-4 (96 copies).
+
+**FDhoU1DE** (21 copies): wallet 4's live model +23.9% / +21.3%, w/o 2% +0.37 / −0.30: a lead to watch, too few copies.
+
+**Reading:** TAB16RxX is a real, modest edge that survives a sample never used to pick it, and wallet 4's frozen exits
+suit it. What would run it: the paused unit `rugsnipe-long-tab` with `min_sol` 0.5, the main unit's exits, floats in its
+own wallet (63 of its 80 days-3-4 copies are TTWofwAg coins). The owner's call.

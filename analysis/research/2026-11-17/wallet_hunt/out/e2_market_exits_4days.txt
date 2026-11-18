@@ -1,0 +1,27 @@
+4397 float-quote coins over the 4 days; 797 wallets with 12+ copies (+ wallet 4); days 1-2 / 3-4 split at the median time
+
+== WALLET 4 (the yardstick), engineered the same way ==
+   picked: coins pumpCmXq, its 1.0+ SOL, tp 4x | days 1-2    9   +2.85 ( +63.3%) w/o 2%   +1.50 | days 3-4    7   +0.36 ( +10.4%) w/o 2%   -0.06; P 72% | days 3-4 its sale   96   +3.94 (  +8.2%) w/o 2%   +1.87 | live model   96   +3.25 (  +6.8%) w/o 2%   +0.77
+
+== PASS on days 3-4 (positive, w/o 2% positive, P >= 95%): 4 of 439 wallets ==
+   6Weygqd9fBi3TnBkPwnDeUrGkTd83RCFPL7E6sc2EjSW (225 copies): coins TTWofwAg, its 1.0+ SOL, time 30s | days 1-2   10   +0.92 ( +18.5%) w/o 2%   +0.22 | days 3-4    5   +1.25 ( +50.1%) w/o 2%   +0.57; P 100%
+   HqhUCXmrTHnkZr5yhCKHVpC421wUURWGP47eX6s2uMQf (70 copies): coins TTWofwAg, its 0.5+ SOL, time 120s | days 1-2   17   +2.25 ( +26.5%) w/o 2%   +0.13 | days 3-4    7   +1.03 ( +29.5%) w/o 2%   +0.44; P 96%
+   7kETfHMR9cJmiDFutYFxY7gCUKVPVbKhuZeyiKynsfBg (34 copies): coins all, its 0.5+ SOL, tp 1.2x | days 1-2   28   -0.46 (  -3.3%) w/o 2%   -0.54 | days 3-4    6   +0.30 (  +9.9%) w/o 2%   +0.21; P 100%
+   97K6nsFhBWDKwQf6heDDhDtsCRC4779LPHSFZkc2zqK4 (23 copies): coins all, its 0.5+ SOL, tp 1.2x | days 1-2   16   +0.15 (  +1.9%) w/o 2%   +0.09 | days 3-4    7   +0.14 (  +4.1%) w/o 2%   +0.06; P 98%
+
+== the 15 best days-3-4 results that did not pass, for scale ==
+   AMDEmVocLtN5 (51): all, 0.5+, time 300s | days 3-4   23   +1.50 ( +13.1%) w/o 2%   -0.29; P 72%
+   DsGJkPzFEQZu (33): all, 0.5+, wallet 4's live model | days 3-4   19   +1.32 ( +13.9%) w/o 2%   +0.04; P 80%
+   5KcKcGczDGsF (33): all, 0.5+, tp 2x | days 3-4   20   +1.28 ( +12.8%) w/o 2%   +0.72; P 86%
+   8LtfL447f2ww (38): all, 0.5+, its sale + sp 5/60 + stall 180 + tp 4x | days 3-4   25   +1.24 (  +9.9%) w/o 2%   +0.77; P 93%
+   6anjqMeWigQF (110): SPCXxcqX, 0.5+, wallet 4's live model | days 3-4   13   +1.17 ( +18.1%) w/o 2%   -0.15; P 76%
+   9BV19BcF1cmA (29): TTWofwAg, 0.5+, wallet 4's live model | days 3-4    8   +1.16 ( +29.0%) w/o 2%   -0.08; P 77%
+   D1QuMgpvKjaa (33): all, 0.5+, time 30s | days 3-4   23   +0.99 (  +8.6%) w/o 2%   +0.53; P 88%
+   APjnAw5LqspU (22): all, 0.5+, its sale + sp 5/60 | days 3-4   14   +0.95 ( +13.6%) w/o 2%   -0.98; P 64%
+   CC1Vo9y9183z (21): all, 0.5+, its sale + tp 4x | days 3-4    8   +0.91 ( +22.9%) w/o 2%   -0.52; P 66%
+   ARu4n5mFdZog (112): TTWofwAg, 1.0+, its sale + tp 4x | days 3-4   15   +0.90 ( +12.0%) w/o 2%   -0.57; P 67%
+   8zqsUMtyZUyX (21): all, 0.5+, time 300s | days 3-4   12   +0.86 ( +14.4%) w/o 2%   -0.72; P 65%
+   FiFawHqxeTVB (47): pumpCmXq, 0.5+, tp 2x | days 3-4    7   +0.86 ( +24.5%) w/o 2%   +0.34; P 86%
+   HjuSthanedLr (13): all, 0.5+, wallet 4's live model | days 3-4    5   +0.85 ( +34.0%) w/o 2%   -0.33; P 68%
+   5jn2KYsAvnZY (113): pumpCmXq, 0.5+, time 120s | days 3-4    8   +0.83 ( +20.7%) w/o 2%   -0.37; P 71%
+   FDhoU1DEGR2t (21): all, 0.5+, tp 3x | days 3-4   11   +0.82 ( +14.9%) w/o 2%   -0.11; P 71%

@@ -1,0 +1,144 @@
+4397 float-quote coins over the 4 days; 797 wallets with 12+ copies (+ wallet 4); days 1-2 / 3-4 split at the median time
+
+== H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg: 187 copies (days 1-2 91, days 3-4 96) ==
+   its sale                                 | days 1-2   91   -1.94 (  -4.3%) w/o 2%   -3.19 | days 3-4   96   +3.94 (  +8.2%) w/o 2%   +1.87
+   time 30s                                 | days 1-2   91   +0.80 (  +1.8%) w/o 2%   -1.10 | days 3-4   96   +4.29 (  +8.9%) w/o 2%   +2.65
+   time 60s                                 | days 1-2   91   +2.00 (  +4.4%) w/o 2%   -0.08 | days 3-4   96   +7.42 ( +15.4%) w/o 2%   +4.71
+   time 120s                                | days 1-2   91   +0.25 (  +0.6%) w/o 2%   -1.85 | days 3-4   96   +4.55 (  +9.5%) w/o 2%   +2.19
+   time 300s                                | days 1-2   91   +0.84 (  +1.8%) w/o 2%   -1.02 | days 3-4   96   +6.86 ( +14.3%) w/o 2%   +3.68
+   time 600s                                | days 1-2   91   +0.57 (  +1.3%) w/o 2%   -1.86 | days 3-4   96   -0.41 (  -0.9%) w/o 2%   -2.32
+   tp 1.2x                                  | days 1-2   91   -0.96 (  -2.1%) w/o 2%   -1.18 | days 3-4   96   +2.00 (  +4.2%) w/o 2%   +1.76
+   tp 1.5x                                  | days 1-2   91   -0.43 (  -0.9%) w/o 2%   -0.95 | days 3-4   96   +4.50 (  +9.4%) w/o 2%   +3.97
+   tp 2x                                    | days 1-2   91   +2.41 (  +5.3%) w/o 2%   +1.20 | days 3-4   96   +4.03 (  +8.4%) w/o 2%   +2.92
+   tp 3x                                    | days 1-2   91   +3.05 (  +6.7%) w/o 2%   +1.19 | days 3-4   96   +4.14 (  +8.6%) w/o 2%   +2.24
+   tp 4x                                    | days 1-2   91   +2.93 (  +6.4%) w/o 2%   +0.16 | days 3-4   96   +3.93 (  +8.2%) w/o 2%   +1.05
+   sp 3/30s                                 | days 1-2   91   +0.41 (  +0.9%) w/o 2%   -1.48 | days 3-4   96   +3.47 (  +7.2%) w/o 2%   +1.34
+   sp 5/60s                                 | days 1-2   91   -1.51 (  -3.3%) w/o 2%   -3.07 | days 3-4   96   +1.59 (  +3.3%) w/o 2%   -0.41
+   sp 10/60s                                | days 1-2   91   +0.17 (  +0.4%) w/o 2%   -2.09 | days 3-4   96   +1.97 (  +4.1%) w/o 2%   -0.03
+   stall 60s                                | days 1-2   91   +0.19 (  +0.4%) w/o 2%   -2.19 | days 3-4   96   +5.25 ( +10.9%) w/o 2%   +3.09
+   stall 120s                               | days 1-2   91   -1.72 (  -3.8%) w/o 2%   -4.19 | days 3-4   96   +4.37 (  +9.1%) w/o 2%   +1.87
+   stall 180s                               | days 1-2   91   -3.27 (  -7.2%) w/o 2%   -4.71 | days 3-4   96   +3.38 (  +7.0%) w/o 2%   +0.65
+   its sale + tp 2x                         | days 1-2   91   -0.95 (  -2.1%) w/o 2%   -2.15 | days 3-4   96   +3.55 (  +7.4%) w/o 2%   +2.50
+   its sale + tp 4x                         | days 1-2   91   -1.06 (  -2.3%) w/o 2%   -2.89 | days 3-4   96   +4.51 (  +9.4%) w/o 2%   +2.06
+   its sale + sp 5/60                       | days 1-2   91   -1.47 (  -3.2%) w/o 2%   -2.81 | days 3-4   96   +3.12 (  +6.5%) w/o 2%   +1.34
+   sp 5/60 + stall 180 + tp 4x              | days 1-2   91   +0.17 (  +0.4%) w/o 2%   -2.16 | days 3-4   96   +3.17 (  +6.6%) w/o 2%   +0.34
+   its sale + sp 5/60 + stall 180 + tp 4x   | days 1-2   91   -0.78 (  -1.7%) w/o 2%   -2.61 | days 3-4   96   +3.66 (  +7.6%) w/o 2%   +1.58
+   wallet 4's live model                    | days 1-2   91   -0.60 (  -1.3%) w/o 2%   -2.62 | days 3-4   96   +3.25 (  +6.8%) w/o 2%   +0.77
+   [wallet 4's live model] coins all       its 0.5+ SOL | days 1-2   91   -0.60 (  -1.3%) w/o 2%   -2.62 | days 3-4   96   +3.25 (  +6.8%) w/o 2%   +0.77
+   [wallet 4's live model] coins all       its 1.0+ SOL | days 1-2   43   -0.48 (  -2.2%) w/o 2%   -1.32 | days 3-4   31   +1.74 ( +11.2%) w/o 2%   +0.52
+   [wallet 4's live model] coins all       its 1.3+ SOL | days 1-2   22   -0.00 (  -0.0%) w/o 2%   -0.85 | days 3-4   21   +2.11 ( +20.1%) w/o 2%   +0.88
+   [wallet 4's live model] coins SPCXxcqX  its 0.5+ SOL | days 1-2   14   -0.63 (  -9.0%) w/o 2%   -0.81 | days 3-4    8   -0.72 ( -17.9%) w/o 2%   -0.73
+   [wallet 4's live model] coins SPCXxcqX  its 1.0+ SOL | days 1-2    8   -0.34 (  -8.5%) w/o 2%   -0.52 | days 3-4    2   +0.00 (  +0.0%) w/o 2%   -0.01
+   [wallet 4's live model] coins TTWofwAg  its 0.5+ SOL | days 1-2   52   -0.81 (  -3.1%) w/o 2%   -1.62 | days 3-4   65   +4.82 ( +14.8%) w/o 2%   +3.57
+   [wallet 4's live model] coins TTWofwAg  its 1.0+ SOL | days 1-2   20   -0.51 (  -5.1%) w/o 2%   -1.30 | days 3-4   22   +2.46 ( +22.4%) w/o 2%   +1.24
+   [wallet 4's live model] coins TTWofwAg  its 1.3+ SOL | days 1-2   10   -0.01 (  -0.1%) w/o 2%   -0.30 | days 3-4   16   +2.64 ( +33.0%) w/o 2%   +1.42
+   [wallet 4's live model] coins pumpCmXq  its 0.5+ SOL | days 1-2   16   +1.79 ( +22.4%) w/o 2%   +0.61 | days 3-4   21   -0.70 (  -6.7%) w/o 2%   -1.45
+   [wallet 4's live model] coins pumpCmXq  its 1.0+ SOL | days 1-2    9   +1.10 ( +24.5%) w/o 2%   +0.26 | days 3-4    7   -0.72 ( -20.6%) w/o 2%   -0.81
+   [its sale] coins all       its 0.5+ SOL | days 1-2   91   -1.94 (  -4.3%) w/o 2%   -3.19 | days 3-4   96   +3.94 (  +8.2%) w/o 2%   +1.87
+   [its sale] coins all       its 1.0+ SOL | days 1-2   43   -0.77 (  -3.6%) w/o 2%   -1.37 | days 3-4   31   +1.08 (  +6.9%) w/o 2%   -0.02
+   [its sale] coins all       its 1.3+ SOL | days 1-2   22   -0.66 (  -6.0%) w/o 2%   -1.09 | days 3-4   21   +1.30 ( +12.4%) w/o 2%   +0.20
+   [its sale] coins SPCXxcqX  its 0.5+ SOL | days 1-2   14   -0.71 ( -10.1%) w/o 2%   -1.03 | days 3-4    8   -0.76 ( -19.1%) w/o 2%   -0.77
+   [its sale] coins SPCXxcqX  its 1.0+ SOL | days 1-2    8   -0.37 (  -9.2%) w/o 2%   -0.70 | days 3-4    2   -0.01 (  -1.0%) w/o 2%   -0.01
+   [its sale] coins TTWofwAg  its 0.5+ SOL | days 1-2   52   -1.19 (  -4.6%) w/o 2%   -1.80 | days 3-4   65   +5.70 ( +17.5%) w/o 2%   +4.60
+   [its sale] coins TTWofwAg  its 1.0+ SOL | days 1-2   20   -0.57 (  -5.7%) w/o 2%   -1.16 | days 3-4   22   +2.05 ( +18.6%) w/o 2%   +0.94
+   [its sale] coins TTWofwAg  its 1.3+ SOL | days 1-2   10   -0.21 (  -4.1%) w/o 2%   -0.50 | days 3-4   16   +1.91 ( +23.8%) w/o 2%   +0.81
+   [its sale] coins pumpCmXq  its 0.5+ SOL | days 1-2   16   +1.25 ( +15.6%) w/o 2%   +0.61 | days 3-4   21   -1.12 ( -10.7%) w/o 2%   -1.78
+   [its sale] coins pumpCmXq  its 1.0+ SOL | days 1-2    9   +1.06 ( +23.5%) w/o 2%   +0.46 | days 3-4    7   -0.96 ( -27.4%) w/o 2%   -0.97
+
+== TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3: 140 copies (days 1-2 60, days 3-4 80) ==
+   its sale                                 | days 1-2   60   +1.31 (  +4.4%) w/o 2%   +0.25 | days 3-4   80   +1.73 (  +4.3%) w/o 2%   -0.71
+   time 30s                                 | days 1-2   60   +0.97 (  +3.2%) w/o 2%   -0.49 | days 3-4   80   +1.84 (  +4.6%) w/o 2%   +0.57
+   time 60s                                 | days 1-2   60   +2.57 (  +8.6%) w/o 2%   +1.11 | days 3-4   80   +3.85 (  +9.6%) w/o 2%   +2.09
+   time 120s                                | days 1-2   60   +4.40 ( +14.7%) w/o 2%   +2.96 | days 3-4   80   +3.11 (  +7.8%) w/o 2%   +1.73
+   time 300s                                | days 1-2   60   +2.37 (  +7.9%) w/o 2%   +1.21 | days 3-4   80   +3.56 (  +8.9%) w/o 2%   +0.61
+   time 600s                                | days 1-2   60   +1.06 (  +3.5%) w/o 2%   -0.92 | days 3-4   80   +4.67 ( +11.7%) w/o 2%   +0.20
+   tp 1.2x                                  | days 1-2   60   -0.43 (  -1.4%) w/o 2%   -0.55 | days 3-4   80   -0.08 (  -0.2%) w/o 2%   -0.27
+   tp 1.5x                                  | days 1-2   60   +0.61 (  +2.0%) w/o 2%   +0.35 | days 3-4   80   +2.34 (  +5.8%) w/o 2%   +1.86
+   tp 2x                                    | days 1-2   60   +1.60 (  +5.3%) w/o 2%   +0.87 | days 3-4   80   +3.12 (  +7.8%) w/o 2%   +1.88
+   tp 3x                                    | days 1-2   60   +2.17 (  +7.2%) w/o 2%   +1.14 | days 3-4   80   +1.73 (  +4.3%) w/o 2%   -0.14
+   tp 4x                                    | days 1-2   60   +2.34 (  +7.8%) w/o 2%   +0.95 | days 3-4   80   +3.76 (  +9.4%) w/o 2%   +0.93
+   sp 3/30s                                 | days 1-2   60   +2.26 (  +7.5%) w/o 2%   +1.13 | days 3-4   80   +3.29 (  +8.2%) w/o 2%   +1.44
+   sp 5/60s                                 | days 1-2   60   +0.55 (  +1.8%) w/o 2%   -0.26 | days 3-4   80   +5.61 ( +14.0%) w/o 2%   +1.26
+   sp 10/60s                                | days 1-2   60   +0.39 (  +1.3%) w/o 2%   -0.28 | days 3-4   80   +7.05 ( +17.6%) w/o 2%   +2.57
+   stall 60s                                | days 1-2   60   +3.50 ( +11.7%) w/o 2%   +1.98 | days 3-4   80   +4.12 ( +10.3%) w/o 2%   +2.10
+   stall 120s                               | days 1-2   60   +2.45 (  +8.2%) w/o 2%   +0.83 | days 3-4   80   +3.48 (  +8.7%) w/o 2%   +1.51
+   stall 180s                               | days 1-2   60   +0.30 (  +1.0%) w/o 2%   -0.75 | days 3-4   80   +5.90 ( +14.8%) w/o 2%   +1.46
+   its sale + tp 2x                         | days 1-2   60   +0.85 (  +2.8%) w/o 2%   +0.13 | days 3-4   80   +1.17 (  +2.9%) w/o 2%   +0.06
+   its sale + tp 4x                         | days 1-2   60   +2.76 (  +9.2%) w/o 2%   +1.36 | days 3-4   80   +1.46 (  +3.7%) w/o 2%   -0.45
+   its sale + sp 5/60                       | days 1-2   60   +0.82 (  +2.7%) w/o 2%   +0.07 | days 3-4   80   +2.93 (  +7.3%) w/o 2%   +0.49
+   sp 5/60 + stall 180 + tp 4x              | days 1-2   60   +2.99 ( +10.0%) w/o 2%   +1.59 | days 3-4   80   +5.55 ( +13.9%) w/o 2%   +2.73
+   its sale + sp 5/60 + stall 180 + tp 4x   | days 1-2   60   +2.08 (  +6.9%) w/o 2%   +0.68 | days 3-4   80   +2.68 (  +6.7%) w/o 2%   +0.77
+   wallet 4's live model                    | days 1-2   60   +2.02 (  +6.7%) w/o 2%   +0.85 | days 3-4   80   +4.47 ( +11.2%) w/o 2%   +1.81
+   [wallet 4's live model] coins all       its 0.5+ SOL | days 1-2   60   +2.02 (  +6.7%) w/o 2%   +0.85 | days 3-4   80   +4.47 ( +11.2%) w/o 2%   +1.81
+   [wallet 4's live model] coins all       its 1.0+ SOL | days 1-2   19   -0.10 (  -1.1%) w/o 2%   -0.91 | days 3-4   41   +0.98 (  +4.8%) w/o 2%   -0.50
+   [wallet 4's live model] coins all       its 1.3+ SOL | days 1-2   12   +0.17 (  +2.8%) w/o 2%   -0.64 | days 3-4   31   +1.59 ( +10.2%) w/o 2%   +0.10
+   [wallet 4's live model] coins SPCXxcqX  its 0.5+ SOL | days 1-2    9   -0.14 (  -3.1%) w/o 2%   -0.36 | days 3-4    5   -0.14 (  -5.6%) w/o 2%   -0.18
+   [wallet 4's live model] coins TTWofwAg  its 0.5+ SOL | days 1-2   34   -1.94 ( -11.4%) w/o 2%   -2.45 | days 3-4   63   +4.97 ( +15.8%) w/o 2%   +3.49
+   [wallet 4's live model] coins TTWofwAg  its 1.0+ SOL | days 1-2   15   -1.28 ( -17.0%) w/o 2%   -1.49 | days 3-4   29   +1.27 (  +8.8%) w/o 2%   -0.21
+   [wallet 4's live model] coins TTWofwAg  its 1.3+ SOL | days 1-2    8   -1.01 ( -25.2%) w/o 2%   -0.95 | days 3-4   27   +1.38 ( +10.2%) w/o 2%   -0.10
+   [wallet 4's live model] coins pumpCmXq  its 0.5+ SOL | days 1-2   13   +4.23 ( +65.0%) w/o 2%   +3.06 | days 3-4    8   -0.17 (  -4.2%) w/o 2%   -0.66
+   [wallet 4's live model] coins pumpCmXq  its 1.0+ SOL | days 1-2    2   +1.26 (+126.5%) w/o 2%   +0.46 | days 3-4    8   -0.17 (  -4.2%) w/o 2%   -0.66
+   [its sale] coins all       its 0.5+ SOL | days 1-2   60   +1.31 (  +4.4%) w/o 2%   +0.25 | days 3-4   80   +1.73 (  +4.3%) w/o 2%   -0.71
+   [its sale] coins all       its 1.0+ SOL | days 1-2   19   -0.20 (  -2.1%) w/o 2%   -0.62 | days 3-4   41   -0.61 (  -3.0%) w/o 2%   -1.47
+   [its sale] coins all       its 1.3+ SOL | days 1-2   12   -0.07 (  -1.1%) w/o 2%   -0.49 | days 3-4   31   +0.27 (  +1.8%) w/o 2%   -0.59
+   [its sale] coins SPCXxcqX  its 0.5+ SOL | days 1-2    9   -0.35 (  -7.7%) w/o 2%   -0.54 | days 3-4    5   -0.37 ( -14.7%) w/o 2%   -0.37
+   [its sale] coins TTWofwAg  its 0.5+ SOL | days 1-2   34   -0.81 (  -4.8%) w/o 2%   -1.87 | days 3-4   63   +2.77 (  +8.8%) w/o 2%   +1.19
+   [its sale] coins TTWofwAg  its 1.0+ SOL | days 1-2   15   -1.04 ( -13.8%) w/o 2%   -1.45 | days 3-4   29   -0.01 (  -0.1%) w/o 2%   -0.87
+   [its sale] coins TTWofwAg  its 1.3+ SOL | days 1-2    8   -0.91 ( -22.6%) w/o 2%   -1.13 | days 3-4   27   +0.20 (  +1.5%) w/o 2%   -0.66
+   [its sale] coins pumpCmXq  its 0.5+ SOL | days 1-2   13   +2.67 ( +41.1%) w/o 2%   +1.91 | days 3-4    8   -0.37 (  -9.2%) w/o 2%   -0.67
+   [its sale] coins pumpCmXq  its 1.0+ SOL | days 1-2    2   +0.83 ( +82.9%) w/o 2%   +0.41 | days 3-4    8   -0.37 (  -9.2%) w/o 2%   -0.67
+
+== FDhoU1DEGR2ts3Dza2srrFahYtzPXUeCNTK615BwVWTM: 21 copies (days 1-2 10, days 3-4 11) ==
+   its sale                                 | days 1-2   10   -0.40 (  -8.0%) w/o 2%   -0.43 | days 3-4   11   +0.52 (  +9.5%) w/o 2%   +0.03
+   time 30s                                 | days 1-2   10   -0.08 (  -1.6%) w/o 2%   -0.24 | days 3-4   11   +0.05 (  +1.0%) w/o 2%   -0.20
+   time 60s                                 | days 1-2   10   +0.29 (  +5.9%) w/o 2%   -0.03 | days 3-4   11   +0.18 (  +3.2%) w/o 2%   -0.04
+   time 120s                                | days 1-2   10   +0.28 (  +5.7%) w/o 2%   -0.05 | days 3-4   11   +0.75 ( +13.7%) w/o 2%   +0.36
+   time 300s                                | days 1-2   10   +1.05 ( +21.1%) w/o 2%   +0.56 | days 3-4   11   +1.00 ( +18.2%) w/o 2%   -0.58
+   time 600s                                | days 1-2   10   +1.52 ( +30.5%) w/o 2%   +0.70 | days 3-4   11   +0.62 ( +11.2%) w/o 2%   -0.11
+   tp 1.2x                                  | days 1-2   10   -0.12 (  -2.3%) w/o 2%   -0.20 | days 3-4   11   +0.38 (  +6.9%) w/o 2%   +0.29
+   tp 1.5x                                  | days 1-2   10   +0.58 ( +11.6%) w/o 2%   +0.38 | days 3-4   11   +0.80 ( +14.6%) w/o 2%   +0.57
+   tp 2x                                    | days 1-2   10   +1.47 ( +29.4%) w/o 2%   +1.00 | days 3-4   11   +1.10 ( +20.1%) w/o 2%   +0.63
+   tp 3x                                    | days 1-2   10   +1.64 ( +32.9%) w/o 2%   +0.82 | days 3-4   11   +0.82 ( +14.9%) w/o 2%   -0.11
+   tp 4x                                    | days 1-2   10   +1.52 ( +30.5%) w/o 2%   +0.70 | days 3-4   11   +1.29 ( +23.5%) w/o 2%   -0.11
+   sp 3/30s                                 | days 1-2   10   +0.47 (  +9.4%) w/o 2%   -0.29 | days 3-4   11   +0.39 (  +7.0%) w/o 2%   +0.02
+   sp 5/60s                                 | days 1-2   10   +1.47 ( +29.3%) w/o 2%   +0.64 | days 3-4   11   +0.46 (  +8.3%) w/o 2%   -0.51
+   sp 10/60s                                | days 1-2   10   +1.36 ( +27.2%) w/o 2%   +0.53 | days 3-4   11   +0.10 (  +1.8%) w/o 2%   -0.81
+   stall 60s                                | days 1-2   10   +0.47 (  +9.3%) w/o 2%   +0.06 | days 3-4   11   +0.51 (  +9.3%) w/o 2%   +0.10
+   stall 120s                               | days 1-2   10   +0.14 (  +2.9%) w/o 2%   -0.16 | days 3-4   11   +0.13 (  +2.3%) w/o 2%   -0.60
+   stall 180s                               | days 1-2   10   +1.13 ( +22.6%) w/o 2%   +0.30 | days 3-4   11   +0.40 (  +7.3%) w/o 2%   -0.65
+   its sale + tp 2x                         | days 1-2   10   -0.40 (  -8.0%) w/o 2%   -0.43 | days 3-4   11   +0.53 (  +9.7%) w/o 2%   +0.07
+   its sale + tp 4x                         | days 1-2   10   -0.40 (  -8.0%) w/o 2%   -0.43 | days 3-4   11   +0.52 (  +9.5%) w/o 2%   +0.03
+   its sale + sp 5/60                       | days 1-2   10   -0.39 (  -7.8%) w/o 2%   -0.42 | days 3-4   11   +0.54 (  +9.8%) w/o 2%   +0.05
+   sp 5/60 + stall 180 + tp 4x              | days 1-2   10   +1.08 ( +21.5%) w/o 2%   +0.25 | days 3-4   11   +0.78 ( +14.3%) w/o 2%   -0.62
+   its sale + sp 5/60 + stall 180 + tp 4x   | days 1-2   10   -0.39 (  -7.8%) w/o 2%   -0.42 | days 3-4   11   +0.54 (  +9.8%) w/o 2%   +0.05
+   wallet 4's live model                    | days 1-2   10   +1.19 ( +23.9%) w/o 2%   +0.37 | days 3-4   11   +1.17 ( +21.3%) w/o 2%   -0.30
+   [wallet 4's live model] coins all       its 0.5+ SOL | days 1-2   10   +1.19 ( +23.9%) w/o 2%   +0.37 | days 3-4   11   +1.17 ( +21.3%) w/o 2%   -0.30
+   [wallet 4's live model] coins TTWofwAg  its 0.5+ SOL | days 1-2    7   +1.22 ( +34.9%) w/o 2%   +0.39 | days 3-4    7   +1.50 ( +43.0%) w/o 2%   +0.03
+   [its sale] coins all       its 0.5+ SOL | days 1-2   10   -0.40 (  -8.0%) w/o 2%   -0.43 | days 3-4   11   +0.52 (  +9.5%) w/o 2%   +0.03
+   [its sale] coins TTWofwAg  its 0.5+ SOL | days 1-2    7   -0.37 ( -10.5%) w/o 2%   -0.38 | days 3-4    7   +0.55 ( +15.7%) w/o 2%   +0.06
+
+== WALLET 4 (the yardstick), engineered the same way ==
+   picked: coins pumpCmXq, its 1.0+ SOL, tp 4x | days 1-2    9   +2.85 ( +63.3%) w/o 2%   +1.50 | days 3-4    7   +0.36 ( +10.4%) w/o 2%   -0.06; P 72% | days 3-4 its sale   96   +3.94 (  +8.2%) w/o 2%   +1.87 | live model   96   +3.25 (  +6.8%) w/o 2%   +0.77
+
+== PASS on days 3-4 (positive, w/o 2% positive, P >= 95%): 4 of 439 wallets ==
+   6Weygqd9fBi3TnBkPwnDeUrGkTd83RCFPL7E6sc2EjSW (225 copies): coins TTWofwAg, its 1.0+ SOL, time 30s | days 1-2   10   +0.92 ( +18.5%) w/o 2%   +0.22 | days 3-4    5   +1.25 ( +50.1%) w/o 2%   +0.57; P 100%
+   HqhUCXmrTHnkZr5yhCKHVpC421wUURWGP47eX6s2uMQf (70 copies): coins TTWofwAg, its 0.5+ SOL, time 120s | days 1-2   17   +2.25 ( +26.5%) w/o 2%   +0.13 | days 3-4    7   +1.03 ( +29.5%) w/o 2%   +0.44; P 96%
+   7kETfHMR9cJmiDFutYFxY7gCUKVPVbKhuZeyiKynsfBg (34 copies): coins all, its 0.5+ SOL, tp 1.2x | days 1-2   28   -0.46 (  -3.3%) w/o 2%   -0.54 | days 3-4    6   +0.30 (  +9.9%) w/o 2%   +0.21; P 100%
+   97K6nsFhBWDKwQf6heDDhDtsCRC4779LPHSFZkc2zqK4 (23 copies): coins all, its 0.5+ SOL, tp 1.2x | days 1-2   16   +0.15 (  +1.9%) w/o 2%   +0.09 | days 3-4    7   +0.14 (  +4.1%) w/o 2%   +0.06; P 98%
+
+== the 15 best days-3-4 results that did not pass, for scale ==
+   AMDEmVocLtN5 (51): all, 0.5+, time 300s | days 3-4   23   +1.50 ( +13.1%) w/o 2%   -0.29; P 72%
+   DsGJkPzFEQZu (33): all, 0.5+, wallet 4's live model | days 3-4   19   +1.32 ( +13.9%) w/o 2%   +0.04; P 80%
+   5KcKcGczDGsF (33): all, 0.5+, tp 2x | days 3-4   20   +1.28 ( +12.8%) w/o 2%   +0.72; P 86%
+   8LtfL447f2ww (38): all, 0.5+, its sale + sp 5/60 + stall 180 + tp 4x | days 3-4   25   +1.24 (  +9.9%) w/o 2%   +0.77; P 93%
+   6anjqMeWigQF (110): SPCXxcqX, 0.5+, wallet 4's live model | days 3-4   13   +1.17 ( +18.1%) w/o 2%   -0.15; P 76%
+   9BV19BcF1cmA (29): TTWofwAg, 0.5+, wallet 4's live model | days 3-4    8   +1.16 ( +29.0%) w/o 2%   -0.08; P 77%
+   D1QuMgpvKjaa (33): all, 0.5+, time 30s | days 3-4   23   +0.99 (  +8.6%) w/o 2%   +0.53; P 88%
+   APjnAw5LqspU (22): all, 0.5+, its sale + sp 5/60 | days 3-4   14   +0.95 ( +13.6%) w/o 2%   -0.98; P 64%
+   CC1Vo9y9183z (21): all, 0.5+, its sale + tp 4x | days 3-4    8   +0.91 ( +22.9%) w/o 2%   -0.52; P 66%
+   ARu4n5mFdZog (112): TTWofwAg, 1.0+, its sale + tp 4x | days 3-4   15   +0.90 ( +12.0%) w/o 2%   -0.57; P 67%
+   8zqsUMtyZUyX (21): all, 0.5+, time 300s | days 3-4   12   +0.86 ( +14.4%) w/o 2%   -0.72; P 65%
+   FiFawHqxeTVB (47): pumpCmXq, 0.5+, tp 2x | days 3-4    7   +0.86 ( +24.5%) w/o 2%   +0.34; P 86%
+   HjuSthanedLr (13): all, 0.5+, wallet 4's live model | days 3-4    5   +0.85 ( +34.0%) w/o 2%   -0.33; P 68%
+   5jn2KYsAvnZY (113): pumpCmXq, 0.5+, time 120s | days 3-4    8   +0.83 ( +20.7%) w/o 2%   -0.37; P 71%
+   FDhoU1DEGR2t (21): all, 0.5+, tp 3x | days 3-4   11   +0.82 ( +14.9%) w/o 2%   -0.11; P 71%

@@ -75,6 +75,17 @@ if __name__ == "__main__":
         boot = float(np.mean(np.random.default_rng(7).choice(v2, size=(5000, len(v2))).mean(axis=1) > 0))
         best.append(dict(u=u, n=len(v), q=o[1], mn=o[2], e=o[3], d1=S([d["ex"][o[3]] for d in o[4]]), d2=S(v2), ok=v2.sum() > 0 and np.sort(v2)[:-k2].sum() > 0 and boot >= 0.95,
                          boot=boot, s2=v2.sum(), its=S([d["ex"]["its sale"] for d in D2]), live=S([d["ex"]["wallet 4's live model"] for d in D2])))
+    # ONLY=prefix,... (Nov 18): the full table for some wallets: every exit on all its copies, days 1-2 against 3-4, and
+    # the size and coin filters under the two exits that matter (wallet 4's live model, its sale)
+    for u in [u for u in W if any(u.startswith(x) for x in os.environ.get("ONLY", "").split(",") if x)]:
+        v = W[u]; D1 = [d for d in v if d["t"] < tmid]; D2 = [d for d in v if d["t"] >= tmid]
+        print(f"\n== {u}: {len(v)} copies (days 1-2 {len(D1)}, days 3-4 {len(D2)}) ==")
+        for e_ in NAMES: print(f"   {e_:40s} | days 1-2 {S([d['ex'][e_] for d in D1])} | days 3-4 {S([d['ex'][e_] for d in D2])}")
+        for e_ in ("wallet 4's live model", "its sale"):
+            for q in ["all"] + sorted({d["q"] for d in v}):
+                for mn in (0.5, 1.0, 1.3, 2.0):
+                    a1 = [d for d in D1 if (q == "all" or d["q"] == q) and d["sol"] >= mn]; a2 = [d for d in D2 if (q == "all" or d["q"] == q) and d["sol"] >= mn]
+                    if len(a1) + len(a2) >= 10: print(f"   [{e_}] coins {q:9s} its {mn}+ SOL | days 1-2 {S([d['ex'][e_] for d in a1])} | days 3-4 {S([d['ex'][e_] for d in a2])}")
     w4 = [b for b in best if b["u"] == W4]
     print("\n== WALLET 4 (the yardstick), engineered the same way ==")
     for b in w4: print(f"   picked: coins {b['q']}, its {b['mn']}+ SOL, {b['e']} | days 1-2 {b['d1']} | days 3-4 {b['d2']}; P {100 * b['boot']:.0f}% | days 3-4 its sale {b['its']} | live model {b['live']}")
