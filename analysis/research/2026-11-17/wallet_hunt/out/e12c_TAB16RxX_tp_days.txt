@@ -1,0 +1,4 @@
+tp 3.5: full days 11-02 to 11-17 (16): copies 22.7 a day, take profits 1.46 a day (all 23.3 of 370), SOL +0.84 a day; worst day 11-04 -2.14, best 11-17 +4.65; days negative 5 of 16
+tp 4: full days 11-02 to 11-17 (16): copies 22.7 a day, take profits 1.06 a day (all 17.0 of 370), SOL +0.94 a day; worst day 11-04 -1.96, best 11-17 +4.75; days negative 5 of 16
+tp 5: full days 11-02 to 11-17 (16): copies 22.7 a day, take profits 0.69 a day (all 11.0 of 370), SOL +1.06 a day; worst day 11-04 -2.20, best 11-11 +5.90; days negative 5 of 16
+tp 6: full days 11-02 to 11-17 (16): copies 22.7 a day, take profits 0.44 a day (all 7.0 of 370), SOL +1.05 a day; worst day 11-04 -2.20, best 11-17 +6.51; days negative 5 of 16
