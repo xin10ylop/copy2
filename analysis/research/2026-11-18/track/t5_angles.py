@@ -29,7 +29,7 @@ for r in R:
     for tpo in (1.1, 1.2, 1.3, 1.5):
         for cap in (30, 60, 300): ex[f"ours x{tpo} cap {cap}s"] = sim(p, tp=tpo * e0, hold=cap)
         ex[f"ours x{tpo} or team-sale"] = sim(q, its=True, tp=tpo * e0)
-    rows.append(dict(t=r["t"], ex=ex, n_lad=len(lad), n_out=len(outside), sol_out=sum(e["q"] for e in outside) / 1e9))
+    rows.append(dict(t=r["t"], e0=e0, ex=ex, n_lad=len(lad), n_out=len(outside), sol_out=sum(e["q"] for e in outside) / 1e9))
 h = len(rows) // 2; A, B = rows[:h], rows[h:]
 def S(v):
     v = np.array(v); s = np.sort(v); k = max(1, round(0.02 * len(v))) if len(v) else 0
@@ -57,3 +57,10 @@ v = np.array([r["ex"]["ours x1.2 cap 30s"] - 0.0319 for r in rows]); k = max(1, 
 if len(v):
     bs = np.random.default_rng(7).choice(v, size=(10000, len(v))).mean(axis=1)
     print(f"\nTHE FROZEN FLIP (ours x1.2 cap 30s), these copies: {len(v)}, {v.sum():+.2f} SOL ({100 * v.mean() / 0.5:+.1f}% a copy); without the best 2% {np.sort(v)[:-k].sum():+.2f}; P(mean > 0) {np.mean(bs > 0):.1%}")
+
+# by what we paid over its price (the entry premium): a picker's edge may be gone by the time a copy lands
+pb = lambda x: "<= 1.05x" if x <= 1.05 else ("1.05-1.25x" if x <= 1.25 else ("1.25-2x" if x <= 2 else "> 2x"))
+print("\nby our entry over its price:   its sale | sell at the next trade | ours x1.2 cap 30s | ours x1.5 cap 300s")
+for b in ("<= 1.05x", "1.05-1.25x", "1.25-2x", "> 2x"):
+    X = [r for r in rows if pb(r["e0"]) == b]
+    print(f"   {b:10s}: {S([r['ex']['its-sale (followed)'] - 0.0319 for r in X])} | {S([r['ex']['sell at the next trade'] - 0.0319 for r in X])} | {S([r['ex']['ours x1.2 cap 30s'] - 0.0319 for r in X])} | {S([r['ex']['ours x1.5 cap 300s'] - 0.0319 for r in X])}")

@@ -30,3 +30,10 @@ their copies and those after Nov 17 01:07 UTC separately (`t5_angles.py`, exit "
 
 Every one fails; selling at the very next trade loses too (−4% to −9%). The flip's edge on group A is specific to the
 ladder's launches (buyers arrive right after the ladder), not a property of the exit.
+
+## Why 8Fux3NDf and Dj216RQs fail (Nov 18 ~02:15 UTC, `out/t5_dropped_8Fux3NDf.txt`, `..._Dj216RQs.txt`)
+
+Not the entry: 282 of 299 and 299 of 300 copies land within 1.05x of their own price. At that price their coins still
+lose under every exit (its own sale −13.3% / −3.4%; sell at the next trade −4.8% / −6.3%; 30 s flip −20.4% / −10.4%;
+5 min −23.5% / −7.4%). Their coins graduate more often than chance, but the price does not rise in a way a follower can
+catch; their own profit is selling within seconds (8Fux3NDf a median 5 s). Closed.
