@@ -3,7 +3,7 @@
 # its first buy of a coin, 0.5+ SOL, on a coin priced in another token; our copy under wallet 4's live model (hunt_lib),
 # the mean of the three landings (4 / 8 trades, the next slot), 0.0345 SOL a round trip. Paths: w5_copy's cpath (batched,
 # true in-slot order), 900 s from its buy. Its SOL-priced coins are shown apart (the screen did not see that class).
-#   RPC_URL=... python3 -I m5_confirm.py SP WALLET ... > ../out/m5_confirm.txt
+#   RPC_URL=... [NS=150] python3 -I m5_confirm.py SP WALLET ... > ../out/m5_confirm.txt   (NS: a random sample of the buys, seed 7)
 import sys, os, json, glob, numpy as np, datetime as d
 from concurrent.futures import ThreadPoolExecutor
 SP = sys.argv[1]; os.environ["HOLD"] = "900"; A, B = 1794704822, 1794877622
@@ -25,6 +25,7 @@ for w in sys.argv[2:]:
         if r is None or A <= e["t"] < B: continue
         sol = e["q"] * (1 + e["bps"] / 1e4) * r / 1e9
         if sol >= 0.5: buys.append((m, e, r, sol))
+    if os.environ.get("NS"): import random; random.Random(7).shuffle(buys); buys = buys[:int(os.environ["NS"])]   # a fixed random sample (seed 7)
     def one(x):
         m, e, r, sol = x
         try: tr = cpath(m, e["slot"], e["t"])
@@ -33,7 +34,7 @@ for w in sys.argv[2:]:
         if k is None: return None
         v = sum(H.model(H.prep(tr, k, r, n))[0] for n in (4, 8, "slot+1")) / 3 - COST
         return dict(t=e["t"], sol=sol, other=e["quote"] not in SOLQ, v=v)
-    with ThreadPoolExecutor(8) as ex: R = [x for x in ex.map(one, buys) if x]
+    with ThreadPoolExecutor(16) as ex: R = [x for x in ex.map(one, buys) if x]
     print(f"\n== {w}: {h['n_sigs']} signatures since {d.datetime.fromtimestamp(h['t_first'] or 0, d.UTC):%m-%d %H:%M} UTC; first buys 0.5+ SOL outside the screen: {len(buys)}, modelled {len(R)}")
     for name, f in (("before the screen", lambda r: r["t"] < A), ("after the screen", lambda r: r["t"] >= B)):
         print(f"   {name:18s} other-token coins: {S([r['v'] for r in R if f(r) and r['other']])}")
