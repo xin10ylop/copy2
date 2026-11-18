@@ -8,7 +8,7 @@ Two copied wallets, kept apart, and the shared code:
 | **Rafinhaaaaaa** | `Hn6vBWWySnxA8XjxRQDEmZEuH5QL7KqosnJGcLcUzFJ6` | the copier (`rugsnipe-long copy`) | [`rafinhaaaaaa/`](rafinhaaaaaa/README.md) |
 | Both, on one box | | | [`08-new-box/`](08-new-box/README.md): the 4 SOL plan, from an empty server to live |
 
-Code: `crates/rugsnipe-long/` (the long copy, docs/20; the copier, [`docs/21-copier.md`](docs/21-copier.md)), with
+Code: `crates/rugsnipe-long/` (the long copy, docs/20; the copier, [`docs/21-copier.md`](docs/21-copier.md); how to find another wallet to copy, [`docs/22-wallet-search.md`](docs/22-wallet-search.md)), with
 `deploy/` and `config/`. Operator 1 ("him", AHwJSnFN) and the other copied wallets are in the **copy1** repo. Both
 repos started from the same code snapshot (`xin10ylop/rugsnipe` at `7184554`, Oct 28). The box builds from this repo's
 branch `claude/magical-einstein-k78idp`.
