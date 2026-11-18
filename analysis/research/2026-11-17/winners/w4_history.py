@@ -38,7 +38,21 @@ def call(m, p):
             return r["result"]
         except Exception: time.sleep(1.5 * (i + 1))
     return None
-POOL = ThreadPoolExecutor(64)
+POOL = ThreadPoolExecutor(8)
+import threading, requests as _rq
+_tl = threading.local()
+def _batch(sigs):
+    if not hasattr(_tl, "s"): _tl.s = _rq.Session()
+    out = {}
+    for i in range(6):
+        need = [x for x in sigs if x not in out]
+        if not need: break
+        try:
+            for x in _tl.s.post(URL, json=[{"jsonrpc": "2.0", "id": k, "method": "getTransaction", "params": [y, M.TXO]} for k, y in enumerate(need)], timeout=60).json():
+                if isinstance(x, dict) and x.get("result"): out[need[x["id"]]] = x["result"]
+        except Exception: pass
+        if len(out) < len(sigs): time.sleep(i + 1)
+    return [out.get(x) for x in sigs]
 def own_trades(tx, w):
     out = []
     ks = tx["transaction"]["message"]["accountKeys"] + (tx["meta"].get("loadedAddresses") or {}).get("writable", []) + (tx["meta"].get("loadedAddresses") or {}).get("readonly", [])
@@ -64,7 +78,8 @@ def history(w):
         before = pg[-1]["signature"]
         if len(pg) < 1000 or (pg[-1].get("blockTime") or 0) < T0: break
     sigs = sigs[:MAXSIG]
-    txs = list(POOL.map(lambda s: call("getTransaction", [s["signature"], M.TXO]), sigs))
+    ch = [[x["signature"] for x in sigs[i:i + 100]] for i in range(0, len(sigs), 100)]   # Nov 18: batched, ~150x faster
+    txs = [t for part in POOL.map(_batch, ch) for t in part]
     h = dict(n_sigs=len(sigs), t_first=sigs[-1]["blockTime"] if sigs else None, trades=[e for tx in txs if tx for e in own_trades(tx, w)])
     json.dump(h, open(f, "w")); return h
 def curve(m): return str(Pubkey.find_program_address([b"bonding-curve", bytes(Pubkey.from_string(m))], PUMP)[0])

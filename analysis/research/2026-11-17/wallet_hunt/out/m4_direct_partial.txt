@@ -1,0 +1,14 @@
+2380 coins with a path; 8894 wallets with a 0.5+ SOL first buy; 679 with 6+; copies to model: 11730
+
+== THE YARDSTICK: wallet 4, all its 0.5+ SOL buys, and its 1.45+ SOL buys (what the live bot copies) ==
+wallet       copies | our copy net (a copy) | w/o best 2% | day 1 / day 2 (copies) | won | creators | at launch | size med | P(mean>0)
+H9kuqGKNYgPF    50 |   +0.12 (  +0.5%) |   -1.27 |  +0.71 (30) /  -0.60 (20) |  34% |   47 |  98% |  0.90 |  50.2%
+H9kuqGKNYgPF     9 |   +2.08 ( +46.2%) |   +0.69 |  +2.06 (6) /  +0.02 (3) |  56% |    9 | 100% |  1.87 |  92.1%
+
+== FOUND: our copy positive on both days and without its best 2% (3 of 679 wallets), by w/o best 2% ==
+wallet       copies | our copy net (a copy) | w/o best 2% | day 1 / day 2 (copies) | won | creators | at launch | size med | P(mean>0)
+Z6BLE1zwstwL    14 |   +1.20 ( +17.2%) |   +0.54 |  +0.69 (6) /  +0.51 (8) |  43% |   12 |  21% |  0.71 |  88.3%
+5mWe9kLZMvvB    35 |   +1.70 (  +9.7%) |   +0.26 |  +1.16 (14) /  +0.54 (21) |  26% |   28 |   0% |  0.99 |  77.0%
+BCyNgSB1njYW    13 |   +0.94 ( +14.4%) |   +0.16 |  +0.23 (10) /  +0.71 (3) |  46% |    1 | 100% |  3.64 |  87.5%
+
+== for scale: the 679 wallets' copies pooled: -879.15 SOL on 11730 copies
