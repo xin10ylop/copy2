@@ -58,6 +58,8 @@ def cpath(m, slot, t):
 sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-18/churn"); import slot_order as _SO
 _cpath_raw = cpath
 def cpath(m, slot, t):
+    if os.environ.get("CACHED_ONLY") and not (os.path.exists(f"{CP}/{slot}_{m}.json.gz") or os.path.exists(f"{CP0}/{slot}_{m}.json.gz")):
+        raise FileNotFoundError("not cached (CACHED_ONLY: a partial run on what is fetched)")
     tr = _cpath_raw(m, slot, t)
     return tr if os.environ.get("RAW_ORDER") else _SO.reorder(tr)
 def run(p, ex, stake=0.5):

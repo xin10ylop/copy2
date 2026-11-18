@@ -1,0 +1,24 @@
+808 crew coins (2+ wallets) with a path; export 1 picks, export 2 scores
+   k=3 d= 0 cap= 90: export 1   0 | export 2  792  -29.32 (  -7.4%) w/o 2%  -48.91
+   k=3 d= 0 cap=120: export 1   0 | export 2  792  -33.72 (  -8.5%) w/o 2%  -54.23
+   k=3 d= 0 cap=180: export 1   0 | export 2  792  -42.98 ( -10.9%) w/o 2%  -66.49
+   k=3 d=15 cap= 90: export 1   0 | export 2  792  -27.23 (  -6.9%) w/o 2%  -47.00
+   k=3 d=15 cap=120: export 1   0 | export 2  792  -31.48 (  -8.0%) w/o 2%  -52.38
+   k=3 d=15 cap=180: export 1   0 | export 2  792  -39.78 ( -10.0%) w/o 2%  -64.54
+   k=3 d=30 cap= 90: export 1   0 | export 2  792  -26.42 (  -6.7%) w/o 2%  -46.57
+   k=3 d=30 cap=120: export 1   0 | export 2  792  -30.73 (  -7.8%) w/o 2%  -52.01
+   k=3 d=30 cap=180: export 1   0 | export 2  792  -38.66 (  -9.8%) w/o 2%  -63.83
+   k=4 d= 0 cap= 90: export 1   0 | export 2  269   -4.92 (  -3.7%) w/o 2%  -12.68
+   k=4 d= 0 cap=120: export 1   0 | export 2  269   -3.62 (  -2.7%) w/o 2%  -11.98
+   k=4 d= 0 cap=180: export 1   0 | export 2  269   -5.29 (  -3.9%) w/o 2%  -14.57
+   k=4 d=15 cap= 90: export 1   0 | export 2  269   -5.02 (  -3.7%) w/o 2%  -12.79
+   k=4 d=15 cap=120: export 1   0 | export 2  269   -3.80 (  -2.8%) w/o 2%  -12.27
+   k=4 d=15 cap=180: export 1   0 | export 2  269   -5.66 (  -4.2%) w/o 2%  -14.89
+   k=4 d=30 cap= 90: export 1   0 | export 2  269   -4.88 (  -3.6%) w/o 2%  -12.67
+   k=4 d=30 cap=120: export 1   0 | export 2  269   -3.65 (  -2.7%) w/o 2%  -12.15
+   k=4 d=30 cap=180: export 1   0 | export 2  269   -5.60 (  -4.2%) w/o 2%  -14.84
+Traceback (most recent call last):
+  File "/home/user/copy2/analysis/research/2026-11-18/crew/c2_money.py", line 53, in <module>
+    g = best[1]; v = np.array([x for t, x, _ in res[g] if t >= EXP1[1]])
+        ~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
