@@ -57,3 +57,15 @@ bot reading the creates would land; refused past 1.25x the create's price), 0.5 
 (tp2/tp3/tp5, graduation, sell at 10/30 min). A random 250 of day 1's score 4+ coins and 250 of day 2's (seed 7,
 `a8_money.py`). **Pick the exit on day 1, score it on day 2 at 0.0345 SOL a round trip. Pass: positive on day 2, and
 positive without the best 5.**
+
+## The signals as a filter on wallet 4 (Nov 18, `a9_w4_filter.py`, `out/a9_w4_filter.txt`)
+
+Wallet 4's 1,559 modelled copies (Oct 21 - Nov 16 14:25 UTC), +34.16 SOL at 0.0345 SOL a round trip (+25.11 without the
+best 5). Caveat: the dev buy reads 0 on its coins (they are priced in another token; `a9` counts SOL only), so the dev-buy
+groups are not valid here. About 7 signals compared. Negative in both halves: the create paid by a wallet holding 0.5 SOL
+or less (665 copies, -3.31 then -1.42 SOL); the creator fee 30 bps (77 copies, -1.41 then -2.93).
+
+**Pre-registered, Nov 18 ~00:45 UTC, before the check:** the filter "skip a coin whose create was paid by a wallet holding
+0.5 SOL or less" is checked on our own live trades after Nov 16 14:25 UTC (outside the backtest), their real result on
+chain (`a10_live_check.py`). It is only proposed to the owner if the skipped live trades lose in sum. A live change is the
+owner's call.
