@@ -110,6 +110,10 @@ within a slot** (`exits_pess.py`):
   the stake; under it the buy is skipped (`float ... under the stake`). For several small floats (PUMP, SPCX), which
   would otherwise stop copying after one loss until topped up. `status --chain` shows each float's SOL value.
   `examples/scan.rs` takes `FLOATS=MINT,...` and prints each route's hops and kind.
+- **`float_only`** (Nov 18, default false): wrapped SOL is not an anchor, so no route starts from SOL and a coin whose
+  quote is reached only through a pool from SOL is skipped. For `rugsnipe-long-tab`: TAB16RxX's wSOL-paid copies lost
+  9.4% a copy on Oct 31 - Nov 14 (467), its float-paid ones made +5.6% over 18 days (370;
+  `analysis/research/2026-11-17/wallet_hunt/market/README_direct.md`).
 - **Two units on one wallet, `other_state_dirs`** (Nov 18): `rugsnipe-long-tab` (TAB16RxX) trades from the main long
   wallet. Each config lists the other's state dir; a coin the other unit holds (live, or seen in the last hour) is
   skipped (`coin held by the other unit on this wallet`), and a sale never closes the coin's token account while the

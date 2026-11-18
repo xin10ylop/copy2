@@ -87,5 +87,7 @@ stall_s = 0
 # other units trading from this same wallet (their state dirs): a coin one of them holds is not bought, and a sale
 # never closes a coin account one of them still uses (Nov 18: rugsnipe-long and rugsnipe-long-tab on one wallet)
 other_state_dirs = []
+# pay only with a float: no route from wrapped SOL (a coin reached only through a SOL pool is skipped)
+float_only = false
 state_dir = "/var/lib/rugsnipe-long"
 price_api = "https://lite-api.jup.ag/price/v3"

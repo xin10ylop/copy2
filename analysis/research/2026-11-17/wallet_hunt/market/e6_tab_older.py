@@ -31,6 +31,7 @@ for l in open(SCAN):
     rate = float(m.group(3)) * 1e9 / (tr[k]["q"] * (1 + tr[k]["bps"] / 1e4))
     rows.append(dict(t=t, sol=float(m.group(3)), anchor=m.group(9), hops=int(m.group(7)), ps=[H.prep(tr, k, rate, n) for n in (4, 8, "slot+1")]))
 rows.sort(key=lambda r: r["t"])
+if os.environ.get("FLOAT_ONLY"): rows = [r for r in rows if r["anchor"] != "So111111"]   # FLOAT_ONLY=1: the copies paid with a float (the agreed rule)
 G = list(itertools.product((2, 3, 3.5, 4, 6), (0, 60, 120, 180), (None, (3, 30, 30), (5, 60, 30), (10, 60, 30)), (300, 600))); DEP = (3.5, 180, (5, 60, 30), 600)
 V = {g: np.array([np.mean([model(p, g[0], g[3], g[2], g[1]) for p in r["ps"]]) - COST for r in rows]) for g in G}
 T = np.array([r["t"] for r in rows]); W1 = T < 1793836800   # Nov 6 00:00 UTC: the two weeks' split
@@ -40,7 +41,8 @@ def S(v):
     s = np.sort(v); k = max(1, round(0.02 * n)); bs = np.random.default_rng(7).choice(v, size=(10000, n)).mean(axis=1)
     return f"{n:3d} {v.sum():+6.2f} SOL ({100 * v.mean() / 0.5:+6.1f}% a copy) w/o 2% {s[:-k].sum():+6.2f} | won {100 * np.mean(v > 0):3.0f}% | P(mean>0) {100 * np.mean(bs > 0):5.1f}%"
 d0, d1 = dt.datetime.fromtimestamp(T.min(), dt.UTC), dt.datetime.fromtimestamp(T.max(), dt.UTC)
-print(f"{len(rows)} copies, {d0:%m-%d %H:%M} to {d1:%m-%d %H:%M} UTC (all before the 4 days that found it); weeks split at Nov 6 00:00 UTC")
+np.save(os.environ.get("SAVE", "/dev/null"), V[(3.5, 180, (5, 60, 30), 600)]) if os.environ.get("SAVE") else None
+print(f"{'FLOAT-PAID ONLY: ' if os.environ.get('FLOAT_ONLY') else ''}{len(rows)} copies, {d0:%m-%d %H:%M} to {d1:%m-%d %H:%M} UTC (all before the 4 days that found it); weeks split at Nov 6 00:00 UTC")
 v = V[DEP]; print(f"\nTHE DEPLOYED EXIT (tp 3.5x, stall 180, sp 5/60, 600 s, its sale never followed):")
 print(f"   Oct 31 - Nov 5:  {S(v[W1])}"); print(f"   Nov 6 - Nov 13:  {S(v[~W1])}"); print(f"   all 14 days:     {S(v)}")
 both = sum(1 for g in G if V[g][W1].mean() > 0 and V[g][~W1].mean() > 0); allp = sum(1 for g in G if V[g].mean() > 0)

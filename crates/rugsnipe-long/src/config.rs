@@ -142,6 +142,10 @@ pub struct LongCfg {
     /// bought, and a sale never closes the coin's token account while one of them still
     /// holds the coin (the close would fail on its tokens and cost the sale a try).
     pub other_state_dirs: Vec<String>,
+    /// Pay only with a float (Nov 18): wrapped SOL is not an anchor, so no route starts from SOL (a
+    /// coin whose quote is reached through a pool from SOL is skipped). TAB16RxX's copies paid from SOL
+    /// lost 9.4% a copy on Oct 31 - Nov 14 (467), its float-paid ones made +5.6% over 18 days (370).
+    pub float_only: bool,
     /// The ladder flip (`ladder.rs`): watch every pump launch's create slot;
     /// when enabled the copied wallet's buys are not copied (a unit of its own).
     pub ladder: crate::ladder::LadderCfg,
@@ -190,6 +194,7 @@ impl Default for LongCfg {
             price_api: crate::oracle::API.into(),
             tp_from_fill: false,
             other_state_dirs: vec![],
+            float_only: false,
             ladder: crate::ladder::LadderCfg::default(),
         }
     }

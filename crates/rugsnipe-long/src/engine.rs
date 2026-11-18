@@ -107,7 +107,8 @@ impl Engine {
         std::fs::create_dir_all(&dir).map_err(|e| format!("{}: {e}", dir.display()))?;
         let book_path = dir.join("positions.json");
         let book = Book::load(&book_path)?;
-        let mut anchors = vec![c::WSOL_MINT];
+        // float_only: no route from wrapped SOL, only from the floats
+        let mut anchors = if cfg.float_only { vec![] } else { vec![c::WSOL_MINT] };
         anchors.extend(cfg.float_pks());
         Ok(Self {
             copy: cfg.copy_pk(),

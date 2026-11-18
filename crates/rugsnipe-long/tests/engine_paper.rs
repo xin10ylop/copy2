@@ -770,3 +770,15 @@ fn a_coin_the_other_unit_on_this_wallet_holds_is_not_bought() {
     c.on_tx(Src::Copied, &fx("w4_buy_wsol_multihop"));
     assert_eq!(c.book.positions.len(), 1, "no longer held: bought");
 }
+
+/// `float_only` (Nov 18): wrapped SOL is no anchor, so its buy routed from wSOL is not
+/// copied (the same buy is copied without the switch: `opened`).
+#[test]
+fn float_only_does_not_pay_from_sol() {
+    let dir = std::env::temp_dir().join(format!("long-engine-floatonly-{}", std::process::id()));
+    let _ = std::fs::remove_dir_all(&dir);
+    let cfg = LongCfg { mode: Mode::Log, state_dir: dir.to_string_lossy().into(), float_only: true, ..Default::default() };
+    let mut e = Engine::new(cfg, Default::default(), None, Rpc::new("http://127.0.0.1:9"), Oracle::default(), None, None).unwrap();
+    e.on_tx(Src::Copied, &fx("w4_buy_wsol_multihop"));
+    assert!(e.book.positions.is_empty(), "a wSOL-routed buy is skipped under float_only");
+}
