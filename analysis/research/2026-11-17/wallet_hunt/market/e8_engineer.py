@@ -51,7 +51,9 @@ rows = []
 def add(tr, k, rate, sol, quote8, cls):
     ps = [H.prep(tr, k, rate, n, pmax=1000) for n in (4, 8, "slot+1")]
     prem = float(np.mean([(tr[k]["vt"] / p["ent"][0]) ** 2 for p in ps]))
-    rows.append(dict(t=tr[k]["t"], sol=sol, prem=prem, q=quote8, cls=cls, v=np.mean([copy_vals(p) for p in ps], axis=0) - COST))
+    vl = np.array([copy_vals(p) for p in ps]) - COST   # each landing (4, 8, slot+1); e11_check.py reads them when LANDINGS=1
+    rows.append(dict(t=tr[k]["t"], sol=sol, prem=prem, q=quote8, cls=cls, v=vl.mean(axis=0), vl=vl if os.environ.get("LANDINGS") else None,
+                     prems=[(tr[k]["vt"] / p["ent"][0]) ** 2 for p in ps]))
 # source 1: the 4 days of float-quote coins
 L = {}
 for f_ in (f"{O}/launches_1794618422.json", f"{O}/launches.json", f"{O}/launches_1794877622.json"):

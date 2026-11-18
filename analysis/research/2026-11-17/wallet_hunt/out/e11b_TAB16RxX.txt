@@ -1,0 +1,21 @@
+TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3: 370 copies loaded (PAY=float), 2026-10-31 to 2026-11-18; halves at 11-11 20:15 UTC
+weeks from 2026-10-31: wk0 108, wk1 121, wk2 141
+
+base_tp6+1.5           0.5,1.5,6,600,5/60,180,never
+   copies 370 | SOL +16.23 | w/o 2% half 1 -3.25 half 2 +2.84 | landing 4 / 8 / next slot: +17.40 / +16.45 / +14.83
+   by week: wk0 +0.24 (108) | wk1 +4.80 (121) | wk2 +11.18 (141)
+
++sp10/60               0.5,1.5,6,600,10/60,180,never
+   copies 370 | SOL +19.20 | w/o 2% half 1 -0.81 half 2 +2.78 | landing 4 / 8 / next slot: +20.86 / +18.65 / +18.10
+   by week: wk0 +0.32 (108) | wk1 +7.72 (121) | wk2 +11.16 (141)
+   vs running: +2.97 SOL | half 1 +3.04 half 2 -0.06 | without the 2% of copies that gained most -1.08 | landing 4 / 8 / next slot +3.45 / +2.20 / +3.27 | weeks better 2 of 3 | P(better) 88.5%
+
++stall240              0.5,1.5,6,600,5/60,240,never
+   copies 370 | SOL +16.09 | w/o 2% half 1 -2.25 half 2 +1.36 | landing 4 / 8 / next slot: +17.30 / +16.11 / +14.84
+   by week: wk0 +0.71 (108) | wk1 +5.46 (121) | wk2 +9.92 (141)
+   vs running: -0.14 SOL | half 1 +1.34 half 2 -1.49 | without the 2% of copies that gained most -1.90 | landing 4 / 8 / next slot -0.10 / -0.34 / +0.02 | weeks better 2 of 3 | P(better) 42.1%
+
++both                  0.5,1.5,6,600,10/60,240,never
+   copies 370 | SOL +19.64 | w/o 2% half 1 +0.12 half 2 +2.30 | landing 4 / 8 / next slot: +21.39 / +18.87 / +18.68
+   by week: wk0 +0.35 (108) | wk1 +8.50 (121) | wk2 +10.79 (141)
+   vs running: +3.42 SOL | half 1 +3.96 half 2 -0.55 | without the 2% of copies that gained most -3.46 | landing 4 / 8 / next slot +3.99 / +2.41 / +3.85 | weeks better 2 of 3 | P(better) 84.4%

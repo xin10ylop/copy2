@@ -1,0 +1,66 @@
+TAB16RxXmazWzCTpJbnKiREWUybdEoskuyidaV291u3: 370 copies loaded (PAY=float), 2026-10-31 to 2026-11-18; halves at 11-11 20:15 UTC
+weeks from 2026-10-31: wk0 108, wk1 121, wk2 141
+
+running                0.5,1.25,3.5,600,5/60,180,never
+   copies 370 | SOL +10.99 | w/o 2% half 1 -4.07 half 2 +5.01 | landing 4 / 8 / next slot: +12.61 / +9.74 / +10.61
+   by week: wk0 -2.20 (108) | wk1 +5.29 (121) | wk2 +7.90 (141)
+
+tp_6                   0.5,1.25,6,600,5/60,180,never
+   copies 370 | SOL +14.33 | w/o 2% half 1 -3.36 half 2 +2.12 | landing 4 / 8 / next slot: +16.03 / +12.87 / +14.08
+   by week: wk0 +0.15 (108) | wk1 +4.47 (121) | wk2 +9.71 (141)
+   vs running: +3.34 SOL | half 1 +3.42 half 2 -0.09 | without the 2% of copies that gained most +1.98 | landing 4 / 8 / next slot +3.42 / +3.13 / +3.46 | weeks better 2 of 3 | P(better) 84.6%
+
+sp_10/60               0.5,1.25,3.5,600,10/60,180,never
+   copies 370 | SOL +12.27 | w/o 2% half 1 -2.37 half 2 +4.51 | landing 4 / 8 / next slot: +14.26 / +10.38 / +12.19
+   by week: wk0 -1.87 (108) | wk1 +6.66 (121) | wk2 +7.49 (141)
+   vs running: +1.29 SOL | half 1 +1.79 half 2 -0.51 | without the 2% of copies that gained most -1.57 | landing 4 / 8 / next slot +1.65 / +0.64 / +1.57 | weeks better 2 of 3 | P(better) 75.5%
+
+stall_240              0.5,1.25,3.5,600,5/60,240,never
+   copies 370 | SOL +10.60 | w/o 2% half 1 -3.60 half 2 +4.15 | landing 4 / 8 / next slot: +12.21 / +9.25 / +10.33
+   by week: wk0 -1.66 (108) | wk1 +5.11 (121) | wk2 +7.14 (141)
+   vs running: -0.39 SOL | half 1 +0.47 half 2 -0.86 | without the 2% of copies that gained most -1.18 | landing 4 / 8 / next slot -0.40 / -0.49 / -0.28 | weeks better 1 of 3 | P(better) 32.3%
+
+prem_1.5               0.5,1.5,3.5,600,5/60,180,never
+   copies 370 | SOL +12.91 | w/o 2% half 1 -3.69 half 2 +6.56 | landing 4 / 8 / next slot: +14.00 / +13.36 / +11.38
+   by week: wk0 -2.11 (108) | wk1 +5.59 (121) | wk2 +9.43 (141)
+   vs running: +1.92 SOL | half 1 +0.38 half 2 +1.55 | without the 2% of copies that gained most +1.19 | landing 4 / 8 / next slot +1.39 / +3.62 / +0.76 | weeks better 3 of 3 | P(better) 98.1%
+
+tp6+prem1.5            0.5,1.5,6,600,5/60,180,never
+   copies 370 | SOL +16.23 | w/o 2% half 1 -3.25 half 2 +2.84 | landing 4 / 8 / next slot: +17.40 / +16.45 / +14.83
+   by week: wk0 +0.24 (108) | wk1 +4.80 (121) | wk2 +11.18 (141)
+   vs running: +5.24 SOL | half 1 +4.10 half 2 +1.14 | without the 2% of copies that gained most +3.88 | landing 4 / 8 / next slot +4.79 / +6.71 / +4.21 | weeks better 2 of 3 | P(better) 92.9%
+
+tp6+sp+stall           0.5,1.25,6,600,10/60,240,never
+   copies 370 | SOL +17.88 | w/o 2% half 1 -0.43 half 2 +1.59 | landing 4 / 8 / next slot: +19.99 / +15.53 / +18.12
+   by week: wk0 +0.34 (108) | wk1 +8.27 (121) | wk2 +9.27 (141)
+   vs running: +6.89 SOL | half 1 +7.51 half 2 -0.62 | without the 2% of copies that gained most -1.63 | landing 4 / 8 / next slot +7.38 / +5.79 / +7.50 | weeks better 3 of 3 | P(better) 93.0%
+
+all_four               0.5,1.5,6,600,10/60,240,never
+   copies 370 | SOL +19.64 | w/o 2% half 1 +0.12 half 2 +2.30 | landing 4 / 8 / next slot: +21.39 / +18.87 / +18.68
+   by week: wk0 +0.35 (108) | wk1 +8.50 (121) | wk2 +10.79 (141)
+   vs running: +8.66 SOL | half 1 +8.06 half 2 +0.59 | without the 2% of copies that gained most -0.06 | landing 4 / 8 / next slot +8.78 / +9.12 / +8.06 | weeks better 3 of 3 | P(better) 96.3%
+
+tp_5_all               0.5,1.5,5,600,10/60,240,never
+   copies 370 | SOL +18.43 | w/o 2% half 1 -0.47 half 2 +4.56 | landing 4 / 8 / next slot: +20.16 / +17.48 / +17.65
+   by week: wk0 -0.68 (108) | wk1 +7.39 (121) | wk2 +11.71 (141)
+   vs running: +7.44 SOL | half 1 +5.92 half 2 +1.52 | without the 2% of copies that gained most +0.87 | landing 4 / 8 / next slot +7.55 / +7.74 / +7.03 | weeks better 3 of 3 | P(better) 96.3%
+
+tp_8_all               0.5,1.5,8,600,10/60,240,never
+   copies 370 | SOL +16.53 | w/o 2% half 1 -1.72 half 2 +1.06 | landing 4 / 8 / next slot: +18.28 / +15.54 / +15.77
+   by week: wk0 -0.81 (108) | wk1 +8.52 (121) | wk2 +8.82 (141)
+   vs running: +5.54 SOL | half 1 +6.92 half 2 -1.38 | without the 2% of copies that gained most -4.55 | landing 4 / 8 / next slot +5.67 / +5.80 / +5.16 | weeks better 3 of 3 | P(better) 85.7%
+
+his_sale_always        0.5,1.25,3.5,600,5/60,180,always
+   copies 370 | SOL +4.99 | w/o 2% half 1 -5.72 half 2 +1.56 | landing 4 / 8 / next slot: +6.79 / +3.57 / +4.62
+   by week: wk0 -3.53 (108) | wk1 +3.36 (121) | wk2 +5.17 (141)
+   vs running: -6.00 SOL | half 1 -2.54 half 2 -3.46 | without the 2% of copies that gained most -6.83 | landing 4 / 8 / next slot -5.82 / -6.17 / -6.00 | weeks better 0 of 3 | P(better) 0.3%
+
+his_sale_early         0.5,1.25,3.5,600,5/60,180,early
+   copies 370 | SOL +8.70 | w/o 2% half 1 -4.51 half 2 +3.40 | landing 4 / 8 / next slot: +11.13 / +6.76 / +8.22
+   by week: wk0 -2.53 (108) | wk1 +4.61 (121) | wk2 +6.62 (141)
+   vs running: -2.28 SOL | half 1 -0.67 half 2 -1.61 | without the 2% of copies that gained most -2.78 | landing 4 / 8 / next slot -1.48 / -2.98 / -2.39 | weeks better 0 of 3 | P(better) 6.5%
+
+tp6+1.5+his_sale       0.5,1.5,6,600,5/60,180,always
+   copies 370 | SOL +5.10 | w/o 2% half 1 -5.41 half 2 -0.27 | landing 4 / 8 / next slot: +6.70 / +4.62 / +3.99
+   by week: wk0 -2.43 (108) | wk1 +1.10 (121) | wk2 +6.43 (141)
+   vs running: -5.89 SOL | half 1 -1.52 half 2 -4.36 | without the 2% of copies that gained most -9.86 | landing 4 / 8 / next slot -5.91 / -5.13 / -6.63 | weeks better 0 of 3 | P(better) 4.4%

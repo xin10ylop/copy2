@@ -182,3 +182,31 @@ it needs its earlier days fetched (Alchemy, batched).
 **Alchemy speed** (`alch_bench.py`, scratchpad): one batch of 100 getTransaction 0.14 s (726 tx/s); 8 batches of 50 in
 parallel 556 tx/s, no 429s; week-old transactions 650-1,100 tx/s. The 8 tx/s seen before was our one-call-per-request
 client; batched fetching (m1c, m2b, w5) runs near the plan's speed.
+
+## The double check before deploying (Nov 18, `e11_check.py`, outputs `../out/e11*_<wallet>.txt`)
+
+Each change alone and together against the running setting, on the same copies: SOL, by week, the halves without
+their best 2%, each landing (4 trades / 8 trades / the next slot) apart, the price limit applied per landing, and a
+paired bootstrap of the difference (P(better), 10,000 resamples).
+
+Wallet 4 (1,479 copies, Oct 21 - Nov 18; running = 1.3+, 1.25x, tp 4, 600 s, 5/60, 180, its early sale, both payments):
+| change | SOL vs running | P(better) | every landing | w/o its best 2% halves |
+|---|---|---|---|---|
+| floats only | +1.68 (322 fewer trades) | 65.8% | +0.52 / +4.78 / −0.26 | +4.29 / +10.86 → +7.47 / +17.12 |
+| price limit 1.5x | +4.01 | 98.4% | +2.12 / +9.91 / 0.00 | better both; 4 of 5 weeks |
+| 1.5x on top of floats only | +3.06 | 97.6% | all better | every week |
+| 1.2+ on top of floats + 1.5x | +2.65 | 88.7% | +3.90 / +0.54 / +3.51 | +1.72 / +0.93; 3 of 5 weeks |
+| all three | +7.39 (+53.17 against +45.78) | 91.4% | +6.77 / +11.75 / +3.65 | +9.44 / +19.47 |
+
+TAB16RxX (370 float-paid copies, Oct 31 - Nov 18; running = 0.5+, 1.25x, tp 3.5, 600 s, 5/60, 180, its sale never):
+| change | SOL vs running | P(better) | note |
+|---|---|---|---|
+| tp 6 | +3.34 | 84.6% | every landing better; +1.98 without the 2% of copies that gained most |
+| price limit 1.5x | +1.92 | 98.1% | every week better |
+| tp 6 + 1.5x | **+5.24 (+16.23 against +10.99)** | 92.9% | every landing; +3.88 without the top 2% of gains |
+| sell pressure 10/60 on top | +2.97 | 88.5% | −1.08 without the top 2% of gains: a few copies |
+| stall 240 on top | −0.14 | 42.1% | not better |
+| its sale always (sell behind it) | −6.00 | 0.3% | worse every week; the early rule −2.28, P 6.5% |
+
+Deployed by this check: wallet 4 floats only + 1.5x (+ 1.2+, the weakest of the three); TAB tp 6 + 1.5x, sell pressure
+and stall unchanged, its sale not followed.
