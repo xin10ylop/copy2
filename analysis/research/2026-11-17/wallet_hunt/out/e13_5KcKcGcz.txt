@@ -11,3 +11,21 @@ THE FULL GRID FROM SCRATCH (13 sizes x 4 price limits x 9,720 exits = 505,440 se
    all coins   : settings making money 22,173, on both halves 4,700; the best (hindsight): its buy 1.4+, limit 1.25, tp 8, 300 s, sp (3, 60), stall 180, its early: 22 copies +1.90 SOL (half 1 -0.82, half 2 +2.72)
    floats only : settings making money 11,109, on both halves 0; the best (hindsight): its buy 1.0+, limit 1.25, tp 8, 300 s, sp off, stall 180, its early: 21 copies +1.41 SOL (half 1 -1.33, half 2 +2.74)
    others only : settings making money 76, on both halves 0; the best (hindsight): its buy 0.7+, limit 1.1, tp 2, 180 s, sp (5, 60), stall 90, its early: 36 copies +0.19 SOL (half 1 +0.29, half 2 -0.10)
+
+EACH PART, EVERY VALUE (all coins): the best setting with that value (the rest picked with hindsight): SOL all | its weaker half
+   its buy size : 0.5+ -5.71|-7.09   0.6+ -6.23|-4.38   0.7+ +0.10|-0.73   0.8+ -0.24|-0.87   0.9+ -1.50|-0.99   1.0+ -0.81|-0.57   1.1+ -0.31|-0.39   1.2+ +0.40|-0.02   1.3+ +0.94|+0.12   1.4+ +1.90|+0.65   1.5+ -   1.75+ -   2.0+ -
+   price limit  : 1.1x +1.72|+0.65   1.25x +1.90|+0.64   1.5x +1.90|+0.64   none +1.90|+0.64
+   take profit  : 1.5x +0.76|+0.24   2x +1.72|+0.65   2.5x +0.63|-0.03   3x +1.35|-0.03   3.5x +1.57|-0.03   4x +0.92|-0.03   5x +0.92|-0.03   6x +1.57|-0.03   8x +1.90|-0.03   none +1.90|-0.03
+   time         : 60s +0.94|+0.38   120s +1.40|+0.63   180s +1.72|+0.65   300s +1.90|+0.65   450s +1.90|+0.65   600s +1.90|+0.65
+   sell pressure: off +1.72|+0.64   3/30s +1.29|+0.52   3/60s +1.90|+0.65   5/30s +1.20|+0.51   5/60s +1.87|+0.64   8/30s +1.50|+0.64   8/60s +1.64|+0.57   10/30s +1.38|+0.62   10/60s +1.60|+0.57
+   stall        : off +1.72|+0.65   60s +1.38|+0.63   90s +1.85|+0.65   120s +1.72|+0.65   180s +1.90|+0.65   240s +1.72|+0.65
+   its sale     : never +1.85|+0.65   early +1.90|+0.65   always -0.65|-0.54
+
+EACH PART, EVERY VALUE (floats only): the best setting with that value (the rest picked with hindsight): SOL all | its weaker half
+   its buy size : 0.5+ -1.72|-3.66   0.6+ -2.10|-2.38   0.7+ +1.15|-0.66   0.8+ +0.79|-0.70   0.9+ +0.84|-0.88   1.0+ +1.41|-0.58   1.1+ -   1.2+ -   1.3+ -   1.4+ -   1.5+ -   1.75+ -   2.0+ -
+   price limit  : 1.1x +0.49|-0.58   1.25x +1.41|-0.58   1.5x +1.41|-0.58   none +1.41|-0.58
+   take profit  : 1.5x -0.62|-0.67   2x -0.23|-0.58   2.5x +0.10|-0.63   3x +1.07|-0.63   3.5x +1.29|-0.63   4x +0.38|-0.63   5x +0.38|-0.63   6x +1.04|-0.63   8x +1.41|-0.63   none +1.41|-0.63
+   time         : 60s -0.20|-0.63   120s +0.28|-0.58   180s +1.29|-0.58   300s +1.41|-0.58   450s +1.41|-0.58   600s +1.41|-0.58
+   sell pressure: off +1.41|-0.68   3/30s +0.28|-0.58   3/60s +1.41|-0.58   5/30s +0.23|-0.61   5/60s +1.38|-0.60   8/30s +1.30|-0.66   8/60s +1.31|-0.65   10/30s +1.20|-0.66   10/60s +1.26|-0.69
+   stall        : off +1.29|-0.61   60s +0.28|-0.58   90s +1.32|-0.63   120s +1.20|-0.63   180s +1.41|-0.61   240s +1.30|-0.61
+   its sale     : never +1.20|-0.63   early +1.41|-0.58   always -1.23|-0.73

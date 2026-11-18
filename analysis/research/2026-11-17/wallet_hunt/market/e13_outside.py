@@ -65,3 +65,23 @@ for lab, cm in (("all coins", np.ones(len(rows), bool)), ("floats only", CL == "
     print(f"   {lab:12s}: settings making money {npos:,}, on both halves {nboth:,}; the best (hindsight): its buy {sz}+, limit {'none' if pm > 1e8 else pm}, "
           f"tp {'none' if TP[j[0]] > 1e8 else TP[j[0]]}, {HOLD[j[1]]} s, sp {SPS[j[2]] or 'off'}, stall {STALL[j[3]] or 'off'}, its {ITS[j[4]]}: "
           f"{n} copies {best[0]:+.2f} SOL (half 1 {a1:+.2f}, half 2 {a2:+.2f})")
+# each part, every value (Nov 18, the owner: "stall? sell pressure? buy size? tp's?"): for each value, the BEST setting
+# that has it (the others free, hindsight), its SOL and its weaker half; if even the best with that value loses, that
+# value cannot save the copy
+for lab, cm in (("all coins", np.ones(len(rows), bool)), ("floats only", CL == "float")):
+    G = np.full((len(SIZE), len(PREM)) + VL3.shape[2:], np.nan); W_ = G.copy()
+    for a, sz in enumerate(SIZE):
+        for b_, pm in enumerate(PREM):
+            f = cm & (SOLA >= sz)
+            if f.sum() < 20: continue
+            v = np.where((PM3[f] <= pm)[:, :, None, None, None, None, None], VL3[f], -0.0004).mean(axis=1)
+            G[a, b_] = v.sum(axis=0); W_[a, b_] = np.minimum(v[A[f]].sum(axis=0), v[~A[f]].sum(axis=0))
+    print(f"\nEACH PART, EVERY VALUE ({lab}): the best setting with that value (the rest picked with hindsight): SOL all | its weaker half")
+    names = [("its buy size", [f"{x}+" for x in SIZE]), ("price limit", ["1.1x", "1.25x", "1.5x", "none"]), ("take profit", [("none" if x > 1e8 else f"{x}x") for x in TP]),
+             ("time", [f"{x}s" for x in HOLD]), ("sell pressure", ["off"] + [f"{n}/{w}s" for n, w in SPS[1:]]), ("stall", ["off"] + [f"{x}s" for x in STALL[1:]]), ("its sale", ITS)]
+    for d, (nm, vals) in enumerate(names):
+        cells = []
+        for j, vl in enumerate(vals):
+            g = np.take(G, j, axis=d); w = np.take(W_, j, axis=d)
+            cells.append(f"{vl} {np.nanmax(g):+.2f}|{np.nanmax(w):+.2f}" if np.isfinite(np.nanmax(g)) else f"{vl} -")
+        print(f"   {nm:13s}: " + "   ".join(cells))
