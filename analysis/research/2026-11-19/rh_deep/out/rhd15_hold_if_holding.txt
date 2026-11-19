@@ -1,0 +1,21 @@
+
+=== wallet 1 (tp 4.0, 600 s): 522 copies; live +13.9% a copy, halves +0.468 / +0.985 ETH, w/o best 2% +0.924
+   picked on half 1 -> half 2: 'it holds & price >= 1.25x', cap none, out on its sale: -0.017 ETH on the pick half, -0.021 on the other
+   picked on half 2 -> half 1: 'price >= its', cap none, out on its sale: +0.172 ETH on the pick half, -0.692 on the other
+   better than live on both halves AND without the best 2%: 0 of 63
+
+=== wallet 2 (tp 3.5, 900 s): 657 copies; live +8.1% a copy, halves +0.682 / +0.381 ETH, w/o best 2% +0.458
+   picked on half 1 -> half 2: 'buyers coming (60 s)', cap 1800 s, out on 20% drop: -0.044 ETH on the pick half, +0.009 on the other
+   picked on half 2 -> half 1: 'it holds & buyers coming', cap 3600 s, out on 20% drop: +0.102 ETH on the pick half, -0.072 on the other
+   better than live on both halves AND without the best 2%: 0 of 63
+
+=== wallet 3 (tp 3.0, 300 s): 383 copies; live +26.9% a copy, halves +1.098 / +0.965 ETH, w/o best 2% +1.743
+   picked on half 1 -> half 2: 'it holds', cap 1800 s, out on 20% drop: +0.084 ETH on the pick half, -0.088 on the other
+   picked on half 2 -> half 1: 'price >= 1.25x its', cap 1800 s, out on its sale: +0.043 ETH on the pick half, -0.013 on the other
+   better than live on both halves AND without the best 2%: 1 of 63
+      buyers coming (60 s)       cap 1800 s  out on its sale                +27.3% a copy, halves +0.013 / +0.019, w/o 2% +0.032
+
+=== group 4-8 (tp 3.5, 900 s): 292 copies; live +18.9% a copy, halves +0.603 / +0.502 ETH, w/o best 2% +0.869
+   picked on half 1 -> half 2: 'buyers coming (60 s)', cap 1800 s, out on its sale: +0.004 ETH on the pick half, -0.021 on the other
+   picked on half 2 -> half 1: 'buyers coming (60 s)', cap 1800 s, out on 20% drop: -0.020 ETH on the pick half, -0.015 on the other
+   better than live on both halves AND without the best 2%: 0 of 63

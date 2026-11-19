@@ -1,0 +1,23 @@
+
+=== wallet 1 (tp 4.0, 600 s): 523 copies; live +13.9% a copy, halves +0.468 / +0.982 ETH, w/o best 2% +0.920
+   picked on half 1 -> half 2: 'under sell pressure (5/30 s), tp 1.5x': +0.087 ETH on the pick half, -0.146 on the other
+   picked on half 2 -> half 1: 'lock: once 1.5x, out at 1.0x': -0.005 ETH on the pick half, -0.004 on the other
+   better than live on both halves AND without the best 2%: 0 of 36
+
+=== wallet 2 (tp 3.5, 900 s): 660 copies; live +8.0% a copy, halves +0.675 / +0.376 ETH, w/o best 2% +0.446
+   picked on half 1 -> half 2: 'trail: from 1.5x, out on a 40% drop': +0.037 ETH on the pick half, -0.043 on the other
+   picked on half 2 -> half 1: 'trail: from 2.5x, out on a 20% drop': +0.023 ETH on the pick half, -0.082 on the other
+   better than live on both halves AND without the best 2%: 1 of 36
+      trail: from 2.5x, out on a 40% drop            +8.1% a copy, halves +0.011 / +0.013, w/o 2% +0.023
+
+=== wallet 3 (tp 3.0, 300 s): 383 copies; live +26.9% a copy, halves +1.098 / +0.965 ETH, w/o best 2% +1.743
+   picked on half 1 -> half 2: 'lock: once 1.5x, out at 1.0x': +0.016 ETH on the pick half, +0.004 on the other
+   picked on half 2 -> half 1: 'trail: from 2.0x, out on a 20% drop': +0.037 ETH on the pick half, -0.148 on the other
+   better than live on both halves AND without the best 2%: 2 of 36
+      lock: once 1.5x, out at 1.0x                  +27.2% a copy, halves +0.016 / +0.004, w/o 2% +0.020
+      trail: from 2.5x, out on a 30% drop           +27.0% a copy, halves +0.005 / +0.003, w/o 2% +0.010
+
+=== group 4-8 (tp 3.5, 900 s): 292 copies; live +18.9% a copy, halves +0.603 / +0.502 ETH, w/o best 2% +0.869
+   picked on half 1 -> half 2: 'lock: once 1.5x, out at 1.0x': +0.001 ETH on the pick half, -0.117 on the other
+   picked on half 2 -> half 1: 'trail: from 2.5x, out on a 30% drop': +0.003 ETH on the pick half, -0.007 on the other
+   better than live on both halves AND without the best 2%: 0 of 36

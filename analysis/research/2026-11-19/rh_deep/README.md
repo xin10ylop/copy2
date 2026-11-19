@@ -130,3 +130,13 @@ weak day. Against the bot that day: the model's copies the bot bought and closed
 landings on #15, #19, #22); not bought +0.0308 (the "seen" bug's +77% copy at 00:44, fixed; #17 under the hidden ~1.33x
 limit, fixed; the group's +74.5% before it was added). One coin (08:07, 0x3a227ce5) bought by wallets 2 and 3 in one
 block: copied under wallet 3's rules (model −31.4%), wallet 2's would have made +77.5% (model).
+
+**Smarter exits** (the owner: "hold for longer if wallet is still holding ... be smart" and "lower take profit when x y
+or z changes ... adaptation"; `rhd15_hold_if_holding.py`, `rhd16_adaptive_tp.py`). Each live setting, every variant
+picked on one half and scored on the other, kept only if better on both halves and without the best 2%.
+(1) Holding past the time limit on a condition (the leader still holds 50%+; price at or above its price / 1.25x; other
+traders net buying over 60 s; combinations), capped at 30 min / 1 h / none, out on its sale and/or a 20% drop: 63 a
+wallet; 0 pass for wallets 1, 2 and the group, 1 for wallet 3 (+0.013 / +0.019 ETH); the picks lose up to 0.69 ETH on the
+other half (wallet 1). (2) An extra, earlier exit: the take profit falling with time, a lower one after its sale, a
+trailing stop once up, a lower one under sell pressure, a lock-in: 36 a wallet; 0 pass for wallet 1 and the group, 1 for
+wallet 2 (+0.011 / +0.013), 2 for wallet 3 (+0.016 / +0.004 at most): chance-sized. The live exits stay.
