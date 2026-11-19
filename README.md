@@ -18,6 +18,12 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 19 22:53 UTC (Nov 20 00:53 Beirut): the split, two legs on each copyable buy of wallet 4** (`0c0c6b9`, the
+box's restart journal): leg 1 = the copy as before (0.5 SOL, tp 4x, 600 s, sell pressure 5/60/30, stall 180, max_open 2;
+the frozen exit is unchanged), leg 2 = the dip entry (0.5 SOL at or under 0.90x its price within 60 s, tp 1.5x our fill,
+900 s, its own max_open 2, floats only; research `analysis/research/2026-11-17/wallet_hunt/market/m15*`, docs/20 §3
+"the split"). Daily stop 1.5 SOL over both legs. `status` shows pct1 / pct2 per trade.
+
 **The long copy (wallet 4's part A) runs live since Nov 12 01:23 UTC (03:23 Beirut)** on a Vultr Frankfurt box
 (`fra-long`, High Performance AMD, 4 vCPU / 8 GB, $48 a month, a card on file; every Cherry Frankfurt VDS was out of
 stock). Settings: 0.1 SOL a copy, 2 open, take profit 2.5x, **no stop**, 1790 s, its sale not followed, price limit

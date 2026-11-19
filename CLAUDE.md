@@ -34,6 +34,9 @@ Wallet 4's strategies:
   lost** (`03-strategy-A-long-copy/deploy-frankfurt.md`, top). It had run live Oct 28 18:34 to Oct 29 11:52 UTC at 0.1,
   0.5 and 1 SOL: 13 closed, 7 won, +1.39 SOL before the 1 SOL hours. Ohio and fra1 are terminated too. **Any new box:
   monthly billing or auto-recharge, the wallet file copied off with scp before any SOL goes in.**
+- **Since Nov 19 22:53 UTC the unit runs the split** (`dip_stake_sol`, docs/20 §3): leg 1 = the copy above at 0.5 SOL;
+  leg 2 = the dip entry, 0.5 SOL, tp 1.5x our fill, 900 s, floats only (`dip_float_only`), its own `max_open`. Daily stop
+  1.5 over both. If leg 2 works, it moves to its own unit (`config/long-dip.example.toml`, the owner's plan).
 - **Strategy D, the launch copy:** the hot copy bot `crates/rugsnipe`, with a `copy_more` entry. It is stopped.
 
 Read `README.md` (status, A-Z index), then `02-decomposition/` (why A and not the rest), then the strategy folder you work
