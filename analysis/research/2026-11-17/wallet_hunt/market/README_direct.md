@@ -261,3 +261,15 @@ copies of its 0.5+ SOL first buys (Aug 9-20, 552 of 714 paths fetched before the
   exit +6.80 there).
 No exit is strong in both periods: it changed style (coin class, and how its own sales time the top). Not deployed.
 Paper copy (no money, no RPC credits) proposed to gather November-style data with the August exit and both policies.
+
+## The owner's angle, Nov 19: "2 good coins a day and profitable = a good wallet" (`m6_days.py`, `../out/m6_days.txt`)
+
+Every wallet's copy on the 4 days fetched in full (7,263 coins, Nov 14 01:07 - Nov 18 01:07 UTC; 72,133 copies of 4,886
+wallets with 4+ first buys of 0.5+ SOL, pooled −4,737 SOL), judged by day: days up, big winners (a copy +100% or more)
+and on how many days. **Up on every active day (3+) with a big winner on 3+ days: one wallet, TAB16RxX** (161 copies,
++6.5%, 4 of 4 days up, 10 big winners on 4 days), the wallet that then lost live on Nov 18 (−0.88 SOL, 31 real). Up on
+all but one day with big winners on 2+ days: 33, most on 2-3 active days and 8-30 copies (3cfxKE7z, HUYdMo42 and
+2rvKbvgT are one trader). **Blind: chosen on days 1-2 by the rule (up both days, a big winner both days), scored on days
+3-4: 20 wallets, −13.69 SOL on 538 copies (−5.1% a copy; every wallet −14.0%), 3 of 20 up (TAB16RxX +3.46, wallet 4
++1.63, FDhoU1DE +0.81).** Two good days do not predict the next two. FDhoU1DE (27 copies, +23.4%, up 3 of 4 days) is the
+one left to check on a longer history.
