@@ -32,68 +32,74 @@ hold_s = 600
 its_sale = "never"
 
 # wallet 2: its buys of 0.05+ ETH, any coin, price limit 1.5x; tp 3.5x, 10 min, out when others' sales outnumber their buys by 10
-# over 30 s (from 30 s); its sale ignored. Backtest +12.5% a copy; last 3 days +21.1%.
+# over 30 s (from 30 s); its sale ignored; 15 min since Nov 19. Backtest +12.5% a copy; last 3 days +21.1%.
 [[leaders]]
 address = "0x5bc235acecff3dde394f4bfc696f7c35efd502f0"
 min_its_eth = 0.05
 max_premium = 1.5
 take_profit = 3.5
-hold_s = 600
+hold_s = 900             # 900 s, Nov 19 (rhd12_time: better than 600 on both halves)
 sell_pressure = [10, 30, 30]
 its_sale = "never"
 
-# wallet 3: its buys of 0.03+ ETH, any coin, no price limit (3x bounds it); tp 2.5x, 5 min, sell pressure 8 over 60 s (from 30 s), out after 240 s
+# wallet 3: its buys of 0.03+ ETH, any coin, no price limit (3x bounds it); tp 3x (2.5x until Nov 19), 5 min, sell pressure 8 over 60 s (from 30 s), out after 240 s
 # without a new high; its sale ignored. Backtest +26.7% a copy; last 3 days +39.2%.
 [[leaders]]
 address = "0xc54d3914f91f984d61b63d491f38934c4e706b79"
 min_its_eth = 0.03
-take_profit = 2.5
+max_premium = 3.0         # no price limit in effect (without it the 25% slippage acted as ~1.33x; Nov 19, rhd2: none beats 1.25-1.5x)
+take_profit = 3.0         # 3x, Nov 19 (rhd11_tp: better than 2.5x on both halves)
 hold_s = 300
 sell_pressure = [8, 60, 30]
 stall_s = 240
 its_sale = "never"
 
 # wallets 4-8: one group of 5 wallets that buy the same coins (Nov 19 deep redo, analysis/research/2026-11-19/rh_deep/):
-# its buys of 0.02+ ETH on coins with under 0.5 ETH in the curve, no price limit (3x bounds it), tp 3.5x, 10 min, stall
+# its buys of 0.02+ ETH on coins with under 0.5 ETH in the curve, no price limit (3x bounds it), tp 3.5x, 15 min (10 until Nov 19), stall
 # 240 s, its early sale followed. Backtest 288 copies, +18.3% a copy (+13.5% landing 5-12 blocks late); the bot's rule
 # (the first member buy passing the filters) 294 copies, +17.5%. Live on the box since Nov 19 11:51 UTC.
 [[leaders]]
 address = "0xe3fdae6c6a2da32ce4b3e08b49e818cec9b0ed72"
 min_its_eth = 0.02
 max_curve_eth = 0.5
+max_premium = 3.0
 take_profit = 3.5
-hold_s = 600
+hold_s = 900
 stall_s = 240
 its_sale = "early"
 [[leaders]]
 address = "0x3d31b1e1e7dfd99c5314feee300803d6aadf0bb8"
 min_its_eth = 0.02
 max_curve_eth = 0.5
+max_premium = 3.0
 take_profit = 3.5
-hold_s = 600
+hold_s = 900
 stall_s = 240
 its_sale = "early"
 [[leaders]]
 address = "0x30d81c4695eddceb53bea0480c6183d24773a98e"
 min_its_eth = 0.02
 max_curve_eth = 0.5
+max_premium = 3.0
 take_profit = 3.5
-hold_s = 600
+hold_s = 900
 stall_s = 240
 its_sale = "early"
 [[leaders]]
 address = "0xa8603745beb925370089ec2af4e220d239b17466"
 min_its_eth = 0.02
 max_curve_eth = 0.5
+max_premium = 3.0
 take_profit = 3.5
-hold_s = 600
+hold_s = 900
 stall_s = 240
 its_sale = "early"
 [[leaders]]
 address = "0x74b904c6ee6d14dfdd1dd5056cf593aa00a44461"
 min_its_eth = 0.02
 max_curve_eth = 0.5
+max_premium = 3.0
 take_profit = 3.5
-hold_s = 600
+hold_s = 900
 stall_s = 240
 its_sale = "early"

@@ -97,6 +97,10 @@ no funds) the bot waits 15 s for the transaction's own hash (known before sendin
 **Nov 19 11:51 UTC: the 5-wallet group added as wallets 4-8** (`config/rh-copier.example.toml`, the deep redo's
 `rhd7_group_audit`); the box's journal: `rh start ... 8 leaders`. The book before it: 14 closed, 2 won, −0.0364 ETH.
 
+**Nov 19 afternoon, settings changed** (`analysis/research/2026-11-19/rh_deep/`, rhd11 and rhd12): wallet 3 take profit
+2.5x → 3x; wallet 2 and the group 600 → 900 s; wallet 3 and the group `max_premium = 3.0`, since a wallet without a limit
+got the 25% slippage as a hidden ~1.33x limit the backtest never had (live buy #17 reverted on it). Wallet 1 unchanged.
+
 ## 4. Running it (the box, `ops@fra-long`)
 
 Build and install (the same as every update; the unit is installed but not enabled):

@@ -105,3 +105,14 @@ live setting with only the take profit changed, 1.5x to none. Lower is worse for
 from its rare spikes). Wallet 3's 2.5x is not: **3x beats it on both halves** (+1.097 / +0.957 ETH against +0.908 /
 +0.940), without the best 2% (+1.733 against +1.606) and in the last 7 days (+39.0% a copy against +36.6%); 3.5-5x make
 more in all but less in the second half.
+
+**The time limit, closely** (the owner: "check time really well, look they are still holding a lot of coins";
+`rhd12_time.py`, `out/rhd12_time.txt`). Wallet 2 never sells all of a coin on the curve in 84% of its copies, the group in
+100%: but held to the end of the data, wallet 2's copies make −1.42 ETH without the best 2% and the group's −17.2% a copy
+(the coins die later); "hold while it holds" (its sale, no time limit) is worse for every wallet. By time limit: wallet 1
+best at 600 s (longer loses in half 1), wallet 3 indifferent (its other exits come first), **wallet 2 and the group better
+at 900 s on both halves** (wallet 2 +0.636 / +0.445 ETH against +0.608 / +0.431; the group +0.603 / +0.502 against +0.583
+/ +0.480). Also found (live buy #17, wallet 3): with no price limit set, the bot's 25% slippage on the expected tokens
+acted as a ~1.33x limit, which the backtest never had (rhd2: wallet 3 none +25.7 / +23.9% a copy against 1.25x +22.7 /
++22.5%; the group none +14.3 / +13.2% against 1.25x +11.0 / +7.5%). **Applied to `config/rh-copier.example.toml`:** wallet 2
+and the group 900 s; wallet 3 tp 3x (`rhd11_tp`); wallet 3 and the group `max_premium = 3.0`.
