@@ -59,3 +59,8 @@ put in over 30 days), 0.050 (0x5bc235ac, 35.3 ETH), 0.042 (0xc54d3914, 13.7 ETH)
 | 0xc54d3914 | 178 copies, +25.2% a copy, won 60% | 19 copies (6 a day), +39.2% a copy, won 68% |
 
 All three behaved as before, so the owner had the bot built with no paper phase: `crates/rh-copier`, `docs/23-rh-copier.md`.
+
+**Nov 19: the deep redo** (`../../2026-11-19/rh_deep/README.md`). The exact curve, data back to Oct 9, and the coins
+that go quiet kept: this pass had dropped every coin whose trading stopped within 600 s of the copied buy, which
+flattered wallets 1 and 2 (live settings: +14.3% and +7.8% a copy, not +20.8% and +11.1%; wallet 3 +24.6%). One new
+group passes and holds lately: five wallets led by 0xe3fdae6c.

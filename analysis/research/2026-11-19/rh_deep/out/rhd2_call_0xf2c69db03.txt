@@ -1,0 +1,102 @@
+[exact curve, every coin, landing +[2, 3, 5] blocks] call:0xf2c69db0311b3ded8ec7f39e80f555a200cc2839: 299 copies of its first buys of 0.01+ ETH, 10-09 to 11-18; halves at 10-22 16:59 UTC (149 / 150); our 0.02 ETH
+
+settings making money on both halves: 284,686 of 622,080 with 10+ copies a half
+
+THE CHOICE (the best neighbourhood by the weaker half without its best 2%):
+   its buy 0.03+ ETH, coin any ETH in the curve, limit none, tp 6x, 120 s, sell pressure 3/30s, stall 60, its sale early
+   241 copies (120 / 121) | +0.5814 ETH (+12.1% a copy) | halves +0.2819 / +0.2995 | w/o 2% +0.2666 | won 42% | P(mean>0) 99.6%
+
+the single best (no smoothing): its buy 0.03+ ETH, coin any ETH in the curve, limit none, tp none, 600 s, sell pressure 8/30s, stall off, its sale early
+   241 copies (120 / 121) | +0.6215 ETH (+12.9% a copy) | halves +0.3201 / +0.3014 | w/o 2% +0.2517 | won 37% | P(mean>0) 99.3%
+
+picked on the OLDER half, scored on the newer: its buy 0.01+ ETH, coin <0.5 ETH in the curve, limit none, tp none, 450 s, sell pressure 5/30s, stall 120, its sale always
+   165 copies (98 / 67) | +0.5510 ETH (+16.7% a copy) | halves +0.4827 / +0.0683 | w/o 2% +0.2660 | won 35% | P(mean>0) 99.8%
+   its rank on the other half: 164,120 of 622,080
+
+picked on the NEWER half, scored on the older: its buy 0.03+ ETH, coin any ETH in the curve, limit none, tp 6x, 600 s, sell pressure 8/30s, stall off, its sale always
+   241 copies (120 / 121) | +0.6437 ETH (+13.4% a copy) | halves +0.2582 / +0.3854 | w/o 2% +0.3205 | won 36% | P(mean>0) 99.6%
+   its rank on the other half: 6,834 of 622,080
+
+EACH PART VARIED ALONE (the others as chosen): a copy half 1 / half 2 | ETH all | w/o 2% ETH half 1 / half 2
+  its buy size:
+     0.01+      +10.4% /  +10.6% | +0.6278 | +0.0861 / +0.1267  (copies 299)
+     0.02+       +9.4% /  +12.4% | +0.5691 | +0.0713 / +0.1334  (copies 262)
+     0.03+      +11.7% /  +12.4% | +0.5814 | +0.1579 / +0.1714  (copies 241)   <- chosen
+     0.05+       +4.5% /  +14.1% | +0.2698 | -0.0031 / +0.1440  (copies 143)
+     0.075+     +24.4% /   +3.3% | +0.1732 | +0.0912 / -0.0169  (copies 58)
+     0.1+       +16.9% /   +2.4% | +0.1087 | +0.0385 / -0.0234  (copies 52)
+     0.15+     too few copies
+     0.2+      too few copies
+     0.3+      too few copies
+     0.5+      too few copies
+  coin type (ETH in the curve at its buy):
+     any        +11.7% /  +12.4% | +0.5814 | +0.1579 / +0.1714  (copies 241)   <- chosen
+     <0.5       +16.3% /  +15.4% | +0.4051 | +0.1341 / +0.0927  (copies 127)
+     0.5-1.5     +9.4% /  +14.0% | +0.2386 | +0.0142 / +0.1007  (copies 98)
+     1.5-3     too few copies
+     3+        too few copies
+  price limit:
+     1.1x        +1.7% /   +1.0% | +0.0645 | -0.0417 / -0.0365  (copies 241)
+     1.25x       +2.8% /   +5.3% | +0.1954 | -0.0201 / +0.0189  (copies 241)
+     1.5x        +9.8% /  +11.1% | +0.5041 | +0.1111 / +0.1469  (copies 241)
+     none       +11.7% /  +12.4% | +0.5814 | +0.1579 / +0.1714  (copies 241)   <- chosen
+  take profit:
+     1.5x        -4.5% /   -0.6% | -0.1217 | -0.1331 / -0.0651  (copies 241)
+     2x          -4.6% /   +2.0% | -0.0623 | -0.1472 / -0.0149  (copies 241)
+     2.5x        +0.6% /   +2.4% | +0.0716 | -0.0505 / -0.0169  (copies 241)
+     3x          +4.2% /   +5.3% | +0.2289 | +0.0191 / +0.0580  (copies 241)
+     3.5x        +6.6% /   +7.9% | +0.3496 | +0.0717 / +0.1049  (copies 241)
+     4x          +9.2% /  +10.8% | +0.4817 | +0.1265 / +0.1533  (copies 241)
+     5x         +10.1% /  +11.8% | +0.5275 | +0.1418 / +0.1617  (copies 241)
+     6x         +11.7% /  +12.4% | +0.5814 | +0.1579 / +0.1714  (copies 241)   <- chosen
+     8x         +12.8% /   +9.5% | +0.5359 | +0.1632 / +0.1051  (copies 241)
+     none       +12.8% /   +9.5% | +0.5359 | +0.1632 / +0.1051  (copies 241)
+  time:
+     60s         +8.2% /  +12.5% | +0.5004 | +0.0828 / +0.1751  (copies 241)
+     120s       +11.7% /  +12.4% | +0.5814 | +0.1579 / +0.1714  (copies 241)   <- chosen
+     180s       +11.2% /  +12.2% | +0.5637 | +0.1456 / +0.1659  (copies 241)
+     300s       +11.6% /  +11.8% | +0.5635 | +0.1549 / +0.1565  (copies 241)
+     450s       +11.9% /  +11.6% | +0.5668 | +0.1613 / +0.1534  (copies 241)
+     600s       +11.9% /  +11.7% | +0.5676 | +0.1612 / +0.1543  (copies 241)
+  sell pressure:
+     off        +10.2% /   +9.9% | +0.4829 | +0.1200 / +0.1108  (copies 241)
+     3/30s      +11.7% /  +12.4% | +0.5814 | +0.1579 / +0.1714  (copies 241)   <- chosen
+     3/60s      +10.9% /  +10.2% | +0.5084 | +0.1382 / +0.1180  (copies 241)
+     5/30s      +11.8% /  +11.0% | +0.5488 | +0.1594 / +0.1372  (copies 241)
+     5/60s      +10.6% /  +10.3% | +0.5029 | +0.1304 / +0.1204  (copies 241)
+     8/30s      +11.5% /  +11.1% | +0.5463 | +0.1524 / +0.1416  (copies 241)
+     8/60s      +10.3% /   +9.9% | +0.4882 | +0.1237 / +0.1123  (copies 241)
+     10/30s     +11.7% /  +11.1% | +0.5474 | +0.1558 / +0.1394  (copies 241)
+     10/60s     +10.1% /  +10.3% | +0.4906 | +0.1180 / +0.1205  (copies 241)
+  stall:
+     off        +11.3% /  +12.1% | +0.5643 | +0.1478 / +0.1644  (copies 241)
+     60s        +11.7% /  +12.4% | +0.5814 | +0.1579 / +0.1714  (copies 241)   <- chosen
+     90s        +11.4% /  +12.2% | +0.5685 | +0.1504 / +0.1660  (copies 241)
+     120s       +11.3% /  +12.1% | +0.5643 | +0.1478 / +0.1644  (copies 241)
+     180s       +11.3% /  +12.1% | +0.5643 | +0.1478 / +0.1644  (copies 241)
+     240s       +11.3% /  +12.1% | +0.5643 | +0.1478 / +0.1644  (copies 241)
+  its sale:
+     never      +11.8% /  +11.6% | +0.5627 | +0.1587 / +0.1519  (copies 241)
+     early      +11.7% /  +12.4% | +0.5814 | +0.1579 / +0.1714  (copies 241)   <- chosen
+     always     +12.2% /  +11.6% | +0.5714 | +0.1678 / +0.1514  (copies 241)
+
+WHAT EACH SIZE BAND AND COIN TYPE ADDS ALONE (the chosen exit and limit): copies | a copy half 1 / half 2 | ETH
+     buy [0.01, 0.02):   37 |  +18.1% /   -1.8% | +0.0586
+     buy [0.02, 0.03):   21 |  -16.7% /  +12.3% | -0.0123
+     buy [0.03, 0.05):   98 |  +21.6% /   +9.7% | +0.3117
+     buy [0.05, 0.075):   85 |  -12.7% /  +19.9% | +0.0966
+     buy [0.075, 0.1):    6 |  +96.6% /  +10.9% | +0.0645
+     buy [0.1, 0.15):   44 |  +28.7% /   +0.4% | +0.1335
+     coin <0.5    :  165 |  +16.7% /  +12.3% | +0.4916
+     coin 0.5-1.5 :  117 |   +2.5% /  +12.0% | +0.1939
+     coin 1.5-3   :   15 |  -40.2% /   -7.8% | -0.0559
+
+THE CHOICE in the last 7 days: 12 copies (1.7 a day), -0.0113 ETH (-4.7% a copy), won 17%
+
+THE CHOICE in the last 3 days: 6 copies (2.0 a day), -0.0195 ETH (-16.2% a copy), won 0%
+   day to 11-13 00:31 UTC:   3 copies -0.0038 ETH (  -6.4%)
+   day to 11-14 00:31 UTC:   2 copies +0.0160 ETH ( +40.0%)
+   day to 11-16 00:31 UTC:   1 copies -0.0040 ETH ( -20.0%)
+   day to 11-17 00:31 UTC:   1 copies -0.0007 ETH (  -3.4%)
+   day to 11-18 00:31 UTC:   3 copies -0.0114 ETH ( -19.1%)
+   day to 11-19 00:31 UTC:   2 copies -0.0074 ETH ( -18.5%)

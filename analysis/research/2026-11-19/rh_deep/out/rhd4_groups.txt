@@ -1,0 +1,56 @@
+passed 449; with null <= 0.05: 132
+
+34 groups (identities linked when they share 30%+ of their copied coins)
+
+group (first member = strongest)                     members  coins P1/P2/P3  a day  exit (first member)                               all  a copy       P3 P3 a copy own coins
+call:0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6            1     303/625/700   40.3  wallet 2's: tp 3.5, sp 10/30 (lim 1.5)        +3.9340  +12.1%  +1.2210     +8.7%        0%
+rec:0x9a3955a122ab8a649a8511df2dce169471fd0ec1             1     318/211/341   21.5  wallet 1's: tp 4, 600 s (lim 1.5)             +1.6451   +9.5%  +0.9567    +14.0%        1%
+rec:0x66e78f65ba74906e3ced945c24a6c9520c1f50e7            45        0/555/66   23.2  its sale, tp 4 (lim 1.5)                      +2.4934  +20.1%  +0.5944    +45.0%       30%
+      members: rec:0x58e6e40d1, rec:0xe0237ab9e, rec:0x8cfc0ae69, rec:0xa405e7f55, rec:0x076102423, rec:0x1ca71a0cf, rec:0x4de269f46, rec:0x2168f2af6, rec:0xd11da8f6c, rec:0x75a3c12a6, rec:0x3fd65dfc0 ...
+rec:0x9e0771d4a5fe0c5dbd03e6175807b8290c2e40b0             1        0/89/104   11.0  wallet 3's: tp 2.5, 300 s, sp 8/60, stall 240  +0.6735  +17.4%  +0.5287    +25.4%        0%
+rec:0x5bc235acecff3dde394f4bfc696f7c35efd502f0             1     211/110/334   20.4  wallet 2's: tp 3.5, sp 10/30 (lim 1.5)        +1.0135   +7.7%  +0.4276     +6.4%        9%
+rec:0xe3fdae6c6a2da32ce4b3e08b49e818cec9b0ed72             5      130/137/92    8.9  held 600 s (lim 1.5)                          +0.8985  +12.5%  +0.3705    +20.1%        0%
+      members: rec:0x3d31b1e1e, rec:0x30d81c469, rec:0xa8603745b, rec:0x74b904c6e
+rec:0xa9c2de9f87893ab1123c09a9e594bb3fc4ebc096            26       101/82/99    7.1  w4 live exit (lim 1.5)                        +1.0669  +18.9%  +0.3504    +17.7%        0%
+      members: rec:0x99fc5a134, rec:0xc6553d74a, rec:0xc562ac33d, rec:0x12c6d9f2d, rec:0xc08d8e108, rec:0x9208981da, rec:0x58a4390db, rec:0xa11f3a9a4, rec:0xec2a6b695, rec:0x45f1723e1, rec:0x0139386de ...
+rec:0xc54d3914f91f984d61b63d491f38934c4e706b79             1      241/107/47    9.7  w4 live exit (lim 1.5)                        +2.2028  +27.9%  +0.3452    +36.7%       12%
+call:0x610de2b5fe686748ceaa6c5f1cb45f3aa9672208            1      64/180/134    9.4  wallet 2's: tp 3.5, sp 10/30 (lim 1.5)        +0.5292   +7.0%  +0.2432     +9.1%        0%
+call:0xf2c69db0311b3ded8ec7f39e80f555a200cc2839            1      167/106/43    7.8  its sale, tp 4 (lim 1.5)                      +0.4710   +7.5%  +0.1049    +12.2%        0%
+rec:0xae0ae32be14f3c3a423f0ac11405df443a9cbc06             1          20/0/8    0.7  w4 live exit (lim 1.5)                        +0.2850  +50.9%  +0.0975    +60.9%        0%
+rec:0x12859a4c4549899b5f10af295a66d5064bec599a             2        10/11/14    0.9  held 600 s (lim 1.5)                          +0.2107  +30.1%  +0.0957    +34.2%        0%
+      members: rec:0x5664388c6
+rec:0x8d888b8c53254e9226e3ae2c3b4b4e4a59b7aaf3             1          5/5/18    0.7  wallet 2's: tp 3.5, sp 10/30 (lim 1.5)        +0.1310  +23.4%  +0.0641    +17.8%        0%
+rec:0x9d1a06682b2bd730eed55919e029faf7ee1d0709             1         0/15/12    1.0  tp 2, 120 s (lim 1.5)                         +0.0801  +14.8%  +0.0528    +22.0%        0%
+rec:0xb346eeef38d826421561f08b1b01281154c7f70d             1          0/12/4    0.7  held 600 s (lim 1.5)                          +0.0906  +28.3%  +0.0523    +65.4%        0%
+rec:0x3af49c05e1ed3ae8ac7242c25ed4a1aa2a736e26             1        84/30/14    3.2  its sale, tp 4 (lim 1.5)                      +0.1656   +6.5%  +0.0458    +16.3%       12%
+rec:0x60d58b21daa73020982ed47e2ebce0494047e76b             2         32/5/39    1.9  w4 live exit (lim 1.5)                        +0.5999  +39.5%  +0.0450     +5.8%        0%
+      members: rec:0x57283021a
+rec:0xd1a1aa3f59f4bfc6ab46211ab7422ef169b8b503             1        12/10/22    1.1  held 600 s (lim 1.5)                          +0.0799   +9.1%  +0.0347     +7.9%        0%
+rec:0x40f201dbc85e717837d80b67f193d6760c1eb4a1             3         6/19/14    1.0  wallet 3's: tp 2.5, 300 s, sp 8/60, stall 240  +0.1543  +19.8%  +0.0341    +12.2%        0%
+      members: rec:0xc0e821543, rec:0x445f47705
+rec:0x081e1e91e88e5c7ed7c3a31818516264750db79a             8        70/30/10    2.7  wallet 2's: tp 3.5, sp 10/30 (lim 1.5)        +0.6089  +27.7%  +0.0338    +16.9%        0%
+      members: rec:0xc60f0cef1, rec:0x1f912d06f, rec:0x2b50cca50, rec:0x1f261fa6c, rec:0x80acb9f13, rec:0x31fb4e1bb, rec:0x73beb7dd5
+rec:0x496e393e421ae2fa69387ab7bafe2f68c0866e0a             2         8/25/12    1.1  its sale, tp 4 (lim 1.5)                      +0.1063  +11.8%  +0.0327    +13.6%        4%
+      members: rec:0x27ca6e838
+rec:0xb7d3b2e4ffce19692c8714b1e2243b292511363d             1          4/41/8    1.5  wallet 2's: tp 3.5, sp 10/30 (lim 1.5)        +0.1304  +12.3%  +0.0305    +19.1%        0%
+rec:0xa98d93ecceec402dfef004602c4f1871a051c671             1          19/7/8    0.9  wallet 2's: tp 3.5, sp 10/30 (lim 1.5)        +0.0964  +14.2%  +0.0303    +19.0%       15%
+rec:0x4944bb469fc0a41eed6bc8051562c794ea944ac2             1        13/15/35    2.0  wallet 3's: tp 2.5, 300 s, sp 8/60, stall 240  +0.0571   +4.5%  +0.0272     +3.9%        0%
+rec:0x5fde7e655f2d2043ee53f497cbe20f380d945230             2        14/23/45    2.1  tp 2, 120 s (lim 1.5)                         +0.0741   +4.5%  +0.0190     +2.1%        0%
+      members: rec:0x99c7894d6
+rec:0xf12b4a00f1b758d6d1c03edc6486df09c6908ee6             1        24/42/10    2.6  held 600 s (lim 1.5)                          +0.0666   +4.4%  +0.0147     +7.3%        0%
+rec:0x9415ba9b8ab3dfebf4c7fdddd5c4cf0bf183f776             1         13/11/8    0.9  held 600 s (lim 1.5)                          +0.0303   +4.7%  +0.0113     +7.1%        0%
+rec:0x2fcd16bc33db58deb1ba5a221741fe96ba0fb37b             1         39/19/7    1.6  held 600 s (lim 1.5)                          +0.1699  +13.1%  +0.0103     +7.3%        0%
+rec:0xf06051cb7717fdfb8225306a3e061f35ea2c7e5b             1          22/7/6    0.9  tp 2, 120 s (lim 1.5)                         +0.0995  +14.2%  +0.0094     +7.8%        0%
+rec:0x5b4504645f956436fe559074593ab6bea72e9553             8         7/30/79    3.0  w4 live exit (lim 1.5)                        +0.3864  +16.7%  +0.0093     +0.6%        0%
+      members: rec:0x4c5cb0a8d, rec:0xbd35d579c, rec:0x379d5dcd5, rec:0xac9d1f93d, rec:0xabfae7697, rec:0xcb5be10db, rec:0x252f26b33
+rec:0xb7fdd085c277459c2a19e0da4005d347bf1d34af             5        12/28/10    1.5  wallet 3's: tp 2.5, 300 s, sp 8/60, stall 240  +0.2994  +29.9%  +0.0027     +1.3%        0%
+      members: rec:0x67aaa877a, rec:0x35f1887d2, rec:0x7ea55d9a4, rec:0x2fd31a6c5
+rec:0x3e04ff606f95a8e1c51edece540d511ffd817671             2       132/33/32    4.9  wallet 3's: tp 2.5, 300 s, sp 8/60, stall 240  +0.6116  +15.5%  +0.0022     +0.3%        2%
+      members: rec:0x2450347ec
+rec:0x375509721788aa601124979a4004c85134b73605             1         0/13/22    1.7  wallet 3's: tp 2.5, 300 s, sp 8/60, stall 240  +0.0907  +13.0%  +0.0014     +0.3%        0%
+rec:0xcaa6b9e6a5d52e34173385b81444c0b1364bb17f             1           1/8/7    0.5  wallet 3's: tp 2.5, 300 s, sp 8/60, stall 240  +0.0644  +20.1%  +0.0001     +0.1%        0%
+
+CALLERS (contracts that call the curve) among the good:
+   0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6: 144,442 buys into 6,678 recipients; the top 5 recipients hold 1% of them: 0x8994cca7 298, 0xdf07cd4e 277, 0x2450347e 263, 0x3e04ff60 246, 0x9ad6029a 237
+   0x610de2b5fe686748ceaa6c5f1cb45f3aa9672208: 378 buys into 12 recipients; the top 5 recipients hold 81% of them: 0x5bc235ac 134, 0x01118901 76, 0x60b55add 36, 0x43145d4a 32, 0x68f40c21 29
+   0xf2c69db0311b3ded8ec7f39e80f555a200cc2839: 1,579 buys into 180 recipients; the top 5 recipients hold 22% of them: 0x4f667c7f 137, 0x6c29068a 67, 0xf2cd2fc4 52, 0x2b950059 50, 0x34c0c6c5 44

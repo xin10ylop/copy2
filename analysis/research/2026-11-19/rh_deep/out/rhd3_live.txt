@@ -1,0 +1,48 @@
+data 10-09 11:26 to 11-19 00:31 UTC; periods to 10-22 23:48 / 11-05 12:09 / the end
+
+wallet 1 0x9a3955a122ab8a649a8511df2dce169471fd0ec1: its buys 0.1+ ETH, coins under 0.5 ETH in the curve, limit 1.5
+   OLD (quiet coins left out)          430 copies +1.7868 ETH ( +20.8% a copy), w/o 2% +1.3066, won  49%, P(mean>0) 100.0%
+   NEW (every coin)                    515 copies +1.4678 ETH ( +14.3% a copy), w/o 2% +0.9390, won  41%, P(mean>0) 100.0%
+      the quiet coins alone             85 copies -0.3190 ETH ( -18.8% a copy), w/o 2% -0.4056, won   2%, P(mean>0)   0.0%
+   NEW, P1                             172 copies +0.3060 ETH (  +8.9% a copy), w/o 2% +0.1665, won  36%, P(mean>0)  98.2%
+   NEW, P2                             158 copies +0.4194 ETH ( +13.3% a copy), w/o 2% +0.2547, won  37%, P(mean>0)  99.6%
+   NEW, P3                             185 copies +0.7424 ETH ( +20.1% a copy), w/o 2% +0.5305, won  49%, P(mean>0) 100.0%
+   NEW, the last 3 days                 49 copies +0.2064 ETH ( +21.1% a copy), w/o 2% +0.1505, won  53%, P(mean>0)  99.8%
+      day to 11-13 00:31:  17 copies +0.1013 ETH ( +29.8%)
+      day to 11-14 00:31:  11 copies -0.0278 ETH ( -12.7%)
+      day to 11-15 00:31:  11 copies +0.0500 ETH ( +22.7%)
+      day to 11-16 00:31:   1 copies -0.0049 ETH ( -24.4%)
+      day to 11-17 00:31:  24 copies +0.0317 ETH (  +6.6%)
+      day to 11-18 00:31:  13 copies +0.1183 ETH ( +45.5%)
+      day to 11-19 00:31:  12 copies +0.0563 ETH ( +23.5%)
+
+wallet 2 0x5bc235acecff3dde394f4bfc696f7c35efd502f0: its buys 0.05+ ETH, limit 1.5
+   OLD (quiet coins left out)          534 copies +1.1901 ETH ( +11.1% a copy), w/o 2% +0.6783, won  34%, P(mean>0) 100.0%
+   NEW (every coin)                    652 copies +1.0216 ETH (  +7.8% a copy), w/o 2% +0.4203, won  29%, P(mean>0)  99.9%
+      the quiet coins alone            118 copies -0.1684 ETH (  -7.1% a copy), w/o 2% -0.2559, won   8%, P(mean>0)   6.8%
+   NEW, P1                             209 copies +0.2710 ETH (  +6.5% a copy), w/o 2% +0.0902, won  27%, P(mean>0)  95.2%
+   NEW, P2                             110 copies +0.3171 ETH ( +14.4% a copy), w/o 2% +0.2196, won  35%, P(mean>0)  99.5%
+   NEW, P3                             333 copies +0.4336 ETH (  +6.5% a copy), w/o 2% +0.1132, won  28%, P(mean>0)  98.6%
+   NEW, the last 3 days                 87 copies +0.2537 ETH ( +14.6% a copy), w/o 2% +0.1567, won  36%, P(mean>0)  98.9%
+      day to 11-13 00:31:  46 copies -0.1021 ETH ( -11.1%)
+      day to 11-14 00:31:  16 copies +0.0495 ETH ( +15.5%)
+      day to 11-15 00:31:   8 copies -0.0164 ETH ( -10.2%)
+      day to 11-16 00:31:   2 copies -0.0035 ETH (  -8.7%)
+      day to 11-17 00:31:  36 copies +0.1726 ETH ( +24.0%)
+      day to 11-18 00:31:  17 copies +0.0378 ETH ( +11.1%)
+      day to 11-19 00:31:  34 copies +0.0434 ETH (  +6.4%)
+
+wallet 3 0xc54d3914f91f984d61b63d491f38934c4e706b79: its buys 0.03+ ETH, limit none
+   OLD (quiet coins left out)          335 copies +1.7792 ETH ( +26.6% a copy), w/o 2% +1.5736, won  55%, P(mean>0) 100.0%
+   NEW (every coin)                    375 copies +1.8442 ETH ( +24.6% a copy), w/o 2% +1.6025, won  52%, P(mean>0) 100.0%
+      the quiet coins alone             40 copies +0.0651 ETH (  +8.1% a copy), w/o 2% +0.0322, won  30%, P(mean>0)  77.2%
+   NEW, P1                             221 copies +1.0006 ETH ( +22.6% a copy), w/o 2% +0.8756, won  46%, P(mean>0) 100.0%
+   NEW, P2                             107 copies +0.4811 ETH ( +22.5% a copy), w/o 2% +0.4231, won  57%, P(mean>0) 100.0%
+   NEW, P3                              47 copies +0.3625 ETH ( +38.6% a copy), w/o 2% +0.3348, won  70%, P(mean>0) 100.0%
+   NEW, the last 3 days                 21 copies +0.1395 ETH ( +33.2% a copy), w/o 2% +0.1139, won  52%, P(mean>0)  99.9%
+      day to 11-13 00:31:   5 copies +0.0586 ETH ( +58.6%)
+      day to 11-14 00:31:   2 copies +0.0090 ETH ( +22.4%)
+      day to 11-15 00:31:   7 copies +0.0700 ETH ( +50.0%)
+      day to 11-17 00:31:   4 copies +0.0547 ETH ( +68.4%)
+      day to 11-18 00:31:   9 copies +0.0496 ETH ( +27.5%)
+      day to 11-19 00:31:   8 copies +0.0352 ETH ( +22.0%)
