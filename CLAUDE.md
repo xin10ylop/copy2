@@ -10,7 +10,8 @@ Two copied wallets, kept apart, and the bots that copy them:
   `config/copier.example.toml`, unit `rugsnipe-copier`), which trades any venue through Jupiter.
 - **The next box** (`08-new-box/`): both bots, 4 SOL. The long copy runs wallet 4's part A at 1 SOL with 2 open. The
   copier runs Rafinhaaaaaa at 1 SOL with 1 open. Prepared Nov 3, not started; the owner says when to deploy live.
-- **Robinhood Chain** (chain 4663, Pons V2 launchpad): three wallets copied by `crates/rh-copier` from ONE wallet at
+- **Robinhood Chain** (chain 4663, Pons V2 launchpad): three wallets, and since Nov 19 11:51 UTC a group of five (wallets
+  4-8, `analysis/research/2026-11-19/rh_deep/`), copied by `crates/rh-copier` from ONE wallet at
   0.02 ETH a copy, no paper phase (the owner's call, Nov 18); `docs/23-rh-copier.md`, unit `rh-copier`, check command
   `www`; research `analysis/research/2026-11-18/robinhood/`. **Live since Nov 18 22:10 UTC** on `fra-long` (wallet `0x35bb5c55...`, funded 0.15 ETH from 3.8 SOL
   of wallet 4's bot wallet; the first start crashed on a TLS-engine panic, fixed in `3e1b321`, nothing was sent).

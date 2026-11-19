@@ -94,6 +94,9 @@ yet the first try (nonce 17) landed at 08:33:03, and the last refusal was "nonce
 is one try of at most 4 s per node (to every node at once), and after any error but a definite refusal (nonce too low,
 no funds) the bot waits 15 s for the transaction's own hash (known before sending) before calling it unsent.
 
+**Nov 19 11:51 UTC: the 5-wallet group added as wallets 4-8** (`config/rh-copier.example.toml`, the deep redo's
+`rhd7_group_audit`); the box's journal: `rh start ... 8 leaders`. The book before it: 14 closed, 2 won, −0.0364 ETH.
+
 ## 4. Running it (the box, `ops@fra-long`)
 
 Build and install (the same as every update; the unit is installed but not enabled):

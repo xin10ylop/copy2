@@ -52,3 +52,48 @@ hold_s = 300
 sell_pressure = [8, 60, 30]
 stall_s = 240
 its_sale = "never"
+
+# wallets 4-8: one group of 5 wallets that buy the same coins (Nov 19 deep redo, analysis/research/2026-11-19/rh_deep/):
+# its buys of 0.02+ ETH on coins with under 0.5 ETH in the curve, no price limit (3x bounds it), tp 3.5x, 10 min, stall
+# 240 s, its early sale followed. Backtest 288 copies, +18.3% a copy (+13.5% landing 5-12 blocks late); the bot's rule
+# (the first member buy passing the filters) 294 copies, +17.5%. Live on the box since Nov 19 11:51 UTC.
+[[leaders]]
+address = "0xe3fdae6c6a2da32ce4b3e08b49e818cec9b0ed72"
+min_its_eth = 0.02
+max_curve_eth = 0.5
+take_profit = 3.5
+hold_s = 600
+stall_s = 240
+its_sale = "early"
+[[leaders]]
+address = "0x3d31b1e1e7dfd99c5314feee300803d6aadf0bb8"
+min_its_eth = 0.02
+max_curve_eth = 0.5
+take_profit = 3.5
+hold_s = 600
+stall_s = 240
+its_sale = "early"
+[[leaders]]
+address = "0x30d81c4695eddceb53bea0480c6183d24773a98e"
+min_its_eth = 0.02
+max_curve_eth = 0.5
+take_profit = 3.5
+hold_s = 600
+stall_s = 240
+its_sale = "early"
+[[leaders]]
+address = "0xa8603745beb925370089ec2af4e220d239b17466"
+min_its_eth = 0.02
+max_curve_eth = 0.5
+take_profit = 3.5
+hold_s = 600
+stall_s = 240
+its_sale = "early"
+[[leaders]]
+address = "0x74b904c6ee6d14dfdd1dd5056cf593aa00a44461"
+min_its_eth = 0.02
+max_curve_eth = 0.5
+take_profit = 3.5
+hold_s = 600
+stall_s = 240
+its_sale = "early"

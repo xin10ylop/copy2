@@ -7,7 +7,7 @@ Two copied wallets, kept apart, and the shared code:
 | **Wallet 4** | `H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg` | part A: the long copy (`rugsnipe-long run`); part B: the copier, off | folders `01`-`07` below |
 | **Rafinhaaaaaa** | `Hn6vBWWySnxA8XjxRQDEmZEuH5QL7KqosnJGcLcUzFJ6` | the copier (`rugsnipe-long copy`) | [`rafinhaaaaaa/`](rafinhaaaaaa/README.md) |
 | Both, on one box | | | [`08-new-box/`](08-new-box/README.md): the 4 SOL plan, from an empty server to live |
-| **Robinhood Chain** (Pons) | wallets 1-3: `0x9a3955a1`, `0x5bc235ac`, `0xc54d3914` | `rh-copier`, one wallet `0x35bb5c55...`, 0.02 ETH a copy; **live since Nov 18 22:10 UTC** (0.15 ETH) | [`docs/23-rh-copier.md`](docs/23-rh-copier.md), [`analysis/research/2026-11-18/robinhood/`](analysis/research/2026-11-18/robinhood/README.md) |
+| **Robinhood Chain** (Pons) | wallets 1-3: `0x9a3955a1`, `0x5bc235ac`, `0xc54d3914`; 4-8: the group led by `0xe3fdae6c` (since Nov 19 11:51 UTC) | `rh-copier`, one wallet `0x35bb5c55...`, 0.02 ETH a copy; **live since Nov 18 22:10 UTC** (0.15 ETH) | [`docs/23-rh-copier.md`](docs/23-rh-copier.md), [`analysis/research/2026-11-18/robinhood/`](analysis/research/2026-11-18/robinhood/README.md) |
 
 Code: `crates/rugsnipe-long/` (the long copy, docs/20; the copier, [`docs/21-copier.md`](docs/21-copier.md); how to find another wallet to copy, [`docs/22-wallet-search.md`](docs/22-wallet-search.md)); `crates/rh-copier/` (Robinhood Chain, [`docs/23-rh-copier.md`](docs/23-rh-copier.md)), with
 `deploy/` and `config/`. Operator 1 ("him", AHwJSnFN) and the other copied wallets are in the **copy1** repo. Both
