@@ -14,7 +14,7 @@ state_dir = "/var/lib/rh-copier"
 
 stake_eth = 0.02             # each copy (the owner's call, Nov 18)
 max_open = 4
-daily_stop_eth = 0.06        # no new copies after a day's closed result reaches -0.06 ETH (3 stakes)
+daily_stop_eth = 0.1         # no new copies after a day's closed result reaches -0.1 ETH (5 stakes; 0.06 until Nov 19, the owner's call)
 slippage = 0.25              # a buy's minimum tokens = expected x 0.75
 sell_slippage = 0.30         # a sale's minimum ETH = expected x 0.70; retries at half, then 0
 grad_guard_eth = 3.8         # the curve graduates at 4.2 ETH into a Uniswap v4 pool this bot does not trade
@@ -42,16 +42,13 @@ hold_s = 900             # 900 s, Nov 19 (rhd12_time: better than 600 on both ha
 sell_pressure = [10, 30, 30]
 its_sale = "never"
 
-# wallet 3: its buys of 0.03+ ETH, any coin, no price limit (3x bounds it); tp 3x (2.5x until Nov 19), 5 min, sell pressure 8 over 60 s (from 30 s), out after 240 s
-# without a new high; its sale ignored. Backtest +26.7% a copy; last 3 days +39.2%.
+# wallet 3: its buys of 0.03+ ETH, any coin, no price limit (3x bounds it); since Nov 19 sold 45 s after its buy with no other
+# exit (before: tp 2.5-3x, 5 min, sell pressure 8/60 s, stall 240 s). Backtest +33.3% a copy (rhd19).
 [[leaders]]
 address = "0xc54d3914f91f984d61b63d491f38934c4e706b79"
 min_its_eth = 0.03
 max_premium = 3.0         # no price limit in effect (without it the 25% slippage acted as ~1.33x; Nov 19, rhd2: none beats 1.25-1.5x)
-take_profit = 3.0         # 3x, Nov 19 (rhd11_tp: better than 2.5x on both halves)
-hold_s = 300
-sell_pressure = [8, 60, 30]
-stall_s = 240
+hold_s = 45               # sold 45 s after its buy, nothing else (Nov 19, rhd19_short_hold: +33.3% a copy against +26.9%, better on both halves; 30-60 s all better)
 its_sale = "never"
 
 # wallets 4-8: one group of 5 wallets that buy the same coins (Nov 19 deep redo, analysis/research/2026-11-19/rh_deep/):

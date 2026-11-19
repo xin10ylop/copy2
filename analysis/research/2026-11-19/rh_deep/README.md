@@ -155,3 +155,12 @@ Earlier studies saw only its own sales (15%) and called the rest "holding". With
 its token amount or half, within 1%), following them is worse in every variant: always −0.1% a copy against +8.0%;
 wallet 4's rule +4.8%; the best +5.6%. Wallet 2 is a flipper like wallet 1. `rh-copier status` now counts such a sale
 as the leader's in its "its pct / it sold" columns.
+
+**Selling before the leader** (the owner: wallet 2 "typically sells after 33 seconds, what if we always sell before?";
+`rhd19_short_hold.py`, `out/rhd19_short_hold.txt`): holds of 3-120 s after its buy, with the other exits kept or as a pure
+time sale. Worse for wallet 2 (+1.0 to +1.8% a copy at 5-30 s, second half negative, against +7.9%), wallet 1 (+5 to +7%
+against +13.9%) and the group (+4 to +7% against +18.9%): our entry pays the early tax and the first seconds are the
+snipers' flip. **Wallet 3 better with a pure time sale at 30-60 s**: 45 s +33.3% a copy against +26.9%, halves +1.496 /
++1.066 ETH against +1.098 / +0.965, without the best 2% +1.777 against +1.743 (last 7 days +36.6% against +38.1%); with
+its other exits kept, 45 s is worse (+26.5%: sell pressure fires in the window). Applied: wallet 3 sold 45 s after its
+buy with no other exit; the daily stop 0.1 ETH (the owner's call).

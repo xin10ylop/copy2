@@ -101,6 +101,9 @@ no funds) the bot waits 15 s for the transaction's own hash (known before sendin
 2.5x → 3x; wallet 2 and the group 600 → 900 s; wallet 3 and the group `max_premium = 3.0`, since a wallet without a limit
 got the 25% slippage as a hidden ~1.33x limit the backtest never had (live buy #17 reverted on it). Wallet 1 unchanged.
 
+**Nov 19 evening:** daily stop 0.06 → 0.1 ETH (the owner's call); wallet 3 sold 45 s after its buy with no other exit
+(rhd19: +33.3% a copy against +26.9%, better on both halves).
+
 ## 4. Running it (the box, `ops@fra-long`)
 
 Build and install (the same as every update; the unit is installed but not enabled):
