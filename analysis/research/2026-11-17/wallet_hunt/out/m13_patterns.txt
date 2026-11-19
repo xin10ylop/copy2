@@ -1,0 +1,23 @@
+6651 coins, 48 completed their curve in the window; days 1-2 pick, days 3-4 blind
+
+A. CREATOR TRACK RECORD (its earlier coins in the data):
+   first coin of its creator: 991 / 811 trades | picked (1.5, 2400, True): days 1-2 -44.28 SOL (-8.9%) -> days 3-4 -47.33 (-11.7%) | exits positive on both: 0 of 40
+   any earlier coin: 1821 / 2760 trades | picked (1.5, 60, True): days 1-2 -135.73 SOL (-14.9%) -> days 3-4 -241.94 (-17.5%) | exits positive on both: 0 of 40
+   an earlier coin x3: 748 / 1497 trades | picked (1.5, 60, False): days 1-2 -49.96 SOL (-13.4%) -> days 3-4 -143.04 (-19.1%) | exits positive on both: 0 of 40
+   an earlier coin past 50% of the curve: 1037 / 1947 trades | picked (1.5, 60, True): days 1-2 -72.69 SOL (-14.0%) -> days 3-4 -176.05 (-18.1%) | exits positive on both: 0 of 40
+   an earlier coin x5: 393 / 848 trades | picked (1.5, 60, False): days 1-2 -22.02 SOL (-11.2%) -> days 3-4 -81.53 (-19.2%) | exits positive on both: 0 of 40
+   2+ earlier coins x3: 425 / 974 trades | picked (1.5, 60, False): days 1-2 -23.02 SOL (-10.8%) -> days 3-4 -97.02 (-19.9%) | exits positive on both: 0 of 40
+
+B. RUN-UP (the first trade past P% of the curve, with N+ buys in the last 30 s):
+   P 30%, 0+ buys: 1243 / 1666 trades | picked (1.5, 60, True): days 1-2 -90.88 SOL (-14.6%) -> days 3-4 -144.40 (-17.3%) | exits positive on both: 0 of 40
+   P 30%, 10+ buys: 638 / 755 trades | picked (1.5, 60, True): days 1-2 -37.05 SOL (-11.6%) -> days 3-4 -56.36 (-14.9%) | exits positive on both: 0 of 40
+   P 30%, 25+ buys: 157 / 132 trades | picked (2, 300, True): days 1-2 -6.51 SOL (-8.3%) -> days 3-4 -9.76 (-14.8%) | exits positive on both: 0 of 40
+   P 50%, 0+ buys: 484 / 653 trades | picked (1.5, 60, True): days 1-2 -30.36 SOL (-12.5%) -> days 3-4 -47.16 (-14.4%) | exits positive on both: 0 of 40
+   P 50%, 10+ buys: 422 / 568 trades | picked (1.5, 60, True): days 1-2 -24.56 SOL (-11.6%) -> days 3-4 -41.22 (-14.5%) | exits positive on both: 0 of 40
+   P 50%, 25+ buys: 281 / 356 trades | picked (1.5, 60, True): days 1-2 -14.93 SOL (-10.6%) -> days 3-4 -26.03 (-14.6%) | exits positive on both: 0 of 40
+   P 70%, 0+ buys: 157 / 229 trades | picked (1.5, 60, True): days 1-2 -7.59 SOL (-9.7%) -> days 3-4 -14.61 (-12.8%) | exits positive on both: 0 of 40
+   P 70%, 10+ buys: 146 / 205 trades | picked (1.5, 60, True): days 1-2 -7.31 SOL (-10.0%) -> days 3-4 -12.80 (-12.5%) | exits positive on both: 0 of 40
+   P 70%, 25+ buys: 112 / 175 trades | picked (1.5, 60, True): days 1-2 -6.18 SOL (-11.0%) -> days 3-4 -10.48 (-12.0%) | exits positive on both: 0 of 40
+   P 85%, 0+ buys: 63 / 82 trades | picked (2, 300, False): days 1-2 -0.23 SOL (-0.7%) -> days 3-4 -13.58 (-33.1%) | exits positive on both: 0 of 40
+   P 85%, 10+ buys: 54 / 77 trades | picked (2, 300, False): days 1-2 -0.24 SOL (-0.9%) -> days 3-4 -13.31 (-34.6%) | exits positive on both: 0 of 40
+   P 85%, 25+ buys: 40 / 68 trades | picked (2, 300, False): days 1-2 +1.19 SOL (+5.9%) -> days 3-4 -12.40 (-36.5%) | exits positive on both: 0 of 40

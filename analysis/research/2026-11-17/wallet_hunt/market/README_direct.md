@@ -312,3 +312,13 @@ copies; the largest: 8zqsUMty + 1 wallet, 30 copies, +19.6% a copy, w/o 2% +1.25
 **Blind (chosen on days 1-2): 9 traders, days 3-4 −2.08 SOL on 71 copies (−5.9% a copy), 3 of 9 up** (8zqsUMty +0.93 on
 17 copies, 2vt36ruE +0.14, 2RRKiWes +0.22). Grouping wallets into traders does not change the picture on 4 days;
 8zqsUMty's pair is the one to watch on a longer history.
+
+## Coin patterns as trades (Nov 19; the owner: "keep looking, don't stop"; `m13_patterns.py`, `../out/m13_patterns*.txt`)
+
+On the 4 days (6,651 coins with a path), picked on days 1-2, scored blind on days 3-4, 40 exits each:
+- **A. Creator track record** (the creator's earlier coins reached x3 / x5 / half the curve; buy its next coin 1 s after
+  the create): every variant loses on both halves, 0 of 40 exits positive on both (blind −11.7% to −19.9% a trade).
+- **B. Run-up** (buy when the curve passes 30-85% with 0-25+ buys in the last 30 s): every variant loses (blind −12.0%
+  to −36.5%); the 85% run-up picked on days 1-2 at +5.9% gives −36.5% blind. Only 48 of 6,651 coins completed the curve.
+- **Without the racing cost** (COST=0.0026, a slow rule needs no tip): still 0 of 40 positive on both halves in every
+  variant (blind −5.3% to −30.1%). Not the fee: no edge.
