@@ -230,3 +230,12 @@ the shortest's +23.1%. Today's two coins were bad luck for the first-buyer rule,
 Nothing in the bot or the backtest differs from what the chain shows. Nov 19 is a losing day in the model too (rhd14c);
 the bot lost more than the model on it through the morning's bugs (a +237% copy missed) and the coins wallets 2 and 3
 bought together. The method's out-of-sample edge is real but shrinking week by week.
+
+## rhd28: is wallet 3's 45 s sale overfitted? (Nov 19)
+
+`rhd28_w3_45s_blind.py` (`out/rhd28_w3_45s_blind_land2_3_5.txt`, `..._land8_12_15.txt`): each week the hold picked
+BLIND on the weeks before (time only 3-900 s, or the old exits), scored on the unseen week. At 2/3/5 blocks the blind pick
+is 45 s in all 6 weeks: +33.0% a copy on the 281 unseen copies, against +24.6% for the old exits; 45 s beats the old
+exits in 5 of 6 weeks (not Nov 12-18: +35.2% against +41.0%). At 8/12/15 blocks the blind pick is 180 s in the first
+week and 45 s in the other five: +20.8% a copy, 45 s +23.5%, the old exits +16.5%. The curve is a plateau, not a spike:
+25-120 s all give +29% to +34% (2/3/5) and +19% to +24% (8/12/15). Not overfitted.

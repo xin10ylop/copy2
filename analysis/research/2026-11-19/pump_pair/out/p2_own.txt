@@ -1,0 +1,17 @@
+422 coins bought; transactions unread 0; trades in an unpriced quote 1130
+quotes: [('11111111', 213), ('TTWofwAg', 87), ('pumpCmXq', 31), ('4CxjZyMN', 17), ('Xsc9qvGR', 12), ('Pren1FvF', 10)]; bought by both wallets: 393
+size a coin (SOL): median 1.73; coins still held (no sale): 1
+
+day    coins  net SOL   won  big (+100%)  best coin
+11-10     67     -3.22    18      2       +1.79
+11-11     25    +15.27    12      3       +6.40
+11-12     41     +1.77    15      1       +2.14
+11-13     29     +0.29     6      1       +2.14
+11-14     32     +1.36    13      1       +2.92
+11-15     55    +13.58    23      3       +4.20
+11-16     60     -2.53    17      0       +2.12
+11-17     38    +12.64    13      3       +5.06
+11-18     58     +5.08    22      0       +2.25
+11-19     17     +3.29     9      0       +2.08
+
+total +47.53 SOL on 422 coins; without its best 5 +24.41; days up 8 of 10
