@@ -119,7 +119,8 @@ impl Rpc {
         for (u, ms, r) in rs {
             let host = u.trim_start_matches("https://").trim_start_matches("http://").split('/').next().unwrap_or("").to_string();
             match r { Ok(h) => { times.push(format!("{host} {ms} ms")); ok.get_or_insert(h.as_str().unwrap_or("").to_string()); }
-                      Err(e) => { times.push(format!("{host} {ms} ms refused")); err = e } }
+                      Err(e) => { let why: String = e.split("\"message\":").nth(1).unwrap_or(&e).chars().take(60).collect();
+                                  times.push(format!("{host} {ms} ms refused: {}", why.trim_matches(|ch: char| ch == '"' || ch == '}' || ch == ' '))); err = e } }
         }
         (ok.ok_or(err), times.join(", "))
     }

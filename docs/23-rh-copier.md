@@ -77,6 +77,17 @@ receipt wait asks every node in turn; a node's "already known" is waited for; a 
 then 60 s (engine test `a_failing_sale_backs_off_to_a_minute`). The ten trades of Nov 19 to 10:22 UTC on chain: 2 won,
 −0.01554 ETH before gas.
 
+**The first 13 closed trades against the model (Nov 19, `analysis/research/2026-11-19/rh_deep/out/rhd6_live_vs_model.txt`):**
+live −0.0311 ETH (−12.0% a copy, 2 won); the backtest model on the same 13 coins at our real landing −0.0304, at its own
+2/3/5 blocks −0.0335. Execution matches the model trade by trade; the coins were bad (13 backtest copies in this mix lose
+this much in 3.9% of draws; 2 or fewer winners in 6.9%). Every exit audited from the chain: the time exits at 600 s
+(wallets 1, 2), wallet 2's sell pressure never reached 10 (correct), wallet 3's stalls on time. **One wrong exit:** coin
+#4 (wallet 3) sold by sell pressure at 61.5 s on a clock tick, when ~13 snipers' buys of second 1 aged out of the 60 s
+window and left their sales of second 6 inside: −2 at 61.0 s, +12 half a second later, with no new trade. The backtest
+judges sell pressure on trades only; the engine now does too (test `sell_pressure_is_judged_on_trades_not_when_old_buys_age_out`;
+the engine replayed on the coin's chain trades now holds and leaves by stall at 242 s). Also: a refused send now logs
+the node's reason.
+
 ## 4. Running it (the box, `ops@fra-long`)
 
 Build and install (the same as every update; the unit is installed but not enabled):

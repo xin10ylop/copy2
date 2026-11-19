@@ -1,0 +1,38 @@
+ # w coin          its blk  lag   model +2/+3/+5 blocks (mean)  model at our landing      LIVE
+ 1 1 0x5b0e4f50  117865238    2   +15% /    +5% /    +8% ( +10%)                 +9.1%     +5.3%
+ 2 3 0xadd10db6  117980604   10    -2% /    -2% /    -2% (  -2%)                 -2.3%     -2.3%
+ 3 1 0x69bae698  118031455    3   -22% /   -24% /   -21% ( -22%)                -22.1%    -25.4%
+ 4 3 0x3a227ce5  118072702   12   -31% /   -31% /   -31% ( -31%)                -31.8%    -24.6%
+ 5 2 0x11efe1a6  118075130    3   -13% /   -14% /   -34% ( -20%)                -12.9%    -13.3%
+ 6 3 0x4196e3bb  118084230    5   -23% /   -23% /   -24% ( -23%)                -22.7%    -23.4%
+ 7 2 0xb09c7168  118102173  our buy reverted; model +2/+3/+5: -2% / -21% / -0%; the price 2/3/5 blocks after its buy: 1.17x / 1.45x / 1.79x
+ 8 2 0xc6664449  118118598    3   +87% /   +87% /   +66% ( +80%)                +81.2%    +83.5%
+ 9 2 0x2ff7d4b7  118122437    2   -25% /   -22% /   -22% ( -23%)                -25.0%    -25.7%
+10 2 0x69453a1c  118124034    2   -15% /   -23% /   -28% ( -22%)                -14.6%    -15.2%
+11 1 0xc983a044  118142512    3   -36% /   -37% /   -44% ( -39%)                -36.0%    -36.7%
+12 2 0x4ff3da98  118152716    3   -23% /   -23% /   -12% ( -19%)                -21.5%    -22.3%
+13 1 0xca5c7f4b  118162044    2   -12% /   -19% /   -19% ( -16%)                -15.4%    -15.9%
+14 2 0x7bf345a4  118167384    3   -39% /   -39% /   -36% ( -38%)                -37.8%    -39.4%
+
+13 closed trades: LIVE -0.0311 ETH (-12.0% a copy) | model at our landing -0.0304 (-11.7%) | model at +2/+3/+5 -0.0335 (-12.9%)
+
+EXITS AUDITED (age = seconds after its buy):
+ # w       bot: exit at age |                                        rules, first firing |  max net sales in a window
+ 1 1          sold at 591 s | first: time at 600 s; take_profit 20112                        |                          -
+ 2 3          sold at 248 s | first: time at 300 s; stall 370                                |                          7
+ 3 1          sold at 599 s | first: time at 600 s;                                          |                          -
+ 4 3           sold at 60 s | first: stall at 296 s; time 300, sell_pressure 604              |                         42
+ 5 2          sold at 601 s | first: time at 600 s;                                          |                          4
+ 6 3          sold at 266 s | first: stall at 266 s; time 300, sell_pressure 778              |                         11
+ 8 2          sold at 595 s | first: time at 600 s;                                          |                          5
+ 9 2          sold at 598 s | first: time at 600 s;                                          |                          1
+10 2          sold at 601 s | first: time at 600 s;                                          |                          4
+11 1          sold at 604 s | first: time at 600 s;                                          |                          -
+12 2          sold at 604 s | first: time at 600 s;                                          |                          1
+13 1          sold at 603 s | first: time at 600 s;                                          |                          -
+14 2    sale after the data | first: time at 600 s;                                          |                          0
+wallet 1: 520 backtest copies, +13.9% a copy, won 41%
+wallet 2: 661 backtest copies, +8.0% a copy, won 30%
+wallet 3: 378 backtest copies, +24.5% a copy, won 52%
+
+the live mix ({1: 4, 3: 3, 2: 6}): 100,000 draws of the backtest's copies; P(sum <= live -0.0311) = 3.9%; the median draw +0.0311 ETH; 10% of draws below -0.0171; P(2 or fewer winners of 13) = 6.9%

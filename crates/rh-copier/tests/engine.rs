@@ -263,3 +263,16 @@ fn a_signed_transactions_hash_is_known_before_sending() {
     let env = alloy_consensus::TxEnvelope::decode_2718(&mut &rh_copier::chain::decode_hex(&raw[2..]).unwrap()[..]).unwrap();
     assert_eq!(rh_copier::chain::tx_hash(&raw), format!("{:#x}", env.tx_hash()));
 }
+
+#[test]
+fn sell_pressure_is_judged_on_trades_not_when_old_buys_age_out() {
+    // Nov 19, coin #4 (wallet 3: 8 over 60 s from 30 s): ~13 buys at 1 s, the same flippers' ~13 sales at 6 s; at 61.5 s,
+    // with no new trade, the buys had aged out of the window and the clock saw +13: it sold. The backtest never did.
+    let mut e = Engine::new(cfg(""), ME);
+    open(&mut e, "0xc1", C, 0.05, 0.05, 0);
+    for i in 0..13 { let b = buy_on(&e, "0xc1", X, 0.03, 1_000 + i); e.on_trade(&b, 1_000 + i); }
+    for i in 0..13 { let s = sell_on(&e, "0xc1", X, 2e5, 6_000 + i); assert!(sold(&e.on_trade(&s, 6_000 + i)).is_none()); }
+    assert!(e.tick(61_500).iter().all(|a| !matches!(a, Action::Sell { why: "sell_pressure", .. })));   // the clock: no
+    let s = sell_on(&e, "0xc1", X, 1e5, 62_000);
+    assert_eq!(sold(&e.on_trade(&s, 62_000)), Some("sell_pressure"));                                  // a trade: judged, yes
+}

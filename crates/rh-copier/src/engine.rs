@@ -121,7 +121,7 @@ impl Engine {
                 if let Some(a) = self.its_sale(&l, &tr.curve, now_ms) { out.push(a); return out }
             }
         }
-        if let Some(a) = self.exit(&tr.curve, now_ms) { out.push(a) }
+        if let Some(a) = self.exit(&tr.curve, now_ms, true) { out.push(a) }
         out
     }
 
@@ -197,7 +197,10 @@ impl Engine {
 
     /// The exits of one position, in the research model's order: graduation guard, take profit, sell pressure,
     /// stall, time.
-    fn exit(&mut self, curve: &str, now_ms: u64) -> Option<Action> {
+    /// `on_trade`: called for a trade on the curve (true) or by the clock (false). Sell pressure is judged on trades only,
+    /// as the backtest judged it: on the clock, buys ageing out of the window can leave the same flippers' sales behind
+    /// and fake pressure with no new trade at all (Nov 19, coin #4: −2 at 61.0 s, +12 at 61.5 s, sold).
+    fn exit(&mut self, curve: &str, now_ms: u64, on_trade: bool) -> Option<Action> {
         let c = *self.curves.get(curve)?;
         let (why, ok) = {
             let p = self.pos.get_mut(curve)?;
@@ -208,7 +211,7 @@ impl Engine {
             if l.sell_pressure.len() == 3 {
                 let w = l.sell_pressure[1] * 1000; while p.flow.front().is_some_and(|(t, _)| *t + w < now_ms) { p.flow.pop_front(); }
             }
-            let pressure = l.sell_pressure.len() == 3 && age >= l.sell_pressure[2] as f64
+            let pressure = on_trade && l.sell_pressure.len() == 3 && age >= l.sell_pressure[2] as f64
                 && p.flow.iter().map(|(_, s)| if *s { 1i64 } else { -1 }).sum::<i64>() >= l.sell_pressure[0] as i64;
             let stall = l.stall_s > 0 && p.peak >= 1.0 && now_ms.saturating_sub(p.hi_ms) >= l.stall_s * 1000;
             if c.real_q >= self.cfg.grad_guard_eth { ("graduation_guard", true) }
@@ -232,7 +235,7 @@ impl Engine {
     pub fn tick(&mut self, now_ms: u64) -> Vec<Action> {
         self.seen.retain(|_, t| *t + 3_600_000 > now_ms);
         let curves: Vec<String> = self.pos.keys().cloned().collect();
-        curves.iter().filter_map(|c| self.exit(c, now_ms)).collect()
+        curves.iter().filter_map(|c| self.exit(c, now_ms, false)).collect()
     }
 }
 
