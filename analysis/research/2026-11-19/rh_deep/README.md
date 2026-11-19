@@ -215,3 +215,18 @@ chance. Picked on one half, the best loses 0.06-0.13 ETH on the other. No change
 **Coins two wallets buy within 5 blocks** (`rhd23_shared_coins.py`, `out/rhd23_shared_coins.txt`): 120 coins (55 wallets
 1+3, 42 wallets 1+2, 21 wallets 2+3). The first buyer's rules (the bot now) +23.9% a copy, the longest hold's +23.0%,
 the shortest's +23.1%. Today's two coins were bad luck for the first-buyer rule, not a pattern. No change.
+
+## The Nov 19 audit (the owner: "it is impossible ... there is something you are not identifying"; "have you run everything on unseen data?")
+
+| check | how | result |
+|---|---|---|
+| the data is complete | `audit/audit_counts.py`: 2,121 chunks, contiguous, no capped chunk; `audit/audit_reserves.py`: 30 of the leaders' coins rebuilt from our logs against the curve's reserves on chain (`out/audit_*.txt`) | no block gap; 29 of 30 exact, 1 off by 0.9% |
+| the model's arithmetic | rhd14c: the model at landing 2/3/5 on each coin the bot bought today against the bot's result | within a few points a coin (e.g. −38.8% / −39.4%, −20.2% / −20.7%, −29.1% / −28.5%) |
+| the bot buys what the backtest counts | `rhd25_bot_vs_backtest_set.py`: each of our 28 buys on chain | all are a copied wallet's first buy on the coin, inside its filters; lag 2-3 blocks for wallets 1-2 |
+| exit timing | `rhd24_exit_latency.py`: triggered exits sold 1-5 blocks after the trigger instead of at the next trade | no change (±0.3 points a copy) |
+| overfitting: the wallets were chosen on all the data | `rhd26_walk_forward.py`: for each week from Oct 22, the screen redone with only the data before it; the top N copied in that week unseen | top 3-10: +9.4% to +10.7% a copy over 4 weeks, positive every week (a random market buy −11.2%); but falling: top 5 +21.1%, +11.5%, +9.4%, +5.3% week by week |
+| our four, chosen blind | the same, each of wallets 1, 2, 3 and the group (as `rec:0xe3fdae6c`) | each passed the screen before every week (wallet 1 from Oct 29) and made money in every unseen week: wallet 1 +0.181, +0.402, +0.564; wallet 2 +0.121, +0.227, +0.246, +0.155; wallet 3 +0.346, +0.092, +0.095, +0.252; the group +0.008, +0.022, +0.151, +0.040 ETH |
+
+Nothing in the bot or the backtest differs from what the chain shows. Nov 19 is a losing day in the model too (rhd14c);
+the bot lost more than the model on it through the morning's bugs (a +237% copy missed) and the coins wallets 2 and 3
+bought together. The method's out-of-sample edge is real but shrinking week by week.

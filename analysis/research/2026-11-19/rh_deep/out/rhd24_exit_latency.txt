@@ -1,0 +1,28 @@
+
+=== wallet 1 (tp 4, 600 s): 524 copies   (a copy | ETH all | half 1 / half 2 | w/o best 2% | last 7 d)
+   backtest (next trade)   +13.8% | +1.442 | +0.463 / +0.979 | +0.914 |  +16.8%
+   sold 1 block(s) later     +13.8% | +1.443 | +0.470 / +0.974 | +0.910 |  +16.7%
+   sold 2 block(s) later     +14.0% | +1.464 | +0.469 / +0.996 | +0.917 |  +16.9%
+   sold 3 block(s) later     +14.1% | +1.474 | +0.474 / +1.000 | +0.919 |  +17.0%
+   sold 5 block(s) later     +14.2% | +1.489 | +0.484 / +1.005 | +0.920 |  +17.1%
+
+=== wallet 2 (tp 3.5, 900 s, sp 10/30): 663 copies   (a copy | ETH all | half 1 / half 2 | w/o best 2% | last 7 d)
+   backtest (next trade)    +7.9% | +1.043 | +0.679 / +0.364 | +0.438 |   +4.4%
+   sold 1 block(s) later      +7.6% | +1.004 | +0.669 / +0.335 | +0.395 |   +4.8%
+   sold 2 block(s) later      +7.8% | +1.031 | +0.685 / +0.346 | +0.374 |   +5.2%
+   sold 3 block(s) later      +7.9% | +1.043 | +0.692 / +0.351 | +0.357 |   +5.0%
+   sold 5 block(s) later      +8.0% | +1.057 | +0.707 / +0.349 | +0.354 |   +4.9%
+
+=== wallet 3 (sold at 45 s): 384 copies   (a copy | ETH all | half 1 / half 2 | w/o best 2% | last 7 d)
+   backtest (next trade)   +33.4% | +2.562 | +1.498 / +1.064 | +1.778 |  +35.8%
+   sold 1 block(s) later     +33.4% | +2.562 | +1.498 / +1.064 | +1.778 |  +35.8%
+   sold 2 block(s) later     +33.4% | +2.562 | +1.498 / +1.064 | +1.778 |  +35.8%
+   sold 3 block(s) later     +33.4% | +2.562 | +1.498 / +1.064 | +1.778 |  +35.8%
+   sold 5 block(s) later     +33.4% | +2.562 | +1.498 / +1.064 | +1.778 |  +35.8%
+
+=== group 4-8 (tp 3.5, 900 s, stall 240, early): 292 copies   (a copy | ETH all | half 1 / half 2 | w/o best 2% | last 7 d)
+   backtest (next trade)   +18.9% | +1.105 | +0.603 / +0.502 | +0.869 |  +37.1%
+   sold 1 block(s) later     +19.0% | +1.109 | +0.611 / +0.498 | +0.870 |  +37.7%
+   sold 2 block(s) later     +19.0% | +1.112 | +0.614 / +0.498 | +0.870 |  +37.7%
+   sold 3 block(s) later     +19.0% | +1.109 | +0.614 / +0.495 | +0.867 |  +36.8%
+   sold 5 block(s) later     +18.8% | +1.099 | +0.602 / +0.497 | +0.857 |  +36.8%

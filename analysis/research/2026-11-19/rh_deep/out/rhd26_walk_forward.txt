@@ -1,0 +1,38 @@
+identities with 10+ first buys: 7305; weeks from 10-22; our 0.02 ETH a copy
+      rec:0x9a3955a1   NOT passed before the week (would not be chosen)
+      rec:0x5bc235ac   passed before the week, rank 487; unseen: 74 copies +0.121 ETH
+      rec:0xc54d3914   passed before the week, rank 1; unseen: 98 copies +0.346 ETH
+      rec:0xe3fdae6c   passed before the week, rank 248; unseen: 32 copies +0.008 ETH
+      call:0xd6d35b56  passed before the week, rank 14; unseen: 200 copies +0.928 ETH
+week 10-22 to 10-29: 780 passed before it;  top 3: 101 copies +0.397 ETH (+19.7%)  top 5: 104 copies +0.440 ETH (+21.1%)  top 10: 111 copies +0.532 ETH (+24.0%)  top 20: 317 copies +1.553 ETH (+24.5%)  top 50: 342 copies +1.963 ETH (+28.7%)  all: 8039 +1.982 (+1.2%)
+      the top 5 chosen before it: rec:0xc54d3914 (98 copies +0.346), rec:0x9ab12022 (2 copies +0.028), rec:0x29db83af (1 copies +0.024), rec:0xa573bb88 (1 copies +0.023), rec:0xfe539642 (2 copies +0.019)
+      rec:0x9a3955a1   passed before the week, rank 546; unseen: 122 copies +0.181 ETH
+      rec:0x5bc235ac   passed before the week, rank 310; unseen: 98 copies +0.227 ETH
+      rec:0xc54d3914   passed before the week, rank 1; unseen: 26 copies +0.092 ETH
+      rec:0xe3fdae6c   passed before the week, rank 427; unseen: 19 copies +0.022 ETH
+      call:0xd6d35b56  passed before the week, rank 2; unseen: 422 copies +0.856 ETH
+week 10-29 to 11-05: 1321 passed before it;  top 3: 471 copies +1.111 ETH (+11.8%)  top 5: 479 copies +1.099 ETH (+11.5%)  top 10: 537 copies +1.230 ETH (+11.4%)  top 20: 712 copies +1.928 ETH (+13.5%)  top 50: 1166 copies +2.537 ETH (+10.9%)  all: 9728 +8.890 (+4.6%)
+      the top 5 chosen before it: rec:0xc54d3914 (26 copies +0.092), call:0xd6d35b5 (422 copies +0.856), rec:0x9ab12022 (23 copies +0.162), rec:0x9ad69a79 (4 copies -0.063), rec:0xf1eb2de4 (4 copies +0.052)
+      rec:0x9a3955a1   passed before the week, rank 381; unseen: 128 copies +0.402 ETH
+      rec:0x5bc235ac   passed before the week, rank 121; unseen: 175 copies +0.246 ETH
+      rec:0xc54d3914   passed before the week, rank 2; unseen: 13 copies +0.095 ETH
+      rec:0xe3fdae6c   passed before the week, rank 496; unseen: 35 copies +0.151 ETH
+      call:0xd6d35b56  passed before the week, rank 1; unseen: 491 copies +1.121 ETH
+week 11-05 to 11-12: 1566 passed before it;  top 3: 516 copies +1.097 ETH (+10.6%)  top 5: 551 copies +1.037 ETH (+9.4%)  top 10: 614 copies +0.976 ETH (+7.9%)  top 20: 769 copies +0.864 ETH (+5.6%)  top 50: 1257 copies +1.576 ETH (+6.3%)  all: 12797 +8.003 (+3.1%)
+      the top 5 chosen before it: call:0xd6d35b5 (491 copies +1.121), rec:0xc54d3914 (13 copies +0.095), rec:0x9ab12022 (12 copies -0.119), rec:0xf1eb2de4 (25 copies +0.009), rec:0x29db83af (10 copies -0.069)
+      rec:0x9a3955a1   passed before the week, rank 65; unseen: 218 copies +0.564 ETH
+      rec:0x5bc235ac   passed before the week, rank 56; unseen: 159 copies +0.155 ETH
+      rec:0xc54d3914   passed before the week, rank 2; unseen: 35 copies +0.252 ETH
+      rec:0xe3fdae6c   passed before the week, rank 197; unseen: 13 copies +0.040 ETH
+      call:0xd6d35b56  passed before the week, rank 1; unseen: 223 copies +0.030 ETH
+week 11-12 to 11-19: 1740 passed before it;  top 3: 258 copies +0.282 ETH (+5.5%)  top 5: 268 copies +0.283 ETH (+5.3%)  top 10: 309 copies +0.227 ETH (+3.7%)  top 20: 391 copies +0.184 ETH (+2.4%)  top 50: 464 copies +0.170 ETH (+1.8%)  all: 4734 +4.637 (+4.9%)
+      the top 5 chosen before it: call:0xd6d35b5 (223 copies +0.030), rec:0xc54d3914 (35 copies +0.252), rec:0x9ad69a79 (0 copies +0.000), rec:0x473a1a19 (0 copies +0.000), rec:0x9ab12022 (10 copies +0.001)
+      rec:0x9a3955a1   passed before the week, rank 5; unseen: 0 copies +0.000 ETH
+      rec:0x5bc235ac   passed before the week, rank 53; unseen: 0 copies +0.000 ETH
+      rec:0xc54d3914   passed before the week, rank 2; unseen: 0 copies +0.000 ETH
+      rec:0xe3fdae6c   passed before the week, rank 142; unseen: 0 copies +0.000 ETH
+      call:0xd6d35b56  passed before the week, rank 1; unseen: 1 copies +0.006 ETH
+week 11-19 to 11-19: 1815 passed before it;  top 3: 1 copies +0.006 ETH (+28.3%)  top 5: 1 copies +0.006 ETH (+28.3%)  top 10: 1 copies +0.006 ETH (+28.3%)  top 20: 1 copies +0.006 ETH (+28.3%)  top 50: 1 copies +0.006 ETH (+28.3%)  all: 11 +0.045 (+20.6%)
+      the top 5 chosen before it: call:0xd6d35b5 (1 copies +0.006), rec:0xc54d3914 (0 copies +0.000), rec:0x9ad69a79 (0 copies +0.000), rec:0x473a1a19 (0 copies +0.000), rec:0x9a3955a1 (0 copies +0.000)
+
+ALL WEEKS, UNSEEN: 3: 1347 copies +2.893 ETH (+10.7% a copy); 5: 1403 copies +2.864 ETH (+10.2% a copy); 10: 1572 copies +2.970 ETH (+9.4% a copy); 20: 2190 copies +4.534 ETH (+10.4% a copy); 50: 3230 copies +6.252 ETH (+9.7% a copy); all passers: 35309 copies +23.557 ETH (+3.3% a copy); market: 208504 copies -465.454 ETH (-11.2% a copy)
