@@ -52,6 +52,21 @@ closed both. The official RPC ran 7-10 blocks behind PublicNode, so reads and re
 - PublicNode's free endpoints are the only live feed found (no key). If they fail for long, nothing is copied (open
   positions still exit on the clock, and reserves are re-read every 15 s).
 
+## 3b. The first real trades (Nov 19, checked on chain)
+
+| # | wallet | lag | our price / its price | exit | net |
+|---|---|---|---|---|---|
+| 1 | 1 | 2 blocks, 0 s | 1.18x | time, 600 s (peak 1.49x) | +0.001065 ETH (+5.3%) |
+| 2 | 3 | **10 blocks, 1 s** (the send took 1,157 ms, the others ~300) | 1.21x | stall at 253 s (peak 1.86x early) | −0.000455 ETH (−2.3%) |
+| 3 | 1 | 3 blocks, 0 s | 1.10x | (open at the check) | |
+
+Journal = chain on every token and wei; 8 transactions, all landed first try; our buys paid 9-10% fee + tax on young
+coins (the launchpad's snipe tax; the backtest charges each trade's own). **A bug, fixed the same morning:** at 00:44 UTC
+wallets 1 and 3 bought one coin in one block; wallet 1's buy was over its coin-type limit and marked the coin seen, so
+wallet 3's qualifying buy was dropped. A coin now counts as seen only once it is copied (engine test
+`a_wallet_skipped_by_its_own_filter_does_not_hide_another_wallets_copy`). Also added: each send logs every node's answer
+time, and each signal logs how many blocks behind the node's head it arrived (`rh signal ... (+N blocks)`).
+
 ## 4. Running it (the box, `ops@fra-long`)
 
 Build and install (the same as every update; the unit is installed but not enabled):

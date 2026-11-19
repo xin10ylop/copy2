@@ -109,12 +109,19 @@ impl Rpc {
     pub async fn u64_of(&self, method: &str, params: Value) -> Result<u128, String> {
         let r = self.call(method, params).await?; u128::from_str_radix(r.as_str().unwrap_or("0x0").trim_start_matches("0x"), 16).map_err(|e| e.to_string())
     }
-    /// sends to every send url; returns the hash from the first that accepts it
-    pub async fn send_raw(&self, raw: &str) -> Result<String, String> {
-        let futs = self.send_urls.iter().map(|u| self.call_at(u, "eth_sendRawTransaction", json!([raw])));
-        let rs = futures_util::future::join_all(futs).await; let mut err = String::new();
-        for r in rs { match r { Ok(h) => return Ok(h.as_str().unwrap_or("").to_string()), Err(e) => err = e } }
-        Err(err)
+    /// sends to every send url at once; returns the hash from the first that accepts it, and each url's answer time
+    /// ("host ms" or "host ms refused"), to see which node is slow
+    pub async fn send_raw(&self, raw: &str) -> (Result<String, String>, String) {
+        let futs = self.send_urls.iter().map(|u| async move {
+            let t = std::time::Instant::now(); let r = self.call_at(u, "eth_sendRawTransaction", json!([raw])).await; (u, t.elapsed().as_millis(), r)
+        });
+        let rs = futures_util::future::join_all(futs).await; let (mut ok, mut err, mut times) = (None, String::new(), vec![]);
+        for (u, ms, r) in rs {
+            let host = u.trim_start_matches("https://").trim_start_matches("http://").split('/').next().unwrap_or("").to_string();
+            match r { Ok(h) => { times.push(format!("{host} {ms} ms")); ok.get_or_insert(h.as_str().unwrap_or("").to_string()); }
+                      Err(e) => { times.push(format!("{host} {ms} ms refused")); err = e } }
+        }
+        (ok.ok_or(err), times.join(", "))
     }
     /// waits up to `secs` for the receipt; None when it has not landed
     pub async fn receipt(&self, hash: &str, secs: u64) -> Option<Value> {

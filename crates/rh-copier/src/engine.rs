@@ -127,11 +127,14 @@ impl Engine {
     fn consider(&mut self, l: &Leader, tr: &Trade, now_ms: u64) -> Option<Action> {
         if tr.quote < l.min_its_eth || self.seen.contains_key(&tr.curve) || self.pos.contains_key(&tr.curve) { return None }
         if self.open_count() >= self.cfg.max_open || self.stopped() { log(&format!("skip {} of {}: {}", short(&tr.curve), short(&l.address), if self.stopped() { "daily stop" } else { "max_open" })); return None }
-        self.seen.insert(tr.curve.clone(), now_ms);
         // the curve right after its buy, from its buy itself (no read): its price exactly, at once
         let Some(c) = CurveSt::after_buy(tr) else { log(&format!("skip {} of {}: not an ETH-quoted curve", short(&tr.curve), short(&l.address))); return None };
         self.curves.insert(tr.curve.clone(), c);
-        self.decide(l, &tr.curve, c, now_ms, tr.net_q, tr.quote, tr.block)
+        // the coin counts as seen only once it is copied: a skip by one wallet's filter must not block another wallet's
+        // copy of the same coin (Nov 19 00:44 UTC: wallet 1's buy, over its coin-type limit, hid wallet 3's in the same block)
+        let a = self.decide(l, &tr.curve, c, now_ms, tr.net_q, tr.quote, tr.block);
+        if a.is_some() { self.seen.insert(tr.curve.clone(), now_ms); }
+        a
     }
 
     /// the reserves of a held curve read from the chain (the 15 s refresh, and after a restart)

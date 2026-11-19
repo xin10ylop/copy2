@@ -227,3 +227,15 @@ fn the_price_limit_is_against_the_price_its_buy_left() {
     }
     assert!((e.pos["0xc1"].its_price - its.price()).abs() < 1e-18);
 }
+
+#[test]
+fn a_wallet_skipped_by_its_own_filter_does_not_hide_another_wallets_copy() {
+    // Nov 19 00:44 UTC: wallets 1 and 3 bought the same coin in one block; wallet 1's buy was over its coin-type limit
+    // (0.65 ETH in the curve, max 0.5) and marked the coin seen, so wallet 3's buy was dropped
+    let mut e = Engine::new(cfg(""), ME);
+    assert!(e.on_trade(&buy_at("0xc1", A, 0.1, 0.65, 0), 0).is_empty());           // wallet A: over its 0.5 limit
+    let b = buy_on(&e, "0xc1", C, 0.12, 1);
+    assert!(matches!(&e.on_trade(&b, 1)[..], [Action::Buy { .. }]));                 // wallet C (any coin): copied
+    let b = buy_on(&e, "0xc1", B, 0.1, 2);
+    assert!(e.on_trade(&b, 2).iter().all(|a| !matches!(a, Action::Buy { .. })));     // and the coin is now seen
+}

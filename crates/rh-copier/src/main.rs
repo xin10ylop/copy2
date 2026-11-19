@@ -112,7 +112,13 @@ async fn run(cfg: Config) -> Result<(), String> {
             Some(l) = rx.recv() => {
                 let Some(tr) = chain::decode_trade(&l, now_ms()) else { continue };
                 n_tr += 1; last_blk = last_blk.max(tr.block);
-                if tr.buy && ctx.cfg.leaders.iter().any(|x| x.address.eq_ignore_ascii_case(&tr.user)) { n_lead += 1 }
+                if tr.buy && ctx.cfg.leaders.iter().any(|x| x.address.eq_ignore_ascii_case(&tr.user)) {
+                    n_lead += 1;
+                    // how late the feed brought it: the node's head when it arrived (read in the background, after the buy is sent)
+                    let (c2, b, u) = (ctx.clone(), tr.block, tr.user.clone());
+                    tokio::spawn(async move { if let Ok(h) = c2.rpc.u64_of("eth_blockNumber", json!([])).await {
+                        log(&format!("signal {} buy at block {b}: the node was at {h} when it arrived (+{} blocks)", short(&u), (h as u64).saturating_sub(b))) } });
+                }
                 let acts = ctx.eng.lock().await.on_trade(&tr, now_ms());
                 for a in acts { tokio::spawn(act(ctx.clone(), a)); }
             }
@@ -173,11 +179,13 @@ fn max_fee(ctx: &Ctx) -> u128 { (ctx.gas.load(Ordering::Relaxed) as f64 * ctx.cf
 async fn send(ctx: &Ctx, to: &str, value: u128, data: &str, gas: u64, what: &str) -> Result<Value, String> {
     let n = ctx.nonce.fetch_add(1, Ordering::SeqCst); let t0 = std::time::Instant::now();
     let raw = ctx.wallet.sign(ctx.cfg.chain_id, n, to, value, data, gas, max_fee(ctx))?;
-    let h = match ctx.rpc.send_raw(&raw).await { Ok(h) => h, Err(e) => { resync_nonce(ctx).await; return Err(format!("{what} not sent: {e}")) } };
+    let (r, times) = ctx.rpc.send_raw(&raw).await;
+    let h = match r { Ok(h) => h, Err(e) => { resync_nonce(ctx).await; return Err(format!("{what} not sent ({times}): {e}")) } };
+    let sent_ms = t0.elapsed().as_millis();
     match ctx.rpc.receipt(&h, 20).await {
         Some(r) if r["status"].as_str() == Some("0x1") => {
             let b = u64::from_str_radix(r["blockNumber"].as_str().unwrap_or("0x0").trim_start_matches("0x"), 16).unwrap_or(0);
-            log(&format!("{what} landed {h} nonce {n} block {b} in {} ms", t0.elapsed().as_millis())); Ok(r)
+            log(&format!("{what} landed {h} nonce {n} block {b} in {} ms (sent in {sent_ms} ms: {times})", t0.elapsed().as_millis())); Ok(r)
         }
         Some(_) => Err(format!("{what} {h} reverted")),
         None => { resync_nonce(ctx).await; Err(format!("{what} {h} not landed in 20 s")) }
