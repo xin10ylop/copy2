@@ -23,6 +23,7 @@ pub fn tok_units(t: f64) -> u128 { (t.max(0.0) * 1e18) as u128 }
 
 pub fn buy_data(quote_wei: u128, min_tokens: u128, to: &str) -> String { format!("0x{}{}{}{}", selector("buy(uint256,uint256,address)"), word_u(quote_wei), word_u(min_tokens), word_a(to)) }
 pub fn sell_data(tokens: u128, min_quote: u128, to: &str) -> String { format!("0x{}{}{}{}", selector("sell(uint256,uint256,address)"), word_u(tokens), word_u(min_quote), word_a(to)) }
+pub fn allowance_data(owner: &str, spender: &str) -> String { format!("0x{}{}{}", selector("allowance(address,address)"), word_a(owner), word_a(spender)) }
 pub fn approve_data(spender: &str) -> String { format!("0x{}{}{}", selector("approve(address,uint256)"), word_a(spender), "f".repeat(64)) }
 
 fn words(data: &str) -> Vec<u128> {
@@ -89,6 +90,12 @@ impl Rpc {
     /// a token's balance (raw units) of `owner`
     pub async fn balance_of(&self, token: &str, owner: &str) -> Result<u128, String> {
         let r = self.call("eth_call", json!([{"to": token, "data": format!("0x{}{}", selector("balanceOf(address)"), word_a(owner))}, "latest"])).await?;
+        let s = r.as_str().unwrap_or("0x0").trim_start_matches("0x"); let s = if s.len() > 32 { &s[s.len() - 32..] } else { s };
+        u128::from_str_radix(if s.is_empty() { "0" } else { s }, 16).map_err(|e| e.to_string())
+    }
+    /// what `owner` lets `spender` move of `token` (0: never approved; the sale reverts)
+    pub async fn allowance(&self, token: &str, owner: &str, spender: &str) -> Result<u128, String> {
+        let r = self.call("eth_call", json!([{"to": token, "data": allowance_data(owner, spender)}, "latest"])).await?;
         let s = r.as_str().unwrap_or("0x0").trim_start_matches("0x"); let s = if s.len() > 32 { &s[s.len() - 32..] } else { s };
         u128::from_str_radix(if s.is_empty() { "0" } else { s }, 16).map_err(|e| e.to_string())
     }

@@ -276,3 +276,13 @@ fn sell_pressure_is_judged_on_trades_not_when_old_buys_age_out() {
     let s = sell_on(&e, "0xc1", X, 1e5, 62_000);
     assert_eq!(sold(&e.on_trade(&s, 62_000)), Some("sell_pressure"));                                  // a trade: judged, yes
 }
+
+#[test]
+fn the_allowance_read_asks_the_token_for_owner_then_spender() {
+    // Nov 19 #28: the buy's approval never landed and every sale reverted; a revert now reads allowance(owner, curve)
+    // and approves at 0. The ERC-20 selector of allowance(address,address) is 0xdd62ed3e.
+    let d = rh_copier::chain::allowance_data("0x35bb5c55a531d14213380fd978a501f0e239a77e", "0x37c90965ed38ff12002828da42d34cbefb727d16");
+    assert_eq!(&d[..10], "0xdd62ed3e");
+    assert_eq!(d.len(), 2 + 8 + 128);
+    assert!(d[10..74].ends_with("35bb5c55a531d14213380fd978a501f0e239a77e") && d[74..].ends_with("37c90965ed38ff12002828da42d34cbefb727d16"));
+}

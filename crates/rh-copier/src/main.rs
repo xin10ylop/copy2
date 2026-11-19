@@ -263,16 +263,30 @@ async fn act(ctx: Arc<Ctx>, a: Action) {
             // the wallet's exact balance of the coin; 0 means the coin is already gone (a sale that landed while its
             // receipt was missed): never send a sale for tokens we do not hold (Nov 19: 3,140 such sales reverted)
             async fn held(ctx: &Ctx, tok: &Option<String>, me: &str) -> Option<u128> { match tok { Some(t) => ctx.rpc.balance_of(t, me).await.ok(), None => None } }
-            let mut res = None; let mut gone = false;
-            for (i, m) in [min_eth, min_eth * 0.5, 0.0].iter().enumerate() {   // the floor falls on a retry: getting out matters more
+            let mut res = None; let mut gone = false; let mut approved = false;
+            let floors = [min_eth, min_eth * 0.5, 0.0]; let mut i = 0;   // the floor falls on a retry: getting out matters more
+            while i < floors.len() {
                 let bal = held(&ctx, &tok, &me).await;
                 if bal == Some(0) { gone = true; break }
                 let units = bal.unwrap_or(chain::tok_units(tokens * 0.999));   // the balance could not be read: the fill's count
-                if i == 0 { log(&format!("sell #{id} {why} {:.0} tokens min {min_eth:.4} ETH", units as f64 / 1e18)); }
-                match send(&ctx, &curve, 0, &chain::sell_data(units, chain::wei(*m), &me), ctx.cfg.gas_sell, &format!("sell #{id} try {i}")).await {
+                if i == 0 && !approved { log(&format!("sell #{id} {why} {:.0} tokens min {min_eth:.4} ETH", units as f64 / 1e18)); }
+                match send(&ctx, &curve, 0, &chain::sell_data(units, chain::wei(floors[i]), &me), ctx.cfg.gas_sell, &format!("sell #{id} try {i}")).await {
                     Ok(rc) => { res = rc["logs"].as_array().into_iter().flatten().filter_map(|l| chain::decode_trade(l, now_ms())).find(|t| !t.buy && t.user == me && t.curve == curve).map(|t| t.quote); break }
-                    Err(e) => log(&format!("sell-failed #{id}: {e}")),
+                    Err(e) => {
+                        log(&format!("sell-failed #{id}: {e}"));
+                        // the approval sent with the buy can be lost (Nov 19 #28: never reached the chain, and every sale
+                        // reverted): after a revert, read the allowance once; at 0, approve now and retry at the same floor
+                        if !approved { if let Some(t) = &tok { if ctx.rpc.allowance(t, &me, &curve).await == Ok(0) {
+                            approved = true;
+                            log(&format!("sell #{id}: the coin is not approved (the buy's approval did not land); approving now"));
+                            match send(&ctx, t, 0, &chain::approve_data(&curve), ctx.cfg.gas_approve, &format!("approve #{id}")).await {
+                                Ok(_) => continue,
+                                Err(e) => log(&format!("WARNING {e}")),
+                            }
+                        } } }
+                    }
                 }
+                i += 1;
             }
             if gone {
                 // find our sale on chain (the official node keeps the logs) and book what it really paid

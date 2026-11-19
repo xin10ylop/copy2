@@ -104,6 +104,12 @@ got the 25% slippage as a hidden ~1.33x limit the backtest never had (live buy #
 **Nov 19 evening:** daily stop 0.06 → 0.1 ETH (the owner's call); wallet 3 sold 45 s after its buy with no other exit
 (rhd19: +33.3% a copy against +26.9%, better on both halves).
 
+**Nov 19 ~14:00 UTC, a lost approval:** #28's approval (sent with the buy) never reached the chain, so its three sales
+reverted (the coin cannot be sold until the token is approved for the curve). Fixed: after a reverted sale the bot reads
+the allowance once, and at 0 it approves and retries at the same floor. Also checked: wallet 3's 45 s sale at the
+landings it really gets (10-14 blocks on #25, #26, #28) still beats the old exits (rhd19 with `LANDB=8,12,15`: +23.7% a
+copy against +18.7%, better on both halves and without the best 2%).
+
 ## 4. Running it (the box, `ops@fra-long`)
 
 Build and install (the same as every update; the unit is installed but not enabled):
