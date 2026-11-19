@@ -88,3 +88,13 @@ themselves (wallets 1, 2: +4.5%, +5.7% on today's coins, against +18.5%, +11.7% 
 
 `rh1_fetch.py` now merges `blocks.json` (a short refresh had replaced the 40 days' block times; `rhd7` and `rhd8` re-run
 on the rebuilt table).
+
+**Volume and holders** (the owner: "check volume and holders ... on the backtest and live trades"; `rhd9_volume_holders.py`,
+`rhd9b_live_features.py`, `rhd10_holders_exit.py`, `out/rhd9*.txt`, `out/rhd10_holders_exit.txt`). As an entry filter:
+nothing to filter on for wallets 1-3, which buy in the coin's first second (age 0.1-0.9 s, 1-3 holders, 1-3 trades; on
+every live trade the coin had 1 holder and 1 trade at its buy); for the group (10-160 s, 2-9 holders) every holder or
+volume filter picked on one half lost on the other. As an exit (T = 60/120/180 s after its buy, sell if fewer than N
+holders or under V ETH traded; 42 rules a wallet, picked on one half, scored on the other): 1-3 of 42 rules beat live on
+both halves, by +0.000 to +0.033 ETH over 41 days, about what chance gives; the picks on one half lose up to 0.2 ETH on
+the other. The live pattern (winner #8 at 24 holders after 60 s, most losers at 3-9) does not hold over the backtest.
+Nothing changed.

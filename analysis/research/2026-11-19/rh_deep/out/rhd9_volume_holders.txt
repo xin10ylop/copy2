@@ -1,0 +1,84 @@
+
+=== wallet 1: 521 copies, +13.9% a copy, +1.450 ETH (halves +0.474 / +0.976)
+   holders        quintile edges 1, 1, 1, 2                     a copy (half 1 half 2) by quintile:    - |    - |    - |   +11%   +17% |    +2%   +24%
+   buyers         quintile edges 1, 1, 1, 2                     a copy (half 1 half 2) by quintile:    - |    - |    - |   +11%   +17% |    +2%   +24%
+   ETH traded     quintile edges 0.015, 0.03, 0.05, 0.1         a copy (half 1 half 2) by quintile:    +9%    +5% |    +7%   +11% |    -0%   +26% |    +5%   +31% |   +24%   +19%
+   trades         quintile edges 1, 1, 1, 2                     a copy (half 1 half 2) by quintile:    - |    - |    - |   +11%   +17% |    +2%   +24%
+   ETH last 60 s  quintile edges 0.015, 0.03, 0.05, 0.1         a copy (half 1 half 2) by quintile:    +9%    +5% |    +7%   +11% |    -0%   +26% |    +5%   +31% |   +24%   +19%
+   age s          quintile edges 0.303, 0.435, 0.638, 0.852     a copy (half 1 half 2) by quintile:   +16%   +30% |    +9%   +10% |    +4%   +39% |    +2%    +3% |   +16%    +4%
+   picked on one half -> scored on the other (ETH gained against no filter; copies kept):
+      holders        keep >= 1       picked on half 1: +0.000 there, +0.000 on the other half (261/261 copies kept)
+      holders        keep >= 1       picked on half 2: +0.000 there, +0.000 on the other half (260/260 copies kept)
+      buyers         keep >= 1       picked on half 1: +0.000 there, +0.000 on the other half (261/261 copies kept)
+      buyers         keep >= 1       picked on half 2: +0.000 there, +0.000 on the other half (260/260 copies kept)
+      ETH traded     keep >= 0.015   picked on half 1: -0.082 there, -0.053 on the other half (211/261 copies kept)
+      ETH traded     keep >= 0.015   picked on half 2: -0.053 there, -0.082 on the other half (215/260 copies kept)
+      trades         keep >= 1       picked on half 1: +0.000 there, +0.000 on the other half (261/261 copies kept)
+      trades         keep >= 1       picked on half 2: +0.000 there, +0.000 on the other half (260/260 copies kept)
+      ETH last 60 s  keep >= 0.015   picked on half 1: -0.082 there, -0.053 on the other half (211/261 copies kept)
+      ETH last 60 s  keep >= 0.015   picked on half 2: -0.053 there, -0.082 on the other half (215/260 copies kept)
+      age s          keep >= 0.303   picked on half 1: -0.132 there, -0.367 on the other half (199/261 copies kept)
+      age s          keep < 0.852    picked on half 2: -0.039 there, -0.177 on the other half (203/260 copies kept)
+
+=== wallet 2: 662 copies, +7.7% a copy, +1.015 ETH (halves +0.651 / +0.364)
+   holders        quintile edges 1, 1, 1, 3                     a copy (half 1 half 2) by quintile:   +24%    -3% |    - |    - |    +7%    +7% |   +12%    +3%
+   buyers         quintile edges 1, 1, 1, 3                     a copy (half 1 half 2) by quintile:   +24%    -3% |    - |    - |    +7%    +7% |   +12%    +3%
+   ETH traded     quintile edges 0.012, 0.035, 0.075, 0.253     a copy (half 1 half 2) by quintile:    +8%    -5% |    +3%    +8% |   +12%   +12% |   +15%   +13% |   +10%    -2%
+   trades         quintile edges 1, 1, 1, 3                     a copy (half 1 half 2) by quintile:   +24%    -3% |    - |    - |    +6%    +7% |   +13%    +3%
+   ETH last 60 s  quintile edges 0.012, 0.035, 0.075, 0.253     a copy (half 1 half 2) by quintile:    +8%    -5% |    +3%    +8% |   +12%   +12% |   +15%   +13% |   +10%    -2%
+   age s          quintile edges 0.209, 0.508, 0.709, 0.94      a copy (half 1 half 2) by quintile:   +15%    -2% |    +6%   +22% |   +18%    +4% |    +8%    +6% |    +4%    -2%
+   picked on one half -> scored on the other (ETH gained against no filter; copies kept):
+      holders        keep >= 1       picked on half 1: -0.151 there, +0.021 on the other half (301/331 copies kept)  <- holds
+      holders        keep >= 1       picked on half 2: +0.021 there, -0.151 on the other half (299/331 copies kept)
+      buyers         keep >= 1       picked on half 1: -0.151 there, +0.021 on the other half (301/331 copies kept)  <- holds
+      buyers         keep >= 1       picked on half 2: +0.021 there, -0.151 on the other half (299/331 copies kept)
+      ETH traded     keep >= 0.012   picked on half 1: -0.095 there, +0.067 on the other half (264/331 copies kept)  <- holds
+      ETH traded     keep >= 0.012   picked on half 2: +0.067 there, -0.095 on the other half (269/331 copies kept)
+      trades         keep >= 1       picked on half 1: -0.151 there, +0.021 on the other half (301/331 copies kept)  <- holds
+      trades         keep >= 1       picked on half 2: +0.021 there, -0.151 on the other half (299/331 copies kept)
+      ETH last 60 s  keep >= 0.012   picked on half 1: -0.095 there, +0.067 on the other half (264/331 copies kept)  <- holds
+      ETH last 60 s  keep >= 0.012   picked on half 2: +0.067 there, -0.095 on the other half (269/331 copies kept)
+      age s          keep < 0.94     picked on half 1: -0.060 there, +0.030 on the other half (269/331 copies kept)  <- holds
+      age s          keep >= 0.209   picked on half 2: +0.031 there, -0.174 on the other half (273/331 copies kept)
+
+=== wallet 3: 383 copies, +24.1% a copy, +1.848 ETH (halves +0.908 / +0.940)
+   holders        quintile edges 1, 1, 2, 3                     a copy (half 1 half 2) by quintile:   +34%   +50% |    - |   +23%    +9% |   +24%   +32% |   +19%   +35%
+   buyers         quintile edges 1, 1, 2, 3                     a copy (half 1 half 2) by quintile:   +34%   +50% |    - |   +23%    +9% |   +24%   +32% |   +19%   +35%
+   ETH traded     quintile edges 0.02, 0.0626, 0.195, 0.41      a copy (half 1 half 2) by quintile:   +32%   +38% |   +22%   +12% |   +27%   +31% |   +21%   +31% |   +16%   +19%
+   trades         quintile edges 1, 1, 2, 3                     a copy (half 1 half 2) by quintile:   +34%   +50% |    - |   +23%    +9% |   +24%   +32% |   +19%   +35%
+   ETH last 60 s  quintile edges 0.02, 0.0626, 0.195, 0.41      a copy (half 1 half 2) by quintile:   +32%   +38% |   +22%   +12% |   +27%   +31% |   +21%   +31% |   +16%   +19%
+   age s          quintile edges 0.104, 0.313, 0.531, 0.908     a copy (half 1 half 2) by quintile:   +29%   +51% |   +27%   +28% |   +24%   +25% |   +30%   +23% |   +12%    -6%
+   picked on one half -> scored on the other (ETH gained against no filter; copies kept):
+      holders        keep >= 1       picked on half 1: -0.204 there, -0.180 on the other half (174/192 copies kept)
+      holders        keep >= 1       picked on half 2: -0.180 there, -0.204 on the other half (161/191 copies kept)
+      buyers         keep >= 1       picked on half 1: -0.204 there, -0.180 on the other half (174/192 copies kept)
+      buyers         keep >= 1       picked on half 2: -0.180 there, -0.204 on the other half (161/191 copies kept)
+      ETH traded     keep < 0.41     picked on half 1: -0.106 there, -0.171 on the other half (147/192 copies kept)
+      ETH traded     keep < 0.41     picked on half 2: -0.171 there, -0.106 on the other half (157/191 copies kept)
+      trades         keep >= 1       picked on half 1: -0.204 there, -0.180 on the other half (174/192 copies kept)
+      trades         keep >= 1       picked on half 2: -0.180 there, -0.204 on the other half (161/191 copies kept)
+      ETH last 60 s  keep < 0.41     picked on half 1: -0.106 there, -0.171 on the other half (147/192 copies kept)
+      ETH last 60 s  keep < 0.41     picked on half 2: -0.171 there, -0.106 on the other half (157/191 copies kept)
+      age s          keep < 0.908    picked on half 1: -0.113 there, +0.036 on the other half (161/192 copies kept)  <- holds
+      age s          keep < 0.908    picked on half 2: +0.036 there, -0.113 on the other half (145/191 copies kept)
+
+=== group 4-8: 292 copies, +18.2% a copy, +1.063 ETH (halves +0.583 / +0.480)
+   holders        quintile edges 2, 4, 5, 8.8                   a copy (half 1 half 2) by quintile:   +48%    -2% |   +26%   +15% |   +12%    +6% |    +7%   +27% |    +9%   +16%
+   buyers         quintile edges 3, 4.4, 7, 11                  a copy (half 1 half 2) by quintile:   +40%    +6% |   +25%    +4% |    +5%   +10% |    +3%   +22% |   +13%   +28%
+   ETH traded     quintile edges 0.0294, 0.0647, 0.176, 0.404   a copy (half 1 half 2) by quintile:   +40%   +12% |    +5%    -2% |   +25%   +10% |   +12%   +32% |    +6%   +26%
+   trades         quintile edges 3, 5, 10, 17                   a copy (half 1 half 2) by quintile:   +40%    +5% |   +28%    -2% |    +3%   +17% |   +12%   +19% |    +5%   +29%
+   ETH last 60 s  quintile edges 0.017, 0.0341, 0.0812, 0.175   a copy (half 1 half 2) by quintile:   +27%   +16% |   +23%   +13% |   +12%    -0% |   +16%   +22% |   +22%   +30%
+   age s          quintile edges 9.62, 16.3, 68.8, 157          a copy (half 1 half 2) by quintile:   +34%   +33% |   +27%    -4% |   +21%    +4% |    +3%   +31% |    -5%   +22%
+   picked on one half -> scored on the other (ETH gained against no filter; copies kept):
+      holders        keep < 8.8      picked on half 1: -0.043 there, -0.119 on the other half (110/146 copies kept)
+      holders        keep >= 2       picked on half 2: +0.005 there, -0.173 on the other half (128/146 copies kept)
+      buyers         keep < 11       picked on half 1: -0.062 there, -0.250 on the other half (101/146 copies kept)
+      buyers         keep >= 3       picked on half 2: -0.017 there, -0.309 on the other half (107/146 copies kept)
+      ETH traded     keep < 0.404    picked on half 1: -0.023 there, -0.201 on the other half (107/146 copies kept)
+      ETH traded     keep >= 0.0647  picked on half 2: -0.034 there, -0.338 on the other half (79/146 copies kept)
+      trades         keep < 17       picked on half 1: -0.026 there, -0.220 on the other half (108/146 copies kept)
+      trades         keep >= 5       picked on half 2: -0.006 there, -0.477 on the other half (77/146 copies kept)
+      ETH last 60 s  keep < 0.175    picked on half 1: -0.102 there, -0.214 on the other half (110/146 copies kept)
+      ETH last 60 s  keep >= 0.017   picked on half 2: -0.092 there, -0.161 on the other half (116/146 copies kept)
+      age s          keep < 157      picked on half 1: +0.022 there, -0.164 on the other half (108/146 copies kept)
+      age s          keep >= 16.3    picked on half 2: -0.064 there, -0.495 on the other half (66/146 copies kept)
