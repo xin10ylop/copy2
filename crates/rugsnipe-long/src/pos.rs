@@ -193,6 +193,10 @@ pub struct Position {
     /// stored route is the one curve hop, so a graduation sells in its pool.
     #[serde(default)]
     pub sol_curve: bool,
+    /// The leg (Nov 19): "" = the copy (bought right behind its buy), "dip" = the dip entry (`dip_drop`), with its own
+    /// exits (`dip_take_profit` over our fill, `dip_max_hold_s`, nothing else) and its own `max_open` count.
+    #[serde(default)]
+    pub leg: String,
     /// The other traders' trades on the coin while we hold it, (unix ms,
     /// a sell): the last minutes only (`sell_pressure`). Not kept across a
     /// restart.
@@ -219,6 +223,10 @@ pub fn sell_backoff_ms(tries: u32, costs: u64, cap: u64) -> u64 {
 }
 
 impl Position {
+    /// The dip leg (`leg == "dip"`).
+    pub fn is_dip(&self) -> bool {
+        self.leg == "dip"
+    }
     /// Paper: the slot whose end state the buy fills on.
     pub fn fill_slot(&self) -> u64 {
         if self.land_slot > 0 {
@@ -577,6 +585,7 @@ mod tests {
             hi_ms: 0,
             flow: Default::default(),
             sol_curve: false,
+            leg: String::new(),
         }
     }
 

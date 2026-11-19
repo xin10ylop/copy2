@@ -611,6 +611,17 @@ fn run(args: &[String]) -> Result<(), String> {
         out_sell.as_ref().map(|o| o.labels()).unwrap_or_default(),
         keys::redact(&url)
     );
+    if cfg.dip_drop > 0.0 {
+        println!(
+            "long dip: {} at {:.2}x its price within {}s, stake {} SOL, tp {}x our fill, hold {}s",
+            if cfg.dip_stake_sol > 0.0 { "leg 2 (the copy buys at once as leg 1)" } else { "the only entry (no copy at once)" },
+            1.0 - cfg.dip_drop,
+            cfg.dip_within_s,
+            if cfg.dip_stake_sol > 0.0 { cfg.dip_stake_sol } else { cfg.stake_sol },
+            cfg.dip_take_profit,
+            cfg.dip_max_hold_s
+        );
+    }
     let oracle = Oracle::default();
     oracle.spawn(&cfg.price_api, cfg.float_pks(), Duration::from_secs(20));
     let copy = cfg.copy_pk();
@@ -683,6 +694,20 @@ fn status(args: &[String]) -> Result<(), String> {
         cfg.max_open,
         if dir.join("KILL").exists() { "  KILL: no new buys" } else { "" }
     );
+    // the split (Nov 19): leg 1 = the copy, leg 2 = the dip leg on the same buy of its
+    let split = cfg.dip_drop > 0.0 && cfg.dip_stake_sol > 0.0;
+    if cfg.dip_drop > 0.0 {
+        println!(
+            "   {}dip entry: {} SOL at or under {:.2}x its price within {} s, tp {}x our fill, {} s{}",
+            if split { "leg 1 = the copy above; leg 2 = the " } else { "" },
+            if split { cfg.dip_stake_sol } else { cfg.stake_sol },
+            1.0 - cfg.dip_drop,
+            cfg.dip_within_s,
+            cfg.dip_take_profit,
+            cfg.dip_max_hold_s,
+            if split { " (pct1 = leg 1, pct2 = leg 2, each on its own stake)" } else { "" }
+        );
+    }
     // --chain: the wallet, and per closed trade the copied wallet's own result on the coin and SOL in dollars
     let mut chain_rpc: Option<Rpc> = None;
     let oracle = Oracle::default();
@@ -781,18 +806,34 @@ fn status(args: &[String]) -> Result<(), String> {
                     && p.closed_ms / 86_400_000 == day)
                 .count()
         );
+        if split {
+            for dip in [false, true] {
+                let l: Vec<_> = c.iter().filter(|p| p.is_dip() == dip).collect();
+                let net: i64 = l.iter().map(|p| p.net_lamports).sum();
+                let stake: u64 = l.iter().map(|p| p.stake_lamports).sum();
+                println!(
+                    "     leg {}: {} closed, {} won, net {:+.4} SOL ({:+.1}% of its stakes)",
+                    if dip { 2 } else { 1 },
+                    l.len(),
+                    l.iter().filter(|p| p.net_lamports > 0).count(),
+                    net as f64 / 1e9,
+                    net as f64 / stake.max(1) as f64 * 100.0
+                );
+            }
+        }
     }
     let open: Vec<_> = book.positions.iter().filter(|p| p.live()).collect();
     if !open.is_empty() {
         println!("   open now:");
         println!(
-            "     {:>4}  {:5}  {:8}  {:8}  {:>7}  {:11}  {:8}  {:>6}  {:>6}  {:>6}",
-            "#", "side", "bought", "coin", "its SOL", "route", "state", "price", "peak", "held"
+            "     {:>4}  {:3}  {:5}  {:8}  {:8}  {:>7}  {:11}  {:8}  {:>6}  {:>6}  {:>6}",
+            "#", "leg", "side", "bought", "coin", "its SOL", "route", "state", "price", "peak", "held"
         );
         for p in open {
             println!(
-                "     {:>4}  {:5}  {:8}  {:8}  {:>7.3}  {:11}  {:8}  {:>5.2}x  {:>5.2}x  {:>5}s",
+                "     {:>4}  {:3}  {:5}  {:8}  {:8}  {:>7.3}  {:11}  {:8}  {:>5.2}x  {:>5.2}x  {:>5}s",
                 p.id,
+                if p.is_dip() { "2" } else { "1" },
                 if p.paper { "paper" } else { "REAL" },
                 hhmm(p.seen_ms, off),
                 &p.mint[..8],
@@ -867,6 +908,77 @@ fn status(args: &[String]) -> Result<(), String> {
             }
             (t.spent > 0).then_some(t)
         };
+        if split || closed.iter().any(|p| p.is_dip()) {
+            // one row per buy of its: leg 1 (the copy) and leg 2 (the dip) side by side, each on its own stake
+            let mut rows: Vec<(u64, String)> = vec![];
+            for p in &closed {
+                if !rows.iter().any(|(_, s)| *s == p.its_sig) {
+                    rows.push((p.closed_ms, p.its_sig.clone()));
+                }
+            }
+            let leg = |sig: &str, dip: bool| -> (Option<&rugsnipe_long::pos::Position>, bool) {
+                let c = closed.iter().find(|p| p.its_sig == sig && p.is_dip() == dip);
+                let live = book.positions.iter().any(|p| p.its_sig == sig && p.is_dip() == dip && p.live());
+                (c, live)
+            };
+            let cell = |l: (Option<&rugsnipe_long::pos::Position>, bool)| -> (String, String, String, String) {
+                match l {
+                    (Some(p), _) => (
+                        p.reason.map_or("?", |r| r.name()).to_string(),
+                        format!("{}s", p.closed_ms.saturating_sub(p.seen_ms) / 1000),
+                        format!("{:+.1}%", p.net_lamports as f64 / p.stake_lamports.max(1) as f64 * 100.0),
+                        format!("{:+.4}", p.net_lamports as f64 / 1e9),
+                    ),
+                    (None, true) => ("open".into(), String::new(), String::new(), String::new()),
+                    (None, false) => ("-".into(), String::new(), String::new(), String::new()),
+                }
+            };
+            println!("   last {} trades, newest first (leg 1 = the copy, leg 2 = the dip; pct = net over that leg's stake):", last.min(rows.len()));
+            println!(
+                "     {:>4}  {:5}  {:8}  {:8}  {:>7}  {:11}  {:11}  {:>6}  {:>7}  {:>8}  {:11}  {:>6}  {:>7}  {:>8}  {:>8}  {:>8}",
+                "#", "side", "bought", "coin", "its SOL", "route", "exit1", "held1", "pct1", "net1", "exit2", "held2", "pct2", "net2", "its pct", "it sold"
+            );
+            for (_, sig) in rows.iter().take(last) {
+                let (l1, l2) = (leg(sig, false), leg(sig, true));
+                let p = l1.0.or(l2.0).expect("a closed leg");
+                let its = if chain_rpc.is_some() { its_of(p) } else { None };
+                let (e1, h1, p1, n1) = cell(l1);
+                let (e2, h2, p2, n2) = cell(l2);
+                println!(
+                    "     {:>4}  {:5}  {:8}  {:8}  {:>7.3}  {:11}  {:11}  {:>6}  {:>7}  {:>8}  {:11}  {:>6}  {:>7}  {:>8}  {:>8}  {:>8}",
+                    p.id,
+                    if p.paper { "paper" } else { "REAL" },
+                    hhmm(p.seen_ms, off),
+                    &p.mint[..8],
+                    p.its_lamports as f64 / 1e9,
+                    p.how,
+                    e1, h1, p1, n1, e2, h2, p2, n2,
+                    its.as_ref()
+                        .and_then(|t| t.pct())
+                        .map_or(String::new(), |x| format!("{x:+.1}%{}", if its.as_ref().is_some_and(|t| t.unpriced) { "?" } else { "" })),
+                    its.as_ref().map_or(String::new(), |t| match (t.sold_after_s, t.holding) {
+                        (Some(s), _) => format!("{s}s"),
+                        (None, true) => "holding".into(),
+                        (None, false) => "?".into(),
+                    })
+                );
+            }
+            for dip in [false, true] {
+                let l: Vec<_> = closed.iter().filter(|p| !p.paper && p.is_dip() == dip).collect();
+                let net: i64 = l.iter().map(|p| p.net_lamports).sum();
+                let stake: u64 = l.iter().map(|p| p.stake_lamports).sum();
+                if !l.is_empty() {
+                    println!(
+                        "   leg {} real, all: {} closed, {} won, {:+.4} SOL, {:+.1}% a trade on average",
+                        if dip { 2 } else { 1 },
+                        l.len(),
+                        l.iter().filter(|p| p.net_lamports > 0).count(),
+                        net as f64 / 1e9,
+                        net as f64 / stake.max(1) as f64 * 100.0
+                    );
+                }
+            }
+        } else {
         println!("   last {} closed, newest first:", last.min(closed.len()));
         println!(
             "     {:>4}  {:5}  {:8}  {:8}  {:>7}  {:11}  {:11}  {:>6}  {:>6}  {:>8}  {:>7}  {:>9}  {:>8}  {:>8}",
@@ -910,6 +1022,7 @@ fn status(args: &[String]) -> Result<(), String> {
                     (None, false) => "?".into(),
                 })
             );
+        }
         }
         drop(its_of);
         if let Some(e) = its_err {

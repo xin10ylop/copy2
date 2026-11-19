@@ -50,6 +50,16 @@ within a slot** (`exits_pess.py`):
   market/m14-m15d` (10% within 60 s, tp x1.5 over our fill or 900 s: +12.1% a trade on Oct 21 - Nov 13 out of sample,
   up every week). Tests: `the_dip_unit_watches_its_buy_and_buys_only_on_the_dip`, `a_dip_watch_ends_after_its_time_
   without_a_trade`, `without_dip_drop_the_copy_buys_at_once_as_before`.
+  The dip leg's exits are its own (`dip_take_profit` over our fill, default 1.5; `dip_max_hold_s`, default 900; no stop,
+  no sell pressure, no stall, its sale not followed), and it has its own `max_open` count.
+- **The split** (Nov 19, the owner: "from the same bot ... we split 0.5, 0.5, and if it works we do a separate bot"):
+  `dip_stake_sol > 0` in the main unit keeps the copy (leg 1, bought at once with `stake_sol`, its exits unchanged) and
+  adds the dip leg (leg 2, `dip_stake_sol`) on the same buy of its: at most one of each per coin; the dip watch is parked
+  even when leg 1 is full; a sale never closes the coin's account while the other leg still holds it. `status` shows
+  one row per buy of its with `exit1 held1 pct1 net1` and `exit2 held2 pct2 net2` (pct = net over that leg's own
+  stake), and each leg's totals. Tests: `the_split_buys_the_copy_at_once_and_the_dip_leg_on_the_dip`,
+  `the_dip_leg_takes_its_own_profit_and_the_copy_leg_holds`, `the_dip_leg_ends_on_its_own_hold_and_ignores_the_signals`,
+  `its_early_sale_takes_out_the_copy_leg_only`, `each_leg_has_its_own_max_open` (the account rule is real-mode only).
 - **Route:** PumpSwap's `multi_hop_swap` (16 accounts + 5 a hop), byte-equal to wallet 4's own (`tests/multihop_fixtures.rs`).
   Its own route is copied when it starts from wrapped SOL or a float we hold (WBTC); a direct curve buy goes behind its
   quote's canonical pool against wSOL or WBTC. Wrapped SOL is wrapped and unwrapped inside the transaction. At most 2

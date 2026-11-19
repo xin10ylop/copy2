@@ -104,4 +104,9 @@ price_api = "https://lite-api.jup.ag/price/v3"
 # the price its buy left, within dip_within_s; with tp_from_fill the take profit is over our own fill
 dip_drop = 0.10
 dip_within_s = 60
+# the dip leg's own exits (take_profit / max_hold_s above are for a copy leg; this unit has none)
+dip_take_profit = 1.5
+dip_max_hold_s = 900
+# 0 = the dip is this unit's only entry; > 0 = the split in one unit (the copy at once + this much on the dip)
+dip_stake_sol = 0.0
 tp_from_fill = true

@@ -89,5 +89,13 @@ stall_s = 0
 other_state_dirs = []
 # pay only with a float: no route from wrapped SOL (a coin reached only through a SOL pool is skipped)
 float_only = false
+# the dip leg (docs/20 §3, "the split"; Nov 19): dip_drop > 0 and dip_stake_sol > 0 = leg 2 on the same buy of its,
+# bought at the first trade of a later slot at or under (1 - dip_drop) x the price its buy left within dip_within_s,
+# sold at dip_take_profit x our fill or after dip_max_hold_s, nothing else. 0 = off (one leg, as before).
+dip_drop = 0.0
+dip_within_s = 60
+dip_stake_sol = 0.0
+dip_take_profit = 1.5
+dip_max_hold_s = 900
 state_dir = "/var/lib/rugsnipe-long"
 price_api = "https://lite-api.jup.ag/price/v3"

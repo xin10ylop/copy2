@@ -840,3 +840,108 @@ fn without_dip_drop_the_copy_buys_at_once_as_before() {
     assert!(e.dips.is_empty());
     assert_eq!(e.book.positions.len(), 1);
 }
+
+/// The split (Nov 19, the owner: "from the same bot ... we split 0.5, 0.5"): `dip_stake_sol > 0` keeps the copy (bought at
+/// once, `stake_sol`) and adds the dip leg (`dip_stake_sol`) on the same coin, one of each.
+fn split_engine(tag: &str) -> (Engine, pump_codec::Pubkey, u64, u64, u64) {
+    let mut e = dip_engine(tag);
+    e.cfg.stake_sol = 0.5;
+    e.cfg.dip_stake_sol = 0.3;
+    e.cfg.take_profit = 4.0;
+    let tx = fx("w4_buy_wsol_multihop");
+    e.on_tx(Src::Copied, &tx);
+    assert_eq!(e.book.positions.len(), 1, "the copy buys at once");
+    assert_eq!(e.dips.len(), 1, "and the dip is watched");
+    let (d, _) = e.dips[0].clone();
+    let (vt, vq) = (d.vt_post as f64, d.vq_post as f64);
+    let x = 0.88f64;
+    let (t3, q3) = ((vt / x.sqrt()) as u64, (vq * x.sqrt()) as u64);
+    e.on_dip_trades(d.slot + 2, &[(d.mint, t3, q3)]);
+    (e, d.mint, d.slot, t3, q3)
+}
+
+#[test]
+fn the_split_buys_the_copy_at_once_and_the_dip_leg_on_the_dip() {
+    let (mut e, mint, slot, _, _) = split_engine("split");
+    assert_eq!(e.book.positions.len(), 2, "two legs on the coin");
+    let (c, d) = (&e.book.positions[0], &e.book.positions[1]);
+    assert!(!c.is_dip() && d.is_dip());
+    assert_eq!((c.mint_pk(), d.mint_pk()), (mint, mint));
+    assert_eq!(d.stake_lamports, 300_000_000, "the dip leg's stake");
+    assert_ne!(c.stake_lamports, d.stake_lamports, "the copy's own stake");
+    // a second dip trade buys nothing more; both legs fill
+    e.on_dip_trades(slot + 3, &[]);
+    assert_eq!(e.book.positions.len(), 2);
+    e.on_slot(slot + 5);
+    e.on_tick(now_ms());
+    assert!(e.book.positions.iter().all(|p| p.state == State::Open));
+}
+
+#[test]
+fn the_dip_leg_takes_its_own_profit_and_the_copy_leg_holds() {
+    let (mut e, _, slot, _, _) = split_engine("split-tp");
+    e.on_slot(slot + 5);
+    e.on_tick(now_ms());
+    // 1.7x the dip leg's fill: over its 1.5x, far under the copy's 4x
+    let p = &mut e.book.positions[1];
+    let k = p.vt_ref as f64 * p.vq_ref as f64;
+    p.vt = (p.vt_ref as f64 / 1.7f64.sqrt()) as u64;
+    p.vq = (k / p.vt as f64) as u64;
+    e.on_tick(now_ms());
+    assert_eq!((e.book.positions[1].state, e.book.positions[1].reason), (State::Selling, Some(Reason::Tp)));
+    assert_eq!(e.book.positions[0].state, State::Open, "the copy keeps its own exits");
+}
+
+#[test]
+fn the_dip_leg_ends_on_its_own_hold_and_ignores_the_signals() {
+    let (mut e, _, slot, _, _) = split_engine("split-hold");
+    e.cfg.max_hold_s = 600;
+    e.cfg.dip_max_hold_s = 900;
+    e.cfg.stall_s = 180;
+    e.on_slot(slot + 5);
+    e.on_tick(now_ms());
+    let seen = e.book.positions[1].seen_ms;
+    for p in e.book.positions.iter_mut() {
+        p.hi = p.entry_px * 1.3;
+    }
+    // past the stall and the copy's 600 s: the copy is out, the dip leg holds
+    e.on_tick(seen + 601_000);
+    assert_eq!(e.book.positions[0].state, State::Selling);
+    assert_eq!(e.book.positions[1].state, State::Open, "no stall, no 600 s for the dip leg");
+    e.on_tick(seen + 900_000);
+    assert_eq!((e.book.positions[1].state, e.book.positions[1].reason), (State::Selling, Some(Reason::Time)));
+}
+
+#[test]
+fn its_early_sale_takes_out_the_copy_leg_only() {
+    use rugsnipe_long::detect::{self, Seen};
+    let (mut e, _, slot, _, _) = split_engine("split-itssell");
+    e.on_slot(slot + 5);
+    e.on_tick(now_ms());
+    let sell = fx("w4_sell_wbtc_multihop");
+    let w4: pump_codec::Pubkey = e.cfg.copy_wallet.parse().unwrap();
+    let mint = match detect::read(&sell, &w4, &|_| None).as_slice() {
+        [Seen::Sell { mint, .. }] => *mint,
+        s => panic!("{s:?}"),
+    };
+    for p in e.book.positions.iter_mut() {
+        p.mint = mint.to_string();
+    }
+    e.on_tx(Src::Copied, &sell);
+    assert_eq!(e.book.positions[0].reason, Some(Reason::ItsSell));
+    assert_eq!(e.book.positions[1].reason, None, "the dip leg does not follow its sale");
+}
+
+#[test]
+fn each_leg_has_its_own_max_open() {
+    let mut e = dip_engine("split-max");
+    e.cfg.dip_stake_sol = 0.3;
+    e.cfg.max_open = 1;
+    let tx = fx("w4_buy_wsol_multihop");
+    e.on_tx(Src::Copied, &tx);
+    let (d, _) = e.dips[0].clone();
+    let x = 0.88f64;
+    let (t3, q3) = ((d.vt_post as f64 / x.sqrt()) as u64, (d.vq_post as f64 * x.sqrt()) as u64);
+    e.on_dip_trades(d.slot + 2, &[(d.mint, t3, q3)]);
+    assert_eq!(e.book.positions.len(), 2, "the copy's one open slot does not block the dip leg");
+}

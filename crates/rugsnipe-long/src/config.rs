@@ -143,6 +143,13 @@ pub struct LongCfg {
     /// from that buy (with `tp_from_fill`, the take profit is over our own fill).
     pub dip_drop: f64,
     pub dip_within_s: u64,
+    /// The dip as a SECOND leg of this unit (Nov 19, the owner: "from the same bot ... we split 0.5, 0.5"): > 0, the copy
+    /// still buys at once (`stake_sol`) and the dip buys `dip_stake_sol` more of the same coin; 0, the dip is the only
+    /// entry (the separate dip unit). The dip leg's exits: take profit `dip_take_profit` over our fill, `dip_max_hold_s`,
+    /// no stop, no sell pressure, no stall, its sale not followed.
+    pub dip_stake_sol: f64,
+    pub dip_take_profit: f64,
+    pub dip_max_hold_s: u64,
     /// Other units trading from the SAME wallet (Nov 18: the TAB16RxX unit on wallet 4's
     /// wallet): their state dirs. A coin one of them holds (seen in the last hour) is not
     /// bought, and a sale never closes the coin's token account while one of them still
@@ -201,6 +208,9 @@ impl Default for LongCfg {
             tp_from_fill: false,
             dip_drop: 0.0,
             dip_within_s: 60,
+            dip_stake_sol: 0.0,
+            dip_take_profit: 1.5,
+            dip_max_hold_s: 900,
             other_state_dirs: vec![],
             float_only: false,
             ladder: crate::ladder::LadderCfg::default(),
@@ -255,6 +265,12 @@ impl LongCfg {
         }
         if self.dip_drop > 0.0 && !(5..=900).contains(&self.dip_within_s) {
             return bad("dip_within_s must be in 5..=900");
+        }
+        if !(0.0..=100.0).contains(&self.dip_stake_sol) {
+            return bad("dip_stake_sol must be in [0, 100]");
+        }
+        if self.dip_drop > 0.0 && (self.dip_take_profit <= 1.0 || self.dip_max_hold_s == 0) {
+            return bad("the dip leg needs dip_take_profit > 1 and dip_max_hold_s > 0");
         }
         for f in &self.floats {
             if f.parse::<pump_codec::Pubkey>().is_err() {

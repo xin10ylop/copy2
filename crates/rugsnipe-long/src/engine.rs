@@ -325,7 +325,7 @@ impl Engine {
                             .book
                             .positions
                             .iter_mut()
-                            .filter(|p| p.mint_pk() == mint)
+                            .filter(|p| p.mint_pk() == mint && !p.is_dip())   // the dip leg never follows its sale
                         {
                             // an early sale of a coin that has not taken off:
                             // followed even when its sales are not
@@ -468,13 +468,14 @@ impl Engine {
         if rebuy {
             return self.skip(&t, "its second buy of the coin");
         }
+        // the dip leg may join the copy leg on its coin (one of each); the copy never doubles
         if self
             .book
             .positions
             .iter()
-            .any(|p| p.mint_pk() == t.mint && now.saturating_sub(p.seen_ms) < 3_600_000)
+            .any(|p| p.mint_pk() == t.mint && now.saturating_sub(p.seen_ms) < 3_600_000 && (!dip_go || p.is_dip()))
         {
-            return self.skip(&t, "coin already ours");
+            return self.skip(&t, if dip_go { "coin already ours (its dip leg)" } else { "coin already ours" });
         }
         if !self.others.is_empty() && self.other_holds(&t.mint, now, false) {
             return self.skip(&t, "coin held by the other unit on this wallet");
@@ -489,10 +490,6 @@ impl Engine {
             return self.skip(&t, "KILL file");
         }
         let paper = !self.real();
-        let open = self.book.live().filter(|p| p.paper == paper).count();
-        if open >= self.cfg.max_open {
-            return self.skip(&t, &format!("{open} open (max_open)"));
-        }
         let today = self.book.realized_today(now, paper);
         if (today as f64) <= -self.cfg.daily_stop_sol * 1e9 {
             return self.skip(
@@ -510,16 +507,29 @@ impl Engine {
                     1.0 - self.cfg.dip_drop,
                     self.cfg.dip_within_s
                 );
-                self.dips.push((t, now + self.cfg.dip_within_s * 1000));
+                self.dips.push((t.clone(), now + self.cfg.dip_within_s * 1000));
                 self.rewatch();
             }
-            return;
+            // the dip unit: no copy at once; the split (dip_stake_sol > 0): the copy buys now as well
+            if self.cfg.dip_stake_sol <= 0.0 {
+                return;
+            }
+        }
+        // each leg has its own max_open: the dip leg never takes the copy's room (checked after the watch is parked, so a full copy leg
+        // does not cost the coin its dip watch)
+        let open = self.book.live().filter(|p| p.paper == paper && p.is_dip() == dip_go).count();
+        if open >= self.cfg.max_open {
+            return self.skip(&t, &format!("{open} open (max_open)"));
         }
         let plan = match route::plan(&t, &self.anchors, &mut self.rpc) {
             Ok(p) => p,
             Err(e) => return self.skip(&t, &format!("route: {e}")),
         };
-        let stake = self.cfg.stake_for(plan.anchor != c::WSOL_MINT);
+        let stake = if dip_go && self.cfg.dip_stake_sol > 0.0 {
+            (self.cfg.dip_stake_sol * 1e9) as u64
+        } else {
+            self.cfg.stake_for(plan.anchor != c::WSOL_MINT)
+        };
         // our amount in, in anchor units, and its SOL value
         let amount_in = if plan.anchor == c::WSOL_MINT {
             stake
@@ -610,10 +620,12 @@ impl Engine {
             hi_ms: 0,
             flow: Default::default(),
             sol_curve: false,
+            leg: if dip_go { "dip".into() } else { String::new() },
         };
         if paper {
             println!(
-                "long paper-buy #{id} {} its {:.3} SOL route {} ({} hops) stake {:.3} SOL; seen at its slot +{}, fills at the end of +{}; fee {} bps",
+                "long paper-buy #{id}{} {} its {:.3} SOL route {} ({} hops) stake {:.3} SOL; seen at its slot +{}, fills at the end of +{}; fee {} bps",
+                if dip_go { " (dip)" } else { "" },
                 m8(&t.mint),
                 v as f64 / 1e9,
                 plan.how,
@@ -643,7 +655,8 @@ impl Engine {
             match self.send_buy(&p, &plan.route, min_out) {
                 Ok(sig) => {
                     println!(
-                        "long buy #{id} {} its {:.3} SOL route {} ({} hops) in {} of {} min_out {} sent {} in {} ms; seen at its slot +{}; fee {} bps",
+                        "long buy #{id}{} {} its {:.3} SOL route {} ({} hops) in {} of {} min_out {} sent {} in {} ms; seen at its slot +{}; fee {} bps",
+                        if dip_go { " (dip)" } else { "" },
                         m8(&t.mint),
                         v as f64 / 1e9,
                         plan.how,
@@ -772,6 +785,7 @@ impl Engine {
             hi_ms: 0,
             flow: Default::default(),
             sol_curve: true,
+            leg: String::new(),
         };
         if paper {
             println!(
@@ -1006,7 +1020,9 @@ impl Engine {
                 .collect();
             r = pump_codec::multihop::Route::new(r.input, hops).map_err(|e| format!("{e:?}"))?;
         }
-        let other = !self.others.is_empty() && self.other_holds(&p.mint_pk(), now_ms(), true);
+        // the coin's account stays open while another unit, or our other leg on the coin, still holds it
+        let sibling = self.book.positions.iter().enumerate().any(|(j, q)| j != i && q.live() && q.mint == p.mint);
+        let other = sibling || (!self.others.is_empty() && self.other_holds(&p.mint_pk(), now_ms(), true));
         let close_coin = pos::close_on_sale(p.sell_tries, other);
         let min_out = self.sell_min_out(&p);
         let (fees, _) = self.fees(false);
@@ -1284,8 +1300,15 @@ impl Engine {
                     // the curve completed while our buy was out: the price
                     // is frozen, no rule of ours would fire (2RR6sfbi)
                     .or_else(|| p.graduated.then_some(Reason::Complete))
-                    .or_else(|| pos::exit_due_fill(p, now, cfg.take_profit, cfg.stop, cfg.max_hold_s, cfg.tp_from_fill))
-                    .or_else(|| pos::signal_due(p, now, &cfg.sell_pressure, cfg.stall_s))
+                    .or_else(|| {
+                        if p.is_dip() {
+                            // the dip leg: its own take profit over our fill and its hold, nothing else
+                            pos::exit_due_fill(p, now, cfg.dip_take_profit, 0.0, cfg.dip_max_hold_s, true)
+                        } else {
+                            pos::exit_due_fill(p, now, cfg.take_profit, cfg.stop, cfg.max_hold_s, cfg.tp_from_fill)
+                        }
+                    })
+                    .or_else(|| (!p.is_dip()).then(|| pos::signal_due(p, now, &cfg.sell_pressure, cfg.stall_s)).flatten())
                     .map(|r| (i, Act::Exit(r))),
                 _ => None,
             })
