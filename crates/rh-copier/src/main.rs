@@ -311,12 +311,18 @@ fn hhmm(ms: u64, off: i64) -> String { let d = ((ms / 1000) as i64 + off).rem_eu
 #[derive(serde::Serialize, serde::Deserialize, Clone)]
 struct ItsTrip { pct: Option<f64>, sold_s: Option<u64>, holding: bool }
 async fn its_trip(rpc: &Rpc, curve: &str, leader: &str, from: u64, to: u64) -> Result<ItsTrip, String> {
+    // its own trades; a leader may also sell by sending its tokens to a shared sell service that sells them on the curve
+    // (wallet 2 does so for 85% of its coins, through 0x65050a9b...): a sale by anyone of exactly what it still holds, or
+    // half of it (within 0.5%), counts as its own (Nov 19)
     let logs = rpc.curve_logs(curve, from, to).await?;
     let (mut ein, mut eout, mut tin, mut tout, mut last) = (0.0, 0.0, 0.0, 0.0, 0u64);
     for l in &logs {
         let Some(t) = chain::decode_trade(l, 0) else { continue };
-        if !t.user.eq_ignore_ascii_case(leader) { continue }
-        if t.buy { ein += t.quote; tin += t.tokens } else { eout += t.quote; tout += t.tokens; last = t.block }
+        let mine = t.user.eq_ignore_ascii_case(leader);
+        if t.buy { if mine { ein += t.quote; tin += t.tokens } continue }
+        let left = tin - tout;
+        let via = !mine && left > 0.0 && ((t.tokens / left - 1.0).abs() < 0.005 || (t.tokens / left - 0.5).abs() < 0.005 || (t.tokens / tin - 0.5).abs() < 0.005);
+        if mine || via { eout += t.quote; tout += t.tokens; last = t.block }
     }
     if ein <= 0.0 { return Err("its buy not found".into()) }
     let holding = tout < tin * 0.99;

@@ -140,3 +140,18 @@ wallet; 0 pass for wallets 1, 2 and the group, 1 for wallet 3 (+0.013 / +0.019 E
 other half (wallet 1). (2) An extra, earlier exit: the take profit falling with time, a lower one after its sale, a
 trailing stop once up, a lower one under sell pressure, a lock-in: 36 a wallet; 0 pass for wallet 1 and the group, 1 for
 wallet 2 (+0.011 / +0.013), 2 for wallet 3 (+0.016 / +0.004 at most): chance-sized. The live exits stay.
+
+**Which wallet is the steadiest** (`rhd17_daily_all.py`, `out/rhd17_daily_all.txt`; live settings, Oct 9 - Nov 19, per UTC
+day): wallet 3 34 positive of 38 active days (4 losing, longest losing run 1 day, deepest fall 0.032 ETH, +2.06 ETH);
+the group 34 of 42 (8 losing, all small, deepest fall 0.020, +1.10); wallet 1 27 of 39 (12 losing, worst −0.073, deepest
+fall 0.086, +1.45); wallet 2 18 of 28 (10 losing, worst −0.106 on Nov 12, +1.05). All four together: 39 of 42 days
+positive (losing: Oct 31 −0.078, Nov 15 −0.015, Nov 19 −0.024 to 13:09 UTC), +0.135 ETH a day on average.
+
+**Wallet 2 does not hold** (on chain, Nov 19; `rhd18_w2_real_sales.py`, `out/rhd18_w2_real_sales.txt`): on all 12 of its
+coins that day it emptied its position within 11-110 s, on 10 by sending the tokens to 0x65050a9b, a shared sell service
+(it sells on 24,769 curves for many users) that sells them on the curve; over the 41 days the service sold on 96% of
+wallet 2's coins, and wallet 2's first sale (its own or the service's) came a median 33 s after its buy (90%: 159 s).
+Earlier studies saw only its own sales (15%) and called the rest "holding". With its real sales (the service's sales of
+its token amount or half, within 1%), following them is worse in every variant: always −0.1% a copy against +8.0%;
+wallet 4's rule +4.8%; the best +5.6%. Wallet 2 is a flipper like wallet 1. `rh-copier status` now counts such a sale
+as the leader's in its "its pct / it sold" columns.
