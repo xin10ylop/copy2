@@ -12,9 +12,9 @@ chain_id = 4663
 wallet_file = "/etc/rugsnipe/keys/rh-wallet.key"        # one line, the 0x hex key (rh-copier keygen); never printed
 state_dir = "/var/lib/rh-copier"
 
-stake_eth = 0.02             # each copy (the owner's call, Nov 18)
+stake_eth = 0.01             # each copy (0.02 from Nov 18; 0.01 since Nov 19 evening, the owner's call)
 max_open = 4
-daily_stop_eth = 0.1         # no new copies after a day's closed result reaches -0.1 ETH (5 stakes; 0.06 until Nov 19, the owner's call)
+daily_stop_eth = 0           # off (0 = none) since Nov 19 evening, the owner's call; was 0.06, then 0.1
 slippage = 0.25              # a buy's minimum tokens = expected x 0.75
 sell_slippage = 0.30         # a sale's minimum ETH = expected x 0.70; retries at half, then 0
 grad_guard_eth = 3.8         # the curve graduates at 4.2 ETH into a Uniswap v4 pool this bot does not trade
