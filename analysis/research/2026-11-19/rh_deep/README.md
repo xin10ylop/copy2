@@ -198,3 +198,9 @@ would not have reached it.
 stakes (−0.092). Today is a losing day in the model too; rhd17's worst model day for the four together was Oct 31,
 −0.078 ETH. The rest of the gap: the morning's bugs (fixed), and coins both wallets 2 and 3 bought, sold on wallet 3's
 45 s (0x6869cba8: wallet 2's 900 s +54.7% in the model, live −20.1%).
+
+**Is a stop safer?** (`rhd21b_stop_safety.py`, `out/rhd21b_stop_safety.txt`; all four wallets together, 1,863 copies,
+Oct 9 - Nov 19, landing 2/3/5.) No: −20% costs 0.65 ETH and makes the deepest fall worse (0.092 against 0.078 ETH) and
+adds a losing day (4 against 3); −30% has the same worst day, losing days and deepest fall as no stop, for 0.17 ETH
+less. The worst copy is −87% with or without a stop: the big losses come in one trade (a dump), which a stop sells
+after.
