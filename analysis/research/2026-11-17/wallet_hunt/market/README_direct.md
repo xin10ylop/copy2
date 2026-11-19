@@ -337,6 +337,8 @@ On the 4 days (6,651 coins with a path), picked on days 1-2, scored blind on day
   dip as a SECOND buy beside it: +66.82 SOL in all, up on both halves.
 - **m15c, a realistic landing** (our buy in the dip trade's slot + 1 or + 2, after that slot's first trade): dip 10%
   within 60 s, landing +2: +9.0% (tp x1.5, 900 s) to +19.1% (tp x3, 300 s) a trade, both halves up in every exit.
-- Not yet checked: our own first copy moves the price the dip is measured on (0.5 SOL on the curve); the dip buy needs
+- **m15d, our own first copy in the curve** (bought at the next slot, held): the dip fires on 299 buys instead of 335;
+  +8.9% to +20.2% a trade by exit, both halves up in every exit: unchanged.
+- Not yet built: the dip buy needs
   a second position on the same coin in the bot (one position a coin today). Wallet 4's exit stays frozen (the owner's
   rule); this is a second trade beside it, the owner's call.
