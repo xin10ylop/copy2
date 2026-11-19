@@ -27,6 +27,17 @@ sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-17/wallet_hunt/ma
 kind, dd, ww = os.environ["STYLE"].split(","); dd, ww = float(dd), int(ww); tp_, h_, tr_ = os.environ["EXIT"].split(",")
 GI = D.GRID.index((float(tp_) if float(tp_) < 1e8 else 1e9, int(h_), tr_ == "1"))
 A4, B4 = 1794618422, 1794963942
+# NS: a random sample (seed 7) of its first buys of 0.5+ SOL, over the whole period (a very active wallet buys thousands)
+import random
+_first, _seen = [], set()
+for e in trades:
+    if e["buy"] and e["m"] not in _seen:
+        _seen.add(e["m"]); r_ = rate_of(e["quote"])
+        if r_ is not None and e["q"] * (1 + e["bps"] / 1e4) * r_ / 1e9 >= 0.5: _first.append(e)
+NS = int(os.environ.get("NS", 0))
+if NS and len(_first) > NS: _first = sorted(random.Random(7).sample(_first, NS), key=lambda e: e["t"])
+print(f"{len(_first)} first buys of 0.5+ SOL in the sample" + (f" (of {len(_seen)} coins bought; NS={NS})" if NS else ""))
+trades = _first
 seen, rows = set(), []
 for e in trades:
     if not e["buy"] or e["m"] in seen: continue
