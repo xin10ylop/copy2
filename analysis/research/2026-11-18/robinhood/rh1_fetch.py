@@ -21,7 +21,8 @@ def call(m, p):
             return r["result"]
         except (requests.RequestException, ValueError): time.sleep(2 * (i + 1))
     raise RuntimeError("gave up")
-tip = int(call("eth_blockNumber", []), 16); B = {}
+tip = int(call("eth_blockNumber", []), 16)
+B = {int(k): v for k, v in json.load(open(f"{OUT}/blocks.json")).items()} if os.path.exists(f"{OUT}/blocks.json") else {}   # merged, never overwritten (Nov 19: a short refresh had replaced the 40 days' times)
 def btime(n):
     if n not in B: B[n] = int(call("eth_getBlockByNumber", [hex(n), False])["timestamp"], 16)
     return B[n]

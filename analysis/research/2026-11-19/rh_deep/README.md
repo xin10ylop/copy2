@@ -69,3 +69,22 @@ the bot copies the first member buy that passes the filters, the research the gr
 days (+0.0015 ETH together): 294 copies, +17.5% a copy, against 289 at +17.8%. The last 7 days 22 copies +30.2% a copy,
 the last 3 days 11 at +41.3%. Member buys of 0.01+ ETH: 98 in the last 72 h, 41 in 48 h, 7 in the last 24 h (slowing on
 Nov 19). Added on the box as wallets 4-8 the same day.
+
+**"He is making much more than us"** (`rhd8_exit_redo.py`, `out/rhd8_exit_redo.txt`, Nov 19 12:04 UTC; the owner, after 15
+live trades and 2 wins, and "check if we get rid of the time"). The leader's own result on the coins we copy (its sales
+minus its buys, tokens left valued at the last state) against our copy, live settings, landing 2/3/5 blocks:
+
+| wallet | the leader itself | our copy | its sale followed (early / always) | time none | time 900 s | today: leader / us |
+|---|---|---|---|---|---|---|
+| 1 | +18.5% (521) | **+13.9%** | +4.4% / +1.6% | +7.9% (half 1 −5.3%) | +13.8% | +4.5% / −14.9% (6) |
+| 2 | +11.7% (662) | **+7.7%** | +6.7% / +6.3% | +4.8% | +8.0% | +5.7% / −3.2% (10) |
+| 3 | +42.7% (383) | **+24.1%** | +22.9% / +22.1% | +23.9% | +23.9% | +92.1% / +5.1% (4) |
+
+We keep 55-75% of each leader's edge: it buys first, we buy after it and the snipers who follow it (1.1-1.2x its price,
+plus the launchpad's 9-10% early tax), and it sells into the crowd we are part of. Following its sale loses most of the
+edge (wallet 1 sells within seconds, often in its own block: its sale is the drop). No time limit is worse for wallets
+1 and 2 and the same for 3. The live settings stay the best by the weaker half. Nov 19 was a weak day for the leaders
+themselves (wallets 1, 2: +4.5%, +5.7% on today's coins, against +18.5%, +11.7% over 41 days).
+
+`rh1_fetch.py` now merges `blocks.json` (a short refresh had replaced the 40 days' block times; `rhd7` and `rhd8` re-run
+on the rebuilt table).
