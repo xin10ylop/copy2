@@ -88,6 +88,12 @@ judges sell pressure on trades only; the engine now does too (test `sell_pressur
 the engine replayed on the coin's chain trades now holds and leaves by stall at 242 s). Also: a refused send now logs
 the node's reason.
 
+**Why #6's sale was missed (its journal, 08:32-08:34 UTC):** both nodes failed at once. PublicNode answered every send
+with "failed to call backend endpoint" (2.1 s), the official node took 5-33 s, and the bot logged each try as "not sent";
+yet the first try (nonce 17) landed at 08:33:03, and the last refusal was "nonce too low ... tx 18 state 19". Now a send
+is one try of at most 4 s per node (to every node at once), and after any error but a definite refusal (nonce too low,
+no funds) the bot waits 15 s for the transaction's own hash (known before sending) before calling it unsent.
+
 ## 4. Running it (the box, `ops@fra-long`)
 
 Build and install (the same as every update; the unit is installed but not enabled):

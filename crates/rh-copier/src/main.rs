@@ -180,9 +180,22 @@ async fn send(ctx: &Ctx, to: &str, value: u128, data: &str, gas: u64, what: &str
     let n = ctx.nonce.fetch_add(1, Ordering::SeqCst); let t0 = std::time::Instant::now();
     let raw = ctx.wallet.sign(ctx.cfg.chain_id, n, to, value, data, gas, max_fee(ctx))?;
     let (r, times) = ctx.rpc.send_raw(&raw).await;
-    // "already known": the node holds this very transaction already; wait for it like any other
-    let h = match r { Ok(h) => h, Err(e) if e.contains("already known") => chain::tx_hash(&raw),
-                      Err(e) => { resync_nonce(ctx).await; return Err(format!("{what} not sent ({times}): {e}")) } };
+    // "already known": the node holds this very transaction already; wait for it like any other. Any other error
+    // but a definite refusal (nonce too low, no funds) may still have reached the sequencer: wait for its hash for 15 s
+    // before calling it unsent (Nov 19 08:33: three "not sent" sales, and the first had landed)
+    let h = match r {
+        Ok(h) => h,
+        Err(e) if e.contains("already known") => chain::tx_hash(&raw),
+        Err(e) if e.contains("nonce too low") || e.contains("insufficient funds") => { resync_nonce(ctx).await; return Err(format!("{what} refused ({times}): {e}")) }
+        Err(e) => {
+            let h = chain::tx_hash(&raw);
+            match ctx.rpc.receipt(&h, 15).await {
+                Some(rc) if rc["status"].as_str() == Some("0x1") => { log(&format!("{what} landed {h} nonce {n} although every node answered with an error ({times})")); return Ok(rc) }
+                Some(_) => return Err(format!("{what} {h} reverted (sent despite errors: {times})")),
+                None => { resync_nonce(ctx).await; return Err(format!("{what} not sent ({times}): {e}")) }
+            }
+        }
+    };
     let sent_ms = t0.elapsed().as_millis();
     match ctx.rpc.receipt(&h, 20).await {
         Some(r) if r["status"].as_str() == Some("0x1") => {

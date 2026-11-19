@@ -113,7 +113,19 @@ impl Rpc {
     /// ("host ms" or "host ms refused"), to see which node is slow
     pub async fn send_raw(&self, raw: &str) -> (Result<String, String>, String) {
         let futs = self.send_urls.iter().map(|u| async move {
-            let t = std::time::Instant::now(); let r = self.call_at(u, "eth_sendRawTransaction", json!([raw])).await; (u, t.elapsed().as_millis(), r)
+            // one try, 4 s at most: the transaction goes to every node at once, so a slow node must not hold the send
+            // (Nov 19 08:33: the official node took 5-33 s, PublicNode answered "failed to call backend endpoint", and
+            // the transaction had landed all the same)
+            let t = std::time::Instant::now();
+            let r = match tokio::time::timeout(std::time::Duration::from_secs(4), self.http.post(u.as_str())
+                .json(&json!({"jsonrpc": "2.0", "id": 1, "method": "eth_sendRawTransaction", "params": [raw]})).send()).await {
+                Ok(Ok(resp)) => match resp.json::<Value>().await {
+                    Ok(v) => match v.get("error") { Some(e) => Err(format!("eth_sendRawTransaction: {e}")), None => Ok(v["result"].clone()) },
+                    Err(e) => Err(e.to_string()) },
+                Ok(Err(e)) => Err(e.to_string()),
+                Err(_) => Err("timed out after 4 s".to_string()),
+            };
+            (u, t.elapsed().as_millis(), r)
         });
         let rs = futures_util::future::join_all(futs).await; let (mut ok, mut err, mut times) = (None, String::new(), vec![]);
         for (u, ms, r) in rs {
