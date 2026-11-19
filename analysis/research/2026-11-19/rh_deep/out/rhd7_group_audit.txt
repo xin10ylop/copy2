@@ -1,0 +1,14 @@
+data to 11-19 11:23 UTC; landing +[2, 3, 5] blocks; the group's setting (0.02+, under 0.5 ETH, tp 3.5, 600 s, stall 240, early sale)
+   the research's rule (the group's first buy)   289 copies +1.0291 ETH ( +17.8% a copy), w/o 2% +0.7968, won 59%
+   the bot's rule (the first member buy passing)  294 copies +1.0306 ETH ( +17.5% a copy), w/o 2% +0.7983, won 59%
+      the extra copies alone                       5 copies +0.0015 ETH (  +1.5% a copy), w/o 2% -0.0008, won 40%
+      their buy came 32 trades after the group's first (median), at 0.77x the first buy's price
+   member buys of 0.01+ ETH in the last  24 h: 7
+   member buys of 0.01+ ETH in the last  48 h: 41
+   member buys of 0.01+ ETH in the last  72 h: 98
+   member buys of 0.01+ ETH in the last 168 h: 179
+   the last member buy: 11-19 09:33 UTC
+   last 7 days, research rule: 21 copies +0.1332 ETH (+31.7% a copy)
+   last 7 days, bot rule: 22 copies +0.1328 ETH (+30.2% a copy)
+   last 3 days, research rule: 10 copies +0.0913 ETH (+45.6% a copy)
+   last 3 days, bot rule: 11 copies +0.0909 ETH (+41.3% a copy)

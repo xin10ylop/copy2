@@ -63,3 +63,9 @@ The group's setting, the best under both landings (`out/rhd2_grp_0xe3fdae6c_fix*
 with under 0.5 ETH in the curve, no price limit, take profit 3.5x, 600 s, no sell pressure, stall 240 s, its early sale
 followed: 288 copies, halves +0.59 / +0.47 ETH, P(mean>0) 100%; at 5/8/12 blocks +0.42 / +0.36. About 3 copies a day
 lately (21 in the last 7 days). In the bot: the five addresses as five leaders with these settings (one copy per coin).
+
+**The final audit before going live** (`rhd7_group_audit.py`, `out/rhd7_group_audit.txt`, data to Nov 19 11:23 UTC):
+the bot copies the first member buy that passes the filters, the research the group's first buy; that adds 5 copies in 41
+days (+0.0015 ETH together): 294 copies, +17.5% a copy, against 289 at +17.8%. The last 7 days 22 copies +30.2% a copy,
+the last 3 days 11 at +41.3%. Member buys of 0.01+ ETH: 98 in the last 72 h, 41 in 48 h, 7 in the last 24 h (slowing on
+Nov 19). Added on the box as wallets 4-8 the same day.
