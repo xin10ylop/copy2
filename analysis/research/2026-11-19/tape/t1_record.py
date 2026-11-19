@@ -4,7 +4,8 @@
 # of the pump program costs ~65 GB a day at $0.08 a GB (~$5). This records it: logsSubscribe (mentions pump,
 # confirmed) on the Triton websocket; every successful transaction's CreateEvents and TradeEvents decoded from its
 # "Program data:" lines; one JSON line per event, in arrival order (n = arrival number; the order inside a slot is the
-# stream's, not proven to be the block's), hourly gz files OUT/tape_<YYYYmmddHH>.jsonl.gz; reconnects by itself; a
+# stream's, not proven to be the block's), hourly plain files OUT/tape_<YYYYmmddHH>_<pid>.jsonl (t2_watchdog gzips the
+# closed hours); reconnects by itself, also after 60 s without a message; a
 # stats line every minute (transactions, events, truncated logs, failed transactions skipped).
 #   RPC_URL=<triton https url> python3 -I t1_record.py OUT
 import sys, os, json, gzip, time, base64, asyncio
@@ -13,21 +14,22 @@ sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-13/tab_exits"); i
 sys.path.insert(0, "/home/user/rugsnipe/analysis"); from rugsnipe_analysis import events as E
 OUT = sys.argv[1]; os.makedirs(OUT, exist_ok=True); PUMP = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"
 WS = "wss://" + os.environ["RPC_URL"].split("://", 1)[1]
-KT = ("mint", "user", "is_buy", "sol", "tok", "vsol", "vtok", "rsol", "rtok", "fee_bps", "quote_mint", "quote_amount", "vquote", "ts")
+KT = ("mint", "user", "is_buy", "sol", "tok", "vsol", "vtok", "rsol", "rtok", "fee_bps", "fee", "creator_fee", "quote_mint", "quote_amount", "vquote", "ts")
 KC = ("mint", "creator", "user", "quote_mint", "ts", "symbol")
 st = dict(tx=0, ev=0, trunc=0, failed=0, n=0); fh = [None, None]
-def out(row):
+PID = os.getpid()
+def out(row):   # plain hourly files, one per run (a restart never writes into another run's file; t3_compress gzips closed hours)
     h = time.strftime("%Y%m%d%H", time.gmtime())
     if fh[0] != h:
         if fh[1]: fh[1].close()
-        fh[0], fh[1] = h, gzip.open(f"{OUT}/tape_{h}.jsonl.gz", "at")
+        fh[0], fh[1] = h, open(f"{OUT}/tape_{h}_{PID}.jsonl", "a", buffering=1 << 16)
     fh[1].write(json.dumps(row, separators=(",", ":")) + "\n")
 async def run():
     async with websockets.connect(WS, max_size=None, open_timeout=20, ping_interval=20, ping_timeout=30) as ws:
         await ws.send(json.dumps({"jsonrpc": "2.0", "id": 1, "method": "logsSubscribe", "params": [{"mentions": [PUMP]}, {"commitment": "confirmed"}]}))
         last = time.time()
         while True:
-            m = json.loads(await ws.recv()); r = m.get("params", {}).get("result")
+            m = json.loads(await asyncio.wait_for(ws.recv(), timeout=60)); r = m.get("params", {}).get("result")   # 60 s silent: reconnect
             if not r: continue
             v = r["value"]
             if v.get("err"): st["failed"] += 1; continue
