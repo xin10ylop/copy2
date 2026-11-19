@@ -67,6 +67,16 @@ wallet 3's qualifying buy was dropped. A coin now counts as seen only once it is
 `a_wallet_skipped_by_its_own_filter_does_not_hide_another_wallets_copy`). Also added: each send logs every node's answer
 time, and each signal logs how many blocks behind the node's head it arrived (`rh signal ... (+N blocks)`).
 
+**The stuck sale (Nov 19 08:33-10:22 UTC), my bug:** coin #6's sale landed at 08:33:03 (nonce 17, 0.015316 ETH back, the
+stall exit of wallet 3), but the bot did not see its receipt in time and counted it as failed. With the coin gone, the
+code fell back to selling the fill's token count, which can only revert, and retried every 5 s for two hours: about
+3,140 reverted transactions, about 0.0032 ETH of gas, and probably the one failed buy (#7) from the nonce turmoil. The
+owner stopped the bot. Fixed: every sale try re-reads the wallet's balance of the coin, and a zero balance closes the
+position with our sale found on chain (`my_sale`, the official node's logs; checked on coin #6: 0.015316 ETH); the
+receipt wait asks every node in turn; a node's "already known" is waited for; a failing sale backs off 5, 10, 20, 40,
+then 60 s (engine test `a_failing_sale_backs_off_to_a_minute`). The ten trades of Nov 19 to 10:22 UTC on chain: 2 won,
+−0.01554 ETH before gas.
+
 ## 4. Running it (the box, `ops@fra-long`)
 
 Build and install (the same as every update; the unit is installed but not enabled):

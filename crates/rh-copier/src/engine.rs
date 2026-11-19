@@ -77,6 +77,7 @@ pub struct Position {
     pub state: PosState,
     pub flow: VecDeque<(u64, bool)>, // (ms, sell) of the other traders on the curve, for sell pressure
     pub retry_ms: u64, // after a failed sale: no new try before this
+    pub sell_fails: u32, // failed sale rounds so far: the wait before the next grows (5, 10, 20, 40, then 60 s)
 }
 
 pub struct Engine {
@@ -157,7 +158,7 @@ impl Engine {
         let mut min_tokens = at_lim.tokens_for(eth, FEE) * 0.99;
         if l.max_premium <= 0.0 { min_tokens = min_tokens.max(c.tokens_for(eth, FEE) * (1.0 - self.cfg.slippage)) }
         self.pos.insert(curve.to_string(), Position { id: 0, curve: curve.to_string(), leader: l.address.to_lowercase(), its_eth: its_quote, its_block, our_block: 0, its_price, its_ms, eth_in: eth, tokens: 0.0,
-            peak: 1.0, hi_ms: its_ms, state: PosState::Buying, flow: VecDeque::new(), retry_ms: 0 });
+            peak: 1.0, hi_ms: its_ms, state: PosState::Buying, flow: VecDeque::new(), retry_ms: 0, sell_fails: 0 });
         Some(Action::Buy { curve: curve.to_string(), leader: l.address.to_lowercase(), eth, min_tokens })
     }
 
@@ -172,7 +173,12 @@ impl Engine {
     pub fn on_sold_pos(&mut self, curve: &str, eth_out: Option<f64>, now_ms: u64) -> Option<(f64, Position)> {
         match eth_out {
             Some(e) => { let p = self.pos.remove(curve)?; let pnl = e - p.eth_in; self.book(pnl, now_ms); Some((pnl, p)) }
-            None => { if let Some(p) = self.pos.get_mut(curve) { p.state = PosState::Open; p.retry_ms = now_ms + 5_000 } None }
+            None => {
+                if let Some(p) = self.pos.get_mut(curve) {
+                    p.state = PosState::Open; p.sell_fails += 1; p.retry_ms = now_ms + (5_000u64 << (p.sell_fails - 1).min(4)).min(60_000)
+                }
+                None
+            }
         }
     }
     fn book(&mut self, pnl: f64, now_ms: u64) {

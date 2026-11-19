@@ -14,7 +14,7 @@ use tokio::sync::{mpsc, Mutex};
 
 fn now_ms() -> u64 { std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_millis() as u64).unwrap_or(0) }
 
-struct Ctx { cfg: Config, rpc: Rpc, wallet: Wallet, eng: Mutex<Engine>, nonce: AtomicU64, gas: AtomicU64, seq: AtomicU64, dir: String }
+struct Ctx { cfg: Config, rpc: Rpc, hist: Rpc, wallet: Wallet, eng: Mutex<Engine>, nonce: AtomicU64, gas: AtomicU64, seq: AtomicU64, dir: String }
 
 /// under systemd the key comes as a credential (LoadCredential=rh-wallet:...); by hand, the config's wallet_file
 fn wallet_path(cfg: &Config) -> String {
@@ -79,12 +79,12 @@ async fn run(cfg: Config) -> Result<(), String> {
         let f = |k: &str| p[k].as_f64().unwrap_or(0.0); let u = |k: &str| p[k].as_u64().unwrap_or(0);
         eng.pos.insert(c.clone(), Position { id: u("id"), curve: c, leader: p["leader"].as_str().unwrap_or("").into(), its_eth: f("its_eth"), its_block: u("its_block"), our_block: u("our_block"),
             its_price: f("its_price"), its_ms: u("its_ms"), eth_in: f("eth_in"), tokens: f("tokens"), peak: p["peak"].as_f64().unwrap_or(1.0), hi_ms: u("hi_ms"),
-            state: PosState::Open, flow: Default::default(), retry_ms: 0 });
+            state: PosState::Open, flow: Default::default(), retry_ms: 0, sell_fails: 0 });
     }
     log(&format!("start mode {} wallet {} balance {:.4} ETH nonce {} gas {:.4} gwei; {} leaders, {} ETH a copy, max_open {}, daily stop {}; {} open from the last run",
         cfg.mode, wallet.address, bal, nonce, gas as f64 / 1e9, cfg.leaders.len(), cfg.stake_eth, cfg.max_open, cfg.daily_stop_eth, eng.pos.len()));
     for (i, l) in cfg.leaders.iter().enumerate() { log(&format!("wallet {} = {}", i + 1, l.address)) }
-    let ctx = Arc::new(Ctx { cfg: cfg.clone(), rpc, wallet, eng: Mutex::new(eng), nonce: AtomicU64::new(nonce), gas: AtomicU64::new(gas), seq: AtomicU64::new(d.seq), dir: cfg.state_dir.clone() });
+    let ctx = Arc::new(Ctx { cfg: cfg.clone(), rpc, hist: Rpc::new(&cfg.logs_url, &[]), wallet, eng: Mutex::new(eng), nonce: AtomicU64::new(nonce), gas: AtomicU64::new(gas), seq: AtomicU64::new(d.seq), dir: cfg.state_dir.clone() });
     // reserves of the curves held after a restart
     let held: Vec<String> = ctx.eng.lock().await.pos.keys().cloned().collect();
     for c in held { if let Ok((q, t, r)) = ctx.rpc.reserves(&c).await { ctx.eng.lock().await.set_curve(&c, CurveSt { q, t, real_q: r }); } }
@@ -180,7 +180,9 @@ async fn send(ctx: &Ctx, to: &str, value: u128, data: &str, gas: u64, what: &str
     let n = ctx.nonce.fetch_add(1, Ordering::SeqCst); let t0 = std::time::Instant::now();
     let raw = ctx.wallet.sign(ctx.cfg.chain_id, n, to, value, data, gas, max_fee(ctx))?;
     let (r, times) = ctx.rpc.send_raw(&raw).await;
-    let h = match r { Ok(h) => h, Err(e) => { resync_nonce(ctx).await; return Err(format!("{what} not sent ({times}): {e}")) } };
+    // "already known": the node holds this very transaction already; wait for it like any other
+    let h = match r { Ok(h) => h, Err(e) if e.contains("already known") => chain::tx_hash(&raw),
+                      Err(e) => { resync_nonce(ctx).await; return Err(format!("{what} not sent ({times}): {e}")) } };
     let sent_ms = t0.elapsed().as_millis();
     match ctx.rpc.receipt(&h, 20).await {
         Some(r) if r["status"].as_str() == Some("0x1") => {
@@ -243,15 +245,28 @@ async fn act(ctx: Arc<Ctx>, a: Action) {
                 save(&ctx).await; return
             }
             let me = ctx.wallet.address.clone();
-            // sell what the wallet holds (the fill's token count is a float; the balance is exact)
-            let units = match ctx.rpc.token_of(&curve).await { Ok(tok) => ctx.rpc.balance_of(&tok, &me).await.unwrap_or(0), Err(_) => 0 };
-            let units = if units == 0 { chain::tok_units(tokens * 0.999) } else { units };
-            log(&format!("sell #{id} {why} {:.0} tokens min {min_eth:.4} ETH", units as f64 / 1e18));
-            let mut res = None;
+            let its_block = ctx.eng.lock().await.pos.get(&curve).map_or(0, |p| p.its_block);
+            let tok = ctx.rpc.token_of(&curve).await.ok();
+            // the wallet's exact balance of the coin; 0 means the coin is already gone (a sale that landed while its
+            // receipt was missed): never send a sale for tokens we do not hold (Nov 19: 3,140 such sales reverted)
+            async fn held(ctx: &Ctx, tok: &Option<String>, me: &str) -> Option<u128> { match tok { Some(t) => ctx.rpc.balance_of(t, me).await.ok(), None => None } }
+            let mut res = None; let mut gone = false;
             for (i, m) in [min_eth, min_eth * 0.5, 0.0].iter().enumerate() {   // the floor falls on a retry: getting out matters more
+                let bal = held(&ctx, &tok, &me).await;
+                if bal == Some(0) { gone = true; break }
+                let units = bal.unwrap_or(chain::tok_units(tokens * 0.999));   // the balance could not be read: the fill's count
+                if i == 0 { log(&format!("sell #{id} {why} {:.0} tokens min {min_eth:.4} ETH", units as f64 / 1e18)); }
                 match send(&ctx, &curve, 0, &chain::sell_data(units, chain::wei(*m), &me), ctx.cfg.gas_sell, &format!("sell #{id} try {i}")).await {
                     Ok(rc) => { res = rc["logs"].as_array().into_iter().flatten().filter_map(|l| chain::decode_trade(l, now_ms())).find(|t| !t.buy && t.user == me && t.curve == curve).map(|t| t.quote); break }
                     Err(e) => log(&format!("sell-failed #{id}: {e}")),
+                }
+            }
+            if gone {
+                // find our sale on chain (the official node keeps the logs) and book what it really paid
+                match ctx.hist.my_sale(&curve, &me, its_block).await {
+                    Ok(Some(q)) => { log(&format!("sell #{id}: no tokens left; our sale is on chain ({q:.6} ETH), booked from it")); res = Some(q) }
+                    Ok(None) => { log(&format!("CRITICAL sell #{id}: no tokens left and no sale of ours on chain; closed at 0")); res = Some(0.0) }
+                    Err(e) => log(&format!("WARNING sell #{id}: no tokens left; the chain's logs could not be read ({e}); retried later")),
                 }
             }
             match ctx.eng.lock().await.on_sold_pos(&curve, res, now_ms()) {
@@ -260,7 +275,10 @@ async fn act(ctx: Arc<Ctx>, a: Action) {
                     log(&format!("closed #{id} {why} net {pnl:+.4} ETH ({:+.1}%) held {}s", 100.0 * pnl / p.eth_in.max(1e-9), now_ms().saturating_sub(p.its_ms) / 1000));
                     append(&ctx.dir, "closed.jsonl", &closed_rec(&p, out, pnl, why, false));
                 }
-                None => log(&format!("CRITICAL sale of #{id} failed 3 times; retried in 5 s")),
+                None => {
+                    let (n, wait) = ctx.eng.lock().await.pos.get(&curve).map_or((0, 0), |p| (p.sell_fails, p.retry_ms.saturating_sub(now_ms()) / 1000));
+                    log(&format!("CRITICAL sale of #{id} failed (round {n}); retried in {wait} s"))
+                }
             }
             save(&ctx).await;
         }

@@ -239,3 +239,27 @@ fn a_wallet_skipped_by_its_own_filter_does_not_hide_another_wallets_copy() {
     let b = buy_on(&e, "0xc1", B, 0.1, 2);
     assert!(e.on_trade(&b, 2).iter().all(|a| !matches!(a, Action::Buy { .. })));     // and the coin is now seen
 }
+
+#[test]
+fn a_failing_sale_backs_off_to_a_minute() {
+    // Nov 19: a sale whose tokens were already gone was retried every 5 s for two hours (3,140 reverted transactions)
+    let mut e = Engine::new(cfg(""), ME);
+    open(&mut e, "0xc1", A, 0.1, 0.1, 0);
+    let mut t = 600_000; let mut waits = vec![];
+    for _ in 0..7 {
+        assert_eq!(sold(&e.tick(t)), Some("time"));
+        e.on_sold("0xc1", None, t);
+        let w = e.pos["0xc1"].retry_ms - t; waits.push(w / 1000);
+        assert!(e.tick(t + w - 1).is_empty()); t += w;
+    }
+    assert_eq!(waits, vec![5, 10, 20, 40, 60, 60, 60]);
+}
+
+#[test]
+fn a_signed_transactions_hash_is_known_before_sending() {
+    use alloy_eips::eip2718::Decodable2718;
+    let w = rh_copier::chain::Wallet { signer: alloy_signer_local::PrivateKeySigner::random(), address: String::new() };
+    let raw = w.sign(4663, 7, A, 1, "0x", 21_000, 1_000_000).unwrap();
+    let env = alloy_consensus::TxEnvelope::decode_2718(&mut &rh_copier::chain::decode_hex(&raw[2..]).unwrap()[..]).unwrap();
+    assert_eq!(rh_copier::chain::tx_hash(&raw), format!("{:#x}", env.tx_hash()));
+}

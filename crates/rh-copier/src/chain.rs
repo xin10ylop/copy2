@@ -123,14 +123,31 @@ impl Rpc {
         }
         (ok.ok_or(err), times.join(", "))
     }
-    /// waits up to `secs` for the receipt; None when it has not landed
+    /// waits up to `secs` for the receipt, asking the read node and every send node in turn (one slow or lagging node
+    /// must not make a landed transaction look lost: Nov 19 08:33, a sale landed and the bot did not see it); None when
+    /// it has not landed
     pub async fn receipt(&self, hash: &str, secs: u64) -> Option<Value> {
-        let t0 = std::time::Instant::now();
+        let t0 = std::time::Instant::now(); let mut urls = vec![self.url.clone()];
+        for u in &self.send_urls { if !urls.contains(u) { urls.push(u.clone()) } }
+        let mut i = 0usize;
         while t0.elapsed().as_secs() < secs {
-            if let Ok(r) = self.call("eth_getTransactionReceipt", json!([hash])).await { if !r.is_null() { return Some(r) } }
+            let u = &urls[i % urls.len()]; i += 1;
+            let r = tokio::time::timeout(std::time::Duration::from_secs(3), self.call_at(u, "eth_getTransactionReceipt", json!([hash]))).await;
+            if let Ok(Ok(r)) = r { if !r.is_null() { return Some(r) } }
             tokio::time::sleep(std::time::Duration::from_millis(120)).await;
         }
         None
+    }
+    /// our own sale on a curve since `from` (eth_getLogs: CurveSell with us as the seller): its quoteOut, ETH
+    pub async fn my_sale(&self, curve: &str, me: &str, from: u64) -> Result<Option<f64>, String> {
+        let tip = self.u64_of("eth_blockNumber", json!([])).await? as u64; let mut a = from; let me32 = format!("0x{:0>64}", me.trim_start_matches("0x").to_lowercase());
+        while a <= tip {
+            let b = (a + 29_999).min(tip);
+            let r = self.call("eth_getLogs", json!([{"address": curve, "fromBlock": format!("0x{a:x}"), "toBlock": format!("0x{b:x}"), "topics": [topic_sell(), me32]}])).await?;
+            if let Some(t) = r.as_array().into_iter().flatten().filter_map(|l| decode_trade(l, 0)).last() { return Ok(Some(t.quote)) }
+            a = b + 1;
+        }
+        Ok(None)
     }
 }
 
@@ -152,6 +169,8 @@ impl Wallet {
         Ok(format!("0x{}", hex(&env.encoded_2718())))
     }
 }
+/// a signed transaction's hash (keccak of its raw bytes), known before any node answers
+pub fn tx_hash(raw: &str) -> String { format!("0x{}", hex(&keccak256(decode_hex(raw.trim_start_matches("0x")).unwrap_or_default()).0)) }
 pub fn decode_hex(s: &str) -> Result<Vec<u8>, String> {
     if s.len() % 2 != 0 { return Err("odd hex".into()) }
     (0..s.len()).step_by(2).map(|i| u8::from_str_radix(&s[i..i + 2], 16).map_err(|e| e.to_string())).collect()
