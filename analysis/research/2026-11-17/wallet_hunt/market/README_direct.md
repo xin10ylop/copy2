@@ -301,3 +301,14 @@ blind −98 SOL (−7.0% a copy), 7 of 35 up. Wallet 4 remains the only wallet w
   after a wallet's buy); a fast flip into them (in at the next slot, out 2-20 s later or at x1.2 / x1.5): on all 72,133
   buys −7.4% to −8.4% a trade (the 0.0345 SOL round trip is 6.4% of it: about −1% to −2% before costs); the wallets best
   on days 1-2 (by the flip or by followers) lose on days 3-4 in every setting (−0.2% to −6.9% a trade).
+
+## Traders with several wallets (Nov 19; the owner: "traders that use several wallets ... do it with what we have now"; `m12_clusters.py`, `../out/m12_clusters.txt`)
+
+From the 4 days' first buys (no new fetch; the public Solana node returns ~1 transaction a second, too slow for funding
+links): wallets linked when they buy the same coins within 1 slot, after the launch slot+1, on 4+ coins and half or
+more of the smaller wallet's coins. **565 traders of 2-60 wallets** (248 of 2, 183 of 3, 76 of 4 ...). Each copied once
+a coin (its first wallet's buy). **7 pass** (up on days 1-2 and 3-4 and without the best 2%, 8+ copies), all on 9-30
+copies; the largest: 8zqsUMty + 1 wallet, 30 copies, +19.6% a copy, w/o 2% +1.25, up 3 of 4 days, 25 creators.
+**Blind (chosen on days 1-2): 9 traders, days 3-4 −2.08 SOL on 71 copies (−5.9% a copy), 3 of 9 up** (8zqsUMty +0.93 on
+17 copies, 2vt36ruE +0.14, 2RRKiWes +0.22). Grouping wallets into traders does not change the picture on 4 days;
+8zqsUMty's pair is the one to watch on a longer history.
