@@ -164,3 +164,20 @@ snipers' flip. **Wallet 3 better with a pure time sale at 30-60 s**: 45 s +33.3%
 +1.066 ETH against +1.098 / +0.965, without the best 2% +1.777 against +1.743 (last 7 days +36.6% against +38.1%); with
 its other exits kept, 45 s is worse (+26.5%: sell pressure fires in the window). Applied: wallet 3 sold 45 s after its
 buy with no other exit; the daily stop 0.1 ETH (the owner's call).
+
+## rhd20: a low take profit, 1.1x to none (Nov 19; "tp at 1.3x, small profits on more trades")
+
+`rhd20_low_tp.py` (`out/rhd20_low_tp.txt`, landing 2/3/5 blocks; `out/rhd20_low_tp_land8_12_15.txt`, 8/12/15). The take
+profit is a multiple of the leader's buy price (the bot's `ratio = price / its price`). Each wallet's setting now, only
+the take profit changed. At 1.3x, landing 2/3/5 blocks:
+
+| | live | tp 1.3x | hits at 1.3x | a hit pays us |
+|---|---|---|---|---|
+| wallet 1 (tp 4) | +13.9% a copy | −1.9% | 59.1% | +11.8% |
+| wallet 2 (tp 3.5) | +7.9% | −4.6% | 42.0% | +15.4% |
+| wallet 3 (45 s, no tp) | +33.3% | +3.5% | 65.9% | +13.0% |
+| group 4-8 (tp 3.5) | +18.9% | +3.7% | 83.6% | +7.0% |
+
+Worse for every wallet, on both halves and without the best 2%; the lower the take profit, the worse, down to 1.1x (a
+hit then pays about 0: our buy is 1.1-1.2x its price plus the tax). A low take profit caps the winners that pay for the
+losers and does nothing to the losers. At 8/12/15 blocks the same order holds.
