@@ -35,7 +35,9 @@ its_sale = "never"
 # over 30 s (from 30 s); its sale ignored; 15 min since Nov 19. Backtest +12.5% a copy; last 3 days +21.1%.
 [[leaders]]
 address = "0x5bc235acecff3dde394f4bfc696f7c35efd502f0"
-min_its_eth = 0.05
+min_its_eth = 1000            # OFF since Nov 19 evening (the owner's call: the weakest edge, +4.6% a copy at 8-15 blocks, about 0 the
+                              # last 7 days; none of the day's missed winners was its). Was 0.05. Kept in the list so it stays
+                              # "wallet 2" in www and an open copy of it still sells by its rules below.
 max_premium = 1.5
 take_profit = 3.5
 hold_s = 900             # 900 s, Nov 19 (rhd12_time: better than 600 on both halves)
