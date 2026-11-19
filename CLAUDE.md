@@ -13,7 +13,7 @@ Two copied wallets, kept apart, and the bots that copy them:
 - **Robinhood Chain** (chain 4663, Pons V2 launchpad): three wallets, and since Nov 19 11:51 UTC a group of five (wallets
   4-8, `analysis/research/2026-11-19/rh_deep/`), copied by `crates/rh-copier` from ONE wallet at
   0.02 ETH a copy, no paper phase (the owner's call, Nov 18); `docs/23-rh-copier.md`, unit `rh-copier`, check command
-  `www`; research `analysis/research/2026-11-18/robinhood/`. **Live since Nov 18 22:10 UTC** on `fra-long` (wallet `0x35bb5c55...`, funded 0.15 ETH from 3.8 SOL
+  `www`; research `analysis/research/2026-11-18/robinhood/`. **Live since Nov 18 22:10 UTC**, on `fra-long` until Nov 19 ~14:00 UTC and since Nov 19 14:17 UTC on a Cherry Chicago box (`root@eth`; the Frankfurt unit is disabled, never run both) (wallet `0x35bb5c55...`, funded 0.15 ETH from 3.8 SOL
   of wallet 4's bot wallet; the first start crashed on a TLS-engine panic, fixed in `3e1b321`, nothing was sent).
 - Keep them apart: a wallet's study, docs and data go in its own folder; shared code stays in `crates/`, `deploy/`,
   `config/`, `docs/`.

@@ -41,7 +41,7 @@ closed both. The official RPC ran 7-10 blocks behind PublicNode, so reads and re
 
 ## 3. Risks, said plainly
 
-- **Live since Nov 18 22:10 UTC** on `fra-long`, wallet `0x35bb5c55a531d14213380fd978a501f0e239a77e`, 0.15 ETH (bridged from 3.8 SOL
+- **Live since Nov 18 22:10 UTC**; on `fra-long` until Nov 19 ~14:00 UTC, then (14:17 UTC) on a Cherry Cloud VDS 2 in Chicago (`root@eth`, monthly billing), nearer the chain's US East RPCs; the Frankfurt unit is disabled with its KILL file in place (never two bots on one wallet), wallet `0x35bb5c55a531d14213380fd978a501f0e239a77e`, 0.15 ETH (bridged from 3.8 SOL
   of wallet 4's bot wallet). The first start (22:03) crashed before sending anything: the workspace build gave rustls two
   crypto engines and it panicked on the first TLS connection; fixed in `3e1b321`. The first real trades are its mechanics test: check them on chain (Blockscout),
   as `03-strategy-A-long-copy/deploy-frankfurt.md` §6 did for wallet 4.
@@ -110,7 +110,13 @@ the allowance once, and at 0 it approves and retries at the same floor. Also che
 landings it really gets (10-14 blocks on #25, #26, #28) still beats the old exits (rhd19 with `LANDB=8,12,15`: +23.7% a
 copy against +18.7%, better on both halves and without the best 2%).
 
-## 4. Running it (the box, `ops@fra-long`)
+## 4. Running it (the box: `root@eth`, Chicago, since Nov 19 14:17 UTC)
+
+The move (Nov 19): on Frankfurt `touch KILL`, `systemctl disable --now rh-copier`, the key piped over ssh into
+`/etc/rugsnipe/keys/rh-wallet.key` (0400 root; the sha256 checked on both ends) and `/var/lib/rh-copier` piped over as a
+tar (so the day's result and open coins carried over); on Chicago `install.sh --role hot --force --ntp-region ny`, the
+config, `rm KILL`, `enable --now`. Its sends: 68-107 ms a node against 127-250 ms from Frankfurt (the first sales). The box
+runs as root, so the commands below work with or without `sudo`.
 
 Build and install (the same as every update; the unit is installed but not enabled):
 ```
