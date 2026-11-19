@@ -1,0 +1,35 @@
+
+=== wallet 1 (tp 4, 600 s): 524 copies   (a copy | ETH all | half 1 / half 2 | w/o best 2% | last 7 d)
+   live                    +13.8% | +1.442 | +0.463 / +0.979 | +0.914 |  +16.8%
+   better than live on both halves and without the best 2%: 3 of 108
+      by 300 s now  >= 1.0x   +14.0% | +1.467 | +0.479 / +0.988 | +0.938 |  +17.1%
+      by 180 s peak >= 1.0x   +13.8% | +1.446 | +0.464 / +0.982 | +0.917 |  +16.9%
+      by 300 s peak >= 1.0x   +13.8% | +1.445 | +0.463 / +0.982 | +0.916 |  +16.9%
+   picked on half 1 -> half 2: by 300 s now >= 1.3x: +0.024 ETH on the pick half, -0.066 on the other
+   picked on half 2 -> half 1: by 180 s peak >= 1.2x: +0.015 ETH on the pick half, -0.062 on the other
+
+=== wallet 2 (tp 3.5, 900 s, sp 10/30): 663 copies   (a copy | ETH all | half 1 / half 2 | w/o best 2% | last 7 d)
+   live                     +7.9% | +1.043 | +0.679 / +0.364 | +0.438 |   +4.4%
+   better than live on both halves and without the best 2%: 2 of 108
+      by 300 s peak >= 1.2x    +8.1% | +1.073 | +0.697 / +0.376 | +0.468 |   +4.9%
+      by 300 s peak >= 1.1x    +7.9% | +1.054 | +0.679 / +0.375 | +0.449 |   +4.9%
+   picked on half 1 -> half 2: by 300 s now >= 1.0x: +0.022 ETH on the pick half, -0.007 on the other
+   picked on half 2 -> half 1: by 30 s now >= 1.0x: +0.037 ETH on the pick half, -0.068 on the other
+
+=== wallet 3 (sold at 45 s): 384 copies   (a copy | ETH all | half 1 / half 2 | w/o best 2% | last 7 d)
+   live                    +33.4% | +2.562 | +1.498 / +1.064 | +1.778 |  +35.8%
+   better than live on both halves and without the best 2%: 4 of 36
+      by  20 s peak >= 1.1x   +33.6% | +2.577 | +1.499 / +1.077 | +1.793 |  +35.8%
+      by  20 s peak >= 1.0x   +33.4% | +2.566 | +1.501 / +1.065 | +1.782 |  +35.8%
+      by  10 s peak >= 1.0x   +33.4% | +2.568 | +1.503 / +1.065 | +1.784 |  +35.8%
+      by  30 s peak >= 1.0x   +33.4% | +2.563 | +1.499 / +1.064 | +1.779 |  +35.8%
+   picked on half 1 -> half 2: by 10 s peak >= 1.0x: +0.005 ETH on the pick half, +0.001 on the other
+   picked on half 2 -> half 1: by 10 s now >= 1.2x: +0.034 ETH on the pick half, -0.128 on the other
+
+=== group 4-8 (tp 3.5, 900 s, stall 240, early): 292 copies   (a copy | ETH all | half 1 / half 2 | w/o best 2% | last 7 d)
+   live                    +18.9% | +1.105 | +0.603 / +0.502 | +0.869 |  +37.1%
+   better than live on both halves and without the best 2%: 2 of 108
+      by 300 s now  >= 1.5x   +19.1% | +1.117 | +0.609 / +0.508 | +0.880 |  +37.8%
+      by 300 s now  >= 1.1x   +19.0% | +1.111 | +0.605 / +0.506 | +0.874 |  +37.4%
+   picked on half 1 -> half 2: by 300 s now >= 1.2x: +0.010 ETH on the pick half, -0.008 on the other
+   picked on half 2 -> half 1: by 300 s now >= 1.5x: +0.005 ETH on the pick half, +0.006 on the other

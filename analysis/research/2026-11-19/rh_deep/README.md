@@ -204,3 +204,14 @@ Oct 9 - Nov 19, landing 2/3/5.) No: −20% costs 0.65 ETH and makes the deepest 
 adds a losing day (4 against 3); −30% has the same worst day, losing days and deepest fall as no stop, for 0.17 ETH
 less. The worst copy is −87% with or without a stop: the big losses come in one trade (a dump), which a stop sells
 after.
+
+## rhd22: a checkpoint, and rhd23: coins two wallets buy (Nov 19)
+
+**A checkpoint** (`rhd22_checkpoint.py`, `out/rhd22_checkpoint*.txt`; the owner: "if tp is not reached within x seconds,
+sell"): at T = 10-300 s, sell if the coin has not reached M = 1.0-2.0x its price (its peak so far, or the price at T).
+Of 108 variants per wallet (36 for wallet 3), 2-4 beat the live setting on both halves, by 0.0-0.2 points a copy:
+chance. Picked on one half, the best loses 0.06-0.13 ETH on the other. No change.
+
+**Coins two wallets buy within 5 blocks** (`rhd23_shared_coins.py`, `out/rhd23_shared_coins.txt`): 120 coins (55 wallets
+1+3, 42 wallets 1+2, 21 wallets 2+3). The first buyer's rules (the bot now) +23.9% a copy, the longest hold's +23.0%,
+the shortest's +23.1%. Today's two coins were bad luck for the first-buyer rule, not a pattern. No change.

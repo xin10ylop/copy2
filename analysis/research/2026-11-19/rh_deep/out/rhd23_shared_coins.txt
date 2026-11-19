@@ -1,0 +1,5 @@
+120 coins bought by 2+ of the four within 5 blocks (data to the end): pairs [('w1+w3', 55), ('w1+w2', 42), ('w2+w3', 21), ('w1+w2+w3', 2)]
+   first buyer (the bot now)   +23.9% a copy | +0.574 ETH | halves +0.264 / +0.309
+   longest hold                +23.0% a copy | +0.552 ETH | halves +0.250 / +0.303
+   shortest hold               +23.1% a copy | +0.554 ETH | halves +0.249 / +0.305
+   the best (hindsight)        +35.9% a copy | +0.861 ETH | halves +0.402 / +0.459
