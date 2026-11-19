@@ -1,0 +1,550 @@
+wallet 4: 1226 buys of 0.5+ SOL, 10-21 to 11-14 (before the 4 days); COST 0.0345
+
+plain copy, same exit as dip 10% in 60 s, tp 1.5, 900 s: 1223 trades, +8.40 SOL (+1.4% a trade), w/o best 2% -1.77, won 486
+   by week: 10-21 -7.52 (458)  10-28 +11.44 (343)  11-04 +2.61 (333)  11-11 +1.87 (89)
+
+plain copy, same exit as dip 10% in 300 s, tp 1.5, 2400 s: 1223 trades, +2.41 SOL (+0.4% a trade), w/o best 2% -7.88, won 485
+   by week: 10-21 -12.47 (458)  10-28 +9.33 (343)  11-04 +3.91 (333)  11-11 +1.64 (89)
+
+dip 10% in 60 s, tp 1.5, 900 s: 335 trades, +20.33 SOL (+12.1% a trade), w/o best 2% +16.21, won 186
+   by week: 10-21 +2.33 (73)  10-28 +7.08 (95)  11-04 +8.51 (131)  11-11 +2.42 (36)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float 3NZ9JMVB: 27 trades, +0.52 SOL (+3.9% a trade), w/o best 2% +0.26, won 12
+   by week: 10-21 -0.51 (9)  10-28 +0.24 (4)  11-04 +0.53 (13)  11-11 +0.26 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s: 465 trades, +11.66 SOL (+5.0% a trade), w/o best 2% +6.78, won 214
+   by week: 10-21 +1.47 (89)  10-28 +4.50 (131)  11-04 +3.97 (195)  11-11 +1.72 (50)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float 3NZ9JMVB: 30 trades, -0.14 SOL (-1.0% a trade), w/o best 2% -0.41, won 12
+   by week: 10-21 -0.78 (10)  10-28 +0.24 (4)  11-04 +0.12 (15)  11-11 +0.26 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float SPCXxcqX: 25 trades, +2.08 SOL (+16.7% a trade), w/o best 2% +1.76, won 16
+   by week: 10-21 -0.67 (3)  10-28 +2.44 (17)  11-04 -0.24 (3)  11-11 +0.56 (2)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float SPCXxcqX: 43 trades, -0.49 SOL (-2.3% a trade), w/o best 2% -0.82, won 17
+   by week: 10-21 -0.81 (4)  10-28 +1.63 (24)  11-04 -1.65 (11)  11-11 +0.34 (4)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol Ce2gx9KG: 2 trades, -0.30 SOL (-30.3% a trade), w/o best 2% -0.17, won 0
+   by week: 10-21 -0.30 (2)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol NTRNDMqQ: 22 trades, -0.37 SOL (-3.4% a trade), w/o best 2% -0.66, won 9
+   by week: 10-21 -0.16 (10)  10-28 -0.08 (8)  11-04 -0.13 (4)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol NTRNDMqQ: 29 trades, -0.38 SOL (-2.6% a trade), w/o best 2% -0.67, won 11
+   by week: 10-21 -0.31 (12)  10-28 -0.05 (10)  11-04 -0.02 (7)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 8hnMfF4X: 1 trades, +0.27 SOL (+54.7% a trade), w/o best 2% +0.00, won 1
+   by week: 10-21 +0.27 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 8hnMfF4X: 2 trades, +0.11 SOL (+10.6% a trade), w/o best 2% -0.17, won 1
+   by week: 10-21 +0.27 (1)  10-28 -0.17 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float pumpCmXq: 66 trades, +6.82 SOL (+20.7% a trade), w/o best 2% +6.41, won 44
+   by week: 10-21 +2.02 (13)  10-28 -0.43 (11)  11-04 +4.91 (39)  11-11 +0.32 (3)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float pumpCmXq: 92 trades, +5.98 SOL (+13.0% a trade), w/o best 2% +5.17, won 52
+   by week: 10-21 +2.05 (19)  10-28 -0.70 (18)  11-04 +4.18 (48)  11-11 +0.46 (7)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 7SL2VnfY: 2 trades, -0.10 SOL (-9.6% a trade), w/o best 2% -0.21, won 1
+   by week: 10-21 +0.12 (1)  11-11 -0.21 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 7SL2VnfY: 2 trades, -0.11 SOL (-11.2% a trade), w/o best 2% -0.23, won 1
+   by week: 10-21 +0.12 (1)  11-11 -0.23 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float C5xph2yL: 25 trades, +2.31 SOL (+18.5% a trade), w/o best 2% +0.96, won 12
+   by week: 10-21 -0.55 (5)  10-28 -0.26 (2)  11-04 +1.77 (17)  11-11 +1.36 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float C5xph2yL: 36 trades, +1.77 SOL (+9.9% a trade), w/o best 2% +0.42, won 15
+   by week: 10-21 -0.53 (8)  10-28 -0.13 (4)  11-04 +1.07 (23)  11-11 +1.36 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol Ai66LHZG: 2 trades, -0.48 SOL (-47.6% a trade), w/o best 2% -0.36, won 0
+   by week: 10-21 -0.12 (1)  11-04 -0.36 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol Ai66LHZG: 2 trades, -0.48 SOL (-47.6% a trade), w/o best 2% -0.36, won 0
+   by week: 10-21 -0.12 (1)  11-04 -0.36 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float TTWofwAg: 23 trades, +0.97 SOL (+8.5% a trade), w/o best 2% +0.66, won 12
+   by week: 10-21 -0.40 (6)  10-28 +0.67 (7)  11-04 +0.60 (7)  11-11 +0.11 (3)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float TTWofwAg: 28 trades, +0.34 SOL (+2.5% a trade), w/o best 2% +0.03, won 12
+   by week: 10-21 -0.53 (6)  10-28 +0.47 (8)  11-04 +0.57 (9)  11-11 -0.17 (5)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float HbXn9Lcu: 1 trades, +0.28 SOL (+56.3% a trade), w/o best 2% +0.00, won 1
+   by week: 10-21 +0.28 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 6CaTKnA3: 1 trades, +0.56 SOL (+111.7% a trade), w/o best 2% +0.00, won 1
+   by week: 10-21 +0.56 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 6CaTKnA3: 1 trades, +0.56 SOL (+111.7% a trade), w/o best 2% +0.00, won 1
+   by week: 10-21 +0.56 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol z1gC6KiM: 1 trades, +0.19 SOL (+37.1% a trade), w/o best 2% +0.00, won 1
+   by week: 10-21 +0.19 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol z1gC6KiM: 1 trades, +0.19 SOL (+37.1% a trade), w/o best 2% +0.00, won 1
+   by week: 10-21 +0.19 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float DJTu7vi8: 19 trades, +2.08 SOL (+21.9% a trade), w/o best 2% +1.76, won 13
+   by week: 10-21 +0.52 (4)  10-28 +1.07 (8)  11-04 +0.48 (7)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float DJTu7vi8: 25 trades, +1.10 SOL (+8.8% a trade), w/o best 2% +0.79, won 13
+   by week: 10-21 +0.49 (4)  10-28 +0.87 (9)  11-04 -0.16 (11)  11-11 -0.10 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol Bdmz1BAj: 1 trades, +0.24 SOL (+47.0% a trade), w/o best 2% +0.00, won 1
+   by week: 10-21 +0.24 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol Bdmz1BAj: 1 trades, +0.24 SOL (+47.0% a trade), w/o best 2% +0.00, won 1
+   by week: 10-21 +0.24 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol DEL3KmMo: 1 trades, -0.22 SOL (-44.0% a trade), w/o best 2% +0.00, won 0
+   by week: 10-21 -0.22 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol DEL3KmMo: 1 trades, -0.22 SOL (-43.8% a trade), w/o best 2% +0.00, won 0
+   by week: 10-21 -0.22 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float SAtoZGJk: 1 trades, +0.23 SOL (+45.2% a trade), w/o best 2% +0.00, won 1
+   by week: 10-21 +0.23 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float SAtoZGJk: 1 trades, +0.23 SOL (+45.2% a trade), w/o best 2% +0.00, won 1
+   by week: 10-21 +0.23 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float DKYcjobF: 1 trades, -0.10 SOL (-20.1% a trade), w/o best 2% +0.00, won 0
+   by week: 10-21 -0.10 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float DKYcjobF: 1 trades, -0.06 SOL (-11.7% a trade), w/o best 2% +0.00, won 0
+   by week: 10-21 -0.06 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol Ce2gx9KG: 1 trades, -0.11 SOL (-22.5% a trade), w/o best 2% +0.00, won 0
+   by week: 10-21 -0.11 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol Hiog5ybj: 1 trades, +0.38 SOL (+76.3% a trade), w/o best 2% +0.00, won 1
+   by week: 10-21 +0.38 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol Hiog5ybj: 1 trades, +0.38 SOL (+76.3% a trade), w/o best 2% +0.00, won 1
+   by week: 10-21 +0.38 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float 28ZdKbDw: 1 trades, +0.17 SOL (+33.5% a trade), w/o best 2% +0.00, won 1
+   by week: 10-21 +0.17 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float 28ZdKbDw: 2 trades, +0.05 SOL (+4.6% a trade), w/o best 2% -0.12, won 1
+   by week: 10-21 +0.05 (2)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float 98sMhvDw: 14 trades, -0.11 SOL (-1.6% a trade), w/o best 2% -0.43, won 6
+   by week: 10-21 +0.25 (1)  10-28 -0.38 (9)  11-04 +0.02 (4)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float 98sMhvDw: 22 trades, -0.79 SOL (-7.2% a trade), w/o best 2% -1.11, won 8
+   by week: 10-21 +0.25 (1)  10-28 -0.47 (12)  11-04 -0.57 (9)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float Pairn5qt: 1 trades, -0.06 SOL (-12.6% a trade), w/o best 2% +0.00, won 0
+   by week: 10-21 -0.06 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float Pairn5qt: 1 trades, -0.16 SOL (-31.8% a trade), w/o best 2% +0.00, won 0
+   by week: 10-21 -0.16 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 3LPTanzy: 3 trades, -0.24 SOL (-15.8% a trade), w/o best 2% -0.21, won 0
+   by week: 10-21 -0.24 (3)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 3LPTanzy: 3 trades, -0.30 SOL (-19.9% a trade), w/o best 2% -0.21, won 0
+   by week: 10-21 -0.30 (3)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol GpxRDGMP: 1 trades, -0.10 SOL (-19.7% a trade), w/o best 2% +0.00, won 0
+   by week: 10-21 -0.10 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol GpxRDGMP: 1 trades, -0.10 SOL (-19.7% a trade), w/o best 2% +0.00, won 0
+   by week: 10-21 -0.10 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 5ejn3WqM: 1 trades, -0.04 SOL (-8.4% a trade), w/o best 2% +0.00, won 0
+   by week: 10-21 -0.04 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 5ejn3WqM: 1 trades, -0.10 SOL (-20.3% a trade), w/o best 2% +0.00, won 0
+   by week: 10-21 -0.10 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol H74CYmXg: 1 trades, +0.26 SOL (+51.7% a trade), w/o best 2% +0.00, won 1
+   by week: 10-21 +0.26 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol H74CYmXg: 1 trades, +0.26 SOL (+51.7% a trade), w/o best 2% +0.00, won 1
+   by week: 10-21 +0.26 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 9cRCn9rG: 5 trades, -0.89 SOL (-35.6% a trade), w/o best 2% -0.82, won 0
+   by week: 10-21 -0.07 (1)  11-04 -0.57 (3)  11-11 -0.24 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 9cRCn9rG: 9 trades, -0.93 SOL (-20.6% a trade), w/o best 2% -1.23, won 2
+   by week: 10-21 -0.07 (1)  11-04 -0.60 (7)  11-11 -0.25 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 2BJDwUdM: 2 trades, +0.49 SOL (+49.5% a trade), w/o best 2% +0.22, won 2
+   by week: 10-21 +0.49 (2)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 2BJDwUdM: 2 trades, +0.49 SOL (+49.5% a trade), w/o best 2% +0.22, won 2
+   by week: 10-21 +0.49 (2)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol CSRRgTwf: 1 trades, -0.11 SOL (-22.6% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.11 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol CSRRgTwf: 3 trades, -0.05 SOL (-3.2% a trade), w/o best 2% -0.27, won 1
+   by week: 10-28 -0.05 (3)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol E28eQFoC: 1 trades, -0.18 SOL (-35.1% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.18 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol E28eQFoC: 1 trades, -0.18 SOL (-36.0% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.18 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol MzUxrgP4: 1 trades, +0.44 SOL (+88.0% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.44 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol MzUxrgP4: 1 trades, +0.44 SOL (+88.0% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.44 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol DUKEjskP: 1 trades, -0.14 SOL (-27.6% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.14 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float FngpetPZ: 1 trades, -0.04 SOL (-7.1% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.04 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 8Jx8AAHj: 1 trades, -0.05 SOL (-9.4% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.05 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 8Jx8AAHj: 1 trades, -0.10 SOL (-19.1% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.10 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol E2q5u8Vv: 1 trades, -0.18 SOL (-35.5% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.18 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float B6hVwvn5: 2 trades, +0.51 SOL (+51.1% a trade), w/o best 2% +0.24, won 2
+   by week: 10-28 +0.51 (2)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float B6hVwvn5: 2 trades, +0.51 SOL (+51.1% a trade), w/o best 2% +0.24, won 2
+   by week: 10-28 +0.51 (2)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol BLN4c4FE: 1 trades, -0.12 SOL (-25.0% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.12 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol BLN4c4FE: 1 trades, -0.12 SOL (-25.0% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.12 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float XsbEhLAt: 7 trades, +0.78 SOL (+22.4% a trade), w/o best 2% +0.52, won 5
+   by week: 10-28 +1.05 (6)  11-04 -0.26 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float XsbEhLAt: 8 trades, +0.61 SOL (+15.3% a trade), w/o best 2% +0.34, won 5
+   by week: 10-28 +1.02 (6)  11-04 -0.41 (2)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float HgxEGTZ1: 1 trades, -0.13 SOL (-26.1% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.13 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float 66auXVTR: 1 trades, +0.38 SOL (+76.7% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.38 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float 66auXVTR: 1 trades, +0.38 SOL (+76.7% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.38 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float HytpiyuR: 2 trades, +0.21 SOL (+20.6% a trade), w/o best 2% -0.06, won 1
+   by week: 10-28 +0.21 (2)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol GSp4qePZ: 4 trades, +0.48 SOL (+24.2% a trade), w/o best 2% +0.25, won 3
+   by week: 10-28 +0.48 (4)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol GSp4qePZ: 4 trades, +0.48 SOL (+24.2% a trade), w/o best 2% +0.25, won 3
+   by week: 10-28 +0.48 (4)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float ExxzYBTt: 1 trades, +0.21 SOL (+41.2% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.21 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float ExxzYBTt: 1 trades, +0.21 SOL (+41.2% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.21 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol CPoGSmcj: 1 trades, -0.18 SOL (-35.6% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.18 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol HhBuvegE: 1 trades, +0.23 SOL (+46.6% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.23 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol HhBuvegE: 1 trades, +0.23 SOL (+46.6% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.23 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float HytpiyuR: 1 trades, +0.26 SOL (+52.6% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.26 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol BSe1q3SL: 1 trades, +0.32 SOL (+63.1% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.32 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol BSe1q3SL: 1 trades, +0.32 SOL (+63.1% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.32 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol HNxyGpz8: 1 trades, +0.38 SOL (+75.1% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.38 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol HNxyGpz8: 1 trades, +0.38 SOL (+75.1% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.38 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol BMyrSLzs: 1 trades, +0.51 SOL (+102.3% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.51 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol BMyrSLzs: 1 trades, +0.51 SOL (+102.3% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.51 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float C7zxdtMr: 1 trades, -0.29 SOL (-58.4% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.29 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float C7zxdtMr: 2 trades, -0.24 SOL (-23.9% a trade), w/o best 2% -0.22, won 0
+   by week: 10-28 -0.24 (2)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol BngAfLZx: 1 trades, -0.22 SOL (-43.1% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.22 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol CHtXwJ3q: 1 trades, -0.35 SOL (-70.5% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.35 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol CHtXwJ3q: 1 trades, -0.36 SOL (-72.8% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.36 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol AdGZLFNZ: 1 trades, -0.04 SOL (-8.7% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.04 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol E7ayy5Se: 1 trades, -0.40 SOL (-79.5% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.40 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol E7ayy5Se: 1 trades, -0.41 SOL (-81.0% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.41 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol DTVcrMAE: 1 trades, +0.25 SOL (+49.2% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.25 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol DTVcrMAE: 1 trades, +0.25 SOL (+49.2% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.25 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float Hu5Qdto2: 1 trades, +0.29 SOL (+58.8% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.29 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float Hu5Qdto2: 1 trades, +0.29 SOL (+58.8% a trade), w/o best 2% +0.00, won 1
+   by week: 10-28 +0.29 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 51H7Azyy: 1 trades, -0.05 SOL (-10.9% a trade), w/o best 2% +0.00, won 0
+   by week: 10-28 -0.05 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float HjiBij1B: 1 trades, -0.05 SOL (-9.9% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.05 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 6mXFCoZ5: 1 trades, -0.08 SOL (-16.1% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.08 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 6mXFCoZ5: 1 trades, -0.08 SOL (-16.1% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.08 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float ERs7y4nM: 3 trades, -0.13 SOL (-9.0% a trade), w/o best 2% -0.20, won 1
+   by week: 11-04 -0.13 (3)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float 5wSQpQfb: 1 trades, +0.18 SOL (+35.5% a trade), w/o best 2% +0.00, won 1
+   by week: 11-04 +0.18 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float 5wSQpQfb: 1 trades, +0.18 SOL (+35.5% a trade), w/o best 2% +0.00, won 1
+   by week: 11-04 +0.18 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float CprMhio8: 1 trades, -0.21 SOL (-42.8% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.21 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float CprMhio8: 1 trades, -0.18 SOL (-36.8% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.18 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float F1LQvm5b: 1 trades, -0.01 SOL (-1.2% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.01 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol E1PpVMPt: 1 trades, +0.24 SOL (+48.9% a trade), w/o best 2% +0.00, won 1
+   by week: 11-04 +0.24 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol E1PpVMPt: 1 trades, +0.24 SOL (+48.9% a trade), w/o best 2% +0.00, won 1
+   by week: 11-04 +0.24 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 8Mi9E1V2: 1 trades, +0.26 SOL (+52.9% a trade), w/o best 2% +0.00, won 1
+   by week: 11-04 +0.26 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 8Mi9E1V2: 1 trades, +0.26 SOL (+52.9% a trade), w/o best 2% +0.00, won 1
+   by week: 11-04 +0.26 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol Cm6fNnMk: 2 trades, +0.09 SOL (+9.3% a trade), w/o best 2% -0.14, won 1
+   by week: 11-04 +0.09 (2)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol Ex4sJY2K: 1 trades, -0.06 SOL (-12.4% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.06 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol A13oRB9F: 1 trades, -0.18 SOL (-36.1% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.18 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol A13oRB9F: 2 trades, +0.04 SOL (+4.0% a trade), w/o best 2% -0.18, won 1
+   by week: 11-04 +0.04 (2)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol GdY4Z6pY: 2 trades, +0.25 SOL (+24.6% a trade), w/o best 2% -0.20, won 1
+   by week: 11-04 +0.25 (2)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol GdY4Z6pY: 4 trades, -0.01 SOL (-0.3% a trade), w/o best 2% -0.46, won 1
+   by week: 11-04 -0.01 (4)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float 5VCEFq1a: 2 trades, +0.47 SOL (+46.9% a trade), w/o best 2% +0.23, won 2
+   by week: 11-04 +0.47 (2)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float 5VCEFq1a: 3 trades, +0.74 SOL (+49.2% a trade), w/o best 2% +0.47, won 3
+   by week: 11-04 +0.74 (3)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float Dk2iHPge: 3 trades, +0.81 SOL (+54.2% a trade), w/o best 2% +0.53, won 3
+   by week: 11-04 +0.81 (3)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float Dk2iHPge: 3 trades, +0.81 SOL (+54.2% a trade), w/o best 2% +0.53, won 3
+   by week: 11-04 +0.81 (3)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float DvdmEnzt: 1 trades, -0.15 SOL (-30.1% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.15 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float DvdmEnzt: 1 trades, -0.17 SOL (-34.8% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.17 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol HuqKMcaE: 1 trades, -0.12 SOL (-23.7% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.12 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 8PzFWyLp: 1 trades, -0.14 SOL (-28.8% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.14 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 8J69rbLT: 1 trades, -0.15 SOL (-31.0% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.15 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 8J69rbLT: 1 trades, -0.15 SOL (-31.0% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.15 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float 41WpXn15: 3 trades, +0.27 SOL (+17.8% a trade), w/o best 2% -0.01, won 2
+   by week: 11-04 +0.27 (3)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float 41WpXn15: 4 trades, +0.20 SOL (+9.9% a trade), w/o best 2% -0.08, won 2
+   by week: 11-04 +0.20 (4)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 3QcYNgx6: 1 trades, -0.16 SOL (-32.2% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.16 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 3QcYNgx6: 3 trades, +0.46 SOL (+30.9% a trade), w/o best 2% +0.13, won 2
+   by week: 11-04 +0.46 (3)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol B4Kwgnnh: 1 trades, -0.39 SOL (-77.7% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.39 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol B4Kwgnnh: 1 trades, -0.40 SOL (-79.3% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.40 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float 2zk2ajqf: 1 trades, +0.28 SOL (+55.2% a trade), w/o best 2% +0.00, won 1
+   by week: 11-04 +0.28 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 87CQtouH: 1 trades, -0.19 SOL (-38.6% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.19 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 87CQtouH: 1 trades, -0.19 SOL (-38.6% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.19 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 29odnuih: 1 trades, +0.25 SOL (+49.2% a trade), w/o best 2% +0.00, won 1
+   by week: 11-04 +0.25 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 29odnuih: 1 trades, +0.25 SOL (+49.2% a trade), w/o best 2% +0.00, won 1
+   by week: 11-04 +0.25 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float 9PPMpwdu: 1 trades, +0.08 SOL (+15.7% a trade), w/o best 2% +0.00, won 1
+   by week: 11-04 +0.08 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float 9PPMpwdu: 2 trades, -0.08 SOL (-7.8% a trade), w/o best 2% -0.16, won 1
+   by week: 11-04 -0.08 (2)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 46r5vJSK: 1 trades, +0.30 SOL (+60.9% a trade), w/o best 2% +0.00, won 1
+   by week: 11-04 +0.30 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 46r5vJSK: 2 trades, +0.21 SOL (+20.7% a trade), w/o best 2% -0.10, won 1
+   by week: 11-04 +0.21 (2)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float AUcqE7gY: 1 trades, +0.26 SOL (+52.4% a trade), w/o best 2% +0.00, won 1
+   by week: 11-04 +0.26 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float AUcqE7gY: 1 trades, +0.26 SOL (+52.4% a trade), w/o best 2% +0.00, won 1
+   by week: 11-04 +0.26 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol Cm6fNnMk: 1 trades, -0.06 SOL (-11.6% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.06 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 5xcEFpzK: 1 trades, +0.32 SOL (+63.2% a trade), w/o best 2% +0.00, won 1
+   by week: 11-04 +0.32 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 5xcEFpzK: 1 trades, +0.32 SOL (+63.2% a trade), w/o best 2% +0.00, won 1
+   by week: 11-04 +0.32 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float Big1krPP: 4 trades, +0.12 SOL (+5.9% a trade), w/o best 2% -0.10, won 2
+   by week: 11-04 +0.12 (4)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float Big1krPP: 4 trades, +0.16 SOL (+7.9% a trade), w/o best 2% -0.06, won 2
+   by week: 11-04 +0.16 (4)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol BsbsB3WL: 1 trades, -0.47 SOL (-93.5% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.47 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol BsbsB3WL: 1 trades, -0.47 SOL (-93.8% a trade), w/o best 2% +0.00, won 0
+   by week: 11-04 -0.47 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 4CxjZyMN: 13 trades, -0.31 SOL (-4.7% a trade), w/o best 2% -0.61, won 6
+   by week: 11-04 -0.43 (1)  11-11 +0.12 (12)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol Hy2TgNJJ: 2 trades, +0.36 SOL (+36.0% a trade), w/o best 2% +0.14, won 2
+   by week: 11-11 +0.36 (2)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol Hy2TgNJJ: 2 trades, +0.36 SOL (+36.0% a trade), w/o best 2% +0.14, won 2
+   by week: 11-11 +0.36 (2)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 4CxjZyMN: 11 trades, +0.19 SOL (+3.4% a trade), w/o best 2% -0.12, won 6
+   by week: 11-11 +0.19 (11)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 5dReBkDj: 1 trades, -0.28 SOL (-56.4% a trade), w/o best 2% +0.00, won 0
+   by week: 11-11 -0.28 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 5dReBkDj: 1 trades, -0.20 SOL (-39.7% a trade), w/o best 2% +0.00, won 0
+   by week: 11-11 -0.20 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol FP7NvFXQ: 1 trades, -0.23 SOL (-46.6% a trade), w/o best 2% +0.00, won 0
+   by week: 11-11 -0.23 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol FP7NvFXQ: 1 trades, -0.30 SOL (-60.4% a trade), w/o best 2% +0.00, won 0
+   by week: 11-11 -0.30 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float GLY7h4BL: 1 trades, -0.29 SOL (-57.2% a trade), w/o best 2% +0.00, won 0
+   by week: 11-11 -0.29 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float GLY7h4BL: 1 trades, -0.29 SOL (-57.2% a trade), w/o best 2% +0.00, won 0
+   by week: 11-11 -0.29 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 7yLCJpWQ: 2 trades, +0.17 SOL (+17.3% a trade), w/o best 2% -0.06, won 1
+   by week: 11-11 +0.17 (2)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 7yLCJpWQ: 1 trades, +0.24 SOL (+47.4% a trade), w/o best 2% +0.00, won 1
+   by week: 11-11 +0.24 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 4FP2GRQS: 3 trades, +0.21 SOL (+14.0% a trade), w/o best 2% -0.04, won 2
+   by week: 11-11 +0.21 (3)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 4FP2GRQS: 3 trades, +0.15 SOL (+9.7% a trade), w/o best 2% -0.10, won 2
+   by week: 11-11 +0.15 (3)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 98kfF7rm: 3 trades, -0.12 SOL (-8.2% a trade), w/o best 2% -0.38, won 1
+   by week: 11-11 -0.12 (3)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 98kfF7rm: 1 trades, -0.23 SOL (-46.1% a trade), w/o best 2% +0.00, won 0
+   by week: 11-11 -0.23 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float HFcyhe28: 1 trades, +0.22 SOL (+43.4% a trade), w/o best 2% +0.00, won 1
+   by week: 11-11 +0.22 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float HFcyhe28: 1 trades, +0.22 SOL (+43.4% a trade), w/o best 2% +0.00, won 1
+   by week: 11-11 +0.22 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol 9sFGCTjE: 1 trades, +0.25 SOL (+49.7% a trade), w/o best 2% +0.00, won 1
+   by week: 11-11 +0.25 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol 9sFGCTjE: 1 trades, +0.25 SOL (+49.7% a trade), w/o best 2% +0.00, won 1
+   by week: 11-11 +0.25 (1)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol Q1vecEMQ: 1 trades, -0.15 SOL (-30.5% a trade), w/o best 2% +0.00, won 0
+   by week: 11-11 -0.15 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol Q1vecEMQ: 1 trades, -0.15 SOL (-30.5% a trade), w/o best 2% +0.00, won 0
+   by week: 11-11 -0.15 (1)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol GsuDgP89: 1 trades, -0.15 SOL (-30.6% a trade), w/o best 2% +0.00, won 0
+   by week: 11-11 -0.15 (1)

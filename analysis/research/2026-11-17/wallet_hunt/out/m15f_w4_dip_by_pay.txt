@@ -1,0 +1,25 @@
+wallet 4: 1226 buys of 0.5+ SOL, 10-21 to 11-14 (before the 4 days); COST 0.0345
+
+plain copy, same exit as dip 10% in 60 s, tp 1.5, 900 s: 1223 trades, +8.40 SOL (+1.4% a trade), w/o best 2% -1.77, won 486
+   by week: 10-21 -7.52 (458)  10-28 +11.44 (343)  11-04 +2.61 (333)  11-11 +1.87 (89)
+
+plain copy, same exit as dip 10% in 300 s, tp 1.5, 2400 s: 1223 trades, +2.41 SOL (+0.4% a trade), w/o best 2% -7.88, won 485
+   by week: 10-21 -12.47 (458)  10-28 +9.33 (343)  11-04 +3.91 (333)  11-11 +1.64 (89)
+
+dip 10% in 60 s, tp 1.5, 900 s: 335 trades, +20.33 SOL (+12.1% a trade), w/o best 2% +16.21, won 186
+   by week: 10-21 +2.33 (73)  10-28 +7.08 (95)  11-04 +8.51 (131)  11-11 +2.42 (36)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid float: 236 trades, +18.81 SOL (+15.9% a trade), w/o best 2% +15.90, won 141
+   by week: 10-21 +0.89 (45)  10-28 +5.76 (71)  11-04 +9.63 (108)  11-11 +2.54 (12)
+
+dip 10% in 300 s, tp 1.5, 2400 s: 465 trades, +11.66 SOL (+5.0% a trade), w/o best 2% +6.78, won 214
+   by week: 10-21 +1.47 (89)  10-28 +4.50 (131)  11-04 +3.97 (195)  11-11 +1.72 (50)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid float: 329 trades, +11.84 SOL (+7.2% a trade), w/o best 2% +8.28, won 159
+   by week: 10-21 +0.48 (58)  10-28 +4.14 (96)  11-04 +5.14 (154)  11-11 +2.08 (21)
+
+dip 10% in 300 s, tp 1.5, 2400 s | paid wsol: 136 trades, -0.18 SOL (-0.3% a trade), w/o best 2% -1.70, won 55
+   by week: 10-21 +0.98 (31)  10-28 +0.36 (35)  11-04 -1.17 (41)  11-11 -0.36 (29)
+
+dip 10% in 60 s, tp 1.5, 900 s | paid wsol: 99 trades, +1.52 SOL (+3.1% a trade), w/o best 2% +0.45, won 45
+   by week: 10-21 +1.44 (28)  10-28 +1.32 (24)  11-04 -1.13 (23)  11-11 -0.11 (24)
