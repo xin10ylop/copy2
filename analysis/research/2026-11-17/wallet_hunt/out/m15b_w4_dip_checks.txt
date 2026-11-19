@@ -1,0 +1,17 @@
+wallet 4: 1226 buys of 0.5+ SOL before the 4 days; COST 0.0345; halves at the median time
+
+THE BOT TODAY (plain copy, live exits tp 4 / 600 s / sp 5-60 / stall 180 / its early sale): +46.49 SOL (+7.6% a copy), halves +16.44 / +30.05
+
+DIP grid, exit tp 1.5 / 900 s (the frozen pick), out of sample: trades, a trade, halves
+   dip  5%:  30 s  398 +13.0% (+2.2/+23.7)    60 s  441 +11.2% (+2.1/+22.6)   120 s  488  +9.2% (+1.7/+20.6)   300 s  590  +5.8% (+0.9/+16.1)
+   dip 10%:  30 s  297 +13.4% (+4.5/+15.4)    60 s  335 +12.1% (+4.1/+16.2)   120 s  383  +9.7% (+3.6/+15.0)   300 s  465  +5.5% (+3.1/+9.6)
+   dip 15%:  30 s  223 +14.5% (+4.2/+12.0)    60 s  251 +13.0% (+3.9/+12.5)   120 s  287 +10.4% (+3.9/+11.0)   300 s  362  +4.9% (+3.0/+6.0)
+   dip 20%:  30 s  153 +14.1% (+2.8/+8.0)    60 s  182 +12.4% (+2.8/+8.4)   120 s  210 +10.5% (+2.9/+8.1)   300 s  279  +2.7% (+2.3/+1.5)
+
+EXITS around the pick, dip 10% within 60 s: a trade (halves)
+   tp  1.5:   60 s +10.8%    300 s +14.6%    900 s +12.1%   2400 s +11.7%
+   tp    2:   60 s +14.2%    300 s +18.4%    900 s +14.8%   2400 s +12.9%
+   tp    3:   60 s +16.2%    300 s +23.6%    900 s +18.7%   2400 s +19.6%
+   tp none:   60 s +15.2%    300 s +24.0%    900 s +16.5%   2400 s +16.8%
+
+REPLACE (only the dip trades): +20.33 SOL on 335 trades; ADD-ON (the bot as today + a second buy on the dip): +66.82 SOL, halves +20.53 / +46.29

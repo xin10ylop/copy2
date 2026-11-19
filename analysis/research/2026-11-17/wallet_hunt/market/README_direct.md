@@ -322,3 +322,21 @@ On the 4 days (6,651 coins with a path), picked on days 1-2, scored blind on day
   to −36.5%); the 85% run-up picked on days 1-2 at +5.9% gives −36.5% blind. Only 48 of 6,651 coins completed the curve.
 - **Without the racing cost** (COST=0.0026, a slow rule needs no tip): still 0 of 40 positive on both halves in every
   variant (blind −5.3% to −30.1%). Not the fee: no edge.
+
+## FOUND: buying wallet 4's coins on the DIP after its buy (Nov 19; `m14_dip_after.py`, `m15_w4_dip.py`, `m15b_w4_dip_checks.py`, `m15c_w4_dip_landing.py`)
+
+- **m14, the 4 days** (`../out/m14_dip_after*.txt`): after a leader's buy, enter at the first trade within W s at or
+  under (1 − d) of the price its buy left. Every wallet: −9% to −12% a trade on every variant; the wallets chosen on days
+  1-2: 0 of 40 exits up on both halves. **Wallet 4: dip 10% within 60 s, picked on days 1-2 (tp x1.5, 900 s) +8.5% ->
+  blind days 3-4 +10.9% a trade (50 trades), 23 of 40 exits up on both halves; within 300 s +8.9% blind, 24 of 40.**
+- **m15, out of sample** (wallet 4's research corpus Oct 21 - Nov 13, 1,226 buys of 0.5+ SOL, true in-slot order, the 4
+  days left out, the rule frozen): dip 10% within 60 s, tp x1.5, 900 s: **335 trades, +20.33 SOL, +12.1% a trade, +16.21
+  without the best 2%, up every week (+2.33, +7.08, +8.51, +2.42)**; the plain copy with the same exit +1.4% a trade.
+- **m15b, checks:** all 16 dips x windows (5-20%, 30-300 s) up on both halves (+2.7% to +14.5% a trade); all 16 exits
+  around the pick up (+10.8% to +24.0%). The bot as it runs (plain copy, live exits) +46.49 SOL on the same buys; the
+  dip as a SECOND buy beside it: +66.82 SOL in all, up on both halves.
+- **m15c, a realistic landing** (our buy in the dip trade's slot + 1 or + 2, after that slot's first trade): dip 10%
+  within 60 s, landing +2: +9.0% (tp x1.5, 900 s) to +19.1% (tp x3, 300 s) a trade, both halves up in every exit.
+- Not yet checked: our own first copy moves the price the dip is measured on (0.5 SOL on the curve); the dip buy needs
+  a second position on the same coin in the bot (one position a coin today). Wallet 4's exit stays frozen (the owner's
+  rule); this is a second trade beside it, the owner's call.

@@ -1,0 +1,37 @@
+72133 leader buys; COST 0.0026 SOL a round trip; days 1-2 pick (entry and exit), days 3-4 blind
+
+== wallet 4 ==
+   dip 0% within 60 s: 65 / 73 | picked (1.5, 300, False): +7.7% -> blind +11.0% (+4.03 SOL) | exits up on both: 37/40
+   dip 0% within 300 s: 78 / 94 | picked (1.5, 300, False): +6.8% -> blind +8.2% (+3.85 SOL) | exits up on both: 37/40
+   dip 10% within 60 s: 40 / 50 | picked (1.5, 900, False): +14.9% -> blind +17.3% (+4.32 SOL) | exits up on both: 37/40
+   dip 10% within 300 s: 62 / 70 | picked (1.5, 2400, False): +13.5% -> blind +15.3% (+5.36 SOL) | exits up on both: 37/40
+   dip 20% within 60 s: 18 / 28 | picked (5, 2400, False): +78.1% -> blind -3.5% (-0.49 SOL) | exits up on both: 37/40
+   dip 20% within 300 s: 37 / 48 | picked (5, 2400, False): +35.0% -> blind -9.5% (-2.29 SOL) | exits up on both: 36/40
+   ('dip', 0.3, 60): too few (6 / 17)
+   dip 30% within 300 s: 18 / 29 | picked (5, 2400, False): +30.3% -> blind +2.7% (+0.40 SOL) | exits up on both: 6/40
+   delay 0% within 30 s: 101 / 123 | picked (1.5, 900, False): +5.4% -> blind +1.0% (+0.64 SOL) | exits up on both: 7/40
+   delay 0% within 120 s: 101 / 123 | picked (1.5, 2400, True): +4.2% -> blind -1.7% (-1.03 SOL) | exits up on both: 0/40
+
+== chosen on days 1-2 (52 wallets) ==
+   dip 0% within 60 s: 415 / 485 | picked (2, 900, True): +18.1% -> blind +3.0% (+7.33 SOL) | exits up on both: 29/40
+   dip 0% within 300 s: 503 / 574 | picked (2, 900, True): +13.9% -> blind +1.4% (+4.09 SOL) | exits up on both: 27/40
+   dip 10% within 60 s: 237 / 337 | picked (3, 60, False): +15.5% -> blind +2.9% (+4.85 SOL) | exits up on both: 25/40
+   dip 10% within 300 s: 368 / 473 | picked (3, 60, False): +9.1% -> blind +1.5% (+3.53 SOL) | exits up on both: 9/40
+   dip 20% within 60 s: 124 / 192 | picked (3, 60, False): +13.8% -> blind -0.6% (-0.60 SOL) | exits up on both: 0/40
+   dip 20% within 300 s: 241 / 345 | picked (1.5, 60, True): +4.2% -> blind -2.2% (-3.80 SOL) | exits up on both: 0/40
+   dip 30% within 60 s: 47 / 96 | picked (1.5, 60, True): +1.0% -> blind -4.0% (-1.94 SOL) | exits up on both: 0/40
+   dip 30% within 300 s: 139 / 218 | picked (1.5, 60, True): -2.8% -> blind -3.7% (-4.06 SOL) | exits up on both: 0/40
+   delay 0% within 30 s: 606 / 643 | picked (1.5, 60, False): +6.7% -> blind -4.4% (-14.26 SOL) | exits up on both: 0/40
+   delay 0% within 120 s: 600 / 638 | picked (1.5, 60, True): -3.8% -> blind -5.1% (-16.40 SOL) | exits up on both: 0/40
+
+== every wallet ==
+   dip 0% within 60 s: 23159 / 35873 | picked (1.5, 60, True): -3.8% -> blind -4.2% (-761.09 SOL) | exits up on both: 0/40
+   dip 0% within 300 s: 26544 / 40348 | picked (1.5, 60, False): -4.2% -> blind -4.3% (-858.66 SOL) | exits up on both: 0/40
+   dip 10% within 60 s: 15907 / 26281 | picked (1.5, 60, False): -3.7% -> blind -4.0% (-528.32 SOL) | exits up on both: 0/40
+   dip 10% within 300 s: 22904 / 35230 | picked (1.5, 60, False): -4.6% -> blind -4.7% (-832.89 SOL) | exits up on both: 0/40
+   dip 20% within 60 s: 9971 / 17928 | picked (1.5, 60, False): -3.7% -> blind -3.8% (-338.49 SOL) | exits up on both: 0/40
+   dip 20% within 300 s: 18219 / 28887 | picked (1.5, 60, False): -4.8% -> blind -4.6% (-663.41 SOL) | exits up on both: 0/40
+   dip 30% within 60 s: 5556 / 11269 | picked (1.5, 60, False): -3.2% -> blind -3.0% (-166.59 SOL) | exits up on both: 0/40
+   dip 30% within 300 s: 13403 / 22062 | picked (1.5, 60, False): -4.4% -> blind -4.1% (-454.93 SOL) | exits up on both: 0/40
+   delay 0% within 30 s: 28834 / 43182 | picked (1.5, 60, True): -5.3% -> blind -5.2% (-1114.58 SOL) | exits up on both: 0/40
+   delay 0% within 120 s: 28549 / 42874 | picked (1.5, 60, True): -6.2% -> blind -5.5% (-1174.14 SOL) | exits up on both: 0/40
