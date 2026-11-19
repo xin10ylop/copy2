@@ -1,0 +1,18 @@
+72133 first buys of 4886 wallets; the flip on ALL of them, by exit (a trade): T2/tp1.2 -8.4%, T2/tp1.5 -8.3%, T2/tp- -8.3%, T5/tp1.2 -8.1%, T5/tp1.5 -7.8%, T5/tp- -7.7%, T10/tp1.2 -8.1%, T10/tp1.5 -7.6%, T10/tp- -7.5%, T20/tp1.2 -8.1%, T20/tp1.5 -7.4%, T20/tp- -7.6%
+followers in 10 s: median 16, 90% 57
+   by the flip's mean on days 1-2, top 10, exit T2s/tp1.2: days 1-2   +2.8% (69)  ->  days 3-4   -3.1% (127), -1.96 SOL
+   by the flip's mean on days 1-2, top 50, exit T2s/tp1.2: days 1-2   +0.4% (469)  ->  days 3-4   -4.2% (551), -11.60 SOL
+   by the flip's mean on days 1-2, top 10, exit T2s/tp1.5: days 1-2   +4.0% (72)  ->  days 3-4   -4.6% (157), -3.58 SOL
+   by the flip's mean on days 1-2, top 50, exit T2s/tp1.5: days 1-2   +0.9% (452)  ->  days 3-4   -4.1% (519), -10.66 SOL
+   by the flip's mean on days 1-2, top 10, exit T5s/tp1.5: days 1-2   +9.8% (69)  ->  days 3-4   -6.9% (535), -18.42 SOL
+   by the flip's mean on days 1-2, top 50, exit T5s/tp1.5: days 1-2   +3.8% (467)  ->  days 3-4   -5.5% (977), -26.98 SOL
+   by the flip's mean on days 1-2, top 10, exit T10s/tp1.5: days 1-2  +14.5% (82)  ->  days 3-4   -0.2% (145), -0.17 SOL
+   by the flip's mean on days 1-2, top 50, exit T10s/tp1.5: days 1-2   +8.1% (429)  ->  days 3-4   -5.1% (954), -24.48 SOL
+   by followers in 10 s on days 1-2, top 10, exit T2s/tp1.2: days 1-2   -1.9% (157)  ->  days 3-4   -3.1% (207), -3.23 SOL
+   by followers in 10 s on days 1-2, top 50, exit T2s/tp1.2: days 1-2   -3.9% (554)  ->  days 3-4   -6.2% (797), -24.61 SOL
+   by followers in 10 s on days 1-2, top 10, exit T2s/tp1.5: days 1-2   -1.8% (157)  ->  days 3-4   -3.2% (207), -3.30 SOL
+   by followers in 10 s on days 1-2, top 50, exit T2s/tp1.5: days 1-2   -3.7% (554)  ->  days 3-4   -6.2% (797), -24.62 SOL
+   by followers in 10 s on days 1-2, top 10, exit T5s/tp1.5: days 1-2   -0.1% (157)  ->  days 3-4   -1.9% (207), -1.95 SOL
+   by followers in 10 s on days 1-2, top 50, exit T5s/tp1.5: days 1-2   -1.8% (554)  ->  days 3-4   -4.7% (797), -18.85 SOL
+   by followers in 10 s on days 1-2, top 10, exit T10s/tp1.5: days 1-2   +1.4% (157)  ->  days 3-4   -2.0% (207), -2.08 SOL
+   by followers in 10 s on days 1-2, top 50, exit T10s/tp1.5: days 1-2   -0.1% (554)  ->  days 3-4   -4.2% (797), -16.72 SOL

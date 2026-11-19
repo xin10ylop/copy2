@@ -287,3 +287,17 @@ creators' coins (insiders); the others never buy at the launch and sell fast.
 `m8_follow_sale.py` (`../out/m8_follow_sale.txt`): the same copies selling when THEY sell (else 600 s / tp 4): the 16
 together −111 SOL (−6.5% a copy), only wallet 4 (+3.9%), TAB16RxX (+2.1%) and four wallets of 4-5 copies above zero;
 blind −98 SOL (−7.0% a copy), 7 of 35 up. Wallet 4 remains the only wallet whose edge survives the copy.
+
+## Learning from the winners instead of copying them (Nov 19; the owner: "not copying but on wallets we identify", "bots that always do the same thing")
+
+- `m9_profile.py` (`../out/m9_profile.txt`): the six daily winners that do not buy at the launch (ARu4n5mF, AEdnzgqM,
+  HLU8QbLd, HryU8vPB, FZU56d9i, 9dVSVwrU; 2,897 round trips, +179 SOL themselves) buy coins a median 0-152 s old,
+  hold a median 5-261 s and win only 37-45% of their trips; their winners and losers look the same when they buy (age
+  8 / 10 s, price 0.92 / 0.89 of the high so far, 14 / 15 buys in the last 30 s). The edge is being first, not the pick.
+- `m10_scalp_rule.py` (`../out/m10_scalp_rule.txt`): their rule traded ourselves on every coin (enter 3-30 s after the
+  launch with 0-20 buys in the last 30 s, out at 10-60 s unless up 0-10%, then tp / a 30% fall / 300 s): **0 of 540
+  rules positive on days 1-2; on days 3-4 the median −15.7% a trade, the best −11.0%.**
+- `m11_follow_flow.py` (`../out/m11_follow_flow.txt`): copy-bots follow wallets (a median 16 buys by others in the 10 s
+  after a wallet's buy); a fast flip into them (in at the next slot, out 2-20 s later or at x1.2 / x1.5): on all 72,133
+  buys −7.4% to −8.4% a trade (the 0.0345 SOL round trip is 6.4% of it: about −1% to −2% before costs); the wallets best
+  on days 1-2 (by the flip or by followers) lose on days 3-4 in every setting (−0.2% to −6.9% a trade).

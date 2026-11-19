@@ -1,0 +1,13 @@
+2897 round trips of 6 wallets on the 4 days
+
+wallet        trips  net SOL  won%  size   age at buy (med, 10-90%)    curve SOL at buy   price/high   trades before   buys/sells 30s   hold s (med)  sales  rise at 1st sale
+ARu4n5mFdZog    164    +54.7   37%   2.75       112 (30-697)        67.16            0.88          218          24/13            115       3      0.94
+AEdnzgqMSSR8   1276    +49.4   38%   0.81         7 (0-90)        56.47            0.97           20          14/3              23       1      0.97
+HLU8QbLdvHDS    641    +33.3   45%   1.15        33 (4-447)        59.51            0.86           72          21/12             14       2      0.99
+HryU8vPBVcmw    174    +17.0   44%   0.93         0 (0-1)        53.72            1.00            8           7/0             168       1      0.94
+FZU56d9iPqoh     95    +12.2   40%   1.18       152 (6-1075)        72.00            0.96          141          18/5             261       1      0.82
+9dVSVwrUJfnF    547    +12.0   43%   0.60         6 (2-26)        49.92            0.78           25          15/7               5       1      0.99
+
+winners against losers (all six together):
+   won    1188 trips  net   +531.7  age      8 s  curve  56.80  price/high 0.92  trades before    25  buys/sells 30s 14/4  hold    20 s  rise at 1st sale 1.13
+   lost   1709 trips  net   -353.1  age     10 s  curve  56.10  price/high 0.89  trades before    31  buys/sells 30s 15/6  hold    22 s  rise at 1st sale 0.93
