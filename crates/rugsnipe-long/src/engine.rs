@@ -497,9 +497,22 @@ impl Engine {
                 &format!("daily stop ({} SOL today)", sol(today as i128)),
             );
         }
+        let plan = match route::plan(&t, &self.anchors, &mut self.rpc) {
+            Ok(p) => p,
+            Err(e) => return self.skip(&t, &format!("route: {e}")),
+        };
+        // the dip leg pays with a float only (dip_float_only, Nov 19: m15f, wSOL-paid dips +3.1% and negative its last
+        // 2 weeks, float-paid +15.9%)
+        let dip_pays = !self.cfg.dip_float_only || plan.anchor != c::WSOL_MINT;
+        if dip_go && !dip_pays {
+            return self.skip(&t, "the dip leg pays with a float only");
+        }
         // the dip entry: watch the coin instead of buying behind it (every guard above passed and runs again on the dip)
         if self.cfg.dip_drop > 0.0 && !dip_go {
-            if !self.dips.iter().any(|(d, _)| d.mint == t.mint) {
+            if !dip_pays && self.cfg.dip_stake_sol <= 0.0 {
+                return self.skip(&t, "the dip leg pays with a float only");
+            }
+            if dip_pays && !self.dips.iter().any(|(d, _)| d.mint == t.mint) {
                 println!(
                     "long dip-watch {} its {:.3} SOL: buys at or under {:.2}x its price within {} s",
                     m8(&t.mint),
@@ -521,10 +534,6 @@ impl Engine {
         if open >= self.cfg.max_open {
             return self.skip(&t, &format!("{open} open (max_open)"));
         }
-        let plan = match route::plan(&t, &self.anchors, &mut self.rpc) {
-            Ok(p) => p,
-            Err(e) => return self.skip(&t, &format!("route: {e}")),
-        };
         let stake = if dip_go && self.cfg.dip_stake_sol > 0.0 {
             (self.cfg.dip_stake_sol * 1e9) as u64
         } else {

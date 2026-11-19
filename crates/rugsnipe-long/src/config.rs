@@ -150,6 +150,8 @@ pub struct LongCfg {
     pub dip_stake_sol: f64,
     pub dip_take_profit: f64,
     pub dip_max_hold_s: u64,
+    /// The dip leg only when our route pays with a float (not wrapped SOL); the copy leg is not affected.
+    pub dip_float_only: bool,
     /// Other units trading from the SAME wallet (Nov 18: the TAB16RxX unit on wallet 4's
     /// wallet): their state dirs. A coin one of them holds (seen in the last hour) is not
     /// bought, and a sale never closes the coin's token account while one of them still
@@ -211,6 +213,7 @@ impl Default for LongCfg {
             dip_stake_sol: 0.0,
             dip_take_profit: 1.5,
             dip_max_hold_s: 900,
+            dip_float_only: false,
             other_state_dirs: vec![],
             float_only: false,
             ladder: crate::ladder::LadderCfg::default(),

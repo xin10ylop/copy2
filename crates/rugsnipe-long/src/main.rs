@@ -613,13 +613,14 @@ fn run(args: &[String]) -> Result<(), String> {
     );
     if cfg.dip_drop > 0.0 {
         println!(
-            "long dip: {} at {:.2}x its price within {}s, stake {} SOL, tp {}x our fill, hold {}s",
+            "long dip: {} at {:.2}x its price within {}s, stake {} SOL, tp {}x our fill, hold {}s, pays with {}",
             if cfg.dip_stake_sol > 0.0 { "leg 2 (the copy buys at once as leg 1)" } else { "the only entry (no copy at once)" },
             1.0 - cfg.dip_drop,
             cfg.dip_within_s,
             if cfg.dip_stake_sol > 0.0 { cfg.dip_stake_sol } else { cfg.stake_sol },
             cfg.dip_take_profit,
-            cfg.dip_max_hold_s
+            cfg.dip_max_hold_s,
+            if cfg.dip_float_only { "floats only" } else { "wSOL or floats" }
         );
     }
     let oracle = Oracle::default();
@@ -698,13 +699,14 @@ fn status(args: &[String]) -> Result<(), String> {
     let split = cfg.dip_drop > 0.0 && cfg.dip_stake_sol > 0.0;
     if cfg.dip_drop > 0.0 {
         println!(
-            "   {}dip entry: {} SOL at or under {:.2}x its price within {} s, tp {}x our fill, {} s{}",
+            "   {}dip entry: {} SOL at or under {:.2}x its price within {} s, tp {}x our fill, {} s, {}{}",
             if split { "leg 1 = the copy above; leg 2 = the " } else { "" },
             if split { cfg.dip_stake_sol } else { cfg.stake_sol },
             1.0 - cfg.dip_drop,
             cfg.dip_within_s,
             cfg.dip_take_profit,
             cfg.dip_max_hold_s,
+            if cfg.dip_float_only { "floats only" } else { "wSOL or floats" },
             if split { " (pct1 = leg 1, pct2 = leg 2, each on its own stake)" } else { "" }
         );
     }

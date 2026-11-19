@@ -945,3 +945,21 @@ fn each_leg_has_its_own_max_open() {
     e.on_dip_trades(d.slot + 2, &[(d.mint, t3, q3)]);
     assert_eq!(e.book.positions.len(), 2, "the copy's one open slot does not block the dip leg");
 }
+
+/// `dip_float_only` (Nov 19, the owner: "only keep floats"): a buy our route pays with wrapped SOL gets the copy leg
+/// and no dip watch; the copy leg itself is not affected.
+#[test]
+fn the_float_only_dip_leg_skips_a_wsol_paid_buy_and_the_copy_still_buys() {
+    let mut e = dip_engine("split-float");
+    e.cfg.dip_stake_sol = 0.5;
+    e.cfg.dip_float_only = true;
+    e.on_tx(Src::Copied, &fx("w4_buy_wsol_multihop"));
+    assert_eq!(e.book.positions.len(), 1, "the copy leg buys");
+    assert!(!e.book.positions[0].is_dip());
+    assert!(e.dips.is_empty(), "no dip watch on a wSOL-paid buy");
+    // the dip unit (no copy leg) with the same rule: nothing at all
+    let mut e = dip_engine("dip-float");
+    e.cfg.dip_float_only = true;
+    e.on_tx(Src::Copied, &fx("w4_buy_wsol_multihop"));
+    assert!(e.book.positions.is_empty() && e.dips.is_empty());
+}

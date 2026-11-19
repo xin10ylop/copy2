@@ -97,5 +97,8 @@ dip_within_s = 60
 dip_stake_sol = 0.0
 dip_take_profit = 1.5
 dip_max_hold_s = 900
+# the dip leg only when our route pays with a float (m15f: float-paid +15.9% a trade, wSOL-paid +3.1% and negative its
+# last 2 weeks); the copy leg keeps paying with wSOL and floats
+dip_float_only = false
 state_dir = "/var/lib/rugsnipe-long"
 price_api = "https://lite-api.jup.ag/price/v3"

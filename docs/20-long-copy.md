@@ -60,6 +60,10 @@ within a slot** (`exits_pess.py`):
   stake), and each leg's totals. Tests: `the_split_buys_the_copy_at_once_and_the_dip_leg_on_the_dip`,
   `the_dip_leg_takes_its_own_profit_and_the_copy_leg_holds`, `the_dip_leg_ends_on_its_own_hold_and_ignores_the_signals`,
   `its_early_sale_takes_out_the_copy_leg_only`, `each_leg_has_its_own_max_open` (the account rule is real-mode only).
+  `dip_float_only` (Nov 19, the owner: "only keep floats"): the dip leg only when our route pays with a float, since
+  wSOL-paid dips made +3.1% a trade and lost over their last 2 weeks against +15.9% float-paid (m15f); the copy leg keeps
+  wSOL. The route is now planned before the `max_open` check. Test:
+  `the_float_only_dip_leg_skips_a_wsol_paid_buy_and_the_copy_still_buys`.
 - **Route:** PumpSwap's `multi_hop_swap` (16 accounts + 5 a hop), byte-equal to wallet 4's own (`tests/multihop_fixtures.rs`).
   Its own route is copied when it starts from wrapped SOL or a float we hold (WBTC); a direct curve buy goes behind its
   quote's canonical pool against wSOL or WBTC. Wrapped SOL is wrapped and unwrapped inside the transaction. At most 2

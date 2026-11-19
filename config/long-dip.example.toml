@@ -109,4 +109,6 @@ dip_take_profit = 1.5
 dip_max_hold_s = 900
 # 0 = the dip is this unit's only entry; > 0 = the split in one unit (the copy at once + this much on the dip)
 dip_stake_sol = 0.0
+# float_only above already keeps this unit off wSOL; dip_float_only does it for the dip leg alone
+dip_float_only = true
 tp_from_fill = true
