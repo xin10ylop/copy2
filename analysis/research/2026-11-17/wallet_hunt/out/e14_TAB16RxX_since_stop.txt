@@ -1,0 +1,19 @@
+TAB16RxX: 758 transactions since 11-18 11:00 UTC, 77 buys; setting 0.5,1.5,4,600,5/60,180,never
+time UTC  coin      its SOL  quote     model SOL (4 / 8 / next slot)   live SOL
+11:15:08  3voShZSw   0.918  TTWofwAg  -0.0491 (-0.032 / -0.032 / -0.083)   -
+11:24:17  DA1qZv1e   1.366  TTWofwAg  -0.1384 (-0.118 / -0.154 / -0.144)   -
+01:32:25  CdeJaq6J   0.889  TTWofwAg  -0.0830 (-0.093 / -0.062 / -0.094)   -
+04:42:27  Dct94RVQ   0.677  TTWofwAg  +0.0032 (-0.004 / +0.037 / -0.024)   -
+04:52:38  CtXLNoZD   0.521  EPjFWdd5  -0.0430 (-0.032 / -0.032 / -0.064)   -
+04:56:55  ANjgCySx   0.903  TTWofwAg  +0.1079 (+0.111 / +0.102 / +0.111)   -
+06:28:10  53tioWW3   0.907  TTWofwAg  -0.1246 (-0.154 / -0.077 / -0.143)   -
+06:56:04  D1eUhSH1   0.682  TTWofwAg  +0.5542 (+0.531 / +0.607 / +0.524)   -
+07:33:57  3zNm5tM9   0.682  TTWofwAg  -0.1309 (-0.123 / -0.104 / -0.165)   -
+07:55:58  DYchYmKi   0.909  TTWofwAg  -0.0721 (-0.100 / -0.058 / -0.058)   -
+15:56:02  DjGgjnTb   0.915  TTWofwAg  +0.3184 (+0.358 / +0.277 / +0.321)   -
+15:56:56  E9nw5sMC   0.665  SQQQAa3g  -0.1156 (-0.140 / -0.079 / -0.127)   -
+16:25:00  A2WFFSrp   0.537  4CxjZyMN  -0.0577 (-0.032 / -0.032 / -0.108)   -
+16:25:53  J7NdoaJi   1.055  4CxjZyMN  -0.0870 (-0.078 / -0.032 / -0.150)   -
+16:28:30  FbvuiHvW   0.909  TTWofwAg  +0.0148 (+0.004 / +0.043 / -0.003)   -
+
+model, every copy: 15 copies +0.097 SOL; on the coins the bot traded (0): model +0.000, live +0.000
