@@ -13,3 +13,8 @@ Nov 14-18 our copy +19.6% a copy (30 copies), up on the blind days.
   sell pressure 5/60, stall 180, its early sale), landing 4 / 8 trades or the next slot: 263 copies, −7.92 SOL (−6.0% a
   copy), −14.40 without the best 2%, up on 3 of 10 days** (SOL coins −9.5% a copy on 132, token coins −2.6% on 131). The
   trader made +47.53 SOL itself over the same days. Like m7's daily winners: its edge does not survive the copy.
+- **`p4_exits.py` (`out/p4_exits.txt`): the exit engineered.** 14,580 exits (take profit 1.5x-none x hold 10-600 s x sell
+  pressure x stall x its sale never / early / always) x 5 entry filters (all, SOL coins, token coins, its 1+ SOL, its 2+
+  SOL), picked on Nov 10-14 and scored on Nov 15-19 and the reverse: **0 exits positive on both halves and without the
+  best 2%, under every filter.** Even the best exit in hindsight loses on both halves (all coins: −2.99 / −2.91 SOL). Not a
+  wallet to copy.

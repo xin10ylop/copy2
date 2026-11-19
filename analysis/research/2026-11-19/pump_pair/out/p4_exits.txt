@@ -1,0 +1,21 @@
+8zqsUMty: 262 copies Nov 10-19 (its 0.5+ SOL buys, priced), halves at 11-15 00:31 UTC; 14580 exits
+
+== all: 131 / 131 copies in the halves; exits positive on BOTH halves and w/o 2%: 0 of 14580
+   picked on half 1: (2, 180, '8/30', 0, 'early'): half 1 -2.99 SOL (-4.6%) -> half 2 -2.91 (-4.4%)
+   picked on half 2: (1.5, 120, '8/30', 90, 'early'): half 2 -1.75 SOL (-2.7%) -> half 1 -5.34 (-8.1%)
+   the best on both at once (hindsight): (2, 180, '8/30', 0, 'early'): -2.99 / -2.91, w/o 2% -4.67 / -4.39
+
+== SOL coins: 65 / 66 copies in the halves; exits positive on BOTH halves and w/o 2%: 0 of 14580
+   picked on half 1: (2, 180, '8/30', 0, 'early'): half 1 -2.34 SOL (-7.2%) -> half 2 -1.54 (-4.7%)
+   picked on half 2: (2.5, 120, '8/30', 60, 'early'): half 2 -0.31 SOL (-0.9%) -> half 1 -3.46 (-10.6%)
+   the best on both at once (hindsight): (2, 180, '8/30', 0, 'early'): -2.34 / -1.54, w/o 2% -3.00 / -2.16
+
+== token coins: 66 / 65 copies in the halves; exits positive on BOTH halves and w/o 2%: 0 of 14580
+   picked on half 1: (3.5, 300, 'off', 0, 'never'): half 1 +1.96 SOL (+5.9%) -> half 2 -4.61 (-14.2%)
+   picked on half 2: (2, 180, '5/30', 60, 'always'): half 2 -0.22 SOL (-0.7%) -> half 1 -2.88 (-8.7%)
+   the best on both at once (hindsight): (1.5, 180, '8/30', 120, 'early'): -1.03 / -0.98, w/o 2% -1.32 / -1.31
+
+== its 1+ SOL: 14 / 15 copies in the halves; exits positive on BOTH halves and w/o 2%: 0 of 14580
+   picked on half 1: (5, 600, 'off', 180, 'never'): half 1 +2.30 SOL (+32.8%) -> half 2 +0.52 (+6.9%)
+   picked on half 2: (2.5, 60, '5/30', 0, 'always'): half 2 +0.51 SOL (+6.8%) -> half 1 -0.06 (-0.9%)
+   the best on both at once (hindsight): (1.5, 600, '5/60', 0, 'early'): +0.27 / +0.17, w/o 2% -0.03 / -0.07
