@@ -1,0 +1,6 @@
+150 first buys of 0.5+ SOL in the sample (of 4329 coins bought; NS=150)
+6Kj5ChEZnyNj: 128 buys of 0.5+ SOL since 11-01; style plain 0.0 0, exit (1.5, 900, False)
+   BEFORE the 4 days (unseen): style 57 trades -4.04 SOL (-14.2%), w/o 2% -4.36 | plain copy same exit 57 -4.04 (-14.2%)
+   the 4 days (where it was picked): style 53 trades -3.95 SOL (-14.9%), w/o 2% -4.28 | plain copy same exit 53 -3.95 (-14.9%)
+   AFTER the 4 days (unseen): style 18 trades -2.30 SOL (-25.6%), w/o 2% -2.58 | plain copy same exit 18 -2.30 (-25.6%)
+   by week (style): 10-28 +0.64 (15)  11-04 -2.08 (20)  11-11 -6.56 (75)  11-18 -2.30 (18)
