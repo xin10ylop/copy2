@@ -98,3 +98,10 @@ holders or under V ETH traded; 42 rules a wallet, picked on one half, scored on 
 both halves, by +0.000 to +0.033 ETH over 41 days, about what chance gives; the picks on one half lose up to 0.2 ETH on
 the other. The live pattern (winner #8 at 24 holders after 60 s, most losers at 3-9) does not hold over the backtest.
 Nothing changed.
+
+**The take profits** (the owner: "you sure these are the best and not lower?"; `rhd11_tp.py`, `out/rhd11_tp.txt`): each
+live setting with only the take profit changed, 1.5x to none. Lower is worse for every wallet. Wallet 1's 4x, wallet 2's
+3.5x and the group's 3.5x are the best on the whole and without the best 2% (higher ones make more for wallet 2 only
+from its rare spikes). Wallet 3's 2.5x is not: **3x beats it on both halves** (+1.097 / +0.957 ETH against +0.908 /
++0.940), without the best 2% (+1.733 against +1.606) and in the last 7 days (+39.0% a copy against +36.6%); 3.5-5x make
+more in all but less in the second half.
