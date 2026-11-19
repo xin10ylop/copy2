@@ -116,3 +116,17 @@ at 900 s on both halves** (wallet 2 +0.636 / +0.445 ETH against +0.608 / +0.431;
 acted as a ~1.33x limit, which the backtest never had (rhd2: wallet 3 none +25.7 / +23.9% a copy against 1.25x +22.7 /
 +22.5%; the group none +14.3 / +13.2% against 1.25x +11.0 / +7.5%). **Applied to `config/rh-copier.example.toml`:** wallet 2
 and the group 900 s; wallet 3 tp 3x (`rhd11_tp`); wallet 3 and the group `max_premium = 3.0`.
+
+**Following its sale under conditions** (`rhd13_its_sale_filters.py`; the owner: wallet 4's copy follows its sale under
+filters): 14 conditions (age window, price against its price, share of its tokens sold, combinations; wallet 4's own rule
+30-290 s under 1.5x among them). None beats "never" on both halves except wallet 3's "under 1.0x and 50%+ sold" (+0.001 /
++0.011 ETH, noise); wallet 4's rule takes wallet 1 from +13.9% to +4.4% a copy. These leaders flip in seconds: their sale
+is the drop. The group never sells on the curve: no effect.
+
+**Day by day** (`rhd14_daily.py`, `rhd14b_today.py`; the owner: "backtest yesterday ... close to today but ended up
+profitable?"): the settings that ran on Nov 19 morning, all four together: 14 of the last 15 days positive (Nov 18: 56
+copies, 23 won, 4 take profits, +0.163 ETH, +14.6% a copy); Nov 19 to 13:09 UTC −0.020 ETH (−3.7% a copy), the first
+weak day. Against the bot that day: the model's copies the bot bought and closed −0.0405 ETH, live −0.0644 (late
+landings on #15, #19, #22); not bought +0.0308 (the "seen" bug's +77% copy at 00:44, fixed; #17 under the hidden ~1.33x
+limit, fixed; the group's +74.5% before it was added). One coin (08:07, 0x3a227ce5) bought by wallets 2 and 3 in one
+block: copied under wallet 3's rules (model −31.4%), wallet 2's would have made +77.5% (model).
