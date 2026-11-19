@@ -137,6 +137,12 @@ pub struct LongCfg {
     /// The take profit over our own fill price instead of the price its buy
     /// left (the ladder flip sells at +20% over what we paid).
     pub tp_from_fill: bool,
+    /// The DIP entry (Nov 19, the dip unit; `analysis/research/2026-11-17/wallet_hunt/market/m15*`): 0 = off (buy at once,
+    /// the copy). Else its buy is not copied at once: for `dip_within_s` seconds we watch the coin and buy at the first
+    /// trade of a later slot that leaves the price at or under (1 - dip_drop) x the price its buy left. The exits run
+    /// from that buy (with `tp_from_fill`, the take profit is over our own fill).
+    pub dip_drop: f64,
+    pub dip_within_s: u64,
     /// Other units trading from the SAME wallet (Nov 18: the TAB16RxX unit on wallet 4's
     /// wallet): their state dirs. A coin one of them holds (seen in the last hour) is not
     /// bought, and a sale never closes the coin's token account while one of them still
@@ -193,6 +199,8 @@ impl Default for LongCfg {
             state_dir: "/var/lib/rugsnipe-long".into(),
             price_api: crate::oracle::API.into(),
             tp_from_fill: false,
+            dip_drop: 0.0,
+            dip_within_s: 60,
             other_state_dirs: vec![],
             float_only: false,
             ladder: crate::ladder::LadderCfg::default(),
@@ -241,6 +249,12 @@ impl LongCfg {
         }
         if self.max_hold_s == 0 {
             return bad("max_hold_s must be positive");
+        }
+        if !(0.0..0.9).contains(&self.dip_drop) {
+            return bad("dip_drop must be in [0, 0.9)");
+        }
+        if self.dip_drop > 0.0 && !(5..=900).contains(&self.dip_within_s) {
+            return bad("dip_within_s must be in 5..=900");
         }
         for f in &self.floats {
             if f.parse::<pump_codec::Pubkey>().is_err() {
@@ -349,5 +363,16 @@ mod tests {
             "paper: not sent"
         );
         assert!(LongCfg::from_toml_str("nope = 1").is_err());
+    }
+
+    /// The dip unit's example (Nov 19) parses and passes `validate`; a dip_drop out of range is refused.
+    #[test]
+    fn the_dip_units_example_config_is_valid() {
+        let c = LongCfg::from_toml_str(include_str!("../../../config/long-dip.example.toml")).unwrap();
+        assert!((c.dip_drop - 0.10).abs() < 1e-9 && c.dip_within_s == 60 && c.tp_from_fill && !c.follow_its_sell);
+        assert!(c.validate().is_ok(), "{:?}", c.validate());
+        let mut bad = c.clone();
+        bad.dip_drop = 0.95;
+        assert!(bad.validate().is_err());
     }
 }

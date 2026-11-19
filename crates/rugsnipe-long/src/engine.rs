@@ -69,6 +69,10 @@ pub struct Engine {
     last_refresh_ms: u64,
     last_save_ms: u64,
     watched: BTreeSet<Pubkey>,
+    /// The dip entry (`dip_drop`): its buys waiting for the dip, each with its deadline (unix ms).
+    pub dips: Vec<(Trigger, u64)>,
+    /// A dip that fired: `on_trigger` buys it at once (not a second buy of its own).
+    dip_go: Option<Pubkey>,
     buyback_rr: usize,
     /// The ladder detector (`cfg.ladder.enabled`): every pump launch's create slot.
     ladder: Option<crate::ladder::Ladder>,
@@ -133,6 +137,8 @@ impl Engine {
             last_refresh_ms: 0,
             last_save_ms: 0,
             watched: BTreeSet::new(),
+            dips: vec![],
+            dip_go: None,
             buyback_rr: 0,
             ladder: None,
             others: vec![],
@@ -203,7 +209,7 @@ impl Engine {
     }
 
     fn rewatch(&mut self) {
-        let want: BTreeSet<Pubkey> = self.book.live().map(|p| p.mint_pk()).collect();
+        let want: BTreeSet<Pubkey> = self.book.live().map(|p| p.mint_pk()).chain(self.dips.iter().map(|(d, _)| d.mint)).collect();
         if want != self.watched {
             self.watched = want.clone();
             if let Some(f) = &self.feed {
@@ -284,6 +290,10 @@ impl Engine {
                         }
                     }
                 }
+            }
+            if !self.dips.is_empty() {
+                let ts: Vec<(Pubkey, u64, u64)> = tx.trades().iter().map(|t| (t.mint, t.vt, t.vq)).collect();
+                self.on_dip_trades(tx.slot, &ts);
             }
         }
         if src == Src::Ours || tx.signer() == Some(self.me) {
@@ -379,6 +389,37 @@ impl Engine {
         }
     }
 
+    /// The dip entry: trades (mint, vt, vq after it) of a slot. A watched coin traded in a later slot than its buy, at
+    /// or under (1 - dip_drop) of the price its buy left, is bought (at most once a coin); the buy's reference becomes
+    /// that state.
+    pub fn on_dip_trades(&mut self, slot: u64, trades: &[(Pubkey, u64, u64)]) {
+        let lim = 1.0 - self.cfg.dip_drop;
+        let mut fired = vec![];
+        for &(mint, vt, vq) in trades {
+            if let Some(i) = self.dips.iter().position(|(d, _)| {
+                d.mint == mint && slot > d.slot && d.vt_post > 0 && vt > 0
+                    && (vq as f64 / vt as f64) <= lim * (d.vq_post as f64 / d.vt_post as f64)
+            }) {
+                let (mut d, _) = self.dips.remove(i);
+                println!(
+                    "long dip {} at {:.2}x its price, slot +{}: buying",
+                    m8(&d.mint),
+                    (vq as f64 / vt as f64) / (d.vq_post as f64 / d.vt_post as f64),
+                    slot - d.slot
+                );
+                d.vt_post = vt;
+                d.vq_post = vq;
+                d.slot = slot;
+                fired.push(d);
+            }
+        }
+        for d in fired {
+            self.dip_go = Some(d.mint);
+            self.on_trigger(d);
+        }
+        self.rewatch();
+    }
+
     fn skip(&self, t: &Trigger, why: &str) {
         println!(
             "long skip {} its {} SOL ({}): {why}",
@@ -404,10 +445,13 @@ impl Engine {
                     .set(t.input_mint, v as f64 / t.input_amount as f64);
             }
         }
-        let rebuy = self
-            .its_bought
-            .insert(t.mint, now)
-            .is_some_and(|at| now.saturating_sub(at) < 3_600_000);
+        // a dip that fired buys now: its buy was seen (and guarded) when the watch began
+        let dip_go = self.dip_go.take() == Some(t.mint);
+        let rebuy = !dip_go
+            && self
+                .its_bought
+                .insert(t.mint, now)
+                .is_some_and(|at| now.saturating_sub(at) < 3_600_000);
         let Some(v) = t.sol_value else {
             return self.skip(&t, "its buy has no SOL value (paid in an unpriced token)");
         };
@@ -455,6 +499,21 @@ impl Engine {
                 &t,
                 &format!("daily stop ({} SOL today)", sol(today as i128)),
             );
+        }
+        // the dip entry: watch the coin instead of buying behind it (every guard above passed and runs again on the dip)
+        if self.cfg.dip_drop > 0.0 && !dip_go {
+            if !self.dips.iter().any(|(d, _)| d.mint == t.mint) {
+                println!(
+                    "long dip-watch {} its {:.3} SOL: buys at or under {:.2}x its price within {} s",
+                    m8(&t.mint),
+                    v as f64 / 1e9,
+                    1.0 - self.cfg.dip_drop,
+                    self.cfg.dip_within_s
+                );
+                self.dips.push((t, now + self.cfg.dip_within_s * 1000));
+                self.rewatch();
+            }
+            return;
         }
         let plan = match route::plan(&t, &self.anchors, &mut self.rpc) {
             Ok(p) => p,
@@ -1171,6 +1230,14 @@ impl Engine {
 
     // -------------------------------------------------------------- clock
     pub fn on_tick(&mut self, now: u64) {
+        // dip watches past their time: no dip, no trade
+        if self.dips.iter().any(|(_, dl)| now > *dl) {
+            for (d, _) in self.dips.iter().filter(|(_, dl)| now > *dl) {
+                println!("long dip-watch {} expired: no dip in {} s", m8(&d.mint), self.cfg.dip_within_s);
+            }
+            self.dips.retain(|(_, dl)| now <= *dl);
+            self.rewatch();
+        }
         // old closed positions leave the book here only: nothing below holds
         // an index across it
         self.book.prune(now, 3 * 86_400_000);

@@ -782,3 +782,61 @@ fn float_only_does_not_pay_from_sol() {
     e.on_tx(Src::Copied, &fx("w4_buy_wsol_multihop"));
     assert!(e.book.positions.is_empty(), "a wSOL-routed buy is skipped under float_only");
 }
+
+/// The dip unit (Nov 19, `dip_drop`): its buy is watched, not copied; a trade in a later slot at or under (1 - drop)
+/// of the price its buy left buys, with that state as the reference; a trade in its own slot, or not deep enough, does
+/// not; a watch past `dip_within_s` ends with no trade.
+fn dip_engine(tag: &str) -> Engine {
+    let mut e = engine(tag);
+    e.cfg.dip_drop = 0.10;
+    e.cfg.dip_within_s = 60;
+    e
+}
+
+#[test]
+fn the_dip_unit_watches_its_buy_and_buys_only_on_the_dip() {
+    let mut e = dip_engine("dip");
+    let tx = fx("w4_buy_wsol_multihop");
+    e.on_tx(Src::Copied, &tx);
+    assert!(e.book.positions.is_empty(), "no copy at once");
+    assert_eq!(e.dips.len(), 1, "a dip watch");
+    let (d, _) = e.dips[0].clone();
+    let (vt, vq) = (d.vt_post as f64, d.vq_post as f64);
+    // the price at x (constant product): vt / sqrt(x), vq * sqrt(x)
+    let at = |x: f64| ((vt / x.sqrt()) as u64, (vq * x.sqrt()) as u64);
+    // its own slot, even far down: no
+    let (t1, q1) = at(0.5);
+    e.on_dip_trades(d.slot, &[(d.mint, t1, q1)]);
+    assert!(e.book.positions.is_empty() && e.dips.len() == 1);
+    // a later slot at 0.95x: not deep enough
+    let (t2, q2) = at(0.95);
+    e.on_dip_trades(d.slot + 1, &[(d.mint, t2, q2)]);
+    assert!(e.book.positions.is_empty() && e.dips.len() == 1);
+    // a later slot at 0.88x: the dip, bought; the reference is this state
+    let (t3, q3) = at(0.88);
+    e.on_dip_trades(d.slot + 2, &[(d.mint, t3, q3)]);
+    assert!(e.dips.is_empty(), "the watch is used");
+    assert_eq!(e.book.positions.len(), 1, "bought on the dip");
+    let p = &e.book.positions[0];
+    assert_eq!((p.vt_ref, p.vq_ref, p.its_slot), (t3, q3, d.slot + 2));
+    // a second dip trade of the coin buys nothing more
+    e.on_dip_trades(d.slot + 3, &[(d.mint, t3, q3)]);
+    assert_eq!(e.book.positions.len(), 1);
+}
+
+#[test]
+fn a_dip_watch_ends_after_its_time_without_a_trade() {
+    let mut e = dip_engine("dip-expire");
+    e.on_tx(Src::Copied, &fx("w4_buy_wsol_multihop"));
+    assert_eq!(e.dips.len(), 1);
+    e.on_tick(now_ms() + 61_000);
+    assert!(e.dips.is_empty() && e.book.positions.is_empty(), "no dip in 60 s: no trade");
+}
+
+#[test]
+fn without_dip_drop_the_copy_buys_at_once_as_before() {
+    let mut e = engine("dip-off");
+    e.on_tx(Src::Copied, &fx("w4_buy_wsol_multihop"));
+    assert!(e.dips.is_empty());
+    assert_eq!(e.book.positions.len(), 1);
+}

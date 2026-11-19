@@ -43,6 +43,13 @@ within a slot** (`exits_pess.py`):
   wrapped SOL into its `multi_hop_swap`, or the share of what it sent Jupiter that the buy used (it sends 5/3 SOL and
   keeps about a tenth), or a held token at the oracle price. Its second buy of a coin, a coin already ours, a complete
   curve, `max_open`, the daily stop and a `KILL` file in the state dir are skips.
+- **The dip entry** (Nov 19, `dip_drop` / `dip_within_s`, the unit `rugsnipe-long-dip` with its own wallet and
+  `config/long-dip.example.toml`): its buy, past every skip above, is watched instead of copied; the first trade of a
+  later slot at or under (1 - `dip_drop`) x the price its buy left, within `dip_within_s`, buys (the skips run again),
+  with that state as the reference; no dip in time, no trade. Research `analysis/research/2026-11-17/wallet_hunt/
+  market/m14-m15d` (10% within 60 s, tp x1.5 over our fill or 900 s: +12.1% a trade on Oct 21 - Nov 13 out of sample,
+  up every week). Tests: `the_dip_unit_watches_its_buy_and_buys_only_on_the_dip`, `a_dip_watch_ends_after_its_time_
+  without_a_trade`, `without_dip_drop_the_copy_buys_at_once_as_before`.
 - **Route:** PumpSwap's `multi_hop_swap` (16 accounts + 5 a hop), byte-equal to wallet 4's own (`tests/multihop_fixtures.rs`).
   Its own route is copied when it starts from wrapped SOL or a float we hold (WBTC); a direct curve buy goes behind its
   quote's canonical pool against wSOL or WBTC. Wrapped SOL is wrapped and unwrapped inside the transaction. At most 2
