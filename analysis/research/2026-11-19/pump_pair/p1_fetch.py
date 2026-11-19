@@ -1,0 +1,33 @@
+# One trader, two wallets (Nov 19; m12_clusters: 8zqsUMty + FDhoU1DE buy the same coins within 1 slot; on the 4 days
+# their copy +19.6% a copy and up on the blind days). Their OWN pump trades over the last DAYS days, from Solana's free
+# public node (about 1 transaction a second; resumable: signatures and decoded trades are cached in SP/pair/).
+#   RPC_URL=https://api.mainnet-beta.solana.com python3 -I p1_fetch.py SP DAYS
+import sys, os, json, time
+SP, DAYS = sys.argv[1], float(sys.argv[2]); O = f"{SP}/pair"; os.makedirs(O, exist_ok=True)
+src = open("/home/user/copy2/analysis/research/2026-11-17/winners/w4_history.py").read().split("def history")[0]
+ns = {"__file__": "w4_history.py"}; sys.argv = ["x", SP]; exec(compile(src, "w4_history.py", "exec"), ns)
+WALLETS = ["8zqsUMtyZUyX6W5MXs4WumXnnGa5sUuHQhqXRB9d8mMc", "FDhoU1DEGR2ts3Dza2srrFahYtzPXUeCNTK615BwVWTM"]
+since = time.time() - DAYS * 86400
+for w in WALLETS:
+    fs = f"{O}/{w[:8]}_sigs.json"
+    if os.path.exists(fs): sigs = json.load(open(fs))
+    else:
+        sigs, before = [], None
+        while True:
+            pg = ns["call"]("getSignaturesForAddress", [w, {"limit": 1000, **({"before": before} if before else {})}])
+            if not pg: break
+            sigs += [[s["signature"], s.get("blockTime") or 0] for s in pg if s["err"] is None]; before = pg[-1]["signature"]
+            if len(pg) < 1000 or (pg[-1].get("blockTime") or 0) < since: break
+        sigs = [s for s in sigs if s[1] >= since]; json.dump(sigs, open(fs, "w"))
+    ft = f"{O}/{w[:8]}_trades.jsonl"; done = set()
+    if os.path.exists(ft):
+        for l in open(ft): done.add(json.loads(l)["sig"])
+    print(f"{w[:8]}: {len(sigs)} transactions in {DAYS:g} days, {len(done)} already read", flush=True)
+    with open(ft, "a") as f:
+        for i, (s, bt) in enumerate(sigs):
+            if s in done: continue
+            tx = ns["call"]("getTransaction", [s, {"maxSupportedTransactionVersion": 0, "encoding": "json"}])
+            f.write(json.dumps({"sig": s, "t": bt, "trades": ns["own_trades"](tx, w) if tx else None}) + "\n"); f.flush()
+            if i % 100 == 0: print(f"   {w[:8]} {i}/{len(sigs)}", flush=True)
+            time.sleep(0.3)
+print("done")
