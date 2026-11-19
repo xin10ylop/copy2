@@ -1,0 +1,13 @@
+262 copies; our entry against its price: median 1.03x, 75% 1.07x, 90% 1.12x
+
+THE CEILING (sold at the best moment, hindsight): +68.68 SOL (+52.4% a copy); halves +33.45 / +35.23
+   had we bought at ITS price: ceiling +77.27 SOL (+59.0%)
+best single grid exit with hindsight: ours -4.73 SOL (-3.6%); at ITS price the best exit -0.79 (-0.6%)
+
+premium limit (skip copies landing above it): copies, best exit picked on half 1 -> half 2, picked on half 2 -> half 1, ceiling a copy
+   1.05x: 170 copies | -4.17 -> -2.67 | -2.34 -> -4.83 | ceiling +42.2%
+    1.1x: 226 copies | -3.31 -> -2.41 | -1.85 -> -4.88 | ceiling +50.9%
+    1.2x: 258 copies | -2.77 -> -2.98 | -1.58 -> -5.16 | ceiling +52.8%
+    1.3x: 261 copies | -2.96 -> -2.91 | -1.75 -> -5.30 | ceiling +52.7%
+    1.5x: 261 copies | -2.96 -> -2.91 | -1.75 -> -5.30 | ceiling +52.7%
+     99x: 262 copies | -2.99 -> -2.91 | -1.75 -> -5.35 | ceiling +52.4%

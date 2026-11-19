@@ -1,0 +1,10 @@
+262 copies; the pair's sales after its buy, a coin: median 2, 90% 8
+MIRROR its sales, ours landing 1 block(s) after each: -9.15 SOL (-7.0% a copy), halves -3.45 / -5.70, w/o 2% -13.84, won 53
+      SOL coins: 131 copies -5.05 (-7.7%), halves -1.85 / -3.20
+      token coins: 131 copies -4.10 (-6.3%), halves -1.61 / -2.49
+MIRROR its sales, ours landing 2 block(s) after each: -8.82 SOL (-6.7% a copy), halves -3.30 / -5.52, w/o 2% -13.49, won 55
+      SOL coins: 131 copies -4.82 (-7.4%), halves -1.78 / -3.04
+      token coins: 131 copies -3.99 (-6.1%), halves -1.52 / -2.48
+MIRROR its sales, ours landing 3 block(s) after each: -8.58 SOL (-6.5% a copy), halves -3.37 / -5.21, w/o 2% -13.25, won 56
+      SOL coins: 131 copies -4.59 (-7.0%), halves -1.85 / -2.74
+      token coins: 131 copies -3.98 (-6.1%), halves -1.51 / -2.47

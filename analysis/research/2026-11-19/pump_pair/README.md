@@ -18,3 +18,11 @@ Nov 14-18 our copy +19.6% a copy (30 copies), up on the blind days.
   SOL), picked on Nov 10-14 and scored on Nov 15-19 and the reverse: **0 exits positive on both halves and without the
   best 2%, under every filter.** Even the best exit in hindsight loses on both halves (all coins: −2.99 / −2.91 SOL). Not a
   wallet to copy.
+- **`p5_where.py` (`out/p5_where.txt`), where the money goes:** our entry is a median 1.03x its price (90%: 1.12x), so
+  landing late is not the problem. The CEILING (each copy sold at its best moment, hindsight) is +68.68 SOL (+52.4% a
+  copy, both halves), but the best fixed exit is −4.73 SOL, and −0.79 even at its own price. Premium limits 1.05-1.5x:
+  no exit positive on the other half.
+- **`p6_mirror.py` / `p6b_before.py`: mirroring its sales** (selling the fraction of our tokens it sells, 1-3 blocks
+  after each of its sales; a median 2 sales a coin, 90% 8): −8.58 to −9.15 SOL (−6.5% to −7.0% a copy), both halves
+  negative. Even selling just BEFORE each of its sales (impossible live) −4.01 SOL (−3.1%): at 0.0345 SOL a round trip
+  (6.9% of a 0.5 SOL copy) nothing of its timing is left for a follower. Not a wallet to copy, by any exit.
