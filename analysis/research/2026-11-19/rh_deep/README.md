@@ -181,3 +181,20 @@ the take profit changed. At 1.3x, landing 2/3/5 blocks:
 Worse for every wallet, on both halves and without the best 2%; the lower the take profit, the worse, down to 1.1x (a
 hit then pays about 0: our buy is 1.1-1.2x its price plus the tax). A low take profit caps the winners that pay for the
 losers and does nothing to the losers. At 8/12/15 blocks the same order holds.
+
+## rhd21: a stop loss (Nov 19; "what about a stop loss?")
+
+`rhd21_stop_loss.py` (`out/rhd21_stop_loss.txt`, landing 2/3/5; `out/rhd21_stop_loss_land8_12_15.txt`). Each wallet's
+setting now plus a stop on what our coin would sell for (10-60% below what we paid, from the start or after 30/60 s).
+Tight stops lose: at −20%, wallet 1 +13.9% → +10.3% a copy, wallet 2 +8.1% → +7.3%, the group +18.9% → +15.2% (coins
+that fall 20-30% often come back before the time exit). A −40% stop is a hair better for wallets 1-3 on both halves
+(+0.1 to +0.6 points a copy) and nothing for the group: too small to matter, and today's live losses (−20% to −35%)
+would not have reached it.
+
+## rhd14c: today with the settings now (Nov 19, data to ~14:35 UTC)
+
+`rhd14c_today_now.py` (`out/rhd14c_today_now.txt`): the model on the 27 coins the bot bought and closed today
+(attributing each to either of the wallets that bought it) −2.5 to −3.6 stakes (−0.051 to −0.073 ETH), live −4.6
+stakes (−0.092). Today is a losing day in the model too; rhd17's worst model day for the four together was Oct 31,
+−0.078 ETH. The rest of the gap: the morning's bugs (fixed), and coins both wallets 2 and 3 bought, sold on wallet 3's
+45 s (0x6869cba8: wallet 2's 900 s +54.7% in the model, live −20.1%).

@@ -1,0 +1,48 @@
+UTC      who  coin          model     live  note
+00:43:59 w1   0x9b61ceca  +156.9%       -  coin type
+00:43:59 w3   0x9b61ceca  +236.7%       -  not bought
+01:58:17 w1   0x5b0e4f50    +9.6%    +5.3%  bought
+05:22:01 w3   0xadd10db6   +12.7%    -2.3%  bought
+06:53:24 w1   0x69bae698   -22.3%   -25.4%  bought
+08:07:22 w2   0x3a227ce5    -9.2%   -24.6%  bought
+08:07:22 w3   0x3a227ce5   -16.5%   -24.6%  bought
+08:11:42 w2   0x11efe1a6   -19.2%   -13.3%  bought
+08:19:27 grp  0xc94396ce   -12.1%       -  coin type
+08:28:05 w3   0x4196e3bb   -16.2%   -23.4%  bought
+09:00:40 w1   0xb09c7168    -7.6%       -  not bought
+09:00:40 w2   0xb09c7168    -3.6%       -  not bought
+09:13:42 grp  0x232e5365   +71.2%       -  not bought
+09:30:12 w2   0xc6664449  +101.2%   +83.5%  bought
+09:37:03 w2   0x2ff7d4b7   -22.9%   -25.7%  bought
+09:39:54 w2   0x69453a1c   -23.7%   -15.2%  bought
+10:12:51 w1   0xc983a044   -39.1%   -36.7%  bought
+10:12:51 w2   0xc983a044   -39.2%   -36.7%  bought
+10:31:07 w2   0x4ff3da98   -19.2%   -22.3%  bought
+10:47:49 w1   0xca5c7f4b   -16.3%   -15.9%  bought
+10:57:23 w2   0x7bf345a4   -38.8%   -39.4%  bought
+11:25:21 w1   0xfc961f3d   -13.4%   -26.8%  bought
+11:50:32 w2   0x3a50027d   -20.7%   -24.4%  bought
+12:07:03 w1   0x2e09b083   +14.7%       -  not bought
+12:07:03 w3   0x2e09b083   +10.6%       -  not bought
+12:11:12 w2   0x5d8ecbd1    +7.5%    +4.5%  bought
+12:18:36 w1   0xc43528a2   -18.8%   -29.3%  bought
+12:18:36 w2   0xc43528a2   -18.5%   -29.3%  bought
+12:48:28 w2   0x6e26aa54   -51.9%   -54.5%  bought
+13:01:13 w2   0xc8ad74ae   +15.8%   +26.4%  bought
+13:01:43 w3   0x69310cf2    +5.8%   -11.0%  bought
+13:01:44 w2   0x69310cf2   -31.2%   -11.0%  bought
+13:11:30 w2   0x2ca53707   -22.3%   -31.5%  bought
+13:35:50 w1   0xb1369565   -33.8%       -  not bought
+13:44:42 w2   0x870b8cc6   -20.2%   -20.7%  bought
+13:49:57 w2   0x6869cba8   +54.7%   -20.1%  bought
+13:49:57 w3   0x6869cba8   +10.5%   -20.1%  bought
+13:52:09 w2   0x0977cde4   -14.9%   -35.5%  bought
+13:52:09 w3   0x0977cde4   -22.7%   -35.5%  bought
+13:53:37 w2   0xf3b8192a   -31.1%   -29.8%  bought
+14:00:13 w3   0x37c90965   -24.7%   -22.6%  bought
+14:00:13 w2   0x37c90965   -12.1%   -22.6%  bought
+14:11:37 w2   0x28899015   -16.0%       -  not bought
+14:15:06 w2   0x6134f5f3   -25.7%       -  not bought
+14:18:21 w2   0xbd3e2760   -29.1%   -28.5%  bought
+
+model copies today (after its filters): 43, model -0.0300 ETH; bought by the bot and closed: 34, model -0.0793 live -0.1278; not bought: 9, model +0.0493
