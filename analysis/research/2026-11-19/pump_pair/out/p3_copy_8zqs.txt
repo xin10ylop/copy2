@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "/home/user/copy2/analysis/research/2026-11-19/pump_pair/p3_copy.py", line 21, in <module>
-    m5 = open(os.path.join(here, "m5_confirm.py")).read().split("def S(v):")[0]; sys.argv = ["x", SP, WL]; exec(m5)
-         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: '/home/user/copy2/analysis/research/2026-11-19/pump_pair/m5_confirm.py'
