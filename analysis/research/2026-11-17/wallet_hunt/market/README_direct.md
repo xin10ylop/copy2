@@ -273,3 +273,17 @@ all but one day with big winners on 2+ days: 33, most on 2-3 active days and 8-3
 3-4: 20 wallets, −13.69 SOL on 538 copies (−5.1% a copy; every wallet −14.0%), 3 of 20 up (TAB16RxX +3.46, wallet 4
 +1.63, FDhoU1DE +0.81).** Two good days do not predict the next two. FDhoU1DE (27 copies, +23.4%, up 3 of 4 days) is the
 one left to check on a longer history.
+
+## The winners themselves against our copy of them (Nov 19; the owner: "of course there are wallets that every day have a big winner that covers all the losses")
+
+`m7_own_vs_copy.py` (`../out/m7_own_vs_copy.txt`): each wallet's OWN result on the same 4 days (its sales minus its
+buys, tokens left at the last curve price). Together the 4,886 wallets made **+3,779 SOL themselves; our copy of them
+−4,737 SOL**. **16 wallets were themselves up on every active day (3+) with a big winner (+100% on a coin) every day:
++503 SOL themselves, our copy −130 SOL (−7.6% a copy)**; e.g. 8YcbyX92 +112.5 SOL itself, our copy −1.43. Blind (39
+wallets chosen on their own days 1-2): on days 3-4, 29 of 35 were themselves up again (+327 SOL), our copy −122 SOL
+(−8.7% a copy). Their edge is real and lasting; it is not copyable. Who they are: 3 buy in the create block of 2-3
+creators' coins (insiders); the others never buy at the launch and sell fast.
+
+`m8_follow_sale.py` (`../out/m8_follow_sale.txt`): the same copies selling when THEY sell (else 600 s / tp 4): the 16
+together −111 SOL (−6.5% a copy), only wallet 4 (+3.9%), TAB16RxX (+2.1%) and four wallets of 4-5 copies above zero;
+blind −98 SOL (−7.0% a copy), 7 of 35 up. Wallet 4 remains the only wallet whose edge survives the copy.

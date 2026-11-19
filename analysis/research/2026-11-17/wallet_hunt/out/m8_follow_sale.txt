@@ -1,0 +1,21 @@
+== m7's 16 (themselves up every day): our copy, SELLING WHEN THEY SELL ==
+   wallet        copies  net SOL  a copy  first 2 days / last 2 days
+   8YcbyX92UHTU      45    -1.58   -7.0%   -0.56 / -1.01
+   H9kuqGKNYgPF     224    +4.37   +3.9%   +0.94 / +3.43
+   ARu4n5mFdZog     164    -8.27  -10.1%   -4.98 / -3.29
+   AEdnzgqMSSR8    1276   -47.35   -7.4%   -19.23 / -28.12
+   TAB16RxXmazW     161    +1.73   +2.1%   +1.66 / +0.07
+   HLU8QbLdvHDS     641   -29.55   -9.2%   -12.84 / -16.71
+   BddzswyZNG5H      40    -1.49   -7.5%   -0.58 / -0.92
+   5fMFE7rb8wSg      40    -1.21   -6.0%   -0.09 / -1.12
+   AmNkdH7iX5ZF       4    +0.22  +11.2%   +0.29 / -0.06
+   HryU8vPBVcmw     174    -2.32   -2.7%   -2.61 / +0.28
+   BodzhZVG125i       4    +0.29  +14.3%   +0.35 / -0.06
+   8FoG67wza3w4       4    -0.13   -6.5%   -0.06 / -0.06
+   4pkm1cA7bXkL       4    -0.13   -6.5%   -0.06 / -0.06
+   FZU56d9iPqoh      95    -2.21   -4.7%   -0.72 / -1.49
+   9dVSVwrUJfnF     547   -24.46   -8.9%   -10.61 / -13.86
+   CWJSBe7SemKo       5    +0.89  +35.6%   +0.26 / +0.63
+   together: -111.19 SOL on 3428 copies (-6.5% a copy)
+
+== BLIND (39 wallets chosen on their own days 1-2), our copy selling when they sell, days 3-4: -98.05 SOL on 2811 copies (-7.0% a copy); wallets up: 7 of 35
