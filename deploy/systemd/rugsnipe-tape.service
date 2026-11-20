@@ -1,0 +1,44 @@
+# rugsnipe-tape -- the pump.fun tape (Nov 20): every pump trade and create from the Triton logs stream, one JSON line an
+# event, hourly files gzipped once closed, kept 14 days (analysis/research/2026-11-19/tape/t1_record.py). For the wallet
+# search: wallet 4 was found on tapes like this one. ~65 GB a day of stream at Triton (~$5), ~1 GB a day on disk.
+# Low priority beside the live bot (Nice, CPU and IO weights). The URL is the api-keys file's RPC_URL line, loaded as a
+# credential, never printed. Enable: sudo systemctl enable --now rugsnipe-tape; journal: a stats line every minute.
+[Unit]
+Description=rugsnipe pump.fun tape recorder (wallet search data)
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=20
+
+[Service]
+Type=simple
+User=rugsnipe
+Group=rugsnipe
+StateDirectory=rugsnipe-tape
+StateDirectoryMode=0750
+WorkingDirectory=/var/lib/rugsnipe-tape
+ExecStart=/opt/rugsnipe/venv/bin/python -I /opt/rugsnipe/src/analysis/research/2026-11-19/tape/t1_record.py /var/lib/rugsnipe-tape
+Environment=TAPE_KEEP_DAYS=14
+Restart=always
+RestartSec=5
+Nice=10
+CPUWeight=20
+IOWeight=20
+MemoryMax=1G
+LoadCredential=api-keys:/etc/rugsnipe/keys/api-keys.toml
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+SystemCallArchitectures=native
+ReadWritePaths=/var/lib/rugsnipe-tape
+
+[Install]
+WantedBy=multi-user.target

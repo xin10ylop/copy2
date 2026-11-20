@@ -8,12 +8,33 @@
 # closed hours); reconnects by itself, also after 60 s without a message; a
 # stats line every minute (transactions, events, truncated logs, failed transactions skipped).
 #   RPC_URL=<triton https url> python3 -I t1_record.py OUT
-import sys, os, json, gzip, time, base64, asyncio
+# On the Frankfurt box (Nov 20): the unit rugsnipe-tape (deploy/systemd/rugsnipe-tape.service) runs it with the URL from
+# the box's api-keys file (its RPC_URL line, loaded as a systemd credential; never printed), gzips each closed hour and
+# deletes tapes older than TAPE_KEEP_DAYS (default 14).
+import sys, os, re, json, gzip, time, base64, asyncio, subprocess, glob
 import websockets
-sys.path.insert(0, "/home/user/copy2/analysis/research/2026-11-13/tab_exits"); import lib
-sys.path.insert(0, "/home/user/rugsnipe/analysis"); from rugsnipe_analysis import events as E
+REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../.."))
 OUT = sys.argv[1]; os.makedirs(OUT, exist_ok=True); PUMP = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"
+def rpc_url():
+    if os.environ.get("RPC_URL"): return os.environ["RPC_URL"]
+    d = os.environ.get("CREDENTIALS_DIRECTORY")   # the unit: the api-keys file's NAME = "value" lines
+    name = os.environ.get("TAPE_CRED", "RPC_URL")
+    if d and os.path.exists(f"{d}/api-keys"):
+        for l in open(f"{d}/api-keys"):
+            m = re.match(r'\s*' + re.escape(name) + r'\s*=\s*"([^"]+)"', l)
+            if m: return m.group(1)
+    sys.exit(f"no RPC_URL (env, or a {name} line in the api-keys credential)")
+os.environ["RPC_URL"] = rpc_url()   # in this process only: lib reads it on import
 WS = "wss://" + os.environ["RPC_URL"].split("://", 1)[1]
+sys.path.insert(0, f"{REPO}/analysis/research/2026-11-13/tab_exits"); import lib
+sys.path.insert(0, f"{REPO}/analysis"); from rugsnipe_analysis import events as E
+KEEP = float(os.environ.get("TAPE_KEEP_DAYS", 14))
+def closed_hours():   # gzip the hours no run writes any more; delete what is older than KEEP days
+    now = time.strftime("%Y%m%d%H", time.gmtime())
+    for f in glob.glob(f"{OUT}/tape_*.jsonl"):
+        if os.path.basename(f).split("_")[1] < now: subprocess.Popen(["gzip", "-q", f])
+    for f in glob.glob(f"{OUT}/tape_*.jsonl.gz"):
+        if time.time() - os.path.getmtime(f) > KEEP * 86400: os.remove(f)
 KT = ("mint", "user", "is_buy", "sol", "tok", "vsol", "vtok", "rsol", "rtok", "fee_bps", "fee", "creator_fee", "quote_mint", "quote_amount", "vquote", "ts")
 KC = ("mint", "creator", "user", "quote_mint", "ts", "symbol")
 st = dict(tx=0, ev=0, trunc=0, failed=0, n=0); fh = [None, None]
@@ -23,6 +44,7 @@ def out(row):   # plain hourly files, one per run (a restart never writes into a
     if fh[0] != h:
         if fh[1]: fh[1].close()
         fh[0], fh[1] = h, open(f"{OUT}/tape_{h}_{PID}.jsonl", "a", buffering=1 << 16)
+        closed_hours()
     fh[1].write(json.dumps(row, separators=(",", ":")) + "\n")
 async def run():
     async with websockets.connect(WS, max_size=None, open_timeout=20, ping_interval=20, ping_timeout=30) as ws:
