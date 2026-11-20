@@ -40,7 +40,9 @@ Wallet 4's strategies:
   leg 1 alone beats the 0.5 + 0.5 split; it was 0.75 before the split). **Floats since Nov 20 ~01:20 UTC: WBTC, PUMP, SPCX,
   TTWO, DJT, HYPE** (AAPLx and USDC sold and removed), each kept at 1.15 SOL by the box's `rugsnipe-float-level` timer
   (every 5 min, sizes in `/etc/rugsnipe/float-levels`: **change that file whenever the floats change**, or the timer
-  buys a removed float back, as it did with AAPLx at 01:12:38 UTC). If leg 2 works, it moves to its own unit.
+  buys a removed float back, as it did with AAPLx at 01:12:38 UTC). **Since Nov 20 13:23 UTC leg 2 is off** (`dip_drop = 0`, the
+  owner will fund its own wallet; floats and the timer's file back to 1.0 SOL). **Since Nov 20 13:32 UTC the unit
+  `rugsnipe-tape` records the pump.fun tape on the box** (`/var/lib/rugsnipe-tape`, 14 days) for the wallet search.
 - **Strategy D, the launch copy:** the hot copy bot `crates/rugsnipe`, with a `copy_more` entry. It is stopped.
 
 Read `README.md` (status, A-Z index), then `02-decomposition/` (why A and not the rest), then the strategy folder you work
