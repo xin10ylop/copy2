@@ -55,3 +55,15 @@ it +3.10 / +35.91 / +4.04 / +18.81 / +2.94. Without sell pressure (its early sal
   +1.3); its sale "always" the worst in A (+22.8 against +27.4 early) and the best only in B (+5.0 against +3.5); sell
   pressure 5/60 among the better in A (+27.8, off +25.7), about neutral in B (+3.7, off +3.3); stall and timer flat; the
   price limit 1.5x-none the same; its buy 1.3+ the most SOL.
+
+## Copying more of wallet 4 (Nov 20, partial: the fetch still running; `e3_more.py`, `out/e3_more_partial.txt`)
+
+The owner: "if he is profitable on that, why don't we copy him on more?" Since the freeze, wallet 4 opened 3,422 coins;
+the bot copies its token-coin buys of 1.3+ SOL. The other kinds, our copy at 1 SOL (the coins fetched so far):
+
+| kind | copies | live exit | its sale always, no sp |
+|---|---|---|---|
+| token 1.3+ (copied now) | 146 | +3.7% a copy (w/o 2% -1.1%) | +6.1% (+1.3%) |
+| SOL coins 1.3+ | 52 of 118 | +3.8% (w/o 2% -5.4%; halves -10.3% / +18.0%) | +12.9% (+3.9%; -2.2% / +27.9%) |
+| SOL coins 0.5-1.3 | 96 of a 150 sample | +0.5% (-7.1%) | -5.6% (-13.3%) |
+| token 0.5-1.3 | 59 of a 150 sample | -3.2% (-7.9%), both halves down | -7.5% (-9.0%) |
