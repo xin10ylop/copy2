@@ -827,15 +827,17 @@ fn status(args: &[String]) -> Result<(), String> {
     let open: Vec<_> = book.positions.iter().filter(|p| p.live()).collect();
     if !open.is_empty() {
         println!("   open now:");
+        // the leg column only while the unit runs the split
+        let lg = |x: &str| if split { format!("{x:3}  ") } else { String::new() };
         println!(
-            "     {:>4}  {:3}  {:5}  {:8}  {:8}  {:>7}  {:11}  {:8}  {:>6}  {:>6}  {:>6}",
-            "#", "leg", "side", "bought", "coin", "its SOL", "route", "state", "price", "peak", "held"
+            "     {:>4}  {}{:5}  {:8}  {:8}  {:>7}  {:11}  {:8}  {:>6}  {:>6}  {:>6}",
+            "#", lg("leg"), "side", "bought", "coin", "its SOL", "route", "state", "price", "peak", "held"
         );
         for p in open {
             println!(
-                "     {:>4}  {:3}  {:5}  {:8}  {:8}  {:>7.3}  {:11}  {:8}  {:>5.2}x  {:>5.2}x  {:>5}s",
+                "     {:>4}  {}{:5}  {:8}  {:8}  {:>7.3}  {:11}  {:8}  {:>5.2}x  {:>5.2}x  {:>5}s",
                 p.id,
-                if p.is_dip() { "2" } else { "1" },
+                lg(if p.is_dip() { "2" } else { "1" }),
                 if p.paper { "paper" } else { "REAL" },
                 hhmm(p.seen_ms, off),
                 &p.mint[..8],
@@ -910,7 +912,7 @@ fn status(args: &[String]) -> Result<(), String> {
             }
             (t.spent > 0).then_some(t)
         };
-        if split || closed.iter().any(|p| p.is_dip()) {
+        if split {
             // one row per buy of its: leg 1 (the copy) and leg 2 (the dip) side by side, each on its own stake
             let mut rows: Vec<(u64, String)> = vec![];
             for p in &closed {
@@ -981,7 +983,7 @@ fn status(args: &[String]) -> Result<(), String> {
                 }
             }
         } else {
-        println!("   last {} closed, newest first:", last.min(closed.len()));
+        println!("   last {} closed, newest first:", last.min(closed.iter().filter(|p| !p.is_dip()).count()));
         println!(
             "     {:>4}  {:5}  {:8}  {:8}  {:>7}  {:11}  {:11}  {:>6}  {:>6}  {:>8}  {:>7}  {:>9}  {:>8}  {:>8}",
             "#",
@@ -999,7 +1001,8 @@ fn status(args: &[String]) -> Result<(), String> {
             "its pct",
             "it sold"
         );
-        for p in closed.iter().take(last) {
+        // the split's dip legs (Nov 19-20) are not rows of this table; their SOL stays in the totals below
+        for p in closed.iter().filter(|p| !p.is_dip()).take(last) {
             let its = if chain_rpc.is_some() { its_of(p) } else { None };
             println!(
                 "     {:>4}  {:5}  {:8}  {:8}  {:>7.3}  {:11}  {:11}  {:>5.2}x  {:>5}s  {:>+8.4}  {:>+6.1}%  {:>9}  {:>8}  {:>8}",
@@ -1045,6 +1048,14 @@ fn status(args: &[String]) -> Result<(), String> {
             .filter(|p| p.paper)
             .map(|p| p.net_lamports)
             .sum();
+        let dips: Vec<_> = closed.iter().filter(|p| !p.paper && p.is_dip()).collect();
+        if !split && !dips.is_empty() {
+            println!(
+                "   the split's dip legs (in the totals, not the table): {} closed, {:+.4} SOL",
+                dips.len(),
+                dips.iter().map(|p| p.net_lamports).sum::<i64>() as f64 / 1e9
+            );
+        }
         println!(
             "   all closed: real {} ({:+.4} SOL{}), paper {} ({:+.4} SOL)",
             closed.iter().filter(|p| !p.paper).count(),
