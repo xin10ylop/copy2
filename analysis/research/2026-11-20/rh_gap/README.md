@@ -20,3 +20,12 @@ wallet; wallet 2 until 17:00 UTC Nov 19) against every buy of our wallet on chai
   +202.2%, 0x2a624ed0 wallet 3 +535.5%, and four losers); the restart at 15:23:55 UTC ran with `daily stop 0`. The two
   wallet 2 copies at 16:27-16:29 UTC were not missed: wallet 2 was off from the 16:16 UTC restart (its buys then fall
   under `min_its_eth`, not journaled); the script's 17:00 cut was too late.
+
+**Where wallet 3's landing time goes** (the box's journal, Nov 20; `g2_crowd.py`, `out/g2_crowd.txt`):
+- the feed is not late: `signal 0xc54d3914 buy at block 119137137: the node was at 119137137 when it arrived (+0 blocks)`;
+  every signal since Nov 20 morning +0 or +1 block (one +12, one +3, both wallet 2);
+- our buy is sent at once (#47: 97 ms, #40: 112 ms) and then waits to be included: #47 landed 11 blocks after its buy
+  (the chain makes ~10 blocks a second: 119137137 at 14:58:00, 119168875 at 15:50:55 UTC), #40 21;
+- not a crowd on the coin: 3 other trades between its buy and ours on #47, 1 on #37, 8 on #40; the 12 copies of the
+  other wallets since Nov 19 14:17 UTC landed 1-3 blocks behind with up to 9 trades between.
+The chain is Arbitrum Orbit (Nitro): the sequencer takes transactions first come, first served; a higher fee buys no place.
