@@ -74,3 +74,11 @@ for d in sorted({dt.datetime.fromtimestamp(p["t"], dt.UTC).strftime("%m-%d") for
 d = L - N0; fired = np.abs(d) > 1e-9
 print(f"\nsell pressure changed the exit on {int(fired.sum())} of {len(ps)} copies: {d[fired].sum():+.2f} SOL "
       f"(helped {int((d > 1e-9).sum())}: {d[d > 1e-9].sum():+.2f}, hurt {int((d < -1e-9).sum())}: {d[d < -1e-9].sum():+.2f})")
+# the leader against live, day by day and by thirds
+A = res["its sale always, no sp"]
+print("\nby UTC day: live | its sale always, no sp")
+for d in sorted({dt.datetime.fromtimestamp(p["t"], dt.UTC).strftime("%m-%d") for p in ps}):
+    ix = [i for i, p in enumerate(ps) if dt.datetime.fromtimestamp(p["t"], dt.UTC).strftime("%m-%d") == d]
+    print(f"  {d}: {L[ix].sum():+6.2f} | {A[ix].sum():+6.2f} ({len(ix)})")
+t3 = np.array_split(np.arange(len(ps)), 3)
+print("thirds: " + "  ".join(f"{L[i].sum():+.2f} | {A[i].sum():+.2f}" for i in t3))
