@@ -83,7 +83,7 @@ def settle(now):
             w = ws.pop(idx)
         user, k, t0, _, rate, sol = w; tr = buf[m]
         r = model(tr, k, rate, user)
-        if r is not None: out.append((user, t0, sol, r))
+        if r is not None: out.append((user, t0, sol, r, m))
         if watches[m]:   # trim the coin's buffer to its oldest open watch
             cut = min(x[1] for x in watches[m])
             if cut > 0:
@@ -128,3 +128,30 @@ print(f"\nwallets up on both halves: {up} of {len(res)}")
 w4 = [r_ for r_ in res if r_[1] == W4]
 if w4: print("wallet 4:", w4[0][2:6], {e: round(v, 1) for e, v in w4[0][7].items()})
 else: print(f"wallet 4: {len(by.get(W4, []))} copies (under {MINN} or one half short)")
+# Chance: the same pick on pseudo-wallets (each real wallet's copy counts per half, drawn at random from all copies of
+# that half; 5 draws). As many pseudo-wallets "up on both halves" as real ones = nothing found.
+rng = np.random.default_rng(7)
+H1 = [x for x in out if x[1] < mid]; H2 = [x for x in out if x[1] >= mid]
+def vv(xs_, e): return np.mean([x[3][e] if x[3] != "refused" else -0.0004 for x in xs_]) / STAKE * 100
+null_up = []; null_top = []
+for _ in range(5):
+    up_ = 0; h2s = []
+    for _, u, n1, n2, *_r in res:
+        a = [H1[i] for i in rng.integers(0, len(H1), n1)]; b = [H2[i] for i in rng.integers(0, len(H2), n2)]
+        pick = max(EX, key=lambda e: vv(a, e)); h1v, h2v = vv(a, pick), vv(b, pick); h2s.append(h2v)
+        up_ += h1v > 0 and h2v > 0
+    null_up.append(up_); null_top.append(sorted(h2s)[-30])
+print(f"chance (pseudo-wallets of random copies, 5 draws): up on both halves {np.mean(null_up):.0f} (draws {null_up}); "
+      f"the 30th best half 2 {np.mean(null_top):+.1f}% (real: {res[29][0] if len(res) > 29 else float('nan'):+.1f}%)")
+# Linked wallets: among the top 60 of the list, pairs that bought the same coins (30%+ of the smaller one's coins): one
+# trader with several wallets is one candidate, and its wallets together give more copies
+coins_of = collections.defaultdict(set)
+for x in out: coins_of[x[0]].add(x[4])
+top = [r_[1] for r_ in res[:60]]; pairs = []
+for i, a in enumerate(top):
+    for b in top[i + 1:]:
+        sh = len(coins_of[a] & coins_of[b])
+        if sh and sh >= 0.3 * min(len(coins_of[a]), len(coins_of[b])): pairs.append((sh, a, b))
+print(f"linked pairs among the top 60 (same coins, 30%+): {len(pairs)}")
+for sh, a, b in sorted(pairs, reverse=True)[:15]:
+    print(f"  {a[:8]} + {b[:8]}: {sh} coins in common ({len(coins_of[a])} / {len(coins_of[b])})")

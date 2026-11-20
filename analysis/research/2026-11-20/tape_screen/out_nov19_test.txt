@@ -1,10 +1,10 @@
-tape: 4 files, 514,038 trades, 1795110307 to 1795119485 (2.5 h); 11,332 copies of first buys of 0.5+ SOL (618 refused over 1.5x)
+tape: 4 files, 514,038 trades, 1795110307 to 1795119485 (2.5 h); 11,333 copies of first buys of 0.5+ SOL (618 refused over 1.5x)
 every copy pooled (a random wallet), % a copy: w4 -11.2%  its -9.7%  tp2 -14.1%  held -13.0%  scalp -12.1%
 
 124 wallets with 8+ copies (4+ in each half); the exit picked on half 1, scored on half 2:
 wallet                                         n1   n2  exit  half 1  half 2 its SOL   all copies by exit
 Gw8Z8annpiU7ymqSrv49zjC832LQ4Ne1gxGS6qzt9Pg2    5    5  held  +44.0%  +99.8%    0.98   w4 +18% its -13% tp2 +14% held +72% scalp +7%
-6Weygqd9fBi3TnBkPwnDeUrGkTd83RCFPL7E6sc2EjSW    8    7  held   -1.1%  +43.0%    0.61   w4 -14% its -11% tp2 +1% held +19% scalp -2%
+6Weygqd9fBi3TnBkPwnDeUrGkTd83RCFPL7E6sc2EjSW    8    7  held   -1.1%  +43.0%    0.62   w4 -14% its -11% tp2 +1% held +19% scalp -2%
 66vDAQEe3HzE3qyKuZ1hmGGgwxmCtTrmHUuqahaceXj1    5    6   its  -27.7%  +41.6%    0.98   w4 +26% its +10% tp2 -7% held +48% scalp -13%
 DJqAoPyczmsidzMcFL5uYXbDaC7UY6qoebAYp37Jwce1    6    4    w4   +4.7%  +37.7%    1.21   w4 +18% its +10% tp2 -26% held +2% scalp -5%
 HNzLMbdXb2YPNzegjMmL223ACP2jwHYK3AnQZFzrddCu   18   10   its  -19.5%  +21.0%    0.60   w4 -15% its -5% tp2 -13% held -17% scalp -20%
@@ -30,9 +30,26 @@ AkuBCezWEdENKot1gxMurXBW6p3reW7RyXhkz2benSKf   15   12 scalp  -10.0%   -6.0%    
 4UPvSdt1ki7x4cwFuNxjhxPCnQ4AXnCSTKLxYV1vXK1t   11   12 scalp  -13.8%   -6.0%    1.17   w4 -6% its -10% tp2 -7% held -8% scalp -10%
 6EGJV7xvNh8cNpCi7kfpNmjyNRb3NDBdm7JcJHvu1tW8   11    6   its  -15.2%   -6.3%    1.00   w4 -29% its -12% tp2 -30% held -41% scalp -22%
 sssssDdMNAWKingjpEojkTNdVuZrBe7FsJLaGtexe7d    28   27   its  -14.6%   -6.6%    0.86   w4 -24% its -11% tp2 -21% held -29% scalp -21%
+Fhbh1DTUDKt6qu9zVg8Q5VgnZa1WWWbxBxG6pCoJoggA   21   12   its   -8.6%   -6.8%    2.86   w4 +3% its -8% tp2 +3% held +41% scalp -9%
 J1PzRcDWcFCvbWhhGJ2kMT7pcG9EW67bLveEpjFL5Jar    5    4   its  -11.1%   -7.1%    0.50   w4 -10% its -9% tp2 -13% held -16% scalp -4%
 A75rmp59VumYWPp3MPdBtVpiBFomkFZqjZyjUppNWgaz   18    9 scalp   -5.4%   -7.5%    0.62   w4 -20% its -10% tp2 -21% held -31% scalp -6%
-ABbi258TFMx6dRgTH4cFpAVSyJX7BWi7Myw4nu1uy7W2   12    9 scalp  -16.8%   -7.7%    0.57   w4 +4% its -12% tp2 -19% held -2% scalp -13%
 
 wallets up on both halves: 6 of 124
-wallet 4: (5, 10, 'tp2', np.float64(11.048983618723215)) {'w4': np.float64(-25.3), 'its': np.float64(-15.4), 'tp2': np.float64(-8.9), 'held': np.float64(-0.5), 'scalp': np.float64(13.1)}
+wallet 4: (5, 10, 'tp2', np.float64(11.048820344272592)) {'w4': np.float64(-25.3), 'its': np.float64(-15.4), 'tp2': np.float64(-8.9), 'held': np.float64(-0.5), 'scalp': np.float64(13.1)}
+chance (pseudo-wallets of random copies, 5 draws): up on both halves 13 (draws [np.int64(9), np.int64(14), np.int64(12), np.int64(17), np.int64(12)]); the 30th best half 2 +1.4% (real: -7.5%)
+linked pairs among the top 60 (same coins, 30%+): 190
+  sssssDdM + G3A4eyKy: 17 coins in common (55 / 32)
+  omegoMAe + sssssyv2: 17 coins in common (56 / 51)
+  sssssDdM + A75rmp59: 15 coins in common (55 / 27)
+  Fhbh1DTU + sssssyv2: 14 coins in common (33 / 51)
+  ABbi258T + sssssyv2: 14 coins in common (21 / 51)
+  sssssyv2 + DLtfajGn: 12 coins in common (51 / 24)
+  HLU8QbLd + sssssyv2: 12 coins in common (24 / 51)
+  ScrTpQ6T + sssssyv2: 11 coins in common (24 / 51)
+  HNzLMbdX + sssssyv2: 11 coins in common (28 / 51)
+  HNzLMbdX + omegoMAe: 10 coins in common (28 / 56)
+  G3A4eyKy + omegoMAe: 10 coins in common (32 / 56)
+  AkuBCezW + GdQz4w9u: 10 coins in common (27 / 24)
+  4Mxoq7sL + sssssyv2: 10 coins in common (22 / 51)
+  omegoMAe + GdQz4w9u: 9 coins in common (56 / 24)
+  HnLvH581 + sssssDdM: 9 coins in common (14 / 55)
