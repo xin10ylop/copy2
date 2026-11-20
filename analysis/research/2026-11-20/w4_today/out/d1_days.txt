@@ -1,0 +1,53 @@
+wallet 4, 1009 coins it opened from 11-18 22:55 to 11-20 20:17 UTC; SOL $68.30
+11-18 all                 :   50 coins,   30.30 SOL in; closed   48:   +0.70 SOL (-2.3% a coin, median -7.9%), won 14, first sale under 290 s 31 (65%); still holding 2
+11-18 copyable (1.3+ SOL) :    3 coins,    4.69 SOL in; closed    3:   +2.23 SOL (+49.2% a coin, median +69.4%), won 2, first sale under 290 s 2 (67%); still holding 0
+11-19 all                 :  583 coins,  394.10 SOL in; closed  576:  +55.20 SOL (+11.8% a coin, median -4.5%), won 236, first sale under 290 s 405 (70%); still holding 7
+11-19 copyable (1.3+ SOL) :   64 coins,  125.57 SOL in; closed   64:  +23.79 SOL (+18.9% a coin, median +0.4%), won 33, first sale under 290 s 51 (80%); still holding 0
+11-20 all                 :  376 coins,  240.63 SOL in; closed  368:  +34.40 SOL (+10.7% a coin, median -3.9%), won 163, first sale under 290 s 277 (75%); still holding 8
+11-20 copyable (1.3+ SOL) :   37 coins,   61.82 SOL in; closed   36:   +7.92 SOL (+14.2% a coin, median +0.7%), won 18, first sale under 290 s 32 (89%); still holding 1
+
+today's copyable coins, in order (its own result):
+  00:07:03 6YvXJSAi TTWofwAg first  1.31 in   1.31  first sale   216s    -36.4%  -0.477 SOL
+  00:13:08 BDoDwFQ1 11111111 first  1.35 in   1.35  first sale    34s     -6.4%  -0.086 SOL
+  00:14:29 C2Kzk7oD 11111111 first  1.44 in   1.44  first sale    56s    +18.4%  +0.266 SOL
+  00:39:58 8BkfSQHf XsbEhLAt first  1.60 in   1.60  first sale   175s    +68.4%  +1.093 SOL
+  01:03:14 6RHA2MPf TTWofwAg first  1.31 in   1.31  first sale   242s     +6.2%  +0.081 SOL
+  01:08:00 8iptyBNJ TTWofwAg first  2.20 in   2.20  first sale    15s     -2.4%  -0.052 SOL
+  01:19:20 Hx7UVfe4 zK42Ztz6 first  1.44 in   1.44  first sale    77s   +211.5%  +3.041 SOL
+  01:50:47 8R22WPrg 11111111 first  1.31 in   1.31  first sale     5s    -27.0%  -0.354 SOL
+  02:54:39 CQy4xjUG 11111111 first  1.87 in   1.87  first sale   178s    +92.6%  +1.733 SOL
+  03:23:07 AQa1EAzs 11111111 first  1.34 in   1.34  first sale   179s     -3.8%  -0.050 SOL
+  03:39:51 8FaVTdzW 11111111 first  1.42 in   1.42  first sale   144s   +102.4%  +1.454 SOL
+  04:50:18 B8TnGgQV TTWofwAg first  1.42 in   1.42  first sale   181s    -12.7%  -0.180 SOL
+  05:45:39 13DNU5CL 11111111 first  1.39 in   1.39  first sale    68s    +89.8%  +1.244 SOL
+  05:45:48 31i9uRd9 11111111 first  2.02 in   2.02  first sale     9s    +39.6%  +0.799 SOL
+  05:48:28 5kpHB8xo 11111111 first  2.05 in   2.05  first sale   195s    +20.3%  +0.417 SOL
+  06:33:48 5fgefrVH TTWofwAg first  1.81 in   1.81  first sale   210s    -23.3%  -0.423 SOL
+  07:21:42 2QuNNGCE 11111111 first  1.63 in   1.63  first sale   136s    +83.8%  +1.364 SOL
+  07:55:06 7nMwW1th TTWofwAg first  1.83 in   1.83  first sale   181s    -13.8%  -0.252 SOL
+  08:42:42 J9ksvzPd 11111111 first  1.70 in   1.70  first sale   120s    -28.8%  -0.488 SOL
+  08:43:01 CmSGTUZa 11111111 first  2.02 in   2.02  first sale   170s    -21.6%  -0.436 SOL
+  10:12:38 AxDM95G8 7vfCXTUX first  1.51 in   1.51  first sale   300s    -24.1%  -0.365 SOL
+  11:00:28 pumpMU4m 11111111 first  1.73 in   1.73  first sale    60s    -14.4%  -0.249 SOL
+  11:57:03 FkR3WsL7 CUg7AzWL first  1.41 in   1.41  first sale   303s    -11.6%  -0.163 SOL
+  12:27:43 GofT5195 11111111 first  1.41 in   1.41  first sale    71s    +35.2%  +0.495 SOL
+  13:32:34 DGcVaPsr XsDoVfqe first  1.46 in   1.46  first sale   240s     -0.2%  -0.003 SOL
+  13:35:44 cahvg73i SQQQAa3g first  1.59 in   1.59  first sale   304s    +59.0%  +0.937 SOL
+  14:19:15 7uwiKbA3 11111111 first  1.45 in   1.45  first sale     9s    -24.2%  -0.349 SOL
+  14:41:59 DfZVWEvJ 11111111 first  1.47 in   1.47  first sale   180s     +4.7%  +0.070 SOL
+  15:00:05 H98HeP7N iNTCy1qT first  1.77 in   1.77  first sale   303s    +11.1%  +0.197 SOL
+  15:35:50 DXPPCtzo 11111111 first  1.58 in   1.58  first sale   130s     +1.7%  +0.027 SOL
+  16:15:21 7nXUyxB4 11111111 first  1.55 in   1.55  first sale   147s    -39.7%  -0.614 SOL
+  16:56:17 6NrEzYqJ 11111111 first  1.80 in   1.80  first sale    63s    -68.3%  -1.232 SOL
+  17:12:07 8ugj3KW6 SQQQAa3g first  1.89 in   1.89  first sale   151s    +23.8%  +0.450 SOL
+  19:28:47 5B3nrRzM 11111111 first  2.43 in   2.43  first sale     2s     -8.0%  -0.195 SOL
+  19:31:34 8awTXHXt 11111111 first  2.96 in   2.96  first sale    18s     +6.4%  +0.188 SOL
+  19:33:20 GdqJ3D4B 11111111 first  1.72 in   1.72  first sale    27s     +1.8%  +0.031 SOL
+  19:56:58 4zE226Wf 11111111 first  1.64 in   1.64  first sale     -  holding
+
+by the coin's quote, copyable (1.3+ SOL), its own result:
+  11-18 SOL coins  :   3 closed,   +2.23 SOL (+49.2% a coin), won 2
+  11-19 SOL coins  :  21 closed,   -1.78 SOL (-4.1% a coin), won 9
+  11-19 token coins:  43 closed,  +25.57 SOL (+30.2% a coin), won 24
+  11-20 SOL coins  :  22 closed,   +4.03 SOL (+11.6% a coin), won 12
+  11-20 token coins:  14 closed,   +3.88 SOL (+18.3% a coin), won 6
