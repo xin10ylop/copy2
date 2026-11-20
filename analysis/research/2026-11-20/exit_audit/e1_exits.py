@@ -20,11 +20,11 @@ def prep(c):
     k = next((i for i, e in enumerate(tr) if e["user"] == W4 and e["buy"] and e["slot"] == c["slot"]), None)
     if k is None: return None
     p = H.prep(tr, k, c["rate"], "slot+1", pmax=1.5)
-    if p["refused"] or not len(p["px"]): return dict(refused=True, t=c["t"], m=c["m"])
+    if p["refused"] or not len(p["px"]): return dict(refused=True, t=c["t"], m=c["m"], sol=c["its_sol"])
     vt0, vq0, b0 = p["ent"]; Q = STAKE * 1e9 / c["rate"]; net_in = Q * 1e4 / (1e4 + b0); tok = vt0 - vt0 * vq0 / (vq0 + net_in)
     vq_r = p["vq"] + net_in; vt_r = p["vt"] * p["vq"] / vq_r
     p["val"] = (vq_r - vt_r * vq_r / (vt_r + tok)) * (1 - p["bps"] / 1e4) * c["rate"] / 1e9 - STAKE - 0.0026 - COST
-    p["prem"] = (tr[k]["vt"] / vt0) ** 2; p["t"] = c["t"]; p["m"] = c["m"]; p["refused"] = False
+    p["prem"] = (tr[k]["vt"] / vt0) ** 2; p["t"] = c["t"]; p["m"] = c["m"]; p["sol"] = c["its_sol"]; p["refused"] = False
     return p
 def exit_value(p, tp=4.0, hold=600, sp=(5, 60, 30), sp_below=False, stall=180, its="early"):
     if p["refused"]: return -0.0004

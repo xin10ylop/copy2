@@ -1,0 +1,50 @@
+1175 copies: 1029 Oct 21 - Nov 14 01:07, 146 Nov 15 19:56 - Nov 20 17:12 UTC; 1 SOL a copy
+1175 copies, 282,240 settings
+
+=== A: seen Oct 21 - Nov 4, unseen Nov 4 - Nov 20: 658 / 517 copies (all sizes 1.3+)
+LIVE (tp 4, 600 s, sp 5/60, stall 180, its early, limit 1.5x, 1.3+): seen +85.06 (w/o 2% +49.20) -> unseen +46.10 (w/o 2% +17.47)
+the 10 best on the seen part (w/o its best 2%), and how they did unseen (rank of 282,240 unseen, w/o 2%):
+  seen  +99.72 (w/o 2%  +62.22) -> unseen  +41.53 (w/o 2% +12.25, rank 58,676)  tp 4, 600 s, sp 5/120, stall off, its never, limit none, 1.3+
+  seen  +99.72 (w/o 2%  +62.22) -> unseen  +41.53 (w/o 2% +12.25, rank 58,675)  tp 4, 600 s, sp 5/120, stall off, its never, limit 1.5, 1.3+
+  seen  +99.72 (w/o 2%  +62.22) -> unseen  +41.53 (w/o 2% +12.25, rank 58,674)  tp 4, 600 s, sp 5/120, stall off, its never, limit 2.0, 1.3+
+  seen  +99.21 (w/o 2%  +61.71) -> unseen  +35.86 (w/o 2%  +6.58, rank 130,670)  tp 4, 600 s, sp 5/120, stall 300, its never, limit 1.25, 1.3+
+  seen  +99.13 (w/o 2%  +61.62) -> unseen  +36.12 (w/o 2%  +6.85, rank 126,925)  tp 4, 600 s, sp 5/120, stall 300, its early, limit 1.25, 1.3+
+  seen  +98.86 (w/o 2%  +61.36) -> unseen  +42.67 (w/o 2% +13.39, rank 49,137)  tp 4, 600 s, sp 5/120, stall off, its early, limit 2.0, 1.3+
+  seen  +98.86 (w/o 2%  +61.36) -> unseen  +42.67 (w/o 2% +13.39, rank 49,138)  tp 4, 600 s, sp 5/120, stall off, its early, limit none, 1.3+
+  seen  +98.86 (w/o 2%  +61.36) -> unseen  +42.67 (w/o 2% +13.39, rank 49,136)  tp 4, 600 s, sp 5/120, stall off, its early, limit 1.5, 1.3+
+  seen  +98.49 (w/o 2%  +60.99) -> unseen  +36.64 (w/o 2%  +7.36, rank 118,367)  tp 4, 600 s, sp 5/120, stall off, its never, limit 1.25, 1.3+
+  seen  +98.46 (w/o 2%  +60.95) -> unseen  +38.48 (w/o 2%  +8.73, rank 98,245)  tp 4, 600 s, sp 8/120, stall 300, its early, limit 1.25, 1.3+
+LIVE ranks: seen 3,015 of 282,240 (w/o 2%); unseen 3,476 (SOL), 19,864 (w/o 2%)
+the top 1% seen (2,822 settings): unseen median +37.96 (w/o 2% +12.73); all settings' unseen median +25.97
+each part alone, the mean over every other setting: seen | unseen (SOL)
+  take profit  : 1.5: +7.2|+16.0  2: +23.0|+23.0  2.5: +27.8|+28.8  3: +31.1|+28.4  3.5: +31.6|+26.6  4: +34.4|+28.7  5: +32.5|+29.5  6: +30.1|+27.2  8: +27.3|+26.4  off: +26.9|+26.1
+  timer        : 120: +21.3|+29.6  180: +27.3|+26.2  300: +28.0|+24.2  450: +30.0|+24.6  600: +29.7|+25.8  900: +27.4|+25.9  1200: +26.7|+26.0
+  sell pressure: off: +28.1|+25.7  3/30: +20.6|+26.6  3/60: +23.9|+27.2  3/120: +24.3|+26.3  5/30: +23.3|+22.9  5/60: +27.3|+27.8  5/120: +29.3|+25.8  8/30: +26.1|+24.6  8/60: +28.6|+26.4  8/120: +29.7|+26.6  10/30: +27.6|+23.9  10/60: +29.0|+27.4  10/120: +29.6|+26.2  15/30: +28.2|+26.3  15/60: +30.1|+26.8  15/120: +29.3|+26.4
+  stall        : 0: +27.3|+26.2  60: +23.5|+26.1  90: +26.9|+27.0  120: +27.6|+25.5  180: +28.4|+26.2  240: +28.3|+25.3  300: +28.2|+26.0
+  its sale     : never: +32.5|+27.9  early: +32.3|+27.4  always: +16.8|+22.8
+  limit        : 1.25: +27.2|+24.6  1.5: +27.2|+26.5  2.0: +27.2|+26.5  none: +27.2|+26.5
+  its buy      : 1.3: +49.5|+31.9  1.5: +29.2|+29.4  2.0: +2.9|+16.9
+
+=== B: seen Oct 31 - Nov 14, unseen Nov 15 - Nov 20: 529 / 146 copies (all sizes 1.3+)
+LIVE (tp 4, 600 s, sp 5/60, stall 180, its early, limit 1.5x, 1.3+): seen +72.55 (w/o 2% +40.81) -> unseen +5.42 (w/o 2% -1.52)
+the 10 best on the seen part (w/o its best 2%), and how they did unseen (rank of 282,240 unseen, w/o 2%):
+  seen  +74.27 (w/o 2%  +56.53) -> unseen   -0.44 (w/o 2%  -4.63, rank 231,611)  tp 2.5, 300 s, sp 5/120, stall 90, its never, limit 1.5, 1.3+
+  seen  +74.27 (w/o 2%  +56.53) -> unseen   -0.44 (w/o 2%  -4.63, rank 231,610)  tp 2.5, 300 s, sp 5/120, stall 90, its never, limit none, 1.3+
+  seen  +74.27 (w/o 2%  +56.53) -> unseen   -0.44 (w/o 2%  -4.63, rank 231,612)  tp 2.5, 300 s, sp 5/120, stall 90, its never, limit 2.0, 1.3+
+  seen  +73.98 (w/o 2%  +56.24) -> unseen   +0.70 (w/o 2%  -3.48, rank 197,097)  tp 2.5, 300 s, sp 8/120, stall 90, its never, limit none, 1.3+
+  seen  +73.98 (w/o 2%  +56.24) -> unseen   +0.70 (w/o 2%  -3.48, rank 197,095)  tp 2.5, 300 s, sp 8/120, stall 90, its never, limit 2.0, 1.3+
+  seen  +73.98 (w/o 2%  +56.24) -> unseen   +0.70 (w/o 2%  -3.48, rank 197,096)  tp 2.5, 300 s, sp 8/120, stall 90, its never, limit 1.5, 1.3+
+  seen  +73.74 (w/o 2%  +56.00) -> unseen   -0.76 (w/o 2%  -4.95, rank 239,753)  tp 2.5, 450 s, sp 5/120, stall 90, its never, limit 2.0, 1.3+
+  seen  +73.74 (w/o 2%  +56.00) -> unseen   -0.76 (w/o 2%  -4.95, rank 239,752)  tp 2.5, 450 s, sp 5/120, stall 90, its never, limit none, 1.3+
+  seen  +73.74 (w/o 2%  +56.00) -> unseen   -0.76 (w/o 2%  -4.95, rank 239,754)  tp 2.5, 450 s, sp 5/120, stall 90, its never, limit 1.5, 1.3+
+  seen  +73.67 (w/o 2%  +55.92) -> unseen   +0.38 (w/o 2%  -3.80, rank 207,417)  tp 2.5, 450 s, sp 8/120, stall 90, its never, limit 1.5, 1.3+
+LIVE ranks: seen 12,616 of 282,240 (w/o 2%); unseen 92,677 (SOL), 126,888 (w/o 2%)
+the top 1% seen (2,822 settings): unseen median +0.03 (w/o 2% -4.59); all settings' unseen median +4.37
+each part alone, the mean over every other setting: seen | unseen (SOL)
+  take profit  : 1.5: +22.5|+1.3  2: +35.8|-0.1  2.5: +41.6|+1.9  3: +39.9|+3.3  3.5: +36.6|+4.5  4: +38.7|+5.0  5: +36.6|+6.3  6: +35.0|+6.0  8: +32.8|+6.1  off: +32.7|+5.8
+  timer        : 120: +36.3|+4.5  180: +34.9|+4.2  300: +33.4|+3.5  450: +35.3|+3.8  600: +35.6|+4.1  900: +35.4|+4.0  1200: +35.6|+4.0
+  sell pressure: off: +36.7|+3.3  3/30: +30.7|+5.2  3/60: +34.3|+3.9  3/120: +34.1|+3.9  5/30: +29.4|+4.3  5/60: +37.3|+3.7  5/120: +37.6|+3.4  8/30: +32.4|+4.2  8/60: +36.6|+3.6  8/120: +37.5|+4.3  10/30: +31.9|+4.1  10/60: +37.6|+4.1  10/120: +36.9|+4.4  15/30: +35.6|+3.5  15/60: +37.8|+4.0  15/120: +37.0|+4.2
+  stall        : 0: +34.9|+4.3  60: +33.8|+3.8  90: +37.6|+3.3  120: +35.6|+3.6  180: +35.4|+4.4  240: +34.5|+4.3  300: +34.7|+4.3
+  its sale     : never: +39.4|+3.5  early: +38.7|+3.5  always: +27.6|+5.0
+  limit        : 1.25: +33.3|+4.1  1.5: +35.9|+4.0  2.0: +35.9|+4.0  none: +35.9|+4.0
+  its buy      : 1.3: +49.8|+3.2  1.5: +41.6|+3.5  2.0: +14.2|+5.3
