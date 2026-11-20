@@ -81,10 +81,10 @@ for r in rows:
     if r["sol"] < 1.3: continue
     tr, k, rate = r["tr"], r["k"], r["rate"]
     a5, _ = leg1(tr, k, rate, 0.5); a1, _ = leg1(tr, k, rate, 1.0)
-    b5 = b1 = None
+    b5 = b1 = b25 = None
     if r["cls"] == "float":
-        b5 = leg2(tr, k, rate, 0.5); b1 = leg2(tr, k, rate, 1.0)
-    out.append(dict(t=r["t"], cls=r["cls"], a5=a5, a1=a1, b5=b5, b1=b1))
+        b5 = leg2(tr, k, rate, 0.5); b1 = leg2(tr, k, rate, 1.0); b25 = leg2(tr, k, rate, 0.25)
+    out.append(dict(t=r["t"], cls=r["cls"], a5=a5, a1=a1, b5=b5, b1=b1, b25=b25))
 print(f"wallet 4: {len(out)} buys of 1.3+ SOL, {dt.datetime.fromtimestamp(out[0]['t'], dt.UTC):%m-%d} to {dt.datetime.fromtimestamp(out[-1]['t'], dt.UTC):%m-%d} UTC; "
       f"{sum(o['cls'] == 'float' for o in out)} float-paid; leg 2 fired on {sum(o['b5'] is not None for o in out)}; COST {COST} a round trip")
 def wk(t): return dt.datetime.fromtimestamp(t - (t - 1792540800) % (7 * 86400), dt.UTC).strftime("%m-%d")
@@ -93,6 +93,8 @@ SC = {"leg 1 only, 1 SOL": lambda o: [o["a1"]],
       "both, 0.5 + 0.5 (live)": lambda o: [o["a5"]] + ([o["b5"]] if o["b5"] is not None else []),
       "both, 1 + 1": lambda o: [o["a1"]] + ([o["b1"]] if o["b1"] is not None else []),
       "both, 1 + 0.5": lambda o: [o["a1"]] + ([o["b5"]] if o["b5"] is not None else []),
+      "both, 1 + 0.25": lambda o: [o["a1"]] + ([o["b25"]] if o["b25"] is not None else []),
+      "leg 2 only, 0.25 SOL": lambda o: [o["b25"]] if o["b25"] is not None else [],
       "leg 1 only, 0.5 SOL": lambda o: [o["a5"]],
       "leg 2 only, 0.5 SOL": lambda o: [o["b5"]] if o["b5"] is not None else []}
 print(f"\n{'scenario':26} {'trades':>6} {'SOL':>8} {'w/o best 2%':>11} {'won':>5}  {'SOL a buy of its':>16}  by week (SOL)")
