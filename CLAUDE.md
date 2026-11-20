@@ -34,9 +34,13 @@ Wallet 4's strategies:
   lost** (`03-strategy-A-long-copy/deploy-frankfurt.md`, top). It had run live Oct 28 18:34 to Oct 29 11:52 UTC at 0.1,
   0.5 and 1 SOL: 13 closed, 7 won, +1.39 SOL before the 1 SOL hours. Ohio and fra1 are terminated too. **Any new box:
   monthly billing or auto-recharge, the wallet file copied off with scp before any SOL goes in.**
-- **Since Nov 19 22:53 UTC the unit runs the split** (`dip_stake_sol`, docs/20 §3): leg 1 = the copy above at 0.5 SOL;
-  leg 2 = the dip entry, 0.5 SOL, tp 1.5x our fill, 900 s, floats only (`dip_float_only`), its own `max_open`. Daily stop
-  1.5 over both. If leg 2 works, it moves to its own unit (`config/long-dip.example.toml`, the owner's plan).
+- **Since Nov 19 22:53 UTC the unit runs the split** (`dip_stake_sol`, docs/20 §3): leg 1 = the copy above; leg 2 = the
+  dip entry, tp 1.5x our fill, 900 s, floats only (`dip_float_only`), its own `max_open`. Daily stop 1.5 over both.
+  **Since Nov 20 01:09 UTC: leg 1 at 1.0 SOL, leg 2 at 0.25** (the owner's call after `analysis/research/2026-11-20/split/`:
+  leg 1 alone beats the 0.5 + 0.5 split; it was 0.75 before the split). **Floats since Nov 20 ~01:20 UTC: WBTC, PUMP, SPCX,
+  TTWO, DJT, HYPE** (AAPLx and USDC sold and removed), each kept at 1.15 SOL by the box's `rugsnipe-float-level` timer
+  (every 5 min, sizes in `/etc/rugsnipe/float-levels`: **change that file whenever the floats change**, or the timer
+  buys a removed float back, as it did with AAPLx at 01:12:38 UTC). If leg 2 works, it moves to its own unit.
 - **Strategy D, the launch copy:** the hot copy bot `crates/rugsnipe`, with a `copy_more` entry. It is stopped.
 
 Read `README.md` (status, A-Z index), then `02-decomposition/` (why A and not the rest), then the strategy folder you work

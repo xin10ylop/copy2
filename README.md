@@ -18,6 +18,10 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 20 01:09 UTC (03:09 Beirut): leg 1 at 1.0 SOL, leg 2 at 0.25; floats WBTC, PUMP, SPCX, TTWO, DJT, HYPE at 1.15 SOL each**
+(AAPLx and USDC sold and removed; the float timer's `/etc/rugsnipe/float-levels` set to the same 6 at 1.15). Why:
+`analysis/research/2026-11-20/split/` (leg 1 alone at 1 SOL +123.23 SOL over Oct 21 - Nov 13 against +62.89 for 0.5 + 0.5).
+
 **Nov 19 22:53 UTC (Nov 20 00:53 Beirut): the split, two legs on each copyable buy of wallet 4** (`0c0c6b9`, the
 box's restart journal): leg 1 = the copy as before (0.5 SOL, tp 4x, 600 s, sell pressure 5/60/30, stall 180, max_open 2;
 the frozen exit is unchanged), leg 2 = the dip entry (0.5 SOL at or under 0.90x its price within 60 s, tp 1.5x our fill,
