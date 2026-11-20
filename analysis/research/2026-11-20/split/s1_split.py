@@ -91,6 +91,8 @@ def wk(t): return dt.datetime.fromtimestamp(t - (t - 1792540800) % (7 * 86400), 
 SC = {"leg 1 only, 1 SOL": lambda o: [o["a1"]],
       "leg 2 only, 1 SOL": lambda o: [o["b1"]] if o["b1"] is not None else [],
       "both, 0.5 + 0.5 (live)": lambda o: [o["a5"]] + ([o["b5"]] if o["b5"] is not None else []),
+      "both, 1 + 1": lambda o: [o["a1"]] + ([o["b1"]] if o["b1"] is not None else []),
+      "both, 1 + 0.5": lambda o: [o["a1"]] + ([o["b5"]] if o["b5"] is not None else []),
       "leg 1 only, 0.5 SOL": lambda o: [o["a5"]],
       "leg 2 only, 0.5 SOL": lambda o: [o["b5"]] if o["b5"] is not None else []}
 print(f"\n{'scenario':26} {'trades':>6} {'SOL':>8} {'w/o best 2%':>11} {'won':>5}  {'SOL a buy of its':>16}  by week (SOL)")
