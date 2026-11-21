@@ -138,3 +138,11 @@ older half (2 refused) every exit loses: w4 -4.0%, its -20.7% then -10.9%, tp2 -
 after its buy). Its own +139 SOL comes from buying first on young coins (1.7x pump's start price, median); a copy a
 slot later buys into the coins it then sells. Not copyable. 18 copies is a small sample (a copy's spread is about 58
 points), but no exit is positive and holding loses 42% a copy.
+
+**Six more own histories (`out_s2_six_own.txt`, Nov 21 evening; cents of Triton): none worth the copy test.** The first
+tape's top five that were never checked (their run was stopped this morning) and 3dwZP6T8 (Oct 29: re-score after a week):
+DGapgQYU -206.54 SOL (1 of 5 days up), FT6LnH4J (pair A) -151.31 (4 of 13), 449LVsaM -56.67 (3 of 15), ACHz1zp8 -40.35
+(1 of 6), 4cRLV1fw (pair B) +6.12 (7 of 10), 3dwZP6T8 no pump trade in 14 days. 4cRLV1fw's plus is on its token coins
+(valued at Jupiter's price now); on its 196 SOL coins it is -3.43 SOL, 35% won, -18.39 without its best 5, so no copy
+test. Of the eleven recorder wallets checked today, two make money themselves (GYhRMtoD, a bundle; 5Y5nsbGf, failed the
+copy test) and none is copyable: the Nov 26 screen on 5 days of tape, with the own-result and bundle filters, is next.
