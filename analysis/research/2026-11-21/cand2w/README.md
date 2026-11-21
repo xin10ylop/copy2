@@ -24,3 +24,6 @@ holding on these 30 s median, 41% under 20 s; halves Nov 19 21:46 - Nov 20 ~09:5
 Wallet 4's live exit on every copy: -2.71 / -0.81 SOL. The best setting of the first half is itself -0.78 on 6 copies
 (0.5+ token coins, tp 1.5x, sp 8/30, its early sale) and +1.92 on 6 in the second; 59% of all settings up in the second
 half. **Too few copies to judge either way (6 a half: about +/-50% a copy of noise); followed on the tape.**
+All 28 coins with a path (`out/b2_J3MxZcfV.txt`, `MIN_SEEN=8 MIN_UNSEEN=8`; halves 10 / 18 copies): holding 34 s median,
+29% under 20 s. Wallet 4's live exit -2.64 / -2.67 SOL; the best first-half setting -1.74 on 10 and +2.12 on 18 in the
+second (+11.8% a copy, w/o 2% +1.09); all settings' second-half median -1.54, 41% up. Still undecided; followed on the tape.
