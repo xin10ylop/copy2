@@ -59,14 +59,15 @@ for li, lim in enumerate(LIM):
             out.append((li, fi, ki, wo2(a), a.sum(0), wo2(b_), b_.sum(0), (seen & sel).sum(), (unseen & sel).sum()))
 ns = len(names); sw = np.concatenate([o[3] for o in out]); ss = np.concatenate([o[4] for o in out]); uw = np.concatenate([o[5] for o in out]); us = np.concatenate([o[6] for o in out])
 cnt_s = np.concatenate([np.full(ns, o[7]) for o in out]); cnt_u = np.concatenate([np.full(ns, o[8]) for o in out])
-ok = (cnt_s >= 20) & (cnt_u >= 10)   # a setting needs 20+ seen and 10+ unseen copies
+MS, MU = int(os.environ.get("MIN_SEEN", 20)), int(os.environ.get("MIN_UNSEEN", 10))
+ok = (cnt_s >= MS) & (cnt_u >= MU)   # a setting needs MS+ seen and MU+ unseen copies (20 / 10)
 def desc(i):
     r, j = divmod(i, ns); li, r2 = divmod(r, len(FLOOR) * len(KIND)); fi, ki = divmod(r2, len(KIND)); tp, h, sp, st, its = names[j]
     return f"{FLOOR[fi]}+ {KIND[ki]}, limit {LIM[li] if LIM[li] < 1e8 else 'none'}, tp {tp or 'none'}, {h} s, sp {('%d/%d' % sp) if sp else 'off'}, stall {st or 'off'}, its {its}"
 j_def = (LIM.index(1.5) * len(FLOOR) * len(KIND) + FLOOR.index(0.5) * len(KIND) + KIND.index("all")) * ns + names.index((4, 600, (5, 60), 180, "early"))
 print(f"\nwallet 4's live exit, every copy (0.5+ all, 1.5x): seen {ss[j_def]:+.2f} SOL on {cnt_s[j_def]} (w/o 2% {sw[j_def]:+.2f}) -> unseen {us[j_def]:+.2f} on {cnt_u[j_def]} (w/o 2% {uw[j_def]:+.2f})")
 idx = np.flatnonzero(ok); order = idx[np.argsort(-sw[idx])]
-print(f"the 10 best on week 1 (of {ok.sum():,} settings with 20+ / 10+ copies), and week 2:")
+print(f"the 10 best on week 1 (of {ok.sum():,} settings with {MS}+ / {MU}+ copies), and week 2:")
 for i in order[:10]:
     print(f"  seen {ss[i]:+6.2f} on {cnt_s[i]} (w/o 2% {sw[i]:+6.2f}) -> unseen {us[i]:+6.2f} on {cnt_u[i]} ({100 * us[i] / cnt_u[i]:+.1f}% a copy, w/o 2% {uw[i]:+6.2f})  {desc(i)}")
 top = order[: max(1, len(order) // 100)]

@@ -1,0 +1,16 @@
+its holding (buy to its first sale): median 30 s, under 20 s on 41% of its coins; no sale within 31 min on 0
+J3MxZcfVcX5c7CACRhofT38NoVnc5S8UxSzzADEHcV1B: 17 copies with a path, 11-19 21:46 to 11-20 21:51 UTC; seen (week 1) 9, unseen (week 2) 8; 1 SOL a copy, cost 0.0345
+
+wallet 4's live exit, every copy (0.5+ all, 1.5x): seen -2.71 SOL on 9 (w/o 2% -2.84) -> unseen -0.81 on 8 (w/o 2% -1.22)
+the 10 best on week 1 (of 376,320 settings with 6+ / 5+ copies), and week 2:
+  seen  -0.78 on 6 (w/o 2%  -1.31) -> unseen  +1.92 on 6 (+32.1% a copy, w/o 2%  +1.23)  0.5+ token, limit 2.0, tp 1.5, 120 s, sp 8/30, stall 120, its early
+  seen  -0.78 on 6 (w/o 2%  -1.31) -> unseen  +1.92 on 6 (+32.1% a copy, w/o 2%  +1.23)  0.5+ token, limit 1.5, tp 1.5, 450 s, sp 8/30, stall 240, its early
+  seen  -0.78 on 6 (w/o 2%  -1.31) -> unseen  +1.92 on 6 (+32.1% a copy, w/o 2%  +1.23)  0.5+ token, limit 1.5, tp 1.5, 450 s, sp 8/30, stall 300, its early
+  seen  -0.78 on 6 (w/o 2%  -1.31) -> unseen  +1.90 on 6 (+31.7% a copy, w/o 2%  +1.21)  0.5+ token, limit 1.5, tp 1.5, 450 s, sp 8/30, stall 60, its early
+  seen  -0.78 on 6 (w/o 2%  -1.31) -> unseen  +1.92 on 6 (+32.1% a copy, w/o 2%  +1.23)  0.5+ token, limit 1.5, tp 1.5, 450 s, sp 8/30, stall 90, its early
+  seen  -0.78 on 6 (w/o 2%  -1.31) -> unseen  +1.92 on 6 (+32.1% a copy, w/o 2%  +1.23)  0.5+ token, limit 1.5, tp 1.5, 450 s, sp 8/30, stall 120, its early
+  seen  -0.78 on 6 (w/o 2%  -1.31) -> unseen  +1.92 on 6 (+32.1% a copy, w/o 2%  +1.23)  0.5+ token, limit 1.5, tp 1.5, 300 s, sp 8/30, stall 180, its early
+  seen  -0.78 on 6 (w/o 2%  -1.31) -> unseen  +1.92 on 6 (+32.1% a copy, w/o 2%  +1.23)  0.5+ token, limit 1.5, tp 1.5, 300 s, sp 8/30, stall 240, its early
+  seen  -0.78 on 6 (w/o 2%  -1.31) -> unseen  +1.92 on 6 (+32.1% a copy, w/o 2%  +1.23)  0.7+ token, limit 1.25, tp 1.5, 300 s, sp 8/30, stall 300, its early
+  seen  -0.78 on 6 (w/o 2%  -1.31) -> unseen  +1.92 on 6 (+32.1% a copy, w/o 2%  +1.23)  0.7+ token, limit 1.25, tp 1.5, 300 s, sp 8/30, stall off, its early
+the top 1% on week 1: week 2 median +1.92 SOL (w/o 2% +1.23); every setting's week 2 median +0.28; share of all settings up in week 2: 59%
