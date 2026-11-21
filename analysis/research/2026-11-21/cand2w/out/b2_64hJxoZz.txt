@@ -1,0 +1,16 @@
+its holding (buy to its first sale): median 4 s, under 20 s on 80% of its coins; no sale within 31 min on 1
+64hJxoZzjoL6MW4uwdKDkaBiZdk87ZxmthHnLwaAKUgS: 148 copies with a path, 11-07 01:40 to 11-20 18:57 UTC; seen (week 1) 82, unseen (week 2) 66; 1 SOL a copy, cost 0.0345
+
+wallet 4's live exit, every copy (0.5+ all, 1.5x): seen -15.75 SOL on 82 (w/o 2% -16.50) -> unseen -4.77 on 66 (w/o 2% -7.18)
+the 10 best on week 1 (of 188,160 settings with 20+ / 10+ copies), and week 2:
+  seen  -4.69 on 66 (w/o 2%  -5.62) -> unseen  -1.15 on 35 (-3.3% a copy, w/o 2%  -1.94)  0.5+ SOL, limit 1.5, tp 1.5, 120 s, sp off, stall off, its always
+  seen  -4.69 on 66 (w/o 2%  -5.62) -> unseen  -1.12 on 35 (-3.2% a copy, w/o 2%  -1.91)  0.5+ SOL, limit 1.5, tp 1.5, 120 s, sp off, stall 60, its always
+  seen  -4.69 on 66 (w/o 2%  -5.62) -> unseen  -1.15 on 35 (-3.3% a copy, w/o 2%  -1.94)  0.5+ SOL, limit 1.5, tp 1.5, 120 s, sp off, stall 90, its always
+  seen  -4.69 on 66 (w/o 2%  -5.62) -> unseen  -1.15 on 35 (-3.3% a copy, w/o 2%  -1.94)  0.5+ SOL, limit 1.5, tp 1.5, 120 s, sp off, stall 120, its always
+  seen  -4.69 on 66 (w/o 2%  -5.62) -> unseen  -1.15 on 35 (-3.3% a copy, w/o 2%  -1.94)  0.5+ SOL, limit 1.5, tp 1.5, 120 s, sp off, stall 180, its always
+  seen  -4.69 on 66 (w/o 2%  -5.62) -> unseen  -1.15 on 35 (-3.3% a copy, w/o 2%  -1.94)  0.5+ SOL, limit 1.5, tp 1.5, 120 s, sp off, stall 240, its always
+  seen  -4.69 on 66 (w/o 2%  -5.62) -> unseen  -1.15 on 35 (-3.3% a copy, w/o 2%  -1.94)  0.5+ SOL, limit 1.5, tp 1.5, 120 s, sp off, stall 300, its always
+  seen  -4.69 on 66 (w/o 2%  -5.62) -> unseen  -0.91 on 35 (-2.6% a copy, w/o 2%  -1.70)  0.5+ SOL, limit 1.25, tp 1.5, 120 s, sp off, stall off, its always
+  seen  -4.69 on 66 (w/o 2%  -5.62) -> unseen  -0.91 on 35 (-2.6% a copy, w/o 2%  -1.70)  0.5+ SOL, limit 1.25, tp 1.5, 120 s, sp off, stall 120, its always
+  seen  -4.69 on 66 (w/o 2%  -5.62) -> unseen  -0.91 on 35 (-2.6% a copy, w/o 2%  -1.70)  0.5+ SOL, limit 1.25, tp 1.5, 120 s, sp off, stall 300, its always
+the top 1% on week 1: week 2 median -1.15 SOL (w/o 2% -1.94); every setting's week 2 median -2.40; share of all settings up in week 2: 5%
