@@ -73,3 +73,12 @@ earlier than it does: an edge that ends when a wallet losing ~20 SOL a day stops
 tape (`own SOL`; a wallet under OWN_MIN, default 0, is left out: it pays for the moves, it does not read them) and how far
 its own buy moved the price (`impact`, median; a large one means the move after its buy may be its own doing). Its age
 (a wallet seen for the first time days ago) is the history check's, on the final few.
+
+**The box, Nov 21 ~13:20 UTC, with the own-result check (23.1 h; the owner's paste):** 156,535 copies; out: 582 speed
+traders, 19 flat bundles, **288 that lose money themselves** (4S5L64Va among them). **45 of 233 up on both halves against
+33 by chance (draws 23-40)**; the 30th best second half +6.0% against chance's +5.9%. No wallet's cautious score above
++1.0% yet. Worth following (own result on the tape, all-exit pattern): AZ1eJ671 (+13.07 SOL own, wallet 4's exit +7%,
+holds 54 s), FyRmQ8oS (+5.64, pair A, its sale +22.2% / +9.4%), 3orcPHLt (+1.39, holds 135 s, every exit up +8% to +21%
+on 26 copies), 5Y5nsbGf (+20.51, holds 119 s, 41 copies), GYhRMtoD (+106.15, 99 copies, every exit +2% to +5%; its buys
+move the price +11.8%; buys the same 97 coins as AjSHVErb and AB797pqG: a group). sssssyv2 makes +272.87 itself on 570
+coins and its copies lose: the profit is its speed.
