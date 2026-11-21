@@ -13,7 +13,8 @@
 #   python3 -I s1_screen.py TAPE_DIR [MIN_SOL=0.5] [MIN_COPIES=10] > screen.txt     (on the box: nice -n 19)
 import sys, os, json, gzip, glob, heapq, collections, urllib.request, numpy as np
 D = sys.argv[1]; MIN_SOL = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5; MINN = int(sys.argv[3]) if len(sys.argv) > 3 else 10
-STAKE, COST, PMAX, WIN = 0.5, 0.0345, 1.5, 1860
+STAKE, PMAX, WIN = 0.5, 1.5, 1860
+COST = float(os.environ.get("COST", 0.0345))   # the convention; the live bot pays ~0.0064 a round trip (journal: paid -0.0032 a buy)
 W4 = "H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg"; SOLQ = "11111111111111111111111111111111"; WSOL = "So11111111111111111111111111111111111111112"
 files = sorted((f for f in glob.glob(f"{D}/tape_*.jsonl*") if "broken" not in f), key=lambda f: (os.path.basename(f).split("_")[1], f))
 def rows():
@@ -83,7 +84,7 @@ def settle(now):
             w = ws.pop(idx)
         user, k, t0, _, rate, sol = w; tr = buf[m]
         r = model(tr, k, rate, user)
-        if r is not None: out.append((user, t0, sol, r, m))
+        if r is not None: out.append((user, t0, sol, r, m, rate == 1.0))
         if watches[m]:   # trim the coin's buffer to its oldest open watch
             cut = min(x[1] for x in watches[m])
             if cut > 0:
@@ -110,19 +111,33 @@ pool = {e: np.mean([x[3][e] for x in ok]) / STAKE * 100 for e in EX}
 print("every copy pooled (a random wallet), % a copy: " + "  ".join(f"{e} {v:+.1f}%" for e, v in pool.items()))
 by = collections.defaultdict(list)
 for x in out: by[x[0]].append(x)
+# each wallet tuned on half 1 (the owner: "each wallet can be tweaked"): its buy floor 0.5 / 1 / 1.5 / 2 SOL x the coins
+# all / SOL-quoted / token-quoted x the five exits = 60 choices, a choice needing 5+ copies in each half; scored on half 2
+FLOORS = [0.5, 1.0, 1.5, 2.0]; KINDS = {"all": lambda x: True, "SOL": lambda x: x[5], "token": lambda x: not x[5]}
+def vv(xs_, e): return np.mean([x[3][e] if x[3] != "refused" else -0.0004 for x in xs_]) / STAKE * 100
+def tune(h1, h2):
+    best = None
+    for fl in FLOORS:
+        for kn, f in KINDS.items():
+            a = [x for x in h1 if x[2] >= fl and f(x)]; b = [x for x in h2 if x[2] >= fl and f(x)]
+            if len(a) < 5 or len(b) < 5: continue
+            for e in EX:
+                v1 = vv(a, e)
+                if best is None or v1 > best[0]: best = (v1, fl, kn, e, len(a), len(b), vv(b, e))
+    return best
 res = []
 for u, xs in by.items():
     if len(xs) < MINN: continue
     h1 = [x for x in xs if x[1] < mid]; h2 = [x for x in xs if x[1] >= mid]
-    if len(h1) < MINN // 2 or len(h2) < MINN // 2: continue
-    v = lambda xs_, e: np.mean([x[3][e] if x[3] != "refused" else -0.0004 for x in xs_]) / STAKE * 100
-    pick = max(EX, key=lambda e: v(h1, e))
-    res.append((v(h2, pick), u, len(h1), len(h2), pick, v(h1, pick), np.median([x[2] for x in xs]), {e: v(xs, e) for e in EX}))
+    t = tune(h1, h2)
+    if t is None: continue
+    v1, fl, kn, e, n1, n2, v2 = t
+    res.append((v2, u, n1, n2, f"{fl}+ {kn} {e}", v1, np.median([x[2] for x in xs]), {e_: vv(xs, e_) for e_ in EX}))
 res.sort(reverse=True)
-print(f"\n{len(res)} wallets with {MINN}+ copies ({MINN // 2}+ in each half); the exit picked on half 1, scored on half 2:")
-print(f"{'wallet':44s} {'n1':>4s} {'n2':>4s} {'exit':>5s} {'half 1':>7s} {'half 2':>7s} {'its SOL':>7s}   all copies by exit")
+print(f"\n{len(res)} wallets with {MINN}+ copies, each tuned on half 1 (buy floor x coin kind x exit, 5+ copies a half), scored on half 2:")
+print(f"{'wallet':44s} {'n1':>4s} {'n2':>4s} {'choice':>18s} {'half 1':>7s} {'half 2':>7s} {'its SOL':>7s}   all its 0.5+ copies by exit")
 for h2v, u, n1, n2, pick, h1v, med, allv in res[:30]:
-    print(f"{u:44s} {n1:4d} {n2:4d} {pick:>5s} {h1v:+6.1f}% {h2v:+6.1f}% {med:7.2f}   " + " ".join(f"{e} {allv[e]:+.0f}%" for e in EX))
+    print(f"{u:44s} {n1:4d} {n2:4d} {pick:>18s} {h1v:+6.1f}% {h2v:+6.1f}% {med:7.2f}   " + " ".join(f"{e} {allv[e]:+.0f}%" for e in EX))
 up = sum(1 for r_ in res if r_[0] > 0 and r_[5] > 0)
 print(f"\nwallets up on both halves: {up} of {len(res)}")
 w4 = [r_ for r_ in res if r_[1] == W4]
@@ -132,15 +147,19 @@ else: print(f"wallet 4: {len(by.get(W4, []))} copies (under {MINN} or one half s
 # that half; 5 draws). As many pseudo-wallets "up on both halves" as real ones = nothing found.
 rng = np.random.default_rng(7)
 H1 = [x for x in out if x[1] < mid]; H2 = [x for x in out if x[1] >= mid]
-def vv(xs_, e): return np.mean([x[3][e] if x[3] != "refused" else -0.0004 for x in xs_]) / STAKE * 100
 null_up = []; null_top = []
 for _ in range(5):
     up_ = 0; h2s = []
-    for _, u, n1, n2, *_r in res:
+    for u in [r_[1] for r_ in res]:
+        xs = by[u]; n1 = sum(1 for x in xs if x[1] < mid); n2 = len(xs) - n1
         a = [H1[i] for i in rng.integers(0, len(H1), n1)]; b = [H2[i] for i in rng.integers(0, len(H2), n2)]
-        pick = max(EX, key=lambda e: vv(a, e)); h1v, h2v = vv(a, pick), vv(b, pick); h2s.append(h2v)
-        up_ += h1v > 0 and h2v > 0
-    null_up.append(up_); null_top.append(sorted(h2s)[-30])
+        # pseudo copies keep the real wallet's own sizes and coin kinds, so the tuning has the same room
+        a = [(x[0], x[1], y[2], x[3], x[4], y[5]) for x, y in zip(a, [x for x in xs if x[1] < mid])]
+        b = [(x[0], x[1], y[2], x[3], x[4], y[5]) for x, y in zip(b, [x for x in xs if x[1] >= mid])]
+        t = tune(a, b)
+        if t is None: continue
+        h2s.append(t[6]); up_ += t[0] > 0 and t[6] > 0
+    null_up.append(up_); null_top.append(sorted(h2s)[-30] if len(h2s) >= 30 else float("nan"))
 print(f"chance (pseudo-wallets of random copies, 5 draws): up on both halves {np.mean(null_up):.0f} (draws {null_up}); "
       f"the 30th best half 2 {np.mean(null_top):+.1f}% (real: {res[29][0] if len(res) > 29 else float('nan'):+.1f}%)")
 # Linked wallets: among the top 60 of the list, pairs that bought the same coins (30%+ of the smaller one's coins): one

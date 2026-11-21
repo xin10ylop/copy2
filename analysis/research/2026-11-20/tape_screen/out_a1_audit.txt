@@ -1,0 +1,15 @@
+
+xqHGK1A7: quote EPjFWdd5, its buy 1.645 SOL at slot 471460784 (19:56:49); 42 trades after it on the tape
+  our landing: the end of slot 471460785 (trade 3 after its buy); our price 1.075x its price (the bot's journal: +10.2% on #138)
+  model, % of the stake: w4 -45.1%  its -45.1%  tp2 -46.5%  held -48.6%  scalp -45.2%   | LIVE: its_sell after 179 s, -38.5%
+  model triggers: its first sale at 179 s; sell pressure at None s (price 0.00x); peak 1.20x; tape gap check: trades' ages [0, 0, 0, 0, 0] ...
+
+G7yni4nJ: quote TTWofwAg, its buy 1.694 SOL at slot 471462562 (20:03:09); 2334 trades after it on the tape
+  our landing: the end of slot 471462563 (trade 8 after its buy); our price 1.077x its price (the bot's journal: +10.2% on #138)
+  model, % of the stake: w4 -23.8%  its +311.4%  tp2 -26.6%  held +18.0%  scalp -5.7%   | LIVE: sell_pressure after 105 s, -9.1%
+  model triggers: its first sale at 677 s; sell pressure at 106 s (price 0.95x); peak 6.28x; tape gap check: trades' ages [1, 1, 1, 1, 2] ...
+
+EtawWmoE: quote TTWofwAg, its buy 1.885 SOL at slot 471464162 (20:08:52); 856 trades after it on the tape
+  our landing: the end of slot 471464163 (trade 6 after its buy); our price 1.082x its price (the bot's journal: +10.2% on #138)
+  model, % of the stake: w4 +0.0%  its +81.9%  tp2 +74.3%  held +9.5%  scalp -17.5%   | LIVE: sell_pressure after 63 s, +10.7%
+  model triggers: its first sale at 66 s; sell pressure at 64 s (price 1.22x); peak 3.01x; tape gap check: trades' ages [1, 1, 1, 1, 1] ...
