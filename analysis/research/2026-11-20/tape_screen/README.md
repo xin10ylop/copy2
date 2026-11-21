@@ -103,3 +103,7 @@ compared. Until now the copies were drawn from every copy of the tape, including
 they are drawn from the copies of the wallets that passed the filters, 20 draws (`NULL_DRAWS`), and the line prints
 the range and how many draws reach the real count. Local Nov 19 tape (2.5 h, 8+ copies): 4 of 21 up on both halves,
 chance 4 (range 1-7), 11 of 20 draws reach it: nothing found, as expected on 2.5 hours.
+**The box, Nov 21, with the corrected chance (23.6 h, 158,442 copies; the owner's paste):** out 586 speed traders, 19
+flat, 299 losing themselves; **42 of 234 up on both halves against chance 33 (range 24-40; 0 of 20 draws reach 42)**;
+the 30th best second half +6.0% against chance's +4.6%. The first time the list beats chance, by about 9 wallets, which
+are not named by it (most of the 42 are still chance), and launch bundles like GYhRMtoD may be part of the excess.
