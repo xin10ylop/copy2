@@ -146,3 +146,11 @@ DGapgQYU -206.54 SOL (1 of 5 days up), FT6LnH4J (pair A) -151.31 (4 of 13), 449L
 (valued at Jupiter's price now); on its 196 SOL coins it is -3.43 SOL, 35% won, -18.39 without its best 5, so no copy
 test. Of the eleven recorder wallets checked today, two make money themselves (GYhRMtoD, a bundle; 5Y5nsbGf, failed the
 copy test) and none is copyable: the Nov 26 screen on 5 days of tape, with the own-result and bundle filters, is next.
+
+**The new box's tape, first screen (Nov 21 ~21:50 UTC; the owner's paste; 7.9 h, 9 files, 335 MB, disk 6% used):**
+1,624,414 trades, 66,284 copies (4,604 refused over 1.5x); 10+ copies a wallet; out 529 speed traders, 71 launch
+bundles (the new filter), 275 losing themselves, 2 flat. **39 of 148 up on both halves against chance 36 (range 26-41;
+5 of 20 draws reach 39)**, the 30th best half 2 +6.1% against +5.9%: nothing above chance on 8 hours, as expected.
+Top by score: Be6s18aT (5 / 5 copies), 9rThNMRn, 4vw54BmA (14 / 16, its buys 2.93 SOL, holds 81 s, own +33.78 SOL on the
+tape, impact +10.7%: its own buy moves the coin, as 4S5L64Va's did), G1aToexm. 6nWLPrww (pair B; 4cRLV1fw's own history
+was -3.43 on SOL coins) is back at -1.1%.
