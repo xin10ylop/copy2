@@ -45,3 +45,11 @@ chance, not enough to name a wallet. Wallet 4: 19 copies of its 0.5+ buys, -1.6%
 cheap."** The screen (`s1_screen.py`) reads only the box's tape: no Triton. `s2_history.py` calls Triton (the wallet's
 own transactions, then NCOPY coins' paths); it is run only on the final few wallets, with the owner's go, its own-result
 part first. The run on the five best of the 21 h screen was stopped before any result.
+
+**The box, Nov 21 ~12:40 UTC (22.4 h, the cautious ranking; the owner's paste):** 97,670 copies against 151,229 an hour
+earlier on less tape: most likely Jupiter's price fetch failed (HTTP 429) and every token coin was left out; the screen
+now retries, keeps the last good prices in `PRICE_CACHE` (/tmp/tape_prices.json) and prints how many tokens it priced.
+On that run: 319 speed traders out; **17 of 182 up on both halves, chance 16 (12-21): nothing above chance**. Five wallets
+(H2nsBdjF, FbWwk6eh, 7ThMFKUF, 6hFo8UYX, ...) share all 97 coins, never sell and every copy is ~0: bundle wallets on coins
+that never move; such "flat" wallets are now left out. Best by the cautious score: 4S5L64Va (19 / 59 copies, its sale
++6.0% / +12.3%, score +5.7%, holds 23 s), then DGapgQYU (33 / 36, held 300 s -5.9% / +15.2%, score +1.8%).

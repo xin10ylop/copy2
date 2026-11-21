@@ -1,7 +1,8 @@
-tape: 4 files, 514,038 trades, 1795110307 to 1795119485 (2.5 h); 11,307 copies of first buys of 0.5+ SOL (618 refused over 1.5x)
+tape: 4 files, 514,038 trades, 1795110307 to 1795119485 (2.5 h); 11,308 copies of first buys of 0.5+ SOL (618 refused over 1.5x)
 every copy pooled (a random wallet), % a copy: w4 -11.2%  its -9.7%  tp2 -14.1%  held -12.9%  scalp -12.1%
 
-110 wallets with 8+ copies left out as speed traders (median holding under 20 s)
+110 wallets with 8+ copies left out as speed traders (median holding under 20 s), 5 as flat (their coins never move: bundles)
+token coins priced: 200 quote tokens
 32 wallets with 8+ copies, each tuned on half 1 (buy floor x coin kind x exit, 5+ copies a half), scored on half 2:
 ranked by the second half shrunk toward the pooled mean (30 copies of weight): a wallet must beat a random one on many copies
 wallet                                         n1   n2             choice  half 1  half 2   score its SOL  holds   all its 0.5+ copies by exit
@@ -10,7 +11,7 @@ wallet                                         n1   n2             choice  half 
 EDXC94LZK8GomcNxQgWWZhfLWihSJ8U9tRQTWGT6UFU8   11    8       0.5+ all its   -4.3%  +11.9%   -5.1%    0.98    23s   w4 +9% its +3% tp2 -9% held -11% scalp -3%
 HLU8QbLdvHDSWiQtyc8SGsTTdSdwZ3UKt8cEkG2wv4qk   14   10        0.5+ all w4   -9.2%  +12.7%   -5.2%    0.63    22s   w4 -0% its +13% tp2 -7% held +5% scalp -9%
 FSz6mptAxKrjDjaJYQiGiCGGwsxL4WgWjsh9sGhw4BZX    7    5       0.5+ all its  -14.5%  +10.6%   -6.8%    0.97    26s   w4 -10% its -4% tp2 -12% held -2% scalp -18%
-DF7eRXHnvRQ9QeVCrdfS56a7RpBD6se6mgPvzApHPNr9   10    5       0.5+ all its   +9.4%   +6.5%   -7.3%    1.97    31s   w4 +11% its +8% tp2 -6% held +5% scalp -3%
+DF7eRXHnvRQ9QeVCrdfS56a7RpBD6se6mgPvzApHPNr9   12    5       0.5+ all its  +10.2%   +6.5%   -7.3%    1.88    31s   w4 +9% its +9% tp2 -5% held +2% scalp -1%
 F9SRKcrtL5d8RtPRLndmVBDdtnRCN1XKLBB4oS4YvkgY   10    5       0.5+ all its   -9.8%   +3.7%   -7.8%    0.66    36s   w4 -10% its -5% tp2 -5% held -15% scalp -0%
 59C19uWBHqxjUsEX9uTioK1RAqZLz4UstZbbJLfG6JW1    5    6       0.5+ all its  -11.1%   -9.1%   -9.6%    0.59    30s   w4 -29% its -10% tp2 -28% held -15% scalp -12%
 HHJaweKns2RAgdyNfWM9X2bxn3zGVo7qQCeoseWnHSqS    9    6       0.5+ all tp2   +7.2%   +5.3%  -10.9%    1.78    55s   w4 +1% its -9% tp2 +6% held -9% scalp +3%
@@ -32,14 +33,14 @@ CeMVdXZE2UZLtmRxKp5PryX5ShYxvkgrAbx44Yu4djFe    6   11       0.5+ all its  +15.8
 Boj2tMSboEjxQ68TTcTEp2ewhU4BEWpDP9ZCwtpJNAX7    6    6       0.5+ all tp2   -4.7%  -24.8%  -15.9%    2.01    64s   w4 -23% its -38% tp2 -15% held -45% scalp -15%
 BYxxKQ7crodCMHBydmsg2pBonuuaHFRKxafBprNdVTTh   15    6        0.5+ all w4   -9.8%  -40.5%  -16.1%    1.50    26s   w4 -19% its -26% tp2 -35% held -33% scalp -16%
 G9gmk9msvd6wT4hDJFm64vKra5z82YvD9je9WqjBvnuk   44   32     0.5+ all scalp  -14.2%  -21.8%  -17.1%    1.13    55s   w4 -18% its -10% tp2 -18% held -4% scalp -17%
-3PpgE1PkUoftrPkZ5TcYzqaVHJs27baJsd4WathmNkuP   16    6        0.5+ all w4  -15.3%  -48.7%  -17.4%    1.31    24s   w4 -24% its -29% tp2 -38% held -36% scalp -23%
+3PpgE1PkUoftrPkZ5TcYzqaVHJs27baJsd4WathmNkuP   16    6        0.5+ all w4  -15.3%  -48.7%  -17.4%    1.30    24s   w4 -24% its -29% tp2 -38% held -36% scalp -23%
 omegoMAe1AMY5MFKQQr3JwXVy8F4eCvmBAfcpo8XAfq    20   12       0.5+ SOL tp2   -0.9%  -26.2%  -17.5%    0.90    33s   w4 +1% its -7% tp2 -6% held -0% scalp -6%
 4GCtzCQb6XDWQ7XHhhxjQjHhJz7NeKFL3YcsAsHgFtJq    6    5    0.5+ token held   -3.9%  -46.8%  -17.8%    1.46    31s   w4 -20% its -11% tp2 -15% held -25% scalp -12%
 
 wallets up on both halves: 3 of 32
-wallet 4: (5, 10, '0.5+ all tp2', np.float64(11.048439409754938)) {'w4': np.float64(-25.3), 'its': np.float64(-15.4), 'tp2': np.float64(-8.9), 'held': np.float64(-0.5), 'scalp': np.float64(13.1)}
-chance (pseudo-wallets of random copies, 5 draws): up on both halves 3 (draws [np.int64(2), np.int64(3), np.int64(3), np.int64(4), np.int64(2)]); the 30th best half 2 -35.1% (real: -40.5%)
-linked pairs among the top 60 (same coins, 30%+): 108
+wallet 4: (5, 10, '0.5+ all tp2', np.float64(11.048460212999549)) {'w4': np.float64(-25.3), 'its': np.float64(-15.4), 'tp2': np.float64(-8.9), 'held': np.float64(-0.5), 'scalp': np.float64(13.1)}
+chance (pseudo-wallets of random copies, 5 draws): up on both halves 3 (draws [np.int64(3), np.int64(3), np.int64(2), np.int64(2), np.int64(5)]); the 30th best half 2 -36.9% (real: -40.5%)
+linked pairs among the top 60 (same coins, 30%+): 107
   sssssyv2 + G9gmk9ms: 39 coins in common (51 / 76)
   G9gmk9ms + STorreSu: 30 coins in common (76 / 75)
   sssssyv2 + STorreSu: 27 coins in common (51 / 75)

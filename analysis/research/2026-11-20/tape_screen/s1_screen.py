@@ -35,14 +35,27 @@ for i, r in enumerate(rows()):
     if i > 3_000_000: break
 RATE = {SOLQ: 1.0}
 ids = [q for q, _ in quotes.most_common(200)]
-try:
-    pr = {}
-    for i in range(0, len(ids), 40):
-        pr.update(json.load(urllib.request.urlopen("https://lite-api.jup.ag/price/v3?ids=" + ",".join(ids[i:i + 40] + [WSOL]), timeout=20)))
-    su = pr[WSOL]["usdPrice"]
-    for q in ids:
-        if (pr.get(q) or {}).get("usdPrice") and (pr.get(q) or {}).get("decimals") is not None: RATE[q] = pr[q]["usdPrice"] / su * 1e9 / 10 ** pr[q]["decimals"]
-except Exception as x: print(f"prices: {type(x).__name__}; non-SOL coins left out", file=sys.stderr)
+# Jupiter's prices, retried, and kept in a file: a run whose fetch fails (HTTP 429) uses the last good prices instead of
+# silently leaving every token coin out (Nov 21: a run counted 97,670 copies against 151,229 the run before)
+PC = os.environ.get("PRICE_CACHE", "/tmp/tape_prices.json")
+pr = {}
+for i in range(0, len(ids), 40):
+    for attempt in range(4):
+        try:
+            pr.update({k: v for k, v in json.load(urllib.request.urlopen("https://lite-api.jup.ag/price/v3?ids=" + ",".join(ids[i:i + 40] + [WSOL]), timeout=20)).items() if v})
+            break
+        except Exception: __import__("time").sleep(3 * (attempt + 1))
+old = {}
+try: old = json.load(open(PC))
+except Exception: pass
+for k, v in old.items(): pr.setdefault(k, v)
+try: json.dump(pr, open(PC, "w"))
+except Exception: pass
+su = (pr.get(WSOL) or {}).get("usdPrice")
+for q in ids:
+    v = pr.get(q) or {}
+    if su and v.get("usdPrice") and v.get("decimals") is not None: RATE[q] = v["usdPrice"] / su * 1e9 / 10 ** v["decimals"]
+print(f"prices: {len(RATE) - 1} of the {len(ids)} commonest quote tokens priced", file=sys.stderr)
 # one pass: per coin the trades since its oldest open watch; a watch = (wallet, coin, index of its buy)
 buf = collections.defaultdict(list); watches = collections.defaultdict(list); due = []; seen = set(); out = []
 def tup(r):
@@ -127,13 +140,14 @@ def tune(h1, h2):
                 v1 = vv(a, e)
                 if best is None or v1 > best[0]: best = (v1, fl, kn, e, len(a), len(b), vv(b, e))
     return best
-res = []; fast = 0
+res = []; fast = 0; flat = 0
 def hold_of(xs):
     h = [x[3]["_its_hold"] for x in xs if x[3] != "refused"]
     return float(np.median(h)) if h else 9e9
 for u, xs in by.items():
     if len(xs) < MINN: continue
     if hold_of(xs) < MIN_HOLD: fast += 1; continue
+    if np.std([x[3]["w4"] for x in xs if x[3] != "refused"] or [0]) < 0.02 * STAKE: flat += 1; continue   # coins that never move
     h1 = [x for x in xs if x[1] < mid]; h2 = [x for x in xs if x[1] >= mid]
     t = tune(h1, h2)
     if t is None: continue
@@ -141,7 +155,8 @@ for u, xs in by.items():
     shrunk = (n2 * v2 + 30 * pool[e]) / (n2 + 30)      # a small sample is pulled toward what a random wallet makes
     res.append((shrunk, u, n1, n2, f"{fl}+ {kn} {e}", v1, np.median([x[2] for x in xs]), {e_: vv(xs, e_) for e_ in EX}, v2))
 res.sort(reverse=True)
-print(f"\n{fast} wallets with {MINN}+ copies left out as speed traders (median holding under {MIN_HOLD:.0f} s)")
+print(f"\n{fast} wallets with {MINN}+ copies left out as speed traders (median holding under {MIN_HOLD:.0f} s), {flat} as flat (their coins never move: bundles)")
+print(f"token coins priced: {len(RATE) - 1} quote tokens")
 print(f"{len(res)} wallets with {MINN}+ copies, each tuned on half 1 (buy floor x coin kind x exit, 5+ copies a half), scored on half 2:")
 print("ranked by the second half shrunk toward the pooled mean (30 copies of weight): a wallet must beat a random one on many copies")
 print(f"{'wallet':44s} {'n1':>4s} {'n2':>4s} {'choice':>18s} {'half 1':>7s} {'half 2':>7s} {'score':>7s} {'its SOL':>7s} {'holds':>6s}   all its 0.5+ copies by exit")
