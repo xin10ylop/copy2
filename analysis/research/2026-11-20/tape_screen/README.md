@@ -53,3 +53,11 @@ On that run: 319 speed traders out; **17 of 182 up on both halves, chance 16 (12
 (H2nsBdjF, FbWwk6eh, 7ThMFKUF, 6hFo8UYX, ...) share all 97 coins, never sell and every copy is ~0: bundle wallets on coins
 that never move; such "flat" wallets are now left out. Best by the cautious score: 4S5L64Va (19 / 59 copies, its sale
 +6.0% / +12.3%, score +5.7%, holds 23 s), then DGapgQYU (33 / 36, held 300 s -5.9% / +15.2%, score +1.8%).
+
+**The box, Nov 21 ~12:45 UTC, the fixed run (22.5 h; prices 199 of 200 tokens; the owner's paste):** 154,760 copies;
+571 speed traders and 20 flat bundles out; **53 of 373 up on both halves against 39 by chance (draws 32-43): above every
+draw**, while the 30th best second half is still chance-sized (+7.0% against +8.2%). **The one that stands out:
+4S5L64Va** (`4S5L64Va88JUPGTXaw5GvEdmm5hZrSGaYvcA7DrqKjjt`): 80 copies (19 / 61), its sale followed +6.0% / +13.6%, score
++6.8% (the next +2.0%), positive under four of the five fixed exits over all its copies (wallet 4's +9%, its sale +12%,
+held 300 s +21%, tp 1.5x / 60 s +5%; tp 2x / 120 s -3%), buys of 3.16 SOL median, holds 24 s (just over the speed cut).
+Next: DGapgQYU (69 copies, score +2.0%), then nothing above +0.6%.
