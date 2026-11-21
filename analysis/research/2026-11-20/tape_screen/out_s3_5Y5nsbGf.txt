@@ -1,0 +1,4 @@
+5Y5nsbGfQSfTUSewkNfGUUrMe75ZdGqs8v5Nx5UX9Pge: 575 past first buys of 0.5+ SOL (11-08 to 11-21); seen = the older 287, unseen = the newer 288; COST 0.0064 SOL a round trip, 1.0 SOL a copy, trades fetched to 640 s after its buy
+  seen 1-10: 9 copies (1 refused over 1.5x), % a copy: w4 -18.4  its -20.7  tp2 -2.5  held -51.0  scalp -2.9   [5,712 trades fetched so far]
+  seen 11-20: 18 copies (2 refused over 1.5x), % a copy: w4 -4.0  its -10.9  tp2 -13.6  held -41.7  scalp -3.2   [10,354 trades fetched so far]
+STOP: the best exit on the seen half (scalp -3.2%) is not above 0

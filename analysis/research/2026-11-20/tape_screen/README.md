@@ -130,3 +130,11 @@ price: the coin's first buy, most likely its creator's (a launcher, not a reader
 5Y5nsbGf is the one left: up 13 of 14 days, sizes that vary, no fixed pattern, but it too buys early on the curve
 (1.27-2.68x the start price), so a copy enters after it on a young coin; the full copy test (part 2) would say whether
 that entry still pays.
+
+**5Y5nsbGf, the staged copy test (`s3_staged.py`, `out_s3_5Y5nsbGf.txt`, Nov 21; COST 0.0064, 1 SOL a copy, slot+1,
+refused over 1.5x): stopped at the seen half.** Its 575 past first buys (Nov 8-21) split in time; on 18 copies of the
+older half (2 refused) every exit loses: w4 -4.0%, its -20.7% then -10.9%, tp2 -13.6%, held 300 s -41.7%, scalp -3.2%
+(the best, not above 0), so the newer half was never fetched. 10,354 coin trades fetched in all (each coin to 640 s
+after its buy). Its own +139 SOL comes from buying first on young coins (1.7x pump's start price, median); a copy a
+slot later buys into the coins it then sells. Not copyable. 18 copies is a small sample (a copy's spread is about 58
+points), but no exit is positive and holding loses 42% a copy.
