@@ -107,9 +107,16 @@ def settle(now):
                 watches[m] = [(u, kk - cut, t, i, ra, so) for u, kk, t, i, ra, so in watches[m]]
         else: del buf[m]; del watches[m]
 own = {}   # (wallet, coin) -> [SOL in, SOL out, tokens in, tokens out]
+# launch bundles (Nov 21, GYhRMtoD: +249.94 SOL itself in 5 days, every buy in the coin's create slot with the same ~10
+# wallets): a coin's create slot = its first slot on the tape when the curve was still untouched (virtual tokens before
+# that trade 1.0725e15+, pump's start is 1.073e15); a first buy in that slot is a create-slot buy, which a copy can't reach
+launch = {}; cslot = set()
 n_rows = 0; wid = 0; t_first = None; t_last = 0
 for r in rows():
     n_rows += 1; m = r["mint"]; t = r["ts"]; t_first = t_first or t; t_last = max(t_last, t)
+    if m not in launch:
+        pre = (r["vtok"] or 0) + ((r["tok"] or 0) if r["is_buy"] else -(r["tok"] or 0))
+        launch[m] = r["slot"] if pre >= 1.0725e15 else None
     settle(t - WIN)
     if m in buf: buf[m].append(tup(r))
     o = own.get((r["user"], m))
@@ -125,6 +132,7 @@ for r in rows():
             wid += 1; watches[m].append((r["user"], len(buf[m]) - 1, t, wid, rate, sol)); heapq.heappush(due, (t + WIN, m, wid))
             vt_a = r["vtok"]; impact = ((vt_a + (r["tok"] or 0)) / vt_a) ** 2 - 1 if vt_a else 0   # how far its own buy moved the price
             own[(r["user"], m)] = [sol, 0.0, r["tok"] or 0, 0, rate, impact]
+            if launch.get(m) == r["slot"]: cslot.add((r["user"], m))
 settle(t_last - WIN)   # the last 31 minutes stay out: not finished
 print(f"tape: {len(files)} files, {n_rows:,} trades, {t_first} to {t_last} ({(t_last - t_first) / 3600:.1f} h); "
       f"{len(out):,} copies of first buys of {MIN_SOL}+ SOL ({sum(1 for x in out if x[3] == 'refused'):,} refused over {PMAX}x)")
@@ -148,7 +156,8 @@ def tune(h1, h2):
                 v1 = vv(a, e)
                 if best is None or v1 > best[0]: best = (v1, fl, kn, e, len(a), len(b), vv(b, e))
     return best
-res = []; fast = 0; flat = 0; loser = 0; own_of = {}
+res = []; fast = 0; flat = 0; loser = 0; bundle = 0; own_of = {}
+BUNDLE = float(os.environ.get("BUNDLE", 0.5))   # a wallet with this share or more of its copies bought in the create slot: a launch bundle, left out
 OWN_MIN = float(os.environ.get("OWN_MIN", 0))   # a wallet that loses money itself on its sold-out tape coins is left out
 def hold_of(xs):
     h = [x[3]["_its_hold"] for x in xs if x[3] != "refused"]
@@ -156,6 +165,7 @@ def hold_of(xs):
 for u, xs in by.items():
     if len(xs) < MINN: continue
     if hold_of(xs) < MIN_HOLD: fast += 1; continue
+    if np.mean([(u, x[4]) in cslot for x in xs]) >= BUNDLE: bundle += 1; continue
     oc = [own[(u, x[4])] for x in xs if (u, x[4]) in own]; done_ = [o for o in oc if o[3] >= 0.99 * o[2]]
     own_sol = sum(o[1] - o[0] for o in done_); own_of[u] = (own_sol, len(done_), float(np.median([o[5] for o in oc])) if oc else 0)
     if done_ and own_sol < OWN_MIN: loser += 1; continue
@@ -168,6 +178,7 @@ for u, xs in by.items():
     res.append((shrunk, u, n1, n2, f"{fl}+ {kn} {e}", v1, np.median([x[2] for x in xs]), {e_: vv(xs, e_) for e_ in EX}, v2))
 res.sort(reverse=True)
 print(f"\n{fast} wallets with {MINN}+ copies left out as speed traders (median holding under {MIN_HOLD:.0f} s), {flat} as flat (their coins never move: bundles)")
+print(f"{bundle} left out as launch bundles ({BUNDLE:.0%}+ of their copies bought in the coin's create slot)")
 print(f"{loser} left out as losing money themselves on their sold-out coins of the tape (own result under {OWN_MIN} SOL)")
 print(f"token coins priced: {len(RATE) - 1} quote tokens")
 print(f"{len(res)} wallets with {MINN}+ copies, each tuned on half 1 (buy floor x coin kind x exit, 5+ copies a half), scored on half 2:")

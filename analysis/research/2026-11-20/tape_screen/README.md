@@ -107,3 +107,9 @@ chance 4 (range 1-7), 11 of 20 draws reach it: nothing found, as expected on 2.5
 flat, 299 losing themselves; **42 of 234 up on both halves against chance 33 (range 24-40; 0 of 20 draws reach 42)**;
 the 30th best second half +6.0% against chance's +4.6%. The first time the list beats chance, by about 9 wallets, which
 are not named by it (most of the 42 are still chance), and launch bundles like GYhRMtoD may be part of the excess.
+
+**The bundle filter (Nov 21, after GYhRMtoD), from the tape, free:** a coin's create slot is its first slot on the tape
+when the curve was still untouched (virtual tokens before that trade 1.0725e15 or more; pump starts at 1.073e15). A
+wallet with half or more of its copies bought in the create slot (`BUNDLE`, default 0.5) is left out as a launch
+bundle: its profit is a slot a copy can't reach. Local Nov 19 tape: 10 wallets left out (the 5 "flat" ones among them),
+4 of 20 up on both halves against chance 4 (range 2-7).
