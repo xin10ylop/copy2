@@ -57,6 +57,7 @@ for W in WS:
     ds = sorted(day.items()); up = sum(1 for _, v in ds if v > 0)
     print(f"\n{W}: {len(trades)} trades, {len(by)} coins over {len(ds)} days; its own result {sum(day.values()):+.2f} SOL, up on {up} of {len(ds)} days")
     print("  its own SOL by day: " + "  ".join(f"{d} {v:+.2f}" for d, v in ds))
+    if os.environ.get("ONLY_OWN"): continue   # the cheap part only (its own trades); the copy test on the owner's go
     random.seed(7); pick = sorted(random.sample(firsts, min(NC, len(firsts))), key=lambda c: c["t"])
     with cf.ThreadPoolExecutor(8) as ex: paths = list(ex.map(lambda c: M.path(c["m"], c["slot"], c["anchor"], threads=10), pick))
     res = []

@@ -61,3 +61,10 @@ draw**, while the 30th best second half is still chance-sized (+7.0% against +8.
 +6.8% (the next +2.0%), positive under four of the five fixed exits over all its copies (wallet 4's +9%, its sale +12%,
 held 300 s +21%, tp 1.5x / 60 s +5%; tp 2x / 120 s -3%), buys of 3.16 SOL median, holds 24 s (just over the speed cut).
 Next: DGapgQYU (69 copies, score +2.0%), then nothing above +0.6%.
+
+**4S5L64Va, its own history (s2, `ONLY_OWN=1`, `out_s2_4S5L64Va_own.txt`; 2,925 transactions, a few cents of Triton):**
+a new wallet (first trade Nov 19): 266 coins in 3 days, one buy a coin of 3.16 SOL median (844 SOL bought, 806 sold), its
+last sale a median 116 s after its buy. **It loses itself: -37.47 SOL (Nov 19 +0.11, Nov 20 -28.65, Nov 21 -8.93); on its
+236 coins sold out -43.22 SOL, 96 won, median -0.30 SOL a coin; 30 still held.** Dropped by the rule (it must make money
+itself on most days), so no copy test. Our copies on the tape were up because its 3 SOL buy moves the coin and we sell
+earlier than it does: an edge that ends when a wallet losing ~20 SOL a day stops.
