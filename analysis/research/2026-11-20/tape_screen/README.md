@@ -40,3 +40,8 @@ chance, not enough to name a wallet. Wallet 4: 19 copies of its 0.5+ buys, -1.6%
   Both buy SOL-quoted coins (the long copy does not copy those). STorreSu + G9gmk9ms (1,045 / 681 coins) buy nearly
   everything (wallet 4 shares 68 coins with STorreSu).
 - 6ua7w2Gv again (59 copies, 114 s): studied Oct-Nov (its holdout).
+
+**Nov 21, the owner: "I thought this would be directly on the command on the recorder; don't exhaust Triton unless it's
+cheap."** The screen (`s1_screen.py`) reads only the box's tape: no Triton. `s2_history.py` calls Triton (the wallet's
+own transactions, then NCOPY coins' paths); it is run only on the final few wallets, with the owner's go, its own-result
+part first. The run on the five best of the 21 h screen was stopped before any result.
