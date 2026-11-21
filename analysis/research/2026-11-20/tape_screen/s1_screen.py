@@ -115,7 +115,7 @@ by = collections.defaultdict(list)
 for x in out: by[x[0]].append(x)
 # each wallet tuned on half 1 (the owner: "each wallet can be tweaked"): its buy floor 0.5 / 1 / 1.5 / 2 SOL x the coins
 # all / SOL-quoted / token-quoted x the five exits = 60 choices, a choice needing 5+ copies in each half; scored on half 2
-FLOORS = [0.5, 1.0, 1.5, 2.0]; KINDS = {"all": lambda x: True, "SOL": lambda x: x[5], "token": lambda x: not x[5]}
+FLOORS = [float(x) for x in os.environ.get("FLOORS", str(MIN_SOL)).split(",")]; KINDS = {"all": lambda x: True, "SOL": lambda x: x[5], "token": lambda x: not x[5]}
 def vv(xs_, e): return np.mean([x[3][e] if x[3] != "refused" else -0.0004 for x in xs_]) / STAKE * 100
 def tune(h1, h2):
     best = None
@@ -138,15 +138,19 @@ for u, xs in by.items():
     t = tune(h1, h2)
     if t is None: continue
     v1, fl, kn, e, n1, n2, v2 = t
-    res.append((v2, u, n1, n2, f"{fl}+ {kn} {e}", v1, np.median([x[2] for x in xs]), {e_: vv(xs, e_) for e_ in EX}))
+    shrunk = (n2 * v2 + 30 * pool[e]) / (n2 + 30)      # a small sample is pulled toward what a random wallet makes
+    res.append((shrunk, u, n1, n2, f"{fl}+ {kn} {e}", v1, np.median([x[2] for x in xs]), {e_: vv(xs, e_) for e_ in EX}, v2))
 res.sort(reverse=True)
 print(f"\n{fast} wallets with {MINN}+ copies left out as speed traders (median holding under {MIN_HOLD:.0f} s)")
 print(f"{len(res)} wallets with {MINN}+ copies, each tuned on half 1 (buy floor x coin kind x exit, 5+ copies a half), scored on half 2:")
-print(f"{'wallet':44s} {'n1':>4s} {'n2':>4s} {'choice':>18s} {'half 1':>7s} {'half 2':>7s} {'its SOL':>7s} {'holds':>6s}   all its 0.5+ copies by exit")
-for h2v, u, n1, n2, pick, h1v, med, allv in res[:30]:
+print("ranked by the second half shrunk toward the pooled mean (30 copies of weight): a wallet must beat a random one on many copies")
+print(f"{'wallet':44s} {'n1':>4s} {'n2':>4s} {'choice':>18s} {'half 1':>7s} {'half 2':>7s} {'score':>7s} {'its SOL':>7s} {'holds':>6s}   all its 0.5+ copies by exit")
+for sc, u, n1, n2, pick, h1v, med, allv, h2v in res[:30]:
     hh = hold_of(by[u]); hs = f"{hh:5.0f}s" if hh < 1e8 else "  none"
-    print(f"{u:44s} {n1:4d} {n2:4d} {pick:>18s} {h1v:+6.1f}% {h2v:+6.1f}% {med:7.2f} {hs:>6s}   " + " ".join(f"{e} {allv[e]:+.0f}%" for e in EX))
-up = sum(1 for r_ in res if r_[0] > 0 and r_[5] > 0)
+    print(f"{u:44s} {n1:4d} {n2:4d} {pick:>18s} {h1v:+6.1f}% {h2v:+6.1f}% {sc:+6.1f}% {med:7.2f} {hs:>6s}   " + " ".join(f"{e} {allv[e]:+.0f}%" for e in EX))
+json.dump([dict(wallet=r_[1], choice=r_[4], n1=r_[2], n2=r_[3], half1=r_[5], half2=r_[8], score=r_[0]) for r_ in res[:30]],
+          open(os.environ.get("TOP_JSON", "/tmp/screen_top.json"), "w"))
+up = sum(1 for r_ in res if r_[8] > 0 and r_[5] > 0)
 print(f"\nwallets up on both halves: {up} of {len(res)}")
 w4 = [r_ for r_ in res if r_[1] == W4]
 if w4: print("wallet 4:", w4[0][2:6], {e: round(v, 1) for e, v in w4[0][7].items()})
@@ -169,7 +173,7 @@ for _ in range(5):
         h2s.append(t[6]); up_ += t[0] > 0 and t[6] > 0
     null_up.append(up_); null_top.append(sorted(h2s)[-30] if len(h2s) >= 30 else float("nan"))
 print(f"chance (pseudo-wallets of random copies, 5 draws): up on both halves {np.mean(null_up):.0f} (draws {null_up}); "
-      f"the 30th best half 2 {np.mean(null_top):+.1f}% (real: {res[29][0] if len(res) > 29 else float('nan'):+.1f}%)")
+      f"the 30th best half 2 {np.mean(null_top):+.1f}% (real: {sorted(r_[8] for r_ in res)[-30] if len(res) > 29 else float('nan'):+.1f}%)")
 # Linked wallets: among the top 60 of the list, pairs that bought the same coins (30%+ of the smaller one's coins): one
 # trader with several wallets is one candidate, and its wallets together give more copies
 coins_of = collections.defaultdict(set)
