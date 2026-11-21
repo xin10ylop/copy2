@@ -142,6 +142,26 @@ pool = {e: np.mean([x[3][e] for x in ok]) / STAKE * 100 for e in EX}
 print("every copy pooled (a random wallet), % a copy: " + "  ".join(f"{e} {v:+.1f}%" for e, v in pool.items()))
 by = collections.defaultdict(list)
 for x in out: by[x[0]].append(x)
+# One wallet from the tape alone (Nov 21, 4vw54BmA: its address carries ~11,000 failed transactions a minute, so its
+# history cannot be read from the chain cheaply; the tape keeps successful trades only): WALLET=... prints, day by day
+# (UTC), its own result on its first-bought coins of MIN_SOL+ (sold out, and still held at cost) and our copy under the
+# five exits, then stops. No Triton.
+WALLET = os.environ.get("WALLET")
+if WALLET:
+    import datetime as dt_
+    xs = by.get(WALLET, []); day = lambda t: dt_.datetime.fromtimestamp(t, dt_.timezone.utc).strftime("%m-%d")
+    coin_day = {x[4]: day(x[1]) for x in xs}
+    print(f"\n{WALLET}: {len(xs)} copies on the tape ({sum(1 for x in xs if x[3] == 'refused')} refused over {PMAX}x)")
+    print(f"{'day':6s} {'copies':>6s} {'own sold-out':>13s} {'own held':>9s}   our copy, % a copy: " + " ".join(f"{e:>6s}" for e in EX))
+    for d in sorted(set(coin_day.values())):
+        dx = [x for x in xs if day(x[1]) == d]; ok_ = [x for x in dx if x[3] != "refused"]
+        oc = [own[(WALLET, m)] for m, dd in coin_day.items() if dd == d and (WALLET, m) in own]
+        sold = sum(o[1] - o[0] for o in oc if o[3] >= 0.99 * o[2]); held = sum(o[1] - o[0] for o in oc if o[3] < 0.99 * o[2])
+        mv = {e: np.mean([x[3][e] for x in ok_]) / STAKE * 100 if ok_ else float("nan") for e in EX}
+        print(f"{d:6s} {len(dx):6d} {sold:+13.2f} {held:+9.2f}   " + " ".join(f"{mv[e]:+6.1f}" for e in EX))
+    okall = [x for x in xs if x[3] != "refused"]
+    if okall: print("all    " + f"{len(xs):6d}" + " " * 25 + " ".join(f"{np.mean([x[3][e] for x in okall]) / STAKE * 100:+6.1f}" for e in EX))
+    sys.exit()
 # each wallet tuned on half 1 (the owner: "each wallet can be tweaked"): its buy floor 0.5 / 1 / 1.5 / 2 SOL x the coins
 # all / SOL-quoted / token-quoted x the five exits = 60 choices, a choice needing 5+ copies in each half; scored on half 2
 FLOORS = [float(x) for x in os.environ.get("FLOORS", str(MIN_SOL)).split(",")]; KINDS = {"all": lambda x: True, "SOL": lambda x: x[5], "token": lambda x: not x[5]}
