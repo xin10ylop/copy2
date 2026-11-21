@@ -113,3 +113,20 @@ when the curve was still untouched (virtual tokens before that trade 1.0725e15 o
 wallet with half or more of its copies bought in the create slot (`BUNDLE`, default 0.5) is left out as a launch
 bundle: its profit is a slot a copy can't reach. Local Nov 19 tape: 10 wallets left out (the 5 "flat" ones among them),
 4 of 20 up on both halves against chance 4 (range 2-7).
+
+**The watch list's own histories (s2, `ONLY_OWN=1`, `out_s2_watch4_own.txt`, Nov 21; a few cents of Triton).** Own
+result over its days in the last 14 (token coins at Jupiter's price now; coins still held count at their cost):
+
+| Wallet | Own result | Days up | SOL coins: won, median a coin, without the best 5 | Buy size p10-p90 | Its buy price / pump's start price (median) | First sale (median) |
+|---|---|---|---|---|---|---|
+| 5Y5nsbGf | +139.39 SOL, 14 days | 13 of 14 | 64%, +0.099, +53.9 (of +73.4) | 1.33-1.58 SOL | 1.67x | 71 s |
+| AZ1eJ671 | +59.10 SOL, 5 days | 4 of 5 | 30%, -0.021, +21.3 (of +58.5) | 0.65-1.53 SOL | 1.13x | 41 s |
+| FyRmQ8oS | -141.23 SOL, 8 days | 1 of 8 | dropped | | | |
+| 3orcPHLt | -48.79 SOL, 13 days | 2 of 13 | dropped | | | |
+| (GYhRMtoD, for comparison) | +249.94 SOL, 5 days | 5 of 5 | 98%, +1.223, +232.0 | 2.18 SOL every time | 1.71x every time | 13 s |
+
+FyRmQ8oS and 3orcPHLt lose themselves: dropped by the own-result rule. AZ1eJ671 buys at 1.03-1.31x pump's start
+price: the coin's first buy, most likely its creator's (a launcher, not a reader), and its profit leans on a few coins.
+5Y5nsbGf is the one left: up 13 of 14 days, sizes that vary, no fixed pattern, but it too buys early on the curve
+(1.27-2.68x the start price), so a copy enters after it on a young coin; the full copy test (part 2) would say whether
+that entry still pays.
