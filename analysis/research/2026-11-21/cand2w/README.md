@@ -27,3 +27,13 @@ half. **Too few copies to judge either way (6 a half: about +/-50% a copy of noi
 All 28 coins with a path (`out/b2_J3MxZcfV.txt`, `MIN_SEEN=8 MIN_UNSEEN=8`; halves 10 / 18 copies): holding 34 s median,
 29% under 20 s. Wallet 4's live exit -2.64 / -2.67 SOL; the best first-half setting -1.74 on 10 and +2.12 on 18 in the
 second (+11.8% a copy, w/o 2% +1.09); all settings' second-half median -1.54, 41% up. Still undecided; followed on the tape.
+
+## HANcjmXU, 10 days (Nov 21; the owner: "test him for 10 days, the regular workflow")
+
+Closest to wallet 4 in the 21 h screen (holds minutes, 1.5+ SOL buys, part TTWO coins; wallet 4's exit +7% a copy on its
+tape copies). 10 days of history: 12,792 transactions, about 1,350 coins (38-208 a day), 1,116 first buys of 0.5+ SOL; 250
+of them at random. On the first 169 with a path (Nov 11 20:22 - Nov 19 00:33 UTC; halves 105 / 64; `out/b2_HANcjmXU_174.txt`):
+**it holds a median 153 s (5% under 20 s): copyable in style, and our copies lose.** Wallet 4's live exit -5.07 / -6.57 SOL;
+the best setting of the first half (1.5+ SOL token coins, tp 2.5x, 450 s, stall 300) +3.30 on 22 -> -6.73 on 29 (-23.2% a
+copy); the top 1% of the first half: second-half median -4.98; 17% of all settings up. At the bot's real cost: the best
+first-half setting +6.96 on 75 -> -6.57 on 50.

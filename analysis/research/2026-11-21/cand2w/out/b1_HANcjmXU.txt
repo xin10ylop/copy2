@@ -1,2 +1,5 @@
 HANcjmXU: 1116 first buys of 0.5+ SOL in 14 days, 250 taken
 25/250 (780 s)
+50/250 (1392 s)
+75/250 (1453 s)
+100/250 (1768 s)
