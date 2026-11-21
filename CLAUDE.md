@@ -43,6 +43,9 @@ Wallet 4's strategies:
   buys a removed float back, as it did with AAPLx at 01:12:38 UTC). **Since Nov 20 13:23 UTC leg 2 is off** (`dip_drop = 0`, the
   owner will fund its own wallet; floats and the timer's file back to 1.0 SOL). **Since Nov 20 13:32 UTC the unit
   `rugsnipe-tape` records the pump.fun tape on the box** (`/var/lib/rugsnipe-tape`, 14 days) for the wallet search.
+  **Since Nov 21 ~13:57 UTC the box is a new Cherry Premium VDS 2 (Frankfurt, monthly billing, same name `fra-long`,
+  same wallet and settings: `config/long.live.example.toml`); Vultr was suspended unpaid and given up with its tape;
+  the tape restarts 13:59 UTC Nov 21, 60 days kept.**
 - **Strategy D, the launch copy:** the hot copy bot `crates/rugsnipe`, with a `copy_more` entry. It is stopped.
 
 Read `README.md` (status, A-Z index), then `02-decomposition/` (why A and not the rest), then the strategy folder you work

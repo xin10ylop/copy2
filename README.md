@@ -18,6 +18,14 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 21 ~13:57 UTC (15:57 Beirut): the long copy moved to a new Cherry box** (Premium VDS 2, Frankfurt, Ubuntu 24.04,
+**monthly billing**; hostname `fra-long`, user `ops`): the Vultr box was suspended for an unpaid bill and is given up,
+**with its tape (Nov 20 13:32 to Nov 21) and its journal**. Same wallet `Eao8T2Pk...` (the key put back from the
+owner's copy), same settings (`config/long.live.example.toml`, `config/float-levels.live`, `fd7911f`); start line
+`mode On ... min_sol 1.3 stake 1 SOL tp 4x stop 0x hold 600s sell_pressure [5, 60, 30] stall 180s max_open 2`, feed
+connected; wallet 1.9693 SOL and the 6 floats at 0.94-1.00 SOL (the timer topped TTWO up). **The tape restarts on
+the new box at 13:59 UTC Nov 21** (60 days kept). The screen results of the lost tape stay in
+`analysis/research/2026-11-20/tape_screen/README.md`.
 **Nov 20 13:32 UTC (15:32 Beirut): the pump.fun tape records on the Frankfurt box** (unit `rugsnipe-tape`, every curve
 trade and create, `/var/lib/rugsnipe-tape`, 14 days kept; first minute 3,544 events; `analysis/research/2026-11-19/tape/`),
 for the wallet search. **Nov 20 13:23 UTC: leg 2 off in the main unit** (`dip_drop = 0`; it gets its own wallet later),
