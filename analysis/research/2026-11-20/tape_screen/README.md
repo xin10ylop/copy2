@@ -154,3 +154,11 @@ bundles (the new filter), 275 losing themselves, 2 flat. **39 of 148 up on both 
 Top by score: Be6s18aT (5 / 5 copies), 9rThNMRn, 4vw54BmA (14 / 16, its buys 2.93 SOL, holds 81 s, own +33.78 SOL on the
 tape, impact +10.7%: its own buy moves the coin, as 4S5L64Va's did), G1aToexm. 6nWLPrww (pair B; 4cRLV1fw's own history
 was -3.43 on SOL coins) is back at -1.1%.
+
+**Bought data instead of the tape? Checked Nov 21, not taken (the owner: "just continue recording, it's the cleanest").**
+Bitquery's Data Store sells every pump curve trade as Parquet ($300 the latest month, $1,500 six, $3,000 twelve; T+1):
+its free sample (486 trades, 50 slots) has slot, position in the block, signature, trader, both amounts and the quote
+mint, but no curve reserves, which our copy model needs; they could be rebuilt from the curve constant (our tape: 57% of
+SOL-coin trades on pump's standard curve, virtual SOL x tokens = 30 x 1,073M), with each coin's fee tier unknown. Dune's
+docs show no pump.fun curve table. Helius `getTransactionsForAddress` filters to successful transactions only (for
+flooded wallets like 4vw54BmA; Developer plan). The recorder stays the source; one wallet is read from it with WALLET=.
