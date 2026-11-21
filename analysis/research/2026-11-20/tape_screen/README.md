@@ -82,3 +82,24 @@ holds 54 s), FyRmQ8oS (+5.64, pair A, its sale +22.2% / +9.4%), 3orcPHLt (+1.39,
 on 26 copies), 5Y5nsbGf (+20.51, holds 119 s, 41 copies), GYhRMtoD (+106.15, 99 copies, every exit +2% to +5%; its buys
 move the price +11.8%; buys the same 97 coins as AjSHVErb and AB797pqG: a group). sssssyv2 makes +272.87 itself on 570
 coins and its copies lose: the profit is its speed.
+
+**GYhRMtoD, its own history (s2, `ONLY_OWN=1`, `out_s2_GYhRMtoD_own.txt`; 2,727 transactions, a few cents of Triton):**
++249.94 SOL over 5 days (Nov 17 +1.54, Nov 18 +40.00, Nov 19 +71.72, Nov 20 +64.46, Nov 21 +72.21), up every day; 219
+coins, all SOL-quoted, **215 won**, median +1.22 SOL a coin; without its best 5 +232.04. Every first buy is the same
+2.18 SOL (p25 = p75); its last sale a median 47 s after its buy; 31 coins still held (counted as losses at their cost).
+**It is a launch bundle, not a trader.** On the local Nov 19 tape (14 of its coins) it buys in the coin's create slot
+on 13 of them, with 10-16 buys of 21.1-21.4 SOL in all in that slot, the same wallets each time (AjSHVErb, EEgAM69n,
+4G3HtW63, 8FJmuXU7, GtJuY3Jc, 8eAScSkR, 9fxcdiWp, AB797pqG: 13 of 13 coins each), and it first sells 61-73 slots later
+(about 25-30 s; 116 once). Its profit is the create slot, which a copy cannot reach: we would buy at slot+1 on top of
+the group's ~21 SOL and sell into its exit. The screen's +2% to +5% on its 99 copies is the move the group's own
+buying leaves behind, which lasts only while the group keeps launching. Not a candidate. A new screen rule follows:
+a wallet whose first buys are mostly in the coin's create slot, with the same co-buyers, is a bundle.
+
+**The chance line, corrected (Nov 21, the owner: "how are you scoring chance").** Each real wallet in the final list
+gets a pseudo-wallet with the same copy counts a half, its sizes and coin kinds kept (so the same 15 tuning choices),
+the copies drawn at random; the same pick on half 1 and score on half 2 runs, and the count "up on both halves" is
+compared. Until now the copies were drawn from every copy of the tape, including the speed traders' and the losers'
+(the pooled mean is -4% to -9% a copy), which set chance too low and made the real list look better than it is. Now
+they are drawn from the copies of the wallets that passed the filters, 20 draws (`NULL_DRAWS`), and the line prints
+the range and how many draws reach the real count. Local Nov 19 tape (2.5 h, 8+ copies): 4 of 21 up on both halves,
+chance 4 (range 1-7), 11 of 20 draws reach it: nothing found, as expected on 2.5 hours.

@@ -184,12 +184,15 @@ print(f"\nwallets up on both halves: {up} of {len(res)}")
 w4 = [r_ for r_ in res if r_[1] == W4]
 if w4: print("wallet 4:", w4[0][2:6], {e: round(v, 1) for e, v in w4[0][7].items()})
 else: print(f"wallet 4: {len(by.get(W4, []))} copies (under {MINN} or one half short)")
-# Chance: the same pick on pseudo-wallets (each real wallet's copy counts per half, drawn at random from all copies of
-# that half; 5 draws). As many pseudo-wallets "up on both halves" as real ones = nothing found.
+# Chance: the same pick on pseudo-wallets (each real wallet's copy counts per half, drawn at random from the copies of
+# that half of the wallets that passed the filters, not from every copy: speed traders and losers would set chance too
+# low; NULL_DRAWS draws, 20 by default). As many pseudo-wallets "up on both halves" as real ones = nothing found.
 rng = np.random.default_rng(7)
-H1 = [x for x in out if x[1] < mid]; H2 = [x for x in out if x[1] >= mid]
+kept = [x for r_ in res for x in by[r_[1]]]
+H1 = [x for x in kept if x[1] < mid]; H2 = [x for x in kept if x[1] >= mid]
+ND = int(os.environ.get("NULL_DRAWS", 20))
 null_up = []; null_top = []
-for _ in range(5):
+for _ in range(ND):
     up_ = 0; h2s = []
     for u in [r_[1] for r_ in res]:
         xs = by[u]; n1 = sum(1 for x in xs if x[1] < mid); n2 = len(xs) - n1
@@ -201,7 +204,8 @@ for _ in range(5):
         if t is None: continue
         h2s.append(t[6]); up_ += t[0] > 0 and t[6] > 0
     null_up.append(up_); null_top.append(sorted(h2s)[-30] if len(h2s) >= 30 else float("nan"))
-print(f"chance (pseudo-wallets of random copies, 5 draws): up on both halves {np.mean(null_up):.0f} (draws {null_up}); "
+print(f"chance (pseudo-wallets of random copies of the kept wallets, {ND} draws): up on both halves {np.mean(null_up):.0f} "
+      f"(range {min(null_up)}-{max(null_up)}, real {up}; {sum(1 for v in null_up if v >= up)} of {ND} draws reach the real count); "
       f"the 30th best half 2 {np.mean(null_top):+.1f}% (real: {sorted(r_[8] for r_ in res)[-30] if len(res) > 29 else float('nan'):+.1f}%)")
 # Linked wallets: among the top 60 of the list, pairs that bought the same coins (30%+ of the smaller one's coins): one
 # trader with several wallets is one candidate, and its wallets together give more copies
