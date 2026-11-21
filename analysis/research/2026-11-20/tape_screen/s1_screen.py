@@ -12,6 +12,7 @@
 # scored on the SECOND (blind). Also the pooled mean of every copy (what a random wallet gives) and wallet 4's line.
 #   python3 -I s1_screen.py TAPE_DIR [MIN_SOL=0.5] [MIN_COPIES=10] > screen.txt     (on the box: nice -n 19)
 import sys, os, json, gzip, glob, heapq, collections, urllib.request, numpy as np
+MIN_HOLD = float(os.environ.get("MIN_HOLD", 20))   # wallets whose median holding (buy to its first sale) is shorter: speed traders, left out
 D = sys.argv[1]; MIN_SOL = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5; MINN = int(sys.argv[3]) if len(sys.argv) > 3 else 10
 STAKE, PMAX, WIN = 0.5, 1.5, 1860
 COST = float(os.environ.get("COST", 0.0345))   # the convention; the live bot pays ~0.0064 a round trip (journal: paid -0.0032 a buy)
@@ -72,7 +73,8 @@ def model(tr, k, rate, user):
     early = trig(first(its_sell & (age >= 30) & (age < 290) & (px < 1.5))); its = trig(first(its_sell))
     ex = {"w4": min(trig(first(px >= 4)), tm(600), sp, st, early, n - 1), "its": min(its, tm(600), n - 1),
           "tp2": min(trig(first(px >= 2)), tm(120), n - 1), "held": min(tm(300), n - 1), "scalp": min(trig(first(px >= 1.5)), tm(60), n - 1)}
-    return {k_: float(val[i]) for k_, i in ex.items()}
+    o = {k_: float(val[i]) for k_, i in ex.items()}; fi = first(its_sell); o["held"] = o["held"]; o["_its_hold"] = float(age[fi]) if fi is not None else 9e9
+    return o
 EX = ["w4", "its", "tp2", "held", "scalp"]
 def settle(now):
     while due and due[0][0] <= now:
@@ -125,19 +127,25 @@ def tune(h1, h2):
                 v1 = vv(a, e)
                 if best is None or v1 > best[0]: best = (v1, fl, kn, e, len(a), len(b), vv(b, e))
     return best
-res = []
+res = []; fast = 0
+def hold_of(xs):
+    h = [x[3]["_its_hold"] for x in xs if x[3] != "refused"]
+    return float(np.median(h)) if h else 9e9
 for u, xs in by.items():
     if len(xs) < MINN: continue
+    if hold_of(xs) < MIN_HOLD: fast += 1; continue
     h1 = [x for x in xs if x[1] < mid]; h2 = [x for x in xs if x[1] >= mid]
     t = tune(h1, h2)
     if t is None: continue
     v1, fl, kn, e, n1, n2, v2 = t
     res.append((v2, u, n1, n2, f"{fl}+ {kn} {e}", v1, np.median([x[2] for x in xs]), {e_: vv(xs, e_) for e_ in EX}))
 res.sort(reverse=True)
-print(f"\n{len(res)} wallets with {MINN}+ copies, each tuned on half 1 (buy floor x coin kind x exit, 5+ copies a half), scored on half 2:")
-print(f"{'wallet':44s} {'n1':>4s} {'n2':>4s} {'choice':>18s} {'half 1':>7s} {'half 2':>7s} {'its SOL':>7s}   all its 0.5+ copies by exit")
+print(f"\n{fast} wallets with {MINN}+ copies left out as speed traders (median holding under {MIN_HOLD:.0f} s)")
+print(f"{len(res)} wallets with {MINN}+ copies, each tuned on half 1 (buy floor x coin kind x exit, 5+ copies a half), scored on half 2:")
+print(f"{'wallet':44s} {'n1':>4s} {'n2':>4s} {'choice':>18s} {'half 1':>7s} {'half 2':>7s} {'its SOL':>7s} {'holds':>6s}   all its 0.5+ copies by exit")
 for h2v, u, n1, n2, pick, h1v, med, allv in res[:30]:
-    print(f"{u:44s} {n1:4d} {n2:4d} {pick:>18s} {h1v:+6.1f}% {h2v:+6.1f}% {med:7.2f}   " + " ".join(f"{e} {allv[e]:+.0f}%" for e in EX))
+    hh = hold_of(by[u]); hs = f"{hh:5.0f}s" if hh < 1e8 else "  none"
+    print(f"{u:44s} {n1:4d} {n2:4d} {pick:>18s} {h1v:+6.1f}% {h2v:+6.1f}% {med:7.2f} {hs:>6s}   " + " ".join(f"{e} {allv[e]:+.0f}%" for e in EX))
 up = sum(1 for r_ in res if r_[0] > 0 and r_[5] > 0)
 print(f"\nwallets up on both halves: {up} of {len(res)}")
 w4 = [r_ for r_ in res if r_[1] == W4]

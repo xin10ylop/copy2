@@ -1,55 +1,56 @@
-tape: 4 files, 514,038 trades, 1795110307 to 1795119485 (2.5 h); 11,332 copies of first buys of 0.5+ SOL (618 refused over 1.5x)
-every copy pooled (a random wallet), % a copy: w4 -11.2%  its -9.7%  tp2 -14.1%  held -13.0%  scalp -12.1%
+tape: 4 files, 514,038 trades, 1795110307 to 1795119485 (2.5 h); 11,311 copies of first buys of 0.5+ SOL (618 refused over 1.5x)
+every copy pooled (a random wallet), % a copy: w4 -11.2%  its -9.7%  tp2 -14.1%  held -13.0%  scalp -12.2%
 
-92 wallets with 8+ copies, each tuned on half 1 (buy floor x coin kind x exit, 5+ copies a half), scored on half 2:
-wallet                                         n1   n2             choice  half 1  half 2 its SOL   all its 0.5+ copies by exit
-Gw8Z8annpiU7ymqSrv49zjC832LQ4Ne1gxGS6qzt9Pg2    5    5      0.5+ all held  +44.0%  +99.8%    0.98   w4 +18% its -13% tp2 +14% held +72% scalp +7%
-6Weygqd9fBi3TnBkPwnDeUrGkTd83RCFPL7E6sc2EjSW    8    7      0.5+ all held   -1.1%  +43.0%    0.62   w4 -14% its -11% tp2 +1% held +19% scalp -2%
-66vDAQEe3HzE3qyKuZ1hmGGgwxmCtTrmHUuqahaceXj1    5    6       0.5+ all its  -27.7%  +41.6%    0.98   w4 +26% its +10% tp2 -7% held +48% scalp -13%
-SQHK48QT8SY1vYN44iXji7wQ6CJek8AjfX6mBp47TZq     6    8      1.0+ all held  -15.4%  +28.7%    1.44   w4 -3% its -21% tp2 -15% held +5% scalp -15%
-Fhbh1DTUDKt6qu9zVg8Q5VgnZa1WWWbxBxG6pCoJoggA   17   10       1.5+ all tp2   -2.3%  +25.6%    2.85   w4 +3% its -8% tp2 +3% held +41% scalp -9%
-HNzLMbdXb2YPNzegjMmL223ACP2jwHYK3AnQZFzrddCu   18   10       0.5+ all its  -19.5%  +21.0%    0.60   w4 -15% its -5% tp2 -13% held -17% scalp -20%
-J3gZFpvsCsmA5zwqXgUpyqNLBoGGcJzmnfRwbHFR6KfU    6    6     0.5+ all scalp  -10.5%  +21.0%    0.81   w4 +11% its +2% tp2 +3% held +10% scalp +5%
-3yrJE1A8dgSuy5NLimG5GSYxA6wMkvnAYLD9Y4xR2fjJ    5    7       0.5+ all tp2  -14.3%  +19.6%    0.84   w4 -17% its -9% tp2 +5% held -45% scalp +3%
-A99u6tECYLx15oYDqtZdKyzSXBxf9T3DQ973ccf3NmwR    6    6        0.5+ all w4  +17.7%  +18.1%    0.88   w4 +18% its -12% tp2 +14% held -33% scalp +7%
-HLU8QbLdvHDSWiQtyc8SGsTTdSdwZ3UKt8cEkG2wv4qk   14   10        0.5+ all w4   -9.2%  +12.7%    0.63   w4 -0% its +13% tp2 -7% held +5% scalp -9%
-EDXC94LZK8GomcNxQgWWZhfLWihSJ8U9tRQTWGT6UFU8   11    8       0.5+ all its   -4.3%  +11.9%    0.98   w4 +9% its +3% tp2 -9% held -11% scalp -3%
-FSz6mptAxKrjDjaJYQiGiCGGwsxL4WgWjsh9sGhw4BZX    7    5       0.5+ all its  -14.5%  +10.6%    0.98   w4 -10% its -4% tp2 -12% held -2% scalp -18%
-HHJaweKns2RAgdyNfWM9X2bxn3zGVo7qQCeoseWnHSqS    9    6       0.5+ all tp2   +7.2%   +5.3%    1.86   w4 +1% its -9% tp2 +6% held -9% scalp +3%
-F9SRKcrtL5d8RtPRLndmVBDdtnRCN1XKLBB4oS4YvkgY   10    5       0.5+ all its   -9.8%   +3.7%    0.67   w4 -10% its -5% tp2 -5% held -15% scalp -0%
-DF7eRXHnvRQ9QeVCrdfS56a7RpBD6se6mgPvzApHPNr9    7    5      1.0+ all held  +22.3%   +3.1%    1.88   w4 +9% its +9% tp2 -5% held +2% scalp -1%
-HnLvH581ZpPnJHFzxSx2zsrTdjKdAZULuoi5xe3qEVib    6    6        1.0+ all w4   +6.5%   +1.9%    1.11   w4 +0% its -25% tp2 -6% held -31% scalp -14%
-bwamJzztZsepfkteWRChggmXuiiCQvpLqPietdNfSXa     5    5     0.5+ token its   -8.3%   +0.9%    5.93   w4 -30% its -17% tp2 -29% held -37% scalp -27%
-BThY85WeRSHgwuuj2SPFN4MAzBdc3Mcs5VDwQPe2EtSJ    6    5     0.5+ all scalp   +5.1%   -0.5%    1.39   w4 -39% its -18% tp2 -32% held -53% scalp +3%
-6Kj5ChEZnyNjgATjjSvp8AveJRa9Nerjir2c4Nh2RVRp    9    9       0.5+ all its   -3.7%   -2.6%    0.99   w4 -30% its -3% tp2 -15% held -47% scalp +0%
-Dg98fP2GJvTAP9VWY4yjgGZkrLofMQ2afFiKCseYouU6    9    6       0.5+ all its  -11.2%   -4.5%    0.64   w4 +5% its -8% tp2 -6% held +12% scalp -9%
-4UPvSdt1ki7x4cwFuNxjhxPCnQ4AXnCSTKLxYV1vXK1t   11   12     0.5+ all scalp  -13.8%   -6.0%    1.17   w4 -6% its -10% tp2 -7% held -8% scalp -10%
-6EGJV7xvNh8cNpCi7kfpNmjyNRb3NDBdm7JcJHvu1tW8   11    6       0.5+ all its  -15.2%   -6.3%    0.99   w4 -29% its -12% tp2 -30% held -41% scalp -22%
-8xeZXEPcDDYTLWySHXVKLf3iBiZZTsrvjXk5yMnRQQmG    7    9    0.5+ token held   +4.9%   -7.0%    0.99   w4 -17% its -14% tp2 -8% held -19% scalp -12%
-A75rmp59VumYWPp3MPdBtVpiBFomkFZqjZyjUppNWgaz   18    9     0.5+ all scalp   -5.4%   -7.5%    0.62   w4 -20% its -10% tp2 -21% held -31% scalp -6%
-AkuBCezWEdENKot1gxMurXBW6p3reW7RyXhkz2benSKf    7    5     0.5+ SOL scalp   -6.5%   -7.7%    1.28   w4 -5% its -13% tp2 -10% held -6% scalp -8%
-ABbi258TFMx6dRgTH4cFpAVSyJX7BWi7Myw4nu1uy7W2   12    9     0.5+ all scalp  -16.8%   -7.7%    0.57   w4 +4% its -12% tp2 -19% held -2% scalp -13%
-G3A4eyKyhAyAFro3r8LsoPaBprMstUJYeWtjnjsDhcRL   17   15       0.5+ all its   -6.3%   -7.9%    0.69   w4 -21% its -7% tp2 -15% held -31% scalp -9%
-A8W81KDBVEovvmkUbKCWoaNx744E5T4PQ1iJsZLA2H8     6    5       0.5+ all its  -13.9%   -8.5%    0.95   w4 +12% its -11% tp2 -15% held +13% scalp -13%
-59C19uWBHqxjUsEX9uTioK1RAqZLz4UstZbbJLfG6JW1    5    6       0.5+ all its  -11.1%   -9.1%    0.59   w4 -29% its -10% tp2 -28% held -15% scalp -12%
-DKsKrFHW39c7KotTPzBWZ7t2CrvPNWG2JoVW8XvAoBbQ    5    6       0.5+ all its   -1.6%   -9.2%    1.98   w4 -26% its -6% tp2 +8% held -51% scalp -6%
+110 wallets with 8+ copies left out as speed traders (median holding under 20 s)
+32 wallets with 8+ copies, each tuned on half 1 (buy floor x coin kind x exit, 5+ copies a half), scored on half 2:
+wallet                                         n1   n2             choice  half 1  half 2 its SOL  holds   all its 0.5+ copies by exit
+6Weygqd9fBi3TnBkPwnDeUrGkTd83RCFPL7E6sc2EjSW    8    7      0.5+ all held   -1.1%  +43.0%    0.62    46s   w4 -14% its -11% tp2 +1% held +19% scalp -2%
+66vDAQEe3HzE3qyKuZ1hmGGgwxmCtTrmHUuqahaceXj1    5    6       0.5+ all its  -27.7%  +41.6%    0.98    81s   w4 +26% its +10% tp2 -7% held +48% scalp -13%
+SQHK48QT8SY1vYN44iXji7wQ6CJek8AjfX6mBp47TZq     6    8      1.0+ all held  -15.4%  +28.7%    1.44    33s   w4 -3% its -21% tp2 -15% held +5% scalp -15%
+HLU8QbLdvHDSWiQtyc8SGsTTdSdwZ3UKt8cEkG2wv4qk   14   10        0.5+ all w4   -9.2%  +12.7%    0.63    22s   w4 -0% its +13% tp2 -7% held +5% scalp -9%
+EDXC94LZK8GomcNxQgWWZhfLWihSJ8U9tRQTWGT6UFU8   11    8       0.5+ all its   -4.3%  +11.9%    0.98    23s   w4 +9% its +3% tp2 -9% held -11% scalp -3%
+FSz6mptAxKrjDjaJYQiGiCGGwsxL4WgWjsh9sGhw4BZX    7    5       0.5+ all its  -14.5%  +10.6%    0.98    26s   w4 -10% its -4% tp2 -12% held -2% scalp -18%
+HHJaweKns2RAgdyNfWM9X2bxn3zGVo7qQCeoseWnHSqS    9    6       0.5+ all tp2   +7.2%   +5.3%    1.85    55s   w4 +1% its -9% tp2 +6% held -9% scalp +3%
+F9SRKcrtL5d8RtPRLndmVBDdtnRCN1XKLBB4oS4YvkgY   10    5       0.5+ all its   -9.8%   +3.7%    0.66    36s   w4 -10% its -5% tp2 -5% held -15% scalp -0%
+DF7eRXHnvRQ9QeVCrdfS56a7RpBD6se6mgPvzApHPNr9    7    5      1.0+ all held  +22.3%   +3.1%    1.99    31s   w4 +11% its +8% tp2 -6% held +5% scalp -3%
+AkuBCezWEdENKot1gxMurXBW6p3reW7RyXhkz2benSKf    7    5     0.5+ SOL scalp   -6.5%   -7.7%    1.28    23s   w4 -5% its -13% tp2 -10% held -6% scalp -8%
+59C19uWBHqxjUsEX9uTioK1RAqZLz4UstZbbJLfG6JW1    5    6       0.5+ all its  -11.1%   -9.1%    0.59    30s   w4 -29% its -10% tp2 -28% held -15% scalp -12%
+GG5ATPW7bxGm5y4aGa2uWWZV1JvjETiM2Rabc2fT8Y7f   12    7     0.5+ all scalp  -15.9%  -11.3%    1.98   134s   w4 -15% its -22% tp2 -17% held +11% scalp -14%
+sssssyv2q57u9sJrL1BB7Ep71X6YBY71iYt7CtHB5zJ    28   17     1.0+ all scalp   -1.4%  -14.3%    1.21    21s   w4 -7% its -8% tp2 -7% held -4% scalp -7%
+GdQz4w9uCeXrB1GZnG1ocGqQNohsmFMKnZucezEJuo9x   15    9      0.5+ all held   +1.5%  -14.4%    1.48    22s   w4 -2% its -10% tp2 -9% held -4% scalp -8%
+FaNaUysvKBbfoRAhu7P7R5wPfHe7PaCXs9xy5LgLj3gu   12    5     0.5+ all scalp  -24.8%  -15.3%    1.04    36s   w4 -27% its -23% tp2 -43% held -46% scalp -22%
+6ZEZZJdacxKZ7Chw9hVapWvwkwh5evjrtxTkhtTVkiwF   12    5     0.5+ all scalp  -27.7%  -15.3%    1.00    36s   w4 -25% its -20% tp2 -36% held -45% scalp -24%
+4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9    5    7     0.5+ all scalp   -5.6%  -18.4%    2.77    49s   w4 -14% its -9% tp2 -11% held -26% scalp -13%
+H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg    5   10       0.5+ all tp2  +11.0%  -18.8%    0.82    68s   w4 -25% its -15% tp2 -9% held -1% scalp +13%
+EXGvmSxq26Uq7Ee4fGMRnKResvNQFgD4ezMShjQWsvbc   12    5     0.5+ all scalp  -20.5%  -19.1%    0.99    36s   w4 -25% its -20% tp2 -43% held -46% scalp -20%
+CcyhQxQjmbFWy5wUYoA7cMqPw2WLtQoVFYEjm8KKU9oW    7    8       0.5+ all its  -17.7%  -20.1%    0.62    27s   w4 -35% its -19% tp2 -20% held -42% scalp -15%
+G9gmk9msvd6wT4hDJFm64vKra5z82YvD9je9WqjBvnuk   32   26     1.0+ all scalp  -13.0%  -22.0%    1.13    55s   w4 -18% its -10% tp2 -18% held -4% scalp -17%
+AEdnzgqMSSR8pqQgSFuULQSHaJEodbmCzZ6HyuzYDygk    6   14     1.5+ all scalp   -6.7%  -22.4%    1.40    21s   w4 -17% its -16% tp2 -19% held -13% scalp -17%
+Z6BLE1zwstwLcRGCXCpREWq1ixpXCXm6SAY94yt9MHs     5    6        0.5+ all w4   +8.5%  -24.6%    0.73    82s   w4 -10% its -17% tp2 -13% held -12% scalp -10%
+Boj2tMSboEjxQ68TTcTEp2ewhU4BEWpDP9ZCwtpJNAX7    5    6       0.5+ all tp2   +1.3%  -24.8%    2.33    51s   w4 -22% its -38% tp2 -13% held -45% scalp -13%
+FZU56d9iPqohXM5XBrYYBZLi2UoUnZT4V5Qf2631tEzb    6    9       1.0+ all its   -8.5%  -25.5%    1.26   251s   w4 -20% its -19% tp2 -14% held -27% scalp -16%
+omegoMAe1AMY5MFKQQr3JwXVy8F4eCvmBAfcpo8XAfq    20   12       0.5+ SOL tp2   -0.9%  -26.2%    0.91    33s   w4 +1% its -7% tp2 -6% held -0% scalp -6%
+CeMVdXZE2UZLtmRxKp5PryX5ShYxvkgrAbx44Yu4djFe    6   11       0.5+ all its  +15.8%  -31.0%    0.98    29s   w4 -21% its -14% tp2 -20% held -40% scalp -19%
+STorreSu8X6yPLmiEScNHSGDinqV7j84hWjmvH9SPwk    15    7     1.0+ all scalp   +0.6%  -35.9%    0.85    25s   w4 -21% its -14% tp2 -20% held -20% scalp -16%
+ARu4n5mFdZogZAravu7CcizaojWnS6oqka37gdLT5SZn    5   10        0.5+ all w4   -1.0%  -37.6%    1.00   145s   w4 -25% its -16% tp2 -15% held -30% scalp -19%
+BYxxKQ7crodCMHBydmsg2pBonuuaHFRKxafBprNdVTTh   15    6        0.5+ all w4   -9.8%  -40.5%    1.49    26s   w4 -19% its -26% tp2 -35% held -33% scalp -16%
 
-wallets up on both halves: 5 of 92
-wallet 4: (5, 10, '0.5+ all tp2', np.float64(11.048803150815933)) {'w4': np.float64(-25.3), 'its': np.float64(-15.4), 'tp2': np.float64(-8.9), 'held': np.float64(-0.5), 'scalp': np.float64(13.1)}
-chance (pseudo-wallets of random copies, 5 draws): up on both halves 14 (draws [np.int64(6), np.int64(19), np.int64(15), np.int64(8), np.int64(20)]); the 30th best half 2 -1.5% (real: -9.2%)
-linked pairs among the top 60 (same coins, 30%+): 176
-  sssssyv2 + ADpfskBk: 28 coins in common (51 / 50)
-  A75rmp59 + BUkpShoE: 18 coins in common (27 / 69)
-  139TCdUJ + BUkpShoE: 18 coins in common (30 / 69)
-  G3A4eyKy + BUkpShoE: 17 coins in common (32 / 69)
+wallets up on both halves: 2 of 32
+wallet 4: (5, 10, '0.5+ all tp2', np.float64(11.048602671308231)) {'w4': np.float64(-25.3), 'its': np.float64(-15.4), 'tp2': np.float64(-8.9), 'held': np.float64(-0.5), 'scalp': np.float64(13.1)}
+chance (pseudo-wallets of random copies, 5 draws): up on both halves 4 (draws [np.int64(2), np.int64(5), np.int64(2), np.int64(4), np.int64(8)]); the 30th best half 2 -35.4% (real: -40.5%)
+linked pairs among the top 60 (same coins, 30%+): 108
+  sssssyv2 + G9gmk9ms: 39 coins in common (51 / 76)
+  G9gmk9ms + STorreSu: 30 coins in common (76 / 75)
+  sssssyv2 + STorreSu: 27 coins in common (51 / 75)
+  omegoMAe + STorreSu: 27 coins in common (56 / 75)
+  G9gmk9ms + AEdnzgqM: 26 coins in common (76 / 52)
+  G9gmk9ms + omegoMAe: 20 coins in common (76 / 56)
+  BYxxKQ7c + 3PpgE1Pk: 19 coins in common (21 / 22)
+  sssssyv2 + omegoMAe: 17 coins in common (51 / 56)
+  sssssyv2 + AEdnzgqM: 17 coins in common (51 / 52)
   FaNaUysv + EXGvmSxq: 17 coins in common (17 / 17)
   FaNaUysv + 6ZEZZJda: 17 coins in common (17 / 17)
   6ZEZZJda + EXGvmSxq: 17 coins in common (17 / 17)
-  2jjfHSRe + ADpfskBk: 16 coins in common (28 / 50)
-  sssssyv2 + 2jjfHSRe: 15 coins in common (51 / 28)
-  H7n1YtcP + CcyhQxQj: 15 coins in common (22 / 16)
-  Fhbh1DTU + sssssyv2: 14 coins in common (33 / 51)
-  ABbi258T + sssssyv2: 14 coins in common (21 / 51)
-  ABbi258T + ADpfskBk: 14 coins in common (21 / 50)
-  6s631WmW + H7n1YtcP: 14 coins in common (16 / 22)
-  sssssyv2 + DLtfajGn: 12 coins in common (51 / 24)
+  HLU8QbLd + G9gmk9ms: 15 coins in common (24 / 76)
+  HLU8QbLd + STorreSu: 14 coins in common (24 / 75)
+  STorreSu + BYxxKQ7c: 13 coins in common (75 / 21)

@@ -37,11 +37,14 @@ for c in coins:
     E = np.full(SH, min(at(first(p["grad"])), n - 1), dtype=np.int64)
     for arr in (tp_i[:, None, None, None, None], h_i[None, :, None, None, None], np.array(sp_i)[None, None, :, None, None], st_i[None, None, None, :, None], it_i[None, None, None, None, :]):
         E = np.minimum(E, arr)
-    rows.append(dict(t=c["t"], sol=c["its_sol"], kind="SOL" if c["sol"] else "token", prem=prem, g=val[np.minimum(E, n - 1)].astype(np.float32).ravel()))
+    fs = first(p["sell"]); hold = float(age[fs]) if fs is not None else None
+    rows.append(dict(hold=hold, t=c["t"], sol=c["its_sol"], kind="SOL" if c["sol"] else "token", prem=prem, g=val[np.minimum(E, n - 1)].astype(np.float32).ravel()))
 rows.sort(key=lambda r: r["t"]); T = np.array([r["t"] for r in rows]); S = np.array([r["sol"] for r in rows]); K = np.array([r["kind"] for r in rows])
 PR = np.array([r["prem"] for r in rows]); G = np.stack([r["g"] for r in rows])
 t0, t1 = T.min(), T.max(); cut = t0 + (t1 - t0) / 2; seen, unseen = T < cut, T >= cut
 f = lambda t: dt.datetime.fromtimestamp(t, dt.UTC).strftime("%m-%d %H:%M")
+hs = [r["hold"] for r in rows if r["hold"] is not None]
+print(f"its holding (buy to its first sale): median {np.median(hs):.0f} s, under 20 s on {100 * np.mean(np.array(hs) < 20):.0f}% of its coins; no sale within 31 min on {sum(r['hold'] is None for r in rows)}")
 print(f"{W}: {len(rows)} copies with a path, {f(t0)} to {f(t1)} UTC; seen (week 1) {seen.sum()}, unseen (week 2) {unseen.sum()}; 1 SOL a copy, cost {COST + 0.0026:.4f}")
 def wo2(M):
     if M.shape[0] == 0: return np.zeros(M.shape[1])
