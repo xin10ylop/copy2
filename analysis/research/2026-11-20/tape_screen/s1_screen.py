@@ -106,17 +106,25 @@ def settle(now):
                 buf[m] = tr[cut:]
                 watches[m] = [(u, kk - cut, t, i, ra, so) for u, kk, t, i, ra, so in watches[m]]
         else: del buf[m]; del watches[m]
+own = {}   # (wallet, coin) -> [SOL in, SOL out, tokens in, tokens out]
 n_rows = 0; wid = 0; t_first = None; t_last = 0
 for r in rows():
     n_rows += 1; m = r["mint"]; t = r["ts"]; t_first = t_first or t; t_last = max(t_last, t)
     settle(t - WIN)
     if m in buf: buf[m].append(tup(r))
+    o = own.get((r["user"], m))
+    if o is not None:
+        v = (r["quote_amount"] or 0) * o[4] / 1e9
+        if r["is_buy"]: o[0] += v; o[2] += r["tok"] or 0
+        else: o[1] += v; o[3] += r["tok"] or 0
     if r["is_buy"] and r["user"] != "" and (r["user"], m) not in seen:
         seen.add((r["user"], m)); rate = RATE.get(r["quote_mint"])
         sol = (r["quote_amount"] or 0) * rate / 1e9 if rate else 0
         if rate and sol >= MIN_SOL:
             if m not in buf: buf[m] = [tup(r)]
             wid += 1; watches[m].append((r["user"], len(buf[m]) - 1, t, wid, rate, sol)); heapq.heappush(due, (t + WIN, m, wid))
+            vt_a = r["vtok"]; impact = ((vt_a + (r["tok"] or 0)) / vt_a) ** 2 - 1 if vt_a else 0   # how far its own buy moved the price
+            own[(r["user"], m)] = [sol, 0.0, r["tok"] or 0, 0, rate, impact]
 settle(t_last - WIN)   # the last 31 minutes stay out: not finished
 print(f"tape: {len(files)} files, {n_rows:,} trades, {t_first} to {t_last} ({(t_last - t_first) / 3600:.1f} h); "
       f"{len(out):,} copies of first buys of {MIN_SOL}+ SOL ({sum(1 for x in out if x[3] == 'refused'):,} refused over {PMAX}x)")
@@ -140,13 +148,17 @@ def tune(h1, h2):
                 v1 = vv(a, e)
                 if best is None or v1 > best[0]: best = (v1, fl, kn, e, len(a), len(b), vv(b, e))
     return best
-res = []; fast = 0; flat = 0
+res = []; fast = 0; flat = 0; loser = 0; own_of = {}
+OWN_MIN = float(os.environ.get("OWN_MIN", 0))   # a wallet that loses money itself on its sold-out tape coins is left out
 def hold_of(xs):
     h = [x[3]["_its_hold"] for x in xs if x[3] != "refused"]
     return float(np.median(h)) if h else 9e9
 for u, xs in by.items():
     if len(xs) < MINN: continue
     if hold_of(xs) < MIN_HOLD: fast += 1; continue
+    oc = [own[(u, x[4])] for x in xs if (u, x[4]) in own]; done_ = [o for o in oc if o[3] >= 0.99 * o[2]]
+    own_sol = sum(o[1] - o[0] for o in done_); own_of[u] = (own_sol, len(done_), float(np.median([o[5] for o in oc])) if oc else 0)
+    if done_ and own_sol < OWN_MIN: loser += 1; continue
     if np.std([x[3]["w4"] for x in xs if x[3] != "refused"] or [0]) < 0.02 * STAKE: flat += 1; continue   # coins that never move
     h1 = [x for x in xs if x[1] < mid]; h2 = [x for x in xs if x[1] >= mid]
     t = tune(h1, h2)
@@ -156,13 +168,15 @@ for u, xs in by.items():
     res.append((shrunk, u, n1, n2, f"{fl}+ {kn} {e}", v1, np.median([x[2] for x in xs]), {e_: vv(xs, e_) for e_ in EX}, v2))
 res.sort(reverse=True)
 print(f"\n{fast} wallets with {MINN}+ copies left out as speed traders (median holding under {MIN_HOLD:.0f} s), {flat} as flat (their coins never move: bundles)")
+print(f"{loser} left out as losing money themselves on their sold-out coins of the tape (own result under {OWN_MIN} SOL)")
 print(f"token coins priced: {len(RATE) - 1} quote tokens")
 print(f"{len(res)} wallets with {MINN}+ copies, each tuned on half 1 (buy floor x coin kind x exit, 5+ copies a half), scored on half 2:")
 print("ranked by the second half shrunk toward the pooled mean (30 copies of weight): a wallet must beat a random one on many copies")
-print(f"{'wallet':44s} {'n1':>4s} {'n2':>4s} {'choice':>18s} {'half 1':>7s} {'half 2':>7s} {'score':>7s} {'its SOL':>7s} {'holds':>6s}   all its 0.5+ copies by exit")
+print(f"{'wallet':44s} {'n1':>4s} {'n2':>4s} {'choice':>18s} {'half 1':>7s} {'half 2':>7s} {'score':>7s} {'its SOL':>7s} {'holds':>6s} {'own SOL':>8s} {'impact':>7s}   all its 0.5+ copies by exit")
 for sc, u, n1, n2, pick, h1v, med, allv, h2v in res[:30]:
-    hh = hold_of(by[u]); hs = f"{hh:5.0f}s" if hh < 1e8 else "  none"
-    print(f"{u:44s} {n1:4d} {n2:4d} {pick:>18s} {h1v:+6.1f}% {h2v:+6.1f}% {sc:+6.1f}% {med:7.2f} {hs:>6s}   " + " ".join(f"{e} {allv[e]:+.0f}%" for e in EX))
+    hh = hold_of(by[u]); hs = f"{hh:5.0f}s" if hh < 1e8 else "  none"; os_, nd, im = own_of.get(u, (0, 0, 0))
+    print(f"{u:44s} {n1:4d} {n2:4d} {pick:>18s} {h1v:+6.1f}% {h2v:+6.1f}% {sc:+6.1f}% {med:7.2f} {hs:>6s} {os_:+8.2f} {100 * im:+6.1f}%   " + " ".join(f"{e} {allv[e]:+.0f}%" for e in EX))
+print("own SOL = its own result on its sold-out coins of the tape; impact = how far its own buy moved the price (median)")
 json.dump([dict(wallet=r_[1], choice=r_[4], n1=r_[2], n2=r_[3], half1=r_[5], half2=r_[8], score=r_[0]) for r_ in res[:30]],
           open(os.environ.get("TOP_JSON", "/tmp/screen_top.json"), "w"))
 up = sum(1 for r_ in res if r_[8] > 0 and r_[5] > 0)

@@ -68,3 +68,8 @@ last sale a median 116 s after its buy. **It loses itself: -37.47 SOL (Nov 19 +0
 236 coins sold out -43.22 SOL, 96 won, median -0.30 SOL a coin; 30 still held.** Dropped by the rule (it must make money
 itself on most days), so no copy test. Our copies on the tape were up because its 3 SOL buy moves the coin and we sell
 earlier than it does: an edge that ends when a wallet losing ~20 SOL a day stops.
+
+**Protection added after 4S5L64Va (Nov 21), from the tape, free:** each wallet's own result on its sold-out coins of the
+tape (`own SOL`; a wallet under OWN_MIN, default 0, is left out: it pays for the moves, it does not read them) and how far
+its own buy moved the price (`impact`, median; a large one means the move after its buy may be its own doing). Its age
+(a wallet seen for the first time days ago) is the history check's, on the final few.
