@@ -98,7 +98,7 @@ def grid(c, tr):
     return dict(g=val[np.minimum(E, n - 1)].astype(np.float32).ravel(), prem=prem, sol=c["sol"], tok=c["tok"], t=c["t"])
 def fetch(cs):
     anchor = lambda c: next((s for t, s in sigs if t >= c["t"] + 640), sigs[-1][1])
-    with cf.ThreadPoolExecutor(6) as ex: paths = list(ex.map(lambda c: M.path(c["m"], c["slot"], anchor(c), threads=8), cs))
+    with cf.ThreadPoolExecutor(int(os.environ.get("PATHS_AT_ONCE", 3))) as ex: paths = list(ex.map(lambda c: M.path(c["m"], c["slot"], anchor(c), threads=8), cs))
     return [g for g in (grid(c, tr) for c, tr in zip(cs, paths)) if g]
 def stackg(rows): return np.stack([r_["g"] for r_ in rows])
 def masked(rows, G, f):

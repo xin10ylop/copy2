@@ -21,13 +21,13 @@ def helius_history(w):
                "filters": {"status": "succeeded", "blockTime": {"gte": int(since)}}}
         if tok: prm["paginationToken"] = tok
         j = None
-        for a in range(6):
+        for a in range(10):   # back off on HTTP 429 (the free plan: 10 requests a second)
             try:
                 with urllib.request.urlopen(urllib.request.Request(url, json.dumps({"jsonrpc": "2.0", "id": 1, "method": "getTransactionsForAddress", "params": [w, prm]}).encode(),
                                                                     {"Content-Type": "application/json"}), timeout=120) as r: j = json.load(r)
                 if "result" in j: break
             except Exception: pass
-            time.sleep(1 + a)
+            time.sleep(min(2 ** a, 30))
         if not j or "result" not in j: break
         for tx in j["result"]["data"]:
             s_ = tx["transaction"]["signatures"][0]; sigs.append([s_, tx.get("blockTime") or 0])
