@@ -21,7 +21,8 @@ branch `claude/magical-einstein-k78idp`.
 **Nov 23: HYPE swapped for hSOL in the floats** (`he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A`, Helius staked SOL; the
 owner's call). Wallet 4's coins paid in TTWO, 15-23 copyable buys a day on Nov 17-19, fell to 4, 1 and 3; it paid with
 hSOL for 12 buys of 1.3+ SOL on Nov 21-22 (our replayed copy +5.86 SOL on 11 at 1 SOL) and with HYPE for none in 6 days
-(`analysis/research/2026-11-23/w4_floats/`).
+(`analysis/research/2026-11-23/w4_floats/`). Done on the box: HYPE 1.12965674 sold for 1.0076 SOL (slot 472731005), 1.0 SOL
+bought 0.83567068 hSOL (slot 472731014, 1.005 SOL); both units restarted with it, the level timer back on.
 
 **Nov 21 ~13:57 UTC (15:57 Beirut): the long copy moved to a new Cherry box** (Premium VDS 2, Frankfurt, Ubuntu 24.04,
 **monthly billing**; hostname `fra-long`, user `ops`): the Vultr box was suspended for an unpaid bill and is given up,
