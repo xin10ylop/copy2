@@ -264,3 +264,15 @@ positive; tp 3x / 420 s / stall 240 the best (+7.8 / +19.3 / +19.9 = +15.6%, +13
 coins +29.7% (36) against SOL coins +8.9% (76); following its sale the weakest. Sell pressure on top of it (3-15 sells
 over 30-120 s): +8.9% to +12.6%, steadier in the first blind block (+6.5 to +13.9 against +7.8), lower in all: within
 the noise of one another (about 5.5 points either way on 112 copies).
+
+**CqCAzte8 on ALL its buys (Nov 22; `out_w3/CqCAzte8_all.txt`, `w3_kind_table.py`): still PASS.** The 150-buy samples
+moved between runs (a sample drawn from a list that changes with the day's token prices: the SOL coins read +8.9% on
+one draw, +1.1% on the next), so every one of its 268 first buys of 0.5+ SOL was replayed. Gate 1 +5.7 / +6.3 / +16.8%;
+the rolling picks blind +2.1 / +5.9 / +20.8% (41 / 67 / 30): +8.0% a copy on 138, +5.90 SOL without the best 2%, 3 of
+3 blocks. tp 3x / 420 s / stall 240 by kind, at 1 SOL a copy, the three blind blocks (67 copies each):
+
+| Coins | Block 2 | Block 3 | Block 4 | All blind | Without its best 2 |
+|---|---|---|---|---|---|
+| token-priced | 26: +9.18 SOL (+35.3%) | 20: +4.46 (+22.3%) | 30: +6.26 (+20.9%) | 76: **+19.90 SOL (+26.2%)** | +16.16 |
+| SOL-priced | 41: -4.90 (-12.0%) | 47: +5.92 (+12.6%) | 37: +9.43 (+25.5%) | 125: **+10.45 SOL (+8.4%)** | +5.49 |
+| all | 67: +4.28 (+6.4%) | 67: +10.39 (+15.5%) | 67: +15.69 (+23.4%) | 201: **+30.35 SOL (+15.1%)** | +21.31 (w/o 4) |
