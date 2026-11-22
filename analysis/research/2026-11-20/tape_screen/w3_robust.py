@@ -74,3 +74,11 @@ pos = sum(1 for r_ in ok if r_["blind"].mean() > 0)
 print(f"blind, all 3 blocks: {allb.sum():+.3f} SOL on {len(allb)} copies ({100 * allb.mean() if len(allb) else float('nan'):+.1f}% a copy), "
       f"without the best 2% {wo2(allb):+.3f}; positive in {pos} of {len(ok)} blocks")
 print("RESULT: " + ("PASS" if g1 and len(allb) and allb.mean() > 0 and pos >= 2 and wo2(allb) > 0 else "FAIL") + ("" if g1 else " (gate 1)"))
+if os.environ.get("TABLE"):   # each menu exit on its own over the 3 blind blocks (no pick), % a copy, per quote filter
+    bl = np.concatenate(blocks[1:])
+    print(f"\neach exit alone on the blind blocks ({len(bl)} copies), % a copy: block 2 / 3 / 4 = all blind (n), without the best 2% in SOL")
+    for kd in ("all", "SOL", "token"):
+        V, keep = value((kd, 0.5))
+        for e in range(len(ENAMES)):
+            per = [V[blocks[b]][keep[blocks[b]], e] for b in (1, 2, 3)]; a = V[bl][keep[bl], e]
+            print(f"  {kd:5s} {ENAMES[e]:52s} " + " / ".join(f"{100 * p.mean():+6.1f}" for p in per) + f" = {100 * a.mean():+6.1f}% ({len(a)})  w/o 2% {wo2(a):+.2f}")
