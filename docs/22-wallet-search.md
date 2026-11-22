@@ -1,5 +1,33 @@
 # 22. Finding wallets like wallet 4, and engineering their copy (the playbook, Nov 18)
 
+> **Since Nov 22 the search runs from the tape (§0 below): it found CqCAzte8, now live.** §1-8 are the Nov 18 method on
+> fetched launches, kept for reference; their rules (§2) still hold.
+
+## 0. The tape pipeline (Nov 22; `analysis/research/2026-11-20/tape_screen/`)
+
+| Step | Where, what | Cost | Drops |
+|---|---|---|---|
+| 1. Screen | the box: `s1_screen.py` on `/var/lib/rugsnipe-tape` (`TOPN=60`); our copy replayed on every first buy of 0.5+ SOL, landing a slot after its buy, refused over 1.5x, 5 fixed exits | free (no RPC) | speed traders (median hold < 20 s), launch bundles (half their buys in the create slot), flat bundles, jumpy coins (half refused over 1.5x) |
+| 2. Two lists | `TOPMEAN60`: the 5 fixed exits' mean, no tuning, shrunk to 30 copies; `TOPOWN60`: what the wallet made itself on the tape | free | |
+| 3. Own history | `w3_robust.py` (via `c1_fetch.py`, Helius `getTransactionsForAddress`, successful transactions only, `MAXPAGES=10`): 14 days of its own pump trades | ~100 credits a request (1,000 transactions), so cents | loses money itself, or up on under half its days |
+| 4. Gate 1 | all its first buys of 0.5+ SOL (or 80 for a first look), cut in 4 blocks in time; the mean of 8 fixed exits, no pick, on the 3 blind blocks | ~100 credits a coin replayed | not positive on average, or positive in under 2 of 3 blocks |
+| 5. The pick | from 48 fixed settings (8 exits x SOL / token / all coins x its buy 0.5+ / 1.3+), picked on the blocks before each blind block, against a luck baseline | (same replays) | blind mean not positive, under 2 of 3 blocks, or negative without the best 2% |
+| 6. Exits by kind | `TABLE=1` / `w3_kind_table.py`: each exit alone by coin kind on the blind blocks, in SOL and copies | (same) | the exit chosen: the one positive in every block |
+| 7. Deploy | a second unit on the wallet (`rugsnipe-long-cq` as the model), `copy_sol_coins` / `sol_exits` when the kinds differ | | |
+
+What found CqCAzte8: on the 17 h screen it was 5th on `TOPMEAN` (24 copies, +19.3%), made money itself over 15 days (+11.93,
+9 up), passed gate 1 (+5.7 / +6.3 / +16.8% on all 268 buys) and the pick (+8.0% a copy blind on 138, 3 of 3 blocks),
+token coins +26.2% and SOL coins +8.4% a copy blind. What the 2026-11-22 runs taught:
+- **Do not pick from millions of settings on 60 buys** (`w2_grid.py`): the older half always looks good, the blind half
+  keeps half or nothing (4MzQcBVN +11.2 -> +6.1 -> fails on all buys). A real edge is positive under almost any simple
+  exit (wallet 4: the median of 282,240 settings +25.97 SOL blind).
+- **Use all its buys, not a sample**: a 150-buy sample moved between runs (SOL coins +8.9% on one draw, +1.1% on another).
+- **A short history flatters**: 4vw54BmA passed on 1 day (+14.3% blind on 10) and failed on 5 (-0.1% on 77).
+- **Making money itself is not enough**: 5Y5nsbGf (+139 SOL), 4vw54BmA (+122), GYhRMtoD (+250, a bundle) all fail the copy.
+- **Helius bills per request**: a coin replay is ~100 credits however small; 7,200 requests used ~800,000 credits on
+  Nov 22. Test the own history first (cheap), replay coins only for wallets that pass it.
+
+
 How to search for another wallet to copy, the way TAB16RxX was found and put live on Nov 18. Written after one long
 search (Nov 17-18) in which a dozen methods failed and one worked. The failures are listed because each one became a
 rule. Every number here has its source in `analysis/research/2026-11-17/wallet_hunt/market/README_direct.md` or the
