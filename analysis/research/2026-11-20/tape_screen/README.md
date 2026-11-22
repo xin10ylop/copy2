@@ -228,3 +228,18 @@ Caveat: 103 wallets were tested, so a few blind passes are expected by luck alon
 flatters). The ones with weeks of history and 30-60 blind copies (4MzQcBVN, HUqA7h6t, 6ua7w2Gv) are the candidates; each
 needs a second blind check: its buys after Nov 22, from the tape (free), before any money. Credits: own histories
 1,080,483 transactions (~108,000 credits) plus the coin replays.
+
+**The three, under the stricter test (`w3_robust.py`, Nov 22; `out_w2/w3_*.txt`): all fail.** 48 settings fixed before
+the data (8 exits x quote all/SOL/token x its buy 0.5+/1.3+, limit 1.5x), all first buys of 0.5+ SOL (6ua7w2Gv: 700 of
+2,079 at random), 4 blocks in time, 3 rolling blind blocks, and a luck baseline (the same pick on copies with each
+setting's mean taken out).
+
+| Wallet | Copies | Blind blocks (% a copy, n) | All blind | Without best 2% | Positive blocks |
+|---|---|---|---|---|---|
+| 4MzQcBVN | 328 | -8.1 (22), +26.7 (24), -7.0 (41) | +2.0% (87) | -2.01 SOL | 1 of 3 |
+| HUqA7h6t | 603 | +2.0 (77), -11.3 (73), +2.7 (104) | -1.5% (254) | -11.00 SOL | 2 of 3 |
+| 6ua7w2Gv | 700 | -2.8 (175), +1.4 (175), +2.2 (175) | +0.3% (525) | -15.12 SOL | 2 of 3 |
+
+On the seen blocks the picks did no better than the luck baseline (4MzQcBVN +24.8 / +12.4 / +16.5% against luck +27.8 /
++15.3 / +19.5%). The w2_grid passes (+6.1%, +9.3%, +5.9% blind on 57 / 34 / 60) came from the 24.5-million-setting pick
+and the 60-buy samples. All three make money themselves (+60 to +192 SOL in 1-2 weeks); a copy a slot later does not.
