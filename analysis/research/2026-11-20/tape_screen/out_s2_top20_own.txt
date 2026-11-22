@@ -1,0 +1,60 @@
+
+BuZdtPyHmNbSqZXS2QUJ5KrTABA5t4QygDhvBQmGuuME: 501 trades, 149 coins over 13 days; its own result -25.06 SOL, up on 3 of 13 days
+  its own SOL by day: 11-08 +0.73  11-09 -0.50  11-10 -0.28  11-11 -0.28  11-12 +0.32  11-13 -0.89  11-16 -5.09  11-17 -1.36  11-18 -8.94  11-19 -1.62  11-20 -3.25  11-21 -4.23  11-22 +0.34
+
+5gR8zqCrAnU5g11QC14oKV1fEXVCCFfibdQcKpuaQzsj: 82 trades, 27 coins over 2 days; its own result -10.34 SOL, up on 0 of 2 days
+  its own SOL by day: 11-21 -6.03  11-22 -4.31
+
+6HpWkb1DEyTFsn8rQvPWWgV2bDP3mkJjAtozmwRbP72Q: 735 trades, 262 coins over 15 days; its own result +26.99 SOL, up on 11 of 15 days
+  its own SOL by day: 11-08 +0.17  11-09 +3.77  11-10 +4.92  11-11 +1.32  11-12 +9.45  11-13 -1.00  11-14 +3.80  11-15 -0.26  11-16 +4.20  11-17 +0.90  11-18 -7.07  11-19 +2.72  11-20 +0.78  11-21 +3.87  11-22 -0.59
+
+HgExUFKQy3VBkAm3MbkxzSYMJoygWb7X2mz86ZbnJj3G: 2178 trades, 838 coins over 14 days; its own result -26.52 SOL, up on 6 of 14 days
+  its own SOL by day: 11-08 -1.63  11-09 -5.90  11-10 +1.33  11-11 +1.39  11-12 -0.64  11-13 -1.78  11-14 +0.82  11-15 -3.62  11-16 -15.38  11-17 +6.95  11-18 -16.89  11-19 -0.09  11-21 +8.55  11-22 +0.35
+
+5AmLiWonycEwxGiwXPTkHZiGtigpK11nmzcX1GxuWTL4: 1885 trades, 306 coins over 15 days; its own result -15.42 SOL, up on 8 of 15 days
+  its own SOL by day: 11-08 -4.58  11-09 -1.74  11-10 -3.03  11-11 +0.31  11-12 -6.92  11-13 -1.80  11-14 +0.03  11-15 +0.56  11-16 +1.80  11-17 -0.55  11-18 +0.14  11-19 +0.05  11-20 +0.11  11-21 -0.96  11-22 +1.15
+
+7q2RycsP5x5ESRfdg94DAzrM6mip5K95vNG951Srhy3o: 684 trades, 152 coins over 8 days; its own result -10.83 SOL, up on 2 of 8 days
+  its own SOL by day: 11-08 -0.70  11-09 -0.52  11-14 -0.09  11-18 -0.31  11-19 -0.01  11-20 +0.35  11-21 -9.86  11-22 +0.32
+
+2SSNK22opKxpg7yh65JiMTTkk86fCDMpfLbpZ8zKTKUP: 206 trades, 70 coins over 7 days; its own result +0.65 SOL, up on 2 of 7 days
+  its own SOL by day: 11-13 -1.20  11-15 -0.06  11-16 -0.07  11-18 -0.90  11-19 -0.06  11-20 +0.88  11-21 +2.06
+
+6ua7w2GvaaDdLuMbi8sxAKDfPwbXJYXuLCKBxJVSezw6: 12596 trades, 4708 coins over 15 days; its own result +191.75 SOL, up on 12 of 15 days
+  its own SOL by day: 11-08 +6.65  11-09 +5.31  11-10 +5.70  11-11 +30.05  11-12 +8.19  11-13 +20.30  11-14 -0.61  11-15 +24.14  11-16 +2.41  11-17 +39.29  11-18 +21.17  11-19 -5.20  11-20 +19.28  11-21 +16.66  11-22 -1.58
+
+Bi4rd5FH5bYEN8scZ7wevxNZyNmKHdaBcvewdPFxYdLt: 0 trades, 0 coins over 0 days; its own result +0.00 SOL, up on 0 of 0 days
+  its own SOL by day: 
+
+Dctam1nardXPpRzCNQAn8ufzz1whDVw7KePbJFWxeXmQ: 494 trades, 173 coins over 8 days; its own result +17.00 SOL, up on 6 of 8 days
+  its own SOL by day: 11-13 +0.85  11-15 -1.52  11-16 +0.79  11-17 +1.77  11-18 -0.27  11-19 +5.14  11-20 +7.01  11-21 +3.23
+
+7djZvJGNvke9AwcBqZeUvoFVi7fT1kLW7x7BW6geCApC: 3503 trades, 768 coins over 9 days; its own result +10.10 SOL, up on 5 of 9 days
+  its own SOL by day: 11-14 +0.91  11-15 -13.49  11-16 +15.49  11-17 -7.01  11-18 +0.20  11-19 -3.23  11-20 +9.18  11-21 +9.58  11-22 -1.52
+
+7hnXt9cKSfXDWgqj9xGyNU8NQ5iroTcmgzWUGTrffuZ6: 661 trades, 229 coins over 13 days; its own result +21.74 SOL, up on 9 of 13 days
+  its own SOL by day: 11-09 -0.14  11-10 +0.45  11-11 +1.72  11-12 -1.01  11-13 +2.22  11-14 +0.68  11-15 +4.69  11-16 +5.08  11-17 +0.67  11-18 +2.23  11-19 -0.52  11-20 -0.60  11-21 +6.27
+
+68xaw2jz26BwR6yRtQxdX1Xb7cyGKrdaNMzAy6WXWMK9: 2222 trades, 514 coins over 15 days; its own result -0.08 SOL, up on 6 of 15 days
+  its own SOL by day: 11-08 -1.94  11-09 -0.42  11-10 +1.46  11-11 +0.14  11-12 +0.87  11-13 +1.87  11-14 -0.83  11-15 -1.32  11-16 -0.29  11-17 -4.94  11-18 -0.60  11-19 +1.93  11-20 -4.54  11-21 +8.93  11-22 -0.42
+
+3LHFZQrF6SuczvD6qDa8Q3DDHnvAc1wmh4rGYgMYUNJu: 2618 trades, 852 coins over 7 days; its own result -100.66 SOL, up on 0 of 7 days
+  its own SOL by day: 11-12 -0.01  11-13 -0.43  11-17 -16.36  11-18 -49.37  11-19 -9.23  11-20 -16.21  11-21 -9.04
+
+6FJhAwztoTtJmu5zogv5yi9c8W3DMsjXUNTav3Yspj2J: 3066 trades, 775 coins over 14 days; its own result -194.35 SOL, up on 0 of 14 days
+  its own SOL by day: 11-08 -4.45  11-09 -13.69  11-10 -11.60  11-11 -2.46  11-12 -0.85  11-13 -5.11  11-14 -2.72  11-15 -15.97  11-16 -20.05  11-17 -6.60  11-18 -27.01  11-19 -26.56  11-20 -41.03  11-21 -16.25
+
+2pLugeBDKkFxaD2JKxSifNXoegYQyVpVoFikc6SEdqdv: 940 trades, 411 coins over 15 days; its own result +35.87 SOL, up on 11 of 15 days
+  its own SOL by day: 11-08 +5.82  11-09 +4.91  11-10 -3.35  11-11 +4.15  11-12 +3.98  11-13 +5.60  11-14 +5.35  11-15 -0.49  11-16 +11.55  11-17 +2.67  11-18 +2.74  11-19 +2.67  11-20 -5.67  11-21 -4.27  11-22 +0.20
+
+8KwpTZNYniHsjFfxY9fn8oNwmWvuT7UihupXWHypMHaC: 1533 trades, 496 coins over 14 days; its own result +64.05 SOL, up on 12 of 14 days
+  its own SOL by day: 11-08 +0.29  11-09 +3.10  11-10 +12.05  11-11 +4.83  11-12 +2.80  11-13 -0.15  11-14 +0.11  11-15 +0.26  11-17 -0.07  11-18 +1.76  11-19 +19.06  11-20 +14.09  11-21 +5.81  11-22 +0.10
+
+GYFFxWSNmSwVWcdnVxEpQjqjf3bpcjJh1LFGdFqMgwUy: 462 trades, 231 coins over 4 days; its own result +9.89 SOL, up on 2 of 4 days
+  its own SOL by day: 11-19 -2.10  11-20 +7.05  11-21 +5.61  11-22 -0.67
+
+91VbDHW5xAbTHPhQh5w3c3cHbyXwredn2DtS35F8cfn2: 2243 trades, 1068 coins over 15 days; its own result -91.04 SOL, up on 6 of 15 days
+  its own SOL by day: 11-08 -11.96  11-09 +3.30  11-10 +1.03  11-11 -3.17  11-12 -31.17  11-13 +1.57  11-14 +11.22  11-15 +6.15  11-16 -7.86  11-17 -1.23  11-18 -56.11  11-19 +14.15  11-20 -13.48  11-21 -1.50  11-22 -1.97
+
+6ACyUAvLB2TSMkbSg3xmJgHiqAnyUK3ayzuweEALQYkw: 396 trades, 139 coins over 14 days; its own result -7.50 SOL, up on 7 of 14 days
+  its own SOL by day: 11-08 +0.07  11-09 +2.55  11-10 -0.96  11-11 +0.91  11-12 +1.52  11-13 -1.91  11-14 +0.21  11-15 +0.09  11-16 -0.03  11-17 -2.72  11-18 -1.37  11-19 +1.00  11-20 -2.97  11-21 -3.88

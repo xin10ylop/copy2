@@ -169,3 +169,13 @@ its last 3 or 5 copies already closed (within 2 or 6 h) averaged over 0% or 20%;
 in most rows, but **not one row is positive on either half** (the best: scalp, 2 h, k 5, over 20%: -2.4% / -8.0% on
 826 / 1,057 copies; tp2, 6 h, k 5, over 0%, speed out: -4.8% / -7.4%; the rest at -6.7% / -8.4% and -8.1% / -11.6%).
 A streak says a little about the next copy, far from enough to pay for the slot-late entry.
+
+**The new tape's top 20, own histories (Nov 22 ~01:00 UTC; `out_s2_top20_own.txt`; the screen on 10.9 h: 40 of 178 up
+on both halves against chance 32, range 23-45, 1 of 20 draws reaching 40).** The 20 up on both halves and not already
+known, 14 days each, `MAXPAGES=30`. Losing themselves (dropped): BuZdtPyH -25.06, 5gR8zqCr -10.34, HgExUFKQ -26.52,
+5AmLiWon -15.42, 7q2RycsP -10.83, 3LHFZQrF -100.66, 6FJhAwzt -194.35, 91VbDHW5 -91.04, 6ACyUAvL -7.50; flat: 2SSNK22o
++0.65, 68xaw2jz -0.08; Bi4rd5FH no pump trade read. Making money: 6ua7w2Gv +191.75 (12 of 15 days) and 7djZvJGN +10.10,
+both tested in depth Nov 17-18 and failed with more data (docs/22); **to the staged copy test: 8KwpTZNY +64.05 (12 of
+14 days; its buy at 1.11x pump's start price, median: the coin's first buyer, maybe its creator), 2pLugeBD +35.87 (11 of
+15; first sale 403 s, median: a long holder), 6HpWkb1D +26.99 (11 of 15), 7hnXt9cK +21.74 (9 of 13), Dctam1na +17.00
+(6 of 8)**; GYFFxWSN +9.89 on 4 days, token coins only, left for later.
