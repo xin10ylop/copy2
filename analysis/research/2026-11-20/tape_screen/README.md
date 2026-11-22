@@ -259,3 +259,8 @@ chosen by hand from the screen:
   pump's start price, median), first sale 36 s after its buy (median; p25 16 s); 11 to 52 first buys a day (all sizes);
   239 SOL coins and 149 token coins (TTWO 26, PUMP 9, WBTC 8, SPCX 4 of them our floats). Next: its buys after Nov 22 on
   the tape with the settings frozen (free), then paper.
+CqCAzte8's exits on its blind blocks (`out_w3/CqCAzte8_table.txt`, `w3_sp_check.py`; 112 copies): every menu exit
+positive; tp 3x / 420 s / stall 240 the best (+7.8 / +19.3 / +19.9 = +15.6%, +13.74 SOL without the best 2%), its token
+coins +29.7% (36) against SOL coins +8.9% (76); following its sale the weakest. Sell pressure on top of it (3-15 sells
+over 30-120 s): +8.9% to +12.6%, steadier in the first blind block (+6.5 to +13.9 against +7.8), lower in all: within
+the noise of one another (about 5.5 points either way on 112 copies).
