@@ -356,3 +356,17 @@ AmeY3DxM (up 12 of 13, all 224).
   in the seconds a copy lands after it.
 - **AmeY3DxM: FAIL** (`out_w3/AmeY3DxM_all.txt`, all 224): gate 1 +1.2 / -1.9 / +5.1%; the picks +1.3% a copy, 3 of 3
   blocks, but -0.06 SOL without the best 2%. Too thin to pay.
+
+**How alike are the twins? (Nov 23; the owner: "are you sure the twins only trade on the same coins?")** Over the hours
+both histories cover:
+
+| Pair | Coins each | Shared | Only the first | Only the second | Same buy slot | Same size (±10%) | Same first-sale slot |
+|---|---|---|---|---|---|---|---|
+| CqCAzte8 / 2hntf9Ud | 369 / 276 | 269 | 100 (about 7 a day) | 7 | 246 of 269 | 253 | 206 of 262 (2hntf9Ud first on 45, CqCAzte8 on 11) |
+| DEdwtjvC / BWiJ8aqk | 745 / 741 | 741 | 4 | 0 | 737 | 215 (median ratio 0.87) | 719 of 732 |
+| 2pLugeBD / 3GzBLpxT | 320 / 320 | 313 | 7 | 7 | 309 | 311 | 258 of 286 |
+
+The buys are one operator's; the sales differ more. On their shared SOL-priced coins CqCAzte8's own result is +5.89 SOL,
+2hntf9Ud's +38.99, and 2pLugeBD +17.95 against 3GzBLpxT -6.82: the same entries, sold differently (the cq unit never
+follows its sale, so this does not touch our copies). CqCAzte8 is the one to copy: its 100 coins the twin does not buy
+are copies the twin would miss; the twin's own 7 (+1.57 SOL on 6 SOL-priced) are about one every two days.
