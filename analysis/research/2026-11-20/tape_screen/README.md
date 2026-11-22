@@ -179,3 +179,18 @@ both tested in depth Nov 17-18 and failed with more data (docs/22); **to the sta
 14 days; its buy at 1.11x pump's start price, median: the coin's first buyer, maybe its creator), 2pLugeBD +35.87 (11 of
 15; first sale 403 s, median: a long holder), 6HpWkb1D +26.99 (11 of 15), 7hnXt9cK +21.74 (9 of 13), Dctam1na +17.00
 (6 of 8)**; GYFFxWSN +9.89 on 4 days, token coins only, left for later.
+
+**The five, staged copy test (Nov 22; `out_s3_8Kw_2pL.txt`, `out_s3_6HpWkb1D.txt`, `out_s3_7hnXt9cK.txt`,
+`out_s3_Dctam1na.txt`; COST 0.0064, 1 SOL a copy, slot+1, refused over 1.5x): none copyable.**
+
+| Wallet | Seen half: the exit picked | Unseen half, blind | Without its best 2 | Verdict |
+|---|---|---|---|---|
+| 8KwpTZNY | tp2 +5.1% (19) | +2.9% (18) | -7.3% | too thin; a coin's first buyer |
+| 2pLugeBD | held +42.6% (9; 11 of 20 refused) | held -18.4% (3; 7 of 10 refused) | | stopped; its coins jump past 1.5x before we land |
+| 6HpWkb1D | w4 -2.8% (19) | | | stopped at the seen half |
+| 7hnXt9cK | tp2 +18.2% (18) | -2.3% (20) | -11.6% | fails |
+| Dctam1na | **w4 (our live exit) +10.2% (34)** | **+2.1% (33)** | -9.0% | fades; its 68 buys since Nov 13 all tested |
+
+**Speed (Nov 22):** the coin replay batched on Triton (`23c39dd`: one coin 9.5 s -> 2.0 s) and then read from Helius's
+`getTransactionsForAddress` (`0a5bdd6`, `HELIUS_URL`: 0.7 s, the same trades, the true block order). Dctam1na's 68
+coins (14 new) took 15 s. A wallet test is now seconds, and about 10 credits per 100 transactions on Helius.

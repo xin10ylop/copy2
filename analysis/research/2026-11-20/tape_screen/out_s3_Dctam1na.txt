@@ -1,0 +1,11 @@
+Dctam1nardXPpRzCNQAn8ufzz1whDVw7KePbJFWxeXmQ: 68 past first buys of 0.5+ SOL (11-13 to 11-21); seen = the older 34, unseen = the newer 34; COST 0.0064 SOL a round trip, 1.0 SOL a copy, trades fetched to 640 s after its buy
+  seen 1-10: 10 copies (0 refused over 1.5x), % a copy: w4 +16.9  its +4.2  tp2 -1.1  held +13.2  scalp -7.3   [2,915 trades fetched so far]
+  seen 11-20: 20 copies (0 refused over 1.5x), % a copy: w4 +9.9  its +0.9  tp2 -5.7  held -4.3  scalp -3.3   [5,933 trades fetched so far]
+  seen 21-30: 30 copies (0 refused over 1.5x), % a copy: w4 +14.7  its +4.7  tp2 -4.9  held +1.9  scalp -6.0   [10,717 trades fetched so far]
+  seen 31-40: 34 copies (0 refused over 1.5x), % a copy: w4 +10.2  its +1.1  tp2 -7.2  held -1.7  scalp -7.7   [11,142 trades fetched so far]
+picked on the seen half: w4 (+10.2%)
+  unseen 1-10: 10 copies (0 refused over 1.5x), % a copy: w4 +26.9  its +22.7  tp2 -16.9  held -34.6  scalp +7.2   [16,285 trades fetched so far]
+  unseen 11-20: 20 copies (0 refused over 1.5x), % a copy: w4 +7.7  its +3.6  tp2 -24.6  held -36.6  scalp +5.1   [21,141 trades fetched so far]
+  unseen 21-30: 29 copies (1 refused over 1.5x), % a copy: w4 +3.5  its +2.4  tp2 -17.6  held -29.2  scalp +5.8   [26,041 trades fetched so far]
+  unseen 31-40: 33 copies (1 refused over 1.5x), % a copy: w4 +2.1  its +1.4  tp2 -15.9  held -27.2  scalp +5.4   [27,360 trades fetched so far]
+RESULT: w4 picked on the seen half +10.2%, unseen +2.1% on 33 copies (without its best 2: -9.0%; live exit w4 unseen +2.1%)

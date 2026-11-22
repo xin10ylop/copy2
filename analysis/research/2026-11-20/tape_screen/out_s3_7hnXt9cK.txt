@@ -1,0 +1,7 @@
+7hnXt9cKSfXDWgqj9xGyNU8NQ5iroTcmgzWUGTrffuZ6: 146 past first buys of 0.5+ SOL (11-09 to 11-21); seen = the older 73, unseen = the newer 73; COST 0.0064 SOL a round trip, 1.0 SOL a copy, trades fetched to 640 s after its buy
+  seen 1-10: 9 copies (0 refused over 1.5x), % a copy: w4 +8.2  its -2.4  tp2 +13.2  held -8.8  scalp -7.3   [6,276 trades fetched so far]
+  seen 11-20: 18 copies (0 refused over 1.5x), % a copy: w4 +0.5  its +4.1  tp2 +18.2  held -8.2  scalp +6.7   [15,063 trades fetched so far]
+picked on the seen half: tp2 (+18.2%)
+  unseen 1-10: 10 copies (0 refused over 1.5x), % a copy: w4 -14.0  its +5.2  tp2 -3.8  held -11.5  scalp -3.7   [23,852 trades fetched so far]
+  unseen 11-20: 20 copies (0 refused over 1.5x), % a copy: w4 -2.3  its +5.2  tp2 -2.3  held -8.9  scalp -6.0   [30,373 trades fetched so far]
+RESULT: tp2 picked on the seen half +18.2%, unseen -2.3% on 20 copies (without its best 2: -11.6%; live exit w4 unseen -2.3%)
