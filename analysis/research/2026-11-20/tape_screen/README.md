@@ -276,3 +276,7 @@ the rolling picks blind +2.1 / +5.9 / +20.8% (41 / 67 / 30): +8.0% a copy on 138
 | token-priced | 26: +9.18 SOL (+35.3%) | 20: +4.46 (+22.3%) | 30: +6.26 (+20.9%) | 76: **+19.90 SOL (+26.2%)** | +16.16 |
 | SOL-priced | 41: -4.90 (-12.0%) | 47: +5.92 (+12.6%) | 37: +9.43 (+25.5%) | 125: **+10.45 SOL (+8.4%)** | +5.49 |
 | all | 67: +4.28 (+6.4%) | 67: +10.39 (+15.5%) | 67: +15.69 (+23.4%) | 201: **+30.35 SOL (+15.1%)** | +21.31 (w/o 4) |
+
+**Three more from the screen's top (Nov 22; `out_w3/`, `w3_robust.py`, 80 buys for 2xKDETTh): none.** CULikuY6 -24.87
+SOL itself over 13 days (3 up) and 897GsVaF -77.71 (1 up): stopped at their own history. 2xKDETTh +6.68 (8 of 14 up),
+gate 1 -8.4 / +3.4 / +14.9% (passes), the rolling picks fail the blind blocks: FAIL.
