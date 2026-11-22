@@ -55,6 +55,10 @@ def rolling(G_):
         sc, f, e, sm, ns = best; V, keep = value(f, G_); kt = test_ix[keep[test_ix]]
         out.append(dict(f=f, e=e, seen=sm, ns=ns, blind=V[kt, e], nb=len(kt)))
     return out
+# gate 1 (Nov 22): an edge without tuning: the mean of the 8 menu exits, all its coins of 0.5+ SOL, on each blind block
+V1, k1 = value(("all", 0.5)); gm = [float(V1[blocks[b]][k1[blocks[b]]].mean()) * 100 if k1[blocks[b]].any() else float("nan") for b in (1, 2, 3)]
+g1 = np.nanmean(gm) > 0 and sum(1 for v in gm if v > 0) >= 2
+print(f"gate 1, the menu's mean exit (no picking) on the 3 blind blocks: " + " / ".join(f"{v:+.1f}%" for v in gm) + f" -> {'pass' if g1 else 'FAIL'}")
 real = rolling(G)
 luck = rolling(G - G.mean(0, keepdims=True))
 print(f"{'blind block':>12s} {'its buys':>23s} {'picked on the blocks before':58s} {'seen':>7s} {'blind':>7s} {'n':>4s}")
@@ -69,4 +73,4 @@ allb = np.concatenate([r_["blind"] for r_ in ok]) if ok else np.array([])
 pos = sum(1 for r_ in ok if r_["blind"].mean() > 0)
 print(f"blind, all 3 blocks: {allb.sum():+.3f} SOL on {len(allb)} copies ({100 * allb.mean() if len(allb) else float('nan'):+.1f}% a copy), "
       f"without the best 2% {wo2(allb):+.3f}; positive in {pos} of {len(ok)} blocks")
-print("RESULT: " + ("PASS" if len(allb) and allb.mean() > 0 and pos >= 2 and wo2(allb) > 0 else "FAIL"))
+print("RESULT: " + ("PASS" if g1 and len(allb) and allb.mean() > 0 and pos >= 2 and wo2(allb) > 0 else "FAIL") + ("" if g1 else " (gate 1)"))

@@ -224,7 +224,10 @@ for u, xs in by.items():
     # Nov 22, the owner: rank also by what the wallets MADE, with only the can't-copy filters (speed, bundles, flat, and
     # coins that jump past the price limit before our copy lands on most of its buys): the TOPOWN list
     if np.mean([x[3] == "refused" for x in xs]) > 0.5: jumpy += 1; continue
-    if np.std([x[3]["w4"] for x in xs if x[3] != "refused"] or [0]) >= 0.02 * STAKE: elig.append((own_sol, u))
+    if np.std([x[3]["w4"] for x in xs if x[3] != "refused"] or [0]) >= 0.02 * STAKE:
+        # Nov 22 (after the overfitting lesson): no tuning; the mean of our copy over the 5 fixed exits, all its copies
+        mv = float(np.mean([np.mean([x[3][e] for e in EX]) if x[3] != "refused" else -0.0004 for x in xs])) / STAKE * 100
+        elig.append((own_sol, u, mv, len(xs)))
     if done_ and own_sol < OWN_MIN: loser += 1; continue
     if np.std([x[3]["w4"] for x in xs if x[3] != "refused"] or [0]) < 0.02 * STAKE: flat += 1; continue   # coins that never move
     h1 = [x for x in xs if x[1] < mid]; h2 = [x for x in xs if x[1] >= mid]
@@ -249,8 +252,15 @@ TOPN = int(os.environ.get("TOPN", 30))   # the candidate list for the history te
 print(f"TOP{TOPN}: " + ",".join(r_[1] for r_ in res[:TOPN]))
 elig.sort(reverse=True)
 print(f"{jumpy} left out as jumpy (over half their copies refused over {PMAX}x); by their own result: " +
-      ", ".join(f"{u[:8]} {o:+.1f}" for o, u in elig[:10]))
-print(f"TOPOWN{TOPN}: " + ",".join(u for o, u in elig[:TOPN] if o > 0))
+      ", ".join(f"{u[:8]} {o:+.1f}" for o, u, _, _ in elig[:10]))
+print(f"TOPOWN{TOPN}: " + ",".join(u for o, u, _, _ in elig[:TOPN] if o > 0))
+# TOPMEAN: the can't-copy filters only (speed, bundles, flat, jumpy), ranked by the mean of our copy over the 5 fixed exits,
+# shrunk toward every copy's mean (30 copies of weight): an edge under any exit, as wallet 4's is; no picking
+pm = float(np.mean([np.mean([x[3][e] for e in EX]) if x[3] != "refused" else -0.0004 for x in out])) / STAKE * 100
+rk = sorted(((n * mv + 30 * pm) / (n + 30), u, mv, n, o) for o, u, mv, n in elig)[::-1]
+print(f"\nby the mean over the 5 fixed exits (no tuning; every copy's mean {pm:+.1f}%), the can't-copy filters only ({len(elig)} wallets):")
+for sc, u, mv, n, o in rk[:15]: print(f"  {u:44s} {n:4d} copies  mean {mv:+6.1f}%  shrunk {sc:+6.1f}%  own {o:+7.2f} SOL")
+print(f"TOPMEAN{TOPN}: " + ",".join(u for sc, u, mv, n, o in rk[:TOPN]))
 json.dump([dict(wallet=r_[1], choice=r_[4], n1=r_[2], n2=r_[3], half1=r_[5], half2=r_[8], score=r_[0]) for r_ in res[:TOPN]],
           open(os.environ.get("TOP_JSON", "/tmp/screen_top.json"), "w"))
 up = sum(1 for r_ in res if r_[8] > 0 and r_[5] > 0)
