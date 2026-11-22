@@ -1,0 +1,9 @@
+Z6BLE1zw: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-14 05:39 UTC only
+Z6BLE1zwstwLcRGCXCpREWq1ixpXCXm6SAY94yt9MHs: own result +74.97 SOL over 9 days, up on 7; 1039 first buys of 0.5+ SOL
+  by day: 11-14 -0.82  11-15 +16.58  11-16 +3.87  11-17 +13.50  11-18 +17.92  11-19 +8.67  11-20 +12.57  11-21 +8.56  11-22 -5.88
+seen: 59 copies (its older 519 first buys, 11-14 on), 24,514,560 settings
+seen pick (smoothed): tp 5.0, 420 s, sell pressure 15/120 s, stall 120, its sale 30-290 s; its buy 0.5+ SOL, token coins, limit 1.5x
+  seen: +7.176 SOL on 33 copies (+21.7% a copy), without its best 2% +3.349, its neighbours' mean +2.767
+  the live setting on the seen half: +0.000 SOL on 0 copies
+unseen: 60 copies; the seen pick on 22: -0.463 SOL (-2.1% a copy), without its best 2% -0.944; the live setting -0.275 SOL on 1
+RESULT: FAIL

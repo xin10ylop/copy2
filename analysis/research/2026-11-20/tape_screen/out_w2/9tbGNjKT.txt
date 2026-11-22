@@ -1,0 +1,7 @@
+9tbGNjKTcJiYNE8rnCBxnD9kateC7eeposZrzD35d5wt: own result +0.52 SOL over 12 days, up on 6; 628 first buys of 0.5+ SOL
+  by day: 11-08 -2.48  11-10 -2.88  11-11 -2.87  11-12 +0.24  11-13 +0.03  11-14 -4.23  11-15 +1.45  11-16 +3.15  11-17 +2.94  11-18 -1.93  11-19 -1.25  11-21 +8.36
+seen: 60 copies (its older 314 first buys, 11-08 on), 24,514,560 settings
+seen pick (smoothed): tp 1.2, 60 s, sell pressure 3/30 s, stall off, its sale 0-120 s; its buy 0.5+ SOL, token coins, limit 1.25x
+  seen: -0.601 SOL on 15 copies (-4.0% a copy), without its best 2% -0.803, its neighbours' mean -0.906
+  the live setting on the seen half: +2.651 SOL on 2 copies
+STOP: the smoothed pick is not above 0 on the seen half

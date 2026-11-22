@@ -1,0 +1,8 @@
+5e4AhCnK: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-18 17:40 UTC only
+5e4AhCnKSS4EHvUyGQzamqe1dHf694njMFDCiTMmWULo: own result +17.35 SOL over 4 days, up on 4; 396 first buys of 0.5+ SOL
+  by day: 11-18 +2.13  11-19 +3.82  11-21 +8.40  11-22 +3.00
+seen: 60 copies (its older 198 first buys, 11-18 on), 24,514,560 settings
+seen pick (smoothed): tp 1.9, 270 s, sell pressure 5/30 s, stall 180, never; its buy 0.5+ SOL, all coins, limit 1.25x
+  seen: +1.957 SOL on 60 copies (+3.3% a copy), without its best 2% +0.657, its neighbours' mean -0.471
+  the live setting on the seen half: +0.000 SOL on 0 copies
+STOP: the smoothed pick is not above 0 on the seen half

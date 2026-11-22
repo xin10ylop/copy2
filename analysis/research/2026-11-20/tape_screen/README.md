@@ -194,3 +194,37 @@ both tested in depth Nov 17-18 and failed with more data (docs/22); **to the sta
 **Speed (Nov 22):** the coin replay batched on Triton (`23c39dd`: one coin 9.5 s -> 2.0 s) and then read from Helius's
 `getTransactionsForAddress` (`0a5bdd6`, `HELIUS_URL`: 0.7 s, the same trades, the true block order). Dctam1na's 68
 coins (14 new) took 15 s. A wallet test is now seconds, and about 10 credits per 100 transactions on Helius.
+
+**The top 60 + TOPOWN 60 through `w2_grid.py` (Nov 22 ~01:35-02:20 UTC; 103 wallets after duplicates; Helius; outputs in
+`out_w2/`, the list in `out_w2/_wallets_tested.txt`).** The screen on 11.6 h: 32 of 182 up on both halves, chance 32.
+
+| Outcome | Wallets |
+|---|---|
+| stopped: loses money itself, or up on under half its days | 51 |
+| stopped: the smoothed seen pick not above 0 / under 10 seen copies | 5 / 3 |
+| failed the blind half | 33 |
+| no result (Jupiter returned no SOL price) | 2 |
+| passed the blind half, positive also without its best 2% | 9 |
+
+The nine (seen pick -> blind, per copy; "live" = wallet 4's live settings on the same blind copies):
+
+| Wallet | Own history | Seen pick | Seen | Blind | Blind w/o best 2% | Live, blind |
+|---|---|---|---|---|---|---|
+| 4MzQcBVN | +107.56, 6 of 7 days | tp 3.2, 420 s, sp 15/60, stall 240, its sale never; 1.3+ SOL, all, limit 1.5 | +11.2% (56) | **+6.1% (57)** | +1.51 SOL | +2.41 SOL (57) |
+| HUqA7h6t | +60.85, 12 of 14 | tp 2.4, 150 s, sp off, stall 240, never; 0.5+, token coins, limit 2 | +19.7% (30) | **+9.3% (34)** | +1.80 | -0.34 (1) |
+| 6ua7w2Gv | +191.75, 12 of 15 | tp 4.0, 420 s, sp off, stall 300, its sale 0-120 s; 0.5+, all, 1.25 | +17.2% (60) | +5.9% (60) | +0.81 | -1.83 (3) |
+| 37nt6zYZ | +90.85, 8 of 9 | tp 1.8, 60 s, sp 10/30, stall off, 30-290 s; 0.5+, token, 1.25 | +10.9% (17) | +2.8% (33) | +0.14 | +3.47 (16) |
+| 6t5G5f1i | +39.50, 1 day | tp 1.7, 60 s, sp 5/30, its sale 0-120 s; 0.5+, all, 1.5 | +31.9% (36) | +36.4% (36) | +8.73 | none |
+| 67Tw9tF3 | +9.80, 2 days | tp 1.5, 210 s, sp 5/120, stall 180, 30-290 s; 0.5+, all, 1.25 | +19.5% (11) | +19.3% (12) | +1.71 | +1.23 (10) |
+| G1aToexm | +12.73, 2 days | tp 1.8, 150 s, sp 15/30, stall 120, 0-120 s; 0.5+, all, 1.25 | +7.4% (15) | +7.6% (16) | +0.54 | +3.14 (6) |
+| 7Np3cHU4 | +3.56, 4 days | tp 1.3, 300 s, sp 15/30, stall 300, 0-60 s; 1.0+, all, 1.25 | +6.8% (12) | +2.3% (14) | +0.02 | -1.41 (14) |
+| 4vw54BmA (1 day, capped) | +4.48 | tp 2.2, 120 s, sp 3/30, stall 60, 30-290 s <1.5x | +21.0% (10) | +14.3% (10) | +0.38 | +0.78 (10) |
+
+**4vw54BmA on 5 days (`out_w2/4vw54BmA_5days.txt`; 476,418 successful transactions, ~47,600 credits): FAIL.** Own +121.72
+SOL (4 of 5 days up); seen pick tp 2.8, 90 s, its token coins +8.3% a copy on 83, blind **-0.1% on 77** (-2.57 without its
+best 2%); wallet 4's live settings -15.87 seen, -0.08 blind on 149. Its one-day pass was luck.
+
+Caveat: 103 wallets were tested, so a few blind passes are expected by luck alone (4vw54BmA showed how a short history
+flatters). The ones with weeks of history and 30-60 blind copies (4MzQcBVN, HUqA7h6t, 6ua7w2Gv) are the candidates; each
+needs a second blind check: its buys after Nov 22, from the tape (free), before any money. Credits: own histories
+1,080,483 transactions (~108,000 credits) plus the coin replays.

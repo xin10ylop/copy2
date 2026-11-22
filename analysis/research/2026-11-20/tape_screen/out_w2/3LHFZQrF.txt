@@ -1,0 +1,3 @@
+3LHFZQrF6SuczvD6qDa8Q3DDHnvAc1wmh4rGYgMYUNJu: own result -100.60 SOL over 7 days, up on 0; 279 first buys of 0.5+ SOL
+  by day: 11-12 -0.01  11-13 -0.43  11-17 -16.29  11-18 -49.39  11-19 -9.27  11-20 -16.20  11-21 -9.01
+STOP: it does not make money itself on most days

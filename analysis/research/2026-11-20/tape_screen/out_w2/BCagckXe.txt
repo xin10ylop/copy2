@@ -1,0 +1,5 @@
+BCagckXe: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-21 23:01 UTC only
+BCagckXeMChUKrHEd6fKFA1uiWDtcmCXMsqaheLiUPJd: own result +0.02 SOL over 1 days, up on 1; 8 first buys of 0.5+ SOL
+  by day: 11-21 +0.02
+seen: 4 copies (its older 4 first buys, 11-21 on), 24,514,560 settings
+STOP: under 10 seen copies

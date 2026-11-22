@@ -1,0 +1,4 @@
+DdiftP1F: 30000 successful transactions in 14 days (Helius); CAPPED at 30 pages: history from 11-21 21:56 UTC only
+DdiftP1FntfyKfEaDEuLoUtsfjbQBFJpqqm7dKxRjeeg: own result -12.07 SOL over 2 days, up on 1; 92 first buys of 0.5+ SOL
+  by day: 11-21 +0.69  11-22 -12.76
+STOP: it does not make money itself on most days

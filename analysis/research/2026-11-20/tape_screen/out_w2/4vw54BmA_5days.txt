@@ -1,0 +1,10 @@
+4vw54BmA: 476418 successful transactions in 5 days (Helius)
+done
+4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9: own result +121.72 SOL over 5 days, up on 4; 499 first buys of 0.5+ SOL
+  by day: 11-17 +13.26  11-18 +50.35  11-19 +4.14  11-20 +66.40  11-21 -12.43
+seen: 150 copies (its older 249 first buys, 11-17 on), 24,514,560 settings
+seen pick (smoothed): tp 2.8, 90 s, sell pressure 15/120 s, stall 90, its sale 0-60 s; its buy 0.5+ SOL, token coins, limit 1.5x
+  seen: +6.891 SOL on 83 copies (+8.3% a copy), without its best 2% +4.452, its neighbours' mean +3.609
+  the live setting on the seen half: -15.871 SOL on 144 copies
+unseen: 149 copies; the seen pick on 77: -0.115 SOL (-0.1% a copy), without its best 2% -2.572; the live setting -0.079 SOL on 149
+RESULT: FAIL

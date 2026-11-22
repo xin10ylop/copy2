@@ -1,0 +1,4 @@
+TWiNYzgn: 30000 successful transactions in 14 days (Helius); CAPPED at 30 pages: history from 11-21 13:10 UTC only
+TWiNYzgnpqKYePVgLxZ3W6epLg7FbC4KmGZZ1S93oms: own result -4.65 SOL over 2 days, up on 0; 49 first buys of 0.5+ SOL
+  by day: 11-21 -3.72  11-22 -0.93
+STOP: it does not make money itself on most days

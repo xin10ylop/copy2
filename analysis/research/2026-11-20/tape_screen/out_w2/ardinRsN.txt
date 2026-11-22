@@ -1,0 +1,8 @@
+ardinRsN1mNYVeoJWTBsWeYeXvuR9UUDGMsCDKpb6AT: own result +11.57 SOL over 2 days, up on 2; 61 first buys of 0.5+ SOL
+  by day: 11-21 +6.27  11-22 +5.30
+seen: 30 copies (its older 30 first buys, 11-21 on), 24,514,560 settings
+seen pick (smoothed): tp 1.9, 330 s, sell pressure 15/120 s, stall 240, its sale 30-290 s under 1.5x; its buy 0.5+ SOL, SOL coins, limit 2.0x
+  seen: +1.977 SOL on 19 copies (+10.4% a copy), without its best 2% +1.384, its neighbours' mean +0.758
+  the live setting on the seen half: -5.519 SOL on 30 copies
+unseen: 31 copies; the seen pick on 27: -0.052 SOL (-0.2% a copy), without its best 2% -0.837; the live setting -5.674 SOL on 31
+RESULT: FAIL

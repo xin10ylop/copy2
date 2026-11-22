@@ -1,0 +1,4 @@
+PUMPRLSw: 22000 successful transactions in 14 days (Helius); CAPPED at 23 pages: history from 11-21 20:35 UTC only
+PUMPRLSwFoD9Sf1S4mMHKGTQtddLHif3oSqB5F1scdS: own result -3.39 SOL over 2 days, up on 0; 25 first buys of 0.5+ SOL
+  by day: 11-21 -0.41  11-22 -2.98
+STOP: it does not make money itself on most days

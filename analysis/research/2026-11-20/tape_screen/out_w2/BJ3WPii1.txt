@@ -1,0 +1,3 @@
+BJ3WPii1DLJ1GiSGiSP5jip7DDugwoQpqFP4tQTYBtZp: own result -40.83 SOL over 15 days, up on 5; 412 first buys of 0.5+ SOL
+  by day: 11-08 +5.37  11-09 -6.02  11-10 +2.39  11-11 -1.85  11-12 -1.43  11-13 +0.72  11-14 -0.94  11-15 -6.75  11-16 -18.21  11-17 -4.77  11-18 -26.00  11-19 +8.06  11-20 -0.93  11-21 +13.69  11-22 -4.15
+STOP: it does not make money itself on most days

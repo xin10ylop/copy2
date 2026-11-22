@@ -1,0 +1,8 @@
+Grozoe2Lk9yu7kWPcCMuWEbrnuBYseBExkYAuHPRJUdJ: own result +559.65 SOL over 13 days, up on 13; 1694 first buys of 0.5+ SOL
+  by day: 11-10 +3.96  11-11 +80.74  11-12 +43.05  11-13 +41.16  11-14 +15.92  11-15 +31.48  11-16 +47.09  11-17 +57.67  11-18 +40.57  11-19 +56.45  11-20 +68.00  11-21 +65.02  11-22 +8.54
+seen: 60 copies (its older 847 first buys, 11-10 on), 24,514,560 settings
+seen pick (smoothed): tp 2.3, 420 s, sell pressure 15/60 s, stall off, never; its buy 0.5+ SOL, all coins, limit 1.25x
+  seen: +3.686 SOL on 60 copies (+6.1% a copy), without its best 2% +2.330, its neighbours' mean +1.200
+  the live setting on the seen half: +1.056 SOL on 9 copies
+unseen: 60 copies; the seen pick on 60: -0.368 SOL (-0.6% a copy), without its best 2% -1.735; the live setting +1.023 SOL on 10
+RESULT: FAIL

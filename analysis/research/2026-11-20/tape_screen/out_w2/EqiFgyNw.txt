@@ -1,0 +1,4 @@
+EqiFgyNw: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-15 10:28 UTC only
+EqiFgyNw6kgrmYstWyrP8VjKhka7XEmKTZzHSmwpr1Zb: own result -397.67 SOL over 8 days, up on 0; 656 first buys of 0.5+ SOL
+  by day: 11-15 -45.25  11-16 -40.74  11-17 -52.63  11-18 -39.77  11-19 -123.93  11-20 -23.15  11-21 -58.72  11-22 -13.47
+STOP: it does not make money itself on most days

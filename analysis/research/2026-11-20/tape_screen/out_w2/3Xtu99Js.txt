@@ -1,0 +1,4 @@
+3Xtu99Js: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-21 16:42 UTC only
+3Xtu99JsQ2j7r6DJW5TqMz9hDEBeDC75XdNK5mYxTUjT: own result -3.82 SOL over 2 days, up on 1; 132 first buys of 0.5+ SOL
+  by day: 11-21 -5.89  11-22 +2.08
+STOP: it does not make money itself on most days

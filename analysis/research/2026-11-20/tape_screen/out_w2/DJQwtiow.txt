@@ -1,0 +1,8 @@
+DJQwtiowTJmAvAu4vhCaFgPiS3nnKD5r5agZgBQEdHK2: own result +123.33 SOL over 12 days, up on 11; 139 first buys of 0.5+ SOL
+  by day: 11-08 +9.14  11-11 +12.71  11-12 +9.67  11-13 +18.25  11-14 +2.60  11-15 -0.42  11-16 +1.44  11-17 +18.91  11-18 +5.12  11-19 +2.11  11-20 +3.22  11-21 +40.59
+seen: 60 copies (its older 69 first buys, 11-08 on), 24,514,560 settings
+seen pick (smoothed): tp 4.3, 60 s, sell pressure 10/30 s, stall 60, never; its buy 0.5+ SOL, all coins, limit 1.5x
+  seen: +6.357 SOL on 60 copies (+10.6% a copy), without its best 2% +4.092, its neighbours' mean +3.070
+  the live setting on the seen half: -1.011 SOL on 46 copies
+unseen: 60 copies; the seen pick on 60: -1.057 SOL (-1.8% a copy), without its best 2% -3.193; the live setting -0.518 SOL on 60
+RESULT: FAIL

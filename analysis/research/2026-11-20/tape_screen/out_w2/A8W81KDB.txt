@@ -1,0 +1,9 @@
+A8W81KDB: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-09 16:03 UTC only
+A8W81KDBVEovvmkUbKCWoaNx744E5T4PQ1iJsZLA2H8: own result +211.56 SOL over 14 days, up on 14; 1956 first buys of 0.5+ SOL
+  by day: 11-09 +0.51  11-10 +26.59  11-11 +23.86  11-12 +15.38  11-13 +12.50  11-14 +14.71  11-15 +15.96  11-16 +25.03  11-17 +9.22  11-18 +28.58  11-19 +25.41  11-20 +6.01  11-21 +7.48  11-22 +0.32
+seen: 60 copies (its older 978 first buys, 11-09 on), 24,514,560 settings
+seen pick (smoothed): tp 2.1, 180 s, sell pressure 15/120 s, stall 240, never; its buy 0.5+ SOL, token coins, limit 1.25x
+  seen: +2.237 SOL on 17 copies (+13.2% a copy), without its best 2% +1.109, its neighbours' mean +0.713
+  the live setting on the seen half: -1.492 SOL on 8 copies
+unseen: 60 copies; the seen pick on 39: -4.222 SOL (-10.8% a copy), without its best 2% -5.272; the live setting -0.634 SOL on 12
+RESULT: FAIL

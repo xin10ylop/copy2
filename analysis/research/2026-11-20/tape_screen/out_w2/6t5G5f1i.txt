@@ -1,0 +1,8 @@
+6t5G5f1iNDVBq86WaqyNVafE8VhZ8na1yEvM5k3zFuGE: own result +39.50 SOL over 1 days, up on 1; 72 first buys of 0.5+ SOL
+  by day: 11-21 +39.50
+seen: 36 copies (its older 36 first buys, 11-21 on), 24,514,560 settings
+seen pick (smoothed): tp 1.7, 60 s, sell pressure 5/30 s, stall off, its sale 0-120 s; its buy 0.5+ SOL, all coins, limit 1.5x
+  seen: +11.475 SOL on 36 copies (+31.9% a copy), without its best 2% +7.750, its neighbours' mean +7.366
+  the live setting on the seen half: +0.000 SOL on 0 copies
+unseen: 36 copies; the seen pick on 36: +13.120 SOL (+36.4% a copy), without its best 2% +8.729; the live setting +0.000 SOL on 0
+RESULT: PASS (positive unseen, also without its best 2%)

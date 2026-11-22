@@ -1,0 +1,9 @@
+G9gmk9ms: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-20 21:44 UTC only
+G9gmk9msvd6wT4hDJFm64vKra5z82YvD9je9WqjBvnuk: own result +112.77 SOL over 3 days, up on 2; 896 first buys of 0.5+ SOL
+  by day: 11-20 +26.30  11-21 +87.55  11-22 -1.08
+seen: 60 copies (its older 448 first buys, 11-20 on), 24,514,560 settings
+seen pick (smoothed): tp 2.7, 390 s, sell pressure 15/30 s, stall 300, its sale 0-60 s; its buy 0.5+ SOL, all coins, limit 1.25x
+  seen: +8.810 SOL on 60 copies (+14.7% a copy), without its best 2% +6.935, its neighbours' mean +5.299
+  the live setting on the seen half: -0.179 SOL on 15 copies
+unseen: 60 copies; the seen pick on 60: -1.271 SOL (-2.1% a copy), without its best 2% -2.865; the live setting -1.069 SOL on 4
+RESULT: FAIL
