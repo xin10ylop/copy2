@@ -4,7 +4,7 @@
 # where it named wallet 4: its buy and its sale are W's. Paths: every landed trade on the coin's curve from W's buy slot
 # to 31 minutes (1,880 s) after it, in block order for its slot and the next two (getBlock), as model.py builds them.
 #   import cmodel as M; M.path(W, mint, slot, t, anchor_sig) -> trades; M.model(W, r, tr, stake, n, **exits)
-import sys, os, json, gzip, struct, concurrent.futures as cf
+import sys, os, json, gzip, struct, time, urllib.request, concurrent.futures as cf
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import lib
 sys.path.insert(0, "/home/user/rugsnipe/analysis"); from rugsnipe_analysis import events as E
 PC = lib.OUT + "/paths"; os.makedirs(PC, exist_ok=True)
@@ -43,6 +43,20 @@ def trades(tx, m):
                                     q=e["q"] if e.get("q") else e["sol"], tok=e["tok"], vt=e["vt"], vq=e["vq"] if e.get("vq") else e["vsol"],
                                     bps=(e["fee_bps"] or 0) + (e["cfee_bps"] or 0), real=e["real"]))
     return out
+def _batch(sigs):
+    """getTransaction for up to 100 signatures in one JSON-RPC batch request, retried for the missing ones."""
+    out = {}
+    for i in range(6):
+        need = [x for x in sigs if x not in out]
+        if not need: break
+        body = json.dumps([{"jsonrpc": "2.0", "id": k, "method": "getTransaction", "params": [y, TXO]} for k, y in enumerate(need)]).encode()
+        try:
+            with urllib.request.urlopen(urllib.request.Request(lib.URL, body, {"Content-Type": "application/json"}), timeout=90) as r:
+                for x in json.load(r):
+                    if isinstance(x, dict) and x.get("result"): out[need[x["id"]]] = x["result"]
+        except Exception: pass
+        if len(out) < len(sigs): time.sleep(i + 1)
+    return [out.get(x) for x in sigs]
 def path(m, slot, anchor, threads=12):
     """every landed trade on mint m from `slot` back from `anchor` (a signature at least 1,880 s after the buy: any
     signature works, the RPC uses its slot), in block order; cached per coin."""
@@ -55,8 +69,15 @@ def path(m, slot, anchor, threads=12):
         sigs += [x for x in page if x["err"] is None and x["slot"] >= slot]
         if page[-1]["slot"] < slot or len(page) < 1000: break
         before = page[-1]["signature"]
-    with cf.ThreadPoolExecutor(threads) as ex:
-        txs = list(ex.map(lambda x: lib.rpc("getTransaction", [x["signature"], TXO], cache=False), sigs))
+    # batched (Nov 22): 100 getTransaction calls in one HTTP request (JSON-RPC batch), the batches on `threads`
+    # threads; the same calls as before, far fewer round trips. BATCH=0 goes back to one request a transaction.
+    if os.environ.get("BATCH") == "0":
+        with cf.ThreadPoolExecutor(threads) as ex:
+            txs = list(ex.map(lambda x: lib.rpc("getTransaction", [x["signature"], TXO], cache=False), sigs))
+    else:
+        ch = [[x["signature"] for x in sigs[i:i + 100]] for i in range(0, len(sigs), 100)]
+        with cf.ThreadPoolExecutor(threads) as ex:
+            txs = [t for part in ex.map(_batch, ch) for t in part]
     tr = [e for tx in txs if tx for e in trades(tx, m)]
     order = {}
     for s in (slot, slot + 1, slot + 2):
