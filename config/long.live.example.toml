@@ -1,4 +1,4 @@
-# The live config of wallet 4's long copy (fra-long), as it ran on Nov 21 2026 (every value from the box's pastes:
+# The live config of wallet 4's long copy (fra-long), as it ran on Nov 21 2026 (DJT removed Nov 22, the owner: low on SOL) (every value from the box's pastes:
 # the start line of Nov 21 00:06 UTC and the greps of Nov 15-21; the rest are long.example.toml's defaults). For a new
 # box: sudo install -m 0640 -o root -g rugsnipe config/long.live.example.toml /etc/rugsnipe/long.toml. No secrets here: the
 # keys are names in /etc/rugsnipe/keys/api-keys.toml.
@@ -34,7 +34,7 @@ daily_stop_sol = 1.5
 
 # held as floats besides wrapped SOL: routes may start and end in them (WBTC carried Oct 23-27).
 # Buy one with: rugsnipe-long float buy 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh 3.0
-floats = ["3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh", "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn", "SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb", "TTWofwAge91oFhZs7kpQdyrVRkmevgM88xijGvQFbKo", "DJTu7vi8norVzdVAffgvb39VP7wjKeTsgaMBJrzfxvoF", "98sMhvDwXj1RQi5c5Mndm3vPe9cBqPrbLaufMXFNMh5g"]
+floats = ["3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh", "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn", "SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb", "TTWofwAge91oFhZs7kpQdyrVRkmevgM88xijGvQFbKo", "98sMhvDwXj1RQi5c5Mndm3vPe9cBqPrbLaufMXFNMh5g"]
 
 # chain reads and sendTransaction: a line of the api-keys file (never the URL with its key here)
 rpc_url = "cred:RPC_URL"

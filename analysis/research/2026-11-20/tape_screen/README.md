@@ -162,3 +162,10 @@ mint, but no curve reserves, which our copy model needs; they could be rebuilt f
 SOL-coin trades on pump's standard curve, virtual SOL x tokens = 30 x 1,073M), with each coin's fee tier unknown. Dune's
 docs show no pump.fun curve table. Helius `getTransactionsForAddress` filters to successful transactions only (for
 flooded wallets like 4vw54BmA; Developer plan). The recorder stays the source; one wallet is read from it with WALLET=.
+
+**The hot hand (`STREAK=1`, Nov 22, the box's tape: 10.8 h, 94,536 copies): no.** At each copy, a wallet is "hot" when
+its last 3 or 5 copies already closed (within 2 or 6 h) averaged over 0% or 20%; speed traders optionally out. 80 rules
+(5 exits x 2 looks x 2 k x 2 thresholds x speed in/out): hot wallets' next copies are 1-4 points better than the rest's
+in most rows, but **not one row is positive on either half** (the best: scalp, 2 h, k 5, over 20%: -2.4% / -8.0% on
+826 / 1,057 copies; tp2, 6 h, k 5, over 0%, speed out: -4.8% / -7.4%; the rest at -6.7% / -8.4% and -8.1% / -11.6%).
+A streak says a little about the next copy, far from enough to pay for the slot-late entry.

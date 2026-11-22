@@ -46,6 +46,8 @@ Wallet 4's strategies:
   **Since Nov 21 ~13:57 UTC the box is a new Cherry Premium VDS 2 (Frankfurt, monthly billing, same name `fra-long`,
   same wallet and settings: `config/long.live.example.toml`); Vultr was suspended unpaid and given up with its tape;
   the tape restarts 13:59 UTC Nov 21, 60 days kept.**
+  **Since Nov 22: floats WBTC, PUMP, SPCX, TTWO, HYPE** (DJT sold and removed, the owner: low on SOL; back once the
+  book is up).
 - **Strategy D, the launch copy:** the hot copy bot `crates/rugsnipe`, with a `copy_more` entry. It is stopped.
 
 Read `README.md` (status, A-Z index), then `02-decomposition/` (why A and not the rest), then the strategy folder you work
