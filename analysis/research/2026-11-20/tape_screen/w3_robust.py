@@ -24,6 +24,7 @@ MENU_EXITS = {"live (tp 4, 600 s, sp 5/60, stall 180, its early sale)": (4.0, 60
               "tp 3x / 420 s / stall 240": (3.0, 420, None, 240, 0), "tp 2.5x / 300 s / sp 5/60": (2.5, 300, (5, 60), 0, 0)}
 IDX = [np.ravel_multi_index((TP.index(tp), HOLD.index(h_), SPS.index(sp), STALL.index(st), it), SH) for tp, h_, sp, st, it in MENU_EXITS.values()]
 ENAMES = list(MENU_EXITS); FILT = [(kd, mn) for kd in ("all", "SOL", "token") for mn in (0.5, 1.3)]
+if os.environ.get("PICK_ALL"): FILT = [("all", 0.5)]   # Nov 22 check: the pick among the 8 exits on all its coins only
 firsts.sort(key=lambda c: c["t"])
 if len(firsts) > MAXN:
     random.seed(7); firsts = sorted(random.sample(firsts, MAXN), key=lambda c: c["t"])

@@ -312,3 +312,18 @@ money themselves, 20 make it. Six of the 20 deep-tested on 80 buys each (`w3_rob
   live without its sale) was the noise of the blocks before it. Of note, not a pass: CqCAzte8's exit, fixed before this
   wallet was seen (tp 3x / 420 s / stall 240, all coins), +5.7 / +10.9 / +4.4 = +7.0% (161), +4.78 SOL without the best
   2%. On the watch list for a forward check on the tape, with that exit frozen.
+
+**Why afi1ee2X and G3PMGr5q reached the deep test (Nov 22, the owner: "did you do the screening correctly?").** The
+screen ranks 1,907 wallets on 30.7 h of tape, most with 10-30 copies there, every copy's mean -9.3%: its top 60 is
+mostly the lucky tail, a shortlist and not a verdict. The 80-buy stage was too weak to sort it: 5 of 6 passed, and 2 of
+the 3 then run on all their buys failed. From now on: own history, then all buys, no 80-buy stage.
+A check from cache (`PICK_ALL=1`: the pick among the 8 exits on all coins only, no SOL/token or 1.3 split;
+`out_w3/*_pickall.txt`), to see whether the 48-setting menu caused the fails. It did not:
+| Wallet | Gate 1 | Blind, % a copy (n) | W/o best 2% | Result |
+|---|---|---|---|---|
+| CqCAzte8 | +3.1 / +6.5 / +17.8% | +4.5 / +6.4 / +12.6 = +7.8% (197) | +10.49 SOL | PASS, 3 of 3 |
+| 2hntf9Ud | +6.3 / +0.4 / +15.1% | -0.7 / -5.1 / +24.5 = +6.3% (132) | +2.46 | FAIL, 1 of 3 |
+| afi1ee2X | +3.7 / +8.8 / +0.5% | +10.1 / +2.2 / -4.0 = +2.8% (161) | -6.74 | FAIL |
+| G3PMGr5q | -0.7 / -14.1 / +9.2% | +3.2 / -18.6 / -1.6 = -5.7% (177) | -20.85 | FAIL (gate 1) |
+afi1ee2X's small edge on simple exits rests on a few big wins (negative without its best 2% either way). CqCAzte8 passes
+both ways; its twin's pass depends on the rule (its block 3 is weak), so CqCAzte8 stays the one copied.
