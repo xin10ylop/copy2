@@ -168,6 +168,7 @@ mod tests {
             route,
             via_jupiter: false,
             fee_bps: 0,
+            sol_coin: false,
         }
     }
 

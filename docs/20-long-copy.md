@@ -143,6 +143,13 @@ within a slot** (`exits_pess.py`):
   skipped (`coin held by the other unit on this wallet`), and a sale never closes the coin's token account while the
   other unit still holds it (`pos::close_on_sale`): the close would fail on the other's tokens and cost the sale a try.
   Their overlapping copies made nothing (`analysis/research/2026-11-16/tab/`: +0.24 SOL on 35 coins).
+- **`copy_sol_coins`** (Nov 22, default false; on for the CqCAzte8 unit): the copied wallet's buys of SOL-priced
+  coins are copied too (`detect::Seen::SolBuy` carries a trigger with wrapped SOL as quote and input, `sol_coin` set;
+  its SOL value is the curve's SOL plus the curve's fee). The position is a `sol_curve` one (`how = "sol curve"`), bought
+  and sold with native SOL on the curve (`txb::sol_buy_ixs` / `sol_sell_ixs`, the ladder flip's code), with the same
+  guards and exits as a copy. Off, a SOL-coin buy is still skipped silently, as wallet 4's unit always has. Engine test
+  `a_sol_coin_buy_is_copied_only_with_copy_sol_coins` (CqCAzte8's real buy of 48tDqrzN); `simulate-sol` on three live
+  SOL curves Nov 22: buy and round trip simulate, -2.74% of a 0.5 SOL stake.
 - **`float level MINT SOL`** (Nov 14): brings a float to a SOL value through Jupiter, buying what is missing or selling
   the excess (nothing within 5% of the target or 0.02 SOL); the daily rebalance with three floats (wins and losses
   stay in the float the trade was paid from).

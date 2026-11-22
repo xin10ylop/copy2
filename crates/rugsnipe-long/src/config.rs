@@ -157,6 +157,9 @@ pub struct LongCfg {
     /// bought, and a sale never closes the coin's token account while one of them still
     /// holds the coin (the close would fail on its tokens and cost the sale a try).
     pub other_state_dirs: Vec<String>,
+    /// Copy its buys of SOL-priced coins too (Nov 22, the CqCAzte8 unit), with SOL on their curve; off: only coins
+    /// priced in another token, as wallet 4's unit has always copied.
+    pub copy_sol_coins: bool,
     /// Pay only with a float (Nov 18): wrapped SOL is not an anchor, so no route starts from SOL (a
     /// coin whose quote is reached through a pool from SOL is skipped). TAB16RxX's copies paid from SOL
     /// lost 9.4% a copy on Oct 31 - Nov 14 (467), its float-paid ones made +5.6% over 18 days (370).
@@ -215,6 +218,7 @@ impl Default for LongCfg {
             dip_max_hold_s: 900,
             dip_float_only: false,
             other_state_dirs: vec![],
+            copy_sol_coins: false,
             float_only: false,
             ladder: crate::ladder::LadderCfg::default(),
         }

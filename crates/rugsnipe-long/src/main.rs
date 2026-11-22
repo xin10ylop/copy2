@@ -594,7 +594,7 @@ fn run(args: &[String]) -> Result<(), String> {
         )
     };
     println!(
-        "long start: mode {:?} wallet {} copy {} min_sol {} stake {} SOL tp {}x stop {}x hold {}s sell_pressure {:?} stall {}s max_open {} floats {:?} buy senders {:?} sell senders {:?} feed {}",
+        "long start: mode {:?} wallet {} copy {} min_sol {} stake {} SOL tp {}x stop {}x hold {}s sell_pressure {:?} stall {}s max_open {} sol coins {} floats {:?} buy senders {:?} sell senders {:?} feed {}",
         cfg.mode,
         me,
         cfg.copy_wallet,
@@ -606,6 +606,7 @@ fn run(args: &[String]) -> Result<(), String> {
         cfg.sell_pressure,
         cfg.stall_s,
         cfg.max_open,
+        if cfg.copy_sol_coins { "copied" } else { "not copied" },
         cfg.floats,
         out_buy.as_ref().map(|o| o.labels()).unwrap_or_default(),
         out_sell.as_ref().map(|o| o.labels()).unwrap_or_default(),

@@ -383,7 +383,11 @@ impl Engine {
                             }
                         }
                     }
-                    Seen::SolBuy { .. } => {}
+                    Seen::SolBuy { t, .. } => {
+                        if self.cfg.copy_sol_coins {
+                            self.on_trigger(*t);
+                        }
+                    }
                 }
             }
         }
@@ -497,9 +501,20 @@ impl Engine {
                 &format!("daily stop ({} SOL today)", sol(today as i128)),
             );
         }
-        let plan = match route::plan(&t, &self.anchors, &mut self.rpc) {
-            Ok(p) => p,
-            Err(e) => return self.skip(&t, &format!("route: {e}")),
+        // a SOL-priced coin (copy_sol_coins): SOL on its curve, as the ladder buys
+        let plan = if t.sol_coin {
+            match pump_codec::multihop::Route::new(
+                c::WSOL_MINT,
+                vec![pump_codec::multihop::Hop::curve(&t.mint, &t.coin_program, &c::WSOL_MINT, &c::SPL_TOKEN_PROGRAM_ID)],
+            ) {
+                Ok(r) => route::Plan { route: r, anchor: c::WSOL_MINT, anchor_program: c::SPL_TOKEN_PROGRAM_ID, how: "sol curve" },
+                Err(e) => return self.skip(&t, &format!("route: {e:?}")),
+            }
+        } else {
+            match route::plan(&t, &self.anchors, &mut self.rpc) {
+                Ok(p) => p,
+                Err(e) => return self.skip(&t, &format!("route: {e}")),
+            }
         };
         // the dip leg pays with a float only (dip_float_only, Nov 19: m15f, wSOL-paid dips +3.1% and negative its last
         // 2 weeks, float-paid +15.9%)
@@ -628,7 +643,7 @@ impl Engine {
             hi: 0.0,
             hi_ms: 0,
             flow: Default::default(),
-            sol_curve: false,
+            sol_curve: t.sol_coin,
             leg: if dip_go { "dip".into() } else { String::new() },
         };
         if paper {

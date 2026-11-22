@@ -42,6 +42,9 @@ pub struct Trigger {
     pub via_jupiter: bool,
     /// The curve's fee on its trade, basis points (0 = not in the event).
     pub fee_bps: u32,
+    /// A coin priced in SOL (Nov 22, `copy_sol_coins`): bought and sold with
+    /// native SOL on its curve (`txb::sol_buy_ixs`), not through a route.
+    pub sol_coin: bool,
 }
 
 /// One thing it did.
@@ -53,9 +56,11 @@ pub enum Seen {
         mint: Pubkey,
         tokens: u64,
     },
-    /// A buy of a SOL-priced coin (not copied).
+    /// A buy of a SOL-priced coin: copied only with `copy_sol_coins` (its
+    /// trigger, quote and input wrapped SOL, `sol_coin` set).
     SolBuy {
         mint: Pubkey,
+        t: Box<Trigger>,
     },
 }
 
@@ -78,7 +83,10 @@ pub fn read(tx: &TxLite, w: &Pubkey, price: &dyn Fn(&Pubkey) -> Option<f64>) -> 
             continue;
         }
         if t.sol_quoted() {
-            out.push(Seen::SolBuy { mint: t.mint });
+            out.push(Seen::SolBuy {
+                mint: t.mint,
+                t: Box::new(sol_trigger(tx, t)),
+            });
             continue;
         }
         if let Some(tr) = trigger(tx, w, t, &mhs, jup, price) {
@@ -147,7 +155,36 @@ fn trigger(
         route,
         via_jupiter: jup,
         fee_bps: t.fee_bps.unwrap_or(0),
+        sol_coin: false,
     })
+}
+
+/// Its buy of a SOL-priced coin as a trigger: the curve's SOL is its quote
+/// (wrapped SOL stands for it, as the ladder's positions do), what it paid
+/// is the curve's SOL plus the curve's fee, and that is its SOL value.
+fn sol_trigger(tx: &TxLite, t: &Trade) -> Trigger {
+    let fee = t.fee_bps.unwrap_or(0) as u64;
+    let paid = t.quote_amount + t.quote_amount * fee / 10_000;
+    Trigger {
+        sig: tx.sig_b58(),
+        slot: tx.slot,
+        mint: t.mint,
+        quote_mint: c::WSOL_MINT,
+        coin_program: tx.mint_program(&t.mint).unwrap_or(c::TOKEN_2022_PROGRAM_ID),
+        quote_program: c::SPL_TOKEN_PROGRAM_ID,
+        its_tokens: t.token_amount,
+        its_quote_in: t.quote_amount,
+        vt_post: t.vt,
+        vq_post: t.vq,
+        real_token_post: t.real_token,
+        input_mint: c::WSOL_MINT,
+        input_amount: paid,
+        sol_value: Some(paid),
+        route: None,
+        via_jupiter: tx.calls(&JUPITER),
+        fee_bps: t.fee_bps.unwrap_or(0),
+        sol_coin: true,
+    }
 }
 
 /// The input of a chain of hops when no token balance names it: the first

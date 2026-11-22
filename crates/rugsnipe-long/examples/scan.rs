@@ -60,7 +60,7 @@ fn main() {
     for tx in &txs {
         for s in detect::read(tx, &w4, &price) {
             match s {
-                Seen::SolBuy { mint } => {
+                Seen::SolBuy { mint, .. } => {
                     sol_buys += 1;
                     // SCAN_SOL=1: one line per SOL-priced buy too
                     if std::env::var_os("SCAN_SOL").is_some() {

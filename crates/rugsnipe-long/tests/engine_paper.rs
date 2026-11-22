@@ -963,3 +963,39 @@ fn the_float_only_dip_leg_skips_a_wsol_paid_buy_and_the_copy_still_buys() {
     e.on_tx(Src::Copied, &fx("w4_buy_wsol_multihop"));
     assert!(e.book.positions.is_empty() && e.dips.is_empty());
 }
+
+/// Nov 22: `copy_sol_coins` copies the wallet's buys of SOL-priced coins (here CqCAzte8's real 0.97 SOL buy of
+/// 48tDqrzN, priced in SOL) with SOL on the curve, a `sol_curve` position; off (the default, wallet 4's unit), the
+/// same buy opens nothing.
+#[test]
+fn a_sol_coin_buy_is_copied_only_with_copy_sol_coins() {
+    let tx = fx("cq_buy_sol_4p3FHV");
+    for on in [false, true] {
+        let dir = std::env::temp_dir().join(format!("long-engine-solcoin-{on}-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let cfg = LongCfg {
+            mode: Mode::Log,
+            state_dir: dir.to_string_lossy().into(),
+            copy_wallet: "CqCAzte8TwCDbCBrhjUpsfG6Au9pZPdrTXrVDidKHGAn".into(),
+            min_sol: 0.5,
+            copy_sol_coins: on,
+            ..Default::default()
+        };
+        let mut e = Engine::new(cfg, Default::default(), None, Rpc::new("http://127.0.0.1:9"), Oracle::default(), None, None).unwrap();
+        e.on_tx(Src::Copied, &tx);
+        if !on {
+            assert!(e.book.positions.is_empty(), "a SOL coin is not copied by default");
+            continue;
+        }
+        assert_eq!(e.book.positions.len(), 1, "its SOL-coin buy is copied");
+        let p = &e.book.positions[0];
+        assert!(p.paper && p.sol_curve && p.how == "sol curve", "{p:?}");
+        assert_eq!(p.anchor, pump_codec::constants::WSOL_MINT.to_string());
+        assert!(p.its_lamports >= 970_000_000, "its buy with the curve's fee: {}", p.its_lamports);
+        e.on_slot(tx.slot + 2);
+        e.on_tick(now_ms());
+        let p = &e.book.positions[0];
+        assert_eq!(p.state, State::Open);
+        assert!(p.tokens > 0);
+    }
+}
