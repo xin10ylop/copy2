@@ -1,0 +1,10 @@
+GrFVXkgmDk5V1roFDncfn1RWhWR5okNkUxXQaBXfSV2C: own result +16.20 SOL over 3 days, up on 2; 25 first buys of 0.5+ SOL
+  by day: 11-20 -0.41  11-21 +13.14  11-22 +3.47
+copies: 25 of its 25 first buys of 0.5+ SOL tested; menu: 8 exits x 6 filters = 48 settings
+gate 1, the menu's mean exit (no picking) on the 3 blind blocks: -45.0% / -37.0% / -14.4% -> FAIL
+ blind block                its buys picked on the blocks before                                   seen   blind    n
+           2  (under 10 seen copies)
+           3 11-22 00:42-11-22 02:08 its sale (to 600 s), all coins, 0.5+ SOL                    -20.2%  -22.0%    6   (luck alone, seen: +0.0%)
+           4 11-22 02:41-11-22 05:00 its sale (to 600 s), all coins, 0.5+ SOL                    -20.8%   +7.1%    6   (luck alone, seen: -1.6%)
+blind, all 3 blocks: -0.895 SOL on 12 copies (-7.5% a copy), without the best 2% -1.449; positive in 1 of 2 blocks
+RESULT: FAIL (gate 1)

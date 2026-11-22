@@ -243,3 +243,19 @@ setting's mean taken out).
 On the seen blocks the picks did no better than the luck baseline (4MzQcBVN +24.8 / +12.4 / +16.5% against luck +27.8 /
 +15.3 / +19.5%). The w2_grid passes (+6.1%, +9.3%, +5.9% blind on 57 / 34 / 60) came from the 24.5-million-setting pick
 and the 60-buy samples. All three make money themselves (+60 to +192 SOL in 1-2 weeks); a copy a slot later does not.
+
+**The new screen (Nov 22 ~04:25 UTC; 17.1 h of tape, 133,514 copies; TOPMEAN = the 5 fixed exits' mean, can't-copy
+filters only) and the strict test (`w3_robust.py` with gate 1; `out_w3/`).** The batch of the 60 new wallets was stopped
+after 4 (Helius bills about 100 credits per `getTransactionsForAddress` request, not 10 per 100 transactions: today
+~7,200 requests, ~800,000 of the free plan's 1,000,000 credits). GrFVXkgm: gate 1 fails (-45.0 / -37.0 / -14.4%). Two
+chosen by hand from the screen:
+- **6t5G5f1i** (71 tape copies, the 5 exits' mean +9.9%; own +39.50 on its one day): gate 1 passes (+5.0 / -18.4 / +24.0),
+  the picks blind -14.0 / -12.5 / +24.2% (18 each): -0.8% a copy on 54, -10.28 without the best 2%: **FAIL**.
+- **CqCAzte8** (24 tape copies, +19.3%; own +11.93 SOL over 15 days, up on 9): **PASS.** Gate 1 (the 8 exits' mean, no
+  pick) **+7.0 / +8.9 / +13.1%** on the 3 blind blocks; the picks (tp 2x / 120 s SOL coins, then tp 3x / 420 s / stall 240
+  all coins) seen +14.4 / +11.2 / +11.2% against luck +6.4 / +3.4 / +8.1%, **blind +8.0 / +6.1 / +19.9% (27 / 25 / 37):
+  +12.4% a copy on 89, +7.37 SOL without the best 2%, 3 of 3 blocks.** 150 of its 270 first buys of 0.5+ SOL (Nov 8 - 22).
+  Its profile: not a bundle (7% of its SOL buys the same size; 0.48 / 0.96 / 2.43 SOL p10/50/90), not a first buyer (2.81x
+  pump's start price, median), first sale 36 s after its buy (median; p25 16 s); 11 to 52 first buys a day (all sizes);
+  239 SOL coins and 149 token coins (TTWO 26, PUMP 9, WBTC 8, SPCX 4 of them our floats). Next: its buys after Nov 22 on
+  the tape with the settings frozen (free), then paper.
