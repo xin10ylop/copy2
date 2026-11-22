@@ -1,0 +1,23 @@
+# Wallet 4's floats, Nov 16-22 (Nov 23)
+
+The owner: "we aren't making money like the other days, check if it is his trades or he is trading with other floats".
+Its history from Helius (`own_only.py`, MAXPAGES 10: 10,000 transactions reach back only to Nov 16 21:44 UTC), its first
+buys of **1.3+ SOL** (what the unit copies) by the token it pays with, its own result on them (SOL, Jupiter prices now):
+
+| Day (UTC) | In our floats: buys, its result | Other tokens | SOL curve (not copied) |
+|---|---|---|---|
+| 11-17 | 20, +14.0 (TTWO 15, PUMP 2, SPCX 2, WBTC 1) | 10, +21.6 | 24, +21.0 |
+| 11-18 | 21, +16.4 (TTWO 19, PUMP 2) | 4, +2.2 | 20, +8.8 |
+| 11-19 | 25, +12.8 (TTWO 23, PUMP 2) | 13, +7.1 | 21, -1.8 |
+| 11-20 | 4, -0.9 (TTWO 4) | 11, +2.1 | 32, +3.0 |
+| 11-21 | 6, +0.7 (SPCX 3, PUMP 2, TTWO 1) | 6, +4.3 | 20, +4.0 |
+| 11-22 | 9, +2.4 (PUMP 4, TTWO 3, SPCX 1, WBTC 1) | 20, +9.9 | 24, +0.3 |
+
+1. **Its TTWO coins stopped.** 15-23 copyable TTWO buys a day on Nov 17-19 (its +13 to +16 SOL a day in our floats),
+   then 4, 1, 3. Our copyable buys went from 20-25 a day to 4-9. That is its trading, not our bot.
+2. **A new quote: hSOL** (`he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A`, Helius staked SOL): 12 buys of 1.3+ SOL (2 on
+   Nov 21, 10 on Nov 22), its result +11.8. Not a float of ours. Our copy (`quote_replay.py`): 11 copies, +5.86 SOL at
+   1 SOL a copy with the live exit (+53.3% a copy: -39 +255 +180 +17 +133 +93 -25 -13 -21 -24 +29%), three wins carry
+   it. Earlier one-day quotes: DOOMSDAY (Nov 19, 7 buys, +6.3), GTA6 (Nov 17-18, 5, +5.3).
+3. **HYPE: no buy of 1.3+ SOL in the 6 days** (one small buy a day Nov 19-21). TTWO copies on the same replay: 66,
+   +7.17 SOL (+11.0% a copy).
