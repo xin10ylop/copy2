@@ -296,3 +296,14 @@ money themselves, 20 make it. Six of the 20 deep-tested on 80 buys each (`w3_rob
 
 80 buys is a sample: CqCAzte8's 80-buy pass held on all its buys, others moved between samples. Next: all buys of
 2hntf9Ud (176) and G3PMGr5q (236); the coins already replayed are cached.
+
+**All buys (Nov 22; `out_w3/2hntf9Ud_all.txt`, `out_w3/G3PMGr5q_all.txt`, TABLE=1).**
+- **G3PMGr5q: FAIL on its 237 buys** (gate 1 +0.2 / -14.1 / +9.2%; the picks blind -10.7% a copy, 0 of 3 blocks). Its
+  80-buy pass was luck.
+- **2hntf9Ud: PASS on its 177 buys** (gate 1 +6.3 / +0.4 / +15.1%; the picks blind +10.4% a copy on 132, +7.58 SOL
+  without the best 2%, 2 of 3 blocks). tp 3x / 420 s / stall 240 alone: +14.0 / +7.5 / +24.5 = +15.3% (132), +13.32 SOL
+  without the best 2%; its token coins +24.3% (53), SOL coins +9.3% (79).
+- **But 2hntf9Ud is CqCAzte8's twin**: 266 of its 281 coins are CqCAzte8's, 246 of them bought in the same slot, the
+  same size (median ratio 1.00), and mostly sold in the same slot; the same hours (14:00-03:00 UTC). One operator, two
+  wallets. Nothing new to copy (the live `rugsnipe-long-cq` already holds those coins), but an independent second
+  confirmation of CqCAzte8's edge with the same exit, and a spare wallet if CqCAzte8 goes quiet.
