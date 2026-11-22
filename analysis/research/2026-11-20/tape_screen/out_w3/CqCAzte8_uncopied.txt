@@ -1,0 +1,13 @@
+w3_small.py, Nov 23 (history Nov 8 23:57 to Nov 22 23:42 UTC, 374 first buys; floats WBTC, PUMP, SPCX, TTWO, hSOL)
+CqCAzte8: 372 first buys; our copy at 1 SOL, the live exits; halves split at 11-14 15:48 UTC
+  copied now (0.5+, SOL or our floats)      212 copies    +8.1% a copy (+17.21 SOL; w/o best 2% +10.70)   older half   +6.0% (101), newer  +10.0% (111)
+  under 0.3 SOL, SOL or our floats           10 copies    +1.7% a copy ( +0.17 SOL; w/o best 2%  -0.37)   older half   -0.1% (3), newer   +2.4% (7)
+  0.3-0.5 SOL, SOL or our floats             64 copies    +0.7% a copy ( +0.43 SOL; w/o best 2%  -0.73)   older half   -0.9% (34), newer   +2.4% (30)
+  0.5+ paid in 4CxjZyMN                      10 copies   +53.3% a copy ( +5.33 SOL; w/o best 2%  +3.50)   older half  +62.9% (9), newer  -32.9% (1)
+  0.5+ paid in 98kfF7rm                      11 copies   +65.6% a copy ( +7.21 SOL; w/o best 2%  +5.37)   older half +163.4% (1), newer  +55.8% (10)
+4CxjZyMN = mihao ("ni hao cat"), mcap $8.1M, liquidity $0.97M; its buys Nov 10-13, one Nov 18.
+98kfF7rm = PAID, mcap $0.88M, liquidity $0.15M, 24 h -6.4%; its buys Nov 12-20 (11), none Nov 21-22.
+max_open: 0 of its 213 copyable buys arrived with 2 copies open (each held to its full hold: an upper bound).
+Its 384 transactions with no curve trade (Triton getTransaction): 187 transfers only, 118 pumpswap AMM through a router
+(107 send tokens out: sales after its coins graduate; 11 bring tokens in), 19 + 4 Raydium LaunchLab, a few Raydium,
+Meteora, Orca sales. Buys off the pump curve: about 14 in 14 days.

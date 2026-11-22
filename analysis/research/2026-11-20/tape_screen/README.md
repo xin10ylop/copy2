@@ -370,3 +370,10 @@ The buys are one operator's; the sales differ more. On their shared SOL-priced c
 2hntf9Ud's +38.99, and 2pLugeBD +17.95 against 3GzBLpxT -6.82: the same entries, sold differently (the cq unit never
 follows its sale, so this does not touch our copies). CqCAzte8 is the one to copy: its 100 coins the twin does not buy
 are copies the twin would miss; the twin's own 7 (+1.57 SOL on 6 SOL-priced) are about one every two days.
+
+**Is the cq unit getting all it can from CqCAzte8? (Nov 23; `w3_small.py`, `out_w3/CqCAzte8_uncopied.txt`)** Fresh
+history (Nov 8-22, 374 first buys). What the unit copies (0.5+ SOL, paid in SOL or our floats): 212, +8.1% a copy at 1
+SOL. What it leaves: buys of 0.3-0.5 SOL, +0.7% a copy on 64 (the 0.5 floor is right); under 0.3, 10; buys paid in
+mihao (4CxjZyMN), 10 copies +53.3% but 9 of them Nov 10-13, it stopped; in PAID (98kfF7rm), 11 copies +65.6% (+5.37
+SOL without the best), 10 in the newer half, none since Nov 20. max_open 2 was never full when it bought. Off the pump
+curve it mostly sells (pumpswap after graduation); its buys there are about one a day.
