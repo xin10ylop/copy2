@@ -13,12 +13,19 @@ for w in WALLETS:
     fs = f"{O}/{w[:8]}_sigs.json"
     if os.path.exists(fs): sigs = json.load(open(fs))
     else:
-        sigs, before = [], None
+        sigs, before, pages, failed = [], None, 0, 0
+        # MAXPAGES (Nov 22): a wallet whose address carries thousands of failed transactions a minute (4vw54BmA) would page
+        # for hours; stop after MAXPAGES pages of 1,000 and keep what was read (its newest days only), saying so
+        MAXP = int(os.environ.get("MAXPAGES", 10**9))
         while True:
             pg = ns["call"]("getSignaturesForAddress", [w, {"limit": 1000, **({"before": before} if before else {})}])
             if not pg: break
+            pages += 1; failed += sum(1 for s in pg if s["err"] is not None)
             sigs += [[s["signature"], s.get("blockTime") or 0] for s in pg if s["err"] is None]; before = pg[-1]["signature"]
             if len(pg) < 1000 or (pg[-1].get("blockTime") or 0) < since: break
+            if pages >= MAXP:
+                print(f"{w[:8]}: stopped at {pages} pages ({failed:,} failed transactions); history from "
+                      f"{time.strftime('%m-%d %H:%M', time.gmtime(pg[-1].get('blockTime') or 0))} UTC only", flush=True); break
         sigs = [s for s in sigs if s[1] >= since]; json.dump(sigs, open(fs, "w"))
     ft = f"{O}/{w[:8]}_trades.jsonl"; done = set()
     if os.path.exists(ft):
