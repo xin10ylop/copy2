@@ -47,7 +47,9 @@ Wallet 4's strategies:
   same wallet and settings: `config/long.live.example.toml`); Vultr was suspended unpaid and given up with its tape;
   the tape restarts 13:59 UTC Nov 21, 60 days kept.**
   **Since Nov 22: floats WBTC, PUMP, SPCX, TTWO, HYPE** (DJT sold and removed, the owner: low on SOL; back once the
-  book is up).
+  book is up). **Since Nov 23: HYPE swapped for hSOL** (`he1iusmf...`, Helius staked SOL; the owner's call after
+  `analysis/research/2026-11-23/w4_floats/`: wallet 4's TTWO coins stopped after Nov 19, it paid with hSOL for 12 buys of
+  1.3+ SOL on Nov 21-22, HYPE for none in 6 days), in both units' floats and the timer's file.
   **Since Nov 22 (the owner's call, no paper phase): wallet 4's unit at 0.5 SOL a copy, and a second unit `rugsnipe-long-cq`
   copying CqCAzte8 on the same wallet** (0.5 SOL, its buys of 0.5+ SOL, tp 3x, 420 s, stall 240, no sell pressure, its sale
   never; `config/long-cq.live.example.toml`; the strict test in `analysis/research/2026-11-20/tape_screen/`; the units skip
