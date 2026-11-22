@@ -150,6 +150,11 @@ within a slot** (`exits_pess.py`):
   guards and exits as a copy. Off, a SOL-coin buy is still skipped silently, as wallet 4's unit always has. Engine test
   `a_sol_coin_buy_is_copied_only_with_copy_sol_coins` (CqCAzte8's real buy of 48tDqrzN); `simulate-sol` on three live
   SOL curves Nov 22: buy and round trip simulate, -2.74% of a 0.5 SOL stake.
+- **`sol_exits`** (Nov 22, default false; on for the CqCAzte8 unit): the SOL-coin copies (`sol_curve`) take their own
+  exits, `sol_take_profit`, `sol_max_hold_s`, `sol_sell_pressure`, `sol_stall_s`; the stop and its sale stay the
+  unit's. CqCAzte8's blind blocks: its SOL coins made the most with tp 2x / 120 s (+11.06 SOL on 124 at 1 SOL, positive
+  in all three), its token coins with tp 3x / 420 s / stall 240 (+19.53 on 77). Engine test
+  `sol_coin_copies_take_their_own_exits_with_sol_exits`.
 - **`float level MINT SOL`** (Nov 14): brings a float to a SOL value through Jupiter, buying what is missing or selling
   the excess (nothing within 5% of the target or 0.02 SOL); the daily rebalance with three floats (wins and losses
   stay in the float the trade was paid from).

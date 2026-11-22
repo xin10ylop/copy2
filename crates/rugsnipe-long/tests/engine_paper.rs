@@ -999,3 +999,49 @@ fn a_sol_coin_buy_is_copied_only_with_copy_sol_coins() {
         assert!(p.tokens > 0);
     }
 }
+
+/// Nov 22: `sol_exits` gives the SOL-coin copies their own exits (CqCAzte8: tp 2x / 120 s on SOL coins, tp 3x /
+/// 420 s / stall 240 on the rest). At 2.1x a SOL-coin copy is sold with them and held without them; at 121 s the
+/// same, by its timer.
+#[test]
+fn sol_coin_copies_take_their_own_exits_with_sol_exits() {
+    let tx = fx("cq_buy_sol_4p3FHV");
+    for (sol_exits, case) in [(false, "tp"), (true, "tp"), (false, "time"), (true, "time")] {
+        let dir = std::env::temp_dir().join(format!("long-engine-solexit-{sol_exits}-{case}-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let cfg = LongCfg {
+            mode: Mode::Log,
+            state_dir: dir.to_string_lossy().into(),
+            copy_wallet: "CqCAzte8TwCDbCBrhjUpsfG6Au9pZPdrTXrVDidKHGAn".into(),
+            min_sol: 0.5,
+            copy_sol_coins: true,
+            take_profit: 3.0,
+            max_hold_s: 420,
+            stall_s: 240,
+            sol_exits,
+            sol_take_profit: 2.0,
+            sol_max_hold_s: 120,
+            ..Default::default()
+        };
+        let mut e = Engine::new(cfg, Default::default(), None, Rpc::new("http://127.0.0.1:9"), Oracle::default(), None, None).unwrap();
+        e.on_tx(Src::Copied, &tx);
+        e.on_slot(tx.slot + 2);
+        e.on_tick(now_ms());
+        assert_eq!(e.book.positions[0].state, State::Open);
+        let seen = e.book.positions[0].seen_ms;
+        if case == "tp" {
+            price_to(&mut e, 2.1);
+            e.on_tick(seen + 5_000);
+        } else {
+            price_to(&mut e, 1.05);
+            e.on_tick(seen + 121_000);
+        }
+        let p = &e.book.positions[0];
+        if sol_exits {
+            assert_eq!(p.state, State::Selling, "{case}: its own exits fire");
+            assert_eq!(p.reason, Some(if case == "tp" { Reason::Tp } else { Reason::Time }));
+        } else {
+            assert_eq!(p.state, State::Open, "{case}: the unit's exits (tp 3x, 420 s) hold it");
+        }
+    }
+}

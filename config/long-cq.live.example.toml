@@ -93,6 +93,13 @@ stall_s = 240
 other_state_dirs = ["/var/lib/rugsnipe-long"]
 # its SOL-priced coins too (Nov 22: on all its buys, blind, SOL coins +8.4% a copy on 125, token coins +26.2% on 76)
 copy_sol_coins = true
+# its SOL coins with their own exits (Nov 22: on its blind blocks, SOL coins tp 2x / 120 s +11.06 SOL on 124, positive in
+# all three, against tp 3x / 420 s / stall 240 +10.90 with one losing; its token coins keep tp 3x / 420 s / stall 240)
+sol_exits = true
+sol_take_profit = 2.0
+sol_max_hold_s = 120
+sol_stall_s = 0
+sol_sell_pressure = []
 # pay only with a float: no route from wrapped SOL (a coin reached only through a SOL pool is skipped)
 float_only = false
 # the dip leg (docs/20 §3, "the split"; Nov 19): dip_drop > 0 and dip_stake_sol > 0 = leg 2 on the same buy of its,

@@ -160,6 +160,15 @@ pub struct LongCfg {
     /// Copy its buys of SOL-priced coins too (Nov 22, the CqCAzte8 unit), with SOL on their curve; off: only coins
     /// priced in another token, as wallet 4's unit has always copied.
     pub copy_sol_coins: bool,
+    /// Separate exits for the SOL-coin copies (Nov 22, the CqCAzte8 unit: its SOL coins made the most with tp 2x / 120 s,
+    /// its token coins with tp 3x / 420 s / stall 240): with `sol_exits`, a `sol_curve` position takes profit at
+    /// `sol_take_profit`, sells at `sol_max_hold_s`, and has its own `sol_sell_pressure` and `sol_stall_s` (0 / [] off);
+    /// the stop and its sale stay the unit's. Off: one exit for every position, as before.
+    pub sol_exits: bool,
+    pub sol_take_profit: f64,
+    pub sol_max_hold_s: u64,
+    pub sol_stall_s: u64,
+    pub sol_sell_pressure: Vec<u64>,
     /// Pay only with a float (Nov 18): wrapped SOL is not an anchor, so no route starts from SOL (a
     /// coin whose quote is reached through a pool from SOL is skipped). TAB16RxX's copies paid from SOL
     /// lost 9.4% a copy on Oct 31 - Nov 14 (467), its float-paid ones made +5.6% over 18 days (370).
@@ -219,6 +228,11 @@ impl Default for LongCfg {
             dip_float_only: false,
             other_state_dirs: vec![],
             copy_sol_coins: false,
+            sol_exits: false,
+            sol_take_profit: 2.0,
+            sol_max_hold_s: 120,
+            sol_stall_s: 0,
+            sol_sell_pressure: vec![],
             float_only: false,
             ladder: crate::ladder::LadderCfg::default(),
         }
@@ -275,6 +289,12 @@ impl LongCfg {
         }
         if !(0.0..=100.0).contains(&self.dip_stake_sol) {
             return bad("dip_stake_sol must be in [0, 100]");
+        }
+        if self.sol_exits && (self.sol_take_profit <= 1.0 || self.sol_max_hold_s == 0) {
+            return bad("sol_exits needs sol_take_profit > 1 and sol_max_hold_s > 0");
+        }
+        if !self.sol_sell_pressure.is_empty() && self.sol_sell_pressure.len() != 3 {
+            return bad("sol_sell_pressure is [] or [sells, window_s, from_s]");
         }
         if self.dip_drop > 0.0 && (self.dip_take_profit <= 1.0 || self.dip_max_hold_s == 0) {
             return bad("the dip leg needs dip_take_profit > 1 and dip_max_hold_s > 0");

@@ -1328,11 +1328,24 @@ impl Engine {
                         if p.is_dip() {
                             // the dip leg: its own take profit over our fill and its hold, nothing else
                             pos::exit_due_fill(p, now, cfg.dip_take_profit, 0.0, cfg.dip_max_hold_s, true)
+                        } else if p.sol_curve && cfg.sol_exits {
+                            // a SOL-coin copy with its own exits (sol_exits)
+                            pos::exit_due_fill(p, now, cfg.sol_take_profit, cfg.stop, cfg.sol_max_hold_s, cfg.tp_from_fill)
                         } else {
                             pos::exit_due_fill(p, now, cfg.take_profit, cfg.stop, cfg.max_hold_s, cfg.tp_from_fill)
                         }
                     })
-                    .or_else(|| (!p.is_dip()).then(|| pos::signal_due(p, now, &cfg.sell_pressure, cfg.stall_s)).flatten())
+                    .or_else(|| {
+                        (!p.is_dip())
+                            .then(|| {
+                                if p.sol_curve && cfg.sol_exits {
+                                    pos::signal_due(p, now, &cfg.sol_sell_pressure, cfg.sol_stall_s)
+                                } else {
+                                    pos::signal_due(p, now, &cfg.sell_pressure, cfg.stall_s)
+                                }
+                            })
+                            .flatten()
+                    })
                     .map(|r| (i, Act::Exit(r))),
                 _ => None,
             })

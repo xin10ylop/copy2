@@ -606,7 +606,16 @@ fn run(args: &[String]) -> Result<(), String> {
         cfg.sell_pressure,
         cfg.stall_s,
         cfg.max_open,
-        if cfg.copy_sol_coins { "copied" } else { "not copied" },
+        if !cfg.copy_sol_coins {
+            "not copied".to_string()
+        } else if cfg.sol_exits {
+            format!(
+                "copied (their exits: tp {}x hold {}s sell_pressure {:?} stall {}s)",
+                cfg.sol_take_profit, cfg.sol_max_hold_s, cfg.sol_sell_pressure, cfg.sol_stall_s
+            )
+        } else {
+            "copied".to_string()
+        },
         cfg.floats,
         out_buy.as_ref().map(|o| o.labels()).unwrap_or_default(),
         out_sell.as_ref().map(|o| o.labels()).unwrap_or_default(),
