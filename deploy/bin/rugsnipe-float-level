@@ -13,7 +13,14 @@ B=${RUGSNIPE_LONG:-/opt/rugsnipe/bin/rugsnipe-long}; C=${1:-/etc/rugsnipe/long.t
 FLOOR=${SOL_FLOOR:-0.6}
 [ -r "$L" ] || { echo "float-level: no $L, nothing done"; exit 0; }
 # copies open now, over the book's lines ("...; N open; ..."); empty when the status cannot be read
-open_now() { "$B" status --config "$C" 2>/dev/null | sed -n 's/.*; \([0-9][0-9]*\) open;.*/\1/p' | awk '{s += $1} END {if (NR) print s}'; }
+# (Nov 22: over every unit on this wallet, the main config and the others in FLOAT_LEVEL_UNITS, default the CqCAzte8 unit's
+# when it exists: a copy that unit holds, paid from a float, makes that float look short too)
+open_now() {
+  for c in "$C" ${FLOAT_LEVEL_UNITS:-/etc/rugsnipe/long-cq.toml}; do
+    [ -r "$c" ] || continue
+    "$B" status --config "$c" 2>/dev/null | sed -n 's/.*; \([0-9][0-9]*\) open;.*/\1/p'
+  done | awk '{s += $1} END {if (NR) print s}'
+}
 # the wallet's SOL and the floats' SOL values, read once a run: each read prices every float through Jupiter's
 # public API, and one read a float drew its HTTP 429 (2026-11-16 16:55, a sale of TTWO refused)
 chain=$("$B" status --config "$C" --chain 2>/dev/null | grep -m1 '^ *wallet ')

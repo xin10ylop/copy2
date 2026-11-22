@@ -1,4 +1,4 @@
-# The live config of wallet 4's long copy (fra-long), as it ran on Nov 21 2026 (DJT removed Nov 22, the owner: low on SOL) (every value from the box's pastes:
+# The live config of wallet 4's long copy (fra-long), as it ran on Nov 21 2026 (DJT removed Nov 22, the owner: low on SOL; Nov 22: 0.5 SOL a copy and the CqCAzte8 unit beside it) (every value from the box's pastes:
 # the start line of Nov 21 00:06 UTC and the greps of Nov 15-21; the rest are long.example.toml's defaults). For a new
 # box: sudo install -m 0640 -o root -g rugsnipe config/long.live.example.toml /etc/rugsnipe/long.toml. No secrets here: the
 # keys are names in /etc/rugsnipe/keys/api-keys.toml.
@@ -14,7 +14,7 @@ copy_wallet = "H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg"
 # its buy valued in SOL: its 1.5-SOL tier (reads 1.45-1.51 by route)
 min_sol = 1.3
 # our buy, valued in SOL (1.0 tested: at 0.5 the fixed costs eat the edge)
-stake_sol = 1.0
+stake_sol = 0.5
 # the curve price against the price its buy left, without our own tokens
 take_profit = 4.0
 # 0 = no stop (the trip ends at the take profit or the hold). Since Nov 2026 wallet 4 sells most coins early and
@@ -90,7 +90,7 @@ stall_s = 180
 
 # other units trading from this same wallet (their state dirs): a coin one of them holds is not bought, and a sale
 # never closes a coin account one of them still uses (Nov 18: rugsnipe-long and rugsnipe-long-tab on one wallet)
-other_state_dirs = []
+other_state_dirs = ["/var/lib/rugsnipe-long-cq"]
 # pay only with a float: no route from wrapped SOL (a coin reached only through a SOL pool is skipped)
 float_only = false
 # the dip leg (docs/20 §3, "the split"; Nov 19): dip_drop > 0 and dip_stake_sol > 0 = leg 2 on the same buy of its,

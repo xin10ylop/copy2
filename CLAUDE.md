@@ -48,6 +48,10 @@ Wallet 4's strategies:
   the tape restarts 13:59 UTC Nov 21, 60 days kept.**
   **Since Nov 22: floats WBTC, PUMP, SPCX, TTWO, HYPE** (DJT sold and removed, the owner: low on SOL; back once the
   book is up).
+  **Since Nov 22 (the owner's call, no paper phase): wallet 4's unit at 0.5 SOL a copy, and a second unit `rugsnipe-long-cq`
+  copying CqCAzte8 on the same wallet** (0.5 SOL, its buys of 0.5+ SOL, tp 3x, 420 s, stall 240, no sell pressure, its sale
+  never; `config/long-cq.live.example.toml`; the strict test in `analysis/research/2026-11-20/tape_screen/`; the units skip
+  each other's coins; check command `ccc`). The bot copies its token-coin buys only (its SOL coins are not copied).
 - **Strategy D, the launch copy:** the hot copy bot `crates/rugsnipe`, with a `copy_more` entry. It is stopped.
 
 Read `README.md` (status, A-Z index), then `02-decomposition/` (why A and not the rest), then the strategy folder you work
