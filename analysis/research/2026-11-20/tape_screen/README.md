@@ -351,3 +351,8 @@ within the noise: a copy's result swings 57 points (sd), and 20% of 10-copy stre
 (same coins, same slot): DEdwtjvC = BWiJ8aqk (741 shared, 737 same slot; both sell in a median 19 s: too fast) and
 2pLugeBD = 3GzBLpxT (313 / 309). Deep-tested: 8NdJBkpc (up 15 of 15 days, 250 of its 633 buys at random) and
 AmeY3DxM (up 12 of 13, all 224).
+- **8NdJBkpc: FAIL** (`out_w3/8NdJBkpc_all.txt`, 250 of its 634 buys at random): gate 1 +0.0 / -11.1 / +3.8%; every
+  exit on all coins -1.3 to -4.7% a copy blind. Up on all 15 days itself, but its copies lose: what it makes, it makes
+  in the seconds a copy lands after it.
+- **AmeY3DxM: FAIL** (`out_w3/AmeY3DxM_all.txt`, all 224): gate 1 +1.2 / -1.9 / +5.1%; the picks +1.3% a copy, 3 of 3
+  blocks, but -0.06 SOL without the best 2%. Too thin to pay.
