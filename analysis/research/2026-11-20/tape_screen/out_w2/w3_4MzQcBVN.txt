@@ -1,0 +1,9 @@
+4MzQcBVNCK3Ykak2RrPQruP1HNBDRmY2ewAY8qfgG2mz: own result +95.41 SOL over 7 days, up on 6; 331 first buys of 0.5+ SOL
+  by day: 11-16 +18.46  11-17 +21.59  11-18 +13.85  11-19 +22.22  11-20 +2.67  11-21 +42.38  11-22 -25.75
+copies: 328 of its 331 first buys of 0.5+ SOL tested; menu: 8 exits x 6 filters = 48 settings
+ blind block                its buys picked on the blocks before                                   seen   blind    n
+           2 11-18 01:42-11-19 16:55 tp 3x / 420 s / stall 240, SOL coins, 0.5+ SOL              +24.8%   -8.1%   22   (luck alone, seen: +27.8%)
+           3 11-19 17:13-11-20 23:37 tp 3x / 420 s / stall 240, SOL coins, 0.5+ SOL              +12.4%  +26.7%   24   (luck alone, seen: +15.3%)
+           4 11-20 23:50-11-22 01:10 tp 3x / 420 s / stall 240, SOL coins, 0.5+ SOL              +16.5%   -7.0%   41   (luck alone, seen: +19.5%)
+blind, all 3 blocks: +1.758 SOL on 87 copies (+2.0% a copy), without the best 2% -2.012; positive in 1 of 3 blocks
+RESULT: FAIL
