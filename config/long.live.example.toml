@@ -34,7 +34,7 @@ daily_stop_sol = 1.5
 
 # held as floats besides wrapped SOL: routes may start and end in them (WBTC carried Oct 23-27).
 # Buy one with: rugsnipe-long float buy 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh 3.0
-floats = ["3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh", "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn", "SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb", "TTWofwAge91oFhZs7kpQdyrVRkmevgM88xijGvQFbKo", "he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A"]
+floats = ["3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh", "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn", "SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb", "TTWofwAge91oFhZs7kpQdyrVRkmevgM88xijGvQFbKo", "he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A", "98kfF7rmsg1QDUEoCqNE7g7M1FdrTt92TEp2CLzypump"]
 
 # chain reads and sendTransaction: a line of the api-keys file (never the URL with its key here)
 rpc_url = "cred:RPC_URL"

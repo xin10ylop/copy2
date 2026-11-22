@@ -50,6 +50,9 @@ Wallet 4's strategies:
   book is up). **Since Nov 23: HYPE swapped for hSOL** (`he1iusmf...`, Helius staked SOL; the owner's call after
   `analysis/research/2026-11-23/w4_floats/`: wallet 4's TTWO coins stopped after Nov 19, it paid with hSOL for 12 buys of
   1.3+ SOL on Nov 21-22, HYPE for none in 6 days), in both units' floats and the timer's file.
+  **Since Nov 23: a PAID float** (`98kfF7rm...`, a pump meme coin, 0.6 SOL: one copy; the owner's call after
+  `analysis/research/2026-11-20/tape_screen/out_w3/CqCAzte8_uncopied.txt`: CqCAzte8 paid with PAID for 11 buys of 0.5+ SOL
+  on Nov 12-20, our replayed copy +65.6% a copy; price risk: a meme coin).
   **Since Nov 22 (the owner's call, no paper phase): wallet 4's unit at 0.5 SOL a copy, and a second unit `rugsnipe-long-cq`
   copying CqCAzte8 on the same wallet** (0.5 SOL, its buys of 0.5+ SOL, tp 3x, 420 s, stall 240, no sell pressure, its sale
   never; `config/long-cq.live.example.toml`; the strict test in `analysis/research/2026-11-20/tape_screen/`; the units skip

@@ -18,6 +18,11 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 23: a PAID float at 0.6 SOL** (`98kfF7rmsg1QDUEoCqNE7g7M1FdrTt92TEp2CLzypump`, a pump meme coin; the owner's call).
+CqCAzte8 paid with PAID for 11 buys of 0.5+ SOL on Nov 12-20, our replayed copy +65.6% a copy (+5.37 SOL at 1 SOL without
+the best), none since Nov 20; wallet 4 once on Nov 21. Sized for one copy: the price risk of a meme coin
+(`analysis/research/2026-11-20/tape_screen/out_w3/CqCAzte8_uncopied.txt`).
+
 **Nov 23: HYPE swapped for hSOL in the floats** (`he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A`, Helius staked SOL; the
 owner's call). Wallet 4's coins paid in TTWO, 15-23 copyable buys a day on Nov 17-19, fell to 4, 1 and 3; it paid with
 hSOL for 12 buys of 1.3+ SOL on Nov 21-22 (our replayed copy +5.86 SOL on 11 at 1 SOL) and with HYPE for none in 6 days
