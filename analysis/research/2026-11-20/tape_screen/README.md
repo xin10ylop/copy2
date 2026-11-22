@@ -280,3 +280,19 @@ the rolling picks blind +2.1 / +5.9 / +20.8% (41 / 67 / 30): +8.0% a copy on 138
 **Three more from the screen's top (Nov 22; `out_w3/`, `w3_robust.py`, 80 buys for 2xKDETTh): none.** CULikuY6 -24.87
 SOL itself over 13 days (3 up) and 897GsVaF -77.71 (1 up): stopped at their own history. 2xKDETTh +6.68 (8 of 14 up),
 gate 1 -8.4 / +3.4 / +14.9% (passes), the rolling picks fail the blind blocks: FAIL.
+
+**The Nov 22 evening read (30.7 h of tape; `own_only.py`, `out_own/`, `out_w3/`).** The screen's TOPMEAN60 and TOPOWN60
+(the 10 jumpy left out): 62 never tested before. Their own history (Helius, MAXPAGES 10, about 22k credits): 42 lose
+money themselves, 20 make it. Six of the 20 deep-tested on 80 buys each (`w3_robust.py ... 80`):
+
+| Wallet | Its own result | Gate 1 (menu mean, blocks 2/3/4) | Blind picks, % a copy (n) | W/o best 2% | Result |
+|---|---|---|---|---|---|
+| 2hntf9Ud | +52.0 SOL, 14 of 15 days up | +12.6 / +18.3 / +20.7% | +3.4 / +18.1 / +27.0 = **+18.1%** (52) | +6.93 SOL | PASS, 3 of 3 |
+| G3PMGr5q | +16.1, 8 of 14 | -13.5 / +13.4 / +11.4% | -6.4 / +35.6 / +36.4 = +21.5% (38) | +5.38 | PASS, 2 of 3 |
+| afi1ee2X | +26.2, 10 of 14 | +4.5 / +14.8 / -3.8% | +9.0 / +27.7 / -1.0 = +9.1% (42) | +1.54 | PASS, 2 of 3 |
+| 9QAEGBhQ | +150.9, 14 of 14 | +11.0 / +9.6 / +8.7% | +0.4 / +4.1 / +10.7 = +5.1% (60) | +0.35 | PASS, 3 of 3 (thin) |
+| 3SiQo8MJ | +23.6, 8 of 10 | +4.9 / +4.6 / +28.2% | +1.2 / -1.2 / +8.2 = +2.7% (60) | +1.11 | PASS, 2 of 3 (thin) |
+| 3PwXa9BR | +121.1, 12 of 14 | -8.7 / +6.3 / -21.4% | +1.8 / -0.8 / -12.7 = -4.2% (57) | -4.14 | FAIL (gate 1) |
+
+80 buys is a sample: CqCAzte8's 80-buy pass held on all its buys, others moved between samples. Next: all buys of
+2hntf9Ud (176) and G3PMGr5q (236); the coins already replayed are cached.

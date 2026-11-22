@@ -1,0 +1,4 @@
+7Cw6tHJ2: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-18 18:06 UTC only
+7Cw6tHJ2noenomUQZbJdxHrXGqFwqxaiafRXCES1TffN: own result +89.70 SOL over 5 days, up on 5; 2584 first buys of 0.5+ SOL
+  by day: 11-18 +4.10  11-19 +5.25  11-20 +41.68  11-21 +6.10  11-22 +32.58
+OWN PASS

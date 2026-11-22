@@ -1,0 +1,4 @@
+GpFgPBsb: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-14 18:04 UTC only
+GpFgPBsbCJ2g9ZQXBK86py6ap6jATMeV9LdUoi2PAUYD: own result -366.40 SOL over 9 days, up on 0; 196 first buys of 0.5+ SOL
+  by day: 11-14 -7.11  11-15 -21.34  11-16 -48.42  11-17 -75.84  11-18 -47.85  11-19 -52.48  11-20 -25.29  11-21 -43.10  11-22 -44.97
+STOP: it does not make money itself on most days

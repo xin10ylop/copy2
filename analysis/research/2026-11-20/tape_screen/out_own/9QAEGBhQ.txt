@@ -1,0 +1,4 @@
+9QAEGBhQ: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-09 18:49 UTC only
+9QAEGBhQcRGMS62w2Ktr69gFfRqswVT6Kg92cNBurgLL: own result +151.02 SOL over 14 days, up on 14; 500 first buys of 0.5+ SOL
+  by day: 11-09 +3.55  11-10 +0.92  11-11 +13.62  11-12 +6.57  11-13 +2.81  11-14 +13.76  11-15 +23.47  11-16 +7.93  11-17 +7.20  11-18 +15.25  11-19 +31.24  11-20 +14.67  11-21 +7.99  11-22 +2.04
+OWN PASS
