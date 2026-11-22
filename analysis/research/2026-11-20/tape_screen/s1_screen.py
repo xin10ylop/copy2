@@ -146,6 +146,39 @@ for x in out: by[x[0]].append(x)
 # history cannot be read from the chain cheaply; the tape keeps successful trades only): WALLET=... prints, day by day
 # (UTC), its own result on its first-bought coins of MIN_SOL+ (sold out, and still held at cost) and our copy under the
 # five exits, then stops. No Triton.
+# The hot hand (Nov 22, the owner: "if a wallet is having a good streak it will keep going, super short term"):
+# STREAK=1 asks, at each copy, how this wallet's copies did over the last LOOK hours, counting only copies already
+# closed (bought 600 s+ before: the longest exit), and whether a hot wallet's next copy beats the rest. Walk-forward:
+# nothing from after the buy is used. Each rule is reported on the two halves of the tape apart. No Triton.
+if os.environ.get("STREAK"):
+    import bisect
+    def streak(e, look_h, k, thr, fast):
+        res = {"hot": [[], []], "rest": [[], []]}
+        for u, xs in by.items():
+            xs = sorted(xs, key=lambda x: x[1]); ts = [x[1] for x in xs]
+            for i, x in enumerate(xs):
+                j = bisect.bisect_right(ts, x[1] - 600); lo = bisect.bisect_left(ts, x[1] - look_h * 3600)
+                past = [y for y in xs[lo:j] if y[3] != "refused"]
+                if x[3] == "refused": continue
+                v = x[3][e] / STAKE * 100; half = 0 if x[1] < mid else 1
+                hot = len(past) >= k and np.mean([y[3][e] for y in past[-k:]]) / STAKE * 100 > thr
+                if hot and fast:   # its own holding so far: a wallet out in under MIN_HOLD s is a speed trader, not hot
+                    hh = [y[3]["_its_hold"] for y in past if y[3]["_its_hold"] < 9e8]
+                    hot = bool(hh) and np.median(hh) >= MIN_HOLD
+                res["hot" if hot else "rest"][half].append(v)
+        return res
+    print("\nthe hot hand: a wallet's next copy after its last k closed copies (within LOOK h) averaged over thr% (% a copy)")
+    print(f"{'exit':6s} {'look':>4s} {'k':>3s} {'thr':>4s} {'speed out':>9s}   {'hot: n, half 1 / half 2':>28s}   {'the rest: half 1 / half 2':>26s}")
+    for e in EX:
+        for look_h in (2, 6):
+            for k in (3, 5):
+                for thr in (0, 20):
+                    for fast in (False, True):
+                        r_ = streak(e, look_h, k, thr, fast); h, o = r_["hot"], r_["rest"]
+                        mm = lambda a: f"{np.mean(a):+6.1f}" if a else "   nan"
+                        print(f"{e:6s} {look_h:4d} {k:3d} {thr:4d} {str(fast):>9s}   n {len(h[0]):5d}/{len(h[1]):5d} {mm(h[0])} / {mm(h[1])}   "
+                              f"n {len(o[0]):6d}/{len(o[1]):6d} {mm(o[0])} / {mm(o[1])}")
+    sys.exit()
 WALLET = os.environ.get("WALLET")
 if WALLET:
     import datetime as dt_
