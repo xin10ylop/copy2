@@ -307,3 +307,8 @@ money themselves, 20 make it. Six of the 20 deep-tested on 80 buys each (`w3_rob
   same size (median ratio 1.00), and mostly sold in the same slot; the same hours (14:00-03:00 UTC). One operator, two
   wallets. Nothing new to copy (the live `rugsnipe-long-cq` already holds those coins), but an independent second
   confirmation of CqCAzte8's edge with the same exit, and a spare wallet if CqCAzte8 goes quiet.
+- **afi1ee2X: FAIL on its 215 buys** (`out_w3/afi1ee2X_all.txt`): gate 1 +3.7 / +8.8 / +0.5% (passes), the rolling picks
+  blind -9.3 / -2.7 / -13.8% (-8.6% a copy on 83, 0 of 3 blocks): each block's pick (token coins held 300 s, SOL coins
+  live without its sale) was the noise of the blocks before it. Of note, not a pass: CqCAzte8's exit, fixed before this
+  wallet was seen (tp 3x / 420 s / stall 240, all coins), +5.7 / +10.9 / +4.4 = +7.0% (161), +4.78 SOL without the best
+  2%. On the watch list for a forward check on the tape, with that exit frozen.
