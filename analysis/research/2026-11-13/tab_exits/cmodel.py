@@ -57,11 +57,37 @@ def _batch(sigs):
         except Exception: pass
         if len(out) < len(sigs): time.sleep(i + 1)
     return [out.get(x) for x in sigs]
+def _path_helius(m, slot, p):
+    """The same path from Helius's getTransactionsForAddress (Nov 22): the coin's successful transactions from `slot`
+    over PATH_SLOTS slots (default 1,750, about 11 minutes: the longest exit holds 600 s), 1,000 full transactions a
+    request, in block order by (slot, transactionIndex): no getBlock. 10 credits per 100 transactions."""
+    url = os.environ["HELIUS_URL"]; end = slot + int(os.environ.get("PATH_SLOTS", 1750)); txs, tok = [], None
+    for _ in range(200):
+        prm = {"transactionDetails": "full", "limit": 1000, "sortOrder": "asc", "encoding": "json", "maxSupportedTransactionVersion": 1,
+               "filters": {"status": "succeeded", "slot": {"gte": slot, "lte": end}}}
+        if tok: prm["paginationToken"] = tok
+        j = None
+        for a in range(6):
+            try:
+                with urllib.request.urlopen(urllib.request.Request(url, json.dumps({"jsonrpc": "2.0", "id": 1, "method": "getTransactionsForAddress", "params": [m, prm]}).encode(),
+                                                                    {"Content-Type": "application/json"}), timeout=120) as r: j = json.load(r)
+                if "result" in j: break
+            except Exception: pass
+            time.sleep(1 + a)
+        if not j or "result" not in j: raise RuntimeError("helius: no result")
+        txs += j["result"]["data"]; tok = j["result"].get("paginationToken")
+        if not tok: break
+    txs.sort(key=lambda t: (t["slot"], t.get("transactionIndex", 10**6)))
+    tr = [e for tx in txs for e in trades(tx, m)]
+    with gzip.open(p + ".tmp", "wt") as f: json.dump(tr, f)
+    os.replace(p + ".tmp", p)
+    return tr
 def path(m, slot, anchor, threads=12):
     """every landed trade on mint m from `slot` back from `anchor` (a signature at least 1,880 s after the buy: any
     signature works, the RPC uses its slot), in block order; cached per coin."""
     p = f"{PC}/{slot}_{m}.json.gz"
     if os.path.exists(p): return json.load(gzip.open(p))
+    if os.environ.get("HELIUS_URL"): return _path_helius(m, slot, p)
     sigs, before = [], anchor
     for _ in range(40):
         page = lib.sigs(m, before=before, cache=False)
