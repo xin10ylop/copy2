@@ -9,7 +9,39 @@ src = open("/home/user/copy2/analysis/research/2026-11-17/winners/w4_history.py"
 ns = {"__file__": "w4_history.py"}; sys.argv = ["x", SP]; exec(compile(src, "w4_history.py", "exec"), ns)
 WALLETS = os.environ["WALLETS"].split(",")   # comma-separated (candidates/c1_fetch.py)
 since = time.time() - DAYS * 86400
+def helius_history(w):
+    """Nov 22: the wallet's successful transactions since `since` from Helius (HELIUS_URL), 1,000 full a request,
+    decoded at once: a wallet flooded with failed transactions (4vw54BmA) costs what its real ones cost."""
+    import urllib.request
+    url = os.environ["HELIUS_URL"]; tok = None; sigs = []; rows = []
+    pages = 0
+    for _ in range(int(os.environ.get("MAXPAGES", 30))):   # 30 pages = 30,000 transactions, about 3,000 credits
+        pages += 1
+        prm = {"transactionDetails": "full", "limit": 1000, "sortOrder": "desc", "encoding": "json", "maxSupportedTransactionVersion": 1,
+               "filters": {"status": "succeeded", "blockTime": {"gte": int(since)}}}
+        if tok: prm["paginationToken"] = tok
+        j = None
+        for a in range(6):
+            try:
+                with urllib.request.urlopen(urllib.request.Request(url, json.dumps({"jsonrpc": "2.0", "id": 1, "method": "getTransactionsForAddress", "params": [w, prm]}).encode(),
+                                                                    {"Content-Type": "application/json"}), timeout=120) as r: j = json.load(r)
+                if "result" in j: break
+            except Exception: pass
+            time.sleep(1 + a)
+        if not j or "result" not in j: break
+        for tx in j["result"]["data"]:
+            s_ = tx["transaction"]["signatures"][0]; sigs.append([s_, tx.get("blockTime") or 0])
+            rows.append({"sig": s_, "t": tx.get("blockTime") or 0, "trades": ns["own_trades"](tx, w)})
+        tok = j["result"].get("paginationToken")
+        if not tok: break
+    json.dump(sigs, open(f"{O}/{w[:8]}_sigs.json", "w"))
+    with open(f"{O}/{w[:8]}_trades.jsonl", "w") as f:
+        for r_ in rows: f.write(json.dumps(r_) + "\n")
+    capped = f"; CAPPED at {pages} pages: history from {time.strftime('%m-%d %H:%M', time.gmtime(min(x[1] for x in sigs)))} UTC only" if tok and sigs else ""
+    print(f"{w[:8]}: {len(sigs)} successful transactions in {DAYS:g} days (Helius){capped}", flush=True)
 for w in WALLETS:
+    if os.environ.get("HELIUS_URL") and not os.path.exists(f"{O}/{w[:8]}_trades.jsonl"):
+        helius_history(w); continue
     fs = f"{O}/{w[:8]}_sigs.json"
     if os.path.exists(fs): sigs = json.load(open(fs))
     else:

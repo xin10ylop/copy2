@@ -209,7 +209,7 @@ def tune(h1, h2):
                 v1 = vv(a, e)
                 if best is None or v1 > best[0]: best = (v1, fl, kn, e, len(a), len(b), vv(b, e))
     return best
-res = []; fast = 0; flat = 0; loser = 0; bundle = 0; own_of = {}
+res = []; fast = 0; flat = 0; loser = 0; bundle = 0; own_of = {}; elig = []; jumpy = 0
 BUNDLE = float(os.environ.get("BUNDLE", 0.5))   # a wallet with this share or more of its copies bought in the create slot: a launch bundle, left out
 OWN_MIN = float(os.environ.get("OWN_MIN", 0))   # a wallet that loses money itself on its sold-out tape coins is left out
 def hold_of(xs):
@@ -221,6 +221,10 @@ for u, xs in by.items():
     if np.mean([(u, x[4]) in cslot for x in xs]) >= BUNDLE: bundle += 1; continue
     oc = [own[(u, x[4])] for x in xs if (u, x[4]) in own]; done_ = [o for o in oc if o[3] >= 0.99 * o[2]]
     own_sol = sum(o[1] - o[0] for o in done_); own_of[u] = (own_sol, len(done_), float(np.median([o[5] for o in oc])) if oc else 0)
+    # Nov 22, the owner: rank also by what the wallets MADE, with only the can't-copy filters (speed, bundles, flat, and
+    # coins that jump past the price limit before our copy lands on most of its buys): the TOPOWN list
+    if np.mean([x[3] == "refused" for x in xs]) > 0.5: jumpy += 1; continue
+    if np.std([x[3]["w4"] for x in xs if x[3] != "refused"] or [0]) >= 0.02 * STAKE: elig.append((own_sol, u))
     if done_ and own_sol < OWN_MIN: loser += 1; continue
     if np.std([x[3]["w4"] for x in xs if x[3] != "refused"] or [0]) < 0.02 * STAKE: flat += 1; continue   # coins that never move
     h1 = [x for x in xs if x[1] < mid]; h2 = [x for x in xs if x[1] >= mid]
@@ -241,7 +245,13 @@ for sc, u, n1, n2, pick, h1v, med, allv, h2v in res[:30]:
     hh = hold_of(by[u]); hs = f"{hh:5.0f}s" if hh < 1e8 else "  none"; os_, nd, im = own_of.get(u, (0, 0, 0))
     print(f"{u:44s} {n1:4d} {n2:4d} {pick:>18s} {h1v:+6.1f}% {h2v:+6.1f}% {sc:+6.1f}% {med:7.2f} {hs:>6s} {os_:+8.2f} {100 * im:+6.1f}%   " + " ".join(f"{e} {allv[e]:+.0f}%" for e in EX))
 print("own SOL = its own result on its sold-out coins of the tape; impact = how far its own buy moved the price (median)")
-json.dump([dict(wallet=r_[1], choice=r_[4], n1=r_[2], n2=r_[3], half1=r_[5], half2=r_[8], score=r_[0]) for r_ in res[:30]],
+TOPN = int(os.environ.get("TOPN", 30))   # the candidate list for the history tests (Nov 22: the top 60), one line to paste
+print(f"TOP{TOPN}: " + ",".join(r_[1] for r_ in res[:TOPN]))
+elig.sort(reverse=True)
+print(f"{jumpy} left out as jumpy (over half their copies refused over {PMAX}x); by their own result: " +
+      ", ".join(f"{u[:8]} {o:+.1f}" for o, u in elig[:10]))
+print(f"TOPOWN{TOPN}: " + ",".join(u for o, u in elig[:TOPN] if o > 0))
+json.dump([dict(wallet=r_[1], choice=r_[4], n1=r_[2], n2=r_[3], half1=r_[5], half2=r_[8], score=r_[0]) for r_ in res[:TOPN]],
           open(os.environ.get("TOP_JSON", "/tmp/screen_top.json"), "w"))
 up = sum(1 for r_ in res if r_[8] > 0 and r_[5] > 0)
 print(f"\nwallets up on both halves: {up} of {len(res)}")
