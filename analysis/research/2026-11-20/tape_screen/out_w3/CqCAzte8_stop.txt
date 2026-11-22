@@ -1,0 +1,22 @@
+CqCAzte8TwCDbCBrhjUpsfG6Au9pZPdrTXrVDidKHGAn: own result +12.06 SOL over 15 days, up on 9; 263 first buys of 0.5+ SOL
+CqCAzte8: 263 copies of its first buys of 0.5+ SOL (0 refused over 1.5x); the live exits; 1 SOL a copy
+
+token coins (tp 3x / 420 s / stall 240): 93 copies; the lowest price before the exit (x its buy): under 0.9 on 76%, under 0.7 on 37%, under 0.5 on 6%
+      stop   block 1  block 2  block 3  block 4   all, % a copy      SOL   w/o 2%
+      none    -12.2%   +25.5%   +12.6%   +39.0%          +15.9%   +14.81   +11.07
+      0.9x     -5.1%    +2.5%    +4.6%   +40.8%          +10.5%    +9.81    +6.07
+      0.8x     -9.9%    +7.3%    +1.0%   +42.7%          +10.1%    +9.36    +5.62
+      0.7x    -10.9%   +27.1%   +12.8%   +38.7%          +16.6%   +15.45   +11.71
+      0.6x    -12.3%   +25.8%   +12.6%   +39.3%          +16.0%   +14.90   +11.16
+      0.5x    -10.8%   +26.0%   +12.9%   +39.1%          +16.5%   +15.34   +11.60
+      0.4x    -11.6%   +25.7%   +12.6%   +39.3%          +16.2%   +15.06   +11.32
+
+SOL coins (tp 2x / 120 s): 170 copies; the lowest price before the exit (x its buy): under 0.9 on 78%, under 0.7 on 33%, under 0.5 on 7%
+      stop   block 1  block 2  block 3  block 4   all, % a copy      SOL   w/o 2%
+      none    +10.5%    +2.0%    +2.3%   +22.2%           +9.2%   +15.71   +11.92
+      0.9x     +5.1%    -6.3%    -9.9%    -3.1%           -3.5%    -5.99    -8.85
+      0.8x     +1.8%    -1.2%    +1.9%    +4.9%           +1.8%    +3.11    -0.68
+      0.7x     +6.0%    +1.8%    +0.3%   +14.2%           +5.6%    +9.45    +5.67
+      0.6x    +10.0%    +1.4%    +3.4%   +16.2%           +7.7%   +13.13    +9.34
+      0.5x    +10.6%    +1.9%    +3.8%   +21.2%           +9.3%   +15.86   +12.08
+      0.4x    +10.4%    +2.0%    +2.8%   +22.2%           +9.3%   +15.83   +12.05

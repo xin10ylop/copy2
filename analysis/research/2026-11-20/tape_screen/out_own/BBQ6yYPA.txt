@@ -1,0 +1,4 @@
+BBQ6yYPA: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-13 08:57 UTC only
+BBQ6yYPAad3wTN5e8jUshryB9eWorKUYftk6pftQZ4J9: own result -77.43 SOL over 10 days, up on 3; 840 first buys of 0.5+ SOL
+  by day: 11-13 +1.39  11-14 -8.48  11-15 -9.83  11-16 -15.70  11-17 -10.43  11-18 -19.10  11-19 -0.06  11-20 -18.01  11-21 +2.33  11-22 +0.45
+STOP: it does not make money itself on most days

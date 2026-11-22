@@ -1,0 +1,4 @@
+3vKC1m1C: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-21 12:31 UTC only
+3vKC1m1CgNL3AU27NTYZ93zfpPeFV9JSAV9k9oMuD4HW: own result -42.94 SOL over 2 days, up on 0; 84 first buys of 0.5+ SOL
+  by day: 11-21 -23.36  11-22 -19.58
+STOP: it does not make money itself on most days

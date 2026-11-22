@@ -327,3 +327,27 @@ A check from cache (`PICK_ALL=1`: the pick among the 8 exits on all coins only, 
 | G3PMGr5q | -0.7 / -14.1 / +9.2% | +3.2 / -18.6 / -1.6 = -5.7% (177) | -20.85 | FAIL (gate 1) |
 afi1ee2X's small edge on simple exits rests on a few big wins (negative without its best 2% either way). CqCAzte8 passes
 both ways; its twin's pass depends on the rule (its block 3 is weak), so CqCAzte8 stays the one copied.
+
+**A stop loss for CqCAzte8's live exits? No (Nov 23; `w3_stop.py`, `out_w3/CqCAzte8_stop.txt`).** The owner, after a
+-70% SOL-coin copy on its first live day (10 closed, -0.217 SOL at 0.5 SOL a copy): "test if we should add a stop loss,
+because there is no sell pressure". All 263 first buys of 0.5+ SOL, the live exits, the stop as the bot has it (the
+price at or under STOP x its buy price, sold at the next trade), % a copy at 1 SOL, its buys in 4 time blocks:
+
+| Stop | Token coins (93), all | W/o best 2% | SOL coins (170), all | W/o best 2% |
+|---|---|---|---|---|
+| none (live) | +15.9% | +11.07 SOL | +9.2% | +11.92 SOL |
+| 0.9x | +10.5% | +6.07 | -3.5% | -8.85 |
+| 0.8x | +10.1% | +5.62 | +1.8% | -0.68 |
+| 0.7x | +16.6% | +11.70 | +5.6% | +5.67 |
+| 0.6x | +16.0% | +11.16 | +7.7% | +9.34 |
+| 0.5x | +16.5% | +11.60 | +9.3% | +12.08 |
+
+Three in four of its copies dip under 0.9x before the exit and a third under 0.7x, and most come back: a tight stop
+sells them at the low. 0.5x and lower changes almost nothing (6-7% of copies reach it). No stop. The first live day is
+within the noise: a copy's result swings 57 points (sd), and 20% of 10-copy stretches in its history are at or under
+-4.3% (the worst -26.4%).
+
+**Screen of Nov 22, 31.4 h, MIN_COPIES 20:** 22 wallets not tested before; 10 lose money themselves, 12 make it. Twins
+(same coins, same slot): DEdwtjvC = BWiJ8aqk (741 shared, 737 same slot; both sell in a median 19 s: too fast) and
+2pLugeBD = 3GzBLpxT (313 / 309). Deep-tested: 8NdJBkpc (up 15 of 15 days, 250 of its 633 buys at random) and
+AmeY3DxM (up 12 of 13, all 224).
