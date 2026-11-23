@@ -387,3 +387,16 @@ near the screen's top: -66 to -115 SOL themselves), 17 make it. Twins again (sam
 DTru6k9o (242 of 247), 965Nk2u3 = H8w4pyiU = 2vt36ruE (344-349 of 355), HCq8h5ad = GXRNpTLc (859 of 868), CmnzeFCA =
 4DH3hwDs. Deep-tested: GoJM9nYG (the screen's #1), 43E8Uor7 (up 14 of 14 days), CgyPomTG (13 of 15), all their buys;
 HCq8h5ad (15 of 15, holds a median 120 s) on 250 of 828 at random.
+
+| Wallet | Gate 1 | The 48-setting pick, blind (n), w/o best 2% | The pick on all coins only (`PICK_ALL`) | tp 3x / 420 s / stall 240 alone (CqCAzte8's exit) |
+|---|---|---|---|---|
+| GoJM9nYG (all 213) | -5.1 / -6.0 / +16.4% | -6.8% (53), -5.05 | | |
+| 43E8Uor7 (all 253) | +1.9 / -1.2 / +6.0% | +4.0% (84), +0.32: PASS | +1.5% (189), -4.56: FAIL | +3.6 / +1.7 / +10.6 = +5.3%, +1.60 |
+| **CgyPomTG** (242 of 244) | +13.7 / +1.4 / +10.5% | +4.4% (149), -1.65: FAIL | **+7.7% (181), +3.78: PASS** | **+13.1 / +11.0 / +12.3 = +12.1% (181), +12.04** |
+| HCq8h5ad (250 of 828) | -10.5 / -7.8 / -17.3% | +2.2% (61), -1.61: FAIL | | -20.3% |
+
+43E8Uor7 passes one way and fails the other, both thin. **CgyPomTG**: fails the 48-setting pick (it chased the 1.3+ SOL
+slice), passes the pick on all coins, and CqCAzte8's exit, fixed before this wallet was seen, is positive in all three
+blind blocks with +12.04 SOL on 181 copies without the best 2%. Its own: +55.07 SOL over 15 days, 13 up; 22 coins a day
+(SOL 189, TTWO 42, USDC 24, SPCX 10, hSOL 8 of its first buys), its hours 12-02 UTC; median hold to its first sale 40 s.
+Independent: 24 coins shared with CqCAzte8, 17 with wallet 4, none in the same slot.
