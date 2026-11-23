@@ -478,3 +478,11 @@ Sell pressure is never clearly better on these wallets: on three it costs, on 3X
 6LwMLkCe the higher means come from its last block (with sell pressure most kinds are near zero or negative in its first
 block, without it every block is positive). Wallet 4 is the other way (`../../2026-11-23/w4_exit/`: without it its last
 block is -14.5% against -2.9%): its coins dump on sellers, these wallets' coins come back.
+How big against chance (`w3_sp_noise.py`, `out_w3/sp_noise_nov23.txt`): the same copies both ways, the gain a copy, its
+standard error, and the share of 2,000 bootstrap reshuffles where it stays above 0 (9 kinds tried, so one kind near 90%
+is what luck alone gives):
+- 6LwMLkCe token (119): the best kind (5/30 s) +3.9 points, give or take 4.5; above 0 in 81%. Not shown.
+- 3XeFcZKS token (59): every kind -2.7 to +0.4 points. Nothing.
+- CqCAzte8 token (67): 8 of 9 kinds cost 2 to 8.5 points (above 0 in 6-30%); the gentlest, 15/120 s, +2.5 give or take
+  1.3, above 0 in 98%: the one possible gain, on about 5 token copies a day; tried after seeing it, so re-checked on
+  the live copies before any change.

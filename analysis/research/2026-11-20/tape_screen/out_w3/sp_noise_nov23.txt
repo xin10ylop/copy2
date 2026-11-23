@@ -1,0 +1,30 @@
+6LwMLkCe, token coins, the 3 blind blocks: 119 copies; gain a copy over no sell pressure (tp 3x / 420 / stall 240)
+  sell pressure (3, 30)    gain  -1.5 points, give or take  5.9 (1 se); above 0 in  41% of reshuffles; copies where it changed the result: 89%
+  sell pressure (3, 60)    gain  +1.3 points, give or take  3.9 (1 se); above 0 in  67% of reshuffles; copies where it changed the result: 74%
+  sell pressure (5, 30)    gain  +3.9 points, give or take  4.5 (1 se); above 0 in  81% of reshuffles; copies where it changed the result: 83%
+  sell pressure (5, 60)    gain  +1.4 points, give or take  3.9 (1 se); above 0 in  66% of reshuffles; copies where it changed the result: 71%
+  sell pressure (5, 120)   gain  +1.0 points, give or take  3.3 (1 se); above 0 in  64% of reshuffles; copies where it changed the result: 63%
+  sell pressure (8, 60)    gain  +0.6 points, give or take  3.7 (1 se); above 0 in  58% of reshuffles; copies where it changed the result: 63%
+  sell pressure (10, 60)   gain  +1.3 points, give or take  3.1 (1 se); above 0 in  68% of reshuffles; copies where it changed the result: 53%
+  sell pressure (15, 60)   gain  -0.3 points, give or take  2.9 (1 se); above 0 in  49% of reshuffles; copies where it changed the result: 39%
+  sell pressure (15, 120)  gain  +1.4 points, give or take  2.1 (1 se); above 0 in  79% of reshuffles; copies where it changed the result: 34%
+3XeFcZKS, token coins, the 3 blind blocks: 59 copies; gain a copy over no sell pressure (tp 3x / 420 / stall 240)
+  sell pressure (3, 30)    gain  -1.3 points, give or take  3.0 (1 se); above 0 in  36% of reshuffles; copies where it changed the result: 64%
+  sell pressure (3, 60)    gain  -0.5 points, give or take  1.9 (1 se); above 0 in  40% of reshuffles; copies where it changed the result: 53%
+  sell pressure (5, 30)    gain  -2.7 points, give or take  3.0 (1 se); above 0 in  20% of reshuffles; copies where it changed the result: 39%
+  sell pressure (5, 60)    gain  -0.9 points, give or take  1.8 (1 se); above 0 in  34% of reshuffles; copies where it changed the result: 41%
+  sell pressure (5, 120)   gain  +0.4 points, give or take  0.6 (1 se); above 0 in  78% of reshuffles; copies where it changed the result: 29%
+  sell pressure (8, 60)    gain  -0.0 points, give or take  1.3 (1 se); above 0 in  52% of reshuffles; copies where it changed the result: 15%
+  sell pressure (10, 60)   gain  +0.1 points, give or take  1.0 (1 se); above 0 in  59% of reshuffles; copies where it changed the result: 14%
+  sell pressure (15, 60)   gain  -0.2 points, give or take  0.7 (1 se); above 0 in  43% of reshuffles; copies where it changed the result: 5%
+  sell pressure (15, 120)  gain  -0.7 points, give or take  0.7 (1 se); above 0 in   8% of reshuffles; copies where it changed the result: 5%
+CqCAzte8, token coins, the 3 blind blocks: 67 copies; gain a copy over no sell pressure (tp 3x / 420 / stall 240)
+  sell pressure (3, 30)    gain  -8.5 points, give or take  6.1 (1 se); above 0 in   8% of reshuffles; copies where it changed the result: 88%
+  sell pressure (3, 60)    gain  -8.1 points, give or take  5.6 (1 se); above 0 in   6% of reshuffles; copies where it changed the result: 82%
+  sell pressure (5, 30)    gain  -8.5 points, give or take  6.1 (1 se); above 0 in   6% of reshuffles; copies where it changed the result: 87%
+  sell pressure (5, 60)    gain  -5.9 points, give or take  4.9 (1 se); above 0 in  12% of reshuffles; copies where it changed the result: 81%
+  sell pressure (5, 120)   gain  -2.0 points, give or take  3.6 (1 se); above 0 in  30% of reshuffles; copies where it changed the result: 61%
+  sell pressure (8, 60)    gain  -5.7 points, give or take  4.7 (1 se); above 0 in  11% of reshuffles; copies where it changed the result: 76%
+  sell pressure (10, 60)   gain  -5.5 points, give or take  4.5 (1 se); above 0 in  10% of reshuffles; copies where it changed the result: 66%
+  sell pressure (15, 60)   gain  -4.5 points, give or take  3.7 (1 se); above 0 in  10% of reshuffles; copies where it changed the result: 45%
+  sell pressure (15, 120)  gain  +2.5 points, give or take  1.3 (1 se); above 0 in  98% of reshuffles; copies where it changed the result: 34%
