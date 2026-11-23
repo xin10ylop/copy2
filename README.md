@@ -22,6 +22,7 @@ branch `claude/magical-einstein-k78idp`.
 floats to 0.6?"). A float of 0.6 funds one 0.5 SOL copy; 1.0 funds two at once. Over Nov 16-22, both units, each copy
 held to its full hold (an upper bound): a copy found its float already funding another open copy 12 times of 79 in TTWO,
 9 of 21 in hSOL, never in PUMP (14), SPCX (8), WBTC (3) or PAID (6). Frees about 1.2 SOL; the level timer sells the excess.
+Done on the box Nov 23 02:05 UTC: WBTC -0.4004 SOL, PUMP -0.4140, SPCX -0.3956 sold to SOL; the wallet 1.5222 -> 2.7306 SOL.
 
 **Nov 23: a PAID float at 0.6 SOL** (`98kfF7rmsg1QDUEoCqNE7g7M1FdrTt92TEp2CLzypump`, a pump meme coin; the owner's call).
 CqCAzte8 paid with PAID for 11 buys of 0.5+ SOL on Nov 12-20, our replayed copy +65.6% a copy (+5.37 SOL at 1 SOL without
