@@ -400,3 +400,20 @@ slice), passes the pick on all coins, and CqCAzte8's exit, fixed before this wal
 blind blocks with +12.04 SOL on 181 copies without the best 2%. Its own: +55.07 SOL over 15 days, 13 up; 22 coins a day
 (SOL 189, TTWO 42, USDC 24, SPCX 10, hSOL 8 of its first buys), its hours 12-02 UTC; median hold to its first sale 40 s.
 Independent: 24 coins shared with CqCAzte8, 17 with wallet 4, none in the same slot.
+
+**CgyPomTG's setup (Nov 23; `w3_setup.py`, `out_w3/CgyPomTG_setup.txt`):** coin kind x its buy size x the 8 exits, no
+pick, the 4 time blocks of its 242 copies at 1 SOL; trusted only if positive in 4 of 4 blocks and without the best 2%.
+
+| Coins, its buy | Exit | Blocks 1 / 2 / 3 / 4 | All (n) | W/o best 2% |
+|---|---|---|---|---|
+| **all, 0.5+ SOL** | **tp 3x / 420 s / stall 240** | +9.0 / +13.1 / +11.0 / +12.3% | **+11.4% (242)** | **+15.52 SOL** (the best cell) |
+| all, 0.5+ | held 300 s | +11.3 / +14.1 / +10.5 / +12.0% | +12.0% (242) | +10.38 |
+| SOL coins, 0.5+ | tp 3x / 420 s / stall 240 | +9.6 / +18.8 / +12.9 / +11.2% | +12.9% (136) | +11.55 |
+| SOL coins, 0.5+ | tp 2x / 120 s (the cq unit's SOL exit) | +5.5 / +7.4 / -2.3 / +11.1% | +5.5% (136) | +3.24 |
+| token coins, 0.5+ | tp 3x / 420 s / stall 240 | +7.8 / +6.3 / +9.1 / +13.7% | +9.3% (106) | +4.05 |
+| all, 1.3+ | tp 3x / 420 s / stall 240 | +14.9 / +15.4 / +10.8 / +1.7% | +10.5% (188) | +9.90 |
+| all, 0.5-1.3 | tp 3x / 420 s / stall 240 | -1.4 / +3.6 / +12.0 / +54.8% | +14.2% (54) | +5.74 (one block) |
+
+The setup: every buy of 0.5+ SOL, any coin, the one exit tp 3x / 420 s / stall 240, SOL coins included and with that same
+exit (not the cq unit's tp 2x / 120 s, which is half as good here and negative in one block). No size or kind filter: the
+splits are smaller and no steadier.
