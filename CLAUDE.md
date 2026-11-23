@@ -84,6 +84,8 @@ of `claude/magical-einstein-k78idp`). A code change meant to run on the box goes
 
 ## The owner and how to work with them
 
+- **The Frankfurt box's clock is EET (UTC+2, the same as Beirut; `date` checked Nov 23).** Its `journalctl` times are
+  Beirut times. The status tables (`qqq`, `www`, ... `bought`) are UTC: `status` prints UTC unless given `--tz`.
 - The owner runs every command on the boxes themselves and pastes the output back. You can't reach the boxes.
   Give one copy-paste block, say what each line should print, and say which machine it runs on
   (`ops@fra-long:~/rugsnipe$` = the Frankfurt box; the old `ubuntu@ip-...` prompt was Ohio, gone). Begin blocks with

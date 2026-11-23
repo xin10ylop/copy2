@@ -36,14 +36,14 @@ the fixed exit +9.0 / +13.1 / +11.0 / +12.3% in its 4 time blocks (+11.4% a copy
 fails the strict 48-setting pick and passes the pick on all coins (`analysis/research/2026-11-20/tape_screen/`, README
 end). Its USDC-paid buys (24, +3.9% a copy, negative without the best) are not worth a float. The three units skip
 each other's coins; the level timer counts all three units' open copies.
-Started on the box Nov 23 17:26 UTC (19:26 Beirut): the box's file equal to the repo's (comments aside), each unit's
+Started on the box Nov 23 15:26 UTC (17:26 Beirut; the box's journal is on EET = Beirut time): the box's file equal to the repo's (comments aside), each unit's
 `other_state_dirs` listing the other two, the four units active, `ggg` reading the book (wallet 2.3849 SOL).
 
 **Nov 23: WBTC, PUMP and SPCX floats down to 0.6 SOL; TTWO and hSOL stay at 1.0** (the owner: "why don't we set all the
 floats to 0.6?"). A float of 0.6 funds one 0.5 SOL copy; 1.0 funds two at once. Over Nov 16-22, both units, each copy
 held to its full hold (an upper bound): a copy found its float already funding another open copy 12 times of 79 in TTWO,
 9 of 21 in hSOL, never in PUMP (14), SPCX (8), WBTC (3) or PAID (6). Frees about 1.2 SOL; the level timer sells the excess.
-Done on the box Nov 23 02:05 UTC: WBTC -0.4004 SOL, PUMP -0.4140, SPCX -0.3956 sold to SOL; the wallet 1.5222 -> 2.7306 SOL.
+Done on the box Nov 23 00:05 UTC (02:05 Beirut, the box's journal time): WBTC -0.4004 SOL, PUMP -0.4140, SPCX -0.3956 sold to SOL; the wallet 1.5222 -> 2.7306 SOL.
 
 **Nov 23: a PAID float at 0.6 SOL** (`98kfF7rmsg1QDUEoCqNE7g7M1FdrTt92TEp2CLzypump`, a pump meme coin; the owner's call).
 CqCAzte8 paid with PAID for 11 buys of 0.5+ SOL on Nov 12-20, our replayed copy +65.6% a copy (+5.37 SOL at 1 SOL without
