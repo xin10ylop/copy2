@@ -422,3 +422,20 @@ Sell pressure on top of it (`w3_sp_check.py`, `out_w3/CgyPomTG_sp.txt`, the 3 bl
 8/60 s +11.9% (+11.90), no better. No sell pressure.
 - **965Nk2u3 (= H8w4pyiU = 2vt36ruE): FAIL** (`out_w3/965Nk2u3_all.txt`, all 334): gate 1 +0.1 / -10.7 / -5.4%; 7 of the
   8 exits lose on its copies (its sale +3.9%, negative without the best 2%). +123 SOL itself, up on 12 of 12 days.
+
+**Where the edge goes (Nov 23; `w3_entry.py`, `out_w3/*_entry.txt`; the owner: "a totally different way to profit?").**
+Our copy at 1 SOL entered right behind its buy (its own slot, the best any copier could do) against as the bot lands
+(the end of the next slot), and the price we pay over its own:
+
+| Wallet | tp 3x / 420 / stall 240: behind it / as we land | its sale: behind / land | Our price over its own (median) | Buyers in its slot before it |
+|---|---|---|---|---|
+| 965Nk2u3 | **+13.3% / -7.9%** | +28.9% / +4.9% | **1.32x** (over 1.2x on 87%) | its twins (2vt36ruE on 227 of 334), D4HZgnoP 88 |
+| HCq8h5ad | -0.4% / -15.0% | +11.4% / -4.6% | **1.29x** (80%) | 6FWhUybW on 290 of 400, its twin GXRNpTLc 241 |
+| CqCAzte8 | +16.9% / +15.0% | +7.8% / +6.0% | 1.02x (2%) | its twin 2hntf9Ud 94; none on 44% |
+| CgyPomTG | +10.4% / +11.4% | +3.9% / +5.1% | 1.00x (1%) | none on 70% |
+
+965Nk2u3 and HCq8h5ad buy inside a crowd that lands in the same block (their twins, 6FWhUybW, D4HZgnoP: one group
+buying together; 965Nk2u3 at 32 SOL in the curve, a coin's first moments). The price rises about 30% inside that one
+block; the edge is there and nowhere after it. Copying the leader lands the same block late; buying in their block
+needs knowing the coin before it is bought (an insider's launch). Not reachable. The two we copy buy alone, so the
+price waits for us (1.00-1.02x). A copyable wallet's mark: a median premium near 1.0x.

@@ -1,0 +1,11 @@
+CqCAzte8: 257 copies of its first buys of 0.5+ SOL; % a copy at 1 SOL (COST 0.0064)
+  exit                           right behind it (its slot)    as the bot lands (slot+1)
+  tp 3x / 420 s / stall 240                         +16.9%                      +15.0%
+  held 300 s                                        +16.4%                      +14.4%
+  tp 2x / 120 s                                     +10.4%                       +8.6%
+  its sale (to 600 s)                                +7.8%                       +6.0%
+  tp 1.5x / 60 s                                     +5.1%                       +3.3%
+  the price we pay over its own, as the bot lands: median 1.02x, 75% 1.05x, over 1.2x on 2%
+  other buyers in its slot before it: median 1; none on 44%
+  wallets most often in its slot before it (of 257 coins): 2hntf9Ud 94, STorreSu 4, GKd5EMzR 4, FfW5e8gK 4, haqq6qnV 4
+  SOL in the curve at its buy (SOL coins, 30 = launch): median 52.8, 10-90%: 41.5-73.3

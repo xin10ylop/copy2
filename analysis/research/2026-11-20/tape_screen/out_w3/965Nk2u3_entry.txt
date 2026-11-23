@@ -1,0 +1,11 @@
+965Nk2u3: 334 copies of its first buys of 0.5+ SOL; % a copy at 1 SOL (COST 0.0064)
+  exit                           right behind it (its slot)    as the bot lands (slot+1)
+  tp 3x / 420 s / stall 240                         +13.3%                       -7.9%
+  held 300 s                                        +12.0%                       -8.7%
+  tp 2x / 120 s                                     +19.3%                       -3.0%
+  its sale (to 600 s)                               +28.9%                       +4.9%
+  tp 1.5x / 60 s                                    +16.2%                       -5.9%
+  the price we pay over its own, as the bot lands: median 1.32x, 75% 1.39x, over 1.2x on 87%
+  other buyers in its slot before it: median 1; none on 7%
+  wallets most often in its slot before it (of 334 coins): 2vt36ruE 227, D4HZgnoP 88, H8w4pyiU 83, 8RttbKd3 29, TuRkPe8D 1
+  SOL in the curve at its buy (SOL coins, 30 = launch): median 32.0, 10-90%: 31.5-35.6

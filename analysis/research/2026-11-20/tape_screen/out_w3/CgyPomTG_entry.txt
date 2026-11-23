@@ -1,0 +1,11 @@
+CgyPomTG: 242 copies of its first buys of 0.5+ SOL; % a copy at 1 SOL (COST 0.0064)
+  exit                           right behind it (its slot)    as the bot lands (slot+1)
+  tp 3x / 420 s / stall 240                         +10.4%                      +11.4%
+  held 300 s                                        +10.9%                      +12.0%
+  tp 2x / 120 s                                      +5.2%                       +6.3%
+  its sale (to 600 s)                                +3.9%                       +5.1%
+  tp 1.5x / 60 s                                     +1.0%                       +2.1%
+  the price we pay over its own, as the bot lands: median 1.00x, 75% 1.02x, over 1.2x on 1%
+  other buyers in its slot before it: median 0; none on 70%
+  wallets most often in its slot before it (of 244 coins): BJH5eS9i 25, FbnE8AbV 10, HSe6HBvd 2, 8A8N5www 1, EMKY7r6U 1
+  SOL in the curve at its buy (SOL coins, 30 = launch): median 56.7, 10-90%: 33.4-74.0
