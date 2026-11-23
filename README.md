@@ -18,6 +18,9 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 23: the check commands on the Frankfurt box are `qqq` (wallet 4), `www` (CqCAzte8) and `eee` (CgyPomTG)** (the
+owner's choice; `ccc` and `ggg` still work). On the Chicago box `www` is still the Robinhood copier.
+
 **Nov 23: a third unit, `rugsnipe-long-cgy`, copies CgyPomTG at 0.5 SOL on the same wallet** (the owner's call, no paper
 phase, no SOL added: "we are well diversified"). Its buys of 0.5+ SOL, any coin, tp 3x / 420 s / stall 240, no sell
 pressure, its sale never, SOL coins on the same exit; daily stop 1.0; check command `ggg`. The test: 242 of its 244 buys,
