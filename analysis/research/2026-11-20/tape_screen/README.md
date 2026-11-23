@@ -420,3 +420,5 @@ splits are smaller and no steadier.
 Sell pressure on top of it (`w3_sp_check.py`, `out_w3/CgyPomTG_sp.txt`, the 3 blind blocks, 181 copies): none is best,
 +13.1 / +11.0 / +12.3 = +12.1%, +12.05 SOL without the best 2%. Wallet 4's 5/60 s: +9.5% (+7.59), its block 3 -0.7%;
 8/60 s +11.9% (+11.90), no better. No sell pressure.
+- **965Nk2u3 (= H8w4pyiU = 2vt36ruE): FAIL** (`out_w3/965Nk2u3_all.txt`, all 334): gate 1 +0.1 / -10.7 / -5.4%; 7 of the
+  8 exits lose on its copies (its sale +3.9%, negative without the best 2%). +123 SOL itself, up on 12 of 12 days.
