@@ -417,3 +417,6 @@ pick, the 4 time blocks of its 242 copies at 1 SOL; trusted only if positive in 
 The setup: every buy of 0.5+ SOL, any coin, the one exit tp 3x / 420 s / stall 240, SOL coins included and with that same
 exit (not the cq unit's tp 2x / 120 s, which is half as good here and negative in one block). No size or kind filter: the
 splits are smaller and no steadier.
+Sell pressure on top of it (`w3_sp_check.py`, `out_w3/CgyPomTG_sp.txt`, the 3 blind blocks, 181 copies): none is best,
++13.1 / +11.0 / +12.3 = +12.1%, +12.05 SOL without the best 2%. Wallet 4's 5/60 s: +9.5% (+7.59), its block 3 -0.7%;
+8/60 s +11.9% (+11.90), no better. No sell pressure.
