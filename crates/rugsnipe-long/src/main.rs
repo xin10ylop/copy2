@@ -869,7 +869,7 @@ fn status(args: &[String]) -> Result<(), String> {
     closed.sort_by_key(|p| std::cmp::Reverse(p.closed_ms));
     if !closed.is_empty() {
         // the copied wallet's own trip on each coin (cached once it has sold everything)
-        let its_path = dir.join("its.json");
+        let its_path = dir.join("its2.json");   // Nov 23: its.json kept results read from the last 25 signatures only
         let mut its_cache: std::collections::HashMap<String, rugsnipe_long::its::ItsTrip> =
             std::fs::read_to_string(&its_path)
                 .ok()
@@ -899,8 +899,15 @@ fn status(args: &[String]) -> Result<(), String> {
                     return None;
                 }
             };
-            let sigs = match rpc.recent_signatures(&acct, 25) {
-                Ok(s) => s,
+            // its account's history from its buy on (Nov 23: the last 25 missed a first buy behind dust transfers)
+            let sigs = match rpc.recent_signatures(&acct, 1000) {
+                Ok(s) => match rugsnipe_long::its::trip_signatures(&s, &p.its_sig, 200) {
+                    Some(s) => s,
+                    None => {
+                        its_err.get_or_insert(format!("{}: its buy not in its account's last 1,000", &p.mint[..8]));
+                        return None;
+                    }
+                },
                 Err(e) => {
                     its_err.get_or_insert(format!("{}: {e}", &p.mint[..8]));
                     return None;

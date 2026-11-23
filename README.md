@@ -18,6 +18,14 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 23: `status`'s "its pct" fixed** (display only; no trading change). It read the copied wallet's last 25
+transactions on the coin's token account; on 7GqkBpcL (`www`, Nov 23 18:34 UTC) CqCAzte8 made two buy-sell trips and about
+20 dust transfers, so its first buy (2.0075 SOL) fell out and the column showed +156.4% for a loss (its trips on chain:
+-2.0075 +1.6501 and -1.0125 +0.9463 SOL, -14%). Now it reads up to 1,000 and keeps everything from its buy on (the
+oldest 200), test `trip_signatures_start_at_its_buy_and_keep_the_oldest`; the cache restarts as `its2.json`. The trade
+itself followed its rules: our buy landed in its own slot, the price peaked 1.03x our buy, the stall sold at 264 s (0.61x;
+at 420 s it was 0.66x).
+
 **Nov 23: units 4 and 5 copy the token coins of 3XeFcZKS (`rugsnipe-long-3xe`, check `rrr`) and 6LwMLkCe
 (`rugsnipe-long-6lw`, `ttt`) at 0.5 SOL on the same wallet** (the owner's call, no paper phase). Their SOL coins are
 not copied (noise in both tests); tp 3x / 420 s / stall 240, no sell pressure, its sale never, daily stop 1.0. The test:

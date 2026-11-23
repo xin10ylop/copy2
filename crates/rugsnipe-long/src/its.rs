@@ -130,6 +130,15 @@ pub fn trip(
     r
 }
 
+/// The signatures to read its trip from: `newest_first` (its token account's history, as getSignaturesForAddress
+/// returns it) from its buy `buy_sig` on, oldest first, at most `cap` (Nov 23: a 25-signature read missed CqCAzte8's
+/// first buy of 7GqkBpcL behind ~20 dust transfers after its two trips, and showed +156% for a loss). None when its
+/// buy is not in the list (a longer history than was read).
+pub fn trip_signatures(newest_first: &[String], buy_sig: &str, cap: usize) -> Option<Vec<String>> {
+    let i = newest_first.iter().position(|s| s == buy_sig)?;
+    Some(newest_first[..=i].iter().rev().take(cap).cloned().collect())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -202,5 +211,14 @@ mod tests {
         assert!(trip(&t2, "W", "C", &none).unpriced);
         // still holding part of it
         assert!(trip(&t2[..1], "W", "C", &w).holding);
+    }
+
+    #[test]
+    fn trip_signatures_start_at_its_buy_and_keep_the_oldest() {
+        let s: Vec<String> = ["d3", "d2", "d1", "sell2", "buy2", "sell1", "buy1", "older"].iter().map(|x| x.to_string()).collect();
+        assert_eq!(trip_signatures(&s, "buy1", 10).unwrap(), ["buy1", "sell1", "buy2", "sell2", "d1", "d2", "d3"]);
+        // dust after the trips is what a cap drops, never its buy or its first sales
+        assert_eq!(trip_signatures(&s, "buy1", 3).unwrap(), ["buy1", "sell1", "buy2"]);
+        assert!(trip_signatures(&s, "missing", 10).is_none());
     }
 }
