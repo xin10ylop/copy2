@@ -33,6 +33,11 @@ search (Nov 17-18) in which a dozen methods failed and one worked. The failures 
 rule. Every number here has its source in `analysis/research/2026-11-17/wallet_hunt/market/README_direct.md` or the
 folders it names.
 
+**Nov 23: the late filter.** The screen now also leaves out wallets whose copies pay a median over 1.15x their own price
+(`MAX_PREM`). Those wallets buy inside a crowd in one block; their whole edge is the price jump inside that block,
+which no copy can reach (965Nk2u3: +13.3% a copy right behind its buy, -7.9% as the bot lands, 1.32x;
+`analysis/research/2026-11-20/tape_screen/w3_entry.py`). The two copied wallets pay 1.00-1.02x.
+
 ## 1. What we are looking for
 
 **Wallet 4's edge is its choice of coins, not its speed.** On the 48 h of other-token launches fetched in full, its

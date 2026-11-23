@@ -439,3 +439,10 @@ buying together; 965Nk2u3 at 32 SOL in the curve, a coin's first moments). The p
 block; the edge is there and nowhere after it. Copying the leader lands the same block late; buying in their block
 needs knowing the coin before it is bought (an insider's launch). Not reachable. The two we copy buy alone, so the
 price waits for us (1.00-1.02x). A copyable wallet's mark: a median premium near 1.0x.
+
+**The screen's late filter (Nov 23, the owner: "add it"; `s1_screen.py`, `MAX_PREM`, default 1.15).** A wallet whose
+copies pay a median over 1.15x its own price (a refused copy counts as 1.5x) is left out as late, after the jumpy filter
+and before both lists: its edge is inside its block (`w3_entry.py`). The run prints the late count with the best ten by
+their own result and their price, the median price for wallet 4's, CqCAzte8's and CgyPomTG's copies when they are on
+the tape, and a price column in the top 15 by the 5-exit mean. Checked on a made-up tape (a crowd of 8 buyers in each
+coin's first block: the late ones left out, 1.20-1.36x; the rest listed with 1.06-1.13x).

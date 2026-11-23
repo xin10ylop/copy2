@@ -87,6 +87,7 @@ def model(tr, k, rate, user):
     ex = {"w4": min(trig(first(px >= 4)), tm(600), sp, st, early, n - 1), "its": min(its, tm(600), n - 1),
           "tp2": min(trig(first(px >= 2)), tm(120), n - 1), "held": min(tm(300), n - 1), "scalp": min(trig(first(px >= 1.5)), tm(60), n - 1)}
     o = {k_: float(val[i]) for k_, i in ex.items()}; fi = first(its_sell); o["held"] = o["held"]; o["_its_hold"] = float(age[fi]) if fi is not None else 9e9
+    o["_prem"] = float(prem)   # Nov 23: what our copy pays over its price (w3_entry.py: 1.3x = a crowd buys in its block)
     return o
 EX = ["w4", "its", "tp2", "held", "scalp"]
 def settle(now):
@@ -209,9 +210,15 @@ def tune(h1, h2):
                 v1 = vv(a, e)
                 if best is None or v1 > best[0]: best = (v1, fl, kn, e, len(a), len(b), vv(b, e))
     return best
-res = []; fast = 0; flat = 0; loser = 0; bundle = 0; own_of = {}; elig = []; jumpy = 0
+res = []; fast = 0; flat = 0; loser = 0; bundle = 0; own_of = {}; elig = []; jumpy = 0; late = 0; late_own = []
 BUNDLE = float(os.environ.get("BUNDLE", 0.5))   # a wallet with this share or more of its copies bought in the create slot: a launch bundle, left out
 OWN_MIN = float(os.environ.get("OWN_MIN", 0))   # a wallet that loses money itself on its sold-out tape coins is left out
+# Nov 23 (w3_entry.py): a wallet whose copies pay a median MAX_PREM+ over its price buys inside a crowd that lands in its
+# block (965Nk2u3 1.32x, HCq8h5ad 1.29x: up every day themselves, their copies lose); the edge is in that block. The two
+# copied wallets pay 1.00-1.02x. A refused copy counts as PMAX.
+MAX_PREM = float(os.environ.get("MAX_PREM", 1.15))
+def prem_of(xs):
+    return float(np.median([x[3]["_prem"] if x[3] != "refused" else PMAX for x in xs]))
 def hold_of(xs):
     h = [x[3]["_its_hold"] for x in xs if x[3] != "refused"]
     return float(np.median(h)) if h else 9e9
@@ -224,10 +231,11 @@ for u, xs in by.items():
     # Nov 22, the owner: rank also by what the wallets MADE, with only the can't-copy filters (speed, bundles, flat, and
     # coins that jump past the price limit before our copy lands on most of its buys): the TOPOWN list
     if np.mean([x[3] == "refused" for x in xs]) > 0.5: jumpy += 1; continue
+    if prem_of(xs) > MAX_PREM: late += 1; late_own.append((own_sol, u, prem_of(xs))); continue
     if np.std([x[3]["w4"] for x in xs if x[3] != "refused"] or [0]) >= 0.02 * STAKE:
         # Nov 22 (after the overfitting lesson): no tuning; the mean of our copy over the 5 fixed exits, all its copies
         mv = float(np.mean([np.mean([x[3][e] for e in EX]) if x[3] != "refused" else -0.0004 for x in xs])) / STAKE * 100
-        elig.append((own_sol, u, mv, len(xs)))
+        elig.append((own_sol, u, mv, len(xs), prem_of(xs)))
     if done_ and own_sol < OWN_MIN: loser += 1; continue
     if np.std([x[3]["w4"] for x in xs if x[3] != "refused"] or [0]) < 0.02 * STAKE: flat += 1; continue   # coins that never move
     h1 = [x for x in xs if x[1] < mid]; h2 = [x for x in xs if x[1] >= mid]
@@ -252,15 +260,20 @@ TOPN = int(os.environ.get("TOPN", 30))   # the candidate list for the history te
 print(f"TOP{TOPN}: " + ",".join(r_[1] for r_ in res[:TOPN]))
 elig.sort(reverse=True)
 print(f"{jumpy} left out as jumpy (over half their copies refused over {PMAX}x); by their own result: " +
-      ", ".join(f"{u[:8]} {o:+.1f}" for o, u, _, _ in elig[:10]))
-print(f"TOPOWN{TOPN}: " + ",".join(u for o, u, _, _ in elig[:TOPN] if o > 0))
+      ", ".join(f"{u[:8]} {o:+.1f}" for o, u, _, _, _ in elig[:10]))
+late_own.sort(reverse=True)
+print(f"{late} left out as late (our copy pays a median over {MAX_PREM}x its price: a crowd buys in its block); by their own result: " +
+      ", ".join(f"{u[:8]} {o:+.1f} ({p:.2f}x)" for o, u, p in late_own[:10]))
+for name, w_ in (("wallet 4", W4), ("CqCAzte8", "CqCAzte8TwCDbCBrhjUpsfG6Au9pZPdrTXrVDidKHGAn"), ("CgyPomTG", "CgyPomTGt9BFqnjBdRS38BCBUZvtMJDf3aKQy8sMTVKX")):
+    if by.get(w_): print(f"  the median price over its own for {name}'s copies: {prem_of(by[w_]):.2f}x ({len(by[w_])} copies)")
+print(f"TOPOWN{TOPN}: " + ",".join(u for o, u, _, _, _ in elig[:TOPN] if o > 0))
 # TOPMEAN: the can't-copy filters only (speed, bundles, flat, jumpy), ranked by the mean of our copy over the 5 fixed exits,
 # shrunk toward every copy's mean (30 copies of weight): an edge under any exit, as wallet 4's is; no picking
 pm = float(np.mean([np.mean([x[3][e] for e in EX]) if x[3] != "refused" else -0.0004 for x in out])) / STAKE * 100
-rk = sorted(((n * mv + 30 * pm) / (n + 30), u, mv, n, o) for o, u, mv, n in elig)[::-1]
+rk = sorted(((n * mv + 30 * pm) / (n + 30), u, mv, n, o, pr) for o, u, mv, n, pr in elig)[::-1]
 print(f"\nby the mean over the 5 fixed exits (no tuning; every copy's mean {pm:+.1f}%), the can't-copy filters only ({len(elig)} wallets):")
-for sc, u, mv, n, o in rk[:15]: print(f"  {u:44s} {n:4d} copies  mean {mv:+6.1f}%  shrunk {sc:+6.1f}%  own {o:+7.2f} SOL")
-print(f"TOPMEAN{TOPN}: " + ",".join(u for sc, u, mv, n, o in rk[:TOPN]))
+for sc, u, mv, n, o, pr in rk[:15]: print(f"  {u:44s} {n:4d} copies  mean {mv:+6.1f}%  shrunk {sc:+6.1f}%  own {o:+7.2f} SOL  price {pr:.2f}x")
+print(f"TOPMEAN{TOPN}: " + ",".join(u for sc, u, mv, n, o, pr in rk[:TOPN]))
 json.dump([dict(wallet=r_[1], choice=r_[4], n1=r_[2], n2=r_[3], half1=r_[5], half2=r_[8], score=r_[0]) for r_ in res[:TOPN]],
           open(os.environ.get("TOP_JSON", "/tmp/screen_top.json"), "w"))
 up = sum(1 for r_ in res if r_[8] > 0 and r_[5] > 0)
