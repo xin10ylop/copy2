@@ -58,6 +58,11 @@ Wallet 4's strategies:
   never; `config/long-cq.live.example.toml`; the strict test in `analysis/research/2026-11-20/tape_screen/`; the units skip
   each other's coins; check command `ccc`). Its SOL-priced coins are copied too since `copy_sol_coins` (Nov 22, that unit only), with their own exits
   (`sol_exits`: tp 2x, 120 s; its token coins keep tp 3x, 420 s, stall 240).
+  **Since Nov 23 (the owner's call, 0.5 SOL, no paper phase): a third unit `rugsnipe-long-cgy` copying CgyPomTG on the same
+  wallet** (its buys of 0.5+ SOL, any coin, tp 3x, 420 s, stall 240, no sell pressure, its sale never; its SOL coins with
+  the SAME exit, `sol_exits = false`; `config/long-cgy.live.example.toml`; the test in
+  `analysis/research/2026-11-20/tape_screen/` README: it fails the 48-setting pick, passes the pick on all coins, and the
+  fixed exit is +12.1% a copy blind; the three units skip each other's coins; check command `ggg`).
 - **Strategy D, the launch copy:** the hot copy bot `crates/rugsnipe`, with a `copy_more` entry. It is stopped.
 
 Read `README.md` (status, A-Z index), then `02-decomposition/` (why A and not the rest), then the strategy folder you work

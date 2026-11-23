@@ -18,6 +18,14 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 23: a third unit, `rugsnipe-long-cgy`, copies CgyPomTG at 0.5 SOL on the same wallet** (the owner's call, no paper
+phase, no SOL added: "we are well diversified"). Its buys of 0.5+ SOL, any coin, tp 3x / 420 s / stall 240, no sell
+pressure, its sale never, SOL coins on the same exit; daily stop 1.0; check command `ggg`. The test: 242 of its 244 buys,
+the fixed exit +9.0 / +13.1 / +11.0 / +12.3% in its 4 time blocks (+11.4% a copy, +15.52 SOL without the best 2%); it
+fails the strict 48-setting pick and passes the pick on all coins (`analysis/research/2026-11-20/tape_screen/`, README
+end). Its USDC-paid buys (24, +3.9% a copy, negative without the best) are not worth a float. The three units skip
+each other's coins; the level timer counts all three units' open copies.
+
 **Nov 23: WBTC, PUMP and SPCX floats down to 0.6 SOL; TTWO and hSOL stay at 1.0** (the owner: "why don't we set all the
 floats to 0.6?"). A float of 0.6 funds one 0.5 SOL copy; 1.0 funds two at once. Over Nov 16-22, both units, each copy
 held to its full hold (an upper bound): a copy found its float already funding another open copy 12 times of 79 in TTWO,
