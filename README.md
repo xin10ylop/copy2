@@ -25,6 +25,8 @@ the fixed exit +9.0 / +13.1 / +11.0 / +12.3% in its 4 time blocks (+11.4% a copy
 fails the strict 48-setting pick and passes the pick on all coins (`analysis/research/2026-11-20/tape_screen/`, README
 end). Its USDC-paid buys (24, +3.9% a copy, negative without the best) are not worth a float. The three units skip
 each other's coins; the level timer counts all three units' open copies.
+Started on the box Nov 23 17:26 UTC (19:26 Beirut): the box's file equal to the repo's (comments aside), each unit's
+`other_state_dirs` listing the other two, the four units active, `ggg` reading the book (wallet 2.3849 SOL).
 
 **Nov 23: WBTC, PUMP and SPCX floats down to 0.6 SOL; TTWO and hSOL stay at 1.0** (the owner: "why don't we set all the
 floats to 0.6?"). A float of 0.6 funds one 0.5 SOL copy; 1.0 funds two at once. Over Nov 16-22, both units, each copy
