@@ -461,3 +461,20 @@ Both are their token coins' wallets: their SOL coins are noise (3XeFcZKS's at 32
 moments). 3XeFcZKS: 23 coins a day, holds a median 159 s, token coins paid in TTWO 24, Xsc9qvGR 13, PUMP 9, SPCX 8.
 6LwMLkCe: 24 a day, 42 s, its token coins paid in TTWO 84 of about 137. Independent of the copied three (2-33 shared
 coins, never in the same slot).
+
+**Sell pressure, all four new units (Nov 23 evening; `w3_sp_check.py` on each one's latest history, `out_w3/*_sp_nov23.txt`;
+the owner: "you sure it is well studied on the other wallets?").** tp 3x / 420 / stall 240 with sell pressure off or 9
+kinds, the 3 blind blocks, % a copy (w/o best 2% in SOL), on the coins each unit copies:
+
+| Unit, coins | No sell pressure | Wallet 4's 5/60 s | The best kind | Verdict |
+|---|---|---|---|---|
+| CqCAzte8, token | +39.7 / +11.1 / +30.2 = **+25.5%** (+15.16) | +19.5% (+11.25) | 15/120 s +27.9% (+16.81) | none |
+| CqCAzte8, all | **+17.4%** (+24.47) | +11.7% (+14.85) | none is best | none |
+| CgyPomTG, all | +13.1 / +11.0 / +12.3 = **+12.2%** (+12.05) | +9.5% (+7.59) | none is best | none |
+| 3XeFcZKS, token | +5.5 / +13.1 / +17.3 = **+11.8%** (+5.09) | +11.0% (+4.57) | 5/120 s +12.2% (+5.32) | none (no difference) |
+| 6LwMLkCe, token | +9.0 / +6.6 / +14.9 = **+9.1%** (+4.51) | +10.5% (+6.23) | 5/30 s +13.0% (+9.20; blocks +2.0 / +14.2 / +28.7) | none, watch |
+
+Sell pressure is never clearly better on these wallets: on three it costs, on 3XeFcZKS it changes nothing, and on
+6LwMLkCe the higher means come from its last block (with sell pressure most kinds are near zero or negative in its first
+block, without it every block is positive). Wallet 4 is the other way (`../../2026-11-23/w4_exit/`: without it its last
+block is -14.5% against -2.9%): its coins dump on sellers, these wallets' coins come back.
