@@ -90,7 +90,7 @@ stall_s = 180
 
 # other units trading from this same wallet (their state dirs): a coin one of them holds is not bought, and a sale
 # never closes a coin account one of them still uses (Nov 18: rugsnipe-long and rugsnipe-long-tab on one wallet)
-other_state_dirs = ["/var/lib/rugsnipe-long-cq", "/var/lib/rugsnipe-long-cgy"]
+other_state_dirs = ["/var/lib/rugsnipe-long-cq", "/var/lib/rugsnipe-long-cgy", "/var/lib/rugsnipe-long-3xe", "/var/lib/rugsnipe-long-6lw"]
 # pay only with a float: no route from wrapped SOL (a coin reached only through a SOL pool is skipped)
 float_only = false
 # the dip leg (docs/20 §3, "the split"; Nov 19): dip_drop > 0 and dip_stake_sol > 0 = leg 2 on the same buy of its,

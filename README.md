@@ -18,6 +18,13 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 23: units 4 and 5 copy the token coins of 3XeFcZKS (`rugsnipe-long-3xe`, check `rrr`) and 6LwMLkCe
+(`rugsnipe-long-6lw`, `ttt`) at 0.5 SOL on the same wallet** (the owner's call, no paper phase). Their SOL coins are
+not copied (noise in both tests); tp 3x / 420 s / stall 240, no sell pressure, its sale never, daily stop 1.0. The test:
+3XeFcZKS's token coins +10.9% a copy (81), 6LwMLkCe's +8.2% (137), each positive in 4 of 4 blocks; both buy alone
+(1.00-1.01x). They pay from the floats (TTWO mostly), not from SOL. The five units skip each other's coins; the level
+timer counts all five units' open copies.
+
 **Nov 23: the check commands on the Frankfurt box are `qqq` (wallet 4), `www` (CqCAzte8) and `eee` (CgyPomTG)** (the
 owner's choice; `ccc` and `ggg` still work). On the Chicago box `www` is still the Robinhood copier.
 
