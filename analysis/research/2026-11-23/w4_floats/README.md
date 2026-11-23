@@ -41,3 +41,12 @@ On the coins of our last 15 copies it lost too: 8 of the 11 found lost (-18% to 
 copies lost on. Its first losing day in all three groups since Nov 17. 6 of the 15 were hSOL-paid (since the swap):
 our copies -0.463 SOL on them, its own result 5 of 6 losing. The exit is frozen (the owner's rule) until about 50 real
 trades or Nov 29.
+
+## Nov 23 evening: floats to add for the five units? None (`floats_need.py`)
+
+Buys of copyable size paid in tokens we do not hold, a day over each wallet's history: NVDAx (NVIDIA xStock) 2.35 (wallet
+4 5, CqCAzte8 2, 3XeFcZKS 13, 6LwMLkCe 6), USDC 2.20 (CgyPomTG 24), mihao 1.41, ANT 0.92, GTA6 0.89, the rest under 0.7.
+NVDAx's copies replayed with each unit's exit (`w3_small.py`, `quote_replay.py`, at 1 SOL): 3XeFcZKS +3.3% (13, -0.03
+without the best), 6LwMLkCe -26.0% (6), CqCAzte8 +113.1% (2), wallet 4 -15.0% (4): +0.53 SOL on 25, all of it from
+CqCAzte8's two. USDC: CgyPomTG's 24 at +3.9% (negative without the best 2%). mihao: CqCAzte8 stopped using it (Nov 13).
+None is worth a float's price risk.
