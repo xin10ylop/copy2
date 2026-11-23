@@ -21,3 +21,23 @@ buys of **1.3+ SOL** (what the unit copies) by the token it pays with, its own r
    it. Earlier one-day quotes: DOOMSDAY (Nov 19, 7 buys, +6.3), GTA6 (Nov 17-18, 5, +5.3).
 3. **HYPE: no buy of 1.3+ SOL in the 6 days** (one small buy a day Nov 19-21). TTWO copies on the same replay: 66,
    +7.17 SOL (+11.0% a copy).
+
+## Nov 23 evening: is the unit's losing run normal? (fresh history, Nov 17 12:02 to Nov 23 UTC)
+
+The owner's `qqq` on Nov 23: 13 closed today, 3 won, -1.07 SOL; 32 real since the 0.5 SOL restart, -1.45 SOL (-9% a
+copy). Wallet 4's own result on its first buys of 1.3+ SOL:
+
+| Day (UTC) | In our floats | Other tokens | SOL curve (not copied) |
+|---|---|---|---|
+| 11-17 | 6, +1.3 | 8, +20.3 | 20, +9.6 |
+| 11-18 | 14, +14.6 | 4, +2.1 | 20, +8.8 |
+| 11-19 | 20, +9.2 | 10, +5.4 | 21, -1.8 |
+| 11-20 | 3, -0.6 | 9, +1.2 | 32, +3.0 |
+| 11-21 | 9, +5.7 | 1, -0.4 | 20, +4.0 |
+| 11-22 | 18, +8.5 | 5, +0.8 | 24, +3.4 |
+| 11-23 | 9, **-3.0** | 7, -2.1 | 22, -1.2 |
+
+On the coins of our last 15 copies it lost too: 8 of the 11 found lost (-18% to -53% of its buy), the same coins our
+copies lost on. Its first losing day in all three groups since Nov 17. 6 of the 15 were hSOL-paid (since the swap):
+our copies -0.463 SOL on them, its own result 5 of 6 losing. The exit is frozen (the owner's rule) until about 50 real
+trades or Nov 29.
