@@ -1,0 +1,4 @@
+DNio5ket: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-15 00:59 UTC only
+DNio5ketGczp2dsB3jJCm3XNsRETaAM87q3YVMPA5F9z: own result -74.17 SOL over 9 days, up on 1; 797 first buys of 0.5+ SOL
+  by day: 11-15 -13.13  11-16 -15.27  11-17 -12.05  11-18 -11.53  11-19 -0.74  11-20 -18.75  11-21 +0.67  11-22 -1.06  11-23 -2.32
+STOP: it does not make money itself on most days

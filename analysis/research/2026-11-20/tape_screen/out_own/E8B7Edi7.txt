@@ -1,0 +1,4 @@
+E8B7Edi7: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-15 00:44 UTC only
+E8B7Edi7khrojzqFgW4iJJ2Lii2jvv9B9kivkwpPfHeq: own result -65.16 SOL over 9 days, up on 1; 793 first buys of 0.5+ SOL
+  by day: 11-15 -10.20  11-16 -14.58  11-17 -10.17  11-18 -10.35  11-19 -0.56  11-20 -16.72  11-21 +0.39  11-22 -0.12  11-23 -2.85
+STOP: it does not make money itself on most days

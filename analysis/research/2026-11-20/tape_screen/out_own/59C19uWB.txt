@@ -1,0 +1,4 @@
+59C19uWB: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-16 23:28 UTC only
+59C19uWBHqxjUsEX9uTioK1RAqZLz4UstZbbJLfG6JW1: own result -35.25 SOL over 8 days, up on 2; 2575 first buys of 0.5+ SOL
+  by day: 11-16 -0.97  11-17 -1.97  11-18 -9.06  11-19 -8.74  11-20 +6.19  11-21 -14.02  11-22 -9.57  11-23 +2.91
+STOP: it does not make money itself on most days

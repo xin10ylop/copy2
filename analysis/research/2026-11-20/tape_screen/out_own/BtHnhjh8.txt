@@ -1,0 +1,4 @@
+BtHnhjh8: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-15 00:54 UTC only
+BtHnhjh8Ta2vGZkrL76AmXMur1ADo3tpRo2kQMe2BCSU: own result -66.48 SOL over 9 days, up on 2; 797 first buys of 0.5+ SOL
+  by day: 11-15 -9.41  11-16 -13.13  11-17 -10.83  11-18 -12.64  11-19 -1.34  11-20 -17.72  11-21 +0.44  11-22 +0.61  11-23 -2.46
+STOP: it does not make money itself on most days

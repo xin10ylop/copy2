@@ -380,3 +380,10 @@ curve it mostly sells (pumpswap after graduation); its buys there are about one 
 
 **Screen of Nov 23, 34.2 h (Nov 23 ~02:30 UTC):** 13 wallets not tested before (`out_own/_untested_nov23_34h.txt`), not
 checked: the Helius key answered "max usage reached" (its credits are spent). Check them when credits are back.
+
+**Screen of Nov 23, 48.9 h (a new Helius key):** 39 wallets not tested before (the 13 of the 34 h screen among them).
+Own history: 22 lose money themselves (among them DNio5ket, E8B7Edi7, BtHnhjh8 and 7bwGevcZ, the 100+ copy wallets
+near the screen's top: -66 to -115 SOL themselves), 17 make it. Twins again (same coins, same slot): GoJM9nYG =
+DTru6k9o (242 of 247), 965Nk2u3 = H8w4pyiU = 2vt36ruE (344-349 of 355), HCq8h5ad = GXRNpTLc (859 of 868), CmnzeFCA =
+4DH3hwDs. Deep-tested: GoJM9nYG (the screen's #1), 43E8Uor7 (up 14 of 14 days), CgyPomTG (13 of 15), all their buys;
+HCq8h5ad (15 of 15, holds a median 120 s) on 250 of 828 at random.
