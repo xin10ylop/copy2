@@ -24,6 +24,7 @@ not copied (noise in both tests); tp 3x / 420 s / stall 240, no sell pressure, i
 3XeFcZKS's token coins +10.9% a copy (81), 6LwMLkCe's +8.2% (137), each positive in 4 of 4 blocks; both buy alone
 (1.00-1.01x). They pay from the floats (TTWO mostly), not from SOL. The five units skip each other's coins; the level
 timer counts all five units' open copies.
+Started on the box Nov 23 evening: both new files equal to the repo's (comments aside), the six units active.
 
 **Nov 23: the check commands on the Frankfurt box are `qqq` (wallet 4), `www` (CqCAzte8) and `eee` (CgyPomTG)** (the
 owner's choice; `ccc` and `ggg` still work). On the Chicago box `www` is still the Robinhood copier.
