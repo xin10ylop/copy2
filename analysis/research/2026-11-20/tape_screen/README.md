@@ -377,3 +377,6 @@ SOL. What it leaves: buys of 0.3-0.5 SOL, +0.7% a copy on 64 (the 0.5 floor is r
 mihao (4CxjZyMN), 10 copies +53.3% but 9 of them Nov 10-13, it stopped; in PAID (98kfF7rm), 11 copies +65.6% (+5.37
 SOL without the best), 10 in the newer half, none since Nov 20. max_open 2 was never full when it bought. Off the pump
 curve it mostly sells (pumpswap after graduation); its buys there are about one a day.
+
+**Screen of Nov 23, 34.2 h (Nov 23 ~02:30 UTC):** 13 wallets not tested before (`out_own/_untested_nov23_34h.txt`), not
+checked: the Helius key answered "max usage reached" (its credits are spent). Check them when credits are back.
