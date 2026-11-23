@@ -1,0 +1,4 @@
+8PgC4ngp: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-18 14:47 UTC only
+8PgC4ngpx6zUG3KFQAQHqSeePDFA7kGyEaA2yMoZ4HUk: own result -54.25 SOL over 5 days, up on 1; 1736 first buys of 0.5+ SOL
+  by day: 11-18 -8.51  11-19 -6.88  11-20 -30.66  11-21 -15.84  11-23 +7.64
+STOP: it does not make money itself on most days

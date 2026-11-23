@@ -1,0 +1,4 @@
+Bck5r87K: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-17 15:05 UTC only
+Bck5r87KG8Ak9WhyGQpHn5SqvyuB6tTHQAMCzoxjsBU2: own result +8.08 SOL over 7 days, up on 4; 327 first buys of 0.5+ SOL
+  by day: 11-17 +1.70  11-18 -2.81  11-19 +7.00  11-20 -0.07  11-21 -2.85  11-22 +2.55  11-23 +2.56
+OWN PASS

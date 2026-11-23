@@ -446,3 +446,18 @@ and before both lists: its edge is inside its block (`w3_entry.py`). The run pri
 their own result and their price, the median price for wallet 4's, CqCAzte8's and CgyPomTG's copies when they are on
 the tape, and a price column in the top 15 by the 5-exit mean. Checked on a made-up tape (a crowd of 8 buyers in each
 coin's first block: the late ones left out, 1.20-1.36x; the rest listed with 1.06-1.13x).
+
+**Screen of Nov 23 evening, 50.3 h, with the late filter (`run_screen.sh`, `sss`):** 137 wallets left out as late (among
+them 965Nk2u3 and its twins, 1.24-1.38x); the copied three at 1.04x (wallet 4), 1.04x (CqCAzte8), 1.01x (CgyPomTG). 20
+wallets not tested before: 11 lose money themselves, 9 make it; no twins. Deep-tested on all their buys:
+
+| Wallet | Strict pick (48), blind | Pick on all coins | Price | Token coins, tp 3x / 420 / stall 240 (4 blocks) | Result |
+|---|---|---|---|---|---|
+| **3XeFcZKS** | +6.8% (89), +3.34 w/o 2%: PASS | +5.0% (203), +5.97: PASS | 1.00x, alone 99% | +8.4 / +5.5 / +13.1 / +17.3 = +10.9% (81), +5.07 | **passes both; token coins** |
+| **6LwMLkCe** | +14.9% (107), +6.82: PASS | +5.6% (201), -0.96: FAIL | 1.01x | +2.5 / +9.0 / +6.6 / +14.9 = +8.2% (137), +2.87 (held 300 s +17.8%, +11.15) | passes the strict one; token coins |
+| 7g5CJ754 | gate 1 -5.3 / -2.7 / -6.7% | | | every exit -2.6 to -6.4% | FAIL |
+
+Both are their token coins' wallets: their SOL coins are noise (3XeFcZKS's at 32 SOL in the curve, a coin's first
+moments). 3XeFcZKS: 23 coins a day, holds a median 159 s, token coins paid in TTWO 24, Xsc9qvGR 13, PUMP 9, SPCX 8.
+6LwMLkCe: 24 a day, 42 s, its token coins paid in TTWO 84 of about 137. Independent of the copied three (2-33 shared
+coins, never in the same slot).

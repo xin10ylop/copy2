@@ -1,0 +1,9 @@
+6LwMLkCeEAqYp9Pv33ujrgd9uF987zPXdGKr9Z9sebh5: own result +63.37 SOL over 14 days, up on 11; 268 first buys of 0.5+ SOL
+copies: 268 of its 268 first buys of 0.5+ SOL tested; menu: 8 exits x 1 filters = 8 settings
+gate 1, the menu's mean exit (no picking) on the 3 blind blocks: +4.9% / +5.9% / +7.1% -> pass
+ blind block                its buys picked on the blocks before                                   seen   blind    n
+           2 11-15 12:09-11-19 03:19 tp 2.5x / 300 s / sp 5/60, all coins, 0.5+ SOL               +1.2%   +1.7%   67   (luck alone, seen: +0.8%)
+           3 11-19 03:30-11-20 08:30 tp 3x / 420 s / stall 240, all coins, 0.5+ SOL               +6.0%   +1.0%   67   (luck alone, seen: -1.1%)
+           4 11-20 09:21-11-23 15:08 live without its sale, all coins, 0.5+ SOL                   +7.3%  +14.0%   67   (luck alone, seen: +0.6%)
+blind, all 3 blocks: +11.171 SOL on 201 copies (+5.6% a copy), without the best 2% -0.956; positive in 3 of 3 blocks
+RESULT: FAIL
