@@ -1,0 +1,28 @@
+H9kuqGKN (w4): 50 copies with a cached path of 51 first buys; refused 1; 11-23 to 11-24
+  baseline (the unit's live exit): +7.9% a copy, +3.85 SOL at 1 SOL, without the best 2% +0.98; blocks +3.0 / +10.9 / +26.7 / -8.8; exits: tp 2
+  variant              SOL  vs base  w/o 2%  vs base  blocks better   taken
+  P 3s >=3           +2.73    -1.12   +0.26    -0.72  1 of 4           34
+  P 3s >=6           +0.23    -3.61   -2.18    -3.16  1 of 4           22
+  P 3s >=10          -1.82    -5.67   -2.67    -3.65  0 of 4           11
+  P 5s >=3           +4.63    +0.79   +2.76    +1.78  2 of 4           35
+  P 5s >=6           +5.01    +1.16   +3.14    +2.16  3 of 4           24 <- 3 of 4
+  P 5s >=10          +4.34    +0.50   +2.51    +1.53  3 of 4           12 <- 3 of 4
+  P 10s >=3          -0.65    -4.50   -2.55    -3.53  1 of 4           33
+  P 10s >=6          -0.25    -4.10   -2.15    -3.13  1 of 4           29
+  P 10s >=10         -0.22    -4.07   -0.75    -1.73  1 of 4           18
+  P 20s >=3          -0.57    -4.42   -2.34    -3.32  2 of 4           32
+  P 20s >=6          -0.72    -4.57   -2.50    -3.47  1 of 4           28
+  P 20s >=10         +0.57    -3.27   -1.20    -2.18  1 of 4           20
+  D 10% live         +1.78    -2.07   +0.57    -0.41  1 of 4           27
+  D 10% leg          -0.58    -4.43   -1.07    -2.05  0 of 4           27
+  D 20% live         +1.15    -2.70   -0.03    -1.00  1 of 4           20
+  D 20% leg          -2.19    -6.04   -2.75    -3.73  0 of 4           20
+  D 30% live         -0.65    -4.49   -0.65    -1.62  1 of 4            5
+  D 30% leg          -1.37    -5.22   -1.37    -2.35  1 of 4            5
+  T 1.5x -25%        +1.78    -2.07   -1.09    -2.07  2 of 4           49
+  T 1.5x -40%        +4.69    +0.84   +1.82    +0.84  3 of 4           49 <- 3 of 4
+  T 2.0x -25%        +3.69    -0.16   +0.82    -0.16  1 of 4           49
+  T 2.0x -40%        +4.13    +0.28   +1.26    +0.28  1 of 4           49
+  R                  +4.44    +0.59   +1.57    +0.59  2 of 4           49
+  revival after a non-tp exit, within the path (~375 s after its buy): 41 exits with trades after; the price later reached 1.5x our exit price on 20%, 2x on 10%; the re-buy rule fired on 13
+  CANDIDATES: P 5s >=6, P 5s >=10, T 1.5x -40%
