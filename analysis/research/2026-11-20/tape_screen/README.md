@@ -521,3 +521,8 @@ was kept, and is 3rd in TOPMEAN); `s1_screen.py` lists the jumpy wallets now.
   none over 120 s; all its buys 12 s), all SOL coins; only following its sale works (+14.1%) or tp 1.5x / 60 s (+16.0%,
   -1.50 without the best 2%); the units' exit tp 3x / 420 s / stall 240 is -2.0%, wallet 4's -3.1%. To trust it: days
   after Nov 24 (blind to the screen) and our sale landing within seconds of its own.
+- **The rest of the Nov 24 TOPMEAN top 15:** 5AmLiWon (1st) lost -15.42 SOL itself over 14 days (Nov 22, above);
+  G3PMGr5q (2nd) failed on all its buys (Nov 22, above); 3T9ggLTE, 45JhwE8F, kzvoB9aZ, GJA1HEbx, 6UcanEPg, AvcwFK7Q lose
+  themselves over 14-15 days (`out_own/`, Nov 22-23); the five 20-copy wallets lose themselves on the tape. **J8bMromU
+  (`out_w3/J8bMromU_all.txt`, refetched Nov 24): own +13.14 SOL over 6 days, up on 5 (a wallet active since Nov 18), its
+  53 copies: FAIL** (gate 1 -6.0 / -5.6 / +25.6%; blind -5.7% a copy, 1 of 3 blocks).
