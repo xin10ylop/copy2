@@ -14,6 +14,8 @@ SP, W, OUTF = sys.argv[1], sys.argv[2], sys.argv[3]
 TS = "/home/user/copy2/analysis/research/2026-11-20/tape_screen"
 sys.argv = [sys.argv[0], SP, W, "0", "0", "14"]
 src = open(f"{TS}/w2_grid.py").read().split("firsts.sort(key=lambda c: c[\"t\"]); h = len(firsts) // 2")[0]
+if os.environ.get("NOSTOP"):   # a short live window: keep a wallet that loses itself (its result is what we check)
+    src = src.replace('print("STOP: it does not make money itself on most days"); sys.exit()', 'pass')
 g = {"__file__": f"{TS}/w2_grid.py", "__name__": "__main__", "OUTF": OUTF}
 exec(compile(src, "w2_grid", "exec"), g)
 exec(compile('''
