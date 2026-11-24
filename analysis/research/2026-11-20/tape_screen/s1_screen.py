@@ -210,7 +210,7 @@ def tune(h1, h2):
                 v1 = vv(a, e)
                 if best is None or v1 > best[0]: best = (v1, fl, kn, e, len(a), len(b), vv(b, e))
     return best
-res = []; fast = 0; flat = 0; loser = 0; bundle = 0; own_of = {}; elig = []; jumpy = 0; late = 0; late_own = []
+res = []; fast = 0; flat = 0; loser = 0; bundle = 0; own_of = {}; elig = []; jumpy = 0; late = 0; late_own = []; jumpy_own = []
 BUNDLE = float(os.environ.get("BUNDLE", 0.5))   # a wallet with this share or more of its copies bought in the create slot: a launch bundle, left out
 OWN_MIN = float(os.environ.get("OWN_MIN", 0))   # a wallet that loses money itself on its sold-out tape coins is left out
 # Nov 23 (w3_entry.py): a wallet whose copies pay a median MAX_PREM+ over its price buys inside a crowd that lands in its
@@ -230,7 +230,7 @@ for u, xs in by.items():
     own_sol = sum(o[1] - o[0] for o in done_); own_of[u] = (own_sol, len(done_), float(np.median([o[5] for o in oc])) if oc else 0)
     # Nov 22, the owner: rank also by what the wallets MADE, with only the can't-copy filters (speed, bundles, flat, and
     # coins that jump past the price limit before our copy lands on most of its buys): the TOPOWN list
-    if np.mean([x[3] == "refused" for x in xs]) > 0.5: jumpy += 1; continue
+    if np.mean([x[3] == "refused" for x in xs]) > 0.5: jumpy += 1; jumpy_own.append((own_sol, u)); continue
     if prem_of(xs) > MAX_PREM: late += 1; late_own.append((own_sol, u, prem_of(xs))); continue
     if np.std([x[3]["w4"] for x in xs if x[3] != "refused"] or [0]) >= 0.02 * STAKE:
         # Nov 22 (after the overfitting lesson): no tuning; the mean of our copy over the 5 fixed exits, all its copies
@@ -259,8 +259,10 @@ print("own SOL = its own result on its sold-out coins of the tape; impact = how 
 TOPN = int(os.environ.get("TOPN", 30))   # the candidate list for the history tests (Nov 22: the top 60), one line to paste
 print(f"TOP{TOPN}: " + ",".join(r_[1] for r_ in res[:TOPN]))
 elig.sort(reverse=True)
+# Nov 24: this line printed the top of `elig` (the wallets kept) under the jumpy label; it lists the jumpy ones now
+jumpy_own.sort(reverse=True)
 print(f"{jumpy} left out as jumpy (over half their copies refused over {PMAX}x); by their own result: " +
-      ", ".join(f"{u[:8]} {o:+.1f}" for o, u, _, _, _ in elig[:10]))
+      ", ".join(f"{u[:8]} {o:+.1f}" for o, u in jumpy_own[:10]))
 late_own.sort(reverse=True)
 print(f"{late} left out as late (our copy pays a median over {MAX_PREM}x its price: a crowd buys in its block); by their own result: " +
       ", ".join(f"{u[:8]} {o:+.1f} ({p:.2f}x)" for o, u, p in late_own[:10]))

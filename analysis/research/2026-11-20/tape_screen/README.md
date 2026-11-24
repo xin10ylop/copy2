@@ -509,3 +509,15 @@ all coins +26.4% (69), +14.25, 3 of 3. tp 3x / 420 / stall 240 on all coins, its
 Sell pressure 5/60 s halves it (+12.2% against +25.7%). Independent of the six copied (1-8 shared coins, never the same
 slot). Small: 92 first buys of 0.5+ SOL over 13 days (about 7 a day), most at 10:00-23:00 Beirut; pays with SOL 77,
 TTWO 15, NVDAx 10, SPCX 5 of its 116 first buys.
+
+**Screen of Nov 24 evening, 75.7 h of tape (`sss`).** The owner: "Fatou is interesting". A fix first: the "left out as
+jumpy" line printed the top of the kept wallets by their own result, not the jumpy ones (FatoU1bj was listed there but
+was kept, and is 3rd in TOPMEAN); `s1_screen.py` lists the jumpy wallets now.
+- **FatoU1bj (`out_w3/FatoU1bj_all.txt`, all 256 first buys of 0.5+ SOL; history capped at 10,000 transactions, Nov 17
+  15:38 - Nov 23 15:13 UTC; paths by RPC): PASS on paper, not deployable.** Own +219.31 SOL (+50.58 Nov 22, +171.07 Nov 23).
+  Gate 1 -14.2 / +8.4 / +12.2%; the pick (its sale, to 600 s) +15.2 / +17.4 / +9.7% blind, +14.1% a copy, +17.50 SOL
+  without the best 2%. But: its buys of 0.5+ SOL are 15 on Nov 21 and 243 on Nov 23 (none Nov 17-18 or 22): the three
+  blind blocks are one day, Nov 23 08:09-14:58 UTC, a day the screen also saw. It holds a median 22 s (95% under 30 s,
+  none over 120 s; all its buys 12 s), all SOL coins; only following its sale works (+14.1%) or tp 1.5x / 60 s (+16.0%,
+  -1.50 without the best 2%); the units' exit tp 3x / 420 s / stall 240 is -2.0%, wallet 4's -3.1%. To trust it: days
+  after Nov 24 (blind to the screen) and our sale landing within seconds of its own.
