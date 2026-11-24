@@ -418,4 +418,28 @@ mod tests {
         bad.dip_drop = 0.95;
         assert!(bad.validate().is_err());
     }
+
+    /// FatoU1bj's unit (Nov 24): its own exit (tp 1.5x, 15 s, behind its sale) parses and passes `validate`, and every
+    /// live example lists the other units' state dirs, never its own.
+    #[test]
+    fn the_flippers_example_config_is_valid_and_the_units_skip_each_other() {
+        let c = LongCfg::from_toml_str(include_str!("../../../config/long-fat.live.example.toml")).unwrap();
+        assert!(c.validate().is_ok(), "{:?}", c.validate());
+        assert!((c.take_profit - 1.5).abs() < 1e-9 && c.max_hold_s == 15 && c.follow_its_sell && c.follow_early_s.is_empty());
+        assert!((c.stake_sol - 0.1).abs() < 1e-9 && c.stall_s == 0 && c.sell_pressure.is_empty() && c.copy_sol_coins && !c.sol_exits);
+        for src in [
+            include_str!("../../../config/long.live.example.toml"),
+            include_str!("../../../config/long-cq.live.example.toml"),
+            include_str!("../../../config/long-cgy.live.example.toml"),
+            include_str!("../../../config/long-3xe.live.example.toml"),
+            include_str!("../../../config/long-6lw.live.example.toml"),
+            include_str!("../../../config/long-6nn.live.example.toml"),
+            include_str!("../../../config/long-gqw.live.example.toml"),
+            include_str!("../../../config/long-fat.live.example.toml"),
+        ] {
+            let u = LongCfg::from_toml_str(src).unwrap();
+            assert_eq!(u.other_state_dirs.len(), 7, "{}", u.state_dir);
+            assert!(!u.other_state_dirs.contains(&u.state_dir), "{}", u.state_dir);
+        }
+    }
 }

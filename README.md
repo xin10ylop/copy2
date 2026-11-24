@@ -18,6 +18,12 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 24, night: unit 8 copies FatoU1bj (`rugsnipe-long-fat`, check `iii`) at 0.1 SOL** (the owner: "run it ... 0.1 SOL
+for 20 trades then raise"). A 20-second flipper (median hold 22 s), all SOL coins; its own exit: out at 1.5x its price,
+15 s after its buy, or behind its sale (`analysis/research/2026-11-24/fatou_exit/`: +11.8% a copy at 1 SOL on 256 buys
+with our sale 2 slots behind its own, +1.5% on its 33 later buys; about +6% at 0.1 SOL after fixed costs). Its deep test
+passed on one day of buys (Nov 23), so the 20 trades are also the test of how fast we sell behind it.
+
 **Nov 24, evening: a price fault fixed (`docs/20` §3).** From the 10:20 Beirut restart the seven units, each asking
 Jupiter's price API every 20 s, drew HTTP 429 on most requests, and buys paid with a float were skipped for no price:
 8 of wallet 4's, 5 of 6LwMLkCe's (6AqxUg7a, PUMP, 1.94 SOL), 3 of 6nNzEg86's (6NdJnDUH, hSOL, 0.82 SOL). The units

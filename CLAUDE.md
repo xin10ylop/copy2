@@ -63,7 +63,7 @@ Wallet 4's strategies:
   the SAME exit, `sol_exits = false`; `config/long-cgy.live.example.toml`; the test in
   `analysis/research/2026-11-20/tape_screen/` README: it fails the 48-setting pick, passes the pick on all coins, and the
   fixed exit is +12.1% a copy blind; the three units skip each other's coins; check command `eee`, `ggg` still works). **On the Frankfurt box: `qqq` =
-  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe, `yyy` = 6nNzEg86, `uuu` = GqWfqfG6, `pnl` = every unit's result in
+  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe, `yyy` = 6nNzEg86, `uuu` = GqWfqfG6, `iii` = FatoU1bj, `pnl` = every unit's result in
   one line each and the total (`deploy/bin/rugsnipe-pnl`), `sss` = the weekly wallet screen; on the Chicago box `www` is still
   the Robinhood copier.**
   **Since Nov 23 (the owner's call, 0.5 SOL, no paper phase): units 4 and 5, `rugsnipe-long-3xe` (3XeFcZKS, `rrr`) and
@@ -78,6 +78,11 @@ Wallet 4's strategies:
   4 of 4 blocks, 1.00x; about 7 buys a day). **And an NVDAx float** (`Xsc9qvGR...`, NVIDIA xStock, 0.6 SOL; GqWfqfG6's 10
   NVDAx-paid copies +28.2%, 6nNzEg86's 7 +2.5%, the earlier mix in `2026-11-23/w4_floats/`). The seven units skip each
   other's coins.
+  **Since Nov 24 evening (the owner's call: "0.1 SOL for 20 trades then raise"): unit 8, `rugsnipe-long-fat` (FatoU1bj,
+  `iii`), a 20-second flipper, its SOL coins, 0.1 SOL, its own exit: tp 1.5x, 15 s, behind its sale (`follow_its_sell =
+  true`), daily stop 0.3** (`config/long-fat.live.example.toml`; `analysis/research/2026-11-24/fatou_exit/`: +11.8% a copy
+  at 1 SOL on 256 buys, our sale 2 slots behind its own; +1.5% on 33 later buys; nearly all its buys on Nov 23). The eight
+  units skip each other's coins.
 - **Strategy D, the launch copy:** the hot copy bot `crates/rugsnipe`, with a `copy_more` entry. It is stopped.
 
 Read `README.md` (status, A-Z index), then `02-decomposition/` (why A and not the rest), then the strategy folder you work

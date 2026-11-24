@@ -1,0 +1,54 @@
+# rugsnipe-long-fat -- hot role. A long copy of FatoU1bj, a 20-second flipper, at 0.1 SOL (Nov 24; its exit:
+# analysis/research/2026-11-24/fatou_exit/): the same binary with /etc/rugsnipe/long-fat.toml, its own state
+# (/var/lib/rugsnipe-long-fat), on the main long wallet (the same credential); the eight units skip each other's coins
+# (other_state_dirs). `rugsnipe-long status --config /etc/rugsnipe/long-fat.toml` shows its book.
+[Unit]
+Description=rugsnipe long copy of FatoU1bj (its SOL coins, tp 1.5 / 15 s / its sale, Nov 24)
+Documentation=file:/opt/rugsnipe/src/docs/20-long-copy.md
+PartOf=rugsnipe.target
+Wants=network-online.target
+After=network-online.target time-sync.target chrony.service
+ConditionPathExists=/etc/rugsnipe/long-fat.toml
+StartLimitIntervalSec=300
+StartLimitBurst=20
+
+[Service]
+Type=simple
+User=rugsnipe
+Group=rugsnipe
+StateDirectory=rugsnipe-long-fat
+StateDirectoryMode=0750
+WorkingDirectory=/var/lib/rugsnipe-long-fat
+Environment=RUST_BACKTRACE=1
+ExecStart=/opt/rugsnipe/bin/rugsnipe-long run --config /etc/rugsnipe/long-fat.toml
+Restart=always
+RestartSec=2
+TimeoutStopSec=10
+UMask=0027
+LimitNOFILE=65536
+# Credentials: copied by PID 1 from /etc/rugsnipe/keys into $CREDENTIALS_DIRECTORY (the service
+# user never reads /etc/rugsnipe/keys); ABSENT is the fallback when a file is missing.
+LoadCredential=api-keys:/etc/rugsnipe/keys/api-keys.toml
+SetCredential=api-keys:ABSENT
+# Nov 18: the same wallet as rugsnipe-long (the owner's call: no second wallet to fund). The two units keep apart
+# with other_state_dirs in each config (a coin the other holds is not bought; a sale never closes an account the
+# other still uses).
+LoadCredential=long-wallet:/etc/rugsnipe/keys/long-wallet.json
+SetCredential=long-wallet:ABSENT
+# hardening
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+SystemCallArchitectures=native
+ReadWritePaths=/var/lib/rugsnipe-long-fat
+
+[Install]
+WantedBy=rugsnipe.target
