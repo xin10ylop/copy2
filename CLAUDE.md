@@ -63,7 +63,7 @@ Wallet 4's strategies:
   the SAME exit, `sol_exits = false`; `config/long-cgy.live.example.toml`; the test in
   `analysis/research/2026-11-20/tape_screen/` README: it fails the 48-setting pick, passes the pick on all coins, and the
   fixed exit is +12.1% a copy blind; the three units skip each other's coins; check command `eee`, `ggg` still works). **On the Frankfurt box: `qqq` =
-  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe, `yyy` = 6nNzEg86, `pnl` = every unit's result in
+  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe, `yyy` = 6nNzEg86, `uuu` = GqWfqfG6, `pnl` = every unit's result in
   one line each and the total (`deploy/bin/rugsnipe-pnl`), `sss` = the weekly wallet screen; on the Chicago box `www` is still
   the Robinhood copier.**
   **Since Nov 23 (the owner's call, 0.5 SOL, no paper phase): units 4 and 5, `rugsnipe-long-3xe` (3XeFcZKS, `rrr`) and
@@ -73,6 +73,11 @@ Wallet 4's strategies:
   **Since Nov 24 (the owner's call, 0.5 SOL): unit 6, `rugsnipe-long-6nn` (6nNzEg86, `yyy`), its TOKEN coins only, tp 3x,
   420 s, stall 240** (`config/long-6nn.live.example.toml`; passes both pick versions, 1.02x; its token coins +17.2% a copy
   but positive only in its last two blocks, Nov 20-24). The six units skip each other's coins.
+  **Since Nov 24 (the owner's call, 0.5 SOL): unit 7, `rugsnipe-long-gqw` (GqWfqfG6, `uuu`), all its coins, tp 3x, 420 s,
+  stall 240, SOL coins on the same exit** (`config/long-gqw.live.example.toml`; passes both pick versions, +20.5% a copy in
+  4 of 4 blocks, 1.00x; about 7 buys a day). **And an NVDAx float** (`Xsc9qvGR...`, NVIDIA xStock, 0.6 SOL; GqWfqfG6's 10
+  NVDAx-paid copies +28.2%, 6nNzEg86's 7 +2.5%, the earlier mix in `2026-11-23/w4_floats/`). The seven units skip each
+  other's coins.
 - **Strategy D, the launch copy:** the hot copy bot `crates/rugsnipe`, with a `copy_more` entry. It is stopped.
 
 Read `README.md` (status, A-Z index), then `02-decomposition/` (why A and not the rest), then the strategy folder you work

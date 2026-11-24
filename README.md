@@ -18,6 +18,12 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 24: unit 7 copies GqWfqfG6 (`rugsnipe-long-gqw`, check `uuu`) at 0.5 SOL, all its coins, and an NVDAx float
+at 0.6 SOL** (the owner's call). GqWfqfG6 passes both pick versions (strict +19.4% a copy, all coins +26.4%, 3 of 3);
+tp 3x / 420 / stall 240 on all its coins +20.5% a copy, positive in 4 of 4 blocks (92 buys; SOL coins +16.9%, token coins
++27.2%); 1.00x. NVDAx-paid copies: GqWfqfG6 +28.2% (10, +0.85 SOL without the best), 6nNzEg86 +2.5% (7), and on Nov 23
+3XeFcZKS +3.3%, 6LwMLkCe -26.0%, CqCAzte8 +113.1% (2), wallet 4 -15.0% (4). `pnl` lists unit 7 too.
+
 **Nov 24: unit 6 copies the token coins of 6nNzEg86 (`rugsnipe-long-6nn`, check `yyy`) at 0.5 SOL on the same
 wallet** (the owner's call, against my advice to wait for the Nov 28 review). Passes both pick versions (strict +13.4% a
 copy, all coins +7.6%, 3 of 3 blocks), buys alone (1.02x); its token coins +17.2% a copy with tp 3x / 420 / stall 240,

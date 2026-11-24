@@ -1,4 +1,4 @@
-# /etc/rugsnipe/float-levels as on Nov 23 2026 (HYPE swapped for hSOL; PAID added at 0.6; WBTC, PUMP, SPCX down to 0.6: TTWO and hSOL often fund two copies at once): "MINT SOL" a line, read by rugsnipe-float-level every 5 minutes.
+# /etc/rugsnipe/float-levels as on Nov 23 2026 (HYPE swapped for hSOL; PAID added at 0.6; WBTC, PUMP, SPCX down to 0.6: TTWO and hSOL often fund two copies at once; Nov 24: NVDAx added at 0.6): "MINT SOL" a line, read by rugsnipe-float-level every 5 minutes.
 # Change it whenever long.toml's floats change, or the timer buys a removed float back.
 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh 0.6
 pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn 0.6
@@ -6,3 +6,4 @@ SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb 0.6
 TTWofwAge91oFhZs7kpQdyrVRkmevgM88xijGvQFbKo 1.0
 he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A 1.0
 98kfF7rmsg1QDUEoCqNE7g7M1FdrTt92TEp2CLzypump 0.6
+Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh 0.6

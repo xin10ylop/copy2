@@ -2,7 +2,7 @@
 # analysis/research/2026-11-20/tape_screen/out_w3/6nNzEg86_setup.txt: its TOKEN coins only (copy_sol_coins = false: its
 # SOL coins lose), its buys of 0.5+ SOL, tp 3x, 420 s, stall 240, no sell pressure, its sale never; +17.2% a copy on its
 # token coins, but positive only in its last two blocks (Nov 20-24); passes both pick versions.
-# The six units skip each other's coins (other_state_dirs). For a new box:
+# The seven units skip each other's coins (other_state_dirs). For a new box:
 # sudo install -m 0640 -o root -g rugsnipe config/long-6nn.live.example.toml /etc/rugsnipe/long-6nn.toml. No secrets here.
 # /etc/rugsnipe/long.toml: the long copy (rugsnipe-long, docs/20).
 # Copy H9kuqGKN's 1.5-SOL buys of pump coins priced in other tokens; hold up to 30 minutes.
@@ -36,7 +36,7 @@ daily_stop_sol = 1.0
 
 # held as floats besides wrapped SOL: routes may start and end in them (WBTC carried Oct 23-27).
 # Buy one with: rugsnipe-long float buy 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh 3.0
-floats = ["3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh", "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn", "SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb", "TTWofwAge91oFhZs7kpQdyrVRkmevgM88xijGvQFbKo", "he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A", "98kfF7rmsg1QDUEoCqNE7g7M1FdrTt92TEp2CLzypump"]
+floats = ["3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh", "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn", "SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb", "TTWofwAge91oFhZs7kpQdyrVRkmevgM88xijGvQFbKo", "he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A", "98kfF7rmsg1QDUEoCqNE7g7M1FdrTt92TEp2CLzypump", "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh"]
 
 # chain reads and sendTransaction: a line of the api-keys file (never the URL with its key here)
 rpc_url = "cred:RPC_URL"
@@ -92,7 +92,7 @@ stall_s = 240
 
 # other units trading from this same wallet (their state dirs): a coin one of them holds is not bought, and a sale
 # never closes a coin account one of them still uses (Nov 18: rugsnipe-long and rugsnipe-long-tab on one wallet)
-other_state_dirs = ["/var/lib/rugsnipe-long", "/var/lib/rugsnipe-long-cq", "/var/lib/rugsnipe-long-cgy", "/var/lib/rugsnipe-long-3xe", "/var/lib/rugsnipe-long-6lw"]
+other_state_dirs = ["/var/lib/rugsnipe-long", "/var/lib/rugsnipe-long-cq", "/var/lib/rugsnipe-long-cgy", "/var/lib/rugsnipe-long-3xe", "/var/lib/rugsnipe-long-6lw", "/var/lib/rugsnipe-long-gqw"]
 # its SOL-priced coins too (Nov 22: on all its buys, blind, SOL coins +8.4% a copy on 125, token coins +26.2% on 76)
 copy_sol_coins = false
 # its SOL coins with their own exits (Nov 22: on its blind blocks, SOL coins tp 2x / 120 s +11.06 SOL on 124, positive in

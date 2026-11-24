@@ -34,7 +34,7 @@ daily_stop_sol = 1.5
 
 # held as floats besides wrapped SOL: routes may start and end in them (WBTC carried Oct 23-27).
 # Buy one with: rugsnipe-long float buy 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh 3.0
-floats = ["3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh", "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn", "SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb", "TTWofwAge91oFhZs7kpQdyrVRkmevgM88xijGvQFbKo", "he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A", "98kfF7rmsg1QDUEoCqNE7g7M1FdrTt92TEp2CLzypump"]
+floats = ["3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh", "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn", "SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb", "TTWofwAge91oFhZs7kpQdyrVRkmevgM88xijGvQFbKo", "he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A", "98kfF7rmsg1QDUEoCqNE7g7M1FdrTt92TEp2CLzypump", "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh"]
 
 # chain reads and sendTransaction: a line of the api-keys file (never the URL with its key here)
 rpc_url = "cred:RPC_URL"
@@ -90,7 +90,7 @@ stall_s = 180
 
 # other units trading from this same wallet (their state dirs): a coin one of them holds is not bought, and a sale
 # never closes a coin account one of them still uses (Nov 18: rugsnipe-long and rugsnipe-long-tab on one wallet)
-other_state_dirs = ["/var/lib/rugsnipe-long-cq", "/var/lib/rugsnipe-long-cgy", "/var/lib/rugsnipe-long-3xe", "/var/lib/rugsnipe-long-6lw", "/var/lib/rugsnipe-long-6nn"]
+other_state_dirs = ["/var/lib/rugsnipe-long-cq", "/var/lib/rugsnipe-long-cgy", "/var/lib/rugsnipe-long-3xe", "/var/lib/rugsnipe-long-6lw", "/var/lib/rugsnipe-long-6nn", "/var/lib/rugsnipe-long-gqw"]
 # pay only with a float: no route from wrapped SOL (a coin reached only through a SOL pool is skipped)
 float_only = false
 # the dip leg (docs/20 §3, "the split"; Nov 19): dip_drop > 0 and dip_stake_sol > 0 = leg 2 on the same buy of its,

@@ -15,9 +15,9 @@ FLOOR=${SOL_FLOOR:-0.6}
 # copies open now, over the book's lines ("...; N open; ..."); empty when the status cannot be read
 # (Nov 22: over every unit on this wallet, the main config and the others in FLOAT_LEVEL_UNITS, default the CqCAzte8 unit's
 # when it exists: a copy that unit holds, paid from a float, makes that float look short too; Nov 23: and the CgyPomTG,
-# 3XeFcZKS, 6LwMLkCe and 6nNzEg86 units')
+# 3XeFcZKS, 6LwMLkCe, 6nNzEg86 and GqWfqfG6 units')
 open_now() {
-  for c in "$C" ${FLOAT_LEVEL_UNITS:-/etc/rugsnipe/long-cq.toml /etc/rugsnipe/long-cgy.toml /etc/rugsnipe/long-3xe.toml /etc/rugsnipe/long-6lw.toml /etc/rugsnipe/long-6nn.toml}; do
+  for c in "$C" ${FLOAT_LEVEL_UNITS:-/etc/rugsnipe/long-cq.toml /etc/rugsnipe/long-cgy.toml /etc/rugsnipe/long-3xe.toml /etc/rugsnipe/long-6lw.toml /etc/rugsnipe/long-6nn.toml /etc/rugsnipe/long-gqw.toml}; do
     [ -r "$c" ] || continue
     "$B" status --config "$c" 2>/dev/null | sed -n 's/.*; \([0-9][0-9]*\) open;.*/\1/p'
   done | awk '{s += $1} END {if (NR) print s}'
