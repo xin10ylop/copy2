@@ -23,6 +23,8 @@ wallet** (the owner's call, against my advice to wait for the Nov 28 review). Pa
 copy, all coins +7.6%, 3 of 3 blocks), buys alone (1.02x); its token coins +17.2% a copy with tp 3x / 420 / stall 240,
 negative in its first two blocks (Nov 12-20) and +32.7% / +26.5% in the last two. The six units skip each other's coins;
 the level timer counts all six.
+Started on the box Nov 24 07:45:14 UTC (09:45 Beirut): `6nn SAME`, every unit's `other_state_dirs` equal to the
+repo's, all six units (re)started at that second, seven units active.
 
 **Nov 23: `status`'s "its pct" fixed** (display only; no trading change). It read the copied wallet's last 25
 transactions on the coin's token account; on 7GqkBpcL (`www`, Nov 23 18:34 UTC) CqCAzte8 made two buy-sell trips and about
