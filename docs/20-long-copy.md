@@ -215,6 +215,14 @@ within a slot** (`exits_pess.py`):
 - **`follow_its_sell = false` holds through every sale of it** (Nov 12): before, a second sale event of the same coin
   (or the same one delivered twice) fell through to the following branch and sold us behind it; wallet 4 sold in one
   piece on all 222 trips of Oct 28 - Nov 12, and no live trade took that path. The record keeps its first sale.
+- **The units on one wallet share one price fetch** (Nov 24, `oracle.rs`): seven units each asking Jupiter's price API
+  every 20 s from the box drew HTTP 429 on most requests (since 10:20 Beirut on Nov 24: 543 refusals on wallet 4's unit,
+  43-510 on the others), so a buy paid with a float found no price under 2 minutes old and was skipped as "its buy has
+  no SOL value" (8 of wallet 4's buys, 5 of 6LwMLkCe's, 3 of 6nNzEg86's in about 3 hours). Each unit now writes its
+  answer to `<state_dir>/prices.json`, and a unit that finds another's (from `other_state_dirs`) under 20 s old, asked
+  for every float it needs, uses it instead of asking: about 3 requests a minute in all. Each unit asks at a phase of
+  its own, a price is used up to 10 minutes old (was 2), and refusals are logged once a minute with a count. Test
+  `a_fresh_answer_of_another_unit_is_used_and_a_stale_or_narrow_one_is_not`.
 - **`stop = 0` means no stop** (Nov 4): the trip ends at the take profit or the hold. Since Oct 30 wallet 4 has dropped
   its 30-minute timer and sells two thirds of its big buys early, and the 0.8 stop sold into its sale; over Oct 29 - Nov 4
   at 1 SOL × 3 the copy makes +1.79 with the stop and +6.26 without, better at every landing and in both halves, and

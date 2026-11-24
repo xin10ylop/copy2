@@ -634,7 +634,15 @@ fn run(args: &[String]) -> Result<(), String> {
         );
     }
     let oracle = Oracle::default();
-    oracle.spawn(&cfg.price_api, cfg.float_pks(), Duration::from_secs(20));
+    // one fetch shared by the units on this wallet (Nov 24: seven asking alone drew HTTP 429)
+    let shared = |d: &str| std::path::PathBuf::from(d).join(rugsnipe_long::oracle::SHARED_FILE);
+    oracle.spawn(
+        &cfg.price_api,
+        cfg.float_pks(),
+        Duration::from_secs(20),
+        Some(shared(&cfg.state_dir)),
+        cfg.other_state_dirs.iter().map(|d| shared(d)).collect(),
+    );
     let copy = cfg.copy_pk();
     // real mode: the blockhash is kept fresh off the send path
     let bh = rugsnipe_long::chain::Blockhashes::default();

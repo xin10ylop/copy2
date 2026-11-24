@@ -18,6 +18,13 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 24, evening: a price fault fixed (`docs/20` §3).** From the 10:20 Beirut restart the seven units, each asking
+Jupiter's price API every 20 s, drew HTTP 429 on most requests, and buys paid with a float were skipped for no price:
+8 of wallet 4's, 5 of 6LwMLkCe's (6AqxUg7a, PUMP, 1.94 SOL), 3 of 6nNzEg86's (6NdJnDUH, hSOL, 0.82 SOL). The units
+now share one fetch (`<state_dir>/prices.json`) and keep a price 10 minutes. The other new bots missed nothing:
+CgyPomTG 9 copyable buys from its start to 13:20 UTC (all copied), 3XeFcZKS 1 (copied; it has nearly stopped buying
+today), GqWfqfG6 none.
+
 **Nov 24: unit 7 copies GqWfqfG6 (`rugsnipe-long-gqw`, check `uuu`) at 0.5 SOL, all its coins, and an NVDAx float
 at 0.6 SOL** (the owner's call). GqWfqfG6 passes both pick versions (strict +19.4% a copy, all coins +26.4%, 3 of 3);
 tp 3x / 420 / stall 240 on all its coins +20.5% a copy, positive in 4 of 4 blocks (92 buys; SOL coins +16.9%, token coins
