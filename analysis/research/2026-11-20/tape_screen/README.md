@@ -500,3 +500,12 @@ before: 23 lose money themselves, 18 make it. Deep-tested four:
 6nNzEg86: 28 coins a day, holds a median 61 s; pays with SOL 104, PUMP 41, TTWO 35, PAID 20, hSOL 15, mihao 11, SPCX
 10, NVDAx 8 of its 374 first buys; its SOL coins lose (-6.4% with that exit); sell pressure costs (token coins without
 +21.9% in the 3 blind blocks, with 5/60 s +13.0%); independent of the copied five (never the same slot).
+
+**Three more from the Nov 24 screen (all their buys; 2pLugeBD 250 of 325):** 2pLugeBD FAIL (gate 1 +2.9 / -3.0 / -1.2%),
+ETScS45a FAIL (gate 1 -5.6 / -1.6 / -10.1%, 0 of 3 blocks). **GqWfqfG6 passes both pick versions, the strongest yet:**
+gate 1 +5.3 / +21.9 / +17.9%; the strict pick +19.4% a copy blind (55), +6.68 SOL w/o best 2%, 3 of 3; the pick on
+all coins +26.4% (69), +14.25, 3 of 3. tp 3x / 420 / stall 240 on all coins, its 4 blocks: +4.8 / +1.1 / +40.3 / +35.5 =
++20.5% (92), +14.93 w/o best 2%, 4 of 4; its SOL coins +16.9% (60), token coins +27.2% (32). Price 1.00x, alone 96%.
+Sell pressure 5/60 s halves it (+12.2% against +25.7%). Independent of the six copied (1-8 shared coins, never the same
+slot). Small: 92 first buys of 0.5+ SOL over 13 days (about 7 a day), most at 10:00-23:00 Beirut; pays with SOL 77,
+TTWO 15, NVDAx 10, SPCX 5 of its 116 first buys.
