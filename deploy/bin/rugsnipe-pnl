@@ -1,17 +1,19 @@
 #!/bin/bash
-# rugsnipe-pnl: one line a long-copy unit, its result since it started and today's (the UTC day), and the total (Nov 24;
-# the alias `pnl` on the Frankfurt box). Reads each unit's book with `rugsnipe-long status` (no chain reads: fast).
+# rugsnipe-pnl: one line a long-copy unit, its result since it started and today's (the UTC day), then the total (Nov 24;
+# the alias `pnl` on the Frankfurt box). Reads each unit's book with `rugsnipe-long status` (no chain reads: fast; the
+# sudoers rule lets `status` run without a password). /etc/rugsnipe is not readable by ops: a unit is skipped only when
+# its status prints nothing.
 B=${RUGSNIPE_LONG:-/opt/rugsnipe/bin/rugsnipe-long}
-printf "%-4s %-9s %8s %12s %14s\n" cmd wallet trades "all, SOL" "today, SOL"
 tot=0; tod=0
 for u in long:qqq:H9kuqGKN long-cq:www:CqCAzte8 long-cgy:eee:CgyPomTG long-3xe:rrr:3XeFcZKS long-6lw:ttt:6LwMLkCe long-6nn:yyy:6nNzEg86; do
   IFS=: read -r c cmd w <<< "$u"
-  [ -e "/etc/rugsnipe/$c.toml" ] || continue
   out=$(sudo "$B" status --config "/etc/rugsnipe/$c.toml" 2>/dev/null)
+  [ -n "$out" ] || { printf "%-4s %-9s  (no status)\n" "$cmd" "$w"; continue; }
   n=$(echo "$out" | sed -n 's/.*all closed: real \([0-9]*\) (.*/\1/p')
   a=$(echo "$out" | sed -n 's/.*all closed: real [0-9]* (\([+-][0-9.]*\) SOL.*/\1/p')
   t=$(echo "$out" | sed -n 's/.*today (the UTC day) REAL: .* net \([+-][0-9.]*\) SOL.*/\1/p')
-  printf "%-4s %-9s %8s %12s %14s\n" "$cmd" "$w" "${n:-0}" "${a:-+0.0000}" "${t:-+0.0000}"
+  printf "%-4s %-9s %4s trades   all %+8.4f SOL   today %+8.4f SOL\n" "$cmd" "$w" "${n:-0}" "${a:-0}" "${t:-0}"
   tot=$(awk -v x="$tot" -v y="${a:-0}" 'BEGIN {printf "%.4f", x + y}'); tod=$(awk -v x="$tod" -v y="${t:-0}" 'BEGIN {printf "%.4f", x + y}')
 done
-printf "%-14s %8s %+12.4f %+14.4f\n" "all six" "" "$tot" "$tod"
+echo
+printf "%-14s %4s           all %+8.4f SOL   today %+8.4f SOL\n" "total" "" "$tot" "$tod"
