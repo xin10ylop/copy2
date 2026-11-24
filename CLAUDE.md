@@ -83,6 +83,9 @@ Wallet 4's strategies:
   true`), daily stop 0.3** (`config/long-fat.live.example.toml`; `analysis/research/2026-11-24/fatou_exit/`: +11.8% a copy
   at 1 SOL on 256 buys, our sale 2 slots behind its own; +1.5% on 33 later buys; nearly all its buys on Nov 23). The eight
   units skip each other's coins.
+  **Since Nov 24 night: TTWO float 1.5 SOL, WBTC 0.3** (the timer's file, `config/float-levels.live`; the owner's call
+  after `analysis/research/2026-11-24/uncopied/`: copyable buys paid with each over 7 days, all units: TTWO 239, hSOL 77,
+  PUMP 36, NVDAx 34, SPCX 19, PAID 14, WBTC 7). No new float: no unheld token has the buys or the copy result.
 - **Strategy D, the launch copy:** the hot copy bot `crates/rugsnipe`, with a `copy_more` entry. It is stopped.
 
 Read `README.md` (status, A-Z index), then `02-decomposition/` (why A and not the rest), then the strategy folder you work

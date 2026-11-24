@@ -18,6 +18,11 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 24, night: TTWO float 1.5 SOL, WBTC 0.3** (the owner: "do it"). Over Nov 17-24 the eight units' wallets paid with
+TTWO for 239 copyable buys, WBTC for 7 (`analysis/research/2026-11-24/uncopied/`); a float short of the stake skips the
+buy. The trades the wallets make that we don't copy (SOL coins, small buys, unheld tokens) make them money, but our copies
+of them don't (same study); no new float.
+
 **Nov 24, night: unit 8 copies FatoU1bj (`rugsnipe-long-fat`, check `iii`) at 0.1 SOL** (the owner: "run it ... 0.1 SOL
 for 20 trades then raise"). A 20-second flipper (median hold 22 s), all SOL coins; its own exit: out at 1.5x its price,
 15 s after its buy, or behind its sale (`analysis/research/2026-11-24/fatou_exit/`: +11.8% a copy at 1 SOL on 256 buys
