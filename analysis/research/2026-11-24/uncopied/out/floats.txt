@@ -1,0 +1,16 @@
+token       buys  days  own SOL (sold out)  by wallet
+EPjFWdd5      30    10      +2.86 ( 30)  CgyPomTG 24, H9kuqGKN 4, CqCAzte8 2
+ANTBTZQ1      10     2      +0.51 ( 10)  CgyPomTG 3, 6nNzEg86 2, H9kuqGKN 1, CqCAzte8 1, 3XeFcZKS 1, 6LwMLkCe 1, GqWfqfG6 1
+98sMhvDw       9     7      +2.64 (  9)  3XeFcZKS 4, CqCAzte8 2, 6LwMLkCe 2, 6nNzEg86 1
+B34nXKzC       8     4      +9.09 (  7)  H9kuqGKN 5, CqCAzte8 1, 3XeFcZKS 1, 6LwMLkCe 1
+4CxjZyMN       8     3      +0.43 (  8)  CqCAzte8 4, 6LwMLkCe 2, 3XeFcZKS 1, 6nNzEg86 1
+DJTu7vi8       6     5      +0.48 (  6)  6LwMLkCe 2, 6nNzEg86 2, CgyPomTG 1, 3XeFcZKS 1
+CUg7AzWL       4     2      +1.07 (  4)  H9kuqGKN 3, 6LwMLkCe 1
+FVzqGqRm       4     2      -0.02 (  3)  CqCAzte8 3, 6LwMLkCe 1
+Ai66LHZG       4     2      +0.17 (  4)  6LwMLkCe 3, CgyPomTG 1
+DoGEV7LA       3     3      -0.20 (  3)  H9kuqGKN 2, 6nNzEg86 1
+7vfCXTUX       3     2      +1.06 (  3)  H9kuqGKN 3
+BPxxfRCX       3     2      -1.07 (  3)  H9kuqGKN 1, 3XeFcZKS 1, 6nNzEg86 1
+4k3Dyjzv       3     1      +0.00 (  2)  CqCAzte8 3
+A7bdiYdS       3     2      -0.02 (  3)  3XeFcZKS 2, CgyPomTG 1
+CTPoyCwk       2     1      +1.22 (  2)  H9kuqGKN 1, 6LwMLkCe 1

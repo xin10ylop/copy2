@@ -1,0 +1,6 @@
+6LwMLkCe (token coins, 0.5+ SOL): 332 coins sold out, 11-10 to 11-24 UTC; 0 coins in unpriced tokens left out
+  group                                       coins   own SOL  a coin  days up   by its first buy: under 0.25 | 0.25-0.5 | 0.5-1.3 | 1.3+ (coins, SOL)
+  COPIED by the unit                            108    +30.44  +0.282  11 of 13    - | - | 10, +0.56 | 98, +29.88
+  SOL coins (the unit takes token coins)        147    +26.25  +0.179  11 of 14    1, +1.20 | 2, -0.07 | 15, -0.19 | 129, +25.31
+  a token we don't hold                          77     +2.88  +0.037  10 of 14    48, +0.17 | 4, +0.11 | 5, +0.35 | 20, +2.26
+  tokens we don't hold, by its first buys: Pren1FvF 5, 4CxjZyMN 4, 2kWx47CU 4, Ai66LHZG 3, 9EEFuHwR 3, CR5FFdcC 3

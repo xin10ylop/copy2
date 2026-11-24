@@ -21,6 +21,8 @@ TS = "/home/user/copy2/analysis/research/2026-11-20/tape_screen"
 sys.argv = [sys.argv[0], SP, W, "0", "0", "14"]
 src = open(f"{TS}/w2_grid.py").read().split("firsts.sort(key=lambda c: c[\"t\"]); h = len(firsts) // 2")[0]
 src = src.replace('print("STOP: it does not make money itself on most days"); sys.exit()', 'pass')
+# Nov 24 (uncopied groups): a lower buy floor (MINSOL), a band of its buy (BAND = lo,hi) and the coin's quote (QUOTE prefix)
+src = src.replace('if es[0]["q"] * r / 1e9 >= 0.5 and', 'if es[0]["q"] * r / 1e9 >= float(os.environ.get("MINSOL", 0.5)) and')
 g = {"__file__": f"{TS}/w2_grid.py", "__name__": "__main__"}
 exec(compile(src, "w2_grid", "exec"), g)
 firsts, COST, LK = g["firsts"], float(os.environ.get("COST", 0.0064)), os.environ["LK"]
@@ -33,6 +35,11 @@ def ex_for(c): return EXIT["w4"] if UNIT == "w4" else EXIT["sol"] if (UNIT == "c
 if os.environ.get("SOLX"):   # CqCAzte8's SOL-coin exit to try instead of tp 2x / 120 s: "tp,hold,stall"
     _tp, _h, _st = (float(x) for x in os.environ["SOLX"].split(",")); EXIT["sol"] = dict(tp=_tp, hold=_h, sp=None, stall=_st, early=None)
 if os.environ.get("SOL_ONLY"): firsts = [c for c in firsts if not c["tok"]]
+if os.environ.get("BAND"):
+    _lo, _hi = (float(x) for x in os.environ["BAND"].split(",")); firsts = [c for c in firsts if _lo <= c["sol"] < _hi]
+if os.environ.get("QUOTE"):
+    _q = {m: sorted(es, key=lambda e: (e["slot"], not e["buy"]))[0]["quote"] or "" for m, es in g["by"].items()}
+    firsts = [c for c in firsts if _q.get(c["m"], "").startswith(os.environ["QUOTE"])]
 if os.environ.get("T_MIN"): firsts = [c for c in firsts if c["t"] > float(os.environ["T_MIN"])]   # buys after a time only (a blind check)
 def copy(c, tr):
     k = next((i for i, e in enumerate(tr) if e["user"] == W and e["buy"] and e["slot"] == c["slot"]), None)

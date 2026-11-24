@@ -26,7 +26,7 @@ firsts = []
 for m, es in by.items():
     es = sorted({(e["slot"], e["t"], e["buy"], e["q"], e["quote"] or "") for e in es}, key=lambda x: (x[0], not x[2]))
     sl, t, buy, q, quote = es[0]
-    if not buy or not (quote == "" or quote.startswith("1111")) or q / 1e9 < 0.5: continue
+    if not buy or not (quote == "" or quote.startswith("1111")) or not (float(os.environ.get("MINSOL", 0.5)) <= q / 1e9 < float(os.environ.get("MAXSOL", 1e9))): continue   # Nov 24: a band of its buy
     end = cut if t <= cut - 700 else max(t_ for t_, _ in sigs)
     if t > end - 700: continue
     firsts.append(dict(m=m, slot=sl, t=t, sol=q / 1e9, new=t > cut - 700))

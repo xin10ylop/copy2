@@ -1,0 +1,6 @@
+CgyPomTG (all coins, 0.5+ SOL): 303 coins sold out, 11-09 to 11-24 UTC; 0 coins in unpriced tokens left out
+  group                                       coins   own SOL  a coin  days up   by its first buy: under 0.25 | 0.25-0.5 | 0.5-1.3 | 1.3+ (coins, SOL)
+  COPIED by the unit                            199    +39.70  +0.200  10 of 16    - | - | 47, +10.99 | 152, +28.71
+  a token we don't hold                          52     +5.09  +0.098   4 of 11    10, +0.47 | - | 5, -0.40 | 37, +5.02
+  its buy under 0.5 SOL                          52     +1.79  +0.034   7 of 10    47, +0.81 | 5, +0.97 | - | -
+  tokens we don't hold, by its first buys: EPjFWdd5 24, Pren1FvF 5, 9hjBLBrc 4, ANTBTZQ1 3, Hh3oTaqD 3, NFLX7qV5 2

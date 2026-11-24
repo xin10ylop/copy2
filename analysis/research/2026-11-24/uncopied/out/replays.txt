@@ -1,0 +1,27 @@
+### CqCAzte8, its buys of 0.25-0.5 SOL, Nov 8-22
+CqCAzte8 (cq): 76 copies with a cached path of 76 first buys; refused 0; 11-09 to 11-22
+  baseline (the unit's live exit): +3.9% a copy, +2.98 SOL at 1 SOL, without the best 2% -0.33; blocks +10.4 / +14.3 / -5.9 / -3.1; exits: tp 10
+### CqCAzte8, 0.25-0.5 SOL, Nov 21-24
+CqCAzte8 (cq): 7 copies with a cached path of 7 first buys; refused 0; 11-22 to 11-24
+  baseline (the unit's live exit): -24.7% a copy, -1.73 SOL at 1 SOL, without the best 2% -1.80; blocks -38.5 / -2.6 / -42.8 / -4.9; exits: tp 0
+### 6nNzEg86, token coins 0.25-0.5 SOL, Nov 10-24
+6nNzEg86 (token): 63 copies with a cached path of 63 first buys; refused 0; 11-10 to 11-22
+  baseline (the unit's live exit): +11.4% a copy, +7.20 SOL at 1 SOL, without the best 2% +4.47; blocks +6.4 / -5.1 / +2.3 / +44.2; exits: tp 7
+### CqCAzte8, coins priced in 4CxjZyMN, 0.5+ SOL
+CqCAzte8 (all): 4 copies with a cached path of 4 first buys; refused 0; 11-10 to 11-11
+  baseline (the unit's live exit): +74.6% a copy, +2.99 SOL at 1 SOL, without the best 2% +1.32; blocks -21.8 / -0.8 / +154.6 / +166.5; exits: tp 2
+### 6nNzEg86, coins priced in 4CxjZyMN, 0.5+ SOL
+6nNzEg86 (token): 1 copies with a cached path of 1 first buys; refused 0; 11-10 to 11-10
+  baseline (the unit's live exit): -18.1% a copy, -0.18 SOL at 1 SOL, without the best 2% +0.00; blocks -18.1 / +nan / +nan / +nan; exits: tp 0
+### 6LwMLkCe, coins priced in 4CxjZyMN, 0.5+ SOL
+6LwMLkCe (token): 2 copies with a cached path of 2 first buys; refused 0; 11-11 to 11-22
+  baseline (the unit's live exit): -30.1% a copy, -0.60 SOL at 1 SOL, without the best 2% -0.42; blocks -41.8 / -18.5 / +nan / +nan; exits: tp 0
+### 3XeFcZKS, coins priced in 4CxjZyMN, 0.5+ SOL
+3XeFcZKS (token): 1 copies with a cached path of 1 first buys; refused 0; 11-11 to 11-11
+  baseline (the unit's live exit): +182.0% a copy, +1.82 SOL at 1 SOL, without the best 2% +0.00; blocks +182.0 / +nan / +nan / +nan; exits: tp 1
+### CgyPomTG, coins priced in USDC, 0.5+ SOL
+CgyPomTG (all): 24 copies with a cached path of 24 first buys; refused 0; 11-13 to 11-22
+  baseline (the unit's live exit): +4.0% a copy, +0.95 SOL at 1 SOL, without the best 2% -1.09; blocks +49.5 / +3.5 / -28.0 / -9.1; exits: tp 2
+### FatoU1bj, its buys of 0.25-0.5 SOL, its exit (tp 1.5, 15 s, behind its sale)
+FatoU1bj: 518 copies of its first buys of 0.5+ SOL (501 to 11-23 15:13 UTC, 17 after); refused over 1.5x: 1; its hold to its first sale: median 33 s, 10% 7 s, 90% 50 s; COST 0.0064
+   its sale +2 slots, tp 1.5, cap 15 s                 +1.8 /   -1.4 /   +5.1 /   +1.6   +1.8%  -23.85    +22.2%  17   +1.47
