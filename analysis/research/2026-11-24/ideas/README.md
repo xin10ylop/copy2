@@ -43,3 +43,18 @@ coins, which the unit does not copy; a first run that mixed them in is not used)
   longer (tp 2x at 180 / 240 / 300 s: +11.7 / +14.3 / +11.1% against +9.0% at 120 s on Nov 8-22) fails on its unseen
   buys (Nov 23-24, 33: -1.7% at 120 s, -10.0% / -10.3% / -12.2% longer). Coins do come back after we sell, but which ones
   can't be told in advance.
+
+## The dip as an EXTRA leg (Nov 24, later; the owner: "remember the dip thing?")
+
+The table above judges the dip as a replacement for the copy. Wallet 4's dip ran as a second leg beside the copy
+(Nov 19 22:53 - Nov 20 13:23 UTC), so its own trades are what count (`e1_ideas.py` now prints them, "extra leg"):
+
+| Wallet | 10% dip, the copy's exit | 10% dip, wallet 4's dip exit (tp 1.5x our fill) | Unseen days |
+|---|---|---|---|
+| CqCAzte8 (Nov 8-22) | 168 trades, +15.1% a trade, +25.35 SOL, w/o 2% +19.26; blocks +7.2 / +16.1 / +13.2 / +24.0% | +9.8%, blocks +9.2 / +13.1 / +5.4 / +12.1% | Nov 23-24 (its bad days), 31 trades: +4.4% (copy's exit), +10.3% (dip exit) |
+| 6nNzEg86 (Nov 10-24) | 52 trades, +49.4% a trade, blocks +29.8 / +38.4 / +64.2 / +88.3% | +24.6% | 1 trade (-37%): nothing to judge |
+| GqWfqfG6 | 27 trades, +5.0%, one block negative | +7.5% | - |
+| wallet 4 (token coins) | - | Nov 17-23, 170 trades: +5.8% a trade (w/o 2% +1.94) | Nov 23-24, 27 trades: -2.1% |
+| CgyPomTG, 3XeFcZKS, 6LwMLkCe | +0.4%, -15.7%, -5.3% (10% dip leg) | | |
+
+The paths stop ~375 s after its buy (wallet 4's ~18 min): the dip exits' long holds are cut there.

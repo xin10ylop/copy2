@@ -129,6 +129,11 @@ for k_ in keys:
     flag = " <- better in 4 of 4 and without the best 2%" if bb == 4 and wo2(V) > wo2(B) else (" <- 3 of 4" if bb == 3 and wo2(V) > wo2(B) else "")
     if flag: cands.append(k_)
     print(f"  {k_:16s} {V.sum():+7.2f} {dif.sum():+8.2f} {wo2(V):+7.2f} {wo2(V) - wo2(B):+8.2f}  {bb} of 4         {taken:4d}{flag}")
+# the dip as an EXTRA leg beside the copy (how wallet 4's leg 2 ran, Nov 19-20): its own trades, block by block
+for k_ in [k_ for k_ in keys if k_.startswith("D ")]:
+    V = np.array([r[k_] for r in ok]); per = [V[b][V[b] != 0] for b in blocks]; t_ = V[V != 0]
+    if len(t_): print(f"  extra leg {k_[2:]:9s} {len(t_):4d} trades {100 * t_.mean():+6.1f}% a trade, {t_.sum():+6.2f} SOL, w/o 2% {wo2(t_):+6.2f}; by block "
+                      + " / ".join(f"{100 * p_.mean():+.1f}% ({len(p_)})" if len(p_) else "-" for p_ in per))
 rv = [r for r in ok if r["why"] != "tp" and "R_n" in r]
 if rv:
     print(f"  revival after a non-tp exit, within the path (~375 s after its buy): {len(rv)} exits with trades after; the price later "
