@@ -26,3 +26,8 @@ copies built with `NOSTOP=1 ../coin_filters/f1_rows.py` (99 coin paths by RPC), 
 - 2 live trades after the fetch's end (Nov 24 17:14 and 17:30 UTC): -0.308.
 - 17 first buys of 0.5+ SOL in the live window that the unit did not take, 16 of them token coins: +0.592 SOL in the model
   (AQ11zGbA alone +0.889; the others +0.36 to -0.32). Why each was skipped is in the unit's journal (asked of the owner).
+- The unit's journal on the 17 (the owner's paste): **all followed its rules.** 8 "coin held by the other unit" (a
+  sister unit on the wallet took the coin: 5WjSShGY, 7iXqKRs8, FLPVcQfz, AQ11zGbA, AW1RC4PB, 9Ezf6JHr, F4hRfny9, 46VGazgD;
+  +0.483 in the model); 9 paid in a token that was not a float then (CqCAzte8's own trades: hSOL x6 on Nov 22, before
+  hSOL became a float on Nov 23, one of them "route: no anchor reaches he1iusmf"; NVDAx x2 on Nov 23, before Nov 24;
+  USDC x1), logged as "no SOL value" or no route; +0.108 in the model. None is the Nov 24 price fault.
