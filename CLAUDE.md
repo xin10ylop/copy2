@@ -63,8 +63,9 @@ Wallet 4's strategies:
   the SAME exit, `sol_exits = false`; `config/long-cgy.live.example.toml`; the test in
   `analysis/research/2026-11-20/tape_screen/` README: it fails the 48-setting pick, passes the pick on all coins, and the
   fixed exit is +12.1% a copy blind; the three units skip each other's coins; check command `eee`, `ggg` still works). **On the Frankfurt box: `qqq` =
-  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe, `yyy` = 6nNzEg86; on the Chicago box
-  `www` is still the Robinhood copier.**
+  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe, `yyy` = 6nNzEg86, `pnl` = every unit's result in
+  one line each and the total (`deploy/bin/rugsnipe-pnl`), `sss` = the weekly wallet screen; on the Chicago box `www` is still
+  the Robinhood copier.**
   **Since Nov 23 (the owner's call, 0.5 SOL, no paper phase): units 4 and 5, `rugsnipe-long-3xe` (3XeFcZKS, `rrr`) and
   `rugsnipe-long-6lw` (6LwMLkCe, `ttt`), same wallet, their TOKEN coins only (`copy_sol_coins = false`), tp 3x, 420 s,
   stall 240** (`config/long-3xe.live.example.toml`, `long-6lw`; the test in the tape_screen README: 3XeFcZKS passes both
