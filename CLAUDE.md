@@ -63,12 +63,15 @@ Wallet 4's strategies:
   the SAME exit, `sol_exits = false`; `config/long-cgy.live.example.toml`; the test in
   `analysis/research/2026-11-20/tape_screen/` README: it fails the 48-setting pick, passes the pick on all coins, and the
   fixed exit is +12.1% a copy blind; the three units skip each other's coins; check command `eee`, `ggg` still works). **On the Frankfurt box: `qqq` =
-  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe; on the Chicago box `www` is still the
-  Robinhood copier.**
+  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe, `yyy` = 6nNzEg86; on the Chicago box
+  `www` is still the Robinhood copier.**
   **Since Nov 23 (the owner's call, 0.5 SOL, no paper phase): units 4 and 5, `rugsnipe-long-3xe` (3XeFcZKS, `rrr`) and
   `rugsnipe-long-6lw` (6LwMLkCe, `ttt`), same wallet, their TOKEN coins only (`copy_sol_coins = false`), tp 3x, 420 s,
   stall 240** (`config/long-3xe.live.example.toml`, `long-6lw`; the test in the tape_screen README: 3XeFcZKS passes both
   pick versions, 6LwMLkCe the strict one; both buy alone, 1.00-1.01x). The five units skip each other's coins.
+  **Since Nov 24 (the owner's call, 0.5 SOL): unit 6, `rugsnipe-long-6nn` (6nNzEg86, `yyy`), its TOKEN coins only, tp 3x,
+  420 s, stall 240** (`config/long-6nn.live.example.toml`; passes both pick versions, 1.02x; its token coins +17.2% a copy
+  but positive only in its last two blocks, Nov 20-24). The six units skip each other's coins.
 - **Strategy D, the launch copy:** the hot copy bot `crates/rugsnipe`, with a `copy_more` entry. It is stopped.
 
 Read `README.md` (status, A-Z index), then `02-decomposition/` (why A and not the rest), then the strategy folder you work

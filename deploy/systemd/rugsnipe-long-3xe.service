@@ -1,6 +1,6 @@
 # rugsnipe-long-3xe -- hot role. A long copy of 3XeFcZKS's token coins (Nov 23; analysis/research/2026-11-20/tape_screen/
 # README, out_w3/3XeFcZKS_setup.txt): the same binary with /etc/rugsnipe/long-3xe.toml, its own state
-# (/var/lib/rugsnipe-long-3xe), on the main long wallet (the same credential); the five units skip each other's coins
+# (/var/lib/rugsnipe-long-3xe), on the main long wallet (the same credential); the six units skip each other's coins
 # (other_state_dirs). `rugsnipe-long status --config /etc/rugsnipe/long-3xe.toml` shows its book.
 [Unit]
 Description=rugsnipe long copy of 3XeFcZKS (its token coins, Nov 23)
