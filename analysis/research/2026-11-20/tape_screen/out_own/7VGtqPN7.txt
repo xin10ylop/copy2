@@ -1,0 +1,4 @@
+7VGtqPN7: 10000 successful transactions in 14 days (Helius); CAPPED at 10 pages: history from 11-20 19:48 UTC only
+7VGtqPN7CB2TSVeDZozkc5fZCVABxN6yqvQ1iD9t6tjg: own result +65.83 SOL over 5 days, up on 5; 549 first buys of 0.5+ SOL
+  by day: 11-20 +7.80  11-21 +23.62  11-22 +10.37  11-23 +21.80  11-24 +2.24
+OWN PASS

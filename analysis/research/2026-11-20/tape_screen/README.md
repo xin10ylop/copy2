@@ -486,3 +486,17 @@ is what luck alone gives):
 - CqCAzte8 token (67): 8 of 9 kinds cost 2 to 8.5 points (above 0 in 6-30%); the gentlest, 15/120 s, +2.5 give or take
   1.3, above 0 in 98%: the one possible gain, on about 5 token copies a day; tried after seeing it, so re-checked on
   the live copies before any change.
+
+**Screen of Nov 24 morning, 65.4 h:** 173 left out as late; the copied three at 1.01-1.04x. 41 wallets not tested
+before: 23 lose money themselves, 18 make it. Deep-tested four:
+
+| Wallet | Strict pick, blind | Pick on all coins | Price | Token coins, tp 3x / 420 / stall 240 (4 blocks) | Result |
+|---|---|---|---|---|---|
+| **6nNzEg86** (191, all) | +13.4% (62), +6.19 w/o 2%: PASS | +7.6% (143), +4.97: PASS, 3 of 3 | 1.02x, alone 84% | -3.7 / -5.9 / +32.7 / +26.5 = +17.2% (115), +15.80 | **passes both; token coins, but only its last two blocks** |
+| 5xLpFzjY (300 of 519) | gate 1 -2.9 / -11.1 / +8.2% | | | | FAIL |
+| edcow7o5 (133) | gate 1 -14.5 / +3.5 / -8.2% | | | | FAIL |
+| 8TZqB7dw (86) | gate 1 -9.1 / -6.5 / -15.1% | | | | FAIL |
+
+6nNzEg86: 28 coins a day, holds a median 61 s; pays with SOL 104, PUMP 41, TTWO 35, PAID 20, hSOL 15, mihao 11, SPCX
+10, NVDAx 8 of its 374 first buys; its SOL coins lose (-6.4% with that exit); sell pressure costs (token coins without
++21.9% in the 3 blind blocks, with 5/60 s +13.0%); independent of the copied five (never the same slot).
