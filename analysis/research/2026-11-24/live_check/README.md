@@ -18,3 +18,11 @@ copies built with `NOSTOP=1 ../coin_filters/f1_rows.py` (99 coin paths by RPC), 
 - By day (part 2 of `out/l1.txt`), the six wallets' copies together: every 3-day window since Nov 10 positive (+7.5 to
   +16.3% a copy, +3.0 to +12.3% without the best 2%); Nov 24 (35 copies) -8%, the worst day; Nov 13 was -1%. The units
   started at the end of the best run (Nov 20-23, +16 to +25% a day) and ran into the worst day.
+
+**www trade by trade (`l2_www_match.py`, `out/l2_www.txt`; the box's closed book pasted, 51 trades Nov 22 16:39 - Nov 24
+17:30 UTC).** The first part's window started at 08:00 UTC; the unit's first trade was 16:39.
+- The 49 trades the model also has: **live +0.190 SOL, model -0.415**; live is better on 37 of 49 (+0.012 SOL a trade,
+  median +0.009): the model's costs and landing are cautious. Token coins 6 (live -0.437), SOL coins 43 (live +0.628).
+- 2 live trades after the fetch's end (Nov 24 17:14 and 17:30 UTC): -0.308.
+- 17 first buys of 0.5+ SOL in the live window that the unit did not take, 16 of them token coins: +0.592 SOL in the model
+  (AQ11zGbA alone +0.889; the others +0.36 to -0.32). Why each was skipped is in the unit's journal (asked of the owner).

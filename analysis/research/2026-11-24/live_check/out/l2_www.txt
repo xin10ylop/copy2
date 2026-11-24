@@ -1,0 +1,75 @@
+coin      seen UTC     kind     live   model    diff  reason  our price over its (model)
+2877bbjd  11-22 16:39  SOL    -0.145  -0.112  -0.034  time     1.00x
+AtRRPidD  11-22 17:34  SOL    +0.226  +0.160  +0.066  time     1.10x
+J7DGuFPD  11-22 18:07  SOL    -0.193  -0.201  +0.007  time     1.05x
+HV3Xpg8a  11-22 19:01  SOL    +0.245  +0.212  +0.033  time     1.08x
+Et13xumw  11-22 19:20  SOL    -0.108  -0.072  -0.036  time     1.05x
+F8KURH9W  11-22 19:37  SOL    +0.225  +0.135  +0.090  time     1.13x
+6jXqU42F  11-22 20:25  SOL    +0.007  -0.032  +0.039  time     1.36x
+83DQikKi  11-22 21:05  token  -0.043  -0.070  +0.027  stall    1.04x
+FMTx8yLd  11-22 21:17  SOL    -0.351  -0.352  +0.001  time     1.03x
+KdMM28tQ  11-22 21:18  SOL    -0.080  -0.105  +0.025  time     1.13x
+8J7yeYsB  11-22 21:35  SOL    +0.312  +0.320  -0.009  time     1.05x
+C1saRsBT  11-22 21:47  SOL    +0.476  +0.430  +0.045  tp       1.04x
+4JT6qcRn  11-22 21:42  token  -0.170  -0.198  +0.028  time     0.93x
+5aR9Bacm  11-23 00:16  SOL    +0.142  +0.158  -0.016  time     1.00x
+BkZUhyn6  11-23 00:28  SOL    +0.008  +0.005  +0.002  time     0.99x
+nQEgiCYu  11-23 01:27  SOL    -0.271  -0.282  +0.011  time     1.08x
+2X9sGwK5  11-23 01:34  SOL    +0.294  +0.256  +0.038  time     1.10x
+ERkSP7Q8  11-23 01:49  SOL    +0.514  +0.507  +0.007  tp       0.96x
+FzEzoatg  11-23 02:05  SOL    +0.225  +0.194  +0.031  time     1.03x
+DAWFVDmp  11-23 02:17  SOL    +0.056  +0.056  -0.001  time     0.96x
+AmCyE8Jo  11-23 02:57  SOL    -0.181  -0.219  +0.038  time     1.20x
+DhLqheMQ  11-23 14:58  SOL    +0.090  +0.010  +0.080  time     1.17x
+9YCurRir  11-23 17:01  SOL    -0.090  -0.118  +0.029  time     0.98x
+DMTxhDS1  11-23 17:05  SOL    +0.150  +0.080  +0.070  time     1.13x
+9fK7Uaxn  11-23 17:21  SOL    +0.203  +0.194  +0.009  time     1.10x
+9Jqp6mq2  11-23 17:38  SOL    -0.141  -0.151  +0.010  time     0.98x
+7GqkBpcL  11-23 18:34  token  -0.207  -0.212  +0.004  stall    1.01x
+Gs47zYRE  11-23 19:17  SOL    -0.156  -0.115  -0.041  time     1.06x
+71Anhn7G  11-23 19:31  SOL    -0.229  -0.251  +0.022  time     1.01x
+BVjKui6X  11-23 20:47  SOL    -0.094  -0.083  -0.011  time     0.98x
+6jrFGeee  11-23 21:17  token  -0.297  -0.304  +0.007  stall    1.08x
+7Sme8Lig  11-23 21:41  SOL    -0.119  -0.113  -0.006  time     1.12x
+3CwiyGbL  11-23 21:55  SOL    +0.056  +0.036  +0.020  time     1.02x
+21CD8cPp  11-23 22:01  SOL    -0.374  -0.375  +0.000  time     1.10x
+GMLSyjZC  11-23 22:23  SOL    +0.080  +0.065  +0.015  time     1.03x
+2SeDTMst  11-23 22:37  SOL    -0.052  -0.034  -0.018  time     1.08x
+2RiMc58o  11-23 23:07  SOL    -0.101  -0.112  +0.010  time     1.02x
+DXARYwMK  11-23 23:27  SOL    -0.336  -0.338  +0.002  time     1.01x
+9hu1uRGN  11-23 23:39  SOL    +0.490  +0.391  +0.099  tp       1.08x
+9WyjDc2N  11-23 23:43  token  +0.361  +0.341  +0.019  complete 1.08x
+3P6yvBqw  11-24 01:07  SOL    +0.257  +0.407  -0.149  time     1.02x
+9XZD6ELT  11-24 01:25  SOL    -0.163  -0.172  +0.009  time     1.11x
+6yyhJeZp  11-24 02:03  SOL    -0.332  -0.333  +0.000  time     1.04x
+okCfBzQN  11-24 02:46  SOL    +0.094  +0.074  +0.020  time     1.05x
+7SaCs9XY  11-24 03:16  SOL    -0.192  -0.197  +0.005  time     1.03x
+EXGXopi4  11-24 03:35  SOL    -0.173  -0.178  +0.005  time     1.02x
+7BHyvkwp  11-24 15:33  token  -0.080  -0.090  +0.010  time     1.04x
+BFm2JUH8  11-24 16:52  SOL    +0.190  +0.190  -0.000  time     0.98x
+3ACYiCYg  11-24 16:59  SOL    +0.171  +0.181  -0.010  time     1.00x
+5dG5fEt5  11-24 17:14  ?      -0.343       -          time     (not a first buy of 0.5+ SOL in the data)
+HhTuEQgr  11-24 17:30  ?      +0.035       -          time     (not a first buy of 0.5+ SOL in the data)
+
+matched 49: live +0.190, model -0.415, live minus model +0.605 SOL (+0.0123 a trade, median +0.0090); live better on 37
+  token coins: 6, live -0.437, model -0.532
+  SOL coins: 43, live +0.628, model +0.117
+live only (no model row): 2, -0.308
+model buys in the live window the bot did not take: 17, model +0.592 SOL at 0.5
+  EDs34V2a 11-22 18:37 token its 0.98 SOL, model -0.033, price 1.33x
+  GpNdHv2H 11-22 20:44 token its 1.47 SOL, model +0.300, price 1.04x
+  SB9azxfU 11-22 21:25 token its 1.93 SOL, model +0.091, price 1.03x
+  Dn45WrUT 11-22 22:42 token its 0.73 SOL, model -0.259, price 1.13x
+  5RTayue1 11-22 23:04 token its 1.93 SOL, model +0.005, price 1.09x
+  6GaYCCwG 11-22 23:11 token its 0.96 SOL, model -0.227, price 1.00x
+  6j79hCeF 11-22 23:42 token its 2.90 SOL, model +0.138, price 1.02x
+  5WjSShGY 11-23 01:05 token its 2.90 SOL, model -0.316, price 1.05x
+  7iXqKRs8 11-23 02:57 token its 0.72 SOL, model -0.231, price 1.02x
+  A2LL9P3o 11-23 15:49 token its 0.95 SOL, model +0.136, price 1.02x
+  FLPVcQfz 11-23 16:30 token its 1.93 SOL, model +0.170, price 1.07x
+  Fe2zhsqD 11-23 17:09 token its 0.95 SOL, model -0.043, price 1.24x
+  AQ11zGbA 11-23 18:41 token its 1.93 SOL, model +0.889, price 1.02x
+  AW1RC4PB 11-23 23:01 token its 1.93 SOL, model -0.133, price 1.01x
+  9Ezf6JHr 11-23 23:02 SOL   its 0.97 SOL, model -0.115, price 1.00x
+  F4hRfny9 11-23 23:53 token its 1.45 SOL, model +0.363, price 1.00x
+  46VGazgD 11-24 03:17 token its 0.97 SOL, model -0.144, price 1.04x
