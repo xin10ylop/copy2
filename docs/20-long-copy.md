@@ -221,6 +221,14 @@ within a slot** (`exits_pess.py`):
   of 6 wallets (`analysis/research/2026-11-25/consensus/`). With it both units hold the coin; each sells its own tokens,
   and the shared account stays open while either holds it (`pos::close_on_sale`, as before). The journal says
   `long join ...`. Test `join_others_buys_a_coin_the_other_unit_holds_and_keeps_the_account_open`.
+- **A buy through a router other than Jupiter is valued at the SOL it spent in the same transaction** (Nov 25 late).
+  Trading-bot routers (FLASHX8D, 6Vo3245e, term9YPb ...) swap SOL into the coin's quote token and buy with it in one
+  transaction; the quote token was unpriced unless a float, and the buy skipped (`its buy has no SOL value`): since Nov 23,
+  10 of 3XeFcZKS's, 19 of 6LwMLkCe's, 4 of 6nNzEg86's. Now its value is the share of the SOL it spent there, as Jupiter's
+  buys already were. On their buys of 0.5+ SOL since Nov 23 (`examples/scan`), the newly copyable: 6LwMLkCe 8, 3SiQo8MJ 11,
+  6nNzEg86 2, 3XeFcZKS 1; the rest have no route (no pool from wSOL or a float to the token). Not copied either way: buys on
+  PumpSwap (HtHkKxYN 50 of its 132, 6LwMLkCe 16, 3XeFcZKS 7). Test
+  `a_router_buy_paid_from_sol_in_the_same_transaction_is_valued_at_that_sol` (a real 6LwMLkCe buy).
 - **The units on one wallet share one price fetch** (Nov 24, `oracle.rs`): seven units each asking Jupiter's price API
   every 20 s from the box drew HTTP 429 on most requests (since 10:20 Beirut on Nov 24: 543 refusals on wallet 4's unit,
   43-510 on the others), so a buy paid with a float found no price under 2 minutes old and was skipped as "its buy has

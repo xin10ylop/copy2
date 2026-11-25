@@ -58,7 +58,12 @@ fn main() {
     txs.sort_by_key(|t| t.slot);
     let (mut sol_buys, mut sells, mut small, mut unpriced) = (0, 0, 0, 0);
     for tx in &txs {
-        for s in detect::read(tx, &w4, &price) {
+        let seen = detect::read(tx, &w4, &price);
+        // SCAN_MISS=1: the transactions in which detection sees no trade of the wallet at all
+        if seen.is_empty() && std::env::var_os("SCAN_MISS").is_some() {
+            println!("{} {} nothing seen", tx.slot, tx.sig_b58());
+        }
+        for s in seen {
             match s {
                 Seen::SolBuy { mint, .. } => {
                     sol_buys += 1;

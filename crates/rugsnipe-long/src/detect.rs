@@ -133,7 +133,19 @@ fn trigger(
         let used = input_amount as f64;
         Some((spent_sol as f64 * used / (used + left)) as u64)
     } else {
-        price(&input_mint).map(|p| (p * input_amount as f64) as u64)
+        price(&input_mint)
+            .map(|p| (p * input_amount as f64) as u64)
+            .or_else(|| {
+                // Nov 25: a router other than Jupiter (FLASHX8D, 6Vo3245e, term9YPb ...) swaps SOL into the coin's
+                // quote token and buys with it in one transaction: an unpriced token, worth the share of the SOL it
+                // spent there (as with Jupiter above). Before, such buys were skipped as unpriced: most of the
+                // 3XeFcZKS, 6LwMLkCe, 6nNzEg86 and 3SiQo8MJ units' token coins.
+                (spent_sol > 50_000_000).then(|| {
+                    let left = tx.token_delta(w, &input_mint).max(0) as f64;
+                    let used = input_amount as f64;
+                    (spent_sol as f64 * used / (used + left)) as u64
+                })
+            })
     };
     Some(Trigger {
         sig: tx.sig_b58(),
@@ -270,6 +282,20 @@ mod tests {
         assert_eq!(t.sol_value, None);
         let t = one(read(&tx, &w4(), &|_m: &Pubkey| Some(0.001)));
         assert_eq!(t.sol_value, Some((0.001 * t.input_amount as f64) as u64));
+    }
+
+    #[test]
+    fn a_router_buy_paid_from_sol_in_the_same_transaction_is_valued_at_that_sol() {
+        // 6LwMLkCe, Nov 25: router 6Vo3245e swaps 0.5+ SOL into the coin's quote token and buys with it; no Jupiter,
+        // no multi_hop_swap, a token we hold no price for
+        let w: Pubkey = "6LwMLkCeEAqYp9Pv33ujrgd9uF987zPXdGKr9Z9sebh5".parse().unwrap();
+        let tx = fx("6lw_buy_router_sol");
+        let t = one(read(&tx, &w, &none));
+        assert!(!t.via_jupiter && t.route.is_none());
+        assert!(!c::is_sol_like_quote_mint(&t.input_mint));
+        let v = t.sol_value.expect("valued from the SOL it spent");
+        let spent = (tx.sol_spent(&w) - tx.fee as i128) as u64;
+        assert!(v <= spent && v >= 500_000_000, "{v} of {spent}");
     }
 
     #[test]
