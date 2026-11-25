@@ -17,9 +17,9 @@ show() {
     echo "and the system's word on it:"; sudo journalctl -u $U -n 40 --no-pager | grep -iE "oom|memory|killed" | tail -n 4
     return 1
   fi
-  grep -E "^tape|bundles|jumpy|late|median price" $OUT; sed -n '/by the mean over/,+15p' $OUT
+  grep -E "^tape|bundles|jumpy|left out as late|median price" $OUT; sed -n '/by the mean over/,+15p' $OUT
   sed -n '/^by consistency/,+15p' $OUT; sed -n '/^launch-slot buyers/,+10p' $OUT; sed -n '/^fast traders/,+15p' $OUT
-  sed -n '/^agreement:/,+3p' $OUT; sed -n '/^benchmark/,+8p' $OUT
+  sed -n '/^agreement:/,+3p' $OUT; sed -n '/^benchmark/,+10p' $OUT
   grep -E "^TOPMEAN|^TOPCONS|^TOPLAUNCH|^TOPFAST" $OUT
 }
 
