@@ -30,3 +30,10 @@ is never taken (CqCAzte8's live journal, Nov 22-24: 8 of its 17 skipped buys).
 Agreement among many screened wallets lifts a copy by a few points but leaves it at or below zero: no "buy when 2+ good
 wallets agree" bot. Among our ten wallets one other agreeing lifts it from -0.5% to +14.0% on independent data (the tape,
 all their coins, the 5-exit mean): the replayed-history result above holds. join_others stays.
+
+**Wallet 4 (Nov 25; the owner: "why qqq is not part?").** Its replayed copies (token coins of 1.3+ SOL, its unit's exit,
+Nov 17-24, `../../2026-11-24/ideas/e1_ideas.py` with DUMP, the ~18-minute Helius paths): 202 copies, +9.6% a copy, and
+**on none of them** had another of our wallets bought the coin in the hour before: wallet 4 buys first (often in the
+create slot), so `join_others` would add nothing to its unit. The other way round, another of our wallets bought one of
+its coins in the hour AFTER it on 53 of the 202: 3SiQo8MJ 30, 6nNzEg86 15, CqCAzte8 10, 6LwMLkCe 6, CgyPomTG 2,
+3XeFcZKS 1. The followers' units carry the agreement; 3SiQo8MJ's (`ppp`, join_others off) skips its 30 today.

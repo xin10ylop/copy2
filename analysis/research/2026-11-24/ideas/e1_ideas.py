@@ -82,7 +82,7 @@ def copy(c, tr):
     X = ex_for(c)
     if px[j0] > 1.5: return dict(ref=True, t=c["t"])
     e, why = live_exit(j0, X); base = val(j0, e)
-    out = dict(ref=False, t=c["t"], base=base, why=why)
+    out = dict(ref=False, t=c["t"], base=base, why=why, m=c["m"])
     for S in (3, 5, 10, 20):                                      # P: buy pressure
         a = first(age >= S)
         for K in (3, 6, 10):
@@ -120,6 +120,7 @@ for c in firsts:
     r = copy(c, json.load(gzip.open(fs[0])))
     if r: rows.append(r)
 ok = [r for r in rows if not r["ref"]]
+if os.environ.get("DUMP"): json.dump([dict(m=r["m"], t=r["t"], base=r["base"]) for r in ok], open(os.environ["DUMP"], "w"))   # Nov 25: for the agreement test
 print(f"{W[:8]} ({UNIT}): {len(rows)} copies with a cached path of {len(firsts)} first buys; refused {len(rows) - len(ok)}; "
       f"{dt.datetime.fromtimestamp(rows[0]['t'], dt.UTC):%m-%d} to {dt.datetime.fromtimestamp(rows[-1]['t'], dt.UTC):%m-%d}")
 B = np.array([r["base"] for r in ok]); blocks = np.array_split(np.arange(len(ok)), 4)
