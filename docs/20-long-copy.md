@@ -215,6 +215,12 @@ within a slot** (`exits_pess.py`):
 - **`follow_its_sell = false` holds through every sale of it** (Nov 12): before, a second sale event of the same coin
   (or the same one delivered twice) fell through to the following branch and sold us behind it; wallet 4 sold in one
   piece on all 222 trips of Oct 28 - Nov 12, and no live trade took that path. The record keeps its first sale.
+- **`join_others`: a unit may buy a coin another unit on the wallet holds** (Nov 25, off by default). The skip
+  ("coin held by the other unit") throws away the trades where two of our wallets agree: over Nov 8-24 a copy of a coin
+  another of our wallets had bought in the hour before made +16.7% a copy (189) against +10.8% alone (803), higher on 5
+  of 6 wallets (`analysis/research/2026-11-25/consensus/`). With it both units hold the coin; each sells its own tokens,
+  and the shared account stays open while either holds it (`pos::close_on_sale`, as before). The journal says
+  `long join ...`. Test `join_others_buys_a_coin_the_other_unit_holds_and_keeps_the_account_open`.
 - **The units on one wallet share one price fetch** (Nov 24, `oracle.rs`): seven units each asking Jupiter's price API
   every 20 s from the box drew HTTP 429 on most requests (since 10:20 Beirut on Nov 24: 543 refusals on wallet 4's unit,
   43-510 on the others), so a buy paid with a float found no price under 2 minutes old and was skipped as "its buy has

@@ -482,7 +482,12 @@ impl Engine {
             return self.skip(&t, if dip_go { "coin already ours (its dip leg)" } else { "coin already ours" });
         }
         if !self.others.is_empty() && self.other_holds(&t.mint, now, false) {
-            return self.skip(&t, "coin held by the other unit on this wallet");
+            if !self.cfg.join_others {
+                return self.skip(&t, "coin held by the other unit on this wallet");
+            }
+            // join_others: two of our wallets agree on the coin; both units hold it, the account stays open for either
+            println!("long join {} its {} SOL: held by another unit on this wallet, bought too (join_others)",
+                m8(&t.mint), t.sol_value.map_or("?".into(), |v| format!("{:.3}", v as f64 / 1e9)));
         }
         if t.real_token_post == Some(0) {
             return self.skip(&t, "curve complete");

@@ -92,6 +92,9 @@ stall_s = 240
 # other units trading from this same wallet (their state dirs): a coin one of them holds is not bought, and a sale
 # never closes a coin account one of them still uses (Nov 18: rugsnipe-long and rugsnipe-long-tab on one wallet)
 other_state_dirs = ["/var/lib/rugsnipe-long", "/var/lib/rugsnipe-long-cq", "/var/lib/rugsnipe-long-cgy", "/var/lib/rugsnipe-long-3xe", "/var/lib/rugsnipe-long-6nn", "/var/lib/rugsnipe-long-gqw", "/var/lib/rugsnipe-long-fat", "/var/lib/rugsnipe-long-htk", "/var/lib/rugsnipe-long-3si"]
+# Nov 25: buy its coin even when another unit holds it (two of our wallets agree: +16.7% a copy against +10.8% alone;
+# analysis/research/2026-11-25/consensus/); both units hold it, the shared account stays open while either does
+join_others = true
 # its SOL-priced coins too (Nov 22: on all its buys, blind, SOL coins +8.4% a copy on 125, token coins +26.2% on 76)
 copy_sol_coins = false
 # its SOL coins with their own exits (Nov 22: on its blind blocks, SOL coins tp 2x / 120 s +11.06 SOL on 124, positive in

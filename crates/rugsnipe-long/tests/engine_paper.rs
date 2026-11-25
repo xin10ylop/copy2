@@ -771,6 +771,26 @@ fn a_coin_the_other_unit_on_this_wallet_holds_is_not_bought() {
     assert_eq!(c.book.positions.len(), 1, "no longer held: bought");
 }
 
+/// `join_others` (Nov 25): with it, the coin the other unit holds is bought too; the other unit's position keeps the
+/// shared account open on our sale (the close would fail on its tokens).
+#[test]
+fn join_others_buys_a_coin_the_other_unit_holds_and_keeps_the_account_open() {
+    let mut a = opened("join-a");
+    let a_dir = a.cfg.state_dir.clone();
+    let a_book = std::path::Path::new(&a_dir).join("positions.json");
+    a.book.save(&a_book).unwrap();
+    let dir = std::env::temp_dir().join(format!("long-engine-join-b-{}", std::process::id()));
+    let _ = std::fs::remove_dir_all(&dir);
+    let cfg = LongCfg { mode: Mode::Log, state_dir: dir.to_string_lossy().into(), other_state_dirs: vec![a_dir.clone()], join_others: true, ..Default::default() };
+    let mut b = Engine::new(cfg, Default::default(), None, Rpc::new("http://127.0.0.1:9"), Oracle::default(), None, None).unwrap();
+    b.on_tx(Src::Copied, &fx("w4_buy_wsol_multihop"));
+    assert_eq!(b.book.positions.len(), 1, "held by the other unit, bought too");
+    assert_eq!(b.book.positions[0].mint, a.book.positions[0].mint);
+    // the other unit's position is live: a sale of ours leaves the account open
+    assert!(a.book.positions[0].live());
+    assert!(!rugsnipe_long::pos::close_on_sale(0, true));
+}
+
 /// `float_only` (Nov 18): wrapped SOL is no anchor, so its buy routed from wSOL is not
 /// copied (the same buy is copied without the switch: `opened`).
 #[test]
