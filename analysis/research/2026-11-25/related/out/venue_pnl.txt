@@ -1,0 +1,23 @@
+== HtHkKxYN: 141 swaps over 17.4 days
+   PUMP_AMM               15 coins sold out, own    -1.88 SOL, wins  27%, days up 2/9 | first buy 0.5+ SOL:  14 coins (0.8 a day), own   -1.79 SOL
+   PUMP_FUN                7 coins sold out, own    +4.57 SOL, wins  71%, days up 4/6 | first buy 0.5+ SOL:   7 coins (0.4 a day), own   +4.57 SOL
+   RAYDIUM_LAUNCHLAB       6 coins sold out, own    +2.52 SOL, wins  50%, days up 3/4 | first buy 0.5+ SOL:   5 coins (0.3 a day), own   +2.59 SOL
+== CqCAzte8: 47 swaps over 13.7 days
+   RAYDIUM_LAUNCHLAB       2 coins sold out, own    +3.26 SOL, wins  50%, days up 1/2 | first buy 0.5+ SOL:   2 coins (0.1 a day), own   +3.26 SOL
+== CgyPomTG: 77 swaps over 18.3 days
+   RAYDIUM_LAUNCHLAB      12 coins sold out, own    -8.16 SOL, wins   0%, days up 0/8 | first buy 0.5+ SOL:  11 coins (0.6 a day), own   -8.14 SOL
+   PUMP_AMM                2 coins sold out, own   +12.10 SOL, wins  50%, days up 1/2 | first buy 0.5+ SOL:   1 coins (0.1 a day), own  +12.10 SOL
+== 3SiQo8MJ: 1135 swaps over 11.4 days
+   JUPITER                 6 coins sold out, own   +21.24 SOL, wins  67%, days up 2/4 | first buy 0.5+ SOL:   3 coins (0.3 a day), own   -0.25 SOL
+   PUMP_FUN                1 coins sold out, own    -0.00 SOL, wins   0%, days up 0/1 | first buy 0.5+ SOL:   0 coins (0.0 a day), own   +0.00 SOL
+== 6LwMLkCe: 702 swaps over 14.9 days
+   PUMP_AMM               14 coins sold out, own    -8.21 SOL, wins  29%, days up 2/9 | first buy 0.5+ SOL:  14 coins (0.9 a day), own   -8.21 SOL
+   JUPITER                 2 coins sold out, own    +2.34 SOL, wins 100%, days up 1/1 | first buy 0.5+ SOL:   2 coins (0.1 a day), own   +2.34 SOL
+   RAYDIUM_LAUNCHLAB       1 coins sold out, own    -1.12 SOL, wins   0%, days up 0/1 | first buy 0.5+ SOL:   1 coins (0.1 a day), own   -1.12 SOL
+== 3XeFcZKS: 1517 swaps over 9.6 days
+   PUMP_AMM               25 coins sold out, own   +12.64 SOL, wins  48%, days up 5/11 | first buy 0.5+ SOL:  23 coins (2.4 a day), own  +12.51 SOL
+   JUPITER                12 coins sold out, own   +15.06 SOL, wins  50%, days up 5/7 | first buy 0.5+ SOL:   5 coins (0.5 a day), own   +6.27 SOL
+   RAYDIUM                 1 coins sold out, own    +0.00 SOL, wins   0%, days up 0/1 | first buy 0.5+ SOL:   0 coins (0.0 a day), own   +0.00 SOL
+== GqWfqfG6: 74 swaps over 15.8 days
+   PUMP_AMM                6 coins sold out, own    -8.25 SOL, wins  33%, days up 2/4 | first buy 0.5+ SOL:   6 coins (0.4 a day), own   -8.25 SOL
+   PUMP_FUN                5 coins sold out, own    -1.38 SOL, wins   0%, days up 0/5 | first buy 0.5+ SOL:   4 coins (0.3 a day), own   -1.37 SOL

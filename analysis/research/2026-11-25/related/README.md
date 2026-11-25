@@ -21,3 +21,16 @@ related trading with, on chain tracking". Helius (Enhanced Transactions and RPC)
    3SiQo8MJ: 13 PumpSwap buys of 0.5+ in 9.3 h; 6LwMLkCe: 40 Jupiter, 11 PumpSwap in 9.7 h; 3XeFcZKS 26 PumpSwap in 4.4 h.
    **Part of the wallets' trading is on venues the units do not copy (LaunchLab, PumpSwap buys of graduated coins), and
    that the tape and the histories do not record.** Whether copying it would pay is not measured.
+
+**A bug in steps 1 and 4: with a type filter, Helius returns short pages; `r1_transfers.py` and `r3_venues.py` stopped
+at the first short page, so they read one page (one to a few days), not five.** Their accounts and venues stand; their
+counts are too low. `r4_venue_pnl.py` pages on (and follows Helius's "continue from" hint) to 14 days.
+
+5. **Each wallet's own result by venue, 14-17 days (`r4_venue_pnl.py`, `out/venue_pnl.txt`;** Helius SWAP type, which
+   mostly leaves out plain pump.fun curve buys; a coin counts under the venue of its first buy there, sold out only).
+   Buys of 0.5+ SOL a day and its own result on them: HtHkKxYN PumpSwap 0.8 a day, -1.79 SOL (2 of 9 days up),
+   LaunchLab 0.3, +2.59 (3 of 4); CqCAzte8 LaunchLab 0.1, +3.26 (2 coins); CgyPomTG LaunchLab 0.6, -8.14 (no winner in 11),
+   PumpSwap 1 coin +12.10; 3SiQo8MJ Jupiter 0.3 (most of its 1,135 swaps move more than one coin); 6LwMLkCe PumpSwap 0.9,
+   -8.21 (2 of 9); **3XeFcZKS PumpSwap 2.4 a day, +12.51 SOL on 23 coins (5 of 11 days up)**, Jupiter 0.5, +6.27;
+   GqWfqfG6 PumpSwap 0.4, -8.25. **The venues the units don't copy add 0.1-2.4 buys a day a wallet, and on most of them
+   the wallet itself loses.** Not worth a new venue copier now; 3XeFcZKS on PumpSwap is the one to re-check.
