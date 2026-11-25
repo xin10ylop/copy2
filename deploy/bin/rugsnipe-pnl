@@ -8,7 +8,7 @@ B=${RUGSNIPE_LONG:-/opt/rugsnipe/bin/rugsnipe-long}
 usd=$(curl -s -m 8 "https://lite-api.jup.ag/price/v3?ids=So11111111111111111111111111111111111111112" | sed -n 's/.*"usdPrice":\([0-9.]*\).*/\1/p')
 d() { [ -n "$usd" ] && awk -v x="$1" -v u="$usd" 'BEGIN {printf " ($%+.2f)", x * u}'; }
 tot=0; tod=0
-for u in long:qqq:H9kuqGKN long-cq:www:CqCAzte8 long-cgy:eee:CgyPomTG long-3xe:rrr:3XeFcZKS long-6lw:ttt:6LwMLkCe long-6nn:yyy:6nNzEg86 long-gqw:uuu:GqWfqfG6 long-fat:iii:FatoU1bj long-htk:ooo:HtHkKxYN long-3si:ppp:3SiQo8MJ long-bng:aaa:Bing35WC; do
+for u in long:qqq:H9kuqGKN long-cq:www:CqCAzte8 long-cgy:eee:CgyPomTG long-3xe:rrr:3XeFcZKS long-6lw:ttt:6LwMLkCe long-6nn:yyy:6nNzEg86 long-gqw:uuu:GqWfqfG6 long-bng:iii:Bing35WC long-htk:ooo:HtHkKxYN long-3si:ppp:3SiQo8MJ long-fat:fat:FatoU1bj; do
   IFS=: read -r c cmd w <<< "$u"
   out=$(sudo "$B" status --config "/etc/rugsnipe/$c.toml" 2>/dev/null)
   [ -n "$out" ] || { printf "%-4s %-9s  (no status)\n" "$cmd" "$w"; continue; }

@@ -63,7 +63,7 @@ Wallet 4's strategies:
   the SAME exit, `sol_exits = false`; `config/long-cgy.live.example.toml`; the test in
   `analysis/research/2026-11-20/tape_screen/` README: it fails the 48-setting pick, passes the pick on all coins, and the
   fixed exit is +12.1% a copy blind; the three units skip each other's coins; check command `eee`, `ggg` still works). **On the Frankfurt box: `qqq` =
-  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe, `yyy` = 6nNzEg86, `uuu` = GqWfqfG6, `iii` = FatoU1bj, `ooo` = HtHkKxYN, `ppp` = 3SiQo8MJ, `aaa` = Bing35WC, `pnl` = every unit's result in
+  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe, `yyy` = 6nNzEg86, `uuu` = GqWfqfG6, `iii` = Bing35WC (since Nov 25 night; `aaa` before, still works), `ooo` = HtHkKxYN, `ppp` = 3SiQo8MJ, `pnl` = every unit's result in
   one line each and the total (`deploy/bin/rugsnipe-pnl`), `sss` = the weekly wallet screen; on the Chicago box `www` is still
   the Robinhood copier.**
   **Since Nov 23 (the owner's call, 0.5 SOL, no paper phase): units 4 and 5, `rugsnipe-long-3xe` (3XeFcZKS, `rrr`) and
@@ -93,6 +93,10 @@ Wallet 4's strategies:
   420 s, stall 240, no sell pressure** (`config/long-bng.live.example.toml`; the deep check in the tape_screen README: PASS,
   +12.8% a copy with the fixed exit, 3 of 4 blocks, 1.02x; it loses -14.83 SOL itself over 13 days). The eleven units skip
   each other's coins.
+  **Since Nov 25 night: FatoU1bj's unit `rugsnipe-long-fat` is stopped and disabled** (the owner's call: 28 real, -1.1351 SOL;
+  on chain FatoU1bj itself was flat on its morning burst and lost -7.70 SOL on its evening one, its edge is in a few +200%
+  coins our 15 s / 1.5x exit cannot hold; its 0.505 SOL buys put exactly 0.5 SOL in the curve and read a hair under
+  `min_sol`). `pnl` keeps its record under `fat`; its check command `iii` went to Bing35WC.
   **Since Nov 25 evening: wallet 4's unit back at 1.0 SOL a copy** (the owner's call; daily stop 2.0 since Nov 25 late, 1.5 before; its float-paid
   copies are as big as the float allows, down to half the stake).
   **Since Nov 25 night: `join_others = true` in the CqCAzte8, GqWfqfG6, 3XeFcZKS, 6LwMLkCe and 6nNzEg86 units** (a unit buys its

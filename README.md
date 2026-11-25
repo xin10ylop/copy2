@@ -18,6 +18,8 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 25 night: FatoU1bj's unit (`rugsnipe-long-fat`) stopped** (28 real, -1.14 SOL; the wallet itself lost on its evening burst
+and its edge is in a few +200% coins our 15 s exit cannot hold). Bing35WC's check command is now `iii` (`aaa` still works).
 **Nov 25 late: unit 11, Bing35WC (`rugsnipe-long-bng`, check `aaa`), 0.5 SOL, all its coins, tp 3x / 420 s / stall 240**
 (the deep check: PASS, +12.8% a copy, 3 of 4 blocks; it loses itself; `analysis/research/2026-11-20/tape_screen/`).
 **Nov 25: units 9 and 10, HtHkKxYN (`rugsnipe-long-htk`, check `ooo`) and 3SiQo8MJ (`rugsnipe-long-3si`, `ppp`), 0.5 SOL**
