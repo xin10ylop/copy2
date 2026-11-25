@@ -88,6 +88,12 @@ def model(tr, k, rate, user):
           "tp2": min(trig(first(px >= 2)), tm(120), n - 1), "held": min(tm(300), n - 1), "scalp": min(trig(first(px >= 1.5)), tm(60), n - 1)}
     o = {k_: float(val[i]) for k_, i in ex.items()}; fi = first(its_sell); o["held"] = o["held"]; o["_its_hold"] = float(age[fi]) if fi is not None else 9e9
     o["_prem"] = float(prem)   # Nov 23: what our copy pays over its price (w3_entry.py: 1.3x = a crowd buys in its block)
+    # Nov 25 (the owner: "maybe we can copy fast traders too"): a fast trader's copy, realistically: out at 1.5x its price,
+    # or in the first trade 2 slots after its sale (we see its sale and land a slot or two later: on FatoU1bj selling in
+    # the next trade made +17% a copy, a slot later +4%; ../../2026-11-24/fatou_exit/), or 15 / 30 s after its buy
+    slots = np.array([e[0] for e in rest]); fi = first(its_sell)
+    its2 = BIG if fi is None else at(first(slots >= rest[fi][0] + 2))
+    for cap in (15, 30): o[f"fast{cap}"] = float(val[min(trig(first(px >= 1.5)), its2, tm(cap), n - 1)])
     return o
 EX = ["w4", "its", "tp2", "held", "scalp"]
 def settle(now):
@@ -222,10 +228,10 @@ def prem_of(xs):
 def hold_of(xs):
     h = [x[3]["_its_hold"] for x in xs if x[3] != "refused"]
     return float(np.median(h)) if h else 9e9
-launch_elig = []; why = {}   # Nov 25: the filter that left a wallet out (the benchmark below says why a copied wallet is missing)
+fast_w = []; launch_elig = []; why = {}   # Nov 25: the filter that left a wallet out (the benchmark below says why a copied wallet is missing)
 for u, xs in by.items():
     if len(xs) < MINN: why[u] = f"under {MINN} copies"; continue
-    if hold_of(xs) < MIN_HOLD: fast += 1; why[u] = f"speed trader (median hold {hold_of(xs):.0f} s)"; continue
+    if hold_of(xs) < MIN_HOLD: fast += 1; why[u] = f"speed trader (median hold {hold_of(xs):.0f} s)"; fast_w.append(u); continue
     if np.mean([(u, x[4]) in cslot for x in xs]) >= BUNDLE:
         bundle += 1; why[u] = "launch bundle"
         # Nov 25: wallet 4 buys in the create slot too, and our copies of it (a slot later) work: these wallets get a list of
@@ -321,6 +327,31 @@ for sh, w, u, n, na, nu, mean_, o, pr in lr[:10]:
     print(f"  {u:44s} {n:4d} copies  up {nu:2d} of {na:2d} days  mean {mean_:+6.1f}%  w/o best 2% {w:+6.1f}%  own {o:+7.2f} SOL  price {pr:.2f}x")
 print(f"TOPLAUNCH{TOPN}: " + ",".join(r_[2] for r_ in lr[:TOPN]))
 rank_launch = {r_[2]: i + 1 for i, r_ in enumerate(lr)}
+# the fast traders (median hold under MIN_HOLD s), copied as above: by consistency of the fast15 copy, own result positive,
+# not jumpy, price under MAX_PREM (FASTX = the exit ranked: fast15 or fast30)
+FX = os.environ.get("FASTX", "fast15")
+def mf(x, k): return x[3][k] / STAKE * 100 if x[3] != "refused" else -0.0004 / STAKE * 100
+fr = []
+for u in fast_w:
+    xs = by[u]
+    if np.mean([x[3] == "refused" for x in xs]) > 0.5 or prem_of(xs) > MAX_PREM: continue
+    ob = [own[(u, x[4])] for x in xs if (u, x[4]) in own]; db = [o for o in ob if o[3] >= 0.99 * o[2]]; o_ = sum(o[1] - o[0] for o in db)
+    if o_ <= 0: continue
+    d = collections.defaultdict(list)
+    for x in xs: d[_dt.datetime.fromtimestamp(x[1], _dt.timezone.utc).strftime("%m-%d")].append(mf(x, FX))
+    act = [np.mean(v) for v in d.values() if len(v) >= 2]
+    if len(act) < 3: continue
+    v = np.array([mf(x, FX) for x in xs]); k = max(1, round(0.02 * len(v))); w = (v.sum() - np.sort(v)[-k:].sum()) / max(1, len(v) - k)
+    v30 = np.mean([mf(x, "fast30") for x in xs])
+    nu = sum(1 for a_ in act if a_ > 0)
+    fr.append((nu / (len(act) + 2), w, u, len(xs), len(act), nu, float(v.mean()), float(v30), o_, prem_of(xs), hold_of(xs)))
+fr.sort(reverse=True)
+pf = np.mean([mf(x, FX) for u in fast_w for x in by[u]]) if fast_w else float("nan")
+print(f"\nfast traders (median hold under {MIN_HOLD:.0f} s; {len(fast_w)} wallets, their copies' mean {pf:+.1f}% with {FX}): "
+      f"copied as out at 1.5x, 2 slots after its sale, or {FX[4:]} s; by consistency, own result positive, price under {MAX_PREM}x ({len(fr)} wallets):")
+for sh, w, u, n, na, nu, mean_, m30, o, pr, hd in fr[:15]:
+    print(f"  {u:44s} {n:4d} copies  hold {hd:4.0f} s  up {nu:2d} of {na:2d} days  mean {mean_:+6.1f}% (30 s: {m30:+6.1f}%)  w/o best 2% {w:+6.1f}%  own {o:+7.2f} SOL  price {pr:.2f}x")
+print(f"TOPFAST{TOPN}: " + ",".join(r_[2] for r_ in fr[:TOPN]))
 BENCH = [("qqq wallet 4", W4, "token", 1.3), ("www CqCAzte8", "CqCAzte8TwCDbCBrhjUpsfG6Au9pZPdrTXrVDidKHGAn", "all", 0.5),
          ("eee CgyPomTG", "CgyPomTGt9BFqnjBdRS38BCBUZvtMJDf3aKQy8sMTVKX", "all", 0.5), ("rrr 3XeFcZKS", "3XeFcZKSn8WzqoDAm5vvgbdfkU82rMmhJfp1q4LXtnX6", "token", 0.5),
          ("ttt 6LwMLkCe", "6LwMLkCeEAqYp9Pv33ujrgd9uF987zPXdGKr9Z9sebh5", "token", 0.5), ("yyy 6nNzEg86", "6nNzEg86rbY4J1Z6euDn9iQoih8uaSj6ZVZHZVvFxjJf", "token", 0.5),
