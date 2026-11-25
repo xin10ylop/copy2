@@ -570,6 +570,16 @@ FecLfkDA's 79 buys; fixed (`e0749e0`), the empty coins deleted, the rerun on Hel
   (Nov 12-19) loses, and 75 buys in 13 days is few (about 6 a day).
 - 5AmLiWon: FAIL earlier the same day (above).
 
+**The screen of Nov 25 night (103.6 h) and the deep check of its new names (Nov 26; `out_w3/*_nov26.txt`, NOSTOP=1).**
+- **5dvLgwVb and DVbLPphR: FAIL, and they are one operator** (the same coins in the same blocks: 59 and 60 buys, the same
+  rolling picks; own +13.75 and +15.47 SOL over 13 days, up on all 13). Picks blind +9.3% / +9.0% a copy but 1 of 3 blocks
+  and negative without the best 2%. The units' fixed exit, all coins: +5.4% (59), +0.92 without the best 2%, 2 of 4. tp 2x
+  / 120 s on all coins: +7.9% (59), +3.57, 4 of 4 (DVbLPphR +6.2%, +2.73, 4 of 4): a cell picked after seeing the table, on
+  about 4.5 buys a day.
+- **BSPdKsA3: FAIL** (122 copies; gate 1 -7.2 / -1.9 / +10.0%; blind -4.3% a copy, 1 of 3). Own -13.15 SOL over 12 days.
+- **EtwpENJ2: FAIL** (208 copies; gate 1 -5.0 / -2.3 / +20.9%; blind -3.3% a copy, 0 of 3). Own +16.14 over 14 days, up on
+  13, but its copies make money in one block only (Nov 23-25, the block the screen saw).
+
 **Fast traders (Nov 25; the owner: "maybe we can copy fast traders too, and make more money"; the screen's TOPFAST,
 93.9 h).** The 2,120 wallets holding a median under 20 s, copied realistically (out at 1.5x its price, in the first trade
 2 slots after its sale, or 15 s): every copy's mean **-6.5%**. The top 15 by consistency are positive on their 3-4 days;
