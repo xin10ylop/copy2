@@ -527,6 +527,8 @@ was kept, and is 3rd in TOPMEAN); `s1_screen.py` lists the jumpy wallets now.
   (`out_w3/J8bMromU_all.txt`, refetched Nov 24): own +13.14 SOL over 6 days, up on 5 (a wallet active since Nov 18), its
   53 copies: FAIL** (gate 1 -6.0 / -5.6 / +25.6%; blind -5.7% a copy, 1 of 3 blocks).
 
+**`sss` runs in the background since Nov 25 late** (`run_screen.sh` + `screen_job.sh`): the screen is a service (`rugsnipe-screen`, 8 GB cap), not tied to the SSH session, which froze or dropped during ~25 silent minutes. It prints a line a minute; `sss` again follows a running screen, `sss show` reprints the last result (`/var/lib/rugsnipe-screen/screen.txt`).
+
 **Screen of Nov 25, 92.8 h of tape (`sss`; the first run with the jumpy line fixed and an 8 GB cap).** TOPMEAN's top 15:
 FatoU1bj copied already; G3PMGr5q and 6t5G5f1i failed before; 4Y4bWfBS, 45JhwE8F, E5thTmUh, 8BbPASYJ and the five
 21-copy wallets lose (or barely make) money themselves. Own histories (Helius, MAXPAGES 10): Bing35WC -14.80 SOL over 13
