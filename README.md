@@ -18,6 +18,8 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 25 late: unit 11, Bing35WC (`rugsnipe-long-bng`, check `aaa`), 0.5 SOL, all its coins, tp 3x / 420 s / stall 240**
+(the deep check: PASS, +12.8% a copy, 3 of 4 blocks; it loses itself; `analysis/research/2026-11-20/tape_screen/`).
 **Nov 25: units 9 and 10, HtHkKxYN (`rugsnipe-long-htk`, check `ooo`) and 3SiQo8MJ (`rugsnipe-long-3si`, `ppp`), 0.5 SOL**
 (the owner: "yes"). From the screen with the new consistency ranking and benchmark (`analysis/research/2026-11-20/tape_screen/`
 README, Nov 25): HtHkKxYN, all coins, the units' exit (tp 3x / 420 s / stall 240), no sell pressure (it lowers every

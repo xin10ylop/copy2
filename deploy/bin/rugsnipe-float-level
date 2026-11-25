@@ -17,7 +17,7 @@ FLOOR=${SOL_FLOOR:-0.6}
 # when it exists: a copy that unit holds, paid from a float, makes that float look short too; Nov 23: and the CgyPomTG,
 # 3XeFcZKS, 6LwMLkCe, 6nNzEg86 and GqWfqfG6 units')
 open_now() {
-  for c in "$C" ${FLOAT_LEVEL_UNITS:-/etc/rugsnipe/long-cq.toml /etc/rugsnipe/long-cgy.toml /etc/rugsnipe/long-3xe.toml /etc/rugsnipe/long-6lw.toml /etc/rugsnipe/long-6nn.toml /etc/rugsnipe/long-gqw.toml /etc/rugsnipe/long-fat.toml /etc/rugsnipe/long-htk.toml /etc/rugsnipe/long-3si.toml}; do
+  for c in "$C" ${FLOAT_LEVEL_UNITS:-/etc/rugsnipe/long-cq.toml /etc/rugsnipe/long-cgy.toml /etc/rugsnipe/long-3xe.toml /etc/rugsnipe/long-6lw.toml /etc/rugsnipe/long-6nn.toml /etc/rugsnipe/long-gqw.toml /etc/rugsnipe/long-fat.toml /etc/rugsnipe/long-htk.toml /etc/rugsnipe/long-3si.toml /etc/rugsnipe/long-bng.toml}; do
     [ -r "$c" ] || continue
     "$B" status --config "$c" 2>/dev/null | sed -n 's/.*; \([0-9][0-9]*\) open;.*/\1/p'
   done | awk '{s += $1} END {if (NR) print s}'
