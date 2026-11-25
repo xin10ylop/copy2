@@ -105,6 +105,10 @@ Wallet 4's strategies:
   coin even when another unit holds it: two of our wallets agreeing made +16.7% a copy against +10.8% alone, higher on 5 of 6
   wallets, not CgyPomTG; `analysis/research/2026-11-25/consensus/`, docs/20 §3).
   **Also in the 3SiQo8MJ unit (`ppp`) since Nov 25 late** (its copies after wallet 4 bought: +6.5% against +4.8% alone, 20).
+  **Since Nov 26: a USDC float in every unit, and bigger floats** (the owner: "lets add floats ... we have 7 sol free";
+  `analysis/research/2026-11-26/uncopied2/` README: TTWO 2.5, hSOL 2.0, NVDAx 1.5, PUMP 1.0, SPCX 1.0, USDC 1.0, PAID 0.6, WBTC 0.5,
+  about 10.1 SOL in floats against 5.2; at the old sizes 7 days of copies skipped TTWO 20, hSOL 35, NVDAx 18; USDC-priced
+  copies replayed +7.4% a copy on 49; ANT, TSLAx, GTA6 replayed negative or flat, not added).
   **Since Nov 24 night: TTWO float 1.5 SOL, WBTC 0.3** (the timer's file, `config/float-levels.live`; the owner's call
   after `analysis/research/2026-11-24/uncopied/`: copyable buys paid with each over 7 days, all units: TTWO 239, hSOL 77,
   PUMP 36, NVDAx 34, SPCX 19, PAID 14, WBTC 7). No new float: no unheld token has the buys or the copy result.

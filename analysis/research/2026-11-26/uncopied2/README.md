@@ -38,3 +38,24 @@ of 13 days; CgyPomTG's USDC copies were +4.0%, negative without the best 2%, Nov
 the rest under 12 each. **Routes:** the 3-hop "pool+curve" routes already copy what they reach (wallet 4 5, 3XeFcZKS 3,
 6LwMLkCe 4, 3SiQo8MJ 2 coins in 14 days); the 264 unreachable tokens have no PumpSwap pool to wSOL or a float, so a longer
 route of ours cannot reach them either.
+
+## Floats (Nov 26; the owner: "no lets add floats, and the floats balances, review them, we have 7 sol free")
+
+`u5_floats.py SP 7` (`out/floats7b.txt`): every copyable coin of the last 7 days priced in each token, the units' stakes as
+they run (qqq and uuu 1.0, the rest 0.5), each copy holding the float's SOL for its unit's longest hold (an upper bound).
+
+| Float | Copies a day | Most SOL at once | Skipped / shrunk in 7 days: old size | new size |
+|---|---|---|---|---|
+| TTWO | 30.0 | 4.5 | 1.5 SOL: 20 / 8 | 2.5: 5 / 2 |
+| hSOL | 13.9 | 3.0 | 1.0: 35 / 4 | 2.0: 6 / 0 |
+| PUMP | 7.9 | 1.5 | 0.6: 6 / 14 | 1.0: 0 / 1 |
+| NVDAx | 7.3 | 3.5 | 0.6: 18 / 14 | 1.5: 7 / 4 |
+| SPCX | 4.3 | 1.5 | 0.6: 4 / 9 | 1.0: 1 / 0 |
+| USDC (new) | 3.3 | 1.0 | none: 23 / 0 | 1.0: 0 / 0 |
+| PAID | 1.9 | 1.5 | 0.6: 5 / 1 | kept (a meme coin) |
+| WBTC | 1.7 | 1.0 | 0.3: 3 / 9 | 0.5: 2 / 1 |
+
+The candidates replayed (`out/fl/`, e1_ideas.py with QUOTE, each wallet's unit exit, pooled): **USDC +7.4% a copy on 49,
++1.57 SOL without the best 2%** (ppp +14.5%, www +23.8%, eee +4.0%, qqq -6.4% on 6); B34nXKzC +20.7% on 9 (too few, an unknown
+token); GTA6 +1.1% on 19, -1.17 without the best 2%; ANT -2.8% on 17; TSLAx -5.5% on 11. Added: USDC. SOL coins paid with SOL
+tied up at most 3.0 SOL at once over the 7 days (more than 2.0 SOL on 4 copies), so ~2 SOL is kept free of floats.

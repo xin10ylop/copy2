@@ -1,0 +1,40 @@
+/home/user/copy2/analysis/research/2026-11-24/ideas/e1_ideas.py:133: RuntimeWarning: Mean of empty slice
+  f"blocks " + " / ".join(f"{100 * B[b].mean():+.1f}" for b in blocks) + f"; exits: tp {sum(r['why'] == 'tp' for r in ok)}")
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+6LwMLkCeEAqYp9Pv33ujrgd9uF987zPXdGKr9Z9sebh5: own result +62.76 SOL over 14 days, up on 12; 282 first buys of 0.5+ SOL
+  by day: 11-12 +2.49  11-13 -4.22  11-14 +0.15  11-15 +1.33  11-16 +0.98  11-17 -0.01  11-18 +13.01  11-19 +26.31  11-20 +0.19  11-21 +6.60  11-22 +4.05  11-23 +6.62  11-24 +4.48  11-25 +0.77
+6LwMLkCe (token): 2 copies with a cached path of 2 first buys; refused 0; 11-20 to 11-25
+  baseline (the unit's live exit): -11.0% a copy, -0.22 SOL at 1 SOL, without the best 2% -0.60; blocks +38.3 / -60.2 / +nan / +nan; exits: tp 0
+  variant              SOL  vs base  w/o 2%  vs base  blocks better   taken
+  P 3s >=3           -0.63    -0.41   -0.63    -0.03  0 of 4            1
+  P 3s >=6           +0.00    +0.22   +0.00    +0.60  1 of 4            0
+  P 3s >=10          +0.00    +0.22   +0.00    +0.60  1 of 4            0
+  P 5s >=3           -0.64    -0.42   -0.64    -0.04  0 of 4            1
+  P 5s >=6           +0.00    +0.22   +0.00    +0.60  1 of 4            0
+  P 5s >=10          +0.00    +0.22   +0.00    +0.60  1 of 4            0
+  P 10s >=3          -0.61    -0.39   -0.61    -0.01  0 of 4            1
+  P 10s >=6          +0.00    +0.22   +0.00    +0.60  1 of 4            0
+  P 10s >=10         +0.00    +0.22   +0.00    +0.60  1 of 4            0
+  P 20s >=3          -0.26    -0.04   -0.61    -0.01  0 of 4            2
+  P 20s >=6          -0.61    -0.39   -0.61    -0.01  0 of 4            1
+  P 20s >=10         -0.61    -0.39   -0.61    -0.01  0 of 4            1
+  D 10% live         -0.55    -0.33   -0.55    +0.05  1 of 4            1
+  D 10% leg          -0.63    -0.41   -0.63    -0.02  0 of 4            1
+  D 20% live         -0.50    -0.28   -0.50    +0.10  1 of 4            1
+  D 20% leg          -0.58    -0.36   -0.58    +0.02  1 of 4            1
+  D 30% live         -0.52    -0.30   -0.52    +0.08  1 of 4            1
+  D 30% leg          -0.51    -0.29   -0.51    +0.09  1 of 4            1
+  T 1.5x -25%        -0.14    +0.08   -0.60    +0.00  1 of 4            2
+  T 1.5x -40%        -0.22    +0.00   -0.60    +0.00  0 of 4            2
+  T 2.0x -25%        -0.14    +0.08   -0.60    +0.00  1 of 4            2
+  T 2.0x -40%        -0.22    +0.00   -0.60    +0.00  0 of 4            2
+  R                  -0.22    +0.00   -0.60    +0.00  0 of 4            2
+  extra leg 10% live     1 trades  -55.4% a trade,  -0.55 SOL, w/o 2%  +0.00; by block - / -55.4% (1) / - / -
+  extra leg 10% leg      1 trades  -62.5% a trade,  -0.63 SOL, w/o 2%  +0.00; by block - / -62.5% (1) / - / -
+  extra leg 20% live     1 trades  -49.7% a trade,  -0.50 SOL, w/o 2%  +0.00; by block - / -49.7% (1) / - / -
+  extra leg 20% leg      1 trades  -57.8% a trade,  -0.58 SOL, w/o 2%  +0.00; by block - / -57.8% (1) / - / -
+  extra leg 30% live     1 trades  -51.9% a trade,  -0.52 SOL, w/o 2%  +0.00; by block - / -51.9% (1) / - / -
+  extra leg 30% leg      1 trades  -51.4% a trade,  -0.51 SOL, w/o 2%  +0.00; by block - / -51.4% (1) / - / -
+  revival after a non-tp exit, within the path (~375 s after its buy): 1 exits with trades after; the price later reached 1.5x our exit price on 0%, 2x on 0%; the re-buy rule fired on 0
+  CANDIDATES: none

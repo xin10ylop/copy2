@@ -1,0 +1,14 @@
+the last 7 days: copyable coins priced in each token (first buy at its unit's floor), SOL a copy ties up, and a float's size
+  token       now copies  a day most at once   skipped / shrunk at: now | SIZES    by unit
+  TTWO        1.5    210   30.0        4.5 SOL   20/8 | 90/33 | 55/68 | 48/12 | 48/12 | 20/8 | 9/4 | 5/2 | 3/1    ttt 54, qqq 49, ppp 36, yyy 18, eee 13, rrr 13, ooo 11, www 8, uuu 8
+  PUMP        0.6     55    7.9        1.5 SOL   6/14 | 6/14 | 1/19 | 0/1 | 0/1 | 0/0 | 0/0 | 0/0 | 0/0    ppp 16, qqq 14, yyy 9, ttt 6, www 4, rrr 2, eee 2, uuu 1, iii 1
+  hSOL        1.0     97   13.9        3.0 SOL   35/4 | 41/27 | 36/32 | 35/4 | 35/4 | 17/1 | 6/0 | 1/1 | 0/0    qqq 33, www 25, yyy 17, eee 12, ppp 4, ttt 3, iii 2, ooo 1
+  NVDAx       0.6     51    7.3        3.5 SOL   18/14 | 18/14 | 17/15 | 16/1 | 16/1 | 7/4 | 4/3 | 1/2 | 1/0    ppp 17, qqq 17, uuu 7, ttt 5, rrr 2, www 2, yyy 1
+  ANT         0.0     21    3.0        2.0 SOL   21/0 | 3/3 | 2/4 | 2/0 | 2/0 | 1/0 | 0/0 | 0/0 | 0/0    ppp 10, eee 3, qqq 2, yyy 2, www 1, uuu 1, ttt 1, rrr 1
+  USDC        0.0     23    3.3        1.0 SOL   23/0 | 0/5 | 0/5 | 0/0 | 0/0 | 0/0 | 0/0 | 0/0 | 0/0    ppp 8, eee 6, qqq 5, www 3, ooo 1
+  SPCX        0.6     30    4.3        1.5 SOL   4/9 | 4/9 | 1/12 | 1/0 | 1/0 | 0/0 | 0/0 | 0/0 | 0/0    qqq 6, ppp 5, rrr 5, ooo 4, uuu 3, www 2, ttt 2, yyy 2, eee 1
+  WBTC        0.3     12    1.7        1.0 SOL   3/9 | 2/1 | 0/3 | 0/0 | 0/0 | 0/0 | 0/0 | 0/0 | 0/0    ppp 4, www 2, ttt 1, eee 1, rrr 1, qqq 1, ooo 1, yyy 1
+  TSLAx       0.0     11    1.6        1.0 SOL   11/0 | 0/3 | 0/3 | 0/0 | 0/0 | 0/0 | 0/0 | 0/0 | 0/0    ppp 4, qqq 2, ooo 2, uuu 1, rrr 1, ttt 1
+  B34nXKzC    0.0     12    1.7        1.5 SOL   12/0 | 3/3 | 2/4 | 2/0 | 2/0 | 0/0 | 0/0 | 0/0 | 0/0    ppp 5, qqq 2, ttt 2, rrr 1, www 1, uuu 1
+  PAID        0.6     13    1.9        1.5 SOL   5/1 | 5/1 | 2/4 | 2/0 | 2/0 | 0/0 | 0/0 | 0/0 | 0/0    yyy 5, ppp 3, www 3, ttt 1, qqq 1
+SOL coins (paid with SOL): 345 copies, the most SOL tied up at once 3.0; copies that found more than X tied up: 1.5 SOL 12, 2.0 SOL 4, 2.5 SOL 2, 3.0 SOL 0

@@ -45,7 +45,7 @@ su = P[SOLM]["usdPrice"]
 rate = {TOK[k]: P[full[k]]["usdPrice"] / su / 10 ** P[full[k]]["decimals"] for k in TOK if k in full and full[k] in P}
 FLOOR = {lab: mn for lab, _, _, mn, _, _ in UNITS}
 print(f"the last {DAYS:.0f} days: copyable coins priced in each token (first buy at its unit's floor), SOL a copy ties up, and a float's size")
-print(f"  {'token':9s} {'now':>5s} {'copies':>6s} {'a day':>6s} {'most at once':>12s}   skipped / shrunk at: now | 1.0 | 1.5 | 2.0 SOL    by unit")
+print(f"  {'token':9s} {'now':>5s} {'copies':>6s} {'a day':>6s} {'most at once':>12s}   skipped / shrunk at: now | SIZES    by unit")
 for tk in sorted(ev, key=lambda k: -len(ev[k])):
     rows = sorted((t, lab, stake, hold) for t, lab, stake, hold, qty, m in ev[tk] if tk in rate and qty * rate[tk] >= FLOOR[lab])
     if not rows: continue
@@ -60,5 +60,23 @@ for tk in sorted(ev, key=lambda k: -len(ev[k])):
             use = min(stake, free); sh += use < stake; opens.append((t + hold, use))
         return f"{sk}/{sh}"
     units = collections.Counter(lab for _, lab, _, _ in rows)
-    print(f"  {tk:9s} {LEVEL.get(tk, 0):5.1f} {len(rows):6d} {len(rows) / DAYS:6.1f} {peak:10.1f} SOL   " + " | ".join(sim(x) for x in (LEVEL.get(tk, 0), 1.0, 1.5, 2.0))
+    print(f"  {tk:9s} {LEVEL.get(tk, 0):5.1f} {len(rows):6d} {len(rows) / DAYS:6.1f} {peak:10.1f} SOL   " + " | ".join(sim(x) for x in (LEVEL.get(tk, 0),) + tuple(float(v) for v in __import__("os").environ.get("SIZES", "1.0,1.5,2.0").split(",")))
           + "    " + ", ".join(f"{k} {v}" for k, v in units.most_common()))
+
+rows = []
+for lab, w8, kind, mn, stake, hold in UNITS:
+    if kind != "all": continue
+    seen = set(); tr = []
+    for l in open(f"{SP}/hist26_{w8}/{w8}_trades.jsonl"):
+        for e in json.loads(l)["trades"] or []:
+            k = (e["m"], e["slot"], e["buy"], e["q"], e["tok"])
+            if k not in seen: seen.add(k); tr.append(e)
+    first = {}
+    for e in sorted(tr, key=lambda e: (e["slot"], not e["buy"])): first.setdefault(e["m"], e)
+    for f in first.values():
+        if f["buy"] and (not f["quote"] or f["quote"].startswith("1111")) and f["t"] >= T0 and f["q"] / 1e9 >= mn: rows.append((f["t"], stake, hold))
+rows.sort(); opens = []; peak = 0; over = collections.Counter()
+for t, stake, hold in rows:
+    opens = [(e, s) for e, s in opens if e > t]; opens.append((t + hold, stake)); n = sum(s for _, s in opens); peak = max(peak, n)
+    for x in (1.5, 2.0, 2.5, 3.0): over[x] += n > x
+print(f"SOL coins (paid with SOL): {len(rows)} copies, the most SOL tied up at once {peak:.1f}; copies that found more than X tied up: " + ", ".join(f"{x} SOL {over[x]}" for x in (1.5, 2.0, 2.5, 3.0)))
