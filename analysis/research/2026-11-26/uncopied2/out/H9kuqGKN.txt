@@ -1,0 +1,9 @@
+H9kuqGKN (unit: token coins, 1.3+ SOL): 5540 coins sold out, 11-16 to 11-25 UTC; 3 in unpriced tokens and 81 still held left out
+  group                                     coins   own SOL  a coin  days up
+  COPIED by the unit                          176    +71.60  +0.407   7 of 10 
+  SOL coin (the unit takes token coins)      3564    +69.71  +0.020   8 of 10 
+  its buy 0.25-1.3 SOL                        894   +103.33  +0.116  10 of 10 
+  its buy under 0.25 SOL                       58     +0.01  +0.000   4 of 10 
+  token coin, no route to its token           848    +74.81  +0.088  10 of 10 
+  copied, by route: float/anchor 171, pool+curve (a hop more) 5
+  tokens no route reaches: ANTBTZQ1 63, USDC 59, Pren1FvF 58, 9hjBLBrc 51, GTA6ot7g 42, SQQQAa3g 23

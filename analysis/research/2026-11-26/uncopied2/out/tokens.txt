@@ -1,0 +1,28 @@
+not-copied groups at the unit's MIN or more (coins, the wallet's own SOL):
+  qqq: no route, at MIN+ 68 (+43.18)   SOL coin, at MIN+ 262 (+66.29)
+  www: no route, at MIN+ 16 (+2.05)
+  eee: no route, at MIN+ 43 (+5.23)
+  rrr: no route, at MIN+ 17 (+6.05)   SOL coin, at MIN+ 183 (+45.47)
+  ttt: no route, at MIN+ 21 (+1.47)   SOL coin, at MIN+ 140 (+22.76)
+  yyy: no route, at MIN+ 22 (+2.14)   SOL coin, at MIN+ 56 (+3.50)
+  uuu: no route, at MIN+ 6 (+1.74)
+  iii: 
+  ooo: no route, at MIN+ 14 (+4.79)
+  ppp: no route, at MIN+ 69 (+11.41)
+
+the tokens no route reaches, by the coins our units would copy with it as a float (first buy at the unit's MIN+):
+  EPjFWdd5 USDC         51 coins  own   +3.76 SOL (+0.074 a coin)  days up 5 of 13  by unit: eee 24, ppp 17, qqq 6, www 3, ooo 1
+  ANTBTZQ1 ANT          21 coins  own   +1.96 SOL (+0.093 a coin)  days up 4 of 5  by unit: ppp 10, eee 3, qqq 2, yyy 2, www 1, rrr 1, ttt 1, uuu 1
+  GTA6ot7g GTA6         20 coins  own   +5.65 SOL (+0.283 a coin)  days up 2 of 2  by unit: ppp 11, qqq 6, yyy 2, eee 1
+  XsDoVfqe TSLAx        14 coins  own   +3.96 SOL (+0.283 a coin)  days up 4 of 7  by unit: ppp 4, ooo 3, qqq 2, ttt 2, rrr 1, yyy 1, uuu 1
+  B34nXKzC ?            12 coins  own  +14.34 SOL (+1.195 a coin)  days up 4 of 4  by unit: ppp 5, qqq 3, ttt 2, rrr 1, uuu 1
+  DJTu7vi8 ?            11 coins  own   -0.12 SOL (-0.011 a coin)  days up 3 of 6  by unit: eee 3, ttt 3, qqq 1, rrr 1, yyy 1, uuu 1, ppp 1
+  XsqE9cRR ?             7 coins  own   -0.53 SOL (-0.076 a coin)  days up 4 of 6  by unit: qqq 2, yyy 2, www 1, ttt 1, ppp 1
+  BPxxfRCX ?             6 coins  own   -0.46 SOL (-0.076 a coin)  days up 1 of 3  by unit: qqq 2, ooo 2, rrr 1, yyy 1
+  SQQQAa3g ?             5 coins  own   +0.98 SOL (+0.197 a coin)  days up 3 of 3  by unit: qqq 2, uuu 1, ooo 1, ppp 1
+  Xsf9mBkt ?             5 coins  own   +0.23 SOL (+0.046 a coin)  days up 2 of 3  by unit: qqq 1, www 1, eee 1, ooo 1, ppp 1
+  zK42Ztz6 ?             5 coins  own   +4.71 SOL (+0.943 a coin)  days up 2 of 2  by unit: qqq 4, yyy 1
+  NVDAVuiB ?             5 coins  own   +0.89 SOL (+0.177 a coin)  days up 2 of 4  by unit: rrr 3, ooo 1, ppp 1
+  AMC1qwR9 ?             4 coins  own   -0.27 SOL (-0.067 a coin)  days up 1 of 3  by unit: qqq 3, ppp 1
+  WXMRyRZh ?             4 coins  own   -1.17 SOL (-0.292 a coin)  days up 0 of 3  by unit: qqq 3, ppp 1
+  A7bdiYdS ?             4 coins  own   -0.44 SOL (-0.109 a coin)  days up 1 of 3  by unit: qqq 2, eee 1, rrr 1

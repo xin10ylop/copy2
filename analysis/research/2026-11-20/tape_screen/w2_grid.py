@@ -36,7 +36,7 @@ def jup_prices(qs):
             except Exception: time.sleep(5 * (a + 1))
     return P
 # 1. its own history
-sub = f"hist_{W[:8]}"; D = f"{SP}/{sub}"
+sub = os.environ.get("HIST_PREFIX", "hist_") + W[:8]; D = f"{SP}/{sub}"   # HIST_PREFIX (Nov 26): a fresher history folder
 if not os.path.exists(f"{D}/{W[:8]}_trades.jsonl"):
     r_ = subprocess.run([sys.executable, "-I", C1, SP, str(DAYS)], env={**os.environ, "SUB": sub, "WALLETS": W}, capture_output=True, text=True)
     cap = [l for l in r_.stdout.splitlines() if "CAPPED" in l]

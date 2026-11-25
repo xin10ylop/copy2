@@ -1,0 +1,9 @@
+6LwMLkCe (unit: token coins, 0.5+ SOL): 330 coins sold out, 11-12 to 11-25 UTC; 1 in unpriced tokens and 11 still held left out
+  group                                     coins   own SOL  a coin  days up
+  COPIED by the unit                          111    +31.54  +0.284  10 of 12 
+  SOL coin (the unit takes token coins)       144    +22.75  +0.158  10 of 13 
+  its buy 0.25-0.5 SOL                          2     -0.18  -0.088   0 of 1  
+  its buy under 0.25 SOL                       13     +0.08  +0.006   6 of 8  
+  token coin, no route to its token            60     +1.72  +0.029   8 of 12 
+  copied, by route: float/anchor 107, pool+curve (a hop more) 4
+  tokens no route reaches: 9EEFuHwR 4, Pren1FvF 4, 2kWx47CU 4, DJTu7vi8 3, 4CxjZyMN 3, CR5FFdcC 3
