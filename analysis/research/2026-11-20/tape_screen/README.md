@@ -539,3 +539,18 @@ over 12 days, up on 11. Deep tests on all their buys (`out_w3/*_all_nov25.txt`, 
 - **5AmLiWon: FAIL** (275 buys; the rolling picks blind -5.8 / -2.0 / +19.4%, 1 of 3 blocks). Its SOL coins with tp 3x /
   420 s / stall 240: -11.7 / +10.0 / +21.9 / +19.4% = +9.5% (197), +8.49 without the best 2%, 3 of 4; its token coins lose
   (-18.8%). Picking that cell after the table is a choice on seen data; its own result turned only on Nov 22: re-test later.
+
+**The second Nov 25 screen (93.3 h; the consistency ranking and the benchmark, `s1_screen.py`).** The benchmark: wallet 4
+left out as a launch bundle (its token coins of 1.3+ SOL: 91 copies, up 3 of 5 days, +2.9%); GqWfqfG6 #25 by the mean,
+#23 by consistency (up 4 of 5 days, +13.1%); FatoU1bj #3 by the mean but #77 by consistency (-9.0% without its best 2%);
+CqCAzte8 #91 / #293. The consistency ranking demotes the one-burst wallet that failed live and keeps the steady one:
+better than the mean. Launch-slot buyers now get their own list (TOPLAUNCH) instead of none. TOPCONS's top 15, own
+histories (Helius, MAXPAGES 10, `../../../../` scratchpad `w3out/own_*_nov25.txt`): 3SiQo8MJ (tested above), Bing35WC
+-14.80; 3F1rF4kp -19.04, FecLfkDA -2.08, 8vmMQXGq -42.02, 7Rqv6UJV -32.87, GZeeyMsV -23.87, 2Mcjmq3U -15.72 (STOP);
+HbriciZm, 9WpU9vd9 lost before; 2z2q5gk8, 7mj1FuYw, 63qcMxrU barely make money on the tape. Four days of tape can't
+judge a wallet: most "steady" ones lose over their whole history. Passed: HtHkKxYN +21.91 over 15 days (up 9),
+Crs7Q1k2 +1.65 over 5 days. Deep tests (`out_w3/*_all_nov25.txt`, `*_setup_nov25.txt`):
+- **HtHkKxYN: PASS** (195 copies; gate 1 +1.9 / +1.3 / +11.9%; picks blind -8.3 / +1.3 / +14.3%, +5.0% a copy, +2.06
+  without the best 2%, 2 of 3). **The units' fixed exit (tp 3x / 420 s / stall 240), all coins, no pick: +0.1 / +13.1 /
+  +1.3 / +14.3% = +7.2% a copy, +6.16 SOL without the best 2%, 4 of 4 blocks.** Price 1.09x. About 13 buys a day.
+- **Crs7Q1k2: FAIL** (48 copies, blind -6.2% a copy, 1 of 3 blocks).
