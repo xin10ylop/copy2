@@ -13,10 +13,10 @@ import sys, os, json, collections, datetime as dt, numpy as np, concurrent.futur
 SP, OLD, NEW = sys.argv[1], sys.argv[2], sys.argv[3]
 H = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(H, "../../2026-11-13/tab_exits")); import cmodel as M
-W = "FatoU1bj1cwMEZ7nNBUu47s8HpJNAFR5ZajGPtP8Fph1"; COST = float(os.environ.get("COST", 0.0064)); STAKE = 1.0; PMAX = 1.5
+W = os.environ.get("FAST_W", "FatoU1bj1cwMEZ7nNBUu47s8HpJNAFR5ZajGPtP8Fph1"); COST = float(os.environ.get("COST", 0.0064)); STAKE = 1.0; PMAX = 1.5   # Nov 25: any fast trader (FAST_W)
 def load(d):
-    tr = [e for l in open(f"{d}/FatoU1bj_trades.jsonl") for e in (json.loads(l)["trades"] or [])]
-    return tr, json.load(open(f"{d}/FatoU1bj_sigs.json"))
+    tr = [e for l in open(f"{d}/{W[:8]}_trades.jsonl") for e in (json.loads(l)["trades"] or [])]
+    return tr, json.load(open(f"{d}/{W[:8]}_sigs.json"))
 tr_o, s_o = load(OLD); tr_n, s_n = load(NEW)
 cut = max(t for _, t in s_o)                                   # the old data's end
 sigs = sorted({(t, s) for s, t in s_o + s_n})
@@ -83,7 +83,7 @@ rows, V = table(1)
 old = np.array([not r["new"] for r in rows]); new = ~old
 blocks = np.array_split(np.where(old)[0], 4)
 hold = np.array([r["hold"] for r in rows if r.get("hold") is not None])
-print(f"FatoU1bj: {len(rows)} copies of its first buys of 0.5+ SOL ({old.sum()} to {dt.datetime.fromtimestamp(cut, dt.UTC):%m-%d %H:%M} UTC, "
+print(f"{W[:8]}: {len(rows)} copies of its first buys of 0.5+ SOL ({old.sum()} to {dt.datetime.fromtimestamp(cut, dt.UTC):%m-%d %H:%M} UTC, "
       f"{new.sum()} after); refused over {PMAX}x: {sum(r['refused'] for r in rows)}; its hold to its first sale: median {np.median(hold):.0f} s, "
       f"10% {np.percentile(hold, 10):.0f} s, 90% {np.percentile(hold, 90):.0f} s; COST {COST}")
 print(f"\n1. the pick on the old data at D = 2 (the most SOL without the best 2%); % a copy at 1 SOL")
@@ -109,3 +109,11 @@ for land in (1, 2):
             for d in DS:
                 i = KEYS.index((d, tp, cap)); cells.append(f"{100 * V_l[:, i].mean():+5.1f}% ({wo2(V_l[:, i]):+5.2f})")
             print(f"   buy slot+{land}, tp {str(tp or 'none'):4s}, cap {cap:3d} s:  " + "  ".join(f"{('never' if d is None else f'D={d}'):5s} {c}" for d, c in zip(DS, cells)))
+# Nov 25 (fast traders from the screen's TOPFAST): the screen's fixed exits, no pick, over 4 time blocks of all copies
+allb = np.array_split(np.arange(len(rows)), 4)
+print("\n3. the fixed exits (no pick), all copies in 4 time blocks, % a copy (w/o the best 2% in SOL); our buy slot+1")
+for k_ in [(2, 1.5, 15), (2, 1.5, 30), (2, None, 15), (2, None, 30), (1, 1.5, 15), (None, 1.5, 30)]:
+    i = KEYS.index(k_)
+    print(f"   {name(k_):48s} " + " / ".join(f"{100 * V[b, i].mean():+6.1f}" for b in allb) + f" = {100 * V[:, i].mean():+6.1f}% ({len(V)})  {wo2(V[:, i]):+7.2f}  "
+          f"+blocks {sum(1 for b in allb if V[b, i].mean() > 0)}/4")
+

@@ -554,3 +554,15 @@ Crs7Q1k2 +1.65 over 5 days. Deep tests (`out_w3/*_all_nov25.txt`, `*_setup_nov25
   without the best 2%, 2 of 3). **The units' fixed exit (tp 3x / 420 s / stall 240), all coins, no pick: +0.1 / +13.1 /
   +1.3 / +14.3% = +7.2% a copy, +6.16 SOL without the best 2%, 4 of 4 blocks.** Price 1.09x. About 13 buys a day.
 - **Crs7Q1k2: FAIL** (48 copies, blind -6.2% a copy, 1 of 3 blocks).
+
+**Fast traders (Nov 25; the owner: "maybe we can copy fast traders too, and make more money"; the screen's TOPFAST,
+93.9 h).** The 2,120 wallets holding a median under 20 s, copied realistically (out at 1.5x its price, in the first trade
+2 slots after its sale, or 15 s): every copy's mean **-6.5%**. The top 15 by consistency are positive on their 3-4 days;
+own histories (Helius): 7NLyXFc2 +25.61 SOL over 9 days (9 up), 4bL2mY7s +22.71 over 12 (9 up), 6iFupNYb +8.26 over 3,
+Cf4dxUu7 capped at 2 days (10,000 transactions), 21RfcpSh -1.97 (STOP). Their copies on their whole histories with the
+fixed fast exits, no pick (`../../2026-11-24/fatou_exit/x1_exit.py` with FAST_W, its SOL coins, `out_w3/*_fast.txt`):
+- 7NLyXFc2 (57, 9 refused over 1.5x): tp 1.5 / 15 s / its sale + 2 slots -3.7 / -4.8 / +18.2 / +9.8% = +4.8%, +2.02 SOL
+  without the best 2%, 2 of 4 blocks.
+- 4bL2mY7s (79): -2.6%, 1 of 4; every fixed exit negative.
+- 6iFupNYb (90, 3 days): +9.9%, 3 of 4, but +2.36 without the best 2% (two copies carry most of it).
+No fast trader copies for clearly more than the units do; FatoU1bj (live at 0.1 SOL) is the test that stays.
