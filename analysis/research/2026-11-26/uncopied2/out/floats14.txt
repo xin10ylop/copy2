@@ -1,0 +1,14 @@
+the last 14 days: copyable coins priced in each token (first buy at its unit's floor), SOL a copy ties up, and a float's size
+  token       now copies  a day most at once   skipped / shrunk at: now | 1.0 | 1.5 | 2.0 SOL    by unit
+  TTWO        1.5    474   33.9        4.5 SOL   41/16 | 95/23 | 41/16 | 20/5    ppp 127, qqq 98, ttt 84, eee 42, ooo 38, yyy 29, rrr 23, www 21, uuu 12
+  PUMP        0.6     72    5.1        1.5 SOL   8/19 | 2/1 | 0/0 | 0/0    qqq 18, ppp 16, yyy 15, ttt 8, rrr 6, www 4, uuu 2, eee 2, iii 1
+  NVDAx       0.6     76    5.4        3.5 SOL   20/17 | 17/1 | 7/4 | 4/3    ppp 17, qqq 17, rrr 13, uuu 10, ttt 6, yyy 5, ooo 5, www 3
+  hSOL        1.0     97    6.9        3.0 SOL   35/4 | 35/4 | 17/1 | 6/0    qqq 33, www 25, yyy 17, eee 12, ppp 4, ttt 3, iii 2, ooo 1
+  SPCX        0.6     61    4.4        1.5 SOL   6/13 | 1/0 | 0/0 | 0/0    ooo 15, eee 10, qqq 8, rrr 7, ttt 6, uuu 5, ppp 5, yyy 3, www 2
+  USDC        0.0     50    3.6        1.0 SOL   50/0 | 0/0 | 0/0 | 0/0    eee 24, ppp 16, qqq 6, www 3, ooo 1
+  ANT         0.0     21    1.5        2.0 SOL   21/0 | 2/0 | 1/0 | 0/0    ppp 10, eee 3, qqq 2, yyy 2, www 1, uuu 1, ttt 1, rrr 1
+  WBTC        0.3     19    1.4        1.0 SOL   6/13 | 0/0 | 0/0 | 0/0    ttt 4, ppp 4, yyy 2, rrr 2, eee 2, qqq 2, www 2, ooo 1
+  GTA6        0.0     20    1.4        2.0 SOL   20/0 | 2/1 | 1/1 | 0/0    ppp 11, qqq 6, yyy 2, eee 1
+  PAID        0.6     24    1.7        1.5 SOL   5/1 | 2/0 | 0/0 | 0/0    www 11, yyy 7, ppp 3, eee 1, ttt 1, qqq 1
+  TSLAx       0.0     14    1.0        1.0 SOL   14/0 | 0/0 | 0/0 | 0/0    ppp 4, ooo 3, ttt 2, qqq 2, yyy 1, uuu 1, rrr 1
+  B34nXKzC    0.0     12    0.9        1.5 SOL   12/0 | 2/0 | 0/0 | 0/0    ppp 5, qqq 2, ttt 2, rrr 1, www 1, uuu 1
