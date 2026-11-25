@@ -557,6 +557,19 @@ Crs7Q1k2 +1.65 over 5 days. Deep tests (`out_w3/*_all_nov25.txt`, `*_setup_nov25
   +1.3 / +14.3% = +7.2% a copy, +6.16 SOL without the best 2%, 4 of 4 blocks.** Price 1.09x. About 13 buys a day.
 - **Crs7Q1k2: FAIL** (48 copies, blind -6.2% a copy, 1 of 3 blocks).
 
+**The screen of Nov 25 evening (96.7 h, `sss` in the background) and the owner's "deep check" of its new names (Nov 25
+late; `out_w3/{FecLfkDA,Bing35WC}_{all,setup}_nov25.txt`; NOSTOP=1: copies tested although both lose themselves).** A bug
+first: Helius refuses JSON-RPC batches, and `cmodel.path` cached each refused coin as empty, so the first run replayed 5 of
+FecLfkDA's 79 buys; fixed (`e0749e0`), the empty coins deleted, the rerun on Helius's getTransactionsForAddress.
+- **FecLfkDA: FAIL** (79 copies; gate 1 +1.7 / -2.7 / -5.6%; picks blind -4.8% a copy, 0 of 3 blocks; the units' exit
+  -4.4%). Own -2.11 SOL over 15 days, up on 5.
+- **Bing35WC: PASS** (75 copies; gate 1 +19.6 / +4.7 / +11.7%; picks blind +12.7% a copy, +4.51 SOL without the best 2%,
+  3 of 3 blocks). **The units' fixed exit (tp 3x / 420 s / stall 240), all coins, no pick: -10.7 / +33.1 / +10.5 / +18.5%
+  = +12.8% a copy (75), +5.84 SOL without the best 2%, 3 of 4 blocks**; its SOL coins +14.5% (67), its 1.3+ SOL buys
+  +14.9% (61). Price 1.02x on the tape. Against it: it loses -14.83 SOL itself over 13 days (up on 5), its first block
+  (Nov 12-19) loses, and 75 buys in 13 days is few (about 6 a day).
+- 5AmLiWon: FAIL earlier the same day (above).
+
 **Fast traders (Nov 25; the owner: "maybe we can copy fast traders too, and make more money"; the screen's TOPFAST,
 93.9 h).** The 2,120 wallets holding a median under 20 s, copied realistically (out at 1.5x its price, in the first trade
 2 slots after its sale, or 15 s): every copy's mean **-6.5%**. The top 15 by consistency are positive on their 3-4 days;
