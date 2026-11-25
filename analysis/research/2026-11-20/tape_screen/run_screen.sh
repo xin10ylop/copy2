@@ -18,5 +18,5 @@ if ! grep -q "^tape" /tmp/screen.txt || ! grep -q "^TOPMEAN" /tmp/screen.txt; th
   exit 1
 fi
 grep -E "^tape|bundles|jumpy|late|median price" /tmp/screen.txt; sed -n '/by the mean over/,+15p' /tmp/screen.txt
-sed -n '/^by consistency/,+15p' /tmp/screen.txt; sed -n '/^launch-slot buyers/,+10p' /tmp/screen.txt; sed -n '/^fast traders/,+15p' /tmp/screen.txt; sed -n '/^benchmark/,+8p' /tmp/screen.txt   # Nov 25: consistency and the benchmark
+sed -n '/^by consistency/,+15p' /tmp/screen.txt; sed -n '/^launch-slot buyers/,+10p' /tmp/screen.txt; sed -n '/^fast traders/,+15p' /tmp/screen.txt; sed -n '/^agreement:/,+3p' /tmp/screen.txt; sed -n '/^benchmark/,+8p' /tmp/screen.txt   # Nov 25: consistency and the benchmark
 grep -E "^TOPMEAN|^TOPCONS|^TOPLAUNCH|^TOPFAST" /tmp/screen.txt

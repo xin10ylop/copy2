@@ -352,6 +352,44 @@ print(f"\nfast traders (median hold under {MIN_HOLD:.0f} s; {len(fast_w)} wallet
 for sh, w, u, n, na, nu, mean_, m30, o, pr, hd in fr[:15]:
     print(f"  {u:44s} {n:4d} copies  hold {hd:4.0f} s  up {nu:2d} of {na:2d} days  mean {mean_:+6.1f}% (30 s: {m30:+6.1f}%)  w/o best 2% {w:+6.1f}%  own {o:+7.2f} SOL  price {pr:.2f}x")
 print(f"TOPFAST{TOPN}: " + ",".join(r_[2] for r_ in fr[:TOPN]))
+# AGREEMENT (Nov 25; the owner: "this also can work with much more wallets on the screener no?"). The good set: the top
+# AGREE_N wallets by consistency (as TOPCONS: days up, own result positive) on ONE half of the tape; scored on the OTHER
+# half: each copy of a good wallet's first buy, by how many OTHER good wallets bought the coin in the hour before it
+# (known when we decide). Both ways round (pick on half 1, score half 2, and back). Also with our ten copied wallets as
+# the set. The 5-exit mean, as TOPMEAN. The can't-copy filters are the whole tape's (they say what can be copied, not
+# what pays); the own result and the consistency are the picking half's only.
+AN = int(os.environ.get("AGREE_N", 60)); AW = 3600
+def half_rank(lo, hi):
+    out_ = []
+    for o, u, mv, n, pr in elig + [(0, u_, 0, 0, 0) for o_, u_, n_, pr_ in launch_elig]:
+        xs = [x for x in by[u] if lo <= x[1] < hi]
+        if len(xs) < 5: continue
+        oh = sum(own[(u, x[4])][1] - own[(u, x[4])][0] for x in xs if (u, x[4]) in own and own[(u, x[4])][3] >= 0.99 * own[(u, x[4])][2])
+        na, nu, mean_, w = cons(xs)
+        if na >= 2 and oh > 0: out_.append((nu / (na + 2), w, u))
+    out_.sort(reverse=True); return {u for _, _, u in out_[:AN]}
+def agree(G, lo, hi):
+    ev = collections.defaultdict(list)
+    for u in G:
+        for x in by.get(u, []): ev[x[4]].append((x[1], u, x))
+    res = collections.defaultdict(list)
+    for m, es in ev.items():
+        for t, u, x in es:
+            if not (lo <= t < hi): continue
+            k = len({u2 for t2, u2, _ in es if u2 != u and t - AW <= t2 < t})
+            res[min(k, 2)].append(m5(x))
+    return res
+t_lo, t_mid, t_hi = t_first, mid, t_last + 1
+OURS = [W4, "CqCAzte8TwCDbCBrhjUpsfG6Au9pZPdrTXrVDidKHGAn", "CgyPomTGt9BFqnjBdRS38BCBUZvtMJDf3aKQy8sMTVKX", "3XeFcZKSn8WzqoDAm5vvgbdfkU82rMmhJfp1q4LXtnX6",
+        "6LwMLkCeEAqYp9Pv33ujrgd9uF987zPXdGKr9Z9sebh5", "6nNzEg86rbY4J1Z6euDn9iQoih8uaSj6ZVZHZVvFxjJf", "GqWfqfG6Mt6RL8BKUWiBkirqzycUc15bgZVtFERQzxJ8",
+        "FatoU1bj1cwMEZ7nNBUu47s8HpJNAFR5ZajGPtP8Fph1", "HtHkKxYN43BdJ8QJU1srMa3bqjpncLFcZgVCX8yU3AJS", "3SiQo8MJMzXaZcJexMivmk5CRgrNxDUh4bDbgb3wFAmW"]
+print(f"\nagreement: copies of a good wallet's buy by how many OTHER good wallets bought the coin in the hour before (5-exit mean, % a copy):")
+for lab, G, lo, hi in (("top %d by consistency on half 1, scored on half 2" % AN, half_rank(t_lo, t_mid), t_mid, t_hi),
+                       ("top %d by consistency on half 2, scored on half 1" % AN, half_rank(t_mid, t_hi), t_lo, t_mid),
+                       ("our ten copied wallets, the whole tape", set(OURS), t_lo, t_hi)):
+    r_ = agree(G, lo, hi)
+    cell = lambda k: f"{np.mean(r_[k]):+6.1f}% ({len(r_[k]):4d})" if r_[k] else "     -      "
+    print(f"  {lab:52s} alone {cell(0)}   1 other {cell(1)}   2+ others {cell(2)}   ({len(G)} wallets)")
 BENCH = [("qqq wallet 4", W4, "token", 1.3), ("www CqCAzte8", "CqCAzte8TwCDbCBrhjUpsfG6Au9pZPdrTXrVDidKHGAn", "all", 0.5),
          ("eee CgyPomTG", "CgyPomTGt9BFqnjBdRS38BCBUZvtMJDf3aKQy8sMTVKX", "all", 0.5), ("rrr 3XeFcZKS", "3XeFcZKSn8WzqoDAm5vvgbdfkU82rMmhJfp1q4LXtnX6", "token", 0.5),
          ("ttt 6LwMLkCe", "6LwMLkCeEAqYp9Pv33ujrgd9uF987zPXdGKr9Z9sebh5", "token", 0.5), ("yyy 6nNzEg86", "6nNzEg86rbY4J1Z6euDn9iQoih8uaSj6ZVZHZVvFxjJf", "token", 0.5),
