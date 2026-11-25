@@ -222,11 +222,17 @@ def prem_of(xs):
 def hold_of(xs):
     h = [x[3]["_its_hold"] for x in xs if x[3] != "refused"]
     return float(np.median(h)) if h else 9e9
-why = {}   # Nov 25: the filter that left a wallet out (the benchmark below says why a copied wallet is missing)
+launch_elig = []; why = {}   # Nov 25: the filter that left a wallet out (the benchmark below says why a copied wallet is missing)
 for u, xs in by.items():
     if len(xs) < MINN: why[u] = f"under {MINN} copies"; continue
     if hold_of(xs) < MIN_HOLD: fast += 1; why[u] = f"speed trader (median hold {hold_of(xs):.0f} s)"; continue
-    if np.mean([(u, x[4]) in cslot for x in xs]) >= BUNDLE: bundle += 1; why[u] = "launch bundle"; continue
+    if np.mean([(u, x[4]) in cslot for x in xs]) >= BUNDLE:
+        bundle += 1; why[u] = "launch bundle"
+        # Nov 25: wallet 4 buys in the create slot too, and our copies of it (a slot later) work: these wallets get a list of
+        # their own (TOPLAUNCH, below) rather than none
+        ob = [own[(u, x[4])] for x in xs if (u, x[4]) in own]; db = [o for o in ob if o[3] >= 0.99 * o[2]]
+        launch_elig.append((sum(o[1] - o[0] for o in db), u, len(xs), prem_of(xs)))
+        continue
     oc = [own[(u, x[4])] for x in xs if (u, x[4]) in own]; done_ = [o for o in oc if o[3] >= 0.99 * o[2]]
     own_sol = sum(o[1] - o[0] for o in done_); own_of[u] = (own_sol, len(done_), float(np.median([o[5] for o in oc])) if oc else 0)
     # Nov 22, the owner: rank also by what the wallets MADE, with only the can't-copy filters (speed, bundles, flat, and
@@ -303,6 +309,18 @@ print(f"\nby consistency (the share of its days, 2+ copies a day, on which our c
 for sh, w, u, n, na, nu, mean_, o, pr in cr[:15]:
     print(f"  {u:44s} {n:4d} copies  up {nu:2d} of {na:2d} days  mean {mean_:+6.1f}%  w/o best 2% {w:+6.1f}%  own {o:+7.2f} SOL  price {pr:.2f}x")
 print(f"TOPCONS{TOPN}: " + ",".join(r_[2] for r_ in cr[:TOPN]))
+lr = []
+for o, u, n, pr in launch_elig:
+    if o <= 0 or pr > MAX_PREM: continue
+    na, nu, mean_, w = cons(by[u])
+    if na >= 3: lr.append((nu / (na + 2), w, u, n, na, nu, mean_, o, pr))
+lr.sort(reverse=True)
+print(f"\nlaunch-slot buyers (half+ of their buys in the coin's create slot, as wallet 4's often are; our copy lands a slot later), "
+      f"by consistency, own result positive, price under {MAX_PREM}x ({len(lr)} wallets):")
+for sh, w, u, n, na, nu, mean_, o, pr in lr[:10]:
+    print(f"  {u:44s} {n:4d} copies  up {nu:2d} of {na:2d} days  mean {mean_:+6.1f}%  w/o best 2% {w:+6.1f}%  own {o:+7.2f} SOL  price {pr:.2f}x")
+print(f"TOPLAUNCH{TOPN}: " + ",".join(r_[2] for r_ in lr[:TOPN]))
+rank_launch = {r_[2]: i + 1 for i, r_ in enumerate(lr)}
 BENCH = [("qqq wallet 4", W4, "token", 1.3), ("www CqCAzte8", "CqCAzte8TwCDbCBrhjUpsfG6Au9pZPdrTXrVDidKHGAn", "all", 0.5),
          ("eee CgyPomTG", "CgyPomTGt9BFqnjBdRS38BCBUZvtMJDf3aKQy8sMTVKX", "all", 0.5), ("rrr 3XeFcZKS", "3XeFcZKSn8WzqoDAm5vvgbdfkU82rMmhJfp1q4LXtnX6", "token", 0.5),
          ("ttt 6LwMLkCe", "6LwMLkCeEAqYp9Pv33ujrgd9uF987zPXdGKr9Z9sebh5", "token", 0.5), ("yyy 6nNzEg86", "6nNzEg86rbY4J1Z6euDn9iQoih8uaSj6ZVZHZVvFxjJf", "token", 0.5),
@@ -314,7 +332,7 @@ for lab, w_, kind, mn in BENCH:
     if not xs: print(f"  {lab:14s} no copies on the tape"); continue
     sub = [x for x in xs if x[2] >= mn and (kind == "all" or (kind == "SOL") == x[5])]
     a, b_ = cons(xs), cons(sub) if sub else (0, 0, 0.0, 0.0)
-    place = (f"TOPMEAN #{rank_mean[w_]}" if w_ in rank_mean else f"out: {why.get(w_, 'not ranked')}") + (f", consistency #{rank_cons[w_]}" if w_ in rank_cons else "")
+    place = (f"TOPMEAN #{rank_mean[w_]}" if w_ in rank_mean else f"out: {why.get(w_, 'not ranked')}") + (f", consistency #{rank_cons[w_]}" if w_ in rank_cons else "") + (f", launch list #{rank_launch[w_]}" if w_ in rank_launch else "")
     print(f"  {lab:14s} {place:44s} all {len(xs):4d}: up {a[1]}/{a[0]} days, {a[2]:+6.1f}% (w/o 2% {a[3]:+6.1f}%) | "
           f"{kind} {mn}+ {len(sub):4d}: up {b_[1]}/{b_[0]} days, {b_[2]:+6.1f}% (w/o 2% {b_[3]:+6.1f}%)")
 json.dump([dict(wallet=r_[1], choice=r_[4], n1=r_[2], n2=r_[3], half1=r_[5], half2=r_[8], score=r_[0]) for r_ in res[:TOPN]],
