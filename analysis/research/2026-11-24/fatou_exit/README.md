@@ -32,3 +32,14 @@ At 0.1 SOL the fixed costs (0.0064 a round trip) are 6.4% of the stake: +11.8% a
 0.5+ SOL, tp 1.5, max_hold_s 15, follow_its_sell = true, no stall or sell pressure, SOL coins on the same exit, max_open 2,
 daily stop 0.3; the owner raises it after 20 trades. To check after the 20: each trade's sale slot against its sale slot
 (the D the backtest assumed), and the result against the model on the same coins.
+
+## The first 21 live trades (Nov 25, 05:59-06:03 UTC; the owner's `iii` paste)
+
+21 trades in one burst, -0.3369 SOL at 0.1 SOL (-16% a trade); the daily stop (0.3) then stopped buys. FatoU1bj's own
+trades of that burst (a Helius fetch, Nov 25): 58 first buys 05:50-06:10 UTC, +3.06 SOL for it; it made +14.65 SOL in the
+06:00 hour and +6.79 in the 07:00 hour. Of its 32 buys of 0.5+ SOL there: the 15 we copied (shown in `iii`) made it
+-21.5% a coin (we made -16%); the 8 the unit skipped with 2 open made it +60.2%; the 9 after our daily stop +2.5%; all 32
+about +6%. The copy tracks its own result on the same coins; which coins it got was luck. Its winners are the coins it sells
+within ~10 s (+100 to +200%); its losers it sells at ~25 s (-40 to -98%). At 0.1 SOL the fixed costs (~0.0064 a trade)
+take ~6% a trade. **The owner's call: keep 0.1 SOL, max_open 4** (so it takes nearly every buy), daily stop 0.3; judge
+after ~100 trades.

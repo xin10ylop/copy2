@@ -30,7 +30,10 @@ stop = 0.0
 max_hold_s = 15
 # positions open at once: each takes stake_sol (grid.py cap, P1 Oct 19-22 / P2 Oct 23-27: 1 open +2.6 / +3.5,
 # 2 +6.5 / +8.1, 3 +5.0 / +9.6, 4 +6.7 / +11.1, 5 +6.7 / +10.9 SOL; the wallet itself: a median 2 of these open, max 11)
-max_open = 2
+# Nov 25 (the owner's call, after its first 21 trades): 4. It buys every 10-20 s in a burst; with 2 open the unit took
+# 15 of its 32 copyable buys at 05:58-06:06 UTC (its own result on those -21.5% a coin) and missed 8 (+60.2%), so the
+# coins copied were luck; 4 open takes nearly all (analysis/research/2026-11-24/fatou_exit/README.md, Nov 25)
+max_open = 4
 # our buy refused when the price before our fill is more than this over the price its buy left (the
 # backtest's limit; our own impact is not part of it)
 max_premium = 0.5

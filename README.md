@@ -18,6 +18,11 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 25: FatoU1bj's unit (`iii`) at 4 open, still 0.1 SOL.** Its first 21 trades (one burst, 05:59-06:03 UTC):
+-0.3369 SOL; on the same coins FatoU1bj made -21.5% a coin itself, on the 8 we skipped with 2 open +60.2% (all 32 of the
+burst about +6%): the copy tracks it, the coins were luck (`analysis/research/2026-11-24/fatou_exit/`). The owner's call:
+keep testing to ~100 trades, daily stop 0.3.
+
 **Nov 24, night: TTWO float 1.5 SOL, WBTC 0.3** (the owner: "do it"). Over Nov 17-24 the eight units' wallets paid with
 TTWO for 239 copyable buys, WBTC for 7 (`analysis/research/2026-11-24/uncopied/`); a float short of the stake skips the
 buy. The trades the wallets make that we don't copy (SOL coins, small buys, unheld tokens) make them money, but our copies
