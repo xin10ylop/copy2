@@ -32,7 +32,8 @@ max_open = 2
 # backtest's limit; our own impact is not part of it)
 max_premium = 0.5
 # no new buys once today's (UTC) realized result is at or below -daily_stop_sol
-daily_stop_sol = 1.5
+# Nov 25 (the owner: "raise it to 2 sol", at 1 SOL a copy): 2.0 (1.5 since Nov 19)
+daily_stop_sol = 2.0
 
 # held as floats besides wrapped SOL: routes may start and end in them (WBTC carried Oct 23-27).
 # Buy one with: rugsnipe-long float buy 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh 3.0

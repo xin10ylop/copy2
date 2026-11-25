@@ -89,7 +89,7 @@ Wallet 4's strategies:
   ranking, `analysis/research/2026-11-20/tape_screen/README.md`: HtHkKxYN +7.2% a copy in 4 of 4 blocks with the fixed
   exit, 1.09x; 3SiQo8MJ passes the strict test, +5.1% in 3 of 4, 1.03x, +36 SOL itself in 12 days). The ten units skip
   each other's coins.
-  **Since Nov 25 evening: wallet 4's unit back at 1.0 SOL a copy** (the owner's call; daily stop 1.5 unchanged; its float-paid
+  **Since Nov 25 evening: wallet 4's unit back at 1.0 SOL a copy** (the owner's call; daily stop 2.0 since Nov 25 late, 1.5 before; its float-paid
   copies are as big as the float allows, down to half the stake).
   **Since Nov 25 night: `join_others = true` in the CqCAzte8, GqWfqfG6, 3XeFcZKS, 6LwMLkCe and 6nNzEg86 units** (a unit buys its
   coin even when another unit holds it: two of our wallets agreeing made +16.7% a copy against +10.8% alone, higher on 5 of 6
