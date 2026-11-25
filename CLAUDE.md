@@ -94,6 +94,7 @@ Wallet 4's strategies:
   **Since Nov 25 night: `join_others = true` in the CqCAzte8, GqWfqfG6, 3XeFcZKS, 6LwMLkCe and 6nNzEg86 units** (a unit buys its
   coin even when another unit holds it: two of our wallets agreeing made +16.7% a copy against +10.8% alone, higher on 5 of 6
   wallets, not CgyPomTG; `analysis/research/2026-11-25/consensus/`, docs/20 §3).
+  **Also in the 3SiQo8MJ unit (`ppp`) since Nov 25 late** (its copies after wallet 4 bought: +6.5% against +4.8% alone, 20).
   **Since Nov 24 night: TTWO float 1.5 SOL, WBTC 0.3** (the timer's file, `config/float-levels.live`; the owner's call
   after `analysis/research/2026-11-24/uncopied/`: copyable buys paid with each over 7 days, all units: TTWO 239, hSOL 77,
   PUMP 36, NVDAx 34, SPCX 19, PAID 14, WBTC 7). No new float: no unheld token has the buys or the copy result.
