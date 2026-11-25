@@ -63,7 +63,7 @@ Wallet 4's strategies:
   the SAME exit, `sol_exits = false`; `config/long-cgy.live.example.toml`; the test in
   `analysis/research/2026-11-20/tape_screen/` README: it fails the 48-setting pick, passes the pick on all coins, and the
   fixed exit is +12.1% a copy blind; the three units skip each other's coins; check command `eee`, `ggg` still works). **On the Frankfurt box: `qqq` =
-  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe, `yyy` = 6nNzEg86, `uuu` = GqWfqfG6, `iii` = FatoU1bj, `pnl` = every unit's result in
+  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe, `yyy` = 6nNzEg86, `uuu` = GqWfqfG6, `iii` = FatoU1bj, `ooo` = HtHkKxYN, `ppp` = 3SiQo8MJ, `pnl` = every unit's result in
   one line each and the total (`deploy/bin/rugsnipe-pnl`), `sss` = the weekly wallet screen; on the Chicago box `www` is still
   the Robinhood copier.**
   **Since Nov 23 (the owner's call, 0.5 SOL, no paper phase): units 4 and 5, `rugsnipe-long-3xe` (3XeFcZKS, `rrr`) and
@@ -83,6 +83,12 @@ Wallet 4's strategies:
   true`), daily stop 0.3; since Nov 25 max_open 4 (its first 21 trades -0.34 SOL, luck in which coins; judge at ~100)** (`config/long-fat.live.example.toml`; `analysis/research/2026-11-24/fatou_exit/`: +11.8% a copy
   at 1 SOL on 256 buys, our sale 2 slots behind its own; +1.5% on 33 later buys; nearly all its buys on Nov 23). The eight
   units skip each other's coins.
+  **Since Nov 25 (the owner's call, 0.5 SOL): units 9 and 10, `rugsnipe-long-htk` (HtHkKxYN, `ooo`), all its coins, tp 3x,
+  420 s, stall 240, no sell pressure, and `rugsnipe-long-3si` (3SiQo8MJ, `ppp`), its token coins, tp 2x, 120 s, sell
+  pressure 5/60, no stall** (`config/long-htk.live.example.toml`, `long-3si`; the Nov 25 screen with the consistency
+  ranking, `analysis/research/2026-11-20/tape_screen/README.md`: HtHkKxYN +7.2% a copy in 4 of 4 blocks with the fixed
+  exit, 1.09x; 3SiQo8MJ passes the strict test, +5.1% in 3 of 4, 1.03x, +36 SOL itself in 12 days). The ten units skip
+  each other's coins.
   **Since Nov 24 night: TTWO float 1.5 SOL, WBTC 0.3** (the timer's file, `config/float-levels.live`; the owner's call
   after `analysis/research/2026-11-24/uncopied/`: copyable buys paid with each over 7 days, all units: TTWO 239, hSOL 77,
   PUMP 36, NVDAx 34, SPCX 19, PAID 14, WBTC 7). No new float: no unheld token has the buys or the copy result.

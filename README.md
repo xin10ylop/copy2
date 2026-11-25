@@ -18,6 +18,13 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 25: units 9 and 10, HtHkKxYN (`rugsnipe-long-htk`, check `ooo`) and 3SiQo8MJ (`rugsnipe-long-3si`, `ppp`), 0.5 SOL**
+(the owner: "yes"). From the screen with the new consistency ranking and benchmark (`analysis/research/2026-11-20/tape_screen/`
+README, Nov 25): HtHkKxYN, all coins, the units' exit (tp 3x / 420 s / stall 240), no sell pressure (it lowers every
+block): +7.2% a copy, 4 of 4 blocks; 3SiQo8MJ, token coins, tp 2x / 120 s with wallet 4's sell pressure 5/60: +5.1% (+6.1%
+with the sell pressure), 3 of 4. Both weaker a copy than GqWfqfG6 or CgyPomTG; the wallet's free SOL is thin with ten units.
+The same day: fast traders tested and dropped (their realistic copies average -6.5%).
+
 **Nov 25: FatoU1bj's unit (`iii`) at 4 open, still 0.1 SOL.** Its first 21 trades (one burst, 05:59-06:03 UTC):
 -0.3369 SOL; on the same coins FatoU1bj made -21.5% a coin itself, on the 8 we skipped with 2 open +60.2% (all 32 of the
 burst about +6%): the copy tracks it, the coins were luck (`analysis/research/2026-11-24/fatou_exit/`). The owner's call:
