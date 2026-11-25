@@ -20,6 +20,11 @@ W4 = "H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg"; SOLQ = "1111111111111111111
 files = sorted((f for f in glob.glob(f"{D}/tape_*.jsonl*") if "broken" not in f), key=lambda f: (os.path.basename(f).split("_")[1], f))
 def rows():
     for f in files:
+        # Nov 25: the recorder compresses the hour it just closed while a run reads the tape (tape_...jsonl became
+        # tape_...jsonl.gz under a 12-minute run, FileNotFoundError): read the compressed one then
+        if not os.path.exists(f):
+            if os.path.exists(f + ".gz"): f = f + ".gz"
+            else: continue
         op = gzip.open if f.endswith(".gz") else open
         try:
             with op(f, "rt") as fh:
