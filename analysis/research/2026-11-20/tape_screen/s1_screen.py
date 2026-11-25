@@ -222,16 +222,17 @@ def prem_of(xs):
 def hold_of(xs):
     h = [x[3]["_its_hold"] for x in xs if x[3] != "refused"]
     return float(np.median(h)) if h else 9e9
+why = {}   # Nov 25: the filter that left a wallet out (the benchmark below says why a copied wallet is missing)
 for u, xs in by.items():
-    if len(xs) < MINN: continue
-    if hold_of(xs) < MIN_HOLD: fast += 1; continue
-    if np.mean([(u, x[4]) in cslot for x in xs]) >= BUNDLE: bundle += 1; continue
+    if len(xs) < MINN: why[u] = f"under {MINN} copies"; continue
+    if hold_of(xs) < MIN_HOLD: fast += 1; why[u] = f"speed trader (median hold {hold_of(xs):.0f} s)"; continue
+    if np.mean([(u, x[4]) in cslot for x in xs]) >= BUNDLE: bundle += 1; why[u] = "launch bundle"; continue
     oc = [own[(u, x[4])] for x in xs if (u, x[4]) in own]; done_ = [o for o in oc if o[3] >= 0.99 * o[2]]
     own_sol = sum(o[1] - o[0] for o in done_); own_of[u] = (own_sol, len(done_), float(np.median([o[5] for o in oc])) if oc else 0)
     # Nov 22, the owner: rank also by what the wallets MADE, with only the can't-copy filters (speed, bundles, flat, and
     # coins that jump past the price limit before our copy lands on most of its buys): the TOPOWN list
-    if np.mean([x[3] == "refused" for x in xs]) > 0.5: jumpy += 1; jumpy_own.append((own_sol, u)); continue
-    if prem_of(xs) > MAX_PREM: late += 1; late_own.append((own_sol, u, prem_of(xs))); continue
+    if np.mean([x[3] == "refused" for x in xs]) > 0.5: jumpy += 1; jumpy_own.append((own_sol, u)); why[u] = "jumpy"; continue
+    if prem_of(xs) > MAX_PREM: late += 1; late_own.append((own_sol, u, prem_of(xs))); why[u] = f"late ({prem_of(xs):.2f}x)"; continue
     if np.std([x[3]["w4"] for x in xs if x[3] != "refused"] or [0]) >= 0.02 * STAKE:
         # Nov 22 (after the overfitting lesson): no tuning; the mean of our copy over the 5 fixed exits, all its copies
         mv = float(np.mean([np.mean([x[3][e] for e in EX]) if x[3] != "refused" else -0.0004 for x in xs])) / STAKE * 100
@@ -276,6 +277,46 @@ rk = sorted(((n * mv + 30 * pm) / (n + 30), u, mv, n, o, pr) for o, u, mv, n, pr
 print(f"\nby the mean over the 5 fixed exits (no tuning; every copy's mean {pm:+.1f}%), the can't-copy filters only ({len(elig)} wallets):")
 for sc, u, mv, n, o, pr in rk[:15]: print(f"  {u:44s} {n:4d} copies  mean {mv:+6.1f}%  shrunk {sc:+6.1f}%  own {o:+7.2f} SOL  price {pr:.2f}x")
 print(f"TOPMEAN{TOPN}: " + ",".join(u for sc, u, mv, n, o, pr in rk[:TOPN]))
+# Nov 25 (the owner: "we need a super good wallet, even better than wallet 4, how will we find it?"). Two additions:
+# CONSISTENCY: wallet 4's strength is being up on most days, not one lucky burst. Per wallet that passed the can't-copy
+# filters: our copy (the mean of the 5 fixed exits, as TOPMEAN) by UTC day; a day with 2+ copies counts; ranked by the
+# share of those days positive (days up / (days + 2), so a short record ranks lower), then the mean a copy without its best 2% of copies. Needs 3+ such days and its own
+# result positive. TOPCONS is that list.
+# BENCHMARK: where our copied wallets rank (or the filter that left them out), on all their copies and on the coins
+# their units copy, so the ranking can be checked against wallets known to be good.
+import datetime as _dt
+def m5(x): return float(np.mean([x[3][e] for e in EX])) / STAKE * 100 if x[3] != "refused" else -0.0004 / STAKE * 100
+def cons(xs):
+    d = collections.defaultdict(list)
+    for x in xs: d[_dt.datetime.fromtimestamp(x[1], _dt.timezone.utc).strftime("%m-%d")].append(m5(x))
+    act = [np.mean(v) for v in d.values() if len(v) >= 2]
+    v = np.array([m5(x) for x in xs]) if xs else np.array([0.0]); k = max(1, round(0.02 * len(v)))
+    w = (v.sum() - np.sort(v)[-k:].sum()) / max(1, len(v) - k)
+    return len(act), sum(1 for a in act if a > 0), float(v.mean()), float(w)
+cr = []
+for o, u, mv, n, pr in elig:
+    na, nu, mean_, w = cons(by[u])
+    if na >= 3 and o > 0: cr.append((nu / (na + 2), w, u, n, na, nu, mean_, o, pr))   # up 5 of 5 above up 3 of 3: few days shrink
+cr.sort(reverse=True)
+print(f"\nby consistency (the share of its days, 2+ copies a day, on which our copy was up; then the mean a copy without its best 2%), "
+      f"3+ such days and its own result positive ({len(cr)} wallets):")
+for sh, w, u, n, na, nu, mean_, o, pr in cr[:15]:
+    print(f"  {u:44s} {n:4d} copies  up {nu:2d} of {na:2d} days  mean {mean_:+6.1f}%  w/o best 2% {w:+6.1f}%  own {o:+7.2f} SOL  price {pr:.2f}x")
+print(f"TOPCONS{TOPN}: " + ",".join(r_[2] for r_ in cr[:TOPN]))
+BENCH = [("qqq wallet 4", W4, "token", 1.3), ("www CqCAzte8", "CqCAzte8TwCDbCBrhjUpsfG6Au9pZPdrTXrVDidKHGAn", "all", 0.5),
+         ("eee CgyPomTG", "CgyPomTGt9BFqnjBdRS38BCBUZvtMJDf3aKQy8sMTVKX", "all", 0.5), ("rrr 3XeFcZKS", "3XeFcZKSn8WzqoDAm5vvgbdfkU82rMmhJfp1q4LXtnX6", "token", 0.5),
+         ("ttt 6LwMLkCe", "6LwMLkCeEAqYp9Pv33ujrgd9uF987zPXdGKr9Z9sebh5", "token", 0.5), ("yyy 6nNzEg86", "6nNzEg86rbY4J1Z6euDn9iQoih8uaSj6ZVZHZVvFxjJf", "token", 0.5),
+         ("uuu GqWfqfG6", "GqWfqfG6Mt6RL8BKUWiBkirqzycUc15bgZVtFERQzxJ8", "all", 0.5), ("iii FatoU1bj", "FatoU1bj1cwMEZ7nNBUu47s8HpJNAFR5ZajGPtP8Fph1", "SOL", 0.5)]
+rank_mean = {r_[1]: i + 1 for i, r_ in enumerate(rk)}; rank_cons = {r_[2]: i + 1 for i, r_ in enumerate(cr)}
+print(f"\nbenchmark, our copied wallets (rank among {len(rk)} by TOPMEAN, among {len(cr)} by consistency; all copies | the coins its unit copies):")
+for lab, w_, kind, mn in BENCH:
+    xs = by.get(w_, [])
+    if not xs: print(f"  {lab:14s} no copies on the tape"); continue
+    sub = [x for x in xs if x[2] >= mn and (kind == "all" or (kind == "SOL") == x[5])]
+    a, b_ = cons(xs), cons(sub) if sub else (0, 0, 0.0, 0.0)
+    place = (f"TOPMEAN #{rank_mean[w_]}" if w_ in rank_mean else f"out: {why.get(w_, 'not ranked')}") + (f", consistency #{rank_cons[w_]}" if w_ in rank_cons else "")
+    print(f"  {lab:14s} {place:44s} all {len(xs):4d}: up {a[1]}/{a[0]} days, {a[2]:+6.1f}% (w/o 2% {a[3]:+6.1f}%) | "
+          f"{kind} {mn}+ {len(sub):4d}: up {b_[1]}/{b_[0]} days, {b_[2]:+6.1f}% (w/o 2% {b_[3]:+6.1f}%)")
 json.dump([dict(wallet=r_[1], choice=r_[4], n1=r_[2], n2=r_[3], half1=r_[5], half2=r_[8], score=r_[0]) for r_ in res[:TOPN]],
           open(os.environ.get("TOP_JSON", "/tmp/screen_top.json"), "w"))
 up = sum(1 for r_ in res if r_[8] > 0 and r_[5] > 0)

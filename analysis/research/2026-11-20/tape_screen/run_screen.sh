@@ -17,4 +17,6 @@ if ! grep -q "^tape" /tmp/screen.txt || ! grep -q "^TOPMEAN" /tmp/screen.txt; th
   echo "and the system's word on it:"; sudo journalctl --since "-$(( ($(date +%s) - start) / 60 + 2 ))min" --no-pager | grep -iE "oom|memory|killed" | tail -n 4
   exit 1
 fi
-grep -E "^tape|bundles|jumpy|late|median price" /tmp/screen.txt; sed -n '/by the mean over/,+15p' /tmp/screen.txt; grep -E "^TOPMEAN|^TOPOWN" /tmp/screen.txt
+grep -E "^tape|bundles|jumpy|late|median price" /tmp/screen.txt; sed -n '/by the mean over/,+15p' /tmp/screen.txt
+sed -n '/by consistency/,+15p' /tmp/screen.txt; sed -n '/^benchmark/,+8p' /tmp/screen.txt   # Nov 25: consistency and the benchmark
+grep -E "^TOPMEAN|^TOPCONS" /tmp/screen.txt
