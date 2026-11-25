@@ -19,7 +19,8 @@ copy_wallet = "FatoU1bj1cwMEZ7nNBUu47s8HpJNAFR5ZajGPtP8Fph1"
 # its buy valued in SOL: its 1.5-SOL tier (reads 1.45-1.51 by route)
 min_sol = 0.5
 # our buy, valued in SOL (1.0 tested: at 0.5 the fixed costs eat the edge)
-stake_sol = 0.1
+# Nov 25 (the owner: "make it 0.2 sol trades"): 0.2 (the fixed costs, ~0.0064 a round trip, are ~3% of it, not ~6%)
+stake_sol = 0.2
 # the curve price against the price its buy left, without our own tokens
 take_profit = 1.5
 # 0 = no stop (the trip ends at the take profit or the hold). Since Nov 2026 wallet 4 sells most coins early and

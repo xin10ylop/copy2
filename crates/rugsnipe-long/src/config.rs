@@ -432,7 +432,7 @@ mod tests {
         let c = LongCfg::from_toml_str(include_str!("../../../config/long-fat.live.example.toml")).unwrap();
         assert!(c.validate().is_ok(), "{:?}", c.validate());
         assert!((c.take_profit - 1.5).abs() < 1e-9 && c.max_hold_s == 15 && c.follow_its_sell && c.follow_early_s.is_empty());
-        assert!((c.stake_sol - 0.1).abs() < 1e-9 && c.max_open == 4 && c.stall_s == 0 && c.sell_pressure.is_empty() && c.copy_sol_coins && !c.sol_exits);
+        assert!((c.stake_sol - 0.2).abs() < 1e-9 && c.max_open == 4 && c.stall_s == 0 && c.sell_pressure.is_empty() && c.copy_sol_coins && !c.sol_exits);
         for src in [
             include_str!("../../../config/long.live.example.toml"),
             include_str!("../../../config/long-cq.live.example.toml"),
