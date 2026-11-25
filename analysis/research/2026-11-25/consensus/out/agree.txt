@@ -1,0 +1,29 @@
+
+another of our wallets bought the coin in the 10 min before (mean a copy at 1 SOL, n):
+  CqCAzte8  alone   +9.6% ( 240)   agreed  +19.0% ( 62)
+  CgyPomTG  alone  +12.3% ( 219)   agreed   -4.9% ( 33)
+  GqWfqfG6  alone  +16.0% (  90)   agreed  +49.3% (  7)
+  3XeFcZKS  alone   +9.1% (  80)   agreed  +32.4% (  4)
+  6LwMLkCe  alone   +6.2% ( 107)   agreed  +11.2% ( 32)
+  6nNzEg86  alone   +9.7% (  78)   agreed  +33.9% ( 40)
+  ALL       alone  +10.6% ( 814)   agreed  +18.0% (178)
+
+another of our wallets bought the coin in the 60 min before (mean a copy at 1 SOL, n):
+  CqCAzte8  alone   +9.6% ( 240)   agreed  +19.0% ( 62)
+  CgyPomTG  alone  +12.5% ( 216)   agreed   -4.5% ( 36)
+  GqWfqfG6  alone  +16.8% (  86)   agreed  +30.6% ( 11)
+  3XeFcZKS  alone   +9.1% (  79)   agreed  +28.1% (  5)
+  6LwMLkCe  alone   +6.8% ( 104)   agreed   +9.0% ( 35)
+  6nNzEg86  alone   +9.7% (  78)   agreed  +33.9% ( 40)
+  ALL       alone  +10.8% ( 803)   agreed  +16.7% (189)
+
+another of our wallets bought the coin in the 360 min before (mean a copy at 1 SOL, n):
+  CqCAzte8  alone   +9.6% ( 240)   agreed  +19.0% ( 62)
+  CgyPomTG  alone  +12.5% ( 216)   agreed   -4.5% ( 36)
+  GqWfqfG6  alone  +17.6% (  84)   agreed  +23.4% ( 13)
+  3XeFcZKS  alone   +9.2% (  78)   agreed  +23.5% (  6)
+  6LwMLkCe  alone   +6.8% ( 104)   agreed   +9.0% ( 35)
+  6nNzEg86  alone   +9.7% (  78)   agreed  +33.9% ( 40)
+  ALL       alone  +10.8% ( 800)   agreed  +16.3% (192)
+
+agreed (60 min), in 4 time blocks: +14.2% (48) / +7.1% (47) / +42.2% (47) / +3.5% (47)
