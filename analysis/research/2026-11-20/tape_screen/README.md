@@ -566,3 +566,9 @@ fixed fast exits, no pick (`../../2026-11-24/fatou_exit/x1_exit.py` with FAST_W,
 - 4bL2mY7s (79): -2.6%, 1 of 4; every fixed exit negative.
 - 6iFupNYb (90, 3 days): +9.9%, 3 of 4, but +2.36 without the best 2% (two copies carry most of it).
 No fast trader copies for clearly more than the units do; FatoU1bj (live at 0.1 SOL) is the test that stays.
+
+**Sell pressure on the two candidates (Nov 25; the owner: "also no sell pressure?"; `w3_sp_check2.py`, the base exit from
+SPBASE, the 3 blind blocks, `out_w3/*_sp_nov25.txt`).** HtHkKxYN, all coins, tp 3x / 420 s / stall 240: none +9.5% a copy
+(146), +7.97 SOL without the best 2%; every one of the 9 sell-pressure kinds lower (+1.4 to +5.4%, -3.26 to +2.35): **no
+sell pressure.** 3SiQo8MJ, token coins, tp 2x / 120 s: none +5.3% (186), +5.46; 8 of 9 kinds a little higher, wallet 4's
+5/60 s +6.1%, +7.05 (block 1 -1.4 -> +0.1%): about one point, within the noise, never worse without the best 2%.
