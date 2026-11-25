@@ -387,7 +387,7 @@ def agree(G, lo, hi):
 t_lo, t_mid, t_hi = t_first, mid, t_last + 1
 OURS = [W4, "CqCAzte8TwCDbCBrhjUpsfG6Au9pZPdrTXrVDidKHGAn", "CgyPomTGt9BFqnjBdRS38BCBUZvtMJDf3aKQy8sMTVKX", "3XeFcZKSn8WzqoDAm5vvgbdfkU82rMmhJfp1q4LXtnX6",
         "6LwMLkCeEAqYp9Pv33ujrgd9uF987zPXdGKr9Z9sebh5", "6nNzEg86rbY4J1Z6euDn9iQoih8uaSj6ZVZHZVvFxjJf", "GqWfqfG6Mt6RL8BKUWiBkirqzycUc15bgZVtFERQzxJ8",
-        "FatoU1bj1cwMEZ7nNBUu47s8HpJNAFR5ZajGPtP8Fph1", "HtHkKxYN43BdJ8QJU1srMa3bqjpncLFcZgVCX8yU3AJS", "3SiQo8MJMzXaZcJexMivmk5CRgrNxDUh4bDbgb3wFAmW"]
+        "Bing35WCqmhUwFBJ9xVNfMoNpECj8vdWEr5hD5wYyobc", "HtHkKxYN43BdJ8QJU1srMa3bqjpncLFcZgVCX8yU3AJS", "3SiQo8MJMzXaZcJexMivmk5CRgrNxDUh4bDbgb3wFAmW"]   # Nov 25 night: Bing35WC for the stopped FatoU1bj
 print(f"\nagreement: copies of a good wallet's buy by how many OTHER good wallets bought the coin in the hour before (5-exit mean, % a copy):")
 for lab, G, lo, hi in (("top %d by consistency on half 1, scored on half 2" % AN, half_rank(t_lo, t_mid), t_mid, t_hi),
                        ("top %d by consistency on half 2, scored on half 1" % AN, half_rank(t_mid, t_hi), t_lo, t_mid),
@@ -398,7 +398,8 @@ for lab, G, lo, hi in (("top %d by consistency on half 1, scored on half 2" % AN
 BENCH = [("qqq wallet 4", W4, "token", 1.3), ("www CqCAzte8", "CqCAzte8TwCDbCBrhjUpsfG6Au9pZPdrTXrVDidKHGAn", "all", 0.5),
          ("eee CgyPomTG", "CgyPomTGt9BFqnjBdRS38BCBUZvtMJDf3aKQy8sMTVKX", "all", 0.5), ("rrr 3XeFcZKS", "3XeFcZKSn8WzqoDAm5vvgbdfkU82rMmhJfp1q4LXtnX6", "token", 0.5),
          ("ttt 6LwMLkCe", "6LwMLkCeEAqYp9Pv33ujrgd9uF987zPXdGKr9Z9sebh5", "token", 0.5), ("yyy 6nNzEg86", "6nNzEg86rbY4J1Z6euDn9iQoih8uaSj6ZVZHZVvFxjJf", "token", 0.5),
-         ("uuu GqWfqfG6", "GqWfqfG6Mt6RL8BKUWiBkirqzycUc15bgZVtFERQzxJ8", "all", 0.5), ("iii FatoU1bj", "FatoU1bj1cwMEZ7nNBUu47s8HpJNAFR5ZajGPtP8Fph1", "SOL", 0.5)]
+         ("uuu GqWfqfG6", "GqWfqfG6Mt6RL8BKUWiBkirqzycUc15bgZVtFERQzxJ8", "all", 0.5), ("iii Bing35WC", "Bing35WCqmhUwFBJ9xVNfMoNpECj8vdWEr5hD5wYyobc", "all", 0.5),
+         ("ooo HtHkKxYN", "HtHkKxYN43BdJ8QJU1srMa3bqjpncLFcZgVCX8yU3AJS", "all", 0.5), ("ppp 3SiQo8MJ", "3SiQo8MJMzXaZcJexMivmk5CRgrNxDUh4bDbgb3wFAmW", "token", 0.5)]   # Nov 25 night: the live units
 rank_mean = {r_[1]: i + 1 for i, r_ in enumerate(rk)}; rank_cons = {r_[2]: i + 1 for i, r_ in enumerate(cr)}
 print(f"\nbenchmark, our copied wallets (rank among {len(rk)} by TOPMEAN, among {len(cr)} by consistency; all copies | the coins its unit copies):")
 for lab, w_, kind, mn in BENCH:
