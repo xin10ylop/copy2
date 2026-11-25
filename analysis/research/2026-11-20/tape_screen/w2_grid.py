@@ -59,7 +59,7 @@ for m, es in by.items():
 ds = sorted(day.items()); up = sum(1 for _, v in ds if v > 0); own = sum(day.values())
 print(f"{W}: own result {own:+.2f} SOL over {len(ds)} days, up on {up}; {len(firsts)} first buys of 0.5+ SOL")
 print("  by day: " + "  ".join(f"{d} {v:+.2f}" for d, v in ds))
-if own <= 0 or up < len(ds) / 2:
+if (own <= 0 or up < len(ds) / 2) and not os.environ.get("NOSTOP"):   # NOSTOP=1 (Nov 25): test the copies anyway
     print("STOP: it does not make money itself on most days"); sys.exit()
 # 2-3. the grid on the seen half, then the unseen half
 TP = [None] + [round(1.2 + 0.1 * i, 1) for i in range(39)]; HOLD = list(range(60, 601, 30))
