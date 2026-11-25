@@ -526,3 +526,16 @@ was kept, and is 3rd in TOPMEAN); `s1_screen.py` lists the jumpy wallets now.
   themselves over 14-15 days (`out_own/`, Nov 22-23); the five 20-copy wallets lose themselves on the tape. **J8bMromU
   (`out_w3/J8bMromU_all.txt`, refetched Nov 24): own +13.14 SOL over 6 days, up on 5 (a wallet active since Nov 18), its
   53 copies: FAIL** (gate 1 -6.0 / -5.6 / +25.6%; blind -5.7% a copy, 1 of 3 blocks).
+
+**Screen of Nov 25, 92.8 h of tape (`sss`; the first run with the jumpy line fixed and an 8 GB cap).** TOPMEAN's top 15:
+FatoU1bj copied already; G3PMGr5q and 6t5G5f1i failed before; 4Y4bWfBS, 45JhwE8F, E5thTmUh, 8BbPASYJ and the five
+21-copy wallets lose (or barely make) money themselves. Own histories (Helius, MAXPAGES 10): Bing35WC -14.80 SOL over 13
+days (STOP); 5AmLiWon +11.33 over 15 days, up on 10 (it lost -7.44 on Nov 11-13, +18.10 on Nov 22-24); 3SiQo8MJ +36.07
+over 12 days, up on 11. Deep tests on all their buys (`out_w3/*_all_nov25.txt`, `*_setup_nov25.txt`):
+- **3SiQo8MJ: PASS** (249 buys, all token coins; gate 1 -7.5 / +12.9 / +11.5%; the picks, tp 2x / 120 s each time, blind
+  -1.3 / +11.5 / +6.7%, +5.7% a copy, +6.21 SOL without the best 2%, 2 of 3 blocks). In 4 blocks: tp 2x / 120 s +3.7 /
+  -1.4 / +11.5 / +6.7% = +5.1% a copy (250), +7.34 without the best 2%, 3 of 4; wallet 4's exit +5.2%, -1.59; tp 3x / 420 s
+  / stall 240 +1.5%, -7.08. A real but small edge, about half the units' tests (+11 to +21%).
+- **5AmLiWon: FAIL** (275 buys; the rolling picks blind -5.8 / -2.0 / +19.4%, 1 of 3 blocks). Its SOL coins with tp 3x /
+  420 s / stall 240: -11.7 / +10.0 / +21.9 / +19.4% = +9.5% (197), +8.49 without the best 2%, 3 of 4; its token coins lose
+  (-18.8%). Picking that cell after the table is a choice on seen data; its own result turned only on Nov 22: re-test later.
