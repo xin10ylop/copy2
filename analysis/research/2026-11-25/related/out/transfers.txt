@@ -1,0 +1,83 @@
+== wallet 4 (66 transfer transactions read)
+   HBbXwsQtRdBNSAfVxJVgbTeYNDAxmSrKWkeyhZgSs1pK in      9.39  out     10.53  x  3  11-25 to 11-25
+   7kzs5v9gk2zh23x2uzevbppRsAUFgMA1ckHQfw5RCkbp in      0.00  out      1.82  x  1  11-25 to 11-25
+   3rqNU5GBTryKMYtaGXz8JRLpYST6TdcVRP3tP277zvpS in      0.00  out      1.81  x  1  11-25 to 11-25
+   C3wnjvN3sDpBVX1AWU2KYzs3htLCqjf74WWZeeR4dkdb in      0.00  out      1.69  x  1  11-25 to 11-25
+   6QkgDMQHL3Eezzuza2MCy6uZNRMLtS8ooWh5ysJAZbvy in      0.00  out      1.65  x  1  11-25 to 11-25
+   ARsdUJtf2Y31ZACapNb9NMLvpcjY52K92CxLchPtmawD in      0.00  out      1.53  x  1  11-25 to 11-25
+   FYZaRN3uwXPZZ2dVo7pv7PhmfU46iw9xXoM2xhYKRe4a in      0.00  out      1.52  x  1  11-25 to 11-25
+   2k4iNKd8X4aZNFRuNovuxU5BBWMwy3wESfBou9etd5X3 in      0.00  out      1.24  x  1  11-25 to 11-25
+== CqCAzte8 (99 transfer transactions read)
+   BHBEtpr6jgtB74iZ4ehDsX3HXrekR5xKj95JYMdmM8qM in      6.34  out      5.97  x 21  11-25 to 11-25
+   Ymq93sZFf2aTZW8yWUNeQiVHCregysxmZUW7uyKwmk9  in      0.00  out      4.71  x  3  11-25 to 11-25
+   HvKAurbGnHDhJcB885PQohooggCBsGGnp2kSR4dAvrfW in      0.00  out      2.96  x  1  11-25 to 11-25
+   ACZaJDytasF4wBx2DENJHXJBYTWN9hQ2ruadCY77mvdm in      0.00  out      2.96  x  1  11-25 to 11-25
+   43zL62KonvAtPBaNFierTW9Cs1FndMoYsrnioGqEAt2e in      0.00  out      2.46  x  2  11-25 to 11-25
+   6t1rmPnwGDqL9kXCpDTJ2Y9RxEj2EudHmycBY3BNoVNL in      0.00  out      1.49  x  1  11-25 to 11-25
+   5xL8tLuLw93pbC5hrVsSVVsZS4mok2NUkUbt6ZgJr6u7 in      0.00  out      1.49  x  1  11-25 to 11-25
+   8uwGubAMvLWHzcTrZubrx6gbdaeXKRe5a6LeUw3vzX1M in      0.00  out      1.01  x  1  11-25 to 11-25
+== CgyPomTG (93 transfer transactions read)
+   Ag1azuQrGkqULwMQRgUth6J8zr5q3kAYaFBKby33phmW in     46.48  out     75.05  x 63  11-23 to 11-25
+   GDQnERSchwsFseR2Gj723HThQFtyZZLX8LZ43Ugvbg1b in      0.00  out     16.79  x  4  11-23 to 11-25
+   AHtMk69hUgabdSAj6YbzTWuMzk5DzbUC2rgXSnb46nM2 in      0.00  out      6.23  x  1  11-24 to 11-24
+   AJa8fqME7vNSmAiL2pGCTFgLuSc6KTbjB1j6eS31Jfb8 in      0.00  out      5.00  x  1  11-23 to 11-23
+   2giJWws27D3ensxcHW9jfXsH2bE1dWF57DV8DCop4cdk in      0.00  out      4.95  x  1  11-24 to 11-24
+   A77HErqtfN1hLLpvZ9pCtu66FEtM8BveoaKbbMoZ4RiR in      3.77  out      0.00  x  1  11-24 to 11-24
+   CuQ7KFvryPtsXsdSH9SeZZaQAfqTTGWicKKq2nSzLN6P in      0.00  out      3.46  x  1  11-24 to 11-24
+   8nzuJVFzNdM1HKsSuoSbugmL5U1wpssZtk43E5TjtNDH in      0.00  out      3.46  x  1  11-23 to 11-23
+== 3XeFcZKS (56 transfer transactions read)
+   9CFSEtLBhKCC3J4Hw86RcpKu4PADqsEGALWGujM1jZgu in      1.37  out      1.51  x  2  11-25 to 11-25
+   ChHS6LebzENbWEiUJzjyQLbBMp23DEFUc47BXntLMuwR in      0.00  out      1.94  x  2  11-25 to 11-25
+   CYtuzvm5qBG3PBT9DbQXQznwsKKEgvH4Lz2kBasUBpwF in      0.00  out      1.52  x  1  11-25 to 11-25
+   3zthPKuTdcsXtfk3pPNhGCxWT2EJk6mWGsAA4dnPNcAr in      0.00  out      1.51  x  1  11-25 to 11-25
+   B7fuJk5JoGszyM1TKYFRx5pGFF2o57PvgQqESUd8pVme in      0.00  out      1.51  x  1  11-25 to 11-25
+   C1VfuZVb3QpRYdrtY9KbJSeRewNyZH1hd2H7WW6dZBsp in      0.00  out      1.50  x  1  11-25 to 11-25
+   51TNXJZDVcGA4qTYLtvKL7XBuFnLp11ZZKhgTLejkptD in      0.00  out      1.50  x  1  11-25 to 11-25
+   2ENTCXJgKHhJwe9w9hnFRrnsxUFKZNR8MdVSHLbVrSLA in      0.00  out      1.49  x  1  11-25 to 11-25
+== 6LwMLkCe (48 transfer transactions read)
+   DeNcJZcQufdqTLbYehYpQzne7FUXWGtrLMZ4toBpXCsu in      7.28  out     30.76  x 24  11-25 to 11-25
+   7r8M4ebA9VV9unHhFFF8yAasL2JUKKysN5kMQemg3DbG in      4.38  out      6.49  x  5  11-25 to 11-25
+   7D1mkVgqPRNEAE2ybE3gZZrRraQFmscaFrCTPi8Rb3bk in      0.00  out      8.50  x  2  11-25 to 11-25
+   AxYm8faJhgiWME9e71oiVC4RnwdAsAYg4DzVyDwtn1Px in      0.00  out      2.97  x  1  11-25 to 11-25
+   97vjpSMNRJCEBUCjsYo629YLwHBKyQWeAgAUNkdznC6v in      0.00  out      2.97  x  1  11-25 to 11-25
+   2LP5juf2sdNL6gu3aLdmKxBXreSEtJ1M8oBjqH26prDS in      0.00  out      2.18  x  1  11-25 to 11-25
+   4aW8q3nLPL4rULCR5kNcDcuMDA2PBBXhjEgLTS8oUk95 in      0.00  out      2.16  x  1  11-25 to 11-25
+   89zhkv9FV3FLPuUbs6dxGJjt3615x3Y6NkhmTSRwrBbk in      0.00  out      2.16  x  1  11-25 to 11-25
+== 6nNzEg86 (196 transfer transactions read)
+   EPp21PTDXCjvSmNJ41if4croZ1ajEF3aQZj9APkJyNSq in     17.42  out     16.38  x 79  11-22 to 11-25
+   B5hUbRTTTNVmgKZHUMZ2h5okEYiX4hNUDR7xggoEFtgF in      0.00  out     14.74  x  1  11-25 to 11-25
+   3LtTomS2CT5VomQweUgjXSsbJ3oY8EychaCmDP48Q1Zv in      4.35  out      0.00  x  2  11-24 to 11-25
+   9iuTrQdgE1xopCFXqHcsW3iEviHhu7L6AyufiYmRKfm5 in      0.00  out      1.19  x  2  11-23 to 11-23
+   B3U8nu4HCMZidukxKzpm3KBQFa1CZ7ZvFNozneGJUx7q in      0.00  out      0.99  x  2  11-25 to 11-25
+   B8cAUEjowizEN9RMPVQZTwcx4dSwJEctFiHGegvMkDw1 in      0.00  out      0.99  x  1  11-23 to 11-23
+   fzb43G6vuUQcysVub7vBNgGDuGQYnedzAEGx9KJrCSh  in      0.00  out      0.84  x  1  11-25 to 11-25
+   7R1E8QUFVsaNX8iNjjTqHhCaWfPUdUWThiDcusuiHGNa in      0.00  out      0.84  x  1  11-24 to 11-24
+== GqWfqfG6 (93 transfer transactions read)
+   NiDu8PdiXX4E6er4MLqEUFbmyZrooi43JhdhGk8JJTW  in     26.21  out     26.77  x 40  11-24 to 11-25
+   EYTB3HwF1FrNq2hUoYCdgQxsut8DXhQgfu9zhUpHrRRh in      0.00  out      4.65  x  5  11-25 to 11-25
+   8fxAcWvT2b81gUNpPcb6JQWnyLr6eeVYc3ARxkJtB76r in      0.00  out      2.18  x  3  11-25 to 11-25
+   ErmHTSodmc9mL7CampHQAsdPApF8ajRfVGKjUAv6r3Ld in      0.00  out      1.98  x  2  11-25 to 11-25
+   6PTfGyHGWejXMDDcmrqewKJn5worWchqPJJo3hgpwDTU in      0.00  out      1.48  x  2  11-25 to 11-25
+   R7sC5YQxpDJHsFWtcvwtpS97EeZ8CZmYPyHxxfoeTNE  in      0.00  out      0.99  x  1  11-25 to 11-25
+   5YaZvnugFjRR1CqSdBij761fbhXXSUQ2ZTWeL9prp3jW in      0.00  out      0.99  x  1  11-25 to 11-25
+   8MeykuaajppLfNM86tBo4LoYA9f6do7wbeX8A94fTNTu in      0.00  out      0.99  x  1  11-25 to 11-25
+== FatoU1bj (77 transfer transactions read)
+   AHuMf15oCPgY4n8gkdaSY6y3mhrrco9z4pMc51keCJaY in      0.00  out      1.50  x  1  11-25 to 11-25
+   Dj961bwNGPF8kq2eabhP7vpwH9zo2LDjzXV3RuJwLCcv in      0.00  out      1.50  x  1  11-25 to 11-25
+   EdFuhDh7XVLJVTZkM8YPTKDsxA7eLqbFu2dCv51vidFp in      0.00  out      1.50  x  1  11-25 to 11-25
+   EKEACd2HKsNxEuJ9JevQiCwLAeR2axPon6JQnTmyETNj in      0.00  out      1.43  x  1  11-25 to 11-25
+   4CmBxj78LdZYoyc7XHmY96ZXu2Ph2MfqYiLZoSWuLJ48 in      0.00  out      1.42  x  1  11-25 to 11-25
+   4s3s6zWLfoc6uXR4dVP3dgScRtgPFrgqoBkz7npwBXuA in      0.00  out      1.42  x  1  11-25 to 11-25
+   HQh3ZTSb4iWW2RDaxwX7EZvcAx1Arz4rGw8UFPBW7S6d in      0.00  out      1.37  x  1  11-25 to 11-25
+   4Vf4GyPPeQ8TjyZzx3tjvgHwp4vdQnt5Rf7oJ7mbAhLt in      0.00  out      1.33  x  1  11-25 to 11-25
+== HtHkKxYN (88 transfer transactions read)
+   CosutyCyNvcqATT3o5k5pRP7Rk12nCVbhBiBF1CwENzH in      5.45  out     20.00  x  2  11-25 to 11-25
+   FZEX4GZ9Vd3bzHPtF4x5uuJgjNk73dyRaVQ83LbXkc61 in     10.33  out      8.46  x 25  11-25 to 11-25
+   4UKyjoLRxTpe4ehBEkQ5X5XEP9BNTt6X1rurr7Ds5fXu in      0.00  out      2.64  x  4  11-25 to 11-25
+   7m14Lz1KNadfdX1unPeQPSyh8RbNZeiPaCESdbDsCAcM in      0.00  out      1.85  x  1  11-25 to 11-25
+   ErmHTSodmc9mL7CampHQAsdPApF8ajRfVGKjUAv6r3Ld in      0.00  out      1.64  x  2  11-25 to 11-25
+   4xzkCW1afafNqaoh9SiWkAY2KVDWHptKkXhAK1TRVTNa in      0.00  out      1.22  x  2  11-25 to 11-25
+   9vTybK3YEZDXQTKfcgBpeQWEMKMQEfb4GrRfSDSY2498 in      0.00  out      0.84  x  1  11-25 to 11-25
+   H2FTuUF44NSB5enfqrAmw2n9SE2ZJpxwun5s5YE5Fvgf in      0.00  out      0.78  x  1  11-25 to 11-25
+== 3SiQo8MJ (24 transfer transactions read)
+   HrkE9YGtoZ62RbEiCWhQKuVo5wU6UtaqdJPJqsBoqGra in      0.00  out      3.75  x  9  11-24 to 11-25

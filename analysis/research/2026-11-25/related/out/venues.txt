@@ -1,0 +1,10 @@
+wallet 4   23 swaps over  10.6 h  by source: JUPITER 23  |  with 0.5+ SOL out: JUPITER 15
+CqCAzte8   30 swaps over 261.2 h  by source: RAYDIUM_LAUNCHLAB 23, PUMP_FUN 7  |  with 0.5+ SOL out: PUMP_FUN 5, RAYDIUM_LAUNCHLAB 3
+CgyPomTG   24 swaps over 142.6 h  by source: PUMP_AMM 12, RAYDIUM_LAUNCHLAB 8, JUPITER 2, OKX_DEX_ROUTER 1, DFLOW 1  |  with 0.5+ SOL out: RAYDIUM_LAUNCHLAB 4, DFLOW 1
+3XeFcZKS   34 swaps over   4.4 h  by source: PUMP_AMM 26, JUPITER 6, RAYDIUM 2  |  with 0.5+ SOL out: JUPITER 4, RAYDIUM 2, PUMP_AMM 1
+6LwMLkCe   51 swaps over   9.7 h  by source: JUPITER 40, PUMP_AMM 11  |  with 0.5+ SOL out: JUPITER 14, PUMP_AMM 6
+6nNzEg86    1 swaps over   0.0 h  by source: OKX_DEX_ROUTER 1  |  with 0.5+ SOL out: 
+GqWfqfG6   26 swaps over 254.1 h  by source: PUMP_FUN 20, PUMP_AMM 6  |  with 0.5+ SOL out: PUMP_FUN 9, PUMP_AMM 3
+FatoU1bj    0 swaps over   0.0 h  by source:   |  with 0.5+ SOL out: 
+HtHkKxYN   25 swaps over  24.5 h  by source: RAYDIUM_LAUNCHLAB 19, PUMP_AMM 6  |  with 0.5+ SOL out: RAYDIUM_LAUNCHLAB 8, PUMP_AMM 2
+3SiQo8MJ   33 swaps over   9.3 h  by source: JUPITER 20, PUMP_AMM 13  |  with 0.5+ SOL out: PUMP_AMM 13, JUPITER 5

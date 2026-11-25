@@ -1,0 +1,12 @@
+Ag1azuQrGkqULwMQRgUth6J8zr5q3kAYaFBKby33phmW: owned by ?, 0.00 SOL; 1000 signatures over 188.5 h; swaps in its latest 50 swap txs: 25 {'RAYDIUM_LAUNCHLAB': 22, 'PUMP_AMM': 3}
+EPp21PTDXCjvSmNJ41if4croZ1ajEF3aQZj9APkJyNSq: owned by ?, 0.00 SOL; 1000 signatures over 295.5 h; swaps in its latest 50 swap txs: 0 {}
+NiDu8PdiXX4E6er4MLqEUFbmyZrooi43JhdhGk8JJTW: owned by ?, 0.00 SOL; 1000 signatures over 864.3 h; swaps in its latest 50 swap txs: 28 {'PUMP_AMM': 28}
+FZEX4GZ9Vd3bzHPtF4x5uuJgjNk73dyRaVQ83LbXkc61: owned by ?, 0.00 SOL; 1000 signatures over 277.5 h; swaps in its latest 50 swap txs: 25 {'PUMP_AMM': 6, 'RAYDIUM_LAUNCHLAB': 19}
+CosutyCyNvcqATT3o5k5pRP7Rk12nCVbhBiBF1CwENzH: plain wallet, 13.35 SOL; 1000 signatures over 145.6 h; swaps in its latest 50 swap txs: 27 {'PUMP_AMM': 7, 'RAYDIUM_LAUNCHLAB': 19, 'JUPITER': 1}
+DeNcJZcQufdqTLbYehYpQzne7FUXWGtrLMZ4toBpXCsu: owned by ?, 0.00 SOL; 1000 signatures over 126.5 h; swaps in its latest 50 swap txs: 23 {'PUMP_AMM': 4, 'RAYDIUM_LAUNCHLAB': 19}
+7r8M4ebA9VV9unHhFFF8yAasL2JUKKysN5kMQemg3DbG: owned by ?, 0.00 SOL; 1000 signatures over 576.8 h; swaps in its latest 50 swap txs: 45 {'JUPITER': 31, 'PUMP_AMM': 14}
+BHBEtpr6jgtB74iZ4ehDsX3HXrekR5xKj95JYMdmM8qM: owned by ?, 0.00 SOL; 1000 signatures over 365.1 h; swaps in its latest 50 swap txs: 36 {'RAYDIUM_LAUNCHLAB': 36}
+HBbXwsQtRdBNSAfVxJVgbTeYNDAxmSrKWkeyhZgSs1pK: owned by Tokenkeg, 6.96 SOL; 1000 signatures over 23.7 h; swaps in its latest 50 swap txs: 22 {'JUPITER': 22}
+HrkE9YGtoZ62RbEiCWhQKuVo5wU6UtaqdJPJqsBoqGra: owned by ?, 0.00 SOL; 1000 signatures over 133.9 h; swaps in its latest 50 swap txs: 43 {'JUPITER': 29, 'PUMP_AMM': 14}
+ErmHTSodmc9mL7CampHQAsdPApF8ajRfVGKjUAv6r3Ld: owned by 6EF8rrec, 0.00 SOL; 1000 signatures over 1409.5 h; swaps in its latest 50 swap txs: 27 {'JUPITER': 5, 'PUMP_FUN': 19, 'OKX_DEX_ROUTER': 3}
+GDQnERSchwsFseR2Gj723HThQFtyZZLX8LZ43Ugvbg1b: plain wallet, 23.90 SOL; 1000 signatures over 232.1 h; swaps in its latest 50 swap txs: 34 {'PUMP_AMM': 34}
