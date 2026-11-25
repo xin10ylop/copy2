@@ -5,6 +5,8 @@
 cd ~/rugsnipe || exit 1
 git pull --ff-only -q && git log --oneline -1
 S=~/rugsnipe/analysis/research/2026-11-20/tape_screen/s1_screen.py; PY=/opt/rugsnipe/venv/bin/python
+# Nov 25: the password first, so the screen never sits waiting on a sudo prompt under "screen running"
+echo "sudo password (if asked), then the screen starts:"; sudo -v || exit 1
 echo "screen running (about 5-20 minutes, nothing prints meanwhile; don't stop it) ..."
 start=$(date +%s)
 sudo env COST=0.0064 MIN_HOLD=20 TOPN=60 TOP_JSON=/tmp/screen_top.json systemd-run --scope -q -p MemoryMax=8G nice -n 19 $PY -I $S /var/lib/rugsnipe-tape 0.5 "${1:-20}" > /tmp/screen.txt 2>&1
