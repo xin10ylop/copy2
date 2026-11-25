@@ -80,7 +80,7 @@ Wallet 4's strategies:
   other's coins.
   **Since Nov 24 evening (the owner's call: "0.1 SOL for 20 trades then raise"): unit 8, `rugsnipe-long-fat` (FatoU1bj,
   `iii`), a 20-second flipper, its SOL coins, 0.1 SOL, its own exit: tp 1.5x, 15 s, behind its sale (`follow_its_sell =
-  true`), daily stop 0.3; since Nov 25 max_open 4 (its first 21 trades -0.34 SOL, luck in which coins; judge at ~100)** (`config/long-fat.live.example.toml`; `analysis/research/2026-11-24/fatou_exit/`: +11.8% a copy
+  true`), daily stop 0.3 (1.0 since Nov 25 evening, the owner's call); since Nov 25 max_open 4 (its first 21 trades -0.34 SOL, luck in which coins; judge at ~100)** (`config/long-fat.live.example.toml`; `analysis/research/2026-11-24/fatou_exit/`: +11.8% a copy
   at 1 SOL on 256 buys, our sale 2 slots behind its own; +1.5% on 33 later buys; nearly all its buys on Nov 23). The eight
   units skip each other's coins.
   **Since Nov 25 (the owner's call, 0.5 SOL): units 9 and 10, `rugsnipe-long-htk` (HtHkKxYN, `ooo`), all its coins, tp 3x,

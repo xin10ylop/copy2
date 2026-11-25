@@ -38,7 +38,9 @@ max_open = 4
 # backtest's limit; our own impact is not part of it)
 max_premium = 0.5
 # no new buys once today's (UTC) realized result is at or below -daily_stop_sol
-daily_stop_sol = 0.3
+# Nov 25 (the owner: "cancel it", after the stop held it from 06:03 UTC with max_open 4 just set): 1.0, as the other units
+# (0 would stop every buy: the stop is today's result at or below minus this)
+daily_stop_sol = 1.0
 
 # held as floats besides wrapped SOL: routes may start and end in them (WBTC carried Oct 23-27).
 # Buy one with: rugsnipe-long float buy 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh 3.0
