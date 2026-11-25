@@ -104,10 +104,14 @@ def path(m, slot, anchor, threads=12):
         ch = [[x["signature"] for x in sigs[i:i + 100]] for i in range(0, len(sigs), 100)]
         with cf.ThreadPoolExecutor(threads) as ex:
             txs = [t for part in ex.map(_batch, ch) for t in part]
+    if sigs and sum(1 for t in txs if t) < 0.9 * len(sigs):   # Nov 25: refused batches (Helius) were cached as an empty coin
+        raise RuntimeError(f"path {m}: {sum(1 for t in txs if t)} of {len(sigs)} transactions fetched; not cached")
     tr = [e for tx in txs if tx for e in trades(tx, m)]
     order = {}
     for s in (slot, slot + 1, slot + 2):
-        b = lib.rpc("getBlock", [s, {"encoding": "json", "transactionDetails": "signatures", "maxSupportedTransactionVersion": 1, "rewards": False}], cache=False)
+        try:      # Nov 25: a refused getBlock (Helius 429) no longer throws away the coin's fetched trades
+            b = lib.rpc("getBlock", [s, {"encoding": "json", "transactionDetails": "signatures", "maxSupportedTransactionVersion": 1, "rewards": False}], cache=False)
+        except RuntimeError: b = None
         if b: order.update({sg: (s, i) for i, sg in enumerate(b["signatures"])})
     tr.sort(key=lambda e: order.get(e["sig"], (e["slot"], 10**6)))
     lib.jdump(tr, p + ".json"); 
