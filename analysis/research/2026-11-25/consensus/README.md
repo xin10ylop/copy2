@@ -37,3 +37,9 @@ Nov 17-24, `../../2026-11-24/ideas/e1_ideas.py` with DUMP, the ~18-minute Helius
 create slot), so `join_others` would add nothing to its unit. The other way round, another of our wallets bought one of
 its coins in the hour AFTER it on 53 of the 202: 3SiQo8MJ 30, 6nNzEg86 15, CqCAzte8 10, 6LwMLkCe 6, CgyPomTG 2,
 3XeFcZKS 1. The followers' units carry the agreement; 3SiQo8MJ's (`ppp`, join_others off) skips its 30 today.
+
+**3SiQo8MJ and HtHkKxYN (Nov 25; `e1_ideas.py` with BASEX = each unit's exit, the Helius paths).** 3SiQo8MJ, token coins,
+tp 2x / 120 s / sell pressure 5/60: 246 copies, +4.9% a copy (the deep test: +5.1%); another of our wallets first in the
+hour before on 20, every one wallet 4: agreed +6.5% (20; blocks of 5: +11.3 / -10.7 / +7.8 / +17.5%, +0.35 SOL without
+the best 2%) against alone +4.8% (226). A little better than its other copies, not the jump the other wallets show.
+HtHkKxYN, all coins, tp 3x / 420 s / stall 240: 184 copies, +7.9%; agreed on 1 only (CgyPomTG first): nothing to change.

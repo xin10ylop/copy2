@@ -34,6 +34,9 @@ EXIT = {"w4": dict(tp=4.0, hold=600, sp=(5, 60), stall=180, early=(30, 290, 1.5)
 def ex_for(c): return EXIT["w4"] if UNIT == "w4" else EXIT["sol"] if (UNIT == "cq" and not c["tok"]) else EXIT["x"]
 if os.environ.get("SOLX"):   # CqCAzte8's SOL-coin exit to try instead of tp 2x / 120 s: "tp,hold,stall"
     _tp, _h, _st = (float(x) for x in os.environ["SOLX"].split(",")); EXIT["sol"] = dict(tp=_tp, hold=_h, sp=None, stall=_st, early=None)
+if os.environ.get("BASEX"):   # Nov 25: the unit's exit for token / all coins: "tp,hold,stall[,spn,spw]" (3SiQo8MJ: 2,120,0,5,60)
+    _v = [float(x) for x in os.environ["BASEX"].split(",")]
+    EXIT["x"] = dict(tp=_v[0], hold=_v[1], sp=(int(_v[3]), int(_v[4])) if len(_v) > 3 else None, stall=_v[2], early=None)
 if os.environ.get("SOL_ONLY"): firsts = [c for c in firsts if not c["tok"]]
 if os.environ.get("BAND"):
     _lo, _hi = (float(x) for x in os.environ["BAND"].split(",")); firsts = [c for c in firsts if _lo <= c["sol"] < _hi]
