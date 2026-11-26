@@ -9,6 +9,7 @@ Run order (scratchpad SP, `env_helius.sh`):
 1. `c1_fetch.py` (`../../2026-11-19/candidates/`) with `SUB=hist26_<wallet>`, 14 days, MAXPAGES 15.
 2. `cargo run --release -p rugsnipe-long --example quote_route -- RPC FILE` with the floats: each quote token is a float
    (7), joined to wSOL or a float by a PumpSwap pool (77, the "pool+curve" plan, our 3-hop routes), or unreachable (264).
+   **Wrong: corrected by `u6_routes.py`** (below): the one-by-one lookups read a refused request as "no pool".
 3. `u3_groups.py` per wallet (`out/<wallet>.txt`), `u4_tokens.py` (`out/tokens.txt`): the groups at the unit's floor
    and the unreachable tokens ranked by the coins a float would open.
 4. Our copy replayed on the groups where the wallet makes money (`../../2026-11-24/ideas/e1_ideas.py`, HIST_PREFIX=hist26_,
@@ -59,3 +60,22 @@ The candidates replayed (`out/fl/`, e1_ideas.py with QUOTE, each wallet's unit e
 +1.57 SOL without the best 2%** (ppp +14.5%, www +23.8%, eee +4.0%, qqq -6.4% on 6); B34nXKzC +20.7% on 9 (too few, an unknown
 token); GTA6 +1.1% on 19, -1.17 without the best 2%; ANT -2.8% on 17; TSLAx -5.5% on 11. Added: USDC. SOL coins paid with SOL
 tied up at most 3.0 SOL at once over the 7 days (more than 2.0 SOL on 4 copies), so ~2 SOL is kept free of floats.
+
+## Correction: the routes (Nov 26, later), and FIONA
+
+The owner on B34nXKzC: "dig deep". It is **FIONA (Fiona the Hippo)**, a pump.fun meme coin (created Nov 17 18:58 UTC, graduated
+Nov 19 20:53 UTC to the PumpSwap pool `DjbLtX1H...` with SOL; Jupiter, Nov 26: market cap $2.06M, liquidity $279k, 10,409
+holders, -29.6% in 24 h, the top holders 14.6%, mint and freeze authority off; its creator launched 1,614 coins). Coins are
+priced in it as in TTWO or PUMP. **Its pool to wSOL exists, so our routes reach it (pool+curve): it was never "no route".**
+`quote_route` looked up each pool one request at a time; under ~2,400 quick lookups Helius refused some, and a refused
+lookup reads as "no pool" (`Rpc::cached` returns None on an error). Two paced reruns still disagreed on 57 tokens.
+`u6_routes.py` checks the same pool addresses (`quote_route` PDAS_ONLY=1) in batches of 100 with retries: two runs agree,
+**8 anchors (USDC now a float), 194 reached through a pool, 146 unreachable** (not 264). The groups and `out/tokens.txt`
+are rerun with `out/routes.txt`: the not-copied "no route" coins at the units' floors drop (wallet 4 68 -> 52, ppp 69 ->
+37, eee 43 -> 15); the unreachable tokens left with the most copyable coins are ANT 21, GTA6 20, TSLAx 14, all replayed flat
+or negative. FIONA-priced coins (12 in 7 days; our replayed copy +20.7% on 9) are copied through its pool already: no
+float needed, and holding a meme coin that fell 30% in a day is a risk with no gain.
+
+The live bot looks pools up the same way (`route::plan` -> `pool_exists` -> `Rpc::cached`): a refused request at a
+trigger skips the copy as "no anchor reaches". The box's own RPC is a paid one and asks a few accounts a trigger, so it
+should be rare; its journal can tell (`grep "no anchor reaches"`, each token checked against `out/routes.txt`).

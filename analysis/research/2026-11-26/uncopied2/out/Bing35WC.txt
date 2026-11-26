@@ -1,7 +1,6 @@
 Bing35WC (unit: all coins, 0.5+ SOL): 78 coins sold out, 11-12 to 11-25 UTC; 0 in unpriced tokens and 16 still held left out
   group                                     coins   own SOL  a coin  days up
-  COPIED by the unit                           72    +12.05  +0.167   9 of 12 
+  COPIED by the unit                           72    +12.04  +0.167   9 of 12 
   its buy 0.25-0.5 SOL                          5     -0.02  -0.003   1 of 3  
-  token coin, no route to its token             1     +0.05  +0.052   1 of 1  
+  its buy under 0.25 SOL                        1     +0.05  +0.053   1 of 1  
   copied, by route: SOL coin 69, float/anchor 3
-  tokens no route reaches: GsuDgP89 1
