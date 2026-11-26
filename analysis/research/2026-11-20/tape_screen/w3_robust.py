@@ -17,13 +17,15 @@ SP, W = sys.argv[1], sys.argv[2]; MAXN = int(sys.argv[3]) if len(sys.argv) > 3 e
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.argv = [sys.argv[0], SP, W, "0", "0", "14"]
 src = open(os.path.join(HERE, "w2_grid.py")).read()
+MINSOL = float(os.environ.get("MINSOL", 0.5))   # Nov 26: the smallest first buy tested (the 0.25 SOL screen's wallets)
+src = src.replace('if es[0]["q"] * r / 1e9 >= 0.5 and', 'if es[0]["q"] * r / 1e9 >= MINSOL and')
 exec(src.split("firsts.sort(key=lambda c: c[\"t\"]); h = len(firsts) // 2")[0])   # its own history (stops if it loses), grid(), first()
 MENU_EXITS = {"live (tp 4, 600 s, sp 5/60, stall 180, its early sale)": (4.0, 600, (5, 60), 180, 2),
               "live without its sale": (4.0, 600, (5, 60), 180, 0), "tp 2x / 120 s": (2.0, 120, None, 0, 0),
               "tp 1.5x / 60 s": (1.5, 60, None, 0, 0), "held 300 s": (None, 300, None, 0, 0), "its sale (to 600 s)": (None, 600, None, 0, 1),
               "tp 3x / 420 s / stall 240": (3.0, 420, None, 240, 0), "tp 2.5x / 300 s / sp 5/60": (2.5, 300, (5, 60), 0, 0)}
 IDX = [np.ravel_multi_index((TP.index(tp), HOLD.index(h_), SPS.index(sp), STALL.index(st), it), SH) for tp, h_, sp, st, it in MENU_EXITS.values()]
-ENAMES = list(MENU_EXITS); FILT = [(kd, mn) for kd in ("all", "SOL", "token") for mn in (0.5, 1.3)]
+ENAMES = list(MENU_EXITS); FILT = [(kd, mn) for kd in ("all", "SOL", "token") for mn in (MINSOL, 1.3)]
 if os.environ.get("PICK_ALL"): FILT = [("all", 0.5)]   # Nov 22 check: the pick among the 8 exits on all its coins only
 firsts.sort(key=lambda c: c["t"])
 if len(firsts) > MAXN:

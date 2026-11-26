@@ -7,7 +7,7 @@ import sys, os
 HERE = os.path.dirname(os.path.abspath(__file__))
 src = open(os.path.join(HERE, "w3_robust.py")).read().split("real = rolling(G)")[0]
 src += '''
-bands = (("0.5+ SOL", 0.5, 1e9), ("0.5-1.3", 0.5, 1.3), ("1.3+", 1.3, 1e9))
+bands = ((f"{MINSOL}+", MINSOL, 1e9), ("0.5+ SOL", 0.5, 1e9), ("1.3+", 1.3, 1e9)) if MINSOL < 0.5 else (("0.5+ SOL", 0.5, 1e9), ("0.5-1.3", 0.5, 1.3), ("1.3+", 1.3, 1e9))
 print(f"\\n{'coins':6s} {'its buy':8s} {'exit':52s} {'block 1':>7s} {'2':>7s} {'3':>7s} {'4':>7s}  {'all (n)':>13s} {'w/o 2%':>7s} {'+blocks':>7s}")
 for kd in ("all", "SOL", "token"):
     for bn, lo, hi in bands:
