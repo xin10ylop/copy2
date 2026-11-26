@@ -611,6 +611,13 @@ key. A token Jupiter lists without a price crashed w2_grid (KeyError; fixed).
   the best 2%; own -63.56 SOL over 15 days, up on none). **5y2ex68L: FAIL** (699 copies, -3.0% a copy; own -66.01 SOL).
 - **4i45YQPu: not copyable** (a 1-day-old wallet: 129 buys, +109% a copy carried by a few coins, -11.54 SOL without the best 2%).
 
+**The screen of Nov 26 evening (123 h, buys of 0.5+ SOL) and its untested names (`out_w3/*_nov26c.txt`): none pass.**
+- **CNQQuavw: FAIL, a near miss** (221 copies; the rolling picks blind +2.7% a copy, -0.62 SOL without the best 2%, 1 of 3).
+  The fixed exits, all coins, no pick: tp 2x / 120 s +12.7 / +2.5 / +1.4 / +9.4% = +6.5% (221), +9.83 without the best 2%,
+  4 of 4; tp 3x / 420 s / stall 240 +7.8%, +9.29, 3 of 4. It loses -81.87 SOL itself over 15 days (up on 5).
+- **8cztdSB5: FAIL** (blind -11.7% a copy; the fixed exit -20.1%; own -38.74 SOL). **EBYaheLR** (29 buys in 6 days) and
+  **5W9K5iRW** (34 in 6 days, own -3.23 SOL): too new to judge, both FAIL the pick.
+
 **Fast traders (Nov 25; the owner: "maybe we can copy fast traders too, and make more money"; the screen's TOPFAST,
 93.9 h).** The 2,120 wallets holding a median under 20 s, copied realistically (out at 1.5x its price, in the first trade
 2 slots after its sale, or 15 s): every copy's mean **-6.5%**. The top 15 by consistency are positive on their 3-4 days;
