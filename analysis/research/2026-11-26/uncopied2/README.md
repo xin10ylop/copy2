@@ -79,3 +79,19 @@ float needed, and holding a meme coin that fell 30% in a day is a risk with no g
 The live bot looks pools up the same way (`route::plan` -> `pool_exists` -> `Rpc::cached`): a refused request at a
 trigger skips the copy as "no anchor reaches". The box's own RPC is a paid one and asks a few accounts a trigger, so it
 should be rare; its journal can tell (`grep "no anchor reaches"`, each token checked against `out/routes.txt`).
+
+## 3SiQo8MJ (`ppp`): where it made its money on Nov 25-26, and its small buys (Nov 26)
+
+The owner on "that came from coins we don't copy": "so why we dont copy". `u3_groups.py` with T_MIN = Nov 25 00:00 UTC on a
+fresh history (`histp_3SiQo8MJ`): the 11 coins its unit copies, its own -0.08 SOL; its buys of 0.25-0.5 SOL, 19 coins
++0.75; under 0.25 SOL, 28 coins +0.75; tokens no route reaches, 11 coins +0.27. Our copy of its smaller buys over 14 days
+(`e1_ideas.py`, BASEX = ppp's exit tp 2x / 120 s / sell pressure 5/60, 1 SOL; `out/replay_3SiQo8MJ_*.txt`):
+
+| Its first buy | Copies | % a copy | Without the best 2% | Blocks |
+|---|---|---|---|---|
+| 0.1-0.25 SOL | 168 | **+10.6%** | **+14.63 SOL** | +8.9 / +17.2 / +15.8 / +0.4 |
+| 0.25-0.5 SOL | 169 | +1.2% | -1.03 | +6.3 / -3.9 / +0.3 / +2.0 |
+
+The 0.1-0.25 band is the one group of small buys that replays well (the others: HtHkKxYN, CqCAzte8, GqWfqfG6 negative), picked
+after seeing it, and its last block is flat. The unit has a floor (`min_sol`) but no ceiling: `min_sol = 0.1` takes the
+flat 0.25-0.5 band too.

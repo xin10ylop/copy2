@@ -9,6 +9,7 @@
 #   python3 -I u3_groups.py UNITKIND MIN_SOL WALLET ROUTES HIST_DIR       (UNITKIND: all | token)
 import sys, json, glob, collections, urllib.request, datetime as dt, numpy as np
 KIND, MIN, W, ROUTES, D = sys.argv[1], float(sys.argv[2]), sys.argv[3], sys.argv[4], sys.argv[5]
+T_MIN = float(__import__("os").environ.get("T_MIN", 0))   # first buys after this time only (Nov 26: 3SiQo8MJ since Nov 25)
 SOLM = "So11111111111111111111111111111111111111112"
 ROUTE = {l.split()[0]: " ".join(l.split()[1:]) for l in open(ROUTES) if l.strip()}
 NAMES = {"3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh": "WBTC", "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn": "PUMP",
@@ -38,7 +39,7 @@ for e in trades: by[e["m"]].append(e)
 G = collections.defaultdict(list); unpriced = 0; holding = 0; noroute_tok = collections.Counter(); copied_how = collections.Counter()
 for m, es in by.items():
     es.sort(key=lambda e: (e["slot"], not e["buy"]))
-    if not es[0]["buy"]: continue
+    if not es[0]["buy"] or es[0]["t"] < T_MIN: continue
     q = es[0]["quote"]; r = rate(q)
     if r is None: unpriced += 1; continue
     tin = sum(e["tok"] for e in es if e["buy"]); tout = sum(e["tok"] for e in es if not e["buy"])
@@ -51,6 +52,7 @@ for m, es in by.items():
     elif size < MIN: g = f"its buy 0.25-{MIN} SOL"
     else:
         g = "COPIED by the unit"
+        if __import__("os").environ.get("LIST"): print("   copied", __import__("time").strftime("%m-%d %H:%M", __import__("time").gmtime(es[0]["t"])), m[:8], f"{size:.2f} SOL", f"own {own:+.3f}")
         copied_how["SOL coin" if sol_coin else "float/anchor" if how == "anchor" else "pool+curve (a hop more)"] += 1
     G[g].append((dt.datetime.fromtimestamp(es[0]["t"], dt.UTC).strftime("%m-%d"), own, size))
 alld = sorted({d for v in G.values() for d, _, _ in v})

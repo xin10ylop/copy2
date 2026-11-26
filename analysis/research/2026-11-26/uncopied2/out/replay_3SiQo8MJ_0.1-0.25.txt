@@ -1,0 +1,2 @@
+3SiQo8MJ (token): 168 copies with a cached path of 168 first buys; refused 0; 11-15 to 11-25
+  baseline (the unit's live exit): +10.6% a copy, +17.77 SOL at 1 SOL, without the best 2% +14.63; blocks +8.9 / +17.2 / +15.8 / +0.4; exits: tp 27
