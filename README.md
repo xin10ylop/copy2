@@ -18,6 +18,7 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 26: CqCAzte8's unit (`www`, `rugsnipe-long-cq`) stopped** (83 real, -0.66 SOL; weakest in every screen).
 **Nov 26: GqWfqfG6's unit (`uuu`) at 1.0 SOL a copy, daily stop 2.0** (deep test +20.5% 4 of 4; live 18 trades +0.94).
 **Nov 25 night: FatoU1bj's unit (`rugsnipe-long-fat`) stopped** (28 real, -1.14 SOL; the wallet itself lost on its evening burst
 and its edge is in a few +200% coins our 15 s exit cannot hold). Bing35WC's check command is now `iii` (`aaa` still works).

@@ -97,6 +97,9 @@ Wallet 4's strategies:
   on chain FatoU1bj itself was flat on its morning burst and lost -7.70 SOL on its evening one, its edge is in a few +200%
   coins our 15 s / 1.5x exit cannot hold; its 0.505 SOL buys put exactly 0.5 SOL in the curve and read a hair under
   `min_sol`). `pnl` keeps its record under `fat`; its check command `iii` went to Bing35WC.
+  **Since Nov 26: CqCAzte8's unit `rugsnipe-long-cq` (`www`) is stopped and disabled** (the owner's call: 83 real, -0.6648 SOL;
+  the weakest of ours in every screen since Nov 25, up 2 of 5 days and negative without its best 2%; its float use
+  goes to the other units). `pnl` keeps its record under `www`.
   **Since Nov 26: GqWfqfG6's unit (`uuu`) at 1.0 SOL a copy, daily stop 2.0** (the owner's call: the only wallet strong in the
   deep test, +20.5% 4 of 4, every screen and live, 18 trades +0.94 SOL).
   **Since Nov 25 evening: wallet 4's unit back at 1.0 SOL a copy** (the owner's call; daily stop 2.0 since Nov 25 late, 1.5 before; its float-paid
