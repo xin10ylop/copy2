@@ -426,7 +426,7 @@ mod tests {
     }
 
     /// FatoU1bj's unit (Nov 24): its own exit (tp 1.5x, 15 s, behind its sale) parses and passes `validate`, and every
-    /// live example (thirteen since Nov 26) validates and lists the other twelve units' state dirs, never its own.
+    /// live example (fourteen since Nov 27) validates and lists the other thirteen units' state dirs, never its own.
     #[test]
     fn the_flippers_example_config_is_valid_and_the_units_skip_each_other() {
         let c = LongCfg::from_toml_str(include_str!("../../../config/long-fat.live.example.toml")).unwrap();
@@ -447,10 +447,11 @@ mod tests {
             include_str!("../../../config/long-bng.live.example.toml"),
             include_str!("../../../config/long-e2x.live.example.toml"),
             include_str!("../../../config/long-e5c.live.example.toml"),
+            include_str!("../../../config/long-2gj.live.example.toml"),
         ] {
             let u = LongCfg::from_toml_str(src).unwrap();
             assert!(u.validate().is_ok(), "{}: {:?}", u.state_dir, u.validate());
-            assert_eq!(u.other_state_dirs.len(), 12, "{}", u.state_dir);
+            assert_eq!(u.other_state_dirs.len(), 13, "{}", u.state_dir);
             assert!(!u.other_state_dirs.contains(&u.state_dir), "{}", u.state_dir);
         }
     }

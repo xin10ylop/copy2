@@ -21,7 +21,7 @@ line() {   # CMD WALLET CONFIG -> prints the unit's line, sets A (all-time SOL) 
 }
 add() { awk -v x="$1" -v y="$2" 'BEGIN {printf "%.4f", x + y}'; }
 sum() { printf "%-14s %4s           all %+8.4f SOL%-12s   today %+8.4f SOL%s\n" "$1" "" "$2" "$(d "$2")" "$3" "$(d "$3")"; }
-UNITS="long:qqq:H9kuqGKN long-cgy:eee:CgyPomTG long-3xe:rrr:3XeFcZKS long-6lw:ttt:6LwMLkCe long-6nn:yyy:6nNzEg86 long-gqw:uuu:GqWfqfG6 long-bng:iii:Bing35WC long-htk:ooo:HtHkKxYN long-3si:ppp:3SiQo8MJ long-e2x:ddd:E2XwSeqe long-e5c:fff:E5CLHHz6 long-cq:www:CqCAzte8 long-fat:fat:FatoU1bj"
+UNITS="long:qqq:H9kuqGKN long-cgy:eee:CgyPomTG long-3xe:rrr:3XeFcZKS long-6lw:ttt:6LwMLkCe long-6nn:yyy:6nNzEg86 long-gqw:uuu:GqWfqfG6 long-bng:iii:Bing35WC long-htk:ooo:HtHkKxYN long-3si:ppp:3SiQo8MJ long-e2x:ddd:E2XwSeqe long-e5c:fff:E5CLHHz6 long-2gj:hhh:2GJUPUrk long-cq:www:CqCAzte8 long-fat:fat:FatoU1bj"
 run_a=0; run_t=0; stop_a=0; stop_t=0; stopped=()
 for u in $UNITS; do
   IFS=: read -r c cmd w <<< "$u"

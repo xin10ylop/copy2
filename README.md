@@ -18,6 +18,7 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 27: unit 14, 2GJUPUrk (`rugsnipe-long-2gj`, `hhh`), 0.5 SOL** (PASS on few buys; tape_screen README).
 **Nov 26 evening: Bing35WC's unit (`iii`) at 1.0 SOL a copy, daily stop 2.0** (13 real, +1.21 SOL).
 **Nov 26: units 12 and 13, E2XwSeqe (`rugsnipe-long-e2x`, `ddd`) and E5CLHHz6 (`rugsnipe-long-e5c`, `fff`), 0.5 SOL** (deep check PASS, tape_screen README).
 **Nov 26: CqCAzte8's unit (`www`, `rugsnipe-long-cq`) stopped** (83 real, -0.66 SOL; weakest in every screen).
