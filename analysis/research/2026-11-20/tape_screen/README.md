@@ -589,6 +589,16 @@ FecLfkDA's 79 buys; fixed (`e0749e0`), the empty coins deleted, the rerun on Hel
 - **7kyv4fyC: FAIL** (350 copies; blind -6.6% a copy, 1 of 3; the fixed exit -4.6%). It lost -174.63 SOL itself over 15 days
   and was up on none of them: the screen's 4 days of tape saw its small winners only.
 
+**The screen of Nov 26 midday (117.5 h) and its new names, deep-checked (Nov 26; `out_w3/*_nov26.txt`, 14-day histories).**
+- **E2XwSeqe: PASS** (118 copies over 10 days; gate 1 +6.1 / +8.2 / +4.5%; picks blind +13.7% a copy, +5.85 SOL without the
+  best 2%, 2 of 3). The units' fixed exit, all coins: -3.6 / +10.0 / +13.2 / +13.6% = +8.2% (118), +5.58, 3 of 4; its SOL
+  coins +16.5% (71), +9.60, 4 of 4. Own +3.67 SOL over 10 days, up on 5. About 12 buys a day.
+- **E5CLHHz6: PASS** (55 copies over 11 days; gate 1 +17.9 / +6.4 / +6.5%; blind +13.5% a copy, +2.22, 3 of 3). The fixed
+  exit, all coins: -10.9 / +25.7 / +9.3 / +27.1% = +12.5% (55), +3.59, 3 of 4. Own +0.07 SOL. About 5 buys a day.
+- **E5thTmUh: a weak PASS** (342 buys; blind +3.7% a copy on 116, +1.96, 3 of 3; the fixed exit +5.3% on 325, +5.06, 3 of 4).
+  Own -34.93 SOL over 15 days, up on 4.
+- **6xJwQ5m9: FAIL** (a 2-day-old wallet; blind -17.6% a copy).
+
 **Fast traders (Nov 25; the owner: "maybe we can copy fast traders too, and make more money"; the screen's TOPFAST,
 93.9 h).** The 2,120 wallets holding a median under 20 s, copied realistically (out at 1.5x its price, in the first trade
 2 slots after its sale, or 15 s): every copy's mean **-6.5%**. The top 15 by consistency are positive on their 3-4 days;
