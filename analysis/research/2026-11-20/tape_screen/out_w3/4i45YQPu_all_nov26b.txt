@@ -1,0 +1,36 @@
+4i45YQPudcCwuqpKPrkFAgsmZnsQmnvMYQRvrAAR86G5: own result +34.61 SOL over 1 days, up on 1; 129 first buys of 0.5+ SOL
+  by day: 11-22 +34.61
+copies: 129 of its 129 first buys of 0.5+ SOL tested; menu: 8 exits x 6 filters = 48 settings
+gate 1, the menu's mean exit (no picking) on the 3 blind blocks: +nan% / +nan% / +nan% -> FAIL
+ blind block                its buys picked on the blocks before                                   seen   blind    n
+           2 11-22 11:00-11-22 13:15 its sale (to 600 s), all coins, 0.25+ SOL                    -3.2%  +16.4%   32   (luck alone, seen: -13.4%)
+           3 11-22 13:15-11-22 17:40 tp 2.5x / 300 s / sp 5/60, all coins, 0.25+ SOL            +124.5% +208.5%   32   (luck alone, seen: -3.7%)
+           4 11-22 17:41-11-22 18:37 tp 2.5x / 300 s / sp 5/60, all coins, 0.25+ SOL            +152.2%   -6.7%   32   (luck alone, seen: -5.0%)
+blind, all 3 blocks: +69.854 SOL on 96 copies (+72.8% a copy), without the best 2% -3.164; positive in 2 of 3 blocks
+RESULT: FAIL (gate 1)
+
+each exit alone on the blind blocks (96 copies), % a copy: block 2 / 3 / 4 = all blind (n), without the best 2% in SOL
+  all   live (tp 4, 600 s, sp 5/60, stall 180, its early sale)   +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  all   live without its sale                                  +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  all   tp 2x / 120 s                                          +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  all   tp 1.5x / 60 s                                         +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  all   held 300 s                                             +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  all   its sale (to 600 s)                                    +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  all   tp 3x / 420 s / stall 240                              +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  all   tp 2.5x / 300 s / sp 5/60                              +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  SOL   live (tp 4, 600 s, sp 5/60, stall 180, its early sale)   +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  SOL   live without its sale                                  +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  SOL   tp 2x / 120 s                                          +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  SOL   tp 1.5x / 60 s                                         +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  SOL   held 300 s                                             +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  SOL   its sale (to 600 s)                                    +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  SOL   tp 3x / 420 s / stall 240                              +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  SOL   tp 2.5x / 300 s / sp 5/60                              +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  token live (tp 4, 600 s, sp 5/60, stall 180, its early sale)   +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  token live without its sale                                  +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  token tp 2x / 120 s                                          +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  token tp 1.5x / 60 s                                         +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  token held 300 s                                             +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  token its sale (to 600 s)                                    +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  token tp 3x / 420 s / stall 240                              +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00
+  token tp 2.5x / 300 s / sp 5/60                              +nan /   +nan /   +nan =   +nan% (0)  w/o 2% +0.00

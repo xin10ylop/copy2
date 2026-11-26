@@ -599,6 +599,18 @@ FecLfkDA's 79 buys; fixed (`e0749e0`), the empty coins deleted, the rerun on Hel
   Own -34.93 SOL over 15 days, up on 4.
 - **6xJwQ5m9: FAIL** (a 2-day-old wallet; blind -17.6% a copy).
 
+**The screen of buys of 0.25+ SOL (Nov 26, `sss 20 0.25`, 118.5 h) and its new names, deep-checked from 0.25 SOL (MINSOL=0.25;
+`out_w3/*_nov26b.txt`).** The screen's "own" column is broken at this floor for some wallets (+222,429 SOL): tokens with a
+bad Jupiter price; the copy % is not (curve price ratios). Helius ran out of credits mid-run ("max usage reached"): the
+history fetcher saved empty files that read as 0 buys (fixed: `c1_fetch.py` now stops with nothing saved); rerun on a new
+key. A token Jupiter lists without a price crashed w2_grid (KeyError; fixed).
+- **2qWPi9iK: FAIL** (337 copies, blind -2.5% a copy; own -16.42 SOL over 15 days).
+- **FhNgJfmQ: no** (110 copies; the rolling picks blind +6.4% a copy but -0.66 SOL without the best 2%, 2 of 3; the fixed exit,
+  all coins, +7.4%, +4.23, 3 of 4; own -0.51 SOL; gate 1 printed nan, a script gap on this wallet's copies).
+- **5JUCND3w: FAIL** (blind -10.0% a copy, 0 of 3; own -36.51 SOL). **EYR8yyqk: FAIL** (+0.6% a copy blind, negative without
+  the best 2%; own -63.56 SOL over 15 days, up on none). **5y2ex68L: FAIL** (699 copies, -3.0% a copy; own -66.01 SOL).
+- **4i45YQPu: not copyable** (a 1-day-old wallet: 129 buys, +109% a copy carried by a few coins, -11.54 SOL without the best 2%).
+
 **Fast traders (Nov 25; the owner: "maybe we can copy fast traders too, and make more money"; the screen's TOPFAST,
 93.9 h).** The 2,120 wallets holding a median under 20 s, copied realistically (out at 1.5x its price, in the first trade
 2 slots after its sale, or 15 s): every copy's mean **-6.5%**. The top 15 by consistency are positive on their 3-4 days;

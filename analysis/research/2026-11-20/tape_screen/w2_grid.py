@@ -46,7 +46,7 @@ sigs = sorted((t, s) for s, t in json.load(open(f"{D}/{W[:8]}_sigs.json")))
 by = collections.defaultdict(list)
 for e in trades: by[e["m"]].append(e)
 P = jup_prices(sorted({e["quote"] for e in trades if e["quote"] and not e["quote"].startswith("1111")})); su = P.get(SOLM, {}).get("usdPrice")
-rate_of = lambda q: 1.0 if not q or q.startswith("1111") else (P[q]["usdPrice"] / su * 1e9 / 10 ** P[q]["decimals"] if su and q in P and P[q].get("decimals") is not None else None)
+rate_of = lambda q: 1.0 if not q or q.startswith("1111") else (P[q]["usdPrice"] / su * 1e9 / 10 ** P[q]["decimals"] if su and q in P and P[q].get("decimals") is not None and P[q].get("usdPrice") else None)   # Nov 26: a token Jupiter lists without a price is unpriced (5JUCND3w: KeyError)
 day = collections.defaultdict(float); firsts = []
 for m, es in by.items():
     es.sort(key=lambda e: (e["slot"], not e["buy"]))
