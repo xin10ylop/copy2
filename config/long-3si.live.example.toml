@@ -15,7 +15,7 @@ mode = "on"
 copy_wallet = "3SiQo8MJMzXaZcJexMivmk5CRgrNxDUh4bDbgb3wFAmW"
 
 # its buy valued in SOL: its 1.5-SOL tier (reads 1.45-1.51 by route)
-min_sol = 0.5
+min_sol = 0.1
 # our buy, valued in SOL (1.0 tested: at 0.5 the fixed costs eat the edge)
 stake_sol = 0.25
 # the curve price against the price its buy left, without our own tokens

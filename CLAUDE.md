@@ -102,6 +102,10 @@ Wallet 4's strategies:
   goes to the other units). `pnl` keeps its record under `www`.
   **Since Nov 26: 3SiQo8MJ's unit (`ppp`) at 0.25 SOL a copy** (the owner's call: 10 real, -0.9153 SOL; the wallet itself lost on
   those coins, -25% against our -18%, and our replay of its buys since Nov 25 is -3.2% a copy; stop it at -1.5 SOL in all).
+  **Since Nov 26: smaller buys copied where they replay well** (the owner: "if it is profitable allow it";
+  `analysis/research/2026-11-26/small_buys/`): `ppp` (3SiQo8MJ) `min_sol = 0.1` (its 0.1-0.25 SOL buys +10.6% a copy on 168,
+  both halves positive), `yyy` (6nNzEg86) `min_sol = 0.25` (its 0.25-0.5 SOL buys +23.2% on 51, one block carrying it). Every
+  other unit's smaller buys replayed flat or negative: their floors stay.
   **Since Nov 26: GqWfqfG6's unit (`uuu`) at 1.0 SOL a copy, daily stop 2.0** (the owner's call: the only wallet strong in the
   deep test, +20.5% 4 of 4, every screen and live, 18 trades +0.94 SOL).
   **Since Nov 25 evening: wallet 4's unit back at 1.0 SOL a copy** (the owner's call; daily stop 2.0 since Nov 25 late, 1.5 before; its float-paid
