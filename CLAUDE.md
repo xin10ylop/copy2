@@ -63,7 +63,7 @@ Wallet 4's strategies:
   the SAME exit, `sol_exits = false`; `config/long-cgy.live.example.toml`; the test in
   `analysis/research/2026-11-20/tape_screen/` README: it fails the 48-setting pick, passes the pick on all coins, and the
   fixed exit is +12.1% a copy blind; the three units skip each other's coins; check command `eee`, `ggg` still works). **On the Frankfurt box: `qqq` =
-  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe, `yyy` = 6nNzEg86, `uuu` = GqWfqfG6, `iii` = Bing35WC (since Nov 25 night; `aaa` before, still works), `ooo` = HtHkKxYN, `ppp` = 3SiQo8MJ, `pnl` = every unit's result in
+  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe, `yyy` = 6nNzEg86, `uuu` = GqWfqfG6, `iii` = Bing35WC (since Nov 25 night; `aaa` before, still works), `ooo` = HtHkKxYN, `ppp` = 3SiQo8MJ, `ddd` = E2XwSeqe, `fff` = E5CLHHz6, `pnl` = every unit's result in
   one line each and the total (`deploy/bin/rugsnipe-pnl`), `sss` = the weekly wallet screen; on the Chicago box `www` is still
   the Robinhood copier.**
   **Since Nov 23 (the owner's call, 0.5 SOL, no paper phase): units 4 and 5, `rugsnipe-long-3xe` (3XeFcZKS, `rrr`) and
@@ -102,6 +102,11 @@ Wallet 4's strategies:
   goes to the other units). `pnl` keeps its record under `www`.
   **Since Nov 26: 3SiQo8MJ's unit (`ppp`) at 0.25 SOL a copy** (the owner's call: 10 real, -0.9153 SOL; the wallet itself lost on
   those coins, -25% against our -18%, and our replay of its buys since Nov 25 is -3.2% a copy; stop it at -1.5 SOL in all).
+  **Since Nov 26 (the owner: "do whaatever you have to do", 0.5 SOL): units 12 and 13, `rugsnipe-long-e2x` (E2XwSeqe, `ddd`) and
+  `rugsnipe-long-e5c` (E5CLHHz6, `fff`), all their coins, tp 3x, 420 s, stall 240, no sell pressure** (`config/long-e2x.live.example.toml`,
+  `long-e5c`; the deep check in the tape_screen README, Nov 26: E2XwSeqe +8.2% a copy with the fixed exit, 3 of 4, blind +13.7%;
+  E5CLHHz6 +12.5%, 3 of 4, blind +13.5% 3 of 3). The thirteen units (two stopped) skip each other's coins. `sss 20 0.25`
+  screens buys of 0.25+ SOL (the default floor stays 0.5).
   **Since Nov 26: smaller buys copied where they replay well** (the owner: "if it is profitable allow it";
   `analysis/research/2026-11-26/small_buys/`): `ppp` (3SiQo8MJ) `min_sol = 0.1` (its 0.1-0.25 SOL buys +10.6% a copy on 168,
   both halves positive), `yyy` (6nNzEg86) `min_sol = 0.25` (its 0.25-0.5 SOL buys +23.2% on 51, one block carrying it). Every

@@ -1,7 +1,8 @@
 #!/bin/bash
 # The weekly wallet screen on the Frankfurt box (Nov 23; the alias `sss`). Pulls the repo, runs s1_screen.py on the tape
 # (free: no credits), keeps the whole output in /var/lib/rugsnipe-screen/screen.txt and prints the part to paste back.
-#   sss          run the screen (MIN_COPIES 20); `sss 30` with MIN_COPIES 30
+#   sss          run the screen (MIN_COPIES 20, buys of 0.5+ SOL); `sss 30` with MIN_COPIES 30; `sss 20 0.25` the buys of 0.25+ SOL
+#                (Nov 26: the 0.5 SOL floor hid wallets whose edge is in smaller buys, as 3SiQo8MJ's 0.1-0.25 SOL ones)
 #   sss show     print the last result again, without rerunning
 # Nov 25: the screen runs as a background service (`rugsnipe-screen`), not tied to the SSH session: before, it printed
 # nothing for ~25 minutes, the SSH session froze or dropped, and the result only showed in another window. Now it prints
@@ -34,7 +35,7 @@ else
   sudo install -d -m 755 $D
   sudo systemd-run --unit=$U --collect -q -p MemoryMax=8G -p Nice=19 \
     --setenv=COST=0.0064 --setenv=MIN_HOLD=20 --setenv=TOPN=60 --setenv=TOP_JSON=$D/screen_top.json \
-    /bin/bash ~/rugsnipe/analysis/research/2026-11-20/tape_screen/screen_job.sh $D "${1:-20}" ~/rugsnipe/analysis/research/2026-11-20/tape_screen/s1_screen.py || exit 1
+    /bin/bash ~/rugsnipe/analysis/research/2026-11-20/tape_screen/screen_job.sh $D "${1:-20}" ~/rugsnipe/analysis/research/2026-11-20/tape_screen/s1_screen.py "${2:-0.5}" || exit 1
   echo "screen started in the background (about 10-30 minutes)."
 fi
 echo "a line every minute below. If this window closes, nothing is lost: run sss again to follow it, or sss show when done."
