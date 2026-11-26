@@ -7,17 +7,35 @@ B=${RUGSNIPE_LONG:-/opt/rugsnipe/bin/rugsnipe-long}
 # SOL in USD, once, from Jupiter's price API (the bots' own price source); blank when it does not answer
 usd=$(curl -s -m 8 "https://lite-api.jup.ag/price/v3?ids=So11111111111111111111111111111111111111112" | sed -n 's/.*"usdPrice":\([0-9.]*\).*/\1/p')
 d() { [ -n "$usd" ] && awk -v x="$1" -v u="$usd" 'BEGIN {printf " ($%+.2f)", x * u}'; }
-tot=0; tod=0
-for u in long:qqq:H9kuqGKN long-cq:www:CqCAzte8 long-cgy:eee:CgyPomTG long-3xe:rrr:3XeFcZKS long-6lw:ttt:6LwMLkCe long-6nn:yyy:6nNzEg86 long-gqw:uuu:GqWfqfG6 long-bng:iii:Bing35WC long-htk:ooo:HtHkKxYN long-3si:ppp:3SiQo8MJ long-fat:fat:FatoU1bj; do
-  IFS=: read -r c cmd w <<< "$u"
-  out=$(sudo "$B" status --config "/etc/rugsnipe/$c.toml" 2>/dev/null)
-  [ -n "$out" ] || { printf "%-4s %-9s  (no status)\n" "$cmd" "$w"; continue; }
+# Nov 26: the running units first, with their total; the stopped ones (disabled: FatoU1bj, CqCAzte8) apart under
+# "stopped", their record kept, with their own total; then everything together.
+line() {   # CMD WALLET CONFIG -> prints the unit's line, sets A (all-time SOL) and T (today SOL)
+  local out n
+  out=$(sudo "$B" status --config "/etc/rugsnipe/$3.toml" 2>/dev/null)
+  A=0; T=0
+  [ -n "$out" ] || { printf "%-4s %-9s  (no status)\n" "$1" "$2"; return; }
   n=$(echo "$out" | sed -n 's/.*all closed: real \([0-9]*\) (.*/\1/p')
-  a=$(echo "$out" | sed -n 's/.*all closed: real [0-9]* (\([+-][0-9.]*\) SOL.*/\1/p')
-  t=$(echo "$out" | sed -n 's/.*today (the UTC day) REAL: .* net \([+-][0-9.]*\) SOL.*/\1/p')
-  printf "%-4s %-9s %4s trades   all %+8.4f SOL%-12s   today %+8.4f SOL%s\n" "$cmd" "$w" "${n:-0}" "${a:-0}" "$(d "${a:-0}")" "${t:-0}" "$(d "${t:-0}")"
-  tot=$(awk -v x="$tot" -v y="${a:-0}" 'BEGIN {printf "%.4f", x + y}'); tod=$(awk -v x="$tod" -v y="${t:-0}" 'BEGIN {printf "%.4f", x + y}')
+  A=$(echo "$out" | sed -n 's/.*all closed: real [0-9]* (\([+-][0-9.]*\) SOL.*/\1/p'); A=${A:-0}
+  T=$(echo "$out" | sed -n 's/.*today (the UTC day) REAL: .* net \([+-][0-9.]*\) SOL.*/\1/p'); T=${T:-0}
+  printf "%-4s %-9s %4s trades   all %+8.4f SOL%-12s   today %+8.4f SOL%s\n" "$1" "$2" "${n:-0}" "$A" "$(d "$A")" "$T" "$(d "$T")"
+}
+add() { awk -v x="$1" -v y="$2" 'BEGIN {printf "%.4f", x + y}'; }
+sum() { printf "%-14s %4s           all %+8.4f SOL%-12s   today %+8.4f SOL%s\n" "$1" "" "$2" "$(d "$2")" "$3" "$(d "$3")"; }
+UNITS="long:qqq:H9kuqGKN long-cgy:eee:CgyPomTG long-3xe:rrr:3XeFcZKS long-6lw:ttt:6LwMLkCe long-6nn:yyy:6nNzEg86 long-gqw:uuu:GqWfqfG6 long-bng:iii:Bing35WC long-htk:ooo:HtHkKxYN long-3si:ppp:3SiQo8MJ long-cq:www:CqCAzte8 long-fat:fat:FatoU1bj"
+run_a=0; run_t=0; stop_a=0; stop_t=0; stopped=()
+for u in $UNITS; do
+  IFS=: read -r c cmd w <<< "$u"
+  if [ "$(systemctl is-enabled "rugsnipe-$c" 2>/dev/null)" != enabled ]; then stopped+=("$u"); continue; fi
+  line "$cmd" "$w" "$c"; run_a=$(add "$run_a" "$A"); run_t=$(add "$run_t" "$T")
 done
-echo
-printf "%-14s %4s           all %+8.4f SOL%-12s   today %+8.4f SOL%s\n" "total" "" "$tot" "$(d "$tot")" "$tod" "$(d "$tod")"
+echo; sum "running total" "$run_a" "$run_t"
+if [ ${#stopped[@]} -gt 0 ]; then
+  echo; echo "stopped (no longer copied; their record kept):"
+  for u in "${stopped[@]}"; do
+    IFS=: read -r c cmd w <<< "$u"
+    line "$cmd" "$w" "$c"; stop_a=$(add "$stop_a" "$A"); stop_t=$(add "$stop_t" "$T")
+  done
+  echo; sum "stopped total" "$stop_a" "$stop_t"
+fi
+echo; sum "all units" "$(add "$run_a" "$stop_a")" "$(add "$run_t" "$stop_t")"
 [ -n "$usd" ] && printf "(SOL \$%.2f)\n" "$usd"
