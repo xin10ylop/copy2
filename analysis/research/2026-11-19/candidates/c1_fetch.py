@@ -28,7 +28,9 @@ def helius_history(w):
                 if "result" in j: break
             except Exception: pass
             time.sleep(min(2 ** a, 30))
-        if not j or "result" not in j: break
+        # Nov 26: a refused page (Helius "max usage reached") stops the fetch with no files written; before, it broke
+        # out and saved an empty history that every later run reused as "0 buys"
+        if not j or "result" not in j: raise SystemExit(f"{w[:8]}: Helius refused page {pages}: {str(j)[:120] if j else 'no answer'}; nothing saved")
         for tx in j["result"]["data"]:
             s_ = tx["transaction"]["signatures"][0]; sigs.append([s_, tx.get("blockTime") or 0])
             rows.append({"sig": s_, "t": tx.get("blockTime") or 0, "trades": ns["own_trades"](tx, w)})
