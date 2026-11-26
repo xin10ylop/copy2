@@ -18,7 +18,7 @@ copy_wallet = "Bing35WCqmhUwFBJ9xVNfMoNpECj8vdWEr5hD5wYyobc"
 # its buy valued in SOL: its 1.5-SOL tier (reads 1.45-1.51 by route)
 min_sol = 0.5
 # our buy, valued in SOL (1.0 tested: at 0.5 the fixed costs eat the edge)
-stake_sol = 0.5
+stake_sol = 1.0
 # the curve price against the price its buy left, without our own tokens
 take_profit = 3.0
 # 0 = no stop (the trip ends at the take profit or the hold). Since Nov 2026 wallet 4 sells most coins early and
@@ -34,7 +34,7 @@ max_open = 2
 # backtest's limit; our own impact is not part of it)
 max_premium = 0.5
 # no new buys once today's (UTC) realized result is at or below -daily_stop_sol
-daily_stop_sol = 1.0
+daily_stop_sol = 2.0
 
 # held as floats besides wrapped SOL: routes may start and end in them (WBTC carried Oct 23-27).
 # Buy one with: rugsnipe-long float buy 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh 3.0
