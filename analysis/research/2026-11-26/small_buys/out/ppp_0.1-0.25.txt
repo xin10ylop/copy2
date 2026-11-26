@@ -1,0 +1,36 @@
+3SiQo8MJMzXaZcJexMivmk5CRgrNxDUh4bDbgb3wFAmW: own result +33.00 SOL over 13 days, up on 12; 591 first buys of 0.5+ SOL
+  by day: 11-14 +0.00  11-15 +1.75  11-16 +0.67  11-17 +0.93  11-18 -2.24  11-19 +12.26  11-20 +1.74  11-21 +5.05  11-22 +5.77  11-23 +3.27  11-24 +2.47  11-25 +0.78  11-26 +0.56
+3SiQo8MJ (token): 168 copies with a cached path of 168 first buys; refused 0; 11-15 to 11-25
+  baseline (the unit's live exit): +10.6% a copy, +17.80 SOL at 1 SOL, without the best 2% +14.66; blocks +8.9 / +17.2 / +15.9 / +0.4; exits: tp 27
+  variant              SOL  vs base  w/o 2%  vs base  blocks better   taken
+  P 3s >=3           +6.03   -11.77   +2.26   -12.40  0 of 4           66
+  P 3s >=6           +4.78   -13.02   +1.35   -13.31  0 of 4           40
+  P 3s >=10          +5.38   -12.41   +2.20   -12.46  0 of 4           21
+  P 5s >=3           +5.18   -12.61   +1.96   -12.70  0 of 4           75
+  P 5s >=6           +5.61   -12.18   +2.39   -12.27  0 of 4           54
+  P 5s >=10          +4.52   -13.27   +1.54   -13.12  0 of 4           36
+  P 10s >=3          +6.25   -11.55   +3.22   -11.44  1 of 4           79
+  P 10s >=6          +3.54   -14.26   +0.77   -13.89  1 of 4           62
+  P 10s >=10         +3.65   -14.15   +1.30   -13.36  1 of 4           45
+  P 20s >=3          +1.88   -15.91   -0.38   -15.04  0 of 4           79
+  P 20s >=6          +3.22   -14.58   +0.96   -13.70  0 of 4           63
+  P 20s >=10         +1.65   -16.15   -0.26   -14.92  1 of 4           54
+  D 10% live        +12.20    -5.59   +7.40    -7.26  1 of 4           77
+  D 10% leg          +4.00   -13.79   +2.34   -12.32  0 of 4           77
+  D 20% live         +7.24   -10.56   +2.43   -12.23  1 of 4           42
+  D 20% leg          +2.88   -14.92   +1.38   -13.28  0 of 4           42
+  D 30% live         +4.42   -13.38   +0.44   -14.22  0 of 4           17
+  D 30% leg          +2.65   -15.14   +1.06   -13.60  0 of 4           17
+  T 1.5x -25%       +13.98    -3.81  +11.02    -3.64  0 of 4          168
+  T 1.5x -40%       +17.33    -0.46  +14.20    -0.46  2 of 4          168
+  T 2.0x -25%       +17.80    +0.00  +14.66    +0.00  0 of 4          168
+  T 2.0x -40%       +17.80    +0.00  +14.66    +0.00  0 of 4          168
+  R                 +18.90    +1.11  +15.27    +0.61  3 of 4          168 <- 3 of 4
+  extra leg 10% live    77 trades  +15.8% a trade, +12.20 SOL, w/o 2%  +8.84; by block +15.7% (24) / +38.0% (17) / +16.7% (18) / -5.8% (18)
+  extra leg 10% leg     77 trades   +5.2% a trade,  +4.00 SOL, w/o 2%  +2.88; by block +4.8% (24) / +5.5% (17) / +13.2% (18) / -2.5% (18)
+  extra leg 20% live    42 trades  +17.2% a trade,  +7.24 SOL, w/o 2%  +5.47; by block +35.0% (10) / +14.7% (7) / +17.3% (14) / +2.7% (11)
+  extra leg 20% leg     42 trades   +6.9% a trade,  +2.88 SOL, w/o 2%  +2.36; by block +15.6% (10) / -3.1% (7) / +13.0% (14) / -2.5% (11)
+  extra leg 30% live    17 trades  +26.0% a trade,  +4.42 SOL, w/o 2%  +2.64; by block +63.3% (3) / +39.6% (4) / +24.1% (5) / -5.4% (5)
+  extra leg 30% leg     17 trades  +15.6% a trade,  +2.65 SOL, w/o 2%  +2.07; by block +26.4% (3) / +30.1% (4) / +15.3% (5) / -2.2% (5)
+  revival after a non-tp exit, within the path (~375 s after its buy): 127 exits with trades after; the price later reached 1.5x our exit price on 21%, 2x on 6%; the re-buy rule fired on 47
+  CANDIDATES: R
