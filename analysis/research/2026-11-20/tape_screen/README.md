@@ -580,6 +580,15 @@ FecLfkDA's 79 buys; fixed (`e0749e0`), the empty coins deleted, the rerun on Hel
 - **EtwpENJ2: FAIL** (208 copies; gate 1 -5.0 / -2.3 / +20.9%; blind -3.3% a copy, 0 of 3). Own +16.14 over 14 days, up on
   13, but its copies make money in one block only (Nov 23-25, the block the screen saw).
 
+**The screen of Nov 26 (106 h) and its new names, deep-checked (Nov 26; `out_w3/{6kPn3FEA,7kyv4fyC}_*_nov26.txt`, the fresh
+14-day histories `hist26_`).**
+- **6kPn3FEA: a weak PASS** (96 copies; gate 1 -2.6 / +5.3 / +4.9%; the picks, held 300 s each time, blind -7.9 / +14.0 /
+  +8.2%, +4.8% a copy, +0.51 SOL without the best 2%, 2 of 3). The units' fixed exit, all coins: +33.9 / -9.3 / +8.4 / +0.6%
+  = +8.4% (96), +4.20 without the best 2%, 3 of 4, its first block carrying it. It loses -29.39 SOL itself over 14 days, up
+  on 5. Weaker than Bing35WC (+12.7% blind, 3 of 3): not added.
+- **7kyv4fyC: FAIL** (350 copies; blind -6.6% a copy, 1 of 3; the fixed exit -4.6%). It lost -174.63 SOL itself over 15 days
+  and was up on none of them: the screen's 4 days of tape saw its small winners only.
+
 **Fast traders (Nov 25; the owner: "maybe we can copy fast traders too, and make more money"; the screen's TOPFAST,
 93.9 h).** The 2,120 wallets holding a median under 20 s, copied realistically (out at 1.5x its price, in the first trade
 2 slots after its sale, or 15 s): every copy's mean **-6.5%**. The top 15 by consistency are positive on their 3-4 days;
