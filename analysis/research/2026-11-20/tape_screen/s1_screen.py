@@ -99,6 +99,11 @@ def model(tr, k, rate, user):
     slots = np.array([e[0] for e in rest]); fi = first(its_sell)
     its2 = BIG if fi is None else at(first(slots >= rest[fi][0] + 2))
     for cap in (15, 30): o[f"fast{cap}"] = float(val[min(trig(first(px >= 1.5)), its2, tm(cap), n - 1)])
+    # Nov 27 (the method test, at the end): the standard exit 9 of 11 units run (tp 3x, 420 s, stall 240 from our fill;
+    # analysis/research/2026-11-27/exits_all/), and the highest price over our fill within 420 s
+    st240 = trig(first((pk >= prem) & (age - lasthi >= 240)))
+    o["std"] = float(val[min(trig(first(px >= 3)), tm(420), st240, n - 1)])
+    w420 = age < 420; o["_pk"] = float(px[w420].max() / prem) if w420.any() else 1.0
     return o
 EX = ["w4", "its", "tp2", "held", "scalp"]
 def settle(now):
@@ -452,3 +457,80 @@ for i, a in enumerate(top):
 print(f"linked pairs among the top 60 (same coins, 30%+): {len(pairs)}")
 for sh, a, b in sorted(pairs, reverse=True)[:15]:
     print(f"  {a[:8]} + {b[:8]}: {sh} coins in common ({len(coins_of[a])} / {len(coins_of[b])})")
+
+# The method test (Nov 27; the owner: "do you think we should do a different approach to sss? like ... try to search
+# wallet's that hit 2-3x 2 times a day and be able to filter the coins that they lose on ... i am sure there are other
+# wallet 4's, we have all the data"). Wallet 4 itself shows why the lists above miss such wallets: all its copies lose
+# (benchmark: up 0 of 7 days), its token coins of 1.3+ SOL win; and it is left out as a launch bundle. So the screen is
+# turned on itself: each ranking method below ranks the wallets on ONE half of the tape only, its top 30 are scored on the
+# OTHER half (both ways round), with the standard exit (tp 3x / 420 s / stall 240: what 9 of 11 units run). The method that
+# picks wallets whose copies win on the half it did not see is the one to screen with. Wallets: 10+ copies, not speed
+# traders, not jumpy, not late (the can't-copy filters only; launch-slot buyers stay in, as wallet 4 is one).
+#   consistency      days up / (days + 2), days of 2+ copies, the 5-exit mean (the list above)
+#   consistency std  the same, the standard exit
+#   mean std         the standard exit's mean a copy, shrunk toward every copy's (30 copies of weight)
+#   2x a day / 3x    copies whose price went 2x (3x) over our fill within 420 s, a day (the owner's idea)
+#   own SOL          its own result on its sold-out coins
+#   segment          each wallet's best part by consistency std: its SOL or token coins, under or over 1.3 SOL (5+ copies
+#                    in the half); its top 30 are scored on that part only ("filter the coins they lose on")
+#   random           30 wallets at random (20 draws): what no method gives
+ELIG = [u for u, xs in by.items() if len(xs) >= MINN and hold_of(xs) >= MIN_HOLD and np.mean([x[3] == "refused" for x in xs]) <= 0.5 and prem_of(xs) <= MAX_PREM]
+SEGS = {"SOL <1.3": lambda x: x[5] and x[2] < 1.3, "SOL 1.3+": lambda x: x[5] and x[2] >= 1.3,
+        "token <1.3": lambda x: not x[5] and x[2] < 1.3, "token 1.3+": lambda x: not x[5] and x[2] >= 1.3}
+vstd = lambda x: (x[3]["std"] if x[3] != "refused" else -0.0004) / STAKE * 100
+v5 = lambda x: (np.mean([x[3][e] for e in EX]) if x[3] != "refused" else -0.0004) / STAKE * 100
+pool_std = float(np.mean([vstd(x) for x in out]))
+def consv(xs, f):
+    d = collections.defaultdict(list)
+    for x in xs: d[int(x[1] // 86400)].append(f(x))
+    dd = [np.mean(v) for v in d.values() if len(v) >= 2]
+    return (sum(v > 0 for v in dd) / (len(dd) + 2), float(np.mean([f(x) for x in xs]))) if xs else (0, 0)
+def hits(xs, k, hours):
+    return sum(1 for x in xs if x[3] != "refused" and x[3]["_pk"] >= k) / max(hours / 24, 1e-9)
+def ownv(xs):
+    oc = [own[(x[0], x[4])] for x in xs if (x[0], x[4]) in own]; return sum(o[1] - o[0] for o in oc if o[3] >= 0.99 * o[2])
+def rank(method, H):
+    """(score, wallet, segment or None) for the eligible wallets on the copies H(wallet) of one half"""
+    r_ = []; hours = max(1.0, (mid - t_first) / 3600)
+    for u in ELIG:
+        xs = H(u)
+        if len(xs) < 5: continue
+        if method == "consistency": sc = consv(xs, v5)
+        elif method == "consistency std": sc = consv(xs, vstd)
+        elif method == "mean std": sc = (len(xs) * np.mean([vstd(x) for x in xs]) + 30 * pool_std) / (len(xs) + 30)
+        elif method == "2x a day": sc = hits(xs, 2, hours)
+        elif method == "3x a day": sc = hits(xs, 3, hours)
+        elif method == "own SOL": sc = ownv(xs)
+        elif method == "segment":
+            for sg, f in SEGS.items():
+                ys = [x for x in xs if f(x)]
+                if len(ys) >= 5: r_.append((consv(ys, vstd), u, sg))
+            continue
+        r_.append((sc, u, None))
+    return sorted(r_, key=lambda z: z[0], reverse=True)
+def score(top, H):
+    ys = [x for sc, u, sg in top for x in H(u) if sg is None or SEGS[sg](x)]
+    v = sorted(vstd(x) for x in ys); k = max(1, round(0.02 * len(v)))
+    pos = sum(1 for sc, u, sg in top if np.mean([vstd(x) for x in H(u) if sg is None or SEGS[sg](x)] or [0]) > 0)
+    return (float(np.mean(v)) if v else float("nan"), float(np.mean(v[:-k])) if len(v) > k else float("nan"), len(v), pos)
+A = lambda u: [x for x in by[u] if x[1] < mid]; B = lambda u: [x for x in by[u] if x[1] >= mid]
+print(f"\nmethod test: each method ranks on one half, its top 30 scored on the other with the standard exit (every copy {pool_std:+.1f}%); "
+      f"{len(ELIG)} wallets; a copy % (without its best 2%), copies, of the 30 positive")
+MS = ["consistency", "consistency std", "mean std", "2x a day", "3x a day", "own SOL", "segment"]; best_m = None
+for mth in MS + ["random"]:
+    res_ = []
+    for tr_, te_ in ((A, B), (B, A)):
+        if mth == "random":
+            rs = np.random.default_rng(3); draws = [score([(0, u, None) for u in rs.choice(ELIG, min(30, len(ELIG)), replace=False)], te_) for _ in range(20)]
+            res_.append(tuple(float(np.nanmean([d[i] for d in draws])) for i in range(4)))
+        else: res_.append(score(rank(mth, tr_)[:30], te_))
+    (m1, w1, n1, p1), (m2, w2, n2, p2) = res_
+    print(f"  {mth:16s} half 1 -> 2: {m1:+6.1f}% ({w1:+6.1f}%) {n1:5.0f} copies {p1:4.1f}/30   half 2 -> 1: {m2:+6.1f}% ({w2:+6.1f}%) {n2:5.0f} copies {p2:4.1f}/30")
+    if mth != "random" and np.isfinite(w1 + w2) and (best_m is None or w1 + w2 > best_m[0]): best_m = (w1 + w2, mth)
+if best_m:
+    print(f"the method whose picks did best on the half they did not see (without their best 2%, both ways): {best_m[1]}; its top 15 on the whole tape:")
+    for sc, u, sg in rank(best_m[1], lambda u: by[u])[:15]:
+        xs = [x for x in by[u] if sg is None or SEGS[sg](x)]; c_ = consv(xs, vstd)
+        print(f"  {u:44s} {sg or 'all coins':10s} {len(xs):4d} copies  std {np.mean([vstd(x) for x in xs]):+6.1f}%  days score {c_[0]:.2f}  "
+              f"2x a day {hits(xs, 2, (t_last - t_first) / 3600):4.1f}  own {ownv(xs):+7.2f} SOL")
+    print("TOPBEST30: " + ",".join(f"{u}" + (f":{sg.replace(' ', '')}" if sg else "") for sc, u, sg in rank(best_m[1], lambda u: by[u])[:30]))

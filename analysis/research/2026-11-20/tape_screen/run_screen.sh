@@ -21,7 +21,8 @@ show() {
   grep -E "^tape|bundles|jumpy|left out as late|median price" $OUT; sed -n '/by the mean over/,+15p' $OUT
   sed -n '/^by consistency/,+15p' $OUT; sed -n '/^launch-slot buyers/,+10p' $OUT; sed -n '/^fast traders/,+15p' $OUT
   sed -n '/^agreement:/,+3p' $OUT; sed -n '/^benchmark/,+10p' $OUT
-  grep -E "^TOPMEAN|^TOPCONS|^TOPLAUNCH|^TOPFAST" $OUT
+  sed -n '/^method test/,+9p' $OUT; sed -n '/^the method whose picks/,+15p' $OUT
+  grep -E "^TOPMEAN|^TOPCONS|^TOPLAUNCH|^TOPFAST|^TOPBEST" $OUT
 }
 
 if [ "$1" = show ]; then show; exit $?; fi
