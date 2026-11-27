@@ -100,6 +100,10 @@ Wallet 4's strategies:
   **Since Nov 26: CqCAzte8's unit `rugsnipe-long-cq` (`www`) is stopped and disabled** (the owner's call: 83 real, -0.6648 SOL;
   the weakest of ours in every screen since Nov 25, up 2 of 5 days and negative without its best 2%; its float use
   goes to the other units). `pnl` keeps its record under `www`.
+  **Since Nov 27: E5CLHHz6's unit `rugsnipe-long-e5c` (`fff`) is stopped and disabled** (the owner: "just remove it": 6 real,
+  all lost, -1.3650 SOL on the morning of Nov 27, the daily stop passed with 2 open; live = the backtest on the same six,
+  -45.5% against -45.3% a copy: the bot followed its rules; the wallet sold in 3-48 s on 4 of 6 and lost -0.69 SOL itself on
+  them, -1.61 SOL over 11 days). `pnl` keeps its record under `fff`.
   **Since Nov 26: 3SiQo8MJ's unit (`ppp`) at 0.25 SOL a copy** (the owner's call: 10 real, -0.9153 SOL; the wallet itself lost on
   those coins, -25% against our -18%, and our replay of its buys since Nov 25 is -3.2% a copy; stop it at -1.5 SOL in all).
   **Since Nov 26 (the owner: "do whaatever you have to do", 0.5 SOL): units 12 and 13, `rugsnipe-long-e2x` (E2XwSeqe, `ddd`) and
