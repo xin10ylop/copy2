@@ -1,0 +1,15 @@
+the last 7 days: copyable coins priced in each token (first buy at its unit's floor), SOL a copy ties up, and a float's size
+  token       now copies  a day most at once   skipped / shrunk at: now | SIZES    by unit
+  PUMP        1.0     84   12.0        1.8 SOL   5/2 | 5/2 | 0/2 | 0/0 | 0/0    ppp 40, qqq 18, yyy 9, ttt 5, ddd 5, eee 2, rrr 2, uuu 1, iii 1, hhh 1
+  NVDAx       1.5     81   11.6        3.2 SOL   9/7 | 22/3 | 9/7 | 6/4 | 1/1    ppp 43, qqq 17, uuu 7, ttt 4, ddd 3, yyy 2, hhh 2, fff 2, rrr 1
+  hSOL        2.0     91   13.0        2.8 SOL   2/1 | 24/4 | 9/1 | 2/1 | 0/0    qqq 37, yyy 19, eee 12, ppp 11, ddd 6, ttt 3, iii 2, ooo 1
+  SPCX        1.0     52    7.4        1.5 SOL   2/0 | 2/0 | 0/0 | 0/0 | 0/0    ppp 20, qqq 10, ooo 8, rrr 5, uuu 2, ttt 2, yyy 2, hhh 1, eee 1, ddd 1
+  TTWO        2.5     53    7.6        1.5 SOL   0/0 | 3/5 | 0/0 | 0/0 | 0/0    ppp 25, qqq 12, uuu 4, ttt 4, ddd 3, ooo 2, rrr 2, yyy 1
+  USDC        1.0     39    5.6        1.2 SOL   0/1 | 0/1 | 0/0 | 0/0 | 0/0    ppp 29, eee 5, qqq 3, ddd 1, ooo 1
+  WBTC        0.5     13    1.9        1.0 SOL   0/2 | 0/0 | 0/0 | 0/0 | 0/0    ppp 7, qqq 2, rrr 1, ddd 1, ooo 1, yyy 1
+  SQQQ        0.0     10    1.4        1.5 SOL   10/0 | 1/0 | 0/0 | 0/0 | 0/0    ppp 4, ddd 2, qqq 1, ooo 1, uuu 1, fff 1
+  ANT         0.0     10    1.4        1.0 SOL   10/0 | 0/0 | 0/0 | 0/0 | 0/0    ppp 7, qqq 2, rrr 1
+  TSLAx       0.0     18    2.6        1.0 SOL   18/0 | 0/0 | 0/0 | 0/0 | 0/0    ppp 9, qqq 2, ooo 2, ddd 2, uuu 1, rrr 1, ttt 1
+  B34nXKzC    0.0      7    1.0        0.5 SOL   7/0 | 0/0 | 0/0 | 0/0 | 0/0    ppp 5, rrr 1, ttt 1
+  PAID        0.6      6    0.9        1.5 SOL   1/1 | 1/0 | 0/0 | 0/0 | 0/0    yyy 4, ppp 1, qqq 1
+SOL coins (paid with SOL): 375 copies, the most SOL tied up at once 4.5; copies that found more than X tied up: 1.5 SOL 30, 2.0 SOL 8, 2.5 SOL 4, 3.0 SOL 3

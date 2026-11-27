@@ -1,0 +1,33 @@
+/home/user/copy2/analysis/research/2026-11-24/ideas/e1_ideas.py:133: RuntimeWarning: Mean of empty slice
+  f"blocks " + " / ".join(f"{100 * B[b].mean():+.1f}" for b in blocks) + f"; exits: tp {sum(r['why'] == 'tp' for r in ok)}")
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+GqWfqfG6Mt6RL8BKUWiBkirqzycUc15bgZVtFERQzxJ8: own result +31.52 SOL over 7 days, up on 7; 75 first buys of 0.5+ SOL
+  by day: 11-20 +6.47  11-21 +6.90  11-22 +6.57  11-23 +4.84  11-24 +1.01  11-25 +4.20  11-26 +1.54
+GqWfqfG6 (all): 1 copies with a cached path of 1 first buys; refused 0; 11-22 to 11-22
+  baseline (the unit's live exit): +117.7% a copy, +1.18 SOL at 1 SOL, without the best 2% +0.00; blocks +117.7 / +nan / +nan / +nan; exits: tp 0
+  variant              SOL  vs base  w/o 2%  vs base  blocks better   taken
+  P 3s >=3           +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  P 3s >=6           +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  P 3s >=10          +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  P 5s >=3           +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  P 5s >=6           +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  P 5s >=10          +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  P 10s >=3          +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  P 10s >=6          +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  P 10s >=10         +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  P 20s >=3          +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  P 20s >=6          +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  P 20s >=10         +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  D 10% live         +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  D 10% leg          +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  D 20% live         +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  D 20% leg          +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  D 30% live         +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  D 30% leg          +0.00    -1.18   +0.00    +0.00  0 of 4            0
+  T 1.5x -25%        +1.18    +0.00   +0.00    +0.00  0 of 4            1
+  T 1.5x -40%        +1.18    +0.00   +0.00    +0.00  0 of 4            1
+  T 2.0x -25%        +1.18    +0.00   +0.00    +0.00  0 of 4            1
+  T 2.0x -40%        +1.18    +0.00   +0.00    +0.00  0 of 4            1
+  R                  +1.18    +0.00   +0.00    +0.00  0 of 4            1
+  CANDIDATES: none

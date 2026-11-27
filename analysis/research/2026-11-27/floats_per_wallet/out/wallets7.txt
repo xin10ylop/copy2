@@ -1,0 +1,93 @@
+last 7 days; each unit's wallet, first buys at its floor and coin kind; own = the wallet's own SOL on the coins it sold out of
+
+qqq H9kuqGKN (token coins, 1.3+ SOL): 150 coins since 11-20 10:12 UTC, 8125 trades fetched
+    float       100 coins (66.7%)  own  +20.14 SOL on 97 sold out
+    pool route   11 coins ( 7.3%)  own   +9.43 SOL on 10 sold out
+    NO ROUTE     39 coins (26.0%)  own   +7.40 SOL on 39 sold out
+    floats used: hSOL 37, PUMP 18, NVDAx 17, TTWO 12, SPCX 10, USDC 3, WBTC 2, PAID 1
+    no-route tokens: XsoCS1Tf 3, WXMRyRZh 3, 7vfCXTUX 3, PrekqLJv 2, PEPEqnuu 2, DJTu7vi8 2
+eee CgyPomTG (all coins, 0.5+ SOL): 69 coins since 11-20 14:27 UTC, 245 trades fetched
+    SOL          40 coins (58.0%)  own  +14.88 SOL on 40 sold out
+    float        20 coins (29.0%)  own  +14.85 SOL on 20 sold out
+    pool route    1 coins ( 1.4%)  own   -0.22 SOL on 1 sold out
+    NO ROUTE      8 coins (11.6%)  own   +2.01 SOL on 8 sold out
+    floats used: hSOL 12, USDC 5, PUMP 2, SPCX 1
+    no-route tokens: DJTu7vi8 3, NFLX7qV5 2, A7bdiYdS 1, 65q7e9mA 1, PreweJYE 1
+rrr 3XeFcZKS (token coins, 0.5+ SOL): 18 coins since 11-20 09:59 UTC, 1167 trades fetched
+    float        11 coins (61.1%)  own   +2.54 SOL on 11 sold out
+    pool route    2 coins (11.1%)  own   +0.92 SOL on 2 sold out
+    NO ROUTE      5 coins (27.8%)  own   +2.36 SOL on 5 sold out
+    floats used: SPCX 5, PUMP 2, TTWO 2, NVDAx 1, WBTC 1
+    no-route tokens: VVV4UdRy 2, XsDoVfqe 1, EKpQGSJt 1, ANTBTZQ1 1
+ttt 6LwMLkCe (token coins, 0.5+ SOL): 35 coins since 11-20 10:07 UTC, 650 trades fetched
+    float        18 coins (51.4%)  own   +4.70 SOL on 18 sold out
+    pool route    9 coins (25.7%)  own   +1.63 SOL on 9 sold out
+    NO ROUTE      8 coins (22.9%)  own   -0.39 SOL on 7 sold out
+    floats used: PUMP 5, TTWO 4, NVDAx 4, hSOL 3, SPCX 2
+    no-route tokens: DJTu7vi8 2, PEPEqnuu 1, XsDoVfqe 1, DoGEV7LA 1, RDDTGbhH 1, NVDAVuiB 1
+yyy 6nNzEg86 (token coins, 0.25+ SOL): 43 coins since 11-20 14:36 UTC, 425 trades fetched
+    float        38 coins (88.4%)  own   +4.54 SOL on 34 sold out
+    pool route    1 coins ( 2.3%)  own   +0.05 SOL on 1 sold out
+    NO ROUTE      4 coins ( 9.3%)  own   +0.25 SOL on 4 sold out
+    floats used: hSOL 19, PUMP 9, PAID 4, SPCX 2, NVDAx 2, WBTC 1, TTWO 1
+    no-route tokens: zK42Ztz6 2, PrekqLJv 1, 6p6xgHyF 1
+uuu GqWfqfG6 (all coins, 0.5+ SOL): 75 coins since 11-20 12:56 UTC, 467 trades fetched
+    SOL          58 coins (77.3%)  own  +17.86 SOL on 57 sold out
+    float        14 coins (18.7%)  own   +5.70 SOL on 13 sold out
+    NO ROUTE      3 coins ( 4.0%)  own   -0.21 SOL on 3 sold out
+    floats used: NVDAx 7, TTWO 4, SPCX 2, PUMP 1
+    no-route tokens: DJTu7vi8 1, XsDoVfqe 1, SQQQAa3g 1
+iii Bing35WC (all coins, 0.5+ SOL): 80 coins since 11-20 14:23 UTC, 248 trades fetched
+    SOL          74 coins (92.5%)  own  +24.35 SOL on 64 sold out
+    float         3 coins ( 3.8%)  own   -1.18 SOL on 3 sold out
+    pool route    3 coins ( 3.8%)  own   +0.00 SOL on 0 sold out
+    floats used: hSOL 2, PUMP 1
+ooo HtHkKxYN (all coins, 0.5+ SOL): 107 coins since 11-20 09:12 UTC, 518 trades fetched
+    SOL          86 coins (80.4%)  own  +19.07 SOL on 63 sold out
+    float        13 coins (12.1%)  own   +3.60 SOL on 12 sold out
+    pool route    1 coins ( 0.9%)  own   +0.00 SOL on 0 sold out
+    NO ROUTE      7 coins ( 6.5%)  own   +3.44 SOL on 5 sold out
+    floats used: SPCX 8, TTWO 2, USDC 1, WBTC 1, hSOL 1
+    no-route tokens: XsDoVfqe 2, PrekqLJv 1, DJTu7vi8 1, suifhC9g 1, SQQQAa3g 1, NFLX7qV5 1
+ppp 3SiQo8MJ (token coins, 0.1+ SOL): 269 coins since 11-20 09:56 UTC, 675 trades fetched
+    float       176 coins (65.4%)  own  +12.62 SOL on 176 sold out
+    pool route   48 coins (17.8%)  own   +3.46 SOL on 46 sold out
+    NO ROUTE     45 coins (16.7%)  own   +1.69 SOL on 45 sold out
+    floats used: NVDAx 43, PUMP 40, USDC 29, TTWO 25, SPCX 20, hSOL 11, WBTC 7, PAID 1
+    no-route tokens: XsDoVfqe 9, ANTBTZQ1 7, DJTu7vi8 4, SQQQAa3g 4, AMC1qwR9 3, NVDAVuiB 3
+ddd E2XwSeqe (all coins, 0.5+ SOL): 106 coins since 11-20 16:30 UTC, 1558 trades fetched
+    SOL          69 coins (65.1%)  own   +6.12 SOL on 66 sold out
+    float        20 coins (18.9%)  own   +1.70 SOL on 20 sold out
+    pool route    2 coins ( 1.9%)  own   +2.48 SOL on 2 sold out
+    NO ROUTE     15 coins (14.2%)  own   -0.26 SOL on 12 sold out
+    floats used: hSOL 6, PUMP 5, TTWO 3, NVDAx 3, SPCX 1, USDC 1, WBTC 1
+    no-route tokens: WXMRyRZh 2, XsDoVfqe 2, XsqE9cRR 2, SQQQAa3g 2, XsoCS1Tf 1, A7bdiYdS 1
+fff E5CLHHz6 (all coins, 0.5+ SOL): 34 coins since 11-22 08:01 UTC, 227 trades fetched
+    SOL          31 coins (91.2%)  own   +2.41 SOL on 27 sold out
+    float         2 coins ( 5.9%)  own   +2.94 SOL on 2 sold out
+    NO ROUTE      1 coins ( 2.9%)  own   +0.00 SOL on 0 sold out
+    floats used: NVDAx 2
+    no-route tokens: SQQQAa3g 1
+hhh 2GJUPUrk (all coins, 0.5+ SOL): 23 coins since 11-20 09:34 UTC, 225 trades fetched
+    SOL          17 coins (73.9%)  own   +0.95 SOL on 16 sold out
+    float         4 coins (17.4%)  own   +0.61 SOL on 2 sold out
+    NO ROUTE      2 coins ( 8.7%)  own   -0.37 SOL on 2 sold out
+    floats used: NVDAx 2, PUMP 1, SPCX 1
+    no-route tokens: VVV4UdRy 2
+
+the tokens no route reaches, over all units, by the coins a float would open (first buy at the unit's floor):
+  XsDoVfqe TSLAx        18 coins ( 2.6 a day)  own   +2.97 SOL (+0.165 a coin)  days up 3 of 5  by unit: ppp 9, qqq 2, ooo 2, ddd 2, rrr 1, ttt 1, uuu 1
+  DJTu7vi8 DJT          13 coins ( 1.9 a day)  own   -0.49 SOL (-0.037 a coin)  days up 3 of 5  by unit: ppp 4, eee 3, qqq 2, ttt 2, uuu 1, ooo 1
+  ANTBTZQ1 ANT          10 coins ( 1.4 a day)  own   +1.05 SOL (+0.105 a coin)  days up 2 of 4  by unit: ppp 7, qqq 2, rrr 1
+  SQQQAa3g ?            10 coins ( 1.4 a day)  own   +0.39 SOL (+0.039 a coin)  days up 2 of 4  by unit: ppp 4, ddd 2, qqq 1, uuu 1, ooo 1, fff 1
+  WXMRyRZh ?             6 coins ( 0.9 a day)  own   -1.00 SOL (-0.166 a coin)  days up 0 of 4  by unit: qqq 3, ddd 2, ppp 1
+  VVV4UdRy VVV           6 coins ( 0.9 a day)  own   -0.44 SOL (-0.073 a coin)  days up 1 of 3  by unit: rrr 2, ppp 2, hhh 2
+  AMC1qwR9 AMC           5 coins ( 0.7 a day)  own   -0.29 SOL (-0.058 a coin)  days up 1 of 4  by unit: ppp 3, qqq 2
+  DoGEV7LA DOGE          5 coins ( 0.7 a day)  own   -0.89 SOL (-0.179 a coin)  days up 1 of 3  by unit: ppp 2, qqq 1, ttt 1, ddd 1
+  NVDAVuiB NVDA          5 coins ( 0.7 a day)  own   -0.41 SOL (-0.083 a coin)  days up 0 of 3  by unit: ppp 3, ttt 1, ddd 1
+  PrekqLJv ?             4 coins ( 0.6 a day)  own   -0.66 SOL (-0.165 a coin)  days up 1 of 3  by unit: qqq 2, yyy 1, ooo 1
+  XsoCS1Tf SPYx          4 coins ( 0.6 a day)  own   +3.09 SOL (+0.772 a coin)  days up 1 of 4  by unit: qqq 3, ddd 1
+  A7bdiYdS ZEC           4 coins ( 0.6 a day)  own   -0.96 SOL (-0.241 a coin)  days up 1 of 3  by unit: qqq 2, eee 1, ddd 1
+  XsqE9cRR MCDx          4 coins ( 0.6 a day)  own   -0.45 SOL (-0.114 a coin)  days up 1 of 2  by unit: ddd 2, qqq 1, ppp 1
+  PEPEqnuu PEPE          3 coins ( 0.4 a day)  own   -0.57 SOL (-0.191 a coin)  days up 0 of 3  by unit: qqq 2, ttt 1
+  7vfCXTUX ETH           3 coins ( 0.4 a day)  own   +1.04 SOL (+0.347 a coin)  days up 1 of 2  by unit: qqq 3
