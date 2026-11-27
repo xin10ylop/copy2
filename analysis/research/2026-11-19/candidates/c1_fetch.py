@@ -6,6 +6,11 @@
 import sys, os, json, time
 SP, DAYS = sys.argv[1], float(sys.argv[2]); O = f"{SP}/" + os.environ.get("SUB", "pair"); os.makedirs(O, exist_ok=True)
 src = open("/home/user/copy2/analysis/research/2026-11-17/winners/w4_history.py").read().split("def history")[0]
+# Nov 27: the decoder (own_trades) needs none of the screen's files that w4_history.py's top loads (market/prices.json,
+# winners/bp.json, winners/w3_rows.json); a fresh scratchpad (the container reset) has none of them
+for a_, b_ in (('PR = json.load(open(f"{SP}/market/prices.json"))', 'PR = {WSOL: {"usdPrice": 1.0, "decimals": 9}}'),
+               ('json.load(open(f"{W}/bp.json")).items()', '{"0": 0}.items()'), ('rows = json.load(open(f"{W}/w3_rows.json"))', 'rows = []')):
+    if not os.path.exists(f"{SP}/market/prices.json"): src = src.replace(a_, b_)
 ns = {"__file__": "w4_history.py"}; sys.argv = ["x", SP]; exec(compile(src, "w4_history.py", "exec"), ns)
 WALLETS = os.environ["WALLETS"].split(",")   # comma-separated (candidates/c1_fetch.py)
 since = time.time() - DAYS * 86400
