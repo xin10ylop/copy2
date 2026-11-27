@@ -30,7 +30,9 @@ UNITS = {"qqq": ("H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg", "token", 1.3, 1
          "ooo": ("HtHkKxYN43BdJ8QJU1srMa3bqjpncLFcZgVCX8yU3AJS", "all", 0.5, 0.5, STD),
          "ppp": ("3SiQo8MJMzXaZcJexMivmk5CRgrNxDUh4bDbgb3wFAmW", "token", 0.1, 0.25, (2.0, 120, (5, 60), 0, ("never",))),
          "ddd": ("E2XwSeqewRHqBZQZAnSn6NyC9pF17E9KWcFQzquUwZMi", "all", 0.5, 0.5, STD),
-         "hhh": ("2GJUPUrkxs6RZfJCgRncf1Xq9Xe6MbuDynVaoiiPKoJ4", "all", 0.5, 0.5, STD)}
+         "hhh": ("2GJUPUrkxs6RZfJCgRncf1Xq9Xe6MbuDynVaoiiPKoJ4", "all", 0.5, 0.5, STD),
+         # Nov 27 (the owner: "check deeply if we should add it back"): the stopped CqCAzte8 unit, its token-coin exit
+         "www": ("CqCAzte8TwCDbCBrhjUpsfG6Au9pZPdrTXrVDidKHGAn", "all", 0.5, 0.5, STD)}
 W, KIND, MIN, STAKE_, LIVE_X = UNITS[LAB]
 TS = "/home/user/copy2/analysis/research/2026-11-20/tape_screen"
 os.environ["NOSTOP"] = "1"; os.environ["STAKE"] = str(STAKE_); os.environ.setdefault("COST", "0.0064")
