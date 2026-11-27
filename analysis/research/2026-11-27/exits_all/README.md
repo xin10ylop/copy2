@@ -69,3 +69,18 @@ Not modelled: max_open (two copies at once a unit), so a rule taking more coins 
 
 **Changes it supports:** ttt's exit (strong); rrr copies its SOL coins (two tests agree); ooo tp 5x / 600 s (narrow,
 optional). The rest stay as they are: their live exit beats every other exit blind.
+
+## The entry ideas: buy pressure, dip, trailing stop, revival (`out/bp/<unit>.txt`)
+
+`../../2026-11-24/ideas/e1_ideas.py` per unit on the same 14 days (HIST_PREFIX=histx_, each unit's live exit, 1 SOL, ttt with
+its new exit, rrr with its SOL coins), the variant against the live entry copy by copy, by block.
+
+- **Buy pressure** (wait 3/5/10/20 s after its buy, enter only if others bought 3/6/10 more than they sold): **all 132
+  variants (12 x 11 units) below the live entry**, the best of each unit -0.9 (hhh) to -17.0 SOL (ppp) in 14 days at 1 SOL.
+  Waiting costs the price its buy leaves behind; the coins that fail the test are not the losers.
+- **Dip entry** (buy at 10/20/30% under its price within 60 s): one cell passes 3 of 4 blocks, ppp at 10% with the live exit
+  (+13.1 SOL, +7.2 without the best 2%), its 20% and 30% cells below the live entry, and with the bot's dip-leg exit (tp over
+  our fill) -7.8: a lone cell, and not what the bot's dip leg runs. Not taken.
+- **Trailing stop** (not in the bot): qqq +2.5 SOL (frozen exit), ddd +2.6, eee +1.4 to +2.0 in 14 days at 1 SOL, 3 of 4
+  blocks: about 1-2 points a copy, against new code. Not taken.
+- **Revival** (buy again when the price passes its high after our exit): fires rarely, no unit better.
