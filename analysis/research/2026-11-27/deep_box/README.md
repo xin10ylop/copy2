@@ -19,3 +19,16 @@ stopped at -1.0 SOL in all or if negative after 20 trades.
 and the top 15 by consistency; 20+ copies, own result positive, over +2% a copy without its best 2%, not tested before; CNQQuavw,
 a near miss on Nov 26, retested): CNQQuavw, ArB1vFG6, AmyhpdFR, wik1TBPz, 4uhwfQ9J, HSCtp6n1, Daune5i3, 2z2q5gk8, 54CjYyES,
 9tYFSP8X. Left out: JAmx4Wsh, HzmDQnd5, 58PzAPMz, 5CcHnagY (they lose themselves), 6CtBXhwk (+1.3% a copy without its best 2%).
+
+## Results (Nov 27 19:11-23:26 UTC; `out/candidates.txt`, `out/ours.txt`, the files per wallet in `out/`)
+
+The candidates: **PASS CNQQuavw** (+6.8% a copy on 221, 4 of 4, +6.85 SOL at 1 SOL without the best 2%, the blind pick PASS; the
+rule search: its buys of 1.0+ SOL, +1.98 stakes in 14 days, 4 of 4; it loses itself, -61.69 SOL over 15 days) and **wik1TBPz**
+(+9.4% on 107, 3 of 4, +4.00; the blind pick FAIL; own +18.12 SOL). FAIL: ArB1vFG6, AmyhpdFR, 4uhwfQ9J, HSCtp6n1 (negative on the
+standard exit; three of them lose heavily themselves), Daune5i3, 2z2q5gk8, 54CjYyES, 9tYFSP8X (under 40 copies; they looked strong
+on the 6-day tape, 20-27 copies).
+
+Our running units (all their coins of 0.5+ SOL, the standard exit): PASS iii, eee, jjj (thin: +1.10 without the best 2%, the blind
+pick FAIL), ttt, rrr, ooo, uuu; **FAIL ddd** (2 of 4 blocks, -0.41 without the best 2%: stopped Nov 27 night) and hhh (37 copies,
+R3 only; +16.1%, 3 of 4); yyy fails on all its coins (2 of 4 blocks) but copies its token coins only, and its rule search keeps
+exactly that (SOL coins dropped), as the Nov 27 exit study did (+18.4%, 3 of 4).

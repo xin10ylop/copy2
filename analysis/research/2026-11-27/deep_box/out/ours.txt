@@ -1,0 +1,50 @@
+E2XwSeqe: FAIL  standard exit +4.0% a copy on 141, blocks -1.0 / +17.1 / +7.6 / -7.6, w/o best 2% -0.41 SOL at 1 SOL, 2/4 positive
+    R1 (>+3%, w/o 2% > 0, 3+ blocks) NO | R3 (40+ copies) yes | worst block -7.6%
+    own +3.97 SOL over 11 days, up on 5 | blind rolling pick: FAIL
+    exit search: C, keep the live exit (+3.6% a copy on all 141)
+    rule search: C, the live rule stays
+6nNzEg86: FAIL  standard exit +7.6% a copy on 138, blocks -7.9 / +24.0 / +22.3 / -8.1, w/o best 2% +4.47 SOL at 1 SOL, 2/4 positive
+    R1 (>+3%, w/o 2% > 0, 3+ blocks) NO | R3 (40+ copies) yes | worst block -8.1%
+    own +22.93 SOL over 15 days, up on 13 | blind rolling pick: PASS
+    exit search: B, one change: 180 s -> tp 3.0x, 180 s, no sp, stall 240, its sale never (+10.4% against +7.3% live, w/o 2% +3.3 points)
+    rule search: B, one change: SOL coins dropped (token coins, 0.5+ SOL, limit 1.5x; token coins: tp 3.0x, 420 s, no sp, stall 240, its sale never)
+Bing35WC: PASS  standard exit +11.4% a copy on 97, blocks +6.0 / +14.3 / +22.4 / +2.9, w/o best 2% +7.19 SOL at 1 SOL, 4/4 positive
+    R1 (>+3%, w/o 2% > 0, 3+ blocks) yes | R3 (40+ copies) yes | worst block +2.9%
+    own -5.60 SOL over 13 days, up on 7 | blind rolling pick: PASS
+    exit search: C, keep the live exit (+11.1% a copy on all 97)
+    rule search: C, the live rule stays
+CgyPomTG: PASS  standard exit +10.8% a copy on 250, blocks +17.0 / +13.6 / +4.5 / +8.1, w/o best 2% +15.07 SOL at 1 SOL, 4/4 positive
+    R1 (>+3%, w/o 2% > 0, 3+ blocks) yes | R3 (40+ copies) yes | worst block +4.5%
+    own +64.87 SOL over 15 days, up on 12 | blind rolling pick: PASS
+    exit search: C, keep the live exit (+10.6% a copy on all 250)
+    rule search: C, the live rule stays
+6K5GCZem: PASS  standard exit +8.3% a copy on 54, blocks +2.6 / +24.7 / -11.4 / +16.5, w/o best 2% +1.10 SOL at 1 SOL, 3/4 positive
+    R1 (>+3%, w/o 2% > 0, 3+ blocks) yes | R3 (40+ copies) yes | worst block -11.4%
+    own +18.61 SOL over 8 days, up on 6 | blind rolling pick: FAIL
+    exit search: A, a new exit: tp 3.0x, 300 s, sp 10/120, stall 60, its sale 0-60 s
+    rule search: B, one change: floor 1.0 SOL (all coins, 1.0+ SOL, limit 1.5x; token coins: tp 3.0x, 420 s, no sp, stall 240, its sale never; SOL coins: tp 3.0x, 420 s, no sp, stall 240, its sale never)
+6LwMLkCe: PASS  standard exit +7.1% a copy on 282, blocks +7.2 / +5.8 / +12.6 / +2.8, w/o best 2% +5.52 SOL at 1 SOL, 4/4 positive
+    R1 (>+3%, w/o 2% > 0, 3+ blocks) yes | R3 (40+ copies) yes | worst block +2.8%
+    own +71.74 SOL over 14 days, up on 13 | blind rolling pick: PASS
+    exit search: C, keep the live exit (+6.8% a copy on all 282)
+    rule search: A, the rule picked on all 4 blocks: all coins, 1.3+ SOL, limit 1.25x; token coins: tp 5.0x, 600 s, sp 10/120, stall 180, its sale never; SOL coins: tp 3.0x, 240 s, sp 10/120, stall 180, its sale never
+3XeFcZKS: PASS  standard exit +8.9% a copy on 208, blocks -1.8 / +15.9 / +7.8 / +13.6, w/o best 2% +10.57 SOL at 1 SOL, 3/4 positive
+    R1 (>+3%, w/o 2% > 0, 3+ blocks) yes | R3 (40+ copies) yes | worst block -1.8%
+    own +83.56 SOL over 14 days, up on 14 | blind rolling pick: PASS
+    exit search: C, keep the live exit (+8.6% a copy on all 208)
+    rule search: B, one change: floor 1.0 SOL (all coins, 1.0+ SOL, limit 1.5x; token coins: tp 3.0x, 420 s, no sp, stall 240, its sale never; SOL coins: tp 3.0x, 420 s, no sp, stall 240, its sale never)
+HtHkKxYN: PASS  standard exit +7.7% a copy on 205, blocks +10.1 / +11.8 / +6.0 / +3.0, w/o best 2% +8.07 SOL at 1 SOL, 4/4 positive
+    R1 (>+3%, w/o 2% > 0, 3+ blocks) yes | R3 (40+ copies) yes | worst block +3.0%
+    own +23.90 SOL over 14 days, up on 9 | blind rolling pick: PASS
+    exit search: A, a new exit: tp 5.0x, 600 s, no sp, stall 240, its sale never
+    rule search: C, the live rule stays
+GqWfqfG6: PASS  standard exit +15.4% a copy on 123, blocks +4.6 / +39.4 / +15.1 / +2.1, w/o best 2% +14.68 SOL at 1 SOL, 4/4 positive
+    R1 (>+3%, w/o 2% > 0, 3+ blocks) yes | R3 (40+ copies) yes | worst block +2.1%
+    own +36.63 SOL over 15 days, up on 12 | blind rolling pick: PASS
+    exit search: C, keep the live exit (+15.3% a copy on all 123)
+    rule search: C, the live rule stays
+2GJUPUrk: FAIL  standard exit +16.1% a copy on 37, blocks -3.6 / +19.5 / +38.4 / +12.5, w/o best 2% +4.15 SOL at 1 SOL, 3/4 positive
+    R1 (>+3%, w/o 2% > 0, 3+ blocks) yes | R3 (40+ copies) NO | worst block -3.6%
+    own +0.17 SOL over 14 days, up on 7 | blind rolling pick: PASS
+    exit search: C, keep the live exit (+15.9% a copy on all 37)
+    rule search: C, the live rule stays

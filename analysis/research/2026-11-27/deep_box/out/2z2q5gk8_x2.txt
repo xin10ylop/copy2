@@ -1,0 +1,27 @@
+cand_2z2q5gk8: 27 copies, 11-23 17:57 to 11-27 20:39 UTC; blocks of 7, 7, 7, 6; % = a copy, of the stake
+live exit: tp 3.0x, 420 s, no sp, stall 240, its sale never
+
+fixed exits on the 4 blocks (no picking):
+  live                                +16.0 /  +13.8 /  -19.0 /  +26.5  =   +8.7%  w/o 2%   +1.8%  blocks + 3/4
+  wallet 4's live                      -4.4 /  +16.3 /   -6.8 /  +30.0  =   +8.0%  w/o 2%   +4.7%  blocks + 2/4
+  follow its sale, to 600 s            -7.1 /   -1.0 /   -6.0 /   +8.3  =   -1.8%  w/o 2%   -3.5%  blocks + 1/4
+  tp 2 / 120 s                         -6.2 /  +14.0 /   -7.4 /  +15.3  =   +3.5%  w/o 2%   +0.2%  blocks + 2/4
+  tp 2 / 120 s / sp 5/60               -6.8 /  +14.9 /   -6.9 /  +15.3  =   +3.7%  w/o 2%   +0.4%  blocks + 2/4
+
+1. walk-forward (picked on the blocks before, scored blind):
+  block 2: picked on 7: tp 1.75x, 420 s, no sp, stall 240, its sale never
+      blind  +10.8%  live  +13.8%  on 7
+  block 3: picked on 14: tp 2.0x, 420 s, no sp, stall 240, its sale never
+      blind  -19.0%  live  -19.0%  on 7
+  block 4: picked on 21: tp 1.75x, 420 s, no sp, stall 120, its sale never
+      blind  +13.4%  live  +26.5%  on 6
+  blind total +1.1% a copy (w/o 2% -2.7%) against live +6.1% (w/o 2% +1.7%); better in 0 of 3
+  the pick on all 4 blocks: tp 2.5x, 420 s, no sp, stall 240, its sale 30-290 s <1.5x  (+12.6% seen, flattering)
+
+2. each axis alone: [median paired diff a copy per block, other axes at every setting] | the live exit with only this changed
+  no stall                 median  +0.0  +0.0  +0.0  +0.0 (0/4) | changed  -0.4  +1.6  +2.9  +0.4 (3/4) total  +1.2 w/o2  +1.2
+  stall 180                median  +0.0  +0.0  +0.0  +0.0 (0/4) | changed -25.8  +3.4  +6.3  +1.9 (3/4) total  -3.8 w/o2  -0.2
+  its sale 30-290 s <1.5x  median  +6.6  +1.8  -0.7  +2.3 (3/4) | changed  +4.7  +2.8  +4.5 +12.2 (4/4) total  +5.8 w/o2  +5.8  <- passes B
+  its sale 30-290 s        median  +6.6  +1.8  -0.7  +2.3 (3/4) | changed  +4.7  +2.8  +4.5 +12.2 (4/4) total  +5.8 w/o2  +5.8  <- passes B
+
+3. VERDICT: B, one change: its sale 30-290 s <1.5x -> tp 3.0x, 420 s, no sp, stall 240, its sale 30-290 s <1.5x (+14.5% against +8.7% live, w/o 2% +5.8 points)

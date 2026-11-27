@@ -1,0 +1,36 @@
+CNQQuavwL3WgXfvV51gGcT36dCVYAW7CuAhPgDgqKmKk: own result -61.45 SOL over 15 days, up on 7; 226 first buys of 0.5+ SOL
+  by day: 11-13 +0.25  11-14 +1.84  11-15 -4.93  11-16 -4.56  11-17 -2.75  11-18 -17.02  11-19 +0.06  11-20 -12.04  11-21 +6.85  11-22 -15.36  11-23 -27.39  11-24 -4.43  11-25 +9.28  11-26 +3.31  11-27 +5.45
+copies: 221 of its 226 first buys of 0.5+ SOL tested; menu: 8 exits x 6 filters = 48 settings
+gate 1, the menu's mean exit (no picking) on the 3 blind blocks: +2.7% / +0.2% / +12.8% -> pass
+ blind block                its buys picked on the blocks before                                   seen   blind    n
+           2 11-16 15:34-11-20 09:09 tp 2x / 120 s, all coins, 0.5+ SOL                          +13.5%   +1.5%   55   (luck alone, seen: +30.7%)
+           3 11-20 09:55-11-23 16:58 its sale (to 600 s), all coins, 0.5+ SOL                    +11.4%   -1.3%   55   (luck alone, seen: +14.5%)
+           4 11-23 18:47-11-27 17:46 its sale (to 600 s), all coins, 1.3+ SOL                     +8.0%  +11.7%   52   (luck alone, seen: +6.1%)
+blind, all 3 blocks: +6.204 SOL on 162 copies (+3.8% a copy), without the best 2% +0.532; positive in 2 of 3 blocks
+RESULT: PASS
+
+each exit alone on the blind blocks (165 copies), % a copy: block 2 / 3 / 4 = all blind (n), without the best 2% in SOL
+  all   live (tp 4, 600 s, sp 5/60, stall 180, its early sale)   -0.5 /   -0.3 /  +13.3 =   +4.2% (165)  w/o 2% +0.15
+  all   live without its sale                                  -4.4 /   -1.3 /  +12.5 =   +2.3% (165)  w/o 2% -2.93
+  all   tp 2x / 120 s                                          +1.5 /   +2.2 /  +11.1 =   +4.9% (165)  w/o 2% +4.75
+  all   tp 1.5x / 60 s                                         -1.6 /   +2.5 /   +7.6 =   +2.8% (165)  w/o 2% +2.52
+  all   held 300 s                                             +1.7 /   +3.2 /  +15.5 =   +6.8% (165)  w/o 2% +4.20
+  all   its sale (to 600 s)                                   +17.6 /   -1.3 /  +14.3 =  +10.2% (165)  w/o 2% +11.19
+  all   tp 3x / 420 s / stall 240                              +8.4 /   +0.0 /  +17.9 =   +8.8% (165)  w/o 2% +8.21
+  all   tp 2.5x / 300 s / sp 5/60                              -1.3 /   -3.6 /  +10.2 =   +1.8% (165)  w/o 2% -1.58
+  SOL   live (tp 4, 600 s, sp 5/60, stall 180, its early sale)   -2.2 /   -2.8 /   +6.2 =   +1.7% (63)  w/o 2% -0.58
+  SOL   live without its sale                                  -4.0 /   -3.1 /   +5.3 =   +0.7% (63)  w/o 2% -1.20
+  SOL   tp 2x / 120 s                                          +1.1 /   +1.3 /   +8.0 =   +4.4% (63)  w/o 2% +1.65
+  SOL   tp 1.5x / 60 s                                         +2.6 /   +8.1 /   +9.9 =   +7.6% (63)  w/o 2% +4.15
+  SOL   held 300 s                                             +6.0 /   +3.3 /   +7.8 =   +6.1% (63)  w/o 2% +1.69
+  SOL   its sale (to 600 s)                                   +11.2 /   -3.5 /   +5.4 =   +4.3% (63)  w/o 2% +0.62
+  SOL   tp 3x / 420 s / stall 240                             +13.4 /   -1.5 /   +1.5 =   +3.5% (63)  w/o 2% +0.11
+  SOL   tp 2.5x / 300 s / sp 5/60                              -5.0 /   -3.1 /   +3.8 =   -0.3% (63)  w/o 2% -1.57
+  token live (tp 4, 600 s, sp 5/60, stall 180, its early sale)   +0.2 /   +0.9 /  +21.7 =   +5.7% (102)  w/o 2% +0.73
+  token live without its sale                                  -4.5 /   -0.4 /  +21.2 =   +3.3% (102)  w/o 2% -1.73
+  token tp 2x / 120 s                                          +1.6 /   +2.6 /  +14.9 =   +5.2% (102)  w/o 2% +3.10
+  token tp 1.5x / 60 s                                         -3.1 /   -0.3 /   +4.9 =   -0.1% (102)  w/o 2% -1.45
+  token held 300 s                                             +0.1 /   +3.2 /  +24.7 =   +7.2% (102)  w/o 2% +2.51
+  token its sale (to 600 s)                                   +20.0 /   -0.2 /  +25.0 =  +13.9% (102)  w/o 2% +10.58
+  token tp 3x / 420 s / stall 240                              +6.5 /   +0.7 /  +37.6 =  +12.0% (102)  w/o 2% +8.10
+  token tp 2.5x / 300 s / sp 5/60                              +0.1 /   -3.9 /  +17.9 =   +3.0% (102)  w/o 2% -0.01

@@ -1,0 +1,28 @@
+cand_54CjYyES: 22 copies, 11-20 16:34 to 11-27 16:00 UTC; blocks of 6, 6, 5, 5; % = a copy, of the stake
+live exit: tp 3.0x, 420 s, no sp, stall 240, its sale never
+
+fixed exits on the 4 blocks (no picking):
+  live                                -45.1 /  +72.3 /  +22.6 /  +43.4  =  +22.4%  w/o 2%  +13.8%  blocks + 3/4
+  wallet 4's live                     -37.5 /  +29.4 /  +23.8 /   -5.8  =   +1.9%  w/o 2%   -6.4%  blocks + 2/4
+  follow its sale, to 600 s           -36.0 /  +31.9 /   +0.2 /  +28.5  =   +5.4%  w/o 2%   -2.9%  blocks + 3/4
+  tp 2 / 120 s                        -39.9 /  +26.1 /  +31.8 /  +39.2  =  +12.4%  w/o 2%   +5.1%  blocks + 3/4
+  tp 2 / 120 s / sp 5/60              -37.3 /  +13.8 /  +36.6 /  +30.9  =   +8.9%  w/o 2%   +1.6%  blocks + 3/4
+
+1. walk-forward (picked on the blocks before, scored blind):
+  block 2: picked on 6: tp 1.3x, 180 s, sp 10/120, stall 60, its sale 0-120 s
+      blind   +3.6%  live  +72.3%  on 6
+  block 3: picked on 12: tp 4.0x, 180 s, no sp, stall 240, its sale 0-60 s
+      blind   -2.9%  live  +22.6%  on 5
+  block 4: picked on 17: tp 1.75x, 420 s, sp 10/120, stall 180, its sale 30-290 s
+      blind  +55.1%  live  +43.4%  on 5
+  blind total +17.7% a copy (w/o 2% +7.6%) against live +47.7% (w/o 2% +35.9%); better in 1 of 3
+  the pick on all 4 blocks: tp 2.5x, 600 s, no sp, stall 180, its sale never  (+28.9% seen, flattering)
+
+2. each axis alone: [median paired diff a copy per block, other axes at every setting] | the live exit with only this changed
+  60 s                     median  +0.1  +0.0  +5.8  +3.9 (3/4) | changed  +5.9 -37.3 +16.4 -26.3 (2/4) total -10.8 w/o2 -10.6
+  sp 3/30                  median  +0.0  +1.7  +4.1  -8.8 (3/4) | changed  +6.0 -35.1 +10.6 -53.4 (2/4) total -17.6 w/o2 -17.4
+  sp 5/30                  median  +2.0  +0.9  +4.9  -8.8 (3/4) | changed  +5.0 -34.1 +12.5 -53.5 (2/4) total -17.2 w/o2 -17.0
+  sp 8/60                  median  +1.6  +0.3  +0.9  -9.0 (3/4) | changed  +4.1 -40.4  +4.6 -28.9 (2/4) total -15.4 w/o2 -15.2
+  stall 120                median  +0.0  +0.0  +0.0  +0.0 (0/4) | changed  +1.9  +4.1  +2.3 -26.5 (3/4) total  -3.8 w/o2  -3.8
+
+3. VERDICT: C, keep the live exit (+22.4% a copy on all 22)

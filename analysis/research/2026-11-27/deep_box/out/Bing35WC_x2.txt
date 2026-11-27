@@ -1,0 +1,25 @@
+cand_Bing35WC: 97 copies, 11-14 02:10 to 11-27 15:25 UTC; blocks of 25, 24, 24, 24; % = a copy, of the stake
+live exit: tp 3.0x, 420 s, no sp, stall 240, its sale never
+
+fixed exits on the 4 blocks (no picking):
+  live                                 +5.6 /  +14.1 /  +22.4 /   +2.5  =  +11.1%  w/o 2%   +7.1%  blocks + 4/4
+  wallet 4's live                      +1.5 /   +7.7 /  +18.2 /   +3.5  =   +7.7%  w/o 2%   +2.9%  blocks + 4/4
+  follow its sale, to 600 s            -1.2 /   +0.1 /   +2.0 /   +2.0  =   +0.7%  w/o 2%   -2.2%  blocks + 3/4
+  tp 2 / 120 s                         +3.7 /   -2.6 /  +12.7 /   +9.5  =   +5.8%  w/o 2%   +3.8%  blocks + 3/4
+  tp 2 / 120 s / sp 5/60               +1.0 /   +0.6 /   +5.8 /   +8.1  =   +3.9%  w/o 2%   +1.9%  blocks + 4/4
+
+1. walk-forward (picked on the blocks before, scored blind):
+  block 2: picked on 25: tp 1.5x, 180 s, sp 8/60, stall 240, its sale 30-290 s
+      blind   -1.6%  live  +14.1%  on 24
+  block 3: picked on 49: tp 2.5x, 600 s, sp 10/120, stall 240, its sale never
+      blind  +17.4%  live  +22.4%  on 24
+  block 4: picked on 73: tp 2.5x, 600 s, sp 10/120, stall 240, its sale never
+      blind   +8.7%  live   +2.5%  on 24
+  blind total +8.2% a copy (w/o 2% +5.9%) against live +13.0% (w/o 2% +10.2%); better in 1 of 3
+  the pick on all 4 blocks: tp 2.5x, 600 s, sp 10/120, stall 240, its sale never  (+13.2% seen, flattering)
+
+2. each axis alone: [median paired diff a copy per block, other axes at every setting] | the live exit with only this changed
+  tp 2.5x                  median  +0.0  +0.0  +0.0  +0.0 (0/4) | changed  +0.4  +6.2  -4.1  +4.1 (3/4) total  +1.6 w/o2  +2.3
+  180 s                    median  +0.8  +0.3  -1.9  +0.4 (3/4) | changed  +0.1  -9.3 -11.1 +10.6 (2/4) total  -2.4 w/o2  -1.1
+
+3. VERDICT: C, keep the live exit (+11.1% a copy on all 97)

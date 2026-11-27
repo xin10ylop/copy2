@@ -1,0 +1,27 @@
+cand_E2XwSeqe: 141 copies, 11-17 15:55 to 11-27 18:52 UTC; blocks of 36, 35, 35, 35; % = a copy, of the stake
+live exit: tp 3.0x, 420 s, no sp, stall 240, its sale never
+
+fixed exits on the 4 blocks (no picking):
+  live                                 -1.5 /  +16.9 /   +7.3 /   -8.1  =   +3.6%  w/o 2%   -0.7%  blocks + 2/4
+  wallet 4's live                      -4.3 /  +13.2 /   +3.7 /  +14.7  =   +6.7%  w/o 2%   +1.8%  blocks + 3/4
+  follow its sale, to 600 s            -1.2 /   -7.1 /   -1.3 /   +4.2  =   -1.4%  w/o 2%   -3.5%  blocks + 1/4
+  tp 2 / 120 s                         -6.8 /   -0.3 /   +0.5 /   +9.9  =   +0.8%  w/o 2%   -1.4%  blocks + 2/4
+  tp 2 / 120 s / sp 5/60               -4.5 /   +5.3 /   -1.0 /  +10.3  =   +2.5%  w/o 2%   +0.3%  blocks + 2/4
+
+1. walk-forward (picked on the blocks before, scored blind):
+  block 2: picked on 36: tp 1.3x, 90 s, no sp, stall 180, its sale never
+      blind   +3.9%  live  +16.9%  on 35
+  block 3: picked on 71: tp 5.0x, 600 s, no sp, no stall, its sale never
+      blind   +6.0%  live   +7.3%  on 35
+  block 4: picked on 106: tp 3.0x, 600 s, no sp, stall 240, its sale never
+      blind   -8.1%  live   -8.1%  on 35
+  blind total +0.6% a copy (w/o 2% -3.5%) against live +5.4% (w/o 2% +1.6%); better in 0 of 3
+  the pick on all 4 blocks: tp 2.5x, 600 s, sp 5/60, no stall, its sale 30-290 s <1.5x  (+6.2% seen, flattering)
+
+2. each axis alone: [median paired diff a copy per block, other axes at every setting] | the live exit with only this changed
+  no tp                    median  +0.0  +0.0  +0.0  +0.0 (0/4) | changed  +5.9  +0.7  +1.5  -6.0 (3/4) total  +0.6 w/o2  -2.3
+  tp 5.0x                  median  +0.0  +0.0  +0.0  +0.0 (0/4) | changed  +5.9  +0.7  +1.5  -6.0 (3/4) total  +0.6 w/o2  -2.3
+  no stall                 median  +0.0  +0.0  +0.0  +0.0 (0/4) | changed  +1.2  +1.8  -2.8  +1.5 (3/4) total  +0.4 w/o2  +0.4
+  its sale 30-290 s <1.5x  median  -0.2  +0.2  +0.6  +2.8 (3/4) | changed  -3.4  -7.0  +3.6  +7.5 (2/4) total  +0.2 w/o2  +0.3
+
+3. VERDICT: C, keep the live exit (+3.6% a copy on all 141)

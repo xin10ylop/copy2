@@ -1,0 +1,36 @@
+6K5GCZemzLjpn8GMZ9T5NaESnp3RpUUMR9Cvv1keVCgj: own result +18.61 SOL over 8 days, up on 6; 54 first buys of 0.5+ SOL
+  by day: 11-16 +0.37  11-17 +2.00  11-18 -0.14  11-22 +3.89  11-23 +2.83  11-25 +3.90  11-26 -0.15  11-27 +5.92
+copies: 54 of its 54 first buys of 0.5+ SOL tested; menu: 8 exits x 6 filters = 48 settings
+gate 1, the menu's mean exit (no picking) on the 3 blind blocks: +6.9% / -4.1% / +11.1% -> pass
+ blind block                its buys picked on the blocks before                                   seen   blind    n
+           2 11-22 08:01-11-25 05:35 live without its sale, SOL coins, 0.5+ SOL                  +12.9%  -13.0%   11   (luck alone, seen: +11.7%)
+           3 11-25 06:44-11-27 07:13 its sale (to 600 s), all coins, 0.5+ SOL                    +17.6%   +9.9%   13   (luck alone, seen: +2.3%)
+           4 11-27 08:44-11-27 13:53 its sale (to 600 s), all coins, 0.5+ SOL                    +15.2%   +6.8%   13   (luck alone, seen: -0.0%)
+blind, all 3 blocks: +0.736 SOL on 37 copies (+2.0% a copy), without the best 2% -0.690; positive in 2 of 3 blocks
+RESULT: FAIL
+
+each exit alone on the blind blocks (40 copies), % a copy: block 2 / 3 / 4 = all blind (n), without the best 2% in SOL
+  all   live (tp 4, 600 s, sp 5/60, stall 180, its early sale)   -2.6 /   -3.9 /   +7.3 =   +0.2% (40)  w/o 2% -1.27
+  all   live without its sale                                  -8.4 /   -7.2 /  +12.7 =   -1.2% (40)  w/o 2% -1.80
+  all   tp 2x / 120 s                                          +5.3 /   +3.6 /   +4.5 =   +4.5% (40)  w/o 2% +0.83
+  all   tp 1.5x / 60 s                                         +4.3 /   -2.2 /   +3.0 =   +1.8% (40)  w/o 2% +0.20
+  all   held 300 s                                             +4.7 /  -17.7 /  +13.5 =   +0.2% (40)  w/o 2% -1.75
+  all   its sale (to 600 s)                                   +17.4 /   +9.9 /   +6.8 =  +11.5% (40)  w/o 2% +2.56
+  all   tp 3x / 420 s / stall 240                             +24.7 /  -11.4 /  +16.5 =  +10.3% (40)  w/o 2% +0.74
+  all   tp 2.5x / 300 s / sp 5/60                              +9.9 /   -3.9 /  +24.5 =  +10.1% (40)  w/o 2% +2.39
+  SOL   live (tp 4, 600 s, sp 5/60, stall 180, its early sale)   -6.4 /   -5.0 /   +7.3 =   -1.3% (35)  w/o 2% -1.78
+  SOL   live without its sale                                 -13.0 /   -7.0 /   +5.6 =   -4.6% (35)  w/o 2% -2.95
+  SOL   tp 2x / 120 s                                          -6.4 /   +2.9 /   +4.2 =   +0.4% (35)  w/o 2% -0.81
+  SOL   tp 1.5x / 60 s                                         -0.8 /   -2.8 /   +1.7 =   -0.6% (35)  w/o 2% -0.73
+  SOL   held 300 s                                            -11.9 /  -17.3 /   +3.5 =   -8.5% (35)  w/o 2% -4.49
+  SOL   its sale (to 600 s)                                   +14.2 /  +10.0 /   +6.7 =  +10.2% (35)  w/o 2% +1.52
+  SOL   tp 3x / 420 s / stall 240                              +1.6 /   -9.7 /   +9.7 =   +0.5% (35)  w/o 2% -1.85
+  SOL   tp 2.5x / 300 s / sp 5/60                              -2.0 /   -3.5 /  +15.1 =   +3.3% (35)  w/o 2% -0.49
+  token live (tp 4, 600 s, sp 5/60, stall 180, its early sale)  +11.2 /   +9.0 /   +7.4 =  +10.0% (5)  w/o 2% +0.15
+  token live without its sale                                  +8.6 /   -8.8 /  +98.0 =  +23.0% (5)  w/o 2% +0.17
+  token tp 2x / 120 s                                         +48.2 /  +11.9 /   +7.8 =  +32.9% (5)  w/o 2% +0.88
+  token tp 1.5x / 60 s                                        +23.2 /   +4.5 /  +18.9 =  +18.6% (5)  w/o 2% +0.57
+  token held 300 s                                            +65.3 /  -23.3 / +133.2 =  +61.1% (5)  w/o 2% +1.21
+  token its sale (to 600 s)                                   +29.2 /   +9.0 /   +7.4 =  +20.8% (5)  w/o 2% +0.49
+  token tp 3x / 420 s / stall 240                            +109.2 /  -31.8 /  +98.0 =  +78.7% (5)  w/o 2% +0.57
+  token tp 2.5x / 300 s / sp 5/60                             +53.6 /   -8.8 / +136.4 =  +57.7% (5)  w/o 2% +1.51

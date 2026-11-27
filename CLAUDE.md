@@ -63,7 +63,7 @@ Wallet 4's strategies:
   the SAME exit, `sol_exits = false`; `config/long-cgy.live.example.toml`; the test in
   `analysis/research/2026-11-20/tape_screen/` README: it fails the 48-setting pick, passes the pick on all coins, and the
   fixed exit is +12.1% a copy blind; the three units skip each other's coins; check command `eee`, `ggg` still works). **On the Frankfurt box: `qqq` =
-  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe, `yyy` = 6nNzEg86, `uuu` = GqWfqfG6, `iii` = Bing35WC (since Nov 25 night; `aaa` before, still works), `ooo` = HtHkKxYN, `ppp` = 3SiQo8MJ, `ddd` = E2XwSeqe, `fff` = E5CLHHz6, `hhh` = 2GJUPUrk, `jjj` = 6K5GCZem, `pnl` = every unit's result in
+  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe, `yyy` = 6nNzEg86, `uuu` = GqWfqfG6, `iii` = Bing35WC (since Nov 25 night; `aaa` before, still works), `ooo` = HtHkKxYN, `ppp` = 3SiQo8MJ, `ddd` = E2XwSeqe, `fff` = E5CLHHz6, `hhh` = 2GJUPUrk, `jjj` = 6K5GCZem, `kkk` = CNQQuavw, `lll` = wik1TBPz, `pnl` = every unit's result in
   one line each and the total (`deploy/bin/rugsnipe-pnl`), `sss` = the weekly wallet screen; on the Chicago box `www` is still
   the Robinhood copier.**
   **Since Nov 23 (the owner's call, 0.5 SOL, no paper phase): units 4 and 5, `rugsnipe-long-3xe` (3XeFcZKS, `rrr`) and
@@ -100,6 +100,9 @@ Wallet 4's strategies:
   **Since Nov 26: CqCAzte8's unit `rugsnipe-long-cq` (`www`) is stopped and disabled** (the owner's call: 83 real, -0.6648 SOL;
   the weakest of ours in every screen since Nov 25, up 2 of 5 days and negative without its best 2%; its float use
   goes to the other units). `pnl` keeps its record under `www`.
+  **Since Nov 28 (UTC): units 16 and 17, `rugsnipe-long-cnq` (CNQQuavw, `kkk`, its buys of 1.0+ SOL) and `rugsnipe-long-wik`
+  (wik1TBPz, `lll`), 0.25 SOL, all their coins, tp 3x / 420 s / stall 240, daily stop 0.5, stopped at -1.0 SOL in all or if negative
+  after 20 trades** (`analysis/research/2026-11-27/deep_box/`: the full deep test with rules fixed before; 2 of 10 candidates pass).
   **Since Nov 27 night: 3SiQo8MJ's unit (`ppp`, `rugsnipe-long-3si`) and E2XwSeqe's unit (`ddd`, `rugsnipe-long-e2x`) are stopped and
   disabled** (the owner, after the review of all units: ppp 45 real -1.1261 SOL, about -8% a copy, its 14-day edge +0.8% a copy without
   the best 2% and flat in its last two blocks, its stop rule -1.5 SOL or ~50 trades nearly met; ddd 21 real -0.7979 SOL, about -9% a
