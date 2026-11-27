@@ -664,3 +664,11 @@ sell pressure.** 3SiQo8MJ, token coins, tp 2x / 120 s: none +5.3% (186), +5.46; 
 fresh history (`e1_ideas.py`, HIST_PREFIX=histfff_, T_MIN Nov 27): -52.8 / -34.2 / -43.4 / -63.0 / -28.6 / -49.6%, -45.3% a
 copy: live = backtest, the bot followed its rules. The wallet itself on those six -0.69 SOL (-11.6%), selling in 3-48 s on 4 of
 them; its own result over its 11 active days of 14 is now -1.61 SOL (+0.07 when it was added, Nov 26).
+
+**The screen of Nov 27 afternoon (142.8 h) and its untested names (`out_w3/{6K5GCZem,GqDvPg4N,CvRhs2dG,2DNUufc1,8Mdf76LG}_*_nov27.txt`).**
+- **6K5GCZem: PASS, thin** (49 buys over 8 active days of 14, own +17.17 SOL, up on 6; gate 1 +13.1 / -6.7 / +8.6%; the picks
+  blind +10.7% a copy on 36, +2.18 SOL without the best 2%, 3 of 3). The fixed exit, all coins: +35.6 / -12.7 / +6.4% = +9.7%
+  (36), +0.14 without the best 2%: one block carries it; its SOL coins +2.8% (31).
+- **8Mdf76LG: PASS, weak** (a launch-slot buyer; own -21.28 SOL over 13 days, up on none; blind +5.9% a copy on 58, +1.15 without
+  the best 2%, 2 of 3; the fixed exit +5.3%, its SOL coins +10.0% with one block of +51.9%).
+- **GqDvPg4N, CvRhs2dG: FAIL** (blind -6.2% on 9, -5.4% on 12; both lose themselves). **2DNUufc1: FAIL gate 1** (own -30.24 SOL).
