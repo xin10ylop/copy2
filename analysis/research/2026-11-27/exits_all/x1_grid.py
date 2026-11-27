@@ -12,6 +12,9 @@
 #     stall (no new high for S s after the price passed our fill) off 60 120 180 240 (5)
 #     its sale: never | always | early 30-290 s under 1.5x (wallet 4's) | 30-290 s any price | 0-60 s | 0-120 s (6)
 #   = 12,960 settings. Saves SP/exits_all/<unit>.npz: per copy, its value for every setting as a share of the stake.
+#   OUTSIDE=1 (the owner: "even for the by size, if it's sol or floats ... everything"): the copies the unit does NOT take
+#   (its first buys of 0.1+ SOL outside its floor or coin kind), CAP of them at random, each standing for n/CAP of them
+#   (`w`); saves <unit>_out.npz.
 #   HELIUS_URL=... LK=SP/lk python3 -I x1_grid.py SP UNIT
 import sys, os, json, numpy as np
 SP, LAB = sys.argv[1], sys.argv[2]
@@ -33,7 +36,8 @@ TS = "/home/user/copy2/analysis/research/2026-11-20/tape_screen"
 os.environ["NOSTOP"] = "1"; os.environ["STAKE"] = str(STAKE_); os.environ.setdefault("COST", "0.0064")
 sys.argv = [sys.argv[0], SP, W, "0", "0", "14"]
 src = open(f"{TS}/w2_grid.py").read().split('firsts.sort(key=lambda c: c["t"]); h = len(firsts) // 2')[0]
-for a, b in [('if es[0]["q"] * r / 1e9 >= 0.5 and', f'if es[0]["q"] * r / 1e9 >= {MIN} - 1e-6 and'),
+OUT = bool(os.environ.get("OUTSIDE"))
+for a, b in [('if es[0]["q"] * r / 1e9 >= 0.5 and', f'if es[0]["q"] * r / 1e9 >= {0.1 if OUT else MIN} - 1e-6 and'),
              ("STAKE = 1.0", "STAKE = float(os.environ['STAKE'])"),
              ("TP = [None] + [round(1.2 + 0.1 * i, 1) for i in range(39)]; HOLD = list(range(60, 601, 30))",
               "TP = [None, 1.3, 1.5, 1.75, 2.0, 2.5, 3.0, 4.0, 5.0]; HOLD = [60, 90, 120, 180, 240, 300, 420, 600]"),
@@ -43,8 +47,13 @@ for a, b in [('if es[0]["q"] * r / 1e9 >= 0.5 and', f'if es[0]["q"] * r / 1e9 >=
     src = src.replace(a, b)
 g = {"__file__": f"{TS}/w2_grid.py", "__name__": "__main__"}
 exec(compile(src, "w2_grid", "exec"), g)
-firsts = [c for c in g["firsts"] if KIND == "all" or c["tok"]]
-firsts.sort(key=lambda c: c["t"]); firsts = firsts[-int(os.environ.get("CAP", 300)):]
+inside = lambda c: (KIND == "all" or c["tok"]) and c["sol"] >= MIN - 1e-6
+CAP = int(os.environ.get("CAP", 300))
+if OUT:
+    pool = [c for c in g["firsts"] if not inside(c)]; import random; random.seed(11)
+    firsts = random.sample(pool, CAP) if len(pool) > CAP else pool; WT = len(pool) / max(1, len(firsts))
+else:
+    firsts = [c for c in g["firsts"] if inside(c)]; firsts.sort(key=lambda c: c["t"]); firsts = firsts[-CAP:]; WT = 1.0
 print(f"{LAB} {W[:8]}: {len(firsts)} first buys ({KIND} coins, {MIN}+ SOL), fetching paths", flush=True)
 rows = g["fetch"](firsts)
 TP, HOLD, SPS, STALL, ITS, SH = (g[k] for k in ("TP", "HOLD", "SPS", "STALL", "ITS", "SH"))
@@ -52,7 +61,7 @@ G = np.stack([r["g"] for r in rows]) / STAKE_
 prem = np.array([r["prem"] for r in rows]); G[prem > 1.5] = -0.0004 / STAKE_   # max_premium 0.5: refused, the send's fee
 live = np.ravel_multi_index((TP.index(LIVE_X[0]), HOLD.index(LIVE_X[1]), SPS.index(LIVE_X[2]), STALL.index(LIVE_X[3]), ITS.index(LIVE_X[4])), SH)
 os.makedirs(f"{SP}/exits_all", exist_ok=True)
-np.savez_compressed(f"{SP}/exits_all/{LAB}.npz", G=G.astype(np.float32), t=np.array([r["t"] for r in rows]), sol=np.array([r["sol"] for r in rows]),
+np.savez_compressed(f"{SP}/exits_all/{LAB}{'_out' if OUT else ''}.npz", w=WT, G=G.astype(np.float32), t=np.array([r["t"] for r in rows]), sol=np.array([r["sol"] for r in rows]),
                     tok=np.array([r["tok"] for r in rows]), prem=prem, live=live, SH=np.array(SH),
                     axes=json.dumps(dict(TP=TP, HOLD=HOLD, SPS=SPS, STALL=STALL, ITS=ITS)))
-print(f"{LAB}: {len(rows)} copies saved; live exit {100 * G[:, live].mean():+.1f}% a copy; refused {int((prem > 1.5).sum())}", flush=True)
+print(f"{LAB}{' outside' if OUT else ''}: {len(rows)} copies saved (each for {WT:.2f}); live exit {100 * G[:, live].mean():+.1f}% a copy; refused {int((prem > 1.5).sum())}", flush=True)
