@@ -1,0 +1,52 @@
+FatoU1bj: 434 copies of its first buys of 0.5+ SOL (82 to 11-25 18:24 UTC, 352 after); refused over 1.5x: 0; its hold to its first sale: median 18 s, 10% 3 s, 90% 28 s; COST 0.0064
+
+1. the pick on the old data at D = 2 (the most SOL without the best 2%); % a copy at 1 SOL
+   exit                                                      old: blocks 1 / 2 / 3 / 4     all  w/o 2%       NEW   n  w/o 2%
+   its sale +2 slots, tp 1.5, cap 15 s                 -7.3 /   +9.1 /   -4.7 /   +4.0   +0.3%   -4.58     -2.2% 352  -21.86
+   its sale +2 slots, tp 1.3, cap 15 s                 -4.6 /   -0.6 /   +2.5 /   +2.1   -0.2%   -4.98     +2.4% 352   -4.66
+   its sale +2 slots, tp 3.0, cap 15 s                 -7.3 /   +1.9 /   +2.4 /   -0.4   -0.9%   -5.53     -3.8% 352  -27.65
+   its sale +2 slots, tp 2.0, cap 15 s                 -7.3 /   +1.9 /   +2.4 /   -0.4   -0.9%   -5.53     -3.2% 352  -25.58
+   its sale +2 slots, tp none, cap 15 s                -7.3 /   +1.9 /   +2.4 /   -0.4   -0.9%   -5.53     -3.8% 352  -27.84
+   its sale +2 slots, tp 1.3, cap 300 s               -11.2 /   -6.1 /   +1.2 /   +9.3   -1.9%   -6.33     -1.0% 352  -16.43
+   its sale +2 slots, tp 1.3, cap 120 s               -11.2 /   -6.1 /   +1.2 /   +9.3   -1.9%   -6.33     -1.0% 352  -16.43
+   its sale +2 slots, tp 1.3, cap 90 s                -11.2 /   -6.1 /   +1.2 /   +9.3   -1.9%   -6.33     -1.0% 352  -16.43
+   its sale +2 slots, tp 1.3, cap 60 s                -11.2 /   -6.1 /   +1.2 /   +9.3   -1.9%   -6.33     -1.0% 352  -16.43
+   its sale +2 slots, tp 1.3, cap 45 s                -11.2 /   -6.1 /   +1.2 /   +9.3   -1.9%   -6.33     -1.0% 352  -16.43
+   its sale +2 slots, tp 1.3, cap 30 s                -11.2 /   -6.1 /   +1.2 /   +9.3   -1.9%   -6.33     -1.0% 352  -16.43
+   its sale +2 slots, tp 1.5, cap 300 s                -9.7 /   +0.1 /   -9.2 /   +8.9   -2.5%   -6.87     -6.7% 352  -37.45
+   for reference:
+   its sale +2 slots, tp none, cap 300 s              -10.1 /   -4.7 /   -2.2 /   +0.4   -4.2%   -8.24    -10.2% 352  -50.14
+   never its sale, tp 3.0, cap 300 s                   -7.6 /  -13.9 / +103.9 /  -64.1   +4.2%  -23.76    +12.2% 352 -105.58
+   never its sale, tp 1.5, cap 60 s                   -22.2 /  +29.4 /  +24.1 /  -23.3   +2.0%  -11.40     +2.8% 352  -54.82
+   its sale, next trade, tp none, cap 300 s           -14.9 /   -4.6 /   -2.4 /   +9.6   -3.2%   -7.54     -9.4% 352  -46.91
+   its sale +2 slots, tp none, cap 300 s              -10.1 /   -4.7 /   -2.2 /   +0.4   -4.2%   -8.24    -10.2% 352  -50.14
+
+PICK: its sale +2 slots, tp 1.5, cap 15 s
+
+2. the pick and its neighbours at every landing of our sale (D) and our buy (LAND), all copies, % a copy (w/o 2% SOL)
+   buy slot+1, tp none, cap  15 s:  never  -3.2% (-60.05)  D=0    -3.1% (-32.47)  D=1    -3.4% (-34.17)  D=2    -3.3% (-33.64)  D=3    -4.1% (-38.81)
+   buy slot+1, tp none, cap  30 s:  never  +0.4% (-100.80)  D=0    -8.2% (-54.72)  D=1    -8.9% (-58.34)  D=2    -9.1% (-58.84)  D=3    -9.6% (-63.45)
+   buy slot+1, tp none, cap  60 s:  never  +3.5% (-117.91)  D=0    -8.2% (-54.72)  D=1    -8.9% (-58.34)  D=2    -9.1% (-58.84)  D=3    -9.6% (-63.45)
+   buy slot+1, tp 1.3 , cap  15 s:  never  -1.9% (-31.20)  D=0    +1.1% (-13.54)  D=1    +1.6% (-11.47)  D=2    +1.9% (-10.15)  D=3    +1.4% (-11.87)
+   buy slot+1, tp 1.3 , cap  30 s:  never  -3.2% (-46.62)  D=0    -1.7% (-25.83)  D=1    -1.3% (-24.28)  D=2    -1.2% (-23.45)  D=3    -1.4% (-24.90)
+   buy slot+1, tp 1.3 , cap  60 s:  never  +4.8% (-46.84)  D=0    -1.7% (-25.83)  D=1    -1.3% (-24.28)  D=2    -1.2% (-23.45)  D=3    -1.4% (-24.90)
+   buy slot+1, tp 1.5 , cap  15 s:  never  -1.8% (-38.45)  D=0    -2.1% (-27.96)  D=1    -2.1% (-28.00)  D=2    -1.8% (-26.64)  D=3    -2.5% (-29.65)
+   buy slot+1, tp 1.5 , cap  30 s:  never  -6.2% (-70.00)  D=0    -5.7% (-43.70)  D=1    -6.0% (-45.23)  D=2    -5.9% (-44.71)  D=3    -6.3% (-46.89)
+   buy slot+1, tp 1.5 , cap  60 s:  never  +2.7% (-66.22)  D=0    -5.7% (-43.70)  D=1    -6.0% (-45.23)  D=2    -5.9% (-44.71)  D=3    -6.3% (-46.89)
+   buy slot+2, tp none, cap  15 s:  never  -2.4% (-55.39)  D=0    -1.9% (-28.76)  D=1    -2.2% (-30.69)  D=2    -2.0% (-30.02)  D=3    -2.8% (-35.27)
+   buy slot+2, tp none, cap  30 s:  never  +0.2% (-98.10)  D=0    -7.0% (-51.05)  D=1    -7.9% (-55.43)  D=2    -7.9% (-55.77)  D=3    -8.5% (-60.69)
+   buy slot+2, tp none, cap  60 s:  never  +4.7% (-116.12)  D=0    -7.0% (-51.05)  D=1    -7.9% (-55.43)  D=2    -7.9% (-55.77)  D=3    -8.5% (-60.69)
+   buy slot+2, tp 1.3 , cap  15 s:  never  -0.7% (-26.38)  D=0    +2.4% (-9.22)  D=1    +2.9% (-7.33)  D=2    +3.3% (-5.57)  D=3    +2.8% (-7.39)
+   buy slot+2, tp 1.3 , cap  30 s:  never  -1.5% (-42.05)  D=0    -0.5% (-21.78)  D=1    -0.1% (-20.38)  D=2    +0.2% (-19.13)  D=3    -0.1% (-20.66)
+   buy slot+2, tp 1.3 , cap  60 s:  never  +7.2% (-41.92)  D=0    -0.5% (-21.78)  D=1    -0.1% (-20.38)  D=2    +0.2% (-19.13)  D=3    -0.1% (-20.66)
+   buy slot+2, tp 1.5 , cap  15 s:  never  -0.9% (-33.75)  D=0    -1.0% (-24.88)  D=1    -1.0% (-24.87)  D=2    -0.6% (-23.40)  D=3    -1.4% (-26.77)
+   buy slot+2, tp 1.5 , cap  30 s:  never  -4.7% (-65.50)  D=0    -4.6% (-40.55)  D=1    -4.9% (-41.97)  D=2    -4.7% (-41.37)  D=3    -5.2% (-44.15)
+   buy slot+2, tp 1.5 , cap  60 s:  never  +5.2% (-62.18)  D=0    -4.6% (-40.55)  D=1    -4.9% (-41.97)  D=2    -4.7% (-41.37)  D=3    -5.2% (-44.15)
+
+3. the fixed exits (no pick), all copies in 4 time blocks, % a copy (w/o the best 2% in SOL); our buy slot+1
+   its sale +2 slots, tp 1.5, cap 15 s                +1.8 /   -3.1 /   -5.5 /   -0.3 =   -1.8% (434)   -26.64  +blocks 1/4
+   its sale +2 slots, tp 1.5, cap 30 s                -2.6 /   -4.3 /   -9.0 /   -7.9 =   -5.9% (434)   -44.71  +blocks 0/4
+   its sale +2 slots, tp none, cap 15 s               -0.2 /   -5.4 /   -7.9 /   +0.5 =   -3.3% (434)   -33.64  +blocks 1/4
+   its sale +2 slots, tp none, cap 30 s               -5.7 /   -8.5 /  -12.3 /   -9.8 =   -9.1% (434)   -58.84  +blocks 0/4
+   its sale +1 slot, tp 1.5, cap 15 s                 +1.6 /   -3.9 /   -5.6 /   -0.4 =   -2.1% (434)   -28.00  +blocks 1/4
+   never its sale, tp 1.5, cap 30 s                   -5.1 /   -8.8 /   +1.9 /  -12.7 =   -6.2% (434)   -70.00  +blocks 1/4
