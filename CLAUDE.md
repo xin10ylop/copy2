@@ -100,6 +100,10 @@ Wallet 4's strategies:
   **Since Nov 26: CqCAzte8's unit `rugsnipe-long-cq` (`www`) is stopped and disabled** (the owner's call: 83 real, -0.6648 SOL;
   the weakest of ours in every screen since Nov 25, up 2 of 5 days and negative without its best 2%; its float use
   goes to the other units). `pnl` keeps its record under `www`.
+  **Since Nov 27: CqCAzte8's unit (`www`) is back on, at 0.25 SOL, its buys of 0.1+ SOL, its SOL coins on the standard exit
+  (`sol_exits = false`), daily stop 0.5** (the owner, after `analysis/research/2026-11-27/stopped/`: live -1.6% a copy on 83 against the
+  backtest's -0.5% on the same days, the wallet's worst; +11.3% a copy on 39 since the stop; the fixed exit +10.5% over 14 days, 3 of
+  4 blocks). Judged at 30 trades.
   **Since Nov 27 (the owner: "okk ad 0.25 sol the one you wanted"): unit 15, `rugsnipe-long-6k5` (6K5GCZem, `jjj`), 0.25 SOL, all
   its coins, tp 3x / 420 s / stall 240, daily stop 0.5, a trial judged at 20 trades** (`config/long-6k5.live.example.toml`; PASS thin
   in the tape_screen README, Nov 27 afternoon: blind +10.7% a copy, 3 of 3, but the fixed exit +0.14 SOL without the best 2%).

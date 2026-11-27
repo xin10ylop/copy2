@@ -12,9 +12,12 @@ mode = "on"
 copy_wallet = "CqCAzte8TwCDbCBrhjUpsfG6Au9pZPdrTXrVDidKHGAn"
 
 # its buy valued in SOL: its 1.5-SOL tier (reads 1.45-1.51 by route)
-min_sol = 0.5
+# Nov 27 (back on, the owner ran it): 0.1 SOL (its 0.1-0.5 SOL buys +12.24 stakes in 14 days, 3 of 4 blocks, +9.73 without the best 2%;
+# analysis/research/2026-11-27/stopped/README.md)
+min_sol = 0.1
 # our buy, valued in SOL (1.0 tested: at 0.5 the fixed costs eat the edge)
-stake_sol = 0.5
+# Nov 27: back at 0.25 SOL a copy, judged at 30 trades (stopped Nov 26 at 83 real, -0.6648 SOL; live = the backtest of those days)
+stake_sol = 0.25
 # the curve price against the price its buy left, without our own tokens
 take_profit = 3.0
 # 0 = no stop (the trip ends at the take profit or the hold). Since Nov 2026 wallet 4 sells most coins early and
@@ -30,7 +33,7 @@ max_open = 2
 # backtest's limit; our own impact is not part of it)
 max_premium = 0.5
 # no new buys once today's (UTC) realized result is at or below -daily_stop_sol
-daily_stop_sol = 1.0
+daily_stop_sol = 0.5
 
 # held as floats besides wrapped SOL: routes may start and end in them (WBTC carried Oct 23-27).
 # Buy one with: rugsnipe-long float buy 3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh 3.0
@@ -98,7 +101,8 @@ join_others = true
 copy_sol_coins = true
 # its SOL coins with their own exits (Nov 22: on its blind blocks, SOL coins tp 2x / 120 s +11.06 SOL on 124, positive in
 # all three, against tp 3x / 420 s / stall 240 +10.90 with one losing; its token coins keep tp 3x / 420 s / stall 240)
-sol_exits = true
+# Nov 27: false, its SOL coins on the token exit (the SOL-coin exit picked blind +14.37 stakes against +22.01 with tp 3x / 420 s / stall 240)
+sol_exits = false
 sol_take_profit = 2.0
 sol_max_hold_s = 120
 sol_stall_s = 0
