@@ -127,6 +127,10 @@ Wallet 4's strategies:
   `analysis/research/2026-11-26/uncopied2/` README: TTWO 2.5, hSOL 2.0, NVDAx 1.5, PUMP 1.0, SPCX 1.0, USDC 1.0, PAID 0.6, WBTC 0.5,
   about 10.1 SOL in floats against 5.2; at the old sizes 7 days of copies skipped TTWO 20, hSOL 35, NVDAx 18; USDC-priced
   copies replayed +7.4% a copy on 49; ANT, TSLAx, GTA6 replayed negative or flat, not added).
+  **Since Nov 27: NVDAx float 2.5 SOL, PUMP 1.5** (the owner: "just add from the sol wallet we have enough"; TTWO kept at 2.5;
+  `analysis/research/2026-11-27/floats_per_wallet/`: over Nov 20-27 NVDAx skipped or shrank 16 of its 81 copies at 1.5, PUMP 7
+  of 84 at 1.0; no new float: TSLAx, ANT and SQQQ, the only unreached tokens with 10+ copyable coins a week, replay on one or
+  two coins each).
   **Since Nov 24 night: TTWO float 1.5 SOL, WBTC 0.3** (the timer's file, `config/float-levels.live`; the owner's call
   after `analysis/research/2026-11-24/uncopied/`: copyable buys paid with each over 7 days, all units: TTWO 239, hSOL 77,
   PUMP 36, NVDAx 34, SPCX 19, PAID 14, WBTC 7). No new float: no unheld token has the buys or the copy result.
