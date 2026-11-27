@@ -1,0 +1,25 @@
+ooo: 208 copies it takes + 38 sampled of those it does not (each for 1.0); blocks by time of 62, 56, 62, 66 copies
+live rule: all coins, 0.5+ SOL, limit 1.5x; token coins: tp 3.0x, 420 s, no sp, stall 240, its sale never; SOL coins: tp 3.0x, 420 s, no sp, stall 240, its sale never
+  stakes won by block  +4.52 /  +6.31 /  +2.69 /  +1.25 = +14.77
+
+1. walk-forward (the rule picked on the blocks before, blind on the block):
+  block 2: all coins, 0.1+ SOL, limit 1.25x; token coins: tp 1.75x, 600 s, sp 3/30, stall 120, its sale never; SOL coins: tp 5.0x, 300 s, no sp, stall 180, its sale never
+      blind +1.05 stakes on 56 copies, live +6.31 on 52
+  block 3: all coins, 0.1+ SOL, limit 1.25x; token coins: tp 5.0x, 240 s, no sp, stall 240, its sale never; SOL coins: tp 3.0x, 300 s, no sp, stall 240, its sale never
+      blind +3.90 stakes on 62 copies, live +2.69 on 52
+  block 4: all coins, 0.25+ SOL, limit 1.25x; token coins: tp 1.75x, 240 s, sp 10/120, stall 240, its sale never; SOL coins: tp 3.0x, 300 s, no sp, stall 240, its sale never
+      blind -1.27 stakes on 66 copies, live +1.25 on 52
+  blind total +3.68 stakes (w/o its best 2% -3.05) against live +10.25 (w/o 2% +4.51); better in 1 of 3
+  the pick on all 4 blocks: all coins, 0.5+ SOL, limit 1.25x; token coins: tp 5.0x, 600 s, no sp, stall 240, its sale never; SOL coins: tp 5.0x, 600 s, no sp, stall 240, its sale never
+
+2. one change, the live exit kept (stakes won by block; vs live):
+  floor 0.1 SOL                     +4.96 /  +6.35 /  +3.18 /  -0.55 = +13.93  vs live  -0.84 (3/4), w/o 2%  -2.80
+  floor 0.25 SOL                    +4.96 /  +6.35 /  +3.39 /  -0.55 = +14.14  vs live  -0.63 (3/4), w/o 2%  -2.59
+  floor 1.0 SOL                     -0.71 /  +0.80 /  -0.89 /  -0.58 =  -1.37  vs live -16.15 (0/4), w/o 2% -11.09
+  floor 1.3 SOL                     +0.17 /  -0.87 /  -0.12 /  -0.21 =  -1.02  vs live -15.80 (0/4), w/o 2%  -8.85
+  floor 2.0 SOL                     +0.00 /  +0.00 /  +0.00 /  +0.00 =  +0.00  vs live -14.77 (0/4), w/o 2%  -6.84
+  SOL coins dropped                 +0.32 /  +4.61 /  -0.84 /  +0.72 =  +4.81  vs live  -9.96 (0/4), w/o 2%  -3.93
+  limit 1.25x                       +4.52 /  +6.31 /  +2.69 /  +1.25 = +14.77  vs live  +0.00 (0/4), w/o 2%  +0.00
+  a SOL-coin exit of its own, walk-forward: blind +8.96 against +10.25 (SOL coins copied with the live exit), better in 1 of 3, w/o 2% -1.29; on all: tp 5.0x, 600 s, no sp, stall 240, its sale never
+
+3. VERDICT: C, the live rule stays
