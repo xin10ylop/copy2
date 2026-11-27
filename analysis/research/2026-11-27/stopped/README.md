@@ -29,3 +29,11 @@ The owner: "check these too if they recovered or if it was a goood decision to r
 - **sss, Nov 27 15:03**: #51 of 4,349 by the mean, #71 of 1,517 by consistency, all its copies up 5 of 7 days, +4.4% (+1.2%
   without the best 2%): mid-pack among ours (behind iii, ppp, uuu, rrr; ahead of ooo, ttt, yyy, eee).
 - **Verdict:** back at 0.25 SOL, its SOL coins on the standard exit (`sol_exits = false`), floor 0.1 SOL, daily stop 0.5.
+
+## www back on, then off again (Nov 27 evening)
+
+Re-enabled at 0.5 SOL in the afternoon; by 18:20 UTC 5 real copies closed, -1.1226 SOL (pnl), the daily stop reached. On chain
+(public RPC, both wallets since 13:00 UTC): CqCAzte8 itself lost on all 5 coins (218CbTVj -10%, AmRK6MMZ -11%, GmeML5Tq -26%,
+2aakMixm -2%, 3NSUeHQX -8%), selling 31-84 s after its buy on 4; our exit held to the stall and lost -26% to -69% (-0.153, -0.347,
+-0.308, -0.130, -0.187 SOL). The bot followed its rules; the wallet had a bad session, as its 14-day block 3 (-11.5%) and its own
+-13.91 SOL day show it can. The owner: "lets jsut remove it". 88 real in all, -1.7875 SOL.

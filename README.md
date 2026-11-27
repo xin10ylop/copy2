@@ -18,6 +18,7 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 27 evening: www (CqCAzte8) stopped again** (5 real after the re-add, -1.12 SOL; the wallet lost on all 5 itself).
 **Nov 27: CqCAzte8's unit (`www`) back on at 0.5 SOL, 0.1+ SOL buys, its SOL coins on the standard exit** (`analysis/research/2026-11-27/stopped/`).
 **Nov 27: unit 15, 6K5GCZem (`rugsnipe-long-6k5`, `jjj`), 0.25 SOL, a trial** (PASS thin; tape_screen README).
 **Nov 27: ttt's exit tp 5x / 600 s / sell pressure 10/120 / stall 180; rrr copies its SOL coins too** (every unit's exit and
