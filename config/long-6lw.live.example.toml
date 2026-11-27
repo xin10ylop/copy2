@@ -17,13 +17,14 @@ min_sol = 0.5
 # our buy, valued in SOL (1.0 tested: at 0.5 the fixed costs eat the edge)
 stake_sol = 0.5
 # the curve price against the price its buy left, without our own tokens
-take_profit = 3.0
+# Nov 27 (the owner ran it): tp 5x, 600 s, sell pressure 10/120, stall 180 (were 3.0 / 420 s / none / 240); analysis/research/2026-11-27/exits_all/: blind walk-forward +16.6% a copy against +8.1%, without the best 2% +9.0% against +1.9%, 3 of 3 blocks
+take_profit = 5.0
 # 0 = no stop (the trip ends at the take profit or the hold). Since Nov 2026 wallet 4 sells most coins early and
 # the 0.8 stop sold into its sale: Oct 29 - Nov 4, 1 SOL x 3, +1.79 with 0.8, +6.26 with none; neutral on Oct 19-28
 # (analysis/research/2026-10-31/since_stop)
 stop = 0.0
 # it sells at 1800 s after its buy
-max_hold_s = 420
+max_hold_s = 600
 # positions open at once: each takes stake_sol (grid.py cap, P1 Oct 19-22 / P2 Oct 23-27: 1 open +2.6 / +3.5,
 # 2 +6.5 / +8.1, 3 +5.0 / +9.6, 4 +6.7 / +11.1, 5 +6.7 / +10.9 SOL; the wallet itself: a median 2 of these open, max 11)
 max_open = 2
@@ -86,8 +87,8 @@ min_fee_bps = 0
 # exit signals (analysis/research/2026-11-16/signals/): out when the other traders' sells outnumber their buys by n
 # over w seconds, from `from` s after its buy ([n, w, from]; [] = off; live from Nov 15: [5, 60, 30]); and when the
 # price has made no new high for stall_s seconds once back at our fill price (0 = off; live from Nov 15: 180).
-sell_pressure = []
-stall_s = 240
+sell_pressure = [10, 120, 30]
+stall_s = 180
 
 # other units trading from this same wallet (their state dirs): a coin one of them holds is not bought, and a sale
 # never closes a coin account one of them still uses (Nov 18: rugsnipe-long and rugsnipe-long-tab on one wallet)

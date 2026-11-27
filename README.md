@@ -18,6 +18,8 @@ branch `claude/magical-einstein-k78idp`.
 
 ## Live again (Nov 12)
 
+**Nov 27: ttt's exit tp 5x / 600 s / sell pressure 10/120 / stall 180; rrr copies its SOL coins too** (every unit's exit and
+rule searched blind, `analysis/research/2026-11-27/exits_all/`: the live rule held for the other 9).
 **Nov 27: E5CLHHz6's unit (`fff`, `rugsnipe-long-e5c`) stopped** (the owner: "just remove it"; 6 real, all lost, -1.3650 SOL
 in one morning; the backtest of the same six -45.3% a copy against -45.5% live; the wallet itself -0.69 SOL on them, -1.61 SOL
 over 11 days; `analysis/research/2026-11-20/tape_screen/README.md`).

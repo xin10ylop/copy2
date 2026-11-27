@@ -100,6 +100,11 @@ Wallet 4's strategies:
   **Since Nov 26: CqCAzte8's unit `rugsnipe-long-cq` (`www`) is stopped and disabled** (the owner's call: 83 real, -0.6648 SOL;
   the weakest of ours in every screen since Nov 25, up 2 of 5 days and negative without its best 2%; its float use
   goes to the other units). `pnl` keeps its record under `www`.
+  **Since Nov 27: ttt (6LwMLkCe) exits at tp 5x, 600 s, sell pressure 10/120, stall 180, and rrr (3XeFcZKS) copies its SOL coins
+  too, the same exit** (the owner ran both; `analysis/research/2026-11-27/exits_all/`: every running unit's exit and rule
+  searched, 12,960 exits x floor x coin kind x limit, picked walk-forward and scored blind; the live rule held for 9 of 11;
+  ttt's blind +16.6% a copy against +8.1%, +9.0% against +1.9% without the best 2%, 3 of 3; rrr's SOL coins +9.9 stakes in
+  14 days, 3 of 4, agreeing with Nov 26; following its sale worse for 10 of 11, smaller buys lose for every unit).
   **Since Nov 27: E5CLHHz6's unit `rugsnipe-long-e5c` (`fff`) is stopped and disabled** (the owner: "just remove it": 6 real,
   all lost, -1.3650 SOL on the morning of Nov 27, the daily stop passed with 2 open; live = the backtest on the same six,
   -45.5% against -45.3% a copy: the bot followed its rules; the wallet sold in 3-48 s on 4 of 6 and lost -0.69 SOL itself on

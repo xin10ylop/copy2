@@ -96,7 +96,9 @@ other_state_dirs = ["/var/lib/rugsnipe-long", "/var/lib/rugsnipe-long-cq", "/var
 # analysis/research/2026-11-25/consensus/); both units hold it, the shared account stays open while either does
 join_others = true
 # its SOL-priced coins too (Nov 22: on all its buys, blind, SOL coins +8.4% a copy on 125, token coins +26.2% on 76)
-copy_sol_coins = false
+# Nov 27 (the owner ran it): its SOL coins too, the same exit (analysis/research/2026-11-27/exits_all/: +9.9 stakes in 14 days, 3 of 4 blocks,
+# +3.8 without the best 2%; Nov 26 uncopied2/: +5.6% a copy on 152)
+copy_sol_coins = true
 # its SOL coins with their own exits (Nov 22: on its blind blocks, SOL coins tp 2x / 120 s +11.06 SOL on 124, positive in
 # all three, against tp 3x / 420 s / stall 240 +10.90 with one losing; its token coins keep tp 3x / 420 s / stall 240)
 sol_exits = false
