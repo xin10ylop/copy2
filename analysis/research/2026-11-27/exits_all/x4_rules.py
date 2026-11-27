@@ -25,7 +25,7 @@ h = {}; exec(compile(src, "x2", "exec"), h)
 smooth, name, SH, LV = h["smooth"], h["name"], h["SH"], h["LV"]
 U = dict(qqq=("token", 1.3), eee=("all", 0.5), rrr=("token", 0.5), ttt=("token", 0.5), yyy=("token", 0.25), uuu=("all", 0.5),
          iii=("all", 0.5), ooo=("all", 0.5), ppp=("token", 0.1), ddd=("all", 0.5), hhh=("all", 0.5), www=("all", 0.5))
-KIND0, MIN0 = U[LAB]
+KIND0, MIN0 = U.get(LAB, ("all", 0.5))   # a candidate (cand_<wallet8>): all coins of 0.5+
 zi = np.load(f"{SP}/exits_all/{LAB}.npz"); zo = np.load(f"{SP}/exits_all/{LAB}_out.npz")
 live = int(zi["live"]); its_l = np.unravel_index(np.arange(int(np.prod(SH))), SH)[4]
 G = np.concatenate([zi["G"], zo["G"]]).astype(np.float64); t = np.concatenate([zi["t"], zo["t"]])

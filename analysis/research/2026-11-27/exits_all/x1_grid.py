@@ -33,6 +33,8 @@ UNITS = {"qqq": ("H9kuqGKNYgPFYCA17uUTkaqXGum7MK8y1GwbS7cxsjDg", "token", 1.3, 1
          "hhh": ("2GJUPUrkxs6RZfJCgRncf1Xq9Xe6MbuDynVaoiiPKoJ4", "all", 0.5, 0.5, STD),
          # Nov 27 (the owner: "check deeply if we should add it back"): the stopped CqCAzte8 unit, its token-coin exit
          "www": ("CqCAzte8TwCDbCBrhjUpsfG6Au9pZPdrTXrVDidKHGAn", "all", 0.5, 0.5, STD)}
+# a candidate (Nov 27, deep_box/): LAB cand_<wallet8> with CAND_W, all its coins of 0.5+ SOL at 0.5 SOL, the standard exit
+if LAB.startswith("cand_"): UNITS[LAB] = (os.environ["CAND_W"], "all", 0.5, 0.5, STD)
 W, KIND, MIN, STAKE_, LIVE_X = UNITS[LAB]
 TS = "/home/user/copy2/analysis/research/2026-11-20/tape_screen"
 os.environ["NOSTOP"] = "1"; os.environ["STAKE"] = str(STAKE_); os.environ.setdefault("COST", "0.0064")
