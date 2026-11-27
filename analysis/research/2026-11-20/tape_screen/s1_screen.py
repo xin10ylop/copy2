@@ -470,6 +470,7 @@ for sh, a, b in sorted(pairs, reverse=True)[:15]:
 #   consistency std  the same, the standard exit
 #   mean std         the standard exit's mean a copy, shrunk toward every copy's (30 copies of weight)
 #   2x a day / 3x    copies whose price went 2x (3x) over our fill within 420 s, a day (the owner's idea)
+#   2x share         the share of its copies that went 2x (shrunk: 30 copies of every copy's share)
 #   own SOL          its own result on its sold-out coins
 #   segment          each wallet's best part by consistency std: its SOL or token coins, under or over 1.3 SOL (5+ copies
 #                    in the half); its top 30 are scored on that part only ("filter the coins they lose on")
@@ -479,7 +480,7 @@ SEGS = {"SOL <1.3": lambda x: x[5] and x[2] < 1.3, "SOL 1.3+": lambda x: x[5] an
         "token <1.3": lambda x: not x[5] and x[2] < 1.3, "token 1.3+": lambda x: not x[5] and x[2] >= 1.3}
 vstd = lambda x: (x[3]["std"] if x[3] != "refused" else -0.0004) / STAKE * 100
 v5 = lambda x: (np.mean([x[3][e] for e in EX]) if x[3] != "refused" else -0.0004) / STAKE * 100
-pool_std = float(np.mean([vstd(x) for x in out]))
+pool_std = float(np.mean([vstd(x) for x in out])); pool_2x = float(np.mean([x[3] != "refused" and x[3]["_pk"] >= 2 for x in out]))
 def consv(xs, f):
     d = collections.defaultdict(list)
     for x in xs: d[int(x[1] // 86400)].append(f(x))
@@ -500,6 +501,9 @@ def rank(method, H):
         elif method == "mean std": sc = (len(xs) * np.mean([vstd(x) for x in xs]) + 30 * pool_std) / (len(xs) + 30)
         elif method == "2x a day": sc = hits(xs, 2, hours)
         elif method == "3x a day": sc = hits(xs, 3, hours)
+        elif method == "2x share":   # Nov 27: the share of its copies that went 2x, shrunk toward every copy's share (30 copies):
+            # "2x a day" counts, so it ranks the busiest wallets first (23,000 copies in its top 30 on Nov 27)
+            sc = (sum(1 for x in xs if x[3] != "refused" and x[3]["_pk"] >= 2) + 30 * pool_2x) / (len(xs) + 30)
         elif method == "own SOL": sc = ownv(xs)
         elif method == "segment":
             for sg, f in SEGS.items():
@@ -516,7 +520,7 @@ def score(top, H):
 A = lambda u: [x for x in by[u] if x[1] < mid]; B = lambda u: [x for x in by[u] if x[1] >= mid]
 print(f"\nmethod test: each method ranks on one half, its top 30 scored on the other with the standard exit (every copy {pool_std:+.1f}%); "
       f"{len(ELIG)} wallets; a copy % (without its best 2%), copies, of the 30 positive")
-MS = ["consistency", "consistency std", "mean std", "2x a day", "3x a day", "own SOL", "segment"]; best_m = None
+MS = ["consistency", "consistency std", "mean std", "2x a day", "3x a day", "2x share", "own SOL", "segment"]; best_m = None
 for mth in MS + ["random"]:
     res_ = []
     for tr_, te_ in ((A, B), (B, A)):

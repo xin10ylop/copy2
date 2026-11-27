@@ -672,3 +672,24 @@ them; its own result over its 11 active days of 14 is now -1.61 SOL (+0.07 when 
 - **8Mdf76LG: PASS, weak** (a launch-slot buyer; own -21.28 SOL over 13 days, up on none; blind +5.9% a copy on 58, +1.15 without
   the best 2%, 2 of 3; the fixed exit +5.3%, its SOL coins +10.0% with one block of +51.9%).
 - **GqDvPg4N, CvRhs2dG: FAIL** (blind -6.2% on 9, -5.4% on 12; both lose themselves). **2DNUufc1: FAIL gate 1** (own -30.24 SOL).
+
+**The method test (Nov 27, the owner: "do you think we should do a different approach to sss? ... wallets that hit 2-3x 2
+times a day and be able to filter the coins that they lose on"; `s1_screen.py`, the end; 143.4 h, 4,503 wallets).** Each way
+of ranking ranks the wallets on one half of the tape, its top 30 scored on the other half (both ways) with the standard exit
+(tp 3x / 420 s / stall 240); every copy -13.2%, random picks -11.6% / -13.4%:
+
+| Method | Half 1 -> 2 | Half 2 -> 1 | Of 30 positive |
+|---|---|---|---|
+| consistency (the list) | **-3.3%** (-7.7% w/o best 2%) | **-9.0%** (-13.7%) | 12 / 5 |
+| consistency, standard exit | -4.5% | -11.6% | 8 / 7 |
+| best part (coin kind x size) | -4.5% | -9.1% | 9 / 6 |
+| mean, standard exit | -11.3% | -10.4% | 10 / 7 |
+| 2x a day / 3x a day | -9.9% / -9.8% | -12.8% / -12.7% | 0 / 2 |
+| own SOL | -9.5% | -12.7% | 3 / 2 |
+| random | -11.6% | -13.4% | 6.2 / 5.2 |
+
+Consistency, the screen's ranking, is the best of them: it lifts the top 30 by about 8 points over random one way and 4 the
+other, but on 3 unseen days its picks are still negative on average and fewer than half positive. "2x a day" picks the
+busiest wallets (23,628 copies in its top 30) and does no better than random; "2x share" (the share of copies that went 2x)
+is added for the next run. Filtering each wallet to its best part does not beat ranking the whole wallet. So the screen's
+list is a shortlist and the 14-day deep test (w3_robust.py) is what decides; the halves grow with the tape (60 days kept).
