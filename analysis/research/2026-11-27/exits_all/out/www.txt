@@ -1,0 +1,25 @@
+www: 293 copies, 11-13 16:25 to 11-27 04:13 UTC; blocks of 74, 73, 73, 73; % = a copy, of the stake
+live exit: tp 3.0x, 420 s, no sp, stall 240, its sale never
+
+fixed exits on the 4 blocks (no picking):
+  live                                +12.4 /  +25.5 /  -11.5 /  +15.0  =  +10.4%  w/o 2%   +5.9%  blocks + 3/4
+  wallet 4's live                      +3.8 /  +17.9 /   -5.5 /  +12.5  =   +7.2%  w/o 2%   +1.9%  blocks + 3/4
+  follow its sale, to 600 s            +3.1 /  +10.5 /   -6.2 /   +1.9  =   +2.3%  w/o 2%   -0.0%  blocks + 3/4
+  tp 2 / 120 s                         +6.2 /  +11.4 /   -0.3 /   +9.4  =   +6.7%  w/o 2%   +4.1%  blocks + 3/4
+  tp 2 / 120 s / sp 5/60               +2.6 /   +6.8 /   -0.1 /   +8.8  =   +4.5%  w/o 2%   +2.0%  blocks + 3/4
+
+1. walk-forward (picked on the blocks before, scored blind):
+  block 2: picked on 74: tp 5.0x, 240 s, no sp, stall 240, its sale never
+      blind  +25.1%  live  +25.5%  on 73
+  block 3: picked on 147: tp 3.0x, 240 s, no sp, stall 240, its sale never
+      blind   -7.1%  live  -11.5%  on 73
+  block 4: picked on 220: tp 3.0x, 240 s, no sp, stall 240, its sale never
+      blind  +10.8%  live  +15.0%  on 73
+  blind total +9.6% a copy (w/o 2% +6.0%) against live +9.7% (w/o 2% +5.9%); better in 1 of 3
+  the pick on all 4 blocks: tp 2.5x, 240 s, no sp, stall 240, its sale never  (+13.1% seen, flattering)
+
+2. each axis alone: [median paired diff a copy per block, other axes at every setting] | the live exit with only this changed
+  240 s                    median  +0.2  +0.0  +0.0  +0.0 (1/4) | changed  +6.5  +5.9  +4.4  -4.2 (3/4) total  +3.2 w/o2  +3.3
+  stall 180                median  +0.0  +0.0  +0.0  +0.0 (0/4) | changed  +0.7  +0.1  +1.6  -1.7 (3/4) total  +0.2 w/o2  +0.2
+
+3. VERDICT: C, keep the live exit (+10.4% a copy on all 293)
