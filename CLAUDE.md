@@ -63,7 +63,7 @@ Wallet 4's strategies:
   the SAME exit, `sol_exits = false`; `config/long-cgy.live.example.toml`; the test in
   `analysis/research/2026-11-20/tape_screen/` README: it fails the 48-setting pick, passes the pick on all coins, and the
   fixed exit is +12.1% a copy blind; the three units skip each other's coins; check command `eee`, `ggg` still works). **On the Frankfurt box: `qqq` =
-  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe, `yyy` = 6nNzEg86, `uuu` = GqWfqfG6, `iii` = Bing35WC (since Nov 25 night; `aaa` before, still works), `ooo` = HtHkKxYN, `ppp` = 3SiQo8MJ, `ddd` = E2XwSeqe, `fff` = E5CLHHz6, `hhh` = 2GJUPUrk, `pnl` = every unit's result in
+  wallet 4, `www` = CqCAzte8, `eee` = CgyPomTG, `rrr` = 3XeFcZKS, `ttt` = 6LwMLkCe, `yyy` = 6nNzEg86, `uuu` = GqWfqfG6, `iii` = Bing35WC (since Nov 25 night; `aaa` before, still works), `ooo` = HtHkKxYN, `ppp` = 3SiQo8MJ, `ddd` = E2XwSeqe, `fff` = E5CLHHz6, `hhh` = 2GJUPUrk, `jjj` = 6K5GCZem, `pnl` = every unit's result in
   one line each and the total (`deploy/bin/rugsnipe-pnl`), `sss` = the weekly wallet screen; on the Chicago box `www` is still
   the Robinhood copier.**
   **Since Nov 23 (the owner's call, 0.5 SOL, no paper phase): units 4 and 5, `rugsnipe-long-3xe` (3XeFcZKS, `rrr`) and
@@ -100,6 +100,9 @@ Wallet 4's strategies:
   **Since Nov 26: CqCAzte8's unit `rugsnipe-long-cq` (`www`) is stopped and disabled** (the owner's call: 83 real, -0.6648 SOL;
   the weakest of ours in every screen since Nov 25, up 2 of 5 days and negative without its best 2%; its float use
   goes to the other units). `pnl` keeps its record under `www`.
+  **Since Nov 27 (the owner: "okk ad 0.25 sol the one you wanted"): unit 15, `rugsnipe-long-6k5` (6K5GCZem, `jjj`), 0.25 SOL, all
+  its coins, tp 3x / 420 s / stall 240, daily stop 0.5, a trial judged at 20 trades** (`config/long-6k5.live.example.toml`; PASS thin
+  in the tape_screen README, Nov 27 afternoon: blind +10.7% a copy, 3 of 3, but the fixed exit +0.14 SOL without the best 2%).
   **Since Nov 27: ttt (6LwMLkCe) exits at tp 5x, 600 s, sell pressure 10/120, stall 180, and rrr (3XeFcZKS) copies its SOL coins
   too, the same exit** (the owner ran both; `analysis/research/2026-11-27/exits_all/`: every running unit's exit and rule
   searched, 12,960 exits x floor x coin kind x limit, picked walk-forward and scored blind; the live rule held for 9 of 11;
