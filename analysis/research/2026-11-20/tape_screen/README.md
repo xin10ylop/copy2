@@ -626,6 +626,21 @@ key. A token Jupiter lists without a price crashed w2_grid (KeyError; fixed).
 - **Cf4dxUu7: not testable** (15,000 transactions in 3 days: the history is capped at Nov 24 23:36 UTC, 13 copies).
   **VjBbD8oY: FAIL** (a 1-day wallet, own -11.03 SOL).
 
+**The screen of Nov 27 (138.0 h) and its untested names (`out_w3/{FU768Y9K,6WEhBp8X,42FyQuwo}_*_nov27.txt`): none added.**
+- **FU768Y9K: FAIL, and not copyable.** A machine: 0.59 SOL every ~2 s (298 of its 310 first buys at 0.59, 12 at 0.99; 187
+  coins in the hour Nov 27 00 UTC, 90 in Nov 26 19), SOL coins only. 15 pages of history reach back only to Nov 26 12:10
+  UTC. The blind pick -3.3 / -6.3 / +59.5% = +16.4% a copy (158), -3.21 SOL without the best 2%, 1 of 3. The fixed exit
+  -39.4 / +67.6 / +73.2 / +59.5% (211), -0.19 without the best 2%: three short bursts carry it. Our max_open cannot follow
+  it anyway (FatoU1bj's lesson).
+- **6WEhBp8X: FAIL the blind pick** (79 copies over 13 days, own +13.80 SOL, up on 10; blind +15.7% a copy on 45, -0.19 without
+  the best 2%, 2 of 3). The fixed exit, all coins: +0.6 / +14.9 / +15.0 / +5.2% = +9.0% (79), +2.64, 4 of 4. Seen after the
+  fact: its buys of 1.3+ SOL +22.7% (38), +6.23, 4 of 4 (token coins of 1.3+ +42.1% on 17, 4 of 4); its 0.5-1.3 SOL buys
+  -3.7% (41), 2 of 4. The 1.3+ filter was not picked blind: a forward check on new days, fixed now (1.3+ SOL, tp 3x / 420 s /
+  stall 240, all coins), decides.
+- **42FyQuwo: PASS on very few buys** (35 over 5 days, own -1.35 SOL; blind +22.0% a copy on 17, +2.79 without the best 2%,
+  2 of 2). The fixed exit +14.1% (35), 3 of 4; its SOL coins carry it (+17.2%, 24), its token coins negative (6). Too few
+  to stake on; retest after a week.
+
 **Fast traders (Nov 25; the owner: "maybe we can copy fast traders too, and make more money"; the screen's TOPFAST,
 93.9 h).** The 2,120 wallets holding a median under 20 s, copied realistically (out at 1.5x its price, in the first trade
 2 slots after its sale, or 15 s): every copy's mean **-6.5%**. The top 15 by consistency are positive on their 3-4 days;
