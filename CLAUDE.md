@@ -103,7 +103,7 @@ Wallet 4's strategies:
   **Since Nov 28 (UTC): unit 18, `rugsnipe-long-7es` (7ESujFzt, `zzz`), 0.25 SOL, all its coins of 0.5+ SOL, tp 3x / 180 s / stall 240,
   daily stop 0.5, the same stop rule** (`config/long-7es.live.example.toml`; the deep test of the Nov 28 screen: PASS, +13.0% a copy on 45,
   3 of 4, its SOL coins carry it; the exit search's one change, 180 s; 8x1q3VeN FAIL, 2 of 4 blocks; HTYho9io loses -237 SOL itself;
-  the Helius key ran out of credits on Nov 28, the other four rerun on the public node). The 18 units skip each other's coins.
+  the Helius key ran out of credits on Nov 28; CCDvgAh1, HLZ3wicH, 6xJwQ5m9 fail on under 40 buys, 45JhwE8F waits for credits). The 18 units skip each other's coins.
   **Since Nov 28 (UTC): units 16 and 17, `rugsnipe-long-cnq` (CNQQuavw, `kkk`, its buys of 1.0+ SOL) and `rugsnipe-long-wik`
   (wik1TBPz, `lll`), 0.25 SOL, all their coins, tp 3x / 420 s / stall 240, daily stop 0.5, stopped at -1.0 SOL in all or if negative
   after 20 trades** (`analysis/research/2026-11-27/deep_box/`: the full deep test with rules fixed before; 2 of 10 candidates pass).

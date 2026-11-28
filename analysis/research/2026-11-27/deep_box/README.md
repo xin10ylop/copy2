@@ -50,6 +50,11 @@ reached"): the first two read cached histories, HTYho9io's coin paths failed hal
   +34.16 SOL itself over 8 days, up on all 8. The rule search's one change, its buys of 1.3+ SOL only, passes B: a name to retest
   with more days, not to run now.
 - **FAIL HTYho9io**: it loses -236.71 SOL itself over 10 days, up on 1 (83 buys of 0.5+ SOL); no copy test needed.
+- **The four rerun on the public node (10:36-12:28 UTC):** their histories came in, but the public node refuses the batches of
+  the coins' trade paths (each coin 800-16,000 transactions), so no copy was replayed. By the history alone (`out/<wallet8>_all.txt`):
+  **FAIL CCDvgAh1** (21 buys of 0.5+ SOL in 14 days, under R3's 40; own -20.64 SOL over 9 days, up on none), **FAIL HLZ3wicH**
+  (15 buys; own +2.17 SOL), **FAIL 6xJwQ5m9** (23 buys; own -75.55 SOL over 4 days, up on none). **45JhwE8F undecided**: 40 buys,
+  R3 met, own -27.23 SOL over 11 days, up on 1; its copy test waits for Helius credits (or another RPC that serves the paths).
 
 ## Days and hours (Nov 28; the owner: "not trade on Fridays, Saturdays, Sundays, or any day of the week?")
 
