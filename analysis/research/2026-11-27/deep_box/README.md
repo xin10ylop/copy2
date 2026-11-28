@@ -32,3 +32,11 @@ Our running units (all their coins of 0.5+ SOL, the standard exit): PASS iii, ee
 pick FAIL), ttt, rrr, ooo, uuu; **FAIL ddd** (2 of 4 blocks, -0.41 without the best 2%: stopped Nov 27 night) and hhh (37 copies,
 R3 only; +16.1%, 3 of 4); yyy fails on all its coins (2 of 4 blocks) but copies its token coins only, and its rule search keeps
 exactly that (SOL coins dropped), as the Nov 27 exit study did (+18.4%, 3 of 4).
+
+## Days and hours (Nov 28; the owner: "not trade on Fridays, Saturdays, Sundays, or any day of the week?")
+
+The deep test's copies of 11 of our wallets (1,756 over Nov 13-27, the standard exit, from the cand_*.npz grids), by UTC weekday
+and 6-hour block, each split into the first and the second week: **every weekday and every block is positive in both weeks.**
+Weekdays: Mon +8.9%, Tue +3.7%, Wed +10.6%, Thu +8.6%, Fri +3.6%, Sat +4.3%, Sun +17.3% a copy (the weeks: Fri +4.1 / +3.1, Sat
++1.6 / +7.0). Hours UTC: 00-06 +12.5%, 06-12 +2.8% (+3.1 / +2.5: the weakest, steady), 12-18 +11.3%, 18-24 +6.8%. No day or hours
+lose; leaving any out would only give up copies that make money. Two weeks are two samples a weekday: recheck when the tape is longer.
