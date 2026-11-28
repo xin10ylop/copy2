@@ -33,6 +33,24 @@ pick FAIL), ttt, rrr, ooo, uuu; **FAIL ddd** (2 of 4 blocks, -0.41 without the b
 R3 only; +16.1%, 3 of 4); yyy fails on all its coins (2 of 4 blocks) but copies its token coins only, and its rule search keeps
 exactly that (SOL coins dropped), as the Nov 27 exit study did (+18.4%, 3 of 4).
 
+## The Nov 28 screen (11:05 box time; run Nov 28 09:29-10:35 UTC; `out/screen1128_part1.txt`)
+
+The candidates by the same rules as Nov 27 (the method test's winner and the consistency list, not tested before): 8x1q3VeN,
+7ESujFzt, HTYho9io, CCDvgAh1, HLZ3wicH, 45JhwE8F, 6xJwQ5m9. **The Helius key ran out of credits during the run** ("max usage
+reached"): the first two read cached histories, HTYho9io's coin paths failed half-way, the last four got no history.
+`deep_job.sh` now runs with RPC_URL alone (the public node or Triton, slower); the four rerun that way.
+
+- **PASS 7ESujFzt**: the standard exit +13.0% a copy on 45 (blocks -16.4 / +13.9 / +24.5 / +32.7, 3 of 4), +3.50 SOL at 1 SOL
+  without the best 2%; the blind rolling pick PASS (+7.5% a copy on 21, 3 of 3); own +3.58 SOL over 13 days, up on 8. Its SOL
+  coins carry it (+26.2% on 28; its token coins -8.8% on 17), and the rule search keeps all its coins (dropping the SOL coins
+  -7.35 stakes; no rule beats live blind, 0 of 3). The exit search: B, one change, 180 s (+14.9% against +12.8%, 3 of 4, +3.5
+  points without the best 2%). Unit 18, `rugsnipe-long-7es` (`zzz`): 0.25 SOL, tp 3x / 180 s / stall 240, daily stop 0.5,
+  stopped at -1.0 SOL in all or if negative after 20 trades. Thin: 45 copies is about 3 a day, so 20 trades take about a week.
+- **FAIL 8x1q3VeN**: +5.2% a copy on 100 but 2 of 4 blocks (-11.0 / +3.9 / -0.6 / +28.5), the blind pick FAIL, though it made
+  +34.16 SOL itself over 8 days, up on all 8. The rule search's one change, its buys of 1.3+ SOL only, passes B: a name to retest
+  with more days, not to run now.
+- **FAIL HTYho9io**: it loses -236.71 SOL itself over 10 days, up on 1 (83 buys of 0.5+ SOL); no copy test needed.
+
 ## Days and hours (Nov 28; the owner: "not trade on Fridays, Saturdays, Sundays, or any day of the week?")
 
 The deep test's copies of 11 of our wallets (1,756 over Nov 13-27, the standard exit, from the cand_*.npz grids), by UTC weekday

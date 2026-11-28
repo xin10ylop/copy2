@@ -10,7 +10,8 @@ PY=/opt/rugsnipe/venv/bin/python; [ -x $PY ] || PY=python3
 SP=$D/sp; O=$D/out; mkdir -p $SP $O; date +%s > $D/start; rm -f $D/rc
 : > $D/progress; p() { echo "$(date '+%H:%M') $*" >> $D/progress; }
 if ! $PY -c "import numpy, solders" 2>/dev/null; then p "FAILED: numpy or solders missing for $PY"; echo 2 > $D/rc; exit 2; fi
-if [ -z "$HELIUS_URL" ] || [ -z "$RPC_URL" ]; then p "FAILED: no HELIUS_URL / RPC_URL (the key file)"; echo 3 > $D/rc; exit 3; fi
+# Nov 28: HELIUS_URL may be empty (the key out of credits): the scripts then read the public node or Triton at RPC_URL, slower
+if [ -z "$RPC_URL" ]; then p "FAILED: no RPC_URL (the key file)"; echo 3 > $D/rc; exit 3; fi
 H=h$(date -u +%m%d)_   # a fresh history folder each day
 { echo "deep test of $(date -u '+%b %d %H:%M') UTC (14 days each; the rules: x5_verdict.py)"; } > $D/summary.txt
 cd $SP

@@ -1,0 +1,34 @@
+cand_8x1q3VeN: 100 copies, 11-14 11:06 to 11-28 08:57 UTC; blocks of 25, 25, 25, 25; % = a copy, of the stake
+live exit: tp 3.0x, 420 s, no sp, stall 240, its sale never
+
+fixed exits on the 4 blocks (no picking):
+  live                                -11.7 /   +3.5 /   -1.0 /  +28.8  =   +4.9%  w/o 2%   +1.1%  blocks + 2/4
+  wallet 4's live                     -14.8 /   -2.3 /   +8.8 /   +5.9  =   -0.6%  w/o 2%   -5.5%  blocks + 2/4
+  follow its sale, to 600 s            -8.9 /   -1.1 /   +3.2 /   +2.6  =   -1.1%  w/o 2%   -3.2%  blocks + 2/4
+  tp 2 / 120 s                        -13.0 /   +0.9 /   +3.7 /  +14.8  =   +1.6%  w/o 2%   -0.3%  blocks + 3/4
+  tp 2 / 120 s / sp 5/60              -16.0 /   -0.5 /   +2.2 /  +12.3  =   -0.5%  w/o 2%   -2.4%  blocks + 2/4
+
+1. walk-forward (picked on the blocks before, scored blind):
+  block 2: picked on 25: tp 1.3x, 60 s, sp 3/30, stall 60, its sale 0-120 s
+      blind   -1.3%  live   +3.5%  on 25
+  block 3: picked on 50: tp 1.5x, 60 s, sp 5/60, stall 60, its sale 0-120 s
+      blind   +0.1%  live   -1.0%  on 25
+  block 4: picked on 75: tp 1.5x, 60 s, sp 3/30, stall 60, its sale 0-120 s
+      blind   +3.6%  live  +28.8%  on 25
+  blind total +0.8% a copy (w/o 2% -0.4%) against live +10.4% (w/o 2% +5.4%); better in 1 of 3
+  the pick on all 4 blocks: tp 3.0x, 300 s, no sp, stall 60, its sale 30-290 s <1.5x  (+8.2% seen, flattering)
+
+2. each axis alone: [median paired diff a copy per block, other axes at every setting] | the live exit with only this changed
+  tp 4.0x                  median  +0.0  +0.0  +0.0  +0.0 (0/4) | changed  +4.0  +1.6  +6.0 -10.9 (3/4) total  +0.1 w/o2  -1.9
+  90 s                     median  +0.5  +0.7  -4.2  +1.0 (3/4) | changed  -1.9  -2.7  -1.7 -10.8 (0/4) total  -4.3 w/o2  -2.3
+  120 s                    median  -0.5  +1.0  +1.2  +0.0 (3/4) | changed  -1.4  -4.0  +7.8 -11.5 (1/4) total  -2.3 w/o2  -1.3
+  180 s                    median  +0.3  +0.0  +1.3  +0.0 (3/4) | changed  -0.8  -1.3  +7.1  -5.0 (1/4) total  -0.0 w/o2  +0.2
+  240 s                    median  +0.1  +0.0  +0.4  +0.5 (3/4) | changed  +2.2  -3.3  +5.2  +8.6 (3/4) total  +3.2 w/o2  +3.2  <- passes B
+  300 s                    median  +0.4  +0.0  +0.0  +0.0 (1/4) | changed  +1.7  -1.9  +4.3  +3.5 (3/4) total  +1.9 w/o2  +1.9
+  sp 10/120                median  +0.3  -1.6  +0.0  -1.2 (1/4) | changed  +2.8  -5.1  +2.9  +0.2 (3/4) total  +0.2 w/o2  +0.2
+  stall 60                 median  +0.6  +0.6  +0.0  -0.0 (2/4) | changed  +4.4  +0.0  +6.4  +0.8 (4/4) total  +2.9 w/o2  +2.9
+  stall 120                median  +0.0  +0.0  +0.0  +0.0 (0/4) | changed  +2.7  +3.8  +2.5  -0.1 (3/4) total  +2.2 w/o2  +2.2
+  its sale 30-290 s <1.5x  median  +0.5  -0.6  +0.1  +0.2 (3/4) | changed  +3.5  -2.3  +3.0  -6.2 (2/4) total  -0.5 w/o2  -0.5
+  its sale 30-290 s        median  +0.5  +0.1  +0.1  -0.8 (3/4) | changed  +3.5  -1.4  +4.6 -16.6 (2/4) total  -2.5 w/o2  -2.5
+
+3. VERDICT: B, one change: 240 s -> tp 3.0x, 240 s, no sp, stall 240, its sale never (+8.1% against +4.9% live, w/o 2% +3.2 points)

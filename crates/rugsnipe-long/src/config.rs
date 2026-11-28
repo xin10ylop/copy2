@@ -451,10 +451,11 @@ mod tests {
             include_str!("../../../config/long-6k5.live.example.toml"),
             include_str!("../../../config/long-cnq.live.example.toml"),
             include_str!("../../../config/long-wik.live.example.toml"),
+            include_str!("../../../config/long-7es.live.example.toml"),
         ] {
             let u = LongCfg::from_toml_str(src).unwrap();
             assert!(u.validate().is_ok(), "{}: {:?}", u.state_dir, u.validate());
-            assert_eq!(u.other_state_dirs.len(), 16, "{}", u.state_dir);
+            assert_eq!(u.other_state_dirs.len(), 17, "{}", u.state_dir);
             assert!(!u.other_state_dirs.contains(&u.state_dir), "{}", u.state_dir);
         }
     }

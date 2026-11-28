@@ -1,7 +1,7 @@
 # The wik1TBPz unit's config (Nov 28 UTC; 0.25 SOL on the main long wallet; check command `lll`). From
 # analysis/research/2026-11-27/deep_box/ (Nov 27 23:01 UTC): PASS, the standard exit +9.4% a copy on 107 over 14 days, 3 of 4 blocks,
 # +4.00 SOL at 1 SOL without the best 2%; the blind rolling pick FAIL; the exit and rule search keep the standard; own +18.12 SOL
-# over 14 days, up on 9. A trial: 0.25 SOL, daily stop 0.5, stopped at -1.0 SOL in all or if negative after 20 trades. The 17 units skip each other's coins.
+# over 14 days, up on 9. A trial: 0.25 SOL, daily stop 0.5, stopped at -1.0 SOL in all or if negative after 20 trades. The 18 units skip each other's coins.
 # For a new box: sudo install -m 0640 -o root -g rugsnipe config/long-wik.live.example.toml /etc/rugsnipe/long-wik.toml.
 # /etc/rugsnipe/long.toml: the long copy (rugsnipe-long, docs/20).
 # Copy H9kuqGKN's 1.5-SOL buys of pump coins priced in other tokens; hold up to 30 minutes.
@@ -91,7 +91,7 @@ stall_s = 240
 
 # other units trading from this same wallet (their state dirs): a coin one of them holds is not bought, and a sale
 # never closes a coin account one of them still uses (Nov 18: rugsnipe-long and rugsnipe-long-tab on one wallet)
-other_state_dirs = ["/var/lib/rugsnipe-long", "/var/lib/rugsnipe-long-cq", "/var/lib/rugsnipe-long-cgy", "/var/lib/rugsnipe-long-3xe", "/var/lib/rugsnipe-long-6lw", "/var/lib/rugsnipe-long-6nn", "/var/lib/rugsnipe-long-gqw", "/var/lib/rugsnipe-long-fat", "/var/lib/rugsnipe-long-htk", "/var/lib/rugsnipe-long-3si", "/var/lib/rugsnipe-long-bng", "/var/lib/rugsnipe-long-e2x", "/var/lib/rugsnipe-long-e5c", "/var/lib/rugsnipe-long-2gj", "/var/lib/rugsnipe-long-6k5", "/var/lib/rugsnipe-long-cnq"]
+other_state_dirs = ["/var/lib/rugsnipe-long", "/var/lib/rugsnipe-long-cq", "/var/lib/rugsnipe-long-cgy", "/var/lib/rugsnipe-long-3xe", "/var/lib/rugsnipe-long-6lw", "/var/lib/rugsnipe-long-6nn", "/var/lib/rugsnipe-long-gqw", "/var/lib/rugsnipe-long-fat", "/var/lib/rugsnipe-long-htk", "/var/lib/rugsnipe-long-3si", "/var/lib/rugsnipe-long-bng", "/var/lib/rugsnipe-long-e2x", "/var/lib/rugsnipe-long-e5c", "/var/lib/rugsnipe-long-2gj", "/var/lib/rugsnipe-long-6k5", "/var/lib/rugsnipe-long-cnq", "/var/lib/rugsnipe-long-7es"]
 # its SOL-priced coins too (Nov 22: on all its buys, blind, SOL coins +8.4% a copy on 125, token coins +26.2% on 76)
 copy_sol_coins = true
 # its SOL coins with their own exits (Nov 22: on its blind blocks, SOL coins tp 2x / 120 s +11.06 SOL on 124, positive in

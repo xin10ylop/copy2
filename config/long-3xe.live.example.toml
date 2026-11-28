@@ -91,7 +91,7 @@ stall_s = 240
 
 # other units trading from this same wallet (their state dirs): a coin one of them holds is not bought, and a sale
 # never closes a coin account one of them still uses (Nov 18: rugsnipe-long and rugsnipe-long-tab on one wallet)
-other_state_dirs = ["/var/lib/rugsnipe-long", "/var/lib/rugsnipe-long-cq", "/var/lib/rugsnipe-long-cgy", "/var/lib/rugsnipe-long-6lw", "/var/lib/rugsnipe-long-6nn", "/var/lib/rugsnipe-long-gqw", "/var/lib/rugsnipe-long-fat", "/var/lib/rugsnipe-long-htk", "/var/lib/rugsnipe-long-3si", "/var/lib/rugsnipe-long-bng", "/var/lib/rugsnipe-long-e2x", "/var/lib/rugsnipe-long-e5c", "/var/lib/rugsnipe-long-2gj", "/var/lib/rugsnipe-long-6k5", "/var/lib/rugsnipe-long-cnq", "/var/lib/rugsnipe-long-wik"]
+other_state_dirs = ["/var/lib/rugsnipe-long", "/var/lib/rugsnipe-long-cq", "/var/lib/rugsnipe-long-cgy", "/var/lib/rugsnipe-long-6lw", "/var/lib/rugsnipe-long-6nn", "/var/lib/rugsnipe-long-gqw", "/var/lib/rugsnipe-long-fat", "/var/lib/rugsnipe-long-htk", "/var/lib/rugsnipe-long-3si", "/var/lib/rugsnipe-long-bng", "/var/lib/rugsnipe-long-e2x", "/var/lib/rugsnipe-long-e5c", "/var/lib/rugsnipe-long-2gj", "/var/lib/rugsnipe-long-6k5", "/var/lib/rugsnipe-long-cnq", "/var/lib/rugsnipe-long-wik", "/var/lib/rugsnipe-long-7es"]
 # Nov 25: buy its coin even when another unit holds it (two of our wallets agree: +16.7% a copy against +10.8% alone;
 # analysis/research/2026-11-25/consensus/); both units hold it, the shared account stays open while either does
 join_others = true
